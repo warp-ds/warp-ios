@@ -7,34 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		82355AFD2A8CCBE70023EB11 /* Warp_iosTori.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355AF92A8CCBE70023EB11 /* Warp_iosTori.swift */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
 		82355AFF2A8CCBE70023EB11 /* Tori+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355AFB2A8CCBE70023EB11 /* Tori+Color.swift */; };
 		82355B002A8CCBE70023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
 		82355B022A8CCC810023EB11 /* Warp-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 82355B012A8CCC810023EB11 /* Warp-ios */; };
-		82355B032A8CCC8D0023EB11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828547CB2A8CCA5300401DA3 /* ContentView.swift */; };
-		828547D12A8CCA5300401DA3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828547CB2A8CCA5300401DA3 /* ContentView.swift */; };
-		828547D22A8CCA5300401DA3 /* Finn+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828547CC2A8CCA5300401DA3 /* Finn+Color.swift */; };
-		828547D32A8CCA5300401DA3 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 828547CD2A8CCA5300401DA3 /* Preview Content */; };
-		828547D42A8CCA5300401DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 828547CF2A8CCA5300401DA3 /* Assets.xcassets */; };
-		828547D52A8CCA5300401DA3 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828547D02A8CCA5300401DA3 /* Warp_iosFinn.swift */; };
+		82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */; };
+		82355B0C2A8CD0AA0023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355B082A8CD0AA0023EB11 /* Assets.xcassets */; };
+		82355B0D2A8CD0AA0023EB11 /* Finn+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B092A8CD0AA0023EB11 /* Finn+Color.swift */; };
+		82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B0A2A8CD0AA0023EB11 /* ContentView.swift */; };
+		82355B0F2A8CD0AA0023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355B0B2A8CD0AA0023EB11 /* Preview Content */; };
+		82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */; };
+		82355B122A8CD1120023EB11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B0A2A8CD0AA0023EB11 /* ContentView.swift */; };
 		828547D72A8CCB3D00401DA3 /* Warp-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 828547D62A8CCB3D00401DA3 /* Warp-ios */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8206620F2A8CC97C0088677D /* warp-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "warp-ios"; path = ..; sourceTree = "<group>"; };
-		82355AF92A8CCBE70023EB11 /* Warp_iosTori.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warp_iosTori.swift; sourceTree = "<group>"; };
 		82355AFA2A8CCBE70023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82355AFB2A8CCBE70023EB11 /* Tori+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tori+Color.swift"; sourceTree = "<group>"; };
 		82355AFC2A8CCBE70023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
-		82355B042A8CCE480023EB11 /* Warp_iosSampleApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = Warp_iosSampleApp.entitlements; path = "Warp-iosSampleApp/Warp_iosSampleApp.entitlements"; sourceTree = "<group>"; };
+		82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Warp_iosSampleApp.entitlements; path = "Warp-iosFinn/Warp_iosSampleApp.entitlements"; sourceTree = "<group>"; };
+		82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Warp_iosFinn.swift; path = "Warp-iosFinn/Warp_iosFinn.swift"; sourceTree = "<group>"; };
+		82355B082A8CD0AA0023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Warp-iosFinn/Assets.xcassets"; sourceTree = "<group>"; };
+		82355B092A8CD0AA0023EB11 /* Finn+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Finn+Color.swift"; path = "Warp-iosFinn/Finn+Color.swift"; sourceTree = "<group>"; };
+		82355B0A2A8CD0AA0023EB11 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "Warp-iosFinn/ContentView.swift"; sourceTree = "<group>"; };
+		82355B0B2A8CD0AA0023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Preview Content"; path = "Warp-iosFinn/Preview Content"; sourceTree = "<group>"; };
+		82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosTori.swift; sourceTree = "<group>"; };
 		824977872A893F400013475C /* Finn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		827C4B952A89410800660D82 /* Tori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tori.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		828547CB2A8CCA5300401DA3 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "Warp-iosSampleApp/ContentView.swift"; sourceTree = "<group>"; };
-		828547CC2A8CCA5300401DA3 /* Finn+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Finn+Color.swift"; path = "Warp-iosSampleApp/Finn+Color.swift"; sourceTree = "<group>"; };
-		828547CD2A8CCA5300401DA3 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Preview Content"; path = "Warp-iosSampleApp/Preview Content"; sourceTree = "<group>"; };
-		828547CF2A8CCA5300401DA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Warp-iosSampleApp/Assets.xcassets"; sourceTree = "<group>"; };
-		828547D02A8CCA5300401DA3 /* Warp_iosFinn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Warp_iosFinn.swift; path = "Warp-iosSampleApp/Warp_iosFinn.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +60,10 @@
 		82355AF82A8CCBC90023EB11 /* Warp-iosTori */ = {
 			isa = PBXGroup;
 			children = (
+				82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */,
+				82355AFB2A8CCBE70023EB11 /* Tori+Color.swift */,
 				82355AFA2A8CCBE70023EB11 /* Assets.xcassets */,
 				82355AFC2A8CCBE70023EB11 /* Preview Content */,
-				82355AFB2A8CCBE70023EB11 /* Tori+Color.swift */,
-				82355AF92A8CCBE70023EB11 /* Warp_iosTori.swift */,
 			);
 			path = "Warp-iosTori";
 			sourceTree = "<group>";
@@ -98,12 +98,12 @@
 		828547C92A8CCA3300401DA3 /* Warp-iosFinn */ = {
 			isa = PBXGroup;
 			children = (
-				828547CF2A8CCA5300401DA3 /* Assets.xcassets */,
-				828547CB2A8CCA5300401DA3 /* ContentView.swift */,
-				828547CC2A8CCA5300401DA3 /* Finn+Color.swift */,
-				828547CD2A8CCA5300401DA3 /* Preview Content */,
-				828547D02A8CCA5300401DA3 /* Warp_iosFinn.swift */,
-				82355B042A8CCE480023EB11 /* Warp_iosSampleApp.entitlements */,
+				82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */,
+				82355B0A2A8CD0AA0023EB11 /* ContentView.swift */,
+				82355B092A8CD0AA0023EB11 /* Finn+Color.swift */,
+				82355B082A8CD0AA0023EB11 /* Assets.xcassets */,
+				82355B0B2A8CD0AA0023EB11 /* Preview Content */,
+				82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */,
 			);
 			name = "Warp-iosFinn";
 			sourceTree = "<group>";
@@ -195,8 +195,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				828547D42A8CCA5300401DA3 /* Assets.xcassets in Resources */,
-				828547D32A8CCA5300401DA3 /* Preview Content in Resources */,
+				82355B0F2A8CD0AA0023EB11 /* Preview Content in Resources */,
+				82355B0C2A8CD0AA0023EB11 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,9 +216,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				828547D52A8CCA5300401DA3 /* Warp_iosFinn.swift in Sources */,
-				828547D22A8CCA5300401DA3 /* Finn+Color.swift in Sources */,
-				828547D12A8CCA5300401DA3 /* ContentView.swift in Sources */,
+				82355B0D2A8CD0AA0023EB11 /* Finn+Color.swift in Sources */,
+				82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */,
+				82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,9 +226,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82355AFD2A8CCBE70023EB11 /* Warp_iosTori.swift in Sources */,
 				82355AFF2A8CCBE70023EB11 /* Tori+Color.swift in Sources */,
-				82355B032A8CCC8D0023EB11 /* ContentView.swift in Sources */,
+				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
+				82355B122A8CD1120023EB11 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +355,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Warp-iosSampleApp/Warp_iosSampleApp.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Warp-iosFinn/Warp_iosSampleApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
@@ -397,7 +397,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "Warp-iosSampleApp/Warp_iosSampleApp.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Warp-iosFinn/Warp_iosSampleApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
