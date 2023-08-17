@@ -19,6 +19,10 @@
 		82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */; };
 		82355B122A8CD1120023EB11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B0A2A8CD0AA0023EB11 /* ContentView.swift */; };
 		828547D72A8CCB3D00401DA3 /* Warp-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 828547D62A8CCB3D00401DA3 /* Warp-ios */; };
+		82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
+		82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
+		82A2155C2A8DF93B0062FB9E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
+		82A2155D2A8DF93B0062FB9E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,8 @@
 		82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosTori.swift; sourceTree = "<group>"; };
 		824977872A893F400013475C /* Finn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		827C4B952A89410800660D82 /* Tori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tori.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		82A215582A8DF4DC0062FB9E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		82A2155B2A8DF93B0062FB9E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,8 @@
 			children = (
 				82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */,
 				82355B0A2A8CD0AA0023EB11 /* ContentView.swift */,
+				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
+				82A2155B2A8DF93B0062FB9E /* InputView.swift */,
 				82355B092A8CD0AA0023EB11 /* Finn+Color.swift */,
 				82355B082A8CD0AA0023EB11 /* Assets.xcassets */,
 				82355B0B2A8CD0AA0023EB11 /* Preview Content */,
@@ -218,6 +226,8 @@
 			files = (
 				82355B0D2A8CD0AA0023EB11 /* Finn+Color.swift in Sources */,
 				82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */,
+				82A2155C2A8DF93B0062FB9E /* InputView.swift in Sources */,
+				82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +238,8 @@
 			files = (
 				82355AFF2A8CCBE70023EB11 /* Tori+Color.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
+				82A2155D2A8DF93B0062FB9E /* InputView.swift in Sources */,
+				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				82355B122A8CD1120023EB11 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
