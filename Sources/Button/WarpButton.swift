@@ -205,9 +205,9 @@ enum WarpButtonType: WarpButtonTypeColor {
         case .utility:
             Config.colorProvider.utilityButtonBorderColor
         case .utilityTertiary:
-            Config.colorProvider.utilityButtonBorderColor
+            .clear
         case .utilityOverlay:
-            Config.colorProvider.utilityButtonBorderColor
+            .clear
         }
     }
 }

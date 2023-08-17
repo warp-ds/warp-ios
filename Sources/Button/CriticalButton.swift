@@ -21,6 +21,7 @@ public struct CriticalButton: View {
     }
     
     public var body: some View {
+        WarpButton(title: title, type: .critical, disbled: disabled)
         Button(title) {
             
         }

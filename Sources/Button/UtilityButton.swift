@@ -29,6 +29,7 @@ public struct UtilityButton: View {
     }
     
     public var body: some View {
+        WarpButton(title: title, type: .utility, disbled: disabled)
         Button(title) {
             
         }
@@ -37,9 +38,9 @@ public struct UtilityButton: View {
         .padding(8)
         .background(backgroundColor)
         .overlay(
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 4)
                 .stroke(buttonBorderColor, lineWidth: 2))
-        .cornerRadius(8)
+        .cornerRadius(4)
     }
 }
 

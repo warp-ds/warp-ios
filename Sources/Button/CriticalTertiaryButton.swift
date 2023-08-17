@@ -23,6 +23,7 @@ public struct CriticalTertiaryButton: View {
     }
         
     public var body: some View {
+        WarpButton(title: title, type: .criticalTertiary, disbled: disabled)
         Button(title) {
             
         }
