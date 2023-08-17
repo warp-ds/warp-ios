@@ -23,6 +23,7 @@ public struct TertiaryButton: View {
     }
         
     public var body: some View {
+        WarpButton(title: title, type: .tertiary, disbled: disabled)
         Button(title) {
             
         }
