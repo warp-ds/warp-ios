@@ -2,26 +2,27 @@ import SwiftUI
 
 public struct CriticalButton: View {
     let title: String
+    let icon: String
     let disabled: Bool
+    let fullWidth: Bool
     let colorProvider = Config.colorProvider
     
-    public init(title: String, disbled: Bool = false) {
+    public init(title: String,
+                icon: String = "",
+                disbled: Bool = false,
+                fullWidth: Bool = false) {
         self.title = title
+        self.icon = icon
         self.disabled = disbled
-    }
-    
-    var backgroundColor: Color {
-        disabled ?
-        colorProvider.criticalButtonDisabledBackgroundColor :
-        colorProvider.criticalButtonBackgroundColor
-    }
-    
-    var foregroundColor: Color {
-        colorProvider.criticalButtonForegroundColor
+        self.fullWidth = fullWidth
     }
     
     public var body: some View {
-        WarpButton(title: title, type: .critical, disbled: disabled)
+        WarpButton(title: title,
+                   icon: icon,
+                   type: .critical,
+                   disbled: disabled,
+                   fullWidth: fullWidth)
     }
 }
 

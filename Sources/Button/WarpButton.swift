@@ -5,16 +5,19 @@ struct WarpButton: View {
     let icon: String
     let type: WarpButtonType
     let disabled: Bool
+    let fullWidth: Bool
     let colorProvider = Config.colorProvider
     
     init(title: String,
-                icon: String = "",
-                type: WarpButtonType,
-                disbled: Bool = false) {
+         icon: String = "",
+         type: WarpButtonType,
+         disbled: Bool = false,
+         fullWidth: Bool = false) {
         self.title = title
         self.icon = icon
         self.type = type
         self.disabled = disbled
+        self.fullWidth = fullWidth
     }
     
     var backgroundColor: Color {
@@ -89,10 +92,14 @@ struct WarpButton: View {
     var body: some View {
         Button(action: {}) {
             HStack {
+                if fullWidth { Spacer() }
                 if !icon.isEmpty {
                     Image(systemName: icon)
                 }
                 Text(title)
+                    .lineLimit(type == .critical ? Int.max : 1)
+                    .truncationMode(type == .primary ? .tail : .middle)
+                if fullWidth { Spacer() }
             }
         }
         .disabled(disabled)
