@@ -29,30 +29,13 @@ struct WarpButton: View {
         if disabled {
             return colorProvider.secondaryButtonDisabledForegroundColor
         } else {
-            switch type {
-            case .primary:
-                return         colorProvider.primaryButtonForegroundColor
-            case .secondary:
-                return colorProvider.secondaryButtonForegroundColor
-            case .tertiary:
-                return colorProvider.tertiaryButtonForegroundColor
-            case .critical:
-                return colorProvider.criticalButtonForegroundColor
-            case .criticalTertiary:
-                return colorProvider.criticalTertiaryButtonForegroundColor
-            case .utility:
-                return colorProvider.utilityButtonForegroundColor
-            case .utilityTertiary:
-                return colorProvider.utilityButtonForegroundColor
-            case .utilityOverlay:
-                return colorProvider.utilityButtonForegroundColor
-            }
+            return type.foregroundColor
         }
     }
     
     var buttonBorderColor: Color {
         if disabled {
-            return         colorProvider.secondaryButtonDisabledBorderColor
+            return colorProvider.secondaryButtonDisabledBorderColor
         } else {
             return type.borderColor
         }
