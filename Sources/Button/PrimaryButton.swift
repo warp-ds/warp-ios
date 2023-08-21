@@ -10,16 +10,6 @@ public struct PrimaryButton: View {
         self.disabled = disbled
     }
     
-    var backgroundColor: Color {
-        disabled ?
-        colorProvider.primaryButtonDisabledBackgroundColor :
-        colorProvider.primaryButtonBackgroundColor
-    }
-    
-    var foregroundColor: Color {
-        colorProvider.primaryButtonForegroundColor
-    }
-    
     public var body: some View {
         WarpButton(title: title, type: .primary, disbled: disabled)
     }

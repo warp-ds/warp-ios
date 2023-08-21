@@ -9,18 +9,6 @@ public struct TertiaryButton: View {
         self.title = title
         self.disabled = disbled
     }
-    
-    var backgroundColor: Color {
-        disabled ?
-        colorProvider.primaryButtonDisabledBackgroundColor :
-        colorProvider.secondaryButtonBackgroundColor
-    }
-    
-    var foregroundColor: Color {
-        disabled ?
-        colorProvider.secondaryButtonDisabledForegroundColor :
-        colorProvider.secondaryButtonForegroundColor
-    }
         
     public var body: some View {
         WarpButton(title: title, type: .tertiary, disbled: disabled)

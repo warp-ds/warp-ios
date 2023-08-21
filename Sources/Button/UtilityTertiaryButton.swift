@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct SecondaryButton: View {
+public struct UtilityTertiaryButton: View {
     let title: String
     let disabled: Bool
     let colorProvider = Config.colorProvider
@@ -11,13 +11,13 @@ public struct SecondaryButton: View {
     }
     
     public var body: some View {
-        WarpButton(title: title, type: .secondary, disbled: disabled)
+        WarpButton(title: title, type: .utilityTertiary, disbled: disabled)
     }
 }
 
 #Preview {
     VStack {
-        SecondaryButton(title: "Button")
-        SecondaryButton(title: "Button", disbled: true)
+        UtilityButton(title: "Button")
+        UtilityButton(title: "Button", disbled: true)
     }
 }

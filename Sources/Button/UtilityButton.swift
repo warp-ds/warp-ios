@@ -10,24 +10,6 @@ public struct UtilityButton: View {
         self.disabled = disbled
     }
     
-    var backgroundColor: Color {
-        disabled ?
-        colorProvider.utilityButtonDisabledBackgroundColor :
-        colorProvider.utilityButtonBackgroundColor
-    }
-    
-    var foregroundColor: Color {
-        disabled ?
-        colorProvider.utilityButtonDisabledForegroundColor :
-        colorProvider.utilityButtonForegroundColor
-    }
-    
-    var buttonBorderColor: Color {
-        disabled ?
-        colorProvider.utilityButtonDisabledBorderColor :
-        colorProvider.utilityButtonBorderColor
-    }
-    
     public var body: some View {
         WarpButton(title: title, type: .utility, disbled: disabled)
     }
