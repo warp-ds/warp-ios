@@ -4,6 +4,7 @@ struct WarpButton: View {
     let title: String
     let icon: String
     let type: WarpButtonType
+    let size: WarpButtonSize
     let disabled: Bool
     let fullWidth: Bool
     let colorProvider = Config.colorProvider
@@ -11,11 +12,13 @@ struct WarpButton: View {
     init(title: String,
          icon: String = "",
          type: WarpButtonType,
+         size: WarpButtonSize = .big,
          disbled: Bool = false,
          fullWidth: Bool = false) {
         self.title = title
         self.icon = icon
         self.type = type
+        self.size = size
         self.disabled = disbled
         self.fullWidth = fullWidth
     }
@@ -62,12 +65,21 @@ struct WarpButton: View {
         }
     }
     
-    var buttonPadding: CGFloat {
+    var buttonVerticalPadding: CGFloat {
         switch type {
-        case .utility:
+        case .utility, .utilityTertiary, .utilityOverlay:
             return 8
         default:
-            return 16
+            return size == .big ? 13 : 8
+        }
+    }
+    
+    var buttonHorizontalPadding: CGFloat {
+        switch type {
+        case .utility, .utilityTertiary, .utilityOverlay:
+            return 8
+        default:
+            return size == .big ? 16 : 12
         }
     }
     
@@ -95,16 +107,19 @@ struct WarpButton: View {
                 if fullWidth { Spacer() }
                 if !icon.isEmpty {
                     Image(systemName: icon)
+                        .padding(-1)
                 }
                 Text(title)
-                    .lineLimit(type == .critical ? Int.max : 1)
-                    .truncationMode(type == .primary ? .tail : .middle)
+//                    .minimumScaleFactor(0.1)
+                    .lineLimit(/*type == .critical ? Int.max : */1)
+                    .truncationMode(/*type == .primary ? .tail : */.middle)
                 if fullWidth { Spacer() }
             }
         }
         .disabled(disabled)
         .foregroundColor(foregroundColor)
-        .padding(buttonPadding)
+        .padding(.vertical, buttonVerticalPadding)
+        .padding(.horizontal, buttonHorizontalPadding)
         .background(backgroundColor)
         .overlay(
             RoundedRectangle(cornerRadius: buttonCornerRadius)
@@ -112,6 +127,10 @@ struct WarpButton: View {
         .cornerRadius(buttonCornerRadius)
         .shadow(color: FinnColors.gray700.opacity(0.5), radius: shadowRadius, y: shadowY)
     }
+}
+
+public enum WarpButtonSize {
+    case big, small
 }
 
 enum WarpButtonType: WarpButtonTypeColor {
