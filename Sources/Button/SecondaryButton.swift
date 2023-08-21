@@ -30,17 +30,6 @@ public struct SecondaryButton: View {
     
     public var body: some View {
         WarpButton(title: title, type: .secondary, disbled: disabled)
-        Button(title) {
-            
-        }
-        .disabled(disabled)
-        .foregroundColor(foregroundColor)
-        .padding()
-        .background(backgroundColor)
-        .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(buttonBorderColor, lineWidth: 4))
-        .cornerRadius(8)
     }
 }
 

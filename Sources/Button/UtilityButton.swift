@@ -30,17 +30,6 @@ public struct UtilityButton: View {
     
     public var body: some View {
         WarpButton(title: title, type: .utility, disbled: disabled)
-        Button(title) {
-            
-        }
-        .disabled(disabled)
-        .foregroundColor(foregroundColor)
-        .padding(8)
-        .background(backgroundColor)
-        .overlay(
-            RoundedRectangle(cornerRadius: 4)
-                .stroke(buttonBorderColor, lineWidth: 2))
-        .cornerRadius(4)
     }
 }
 

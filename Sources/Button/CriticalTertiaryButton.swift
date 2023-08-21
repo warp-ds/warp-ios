@@ -24,14 +24,6 @@ public struct CriticalTertiaryButton: View {
         
     public var body: some View {
         WarpButton(title: title, type: .criticalTertiary, disbled: disabled)
-        Button(title) {
-            
-        }
-        .disabled(disabled)
-        .foregroundColor(foregroundColor)
-        .padding()
-        .background(backgroundColor)
-        .cornerRadius(8)
     }
 }
 
