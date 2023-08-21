@@ -107,9 +107,10 @@ struct WarpButton: View {
                 if fullWidth { Spacer() }
                 if !icon.isEmpty {
                     Image(systemName: icon)
-                        .padding(-1)
+                        .padding(-2)
                 }
                 Text(title)
+                    .font(.callout)
 //                    .minimumScaleFactor(0.1)
                     .lineLimit(/*type == .critical ? Int.max : */1)
                     .truncationMode(/*type == .primary ? .tail : */.middle)
