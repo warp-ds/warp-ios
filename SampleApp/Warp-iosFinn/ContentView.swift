@@ -22,7 +22,7 @@ struct ContentView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Warp Components")
+            .navigationTitle( Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)
         }
     }
 }

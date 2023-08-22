@@ -5,7 +5,7 @@ import Warp_ios
 struct Wrap_iosTori: App {
     
     init() {
-        Warp_ios.Config.colorProvider = ToriColorProvider()
+        Warp_ios.Config.warpTheme = .tori
     }
     
     var body: some Scene {

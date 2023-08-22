@@ -1,5 +1,4 @@
 import SwiftUI
-import Warp_ios
 
 struct FinnColorProvider: ColorProvider {
     public var primaryButtonForegroundColor: Color { FinnColors.white }

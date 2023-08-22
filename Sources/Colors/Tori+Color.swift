@@ -1,5 +1,4 @@
 import SwiftUI
-import Warp_ios
 
 class ToriColorProvider: ColorProvider {
     public var primaryButtonForegroundColor: Color { ToriColors.white }
