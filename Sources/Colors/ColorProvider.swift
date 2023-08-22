@@ -35,7 +35,12 @@ public protocol ColorProvider {
     
     var inputOptionalHeaderForegroundColor: Color { get }
     var inputOptionalHelpTextForegroundColor: Color { get }
+    var inputOptionalHelpTextErrorForegroundColor: Color { get }
+    var inputBorderColor: Color { get }
     var inputActiveBorderColor: Color { get }
+    var inputErrorBorderColor: Color { get }
+    var inputReadOnlyBorderColor: Color { get }
+    var inputDisabledBackgroundColor: Color { get }
 }
 
 public struct DefaultColorProvider: ColorProvider {
@@ -73,7 +78,12 @@ public struct DefaultColorProvider: ColorProvider {
     
     public var inputOptionalHeaderForegroundColor: Color { FinnColors.gray500 }
     public var inputOptionalHelpTextForegroundColor: Color { FinnColors.gray700 }
+    public var inputOptionalHelpTextErrorForegroundColor: Color { FinnColors.red600 }
+    public var inputBorderColor: Color { FinnColors.gray300 }
     public var inputActiveBorderColor: Color { FinnColors.blue600 }
+    public var inputErrorBorderColor: Color { FinnColors.red600 }
+    public var inputReadOnlyBorderColor: Color { FinnColors.white }
+    public var inputDisabledBackgroundColor: Color { FinnColors.gray200 }
 }
 
 
