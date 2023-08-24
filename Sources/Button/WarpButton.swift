@@ -1,44 +1,33 @@
 import SwiftUI
 
-public struct WarpButton: View {
+struct WarpButton: View {
     let title: String
     let icon: String
     let type: WarpButtonType
+    let size: WarpButtonSize
     let disabled: Bool
+    let fullWidth: Bool
     let colorProvider = Config.colorProvider
     
-    public init(title: String,
-                icon: String = "",
-                type: WarpButtonType,
-                disbled: Bool = false) {
+    init(title: String,
+         icon: String = "",
+         type: WarpButtonType,
+         size: WarpButtonSize = .big,
+         disbled: Bool = false,
+         fullWidth: Bool = false) {
         self.title = title
         self.icon = icon
         self.type = type
+        self.size = size
         self.disabled = disbled
+        self.fullWidth = fullWidth
     }
     
     var backgroundColor: Color {
         if disabled {
-            return colorProvider.primaryButtonDisabledBackgroundColor
+            return type.disabledBackgroundColor
         } else {
-            switch type {
-            case .primary:
-                return colorProvider.primaryButtonBackgroundColor
-            case .secondary:
-                return colorProvider.secondaryButtonBackgroundColor
-            case .tertiary:
-                return colorProvider.secondaryButtonBackgroundColor
-            case .critical:
-                return colorProvider.criticalButtonBackgroundColor
-            case .criticalTertiary:
-                return colorProvider.criticalTertiaryButtonBackgroundColor
-            case .utility:
-                return colorProvider.utilityButtonBackgroundColor
-            case .utilityTertiary:
-                return colorProvider.utilityButtonBackgroundColor
-            case .utilityOverlay:
-                return colorProvider.utilityButtonBackgroundColor
-            }
+            return type.backgroundColor
         }
     }
     
@@ -46,49 +35,15 @@ public struct WarpButton: View {
         if disabled {
             return colorProvider.secondaryButtonDisabledForegroundColor
         } else {
-            switch type {
-            case .primary:
-                return         colorProvider.primaryButtonForegroundColor
-            case .secondary:
-                return colorProvider.secondaryButtonForegroundColor
-            case .tertiary:
-                return colorProvider.tertiaryButtonForegroundColor
-            case .critical:
-                return colorProvider.criticalButtonForegroundColor
-            case .criticalTertiary:
-                return colorProvider.criticalTertiaryButtonForegroundColor
-            case .utility:
-                return colorProvider.utilityButtonForegroundColor
-            case .utilityTertiary:
-                return colorProvider.utilityButtonForegroundColor
-            case .utilityOverlay:
-                return colorProvider.utilityButtonForegroundColor
-            }
+            return type.foregroundColor
         }
     }
     
     var buttonBorderColor: Color {
         if disabled {
-            return         colorProvider.secondaryButtonDisabledBorderColor
+            return colorProvider.secondaryButtonDisabledBorderColor
         } else {
-            switch type {
-            case .primary:
-                return .clear
-            case .secondary:
-                return         colorProvider.secondaryButtonBorderColor
-            case .tertiary:
-                return         colorProvider.secondaryButtonBackgroundColor
-            case .critical:
-                return .clear
-            case .criticalTertiary:
-                return .clear
-            case .utility:
-                return colorProvider.utilityButtonBorderColor
-            case .utilityTertiary:
-                return .clear
-            case .utilityOverlay:
-                return .clear
-            }
+            return type.borderColor
         }
     }
     
@@ -110,12 +65,21 @@ public struct WarpButton: View {
         }
     }
     
-    var buttonPadding: CGFloat {
+    var buttonVerticalPadding: CGFloat {
         switch type {
-        case .utility:
+        case .utility, .utilityTertiary, .utilityOverlay:
             return 8
         default:
-            return 16
+            return size == .big ? 13 : 8
+        }
+    }
+    
+    var buttonHorizontalPadding: CGFloat {
+        switch type {
+        case .utility, .utilityTertiary, .utilityOverlay:
+            return 8
+        default:
+            return size == .big ? 16 : 12
         }
     }
     
@@ -137,16 +101,26 @@ public struct WarpButton: View {
         }
     }
     
-    public var body: some View {
+    var body: some View {
         Button(action: {}) {
             HStack {
-                Image(systemName: icon)
+                if fullWidth { Spacer() }
+                if !icon.isEmpty {
+                    Image(systemName: icon)
+                        .padding(-2)
+                }
                 Text(title)
+                    .font(.callout)
+//                    .minimumScaleFactor(0.1)
+                    .lineLimit(/*type == .critical ? Int.max : */1)
+                    .truncationMode(/*type == .primary ? .tail : */.middle)
+                if fullWidth { Spacer() }
             }
         }
         .disabled(disabled)
         .foregroundColor(foregroundColor)
-        .padding(buttonPadding)
+        .padding(.vertical, buttonVerticalPadding)
+        .padding(.horizontal, buttonHorizontalPadding)
         .background(backgroundColor)
         .overlay(
             RoundedRectangle(cornerRadius: buttonCornerRadius)
@@ -156,8 +130,103 @@ public struct WarpButton: View {
     }
 }
 
-public enum WarpButtonType {
+public enum WarpButtonSize {
+    case big, small
+}
+
+enum WarpButtonType: WarpButtonTypeColor {
     case primary, secondary, tertiary, critical, criticalTertiary, utility, utilityTertiary, utilityOverlay
+    
+    var foregroundColor: Color {
+        switch self {
+        case .primary:
+            Config.colorProvider.primaryButtonForegroundColor
+        case .secondary:
+            Config.colorProvider.secondaryButtonForegroundColor
+        case .tertiary:
+            Config.colorProvider.tertiaryButtonForegroundColor
+        case .critical:
+            Config.colorProvider.criticalButtonForegroundColor
+        case .criticalTertiary:
+            Config.colorProvider.criticalTertiaryButtonForegroundColor
+        case .utility:
+            Config.colorProvider.utilityButtonForegroundColor
+        case .utilityTertiary:
+            Config.colorProvider.utilityButtonForegroundColor
+        case .utilityOverlay:
+            Config.colorProvider.utilityButtonForegroundColor
+        }
+    }
+    
+    var backgroundColor: Color {
+        switch self {
+        case .primary:
+            Config.colorProvider.primaryButtonBackgroundColor
+        case .secondary:
+            Config.colorProvider.secondaryButtonBackgroundColor
+        case .tertiary:
+            Config.colorProvider.tertiaryButtonBackgroundColor
+        case .critical:
+            Config.colorProvider.criticalButtonBackgroundColor
+        case .criticalTertiary:
+            Config.colorProvider.criticalTertiaryButtonBackgroundColor
+        case .utility:
+            Config.colorProvider.utilityButtonBackgroundColor
+        case .utilityTertiary:
+            Config.colorProvider.utilityButtonBackgroundColor
+        case .utilityOverlay:
+            Config.colorProvider.utilityButtonBackgroundColor
+        }
+    }
+    
+    var disabledBackgroundColor: Color {
+        switch self {
+        case .primary:
+            Config.colorProvider.primaryButtonDisabledBackgroundColor
+        case .secondary:
+            Config.colorProvider.secondaryButtonDisabledBackgroundColor
+        case .tertiary:
+            Config.colorProvider.tertiaryButtonDisabledBackgroundColor
+        case .critical:
+            Config.colorProvider.criticalButtonDisabledBackgroundColor
+        case .criticalTertiary:
+            Config.colorProvider.criticalTertiaryButtonDisabledBackgroundColor
+        case .utility:
+            Config.colorProvider.utilityButtonDisabledBackgroundColor
+        case .utilityTertiary:
+            Config.colorProvider.utilityButtonDisabledBackgroundColor
+        case .utilityOverlay:
+            Config.colorProvider.utilityButtonDisabledBackgroundColor
+        }
+    }
+    
+    var borderColor: Color {
+        switch self {
+        case .primary:
+            Config.colorProvider.primaryButtonBackgroundColor
+        case .secondary:
+                Config.colorProvider.secondaryButtonBorderColor
+        case .tertiary:
+            Config.colorProvider.tertiaryButtonBackgroundColor
+        case .critical:
+            Config.colorProvider.criticalButtonBackgroundColor
+        case .criticalTertiary:
+            Config.colorProvider.criticalTertiaryButtonBackgroundColor
+        case .utility:
+            Config.colorProvider.utilityButtonBorderColor
+        case .utilityTertiary:
+            .clear
+        case .utilityOverlay:
+            .clear
+        }
+    }
+}
+
+protocol WarpButtonTypeColor {
+    var foregroundColor: Color { get }
+    var backgroundColor: Color { get }
+    var disabledBackgroundColor: Color { get }
+    var borderColor: Color { get }
 }
 
 #Preview {

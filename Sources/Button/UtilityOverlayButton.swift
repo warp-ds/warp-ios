@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct UtilityButton: View {
+public struct UtilityOverlayButton: View {
     let title: String
     let icon: String
     let size: WarpButtonSize
@@ -23,7 +23,7 @@ public struct UtilityButton: View {
     public var body: some View {
         WarpButton(title: title,
                    icon: icon,
-                   type: .utility,
+                   type: .utilityOverlay,
                    size: size,
                    disbled: disabled,
                    fullWidth: fullWidth)

@@ -1,5 +1,4 @@
 import SwiftUI
-import Warp_ios
 
 struct FinnColorProvider: ColorProvider {
     public var primaryButtonForegroundColor: Color { FinnColors.white }
@@ -36,5 +35,10 @@ struct FinnColorProvider: ColorProvider {
     
     public var inputOptionalHeaderForegroundColor: Color { FinnColors.gray500 }
     public var inputOptionalHelpTextForegroundColor: Color { FinnColors.gray700 }
+    public var inputOptionalHelpTextErrorForegroundColor: Color { FinnColors.red600 }
+    public var inputBorderColor: Color { FinnColors.gray300 }
     public var inputActiveBorderColor: Color { FinnColors.blue600 }
+    public var inputErrorBorderColor: Color { FinnColors.red600 }
+    public var inputReadOnlyBorderColor: Color { FinnColors.white }
+    public var inputDisabledBackgroundColor: Color { FinnColors.gray200 }
 }

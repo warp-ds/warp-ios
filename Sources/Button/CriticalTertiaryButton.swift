@@ -2,35 +2,31 @@ import SwiftUI
 
 public struct CriticalTertiaryButton: View {
     let title: String
+    let icon: String
+    let size: WarpButtonSize
     let disabled: Bool
+    let fullWidth: Bool
     let colorProvider = Config.colorProvider
 
-    public init(title: String, disbled: Bool = false) {
+    public init(title: String,
+                icon: String = "",
+                size: WarpButtonSize = .big,
+                disbled: Bool = false,
+                fullWidth: Bool = false) {
         self.title = title
+        self.icon = icon
+        self.size = size
         self.disabled = disbled
-    }
-    
-    var backgroundColor: Color {
-        disabled ?
-        colorProvider.criticalTertiaryButtonDisabledBackgroundColor :
-        colorProvider.criticalTertiaryButtonBackgroundColor
-    }
-    
-    var foregroundColor: Color {
-        disabled ?
-        colorProvider.criticalTertiaryButtonDisabledForegroundColor :
-        colorProvider.criticalTertiaryButtonForegroundColor
+        self.fullWidth = fullWidth
     }
         
     public var body: some View {
-        Button(title) {
-            
-        }
-        .disabled(disabled)
-        .foregroundColor(foregroundColor)
-        .padding()
-        .background(backgroundColor)
-        .cornerRadius(8)
+        WarpButton(title: title,
+                   icon: icon,
+                   type: .criticalTertiary,
+                   size: size,
+                   disbled: disabled,
+                   fullWidth: fullWidth)
     }
 }
 

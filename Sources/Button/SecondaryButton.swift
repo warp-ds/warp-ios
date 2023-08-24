@@ -2,44 +2,31 @@ import SwiftUI
 
 public struct SecondaryButton: View {
     let title: String
+    let icon: String
+    let size: WarpButtonSize
     let disabled: Bool
+    let fullWidth: Bool
     let colorProvider = Config.colorProvider
 
-    public init(title: String, disbled: Bool = false) {
+    public init(title: String,
+                icon: String = "",
+                size: WarpButtonSize = .big,
+                disbled: Bool = false,
+                fullWidth: Bool = false) {
         self.title = title
+        self.icon = icon
+        self.size = size
         self.disabled = disbled
-    }
-    
-    var backgroundColor: Color {
-        disabled ?
-        colorProvider.primaryButtonDisabledBackgroundColor :
-        colorProvider.secondaryButtonBackgroundColor
-    }
-    
-    var foregroundColor: Color {
-        disabled ?
-        colorProvider.secondaryButtonDisabledForegroundColor :
-        colorProvider.secondaryButtonForegroundColor
-    }
-    
-    var buttonBorderColor: Color {
-        disabled ?
-        colorProvider.secondaryButtonDisabledBorderColor :
-        colorProvider.secondaryButtonBorderColor
+        self.fullWidth = fullWidth
     }
     
     public var body: some View {
-        Button(title) {
-            
-        }
-        .disabled(disabled)
-        .foregroundColor(foregroundColor)
-        .padding()
-        .background(backgroundColor)
-        .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(buttonBorderColor, lineWidth: 4))
-        .cornerRadius(8)
+        WarpButton(title: title,
+                   icon: icon,
+                   type: .secondary,
+                   size: size,
+                   disbled: disabled,
+                   fullWidth: fullWidth)
     }
 }
 

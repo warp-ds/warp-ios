@@ -3,6 +3,7 @@ import SwiftUI
 /// Source: https://www.figma.com/file/XmQKT9qPjtAGsgUOvI49NW/Warp---FINN-Design-Tokens?type=design&node-id=0-1
 public struct FinnColors {
     static public let white = Color(hex: "#ffffff")
+    static public let black = Color(hex: "#000000")
 
     static public let blue50  = Color(hex: "#eff5ff")
     static public let blue100 = Color(hex: "#e1edfe")

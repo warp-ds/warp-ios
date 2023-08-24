@@ -5,9 +5,13 @@ struct InputView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack (alignment: .leading) {
-                Text("WarpInput")
                 WarpInput(title: "WarpInput", text: "")
-                    .padding(.bottom)
+                Divider()
+                WarpInput(title: "DisabledWarpInput", text: "", state: .disabled)
+                Divider()
+                WarpInput(title: "ErrorWarpInput", text: "", state: .error)
+                Divider()
+                WarpInput(title: "ReadOnlyWarpInput", text: "", state: .readOnly)
                 Divider()
             }
             .padding(.horizontal)

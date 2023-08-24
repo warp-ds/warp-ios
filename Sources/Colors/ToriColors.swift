@@ -3,6 +3,7 @@ import SwiftUI
 /// Source: https://www.figma.com/file/aZNL5GyhkfQoiL1LfIgUcP/Warp---Tori-Design-Tokens?type=design&node-id=0-1
 public struct ToriColors {
     static public let white = Color(hex: "#ffffff")
+    static public let black = Color(hex: "#000000")
 
     static public let watermelon50  = Color(hex: "#FFF3F2")
     static public let watermelon100 = Color(hex: "#FFE6E4")

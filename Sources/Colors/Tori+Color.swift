@@ -1,5 +1,4 @@
 import SwiftUI
-import Warp_ios
 
 class ToriColorProvider: ColorProvider {
     public var primaryButtonForegroundColor: Color { ToriColors.white }
@@ -36,5 +35,10 @@ class ToriColorProvider: ColorProvider {
     
     public var inputOptionalHeaderForegroundColor: Color { FinnColors.gray500 }
     public var inputOptionalHelpTextForegroundColor: Color { ToriColors.gray900 }
+    public var inputOptionalHelpTextErrorForegroundColor: Color { ToriColors.red600 }
+    public var inputBorderColor: Color { ToriColors.gray300 }
     public var inputActiveBorderColor: Color { ToriColors.watermelon600 }
+    public var inputErrorBorderColor: Color { ToriColors.red600 }
+    public var inputReadOnlyBorderColor: Color { ToriColors.white }
+    public var inputDisabledBackgroundColor: Color { ToriColors.gray200 }
 }
