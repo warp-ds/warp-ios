@@ -33,7 +33,7 @@ struct WarpButton: View {
     
     var foregroundColor: Color {
         if disabled {
-            return colorProvider.secondaryButtonDisabledForegroundColor
+            return colorProvider.buttonDisabledText
         } else {
             return type.foregroundColor
         }
@@ -41,7 +41,7 @@ struct WarpButton: View {
     
     var buttonBorderColor: Color {
         if disabled {
-            return colorProvider.secondaryButtonDisabledBorderColor
+            return colorProvider.buttonDisabledQuietBorder
         } else {
             return type.borderColor
         }
@@ -101,16 +101,36 @@ struct WarpButton: View {
         }
     }
     
+    var fontSize: Font {
+        switch type {
+        case .utility, .utilityTertiary, .utilityOverlay:
+            return .caption
+        default:
+            return .callout
+        }
+    }
+    
+    var fontWeight: Font.Weight {
+        switch type {
+        case .utility, .utilityTertiary, .utilityOverlay:
+            return .regular
+        default:
+            return .medium
+        }
+    }
+    
     var body: some View {
         Button(action: {}) {
             HStack {
                 if fullWidth { Spacer() }
                 if !icon.isEmpty {
                     Image(systemName: icon)
+                        .font(fontSize)
                         .padding(-2)
                 }
                 Text(title)
-                    .font(.callout)
+                    .font(fontSize)
+                    .fontWeight(fontWeight)
 //                    .minimumScaleFactor(0.1)
                     .lineLimit(/*type == .critical ? Int.max : */1)
                     .truncationMode(/*type == .primary ? .tail : */.middle)
@@ -140,80 +160,80 @@ enum WarpButtonType: WarpButtonTypeColor {
     var foregroundColor: Color {
         switch self {
         case .primary:
-            Config.colorProvider.primaryButtonForegroundColor
+            Config.colorProvider.buttonPrimaryText
         case .secondary:
-            Config.colorProvider.secondaryButtonForegroundColor
+            Config.colorProvider.buttonSecondaryText
         case .tertiary:
-            Config.colorProvider.tertiaryButtonForegroundColor
+            Config.colorProvider.buttonQuietText
         case .critical:
-            Config.colorProvider.criticalButtonForegroundColor
+            Config.colorProvider.buttonNegativeText
         case .criticalTertiary:
-            Config.colorProvider.criticalTertiaryButtonForegroundColor
+            Config.colorProvider.buttonNegativeQuietText
         case .utility:
-            Config.colorProvider.utilityButtonForegroundColor
+            Config.colorProvider.buttonUtilityText
         case .utilityTertiary:
-            Config.colorProvider.utilityButtonForegroundColor
+            Config.colorProvider.buttonUtilityQuietText
         case .utilityOverlay:
-            Config.colorProvider.utilityButtonForegroundColor
+            Config.colorProvider.buttonUtilityQuietText
         }
     }
     
     var backgroundColor: Color {
         switch self {
         case .primary:
-            Config.colorProvider.primaryButtonBackgroundColor
+            Config.colorProvider.buttonPrimaryBackground
         case .secondary:
-            Config.colorProvider.secondaryButtonBackgroundColor
+            Config.colorProvider.buttonSecondaryBackground
         case .tertiary:
-            Config.colorProvider.tertiaryButtonBackgroundColor
+            Config.colorProvider.buttonQuietBackground
         case .critical:
-            Config.colorProvider.criticalButtonBackgroundColor
+            Config.colorProvider.buttonNegativeBackground
         case .criticalTertiary:
-            Config.colorProvider.criticalTertiaryButtonBackgroundColor
+            Config.colorProvider.buttonNegativeQuietBackground
         case .utility:
-            Config.colorProvider.utilityButtonBackgroundColor
+            Config.colorProvider.buttonUtilityBackground
         case .utilityTertiary:
-            Config.colorProvider.utilityButtonBackgroundColor
+            Config.colorProvider.buttonUtilityQuietBackground
         case .utilityOverlay:
-            Config.colorProvider.utilityButtonBackgroundColor
+            Config.colorProvider.buttonUtilityOverlayBackground
         }
     }
     
     var disabledBackgroundColor: Color {
         switch self {
         case .primary:
-            Config.colorProvider.primaryButtonDisabledBackgroundColor
+            Config.colorProvider.buttonDisabledBackground
         case .secondary:
-            Config.colorProvider.secondaryButtonDisabledBackgroundColor
+            Config.colorProvider.buttonDisabledBackground
         case .tertiary:
-            Config.colorProvider.tertiaryButtonDisabledBackgroundColor
+            Config.colorProvider.buttonDisabledBackground
         case .critical:
-            Config.colorProvider.criticalButtonDisabledBackgroundColor
+            Config.colorProvider.buttonDisabledBackground
         case .criticalTertiary:
-            Config.colorProvider.criticalTertiaryButtonDisabledBackgroundColor
+            Config.colorProvider.buttonDisabledBackground
         case .utility:
-            Config.colorProvider.utilityButtonDisabledBackgroundColor
+            Config.colorProvider.buttonDisabledBackground
         case .utilityTertiary:
-            Config.colorProvider.utilityButtonDisabledBackgroundColor
+            Config.colorProvider.buttonDisabledBackground
         case .utilityOverlay:
-            Config.colorProvider.utilityButtonDisabledBackgroundColor
+            Config.colorProvider.buttonDisabledBackground
         }
     }
     
     var borderColor: Color {
         switch self {
         case .primary:
-            Config.colorProvider.primaryButtonBackgroundColor
+            Config.colorProvider.buttonPrimaryBorder
         case .secondary:
-                Config.colorProvider.secondaryButtonBorderColor
+            Config.colorProvider.buttonSecondaryBorder
         case .tertiary:
-            Config.colorProvider.tertiaryButtonBackgroundColor
+            Config.colorProvider.buttonQuietBackground
         case .critical:
-            Config.colorProvider.criticalButtonBackgroundColor
+            Config.colorProvider.buttonNegativeBorder
         case .criticalTertiary:
-            Config.colorProvider.criticalTertiaryButtonBackgroundColor
+            Config.colorProvider.buttonNegativeQuietBorder
         case .utility:
-            Config.colorProvider.utilityButtonBorderColor
+            Config.colorProvider.buttonUtilityBorder
         case .utilityTertiary:
             .clear
         case .utilityOverlay:

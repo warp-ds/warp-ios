@@ -17,24 +17,24 @@ public struct WarpInput: View {
     var inputBorderColor: Color {
         switch state {
         case .normal:
-            return colorProvider.inputBorderColor
+            return colorProvider.inputBorder
         case .active:
-            return colorProvider.inputActiveBorderColor
+            return colorProvider.inputBorderActive
         case .disabled:
-            return colorProvider.inputBorderColor
+            return colorProvider.inputBorderDisabled
         case .error:
-            return colorProvider.inputErrorBorderColor
+            return colorProvider.inputBorderNegative
         case .readOnly:
-            return colorProvider.inputReadOnlyBorderColor
+            return colorProvider.inputBorder
         }
     }
     
     var backgroundColor: Color {
-        state == .disabled ? colorProvider.inputDisabledBackgroundColor : .white
+        state == .disabled ? colorProvider.inputBackgroundDisabled : Color(UIColor.systemBackground)
     }
     
     var helpTextForegroundColor: Color {
-        state == .error ? colorProvider.inputOptionalHelpTextErrorForegroundColor : colorProvider.inputOptionalHelpTextForegroundColor
+        state == .error ? colorProvider.inputTextNegative : colorProvider.inputTextHint
     }
     
     var inputBorderWidth: CGFloat {
@@ -56,9 +56,11 @@ public struct WarpInput: View {
         VStack(alignment: .leading) {
             HStack {
                 Text(title)
-                    .foregroundColor(colorProvider.inputOptionalHelpTextForegroundColor)
+                    .font(.footnote)
+                    .foregroundColor(colorProvider.inputTextFilled)
                 Text("Optional")
-                    .font(.caption2)
+                    .font(.caption)
+                    .fontWeight(.thin)
                     .foregroundColor(FinnColors.gray500)
                 Image(systemName: "exclamationmark.circle")
                     .foregroundColor(FinnColors.gray300)
@@ -70,6 +72,7 @@ public struct WarpInput: View {
                     state = .normal
                 }
             })
+            .font(.callout)
             .disabled(state == .disabled || state == .readOnly)
                 .padding(.vertical)
                 .padding(.horizontal, state == .readOnly ? 0 : 8)
@@ -81,6 +84,7 @@ public struct WarpInput: View {
             Text(state == .error ? "Error text" : "Help text")
                 .foregroundColor(helpTextForegroundColor)
                 .font(.caption)
+                .fontWeight(.thin)
         }
         .padding()
     }
