@@ -1,11 +1,14 @@
 public struct Config {
-    static var colorProvider: ColorProvider = {
+    static var tokenProvider: TokenProvider = {
         switch warpTheme {
         case .finn:
-            return FinnColorProvider()
+            return FinnTokenProvider()
         case .tori:
-            return ToriColorProvider()
+            return ToriTokenProvider()
         }
+    }()
+    static var colorProvider: ColorProvider = {
+        ColorProvider(token: tokenProvider)
     }()
     public static var warpTheme: WarpTheme = .finn
 }
