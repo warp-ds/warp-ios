@@ -12,11 +12,18 @@ let package = Package(
             name: "Warp-ios",
             targets: ["Warp-ios"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/markiv/SwiftUI-Shimmer", .exact("1.4.0")),
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "Warp-ios"),
+            name: "Warp-ios",
+            dependencies: [
+                .product(name: "Shimmer", package: "SwiftUI-Shimmer")
+            ]
+        ),
         .testTarget(
             name: "Warp-iosTests",
             dependencies: ["Warp-ios"]),

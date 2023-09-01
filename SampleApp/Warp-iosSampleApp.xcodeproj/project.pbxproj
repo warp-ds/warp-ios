@@ -17,7 +17,6 @@
 		82043B922AA1B8B300200643 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82043B7B2AA1B4ED00200643 /* TypographyView.swift */; };
 		82043B932AA1B8B500200643 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
 		82043B952AA1B94000200643 /* Warp-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 82043B942AA1B94000200643 /* Warp-ios */; };
-		82043B972AA1B94000200643 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 82043B962AA1B94000200643 /* Shimmer */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
 		82355B002A8CCBE70023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
 		82355B022A8CCC810023EB11 /* Warp-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 82355B012A8CCC810023EB11 /* Warp-ios */; };
@@ -32,8 +31,6 @@
 		82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
 		82A2155C2A8DF93B0062FB9E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
 		82A2155D2A8DF93B0062FB9E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
-		82B651E42A93C9F10047B696 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 82B651E32A93C9F10047B696 /* Shimmer */; };
-		82B651E62A93CA060047B696 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 82B651E52A93CA060047B696 /* Shimmer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +59,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82043B972AA1B94000200643 /* Shimmer in Frameworks */,
 				82043B952AA1B94000200643 /* Warp-ios in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,7 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82B651E42A93C9F10047B696 /* Shimmer in Frameworks */,
 				828547D72A8CCB3D00401DA3 /* Warp-ios in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,7 +75,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82B651E62A93CA060047B696 /* Shimmer in Frameworks */,
 				82355B022A8CCC810023EB11 /* Warp-ios in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,7 +172,6 @@
 			name = Warp;
 			packageProductDependencies = (
 				82043B942AA1B94000200643 /* Warp-ios */,
-				82043B962AA1B94000200643 /* Shimmer */,
 			);
 			productName = Warp;
 			productReference = 82043B822AA1B79C00200643 /* Warp.app */;
@@ -199,7 +192,6 @@
 			name = Finn;
 			packageProductDependencies = (
 				828547D62A8CCB3D00401DA3 /* Warp-ios */,
-				82B651E32A93C9F10047B696 /* Shimmer */,
 			);
 			productName = "Wrap-iOS";
 			productReference = 824977872A893F400013475C /* Finn.app */;
@@ -220,7 +212,6 @@
 			name = Tori;
 			packageProductDependencies = (
 				82355B012A8CCC810023EB11 /* Warp-ios */,
-				82B651E52A93CA060047B696 /* Shimmer */,
 			);
 			productName = "Wrap-iOS-Tori";
 			productReference = 827C4B952A89410800660D82 /* Tori.app */;
@@ -259,7 +250,6 @@
 			);
 			mainGroup = 8249777E2A893F400013475C;
 			packageReferences = (
-				82B651E22A93C9F10047B696 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = 824977882A893F400013475C /* Products */;
 			projectDirPath = "";
@@ -545,7 +535,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Warp-iosFinn/Warp_iosSampleApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Warp-iosFinn/Preview\\ Content";
 				DEVELOPMENT_TEAM = 42VL46DB59;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -588,7 +578,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Warp-iosFinn/Warp_iosSampleApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Warp-iosFinn/Preview\\ Content";
 				DEVELOPMENT_TEAM = 42VL46DB59;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -740,26 +730,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		82B651E22A93C9F10047B696 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
-			requirement = {
-				kind = exactVersion;
-				version = 1.4.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		82043B942AA1B94000200643 /* Warp-ios */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "Warp-ios";
-		};
-		82043B962AA1B94000200643 /* Shimmer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 82B651E22A93C9F10047B696 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
-			productName = Shimmer;
 		};
 		82355B012A8CCC810023EB11 /* Warp-ios */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -768,16 +742,6 @@
 		828547D62A8CCB3D00401DA3 /* Warp-ios */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "Warp-ios";
-		};
-		82B651E32A93C9F10047B696 /* Shimmer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 82B651E22A93C9F10047B696 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
-			productName = Shimmer;
-		};
-		82B651E52A93CA060047B696 /* Shimmer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 82B651E22A93C9F10047B696 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
-			productName = Shimmer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
