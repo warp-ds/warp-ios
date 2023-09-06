@@ -143,7 +143,7 @@ struct ColorProvider {
     var buttonUtilityBorderActive: Color { token.borderActive }
     var buttonUtilityQuietText: Color { token.text }
     var buttonUtilityQuietBackground: Color { .clear }
-    var buttonUtilityOverlayBackground: Color { Color(UIColor.systemBackground) } // Not on documents
+    var buttonUtilityOverlayBackground: Color { .gray.opacity(0.3) } // Not on documents
     var buttonUtilityQuietBackgroundHover: Color { token.backgroundSubtleHover }
     var buttonUtilityQuietBackgroundActive: Color { token.backgroundSubtleActive } //    There are no "activeHover" tokens anymore?
     var buttonUtilityQuietBorder: Color { .clear }
