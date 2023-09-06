@@ -94,11 +94,13 @@ public enum WarpInputState {
     case normal, active, disabled, error, readOnly
 }
 
-#Preview {
-    VStack {
-        WarpInput(title: "Label", text: "Text")
-        WarpInput(title: "Label", text: "Text", state: .disabled)
-        WarpInput(title: "Label", text: "Text", state: .error)
-        WarpInput(title: "Label", text: "Text", state: .readOnly)
+private struct WarpInputPreview: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            WarpInput(title: "Label", text: "Text")
+            WarpInput(title: "Label", text: "Text", state: .disabled)
+            WarpInput(title: "Label", text: "Text", state: .error)
+            WarpInput(title: "Label", text: "Text", state: .readOnly)
+        }
     }
 }
