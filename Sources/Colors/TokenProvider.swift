@@ -170,7 +170,7 @@ extension Color {
 }
 
 #if canImport(UIKit)
-extension UIColor {
+extension Color {
     static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
         return Color(
             UIColor.dynamicColor(
@@ -179,7 +179,9 @@ extension UIColor {
             )
         )
     }
-    
+}
+
+extension UIColor {
     /// Convenience method to create dynamic colors for dark mode if the OS supports it (independant of FinniversKit
     /// settings)
     /// - Parameters:
@@ -194,6 +196,28 @@ extension UIColor {
                 return defaultColor
             }
         }
+    }
+}
+#endif
+
+#if canImport(AppKit)
+extension Color {
+    // Poor implementation, rework it when `macOS` needed support.
+    static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
+        if isInDarkMode {
+            return darkModeColor
+        }
+
+        return defaultColor
+    }
+
+    private static var isInDarkMode: Bool {
+        NSApplication
+            .shared
+            .mainWindow?
+            .contentView?
+            .effectiveAppearance
+            .bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
     }
 }
 #endif
