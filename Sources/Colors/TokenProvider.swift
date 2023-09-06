@@ -1,5 +1,7 @@
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+#endif
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=888578831
 protocol TokenProvider {
@@ -141,10 +143,6 @@ protocol TokenProvider {
 }
 
 extension Color {
-    static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
-        return Color(UIColor.dynamicColor(defaultColor: UIColor(defaultColor), darkModeColor: UIColor(darkModeColor)))
-    }
-    
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
@@ -171,7 +169,17 @@ extension Color {
     }
 }
 
+#if canImport(UIKit)
 extension UIColor {
+    static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
+        return Color(
+            UIColor.dynamicColor(
+                defaultColor: UIColor(defaultColor),
+                darkModeColor: UIColor(darkModeColor)
+            )
+        )
+    }
+    
     /// Convenience method to create dynamic colors for dark mode if the OS supports it (independant of FinniversKit
     /// settings)
     /// - Parameters:
@@ -188,3 +196,4 @@ extension UIColor {
         }
     }
 }
+#endif
