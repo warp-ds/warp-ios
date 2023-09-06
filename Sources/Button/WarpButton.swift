@@ -158,86 +158,119 @@ enum WarpButtonType: WarpButtonTypeColor {
     case primary, secondary, tertiary, critical, criticalTertiary, utility, utilityTertiary, utilityOverlay
     
     var foregroundColor: Color {
+        let colorProvider = Config.colorProvider
+
         switch self {
         case .primary:
-            Config.colorProvider.buttonPrimaryText
+            return colorProvider.buttonPrimaryText
+
         case .secondary:
-            Config.colorProvider.buttonSecondaryText
+            return colorProvider.buttonSecondaryText
+
         case .tertiary:
-            Config.colorProvider.buttonQuietText
+            return colorProvider.buttonQuietText
+
         case .critical:
-            Config.colorProvider.buttonNegativeText
+            return colorProvider.buttonNegativeText
+
         case .criticalTertiary:
-            Config.colorProvider.buttonNegativeQuietText
+            return colorProvider.buttonNegativeQuietText
+
         case .utility:
-            Config.colorProvider.buttonUtilityText
+            return colorProvider.buttonUtilityText
+
         case .utilityTertiary:
-            Config.colorProvider.buttonUtilityQuietText
+            return colorProvider.buttonUtilityQuietText
+
         case .utilityOverlay:
-            Config.colorProvider.buttonUtilityQuietText
+            return colorProvider.buttonUtilityQuietText
         }
     }
     
     var backgroundColor: Color {
+        let colorProvider = Config.colorProvider
+
         switch self {
         case .primary:
-            Config.colorProvider.buttonPrimaryBackground
+            return colorProvider.buttonPrimaryBackground
+
         case .secondary:
-            Config.colorProvider.buttonSecondaryBackground
+            return colorProvider.buttonSecondaryBackground
+
         case .tertiary:
-            Config.colorProvider.buttonQuietBackground
+            return colorProvider.buttonQuietBackground
+
         case .critical:
-            Config.colorProvider.buttonNegativeBackground
+            return colorProvider.buttonNegativeBackground
+
         case .criticalTertiary:
-            Config.colorProvider.buttonNegativeQuietBackground
+            return colorProvider.buttonNegativeQuietBackground
+
         case .utility:
-            Config.colorProvider.buttonUtilityBackground
+            return colorProvider.buttonUtilityBackground
+
         case .utilityTertiary:
-            Config.colorProvider.buttonUtilityQuietBackground
+            return colorProvider.buttonUtilityQuietBackground
+
         case .utilityOverlay:
-            Config.colorProvider.buttonUtilityOverlayBackground
+            return colorProvider.buttonUtilityOverlayBackground
         }
     }
     
     var disabledBackgroundColor: Color {
+        let colorProvider = Config.colorProvider
+
         switch self {
         case .primary:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .secondary:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .tertiary:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .critical:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .criticalTertiary:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .utility:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .utilityTertiary:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .utilityOverlay:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
         }
     }
     
     var borderColor: Color {
+        lazy var colorProvider = Config.colorProvider
+
         switch self {
         case .primary:
-            Config.colorProvider.buttonPrimaryBorder
+            return colorProvider.buttonPrimaryBorder
+
         case .secondary:
-            Config.colorProvider.buttonSecondaryBorder
+            return colorProvider.buttonSecondaryBorder
+
         case .tertiary:
-            Config.colorProvider.buttonQuietBackground
+            return colorProvider.buttonQuietBackground
+
         case .critical:
-            Config.colorProvider.buttonNegativeBorder
+            return colorProvider.buttonNegativeBorder
+
         case .criticalTertiary:
-            Config.colorProvider.buttonNegativeQuietBorder
+            return colorProvider.buttonNegativeQuietBorder
+
         case .utility:
-            Config.colorProvider.buttonUtilityBorder
-        case .utilityTertiary:
-            .clear
-        case .utilityOverlay:
-            .clear
+            return colorProvider.buttonUtilityBorder
+
+        default:
+            return .clear
         }
     }
 }
