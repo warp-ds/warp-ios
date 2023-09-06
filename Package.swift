@@ -7,10 +7,10 @@ let package = Package(
     name: "warp-ios",
     platforms: [.iOS(.v15)],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "Warp-ios",
-            targets: ["Warp-ios"]),
+            name: "warp-ios",
+            targets: ["warp-ios"]
+        ),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
