@@ -30,9 +30,11 @@ public struct UtilityOverlayButton: View {
     }
 }
 
-#Preview {
-    VStack {
-        UtilityButton(title: "Button")
-        UtilityButton(title: "Button", disbled: true)
+private struct UtilityOverlayButtonPreview: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            UtilityButton(title: "Button")
+            UtilityButton(title: "Button", disbled: true)
+        }
     }
 }
