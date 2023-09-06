@@ -20,7 +20,8 @@ let package = Package(
             path: "Sources"
         ),
         .testTarget(
-            name: "Warp-iosTests",
-            dependencies: ["Warp-ios"]),
+            name: "warp-iosTests",
+            dependencies: ["warp-ios"]
+        )
     ]
 )
