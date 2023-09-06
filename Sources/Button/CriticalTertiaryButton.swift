@@ -30,9 +30,11 @@ public struct CriticalTertiaryButton: View {
     }
 }
 
-#Preview {
-    VStack {
-        CriticalTertiaryButton(title: "Button")
-        CriticalTertiaryButton(title: "Button", disbled: true)
+private struct CriticalTertiaryButtonPreview: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            CriticalTertiaryButton(title: "Button")
+            CriticalTertiaryButton(title: "Button", disbled: true)
+        }
     }
 }

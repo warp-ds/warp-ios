@@ -30,9 +30,11 @@ public struct CriticalButton: View {
     }
 }
 
-#Preview {
-    VStack {
-        CriticalButton(title: "Button")
-        CriticalButton(title: "Button", disbled: true)
+private struct CriticalButtonPreview: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            CriticalButton(title: "Button")
+            CriticalButton(title: "Button", disbled: true)
+        }
     }
 }

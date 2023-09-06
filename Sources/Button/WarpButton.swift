@@ -158,86 +158,119 @@ enum WarpButtonType: WarpButtonTypeColor {
     case primary, secondary, tertiary, critical, criticalTertiary, utility, utilityTertiary, utilityOverlay
     
     var foregroundColor: Color {
+        let colorProvider = Config.colorProvider
+
         switch self {
         case .primary:
-            Config.colorProvider.buttonPrimaryText
+            return colorProvider.buttonPrimaryText
+
         case .secondary:
-            Config.colorProvider.buttonSecondaryText
+            return colorProvider.buttonSecondaryText
+
         case .tertiary:
-            Config.colorProvider.buttonQuietText
+            return colorProvider.buttonQuietText
+
         case .critical:
-            Config.colorProvider.buttonNegativeText
+            return colorProvider.buttonNegativeText
+
         case .criticalTertiary:
-            Config.colorProvider.buttonNegativeQuietText
+            return colorProvider.buttonNegativeQuietText
+
         case .utility:
-            Config.colorProvider.buttonUtilityText
+            return colorProvider.buttonUtilityText
+
         case .utilityTertiary:
-            Config.colorProvider.buttonUtilityQuietText
+            return colorProvider.buttonUtilityQuietText
+
         case .utilityOverlay:
-            Config.colorProvider.buttonUtilityQuietText
+            return colorProvider.buttonUtilityQuietText
         }
     }
     
     var backgroundColor: Color {
+        let colorProvider = Config.colorProvider
+
         switch self {
         case .primary:
-            Config.colorProvider.buttonPrimaryBackground
+            return colorProvider.buttonPrimaryBackground
+
         case .secondary:
-            Config.colorProvider.buttonSecondaryBackground
+            return colorProvider.buttonSecondaryBackground
+
         case .tertiary:
-            Config.colorProvider.buttonQuietBackground
+            return colorProvider.buttonQuietBackground
+
         case .critical:
-            Config.colorProvider.buttonNegativeBackground
+            return colorProvider.buttonNegativeBackground
+
         case .criticalTertiary:
-            Config.colorProvider.buttonNegativeQuietBackground
+            return colorProvider.buttonNegativeQuietBackground
+
         case .utility:
-            Config.colorProvider.buttonUtilityBackground
+            return colorProvider.buttonUtilityBackground
+
         case .utilityTertiary:
-            Config.colorProvider.buttonUtilityQuietBackground
+            return colorProvider.buttonUtilityQuietBackground
+
         case .utilityOverlay:
-            Config.colorProvider.buttonUtilityOverlayBackground
+            return colorProvider.buttonUtilityOverlayBackground
         }
     }
     
     var disabledBackgroundColor: Color {
+        let colorProvider = Config.colorProvider
+
         switch self {
         case .primary:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .secondary:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .tertiary:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .critical:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .criticalTertiary:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .utility:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .utilityTertiary:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
+
         case .utilityOverlay:
-            Config.colorProvider.buttonDisabledBackground
+            return colorProvider.buttonDisabledBackground
         }
     }
     
     var borderColor: Color {
+        lazy var colorProvider = Config.colorProvider
+
         switch self {
         case .primary:
-            Config.colorProvider.buttonPrimaryBorder
+            return colorProvider.buttonPrimaryBorder
+
         case .secondary:
-            Config.colorProvider.buttonSecondaryBorder
+            return colorProvider.buttonSecondaryBorder
+
         case .tertiary:
-            Config.colorProvider.buttonQuietBackground
+            return colorProvider.buttonQuietBackground
+
         case .critical:
-            Config.colorProvider.buttonNegativeBorder
+            return colorProvider.buttonNegativeBorder
+
         case .criticalTertiary:
-            Config.colorProvider.buttonNegativeQuietBorder
+            return colorProvider.buttonNegativeQuietBorder
+
         case .utility:
-            Config.colorProvider.buttonUtilityBorder
-        case .utilityTertiary:
-            .clear
-        case .utilityOverlay:
-            .clear
+            return colorProvider.buttonUtilityBorder
+
+        default:
+            return .clear
         }
     }
 }
@@ -249,23 +282,48 @@ protocol WarpButtonTypeColor {
     var borderColor: Color { get }
 }
 
-#Preview {
-    ScrollView(showsIndicators: false) {
-        WarpButton(title: "PrimaryButton", icon: "square.and.arrow.up", type: .primary)
-        WarpButton(title: "Disabled", type: .primary, disbled: true)
-        WarpButton(title: "SecondaryButton", type: .secondary)
-        WarpButton(title: "Disabled", type: .secondary, disbled: true)
-        WarpButton(title: "TertiaryButton", type: .tertiary)
-        WarpButton(title: "Disabled", type: .tertiary, disbled: true)
-        WarpButton(title: "CriticalButton", type: .critical)
-        WarpButton(title: "Disabled", type: .critical, disbled: true)
-        WarpButton(title: "CriticalTertiaryButton", type: .criticalTertiary)
-        WarpButton(title: "Disabled", type: .criticalTertiary, disbled: true)
-        WarpButton(title: "UtilityButton", type: .utility)
-        WarpButton(title: "Disabled", type: .utility, disbled: true)
-        WarpButton(title: "UtilityTertiaryButton", type: .utilityTertiary)
-        WarpButton(title: "Disabled", type: .utilityTertiary, disbled: true)
-        WarpButton(title: "UtilityOverlayButton", type: .utilityOverlay)
-        WarpButton(title: "Disabled", type: .utilityOverlay, disbled: true)
+private struct WarpButtonPreview: PreviewProvider {
+    static var previews: some View {
+        ScrollView(showsIndicators: false) {
+            Group {
+                WarpButton(title: "PrimaryButton", icon: "square.and.arrow.up", type: .primary)
+                WarpButton(title: "Disabled", type: .primary, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "SecondaryButton", type: .secondary)
+                WarpButton(title: "Disabled", type: .secondary, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "TertiaryButton", type: .tertiary)
+                WarpButton(title: "Disabled", type: .tertiary, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "CriticalButton", type: .critical)
+                WarpButton(title: "Disabled", type: .critical, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "CriticalTertiaryButton", type: .criticalTertiary)
+                WarpButton(title: "Disabled", type: .criticalTertiary, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "UtilityButton", type: .utility)
+                WarpButton(title: "Disabled", type: .utility, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "UtilityTertiaryButton", type: .utilityTertiary)
+                WarpButton(title: "Disabled", type: .utilityTertiary, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "UtilityOverlayButton", type: .utilityOverlay)
+                WarpButton(title: "Disabled", type: .utilityOverlay, disbled: true)
+            }
+        }
     }
 }

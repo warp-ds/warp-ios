@@ -30,7 +30,7 @@ public struct WarpInput: View {
     }
     
     var backgroundColor: Color {
-        state == .disabled ? colorProvider.inputBackgroundDisabled : Color(UIColor.systemBackground)
+        state == .disabled ? colorProvider.inputBackgroundDisabled: colorProvider.inputBackground
     }
     
     var helpTextForegroundColor: Color {
@@ -94,11 +94,13 @@ public enum WarpInputState {
     case normal, active, disabled, error, readOnly
 }
 
-#Preview {
-    VStack {
-        WarpInput(title: "Label", text: "Text")
-        WarpInput(title: "Label", text: "Text", state: .disabled)
-        WarpInput(title: "Label", text: "Text", state: .error)
-        WarpInput(title: "Label", text: "Text", state: .readOnly)
+private struct WarpInputPreview: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            WarpInput(title: "Label", text: "Text")
+            WarpInput(title: "Label", text: "Text", state: .disabled)
+            WarpInput(title: "Label", text: "Text", state: .error)
+            WarpInput(title: "Label", text: "Text", state: .readOnly)
+        }
     }
 }
