@@ -1,5 +1,5 @@
 import XCTest
-@testable import Warp_ios
+@testable import warp_ios
 
 final class Warp_iosTests: XCTestCase {
     func testExample() throws {
