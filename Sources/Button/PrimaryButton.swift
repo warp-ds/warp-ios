@@ -30,9 +30,11 @@ public struct PrimaryButton: View {
     }
 }
 
-#Preview {
-    VStack {
-        PrimaryButton(title: "Button")
-        PrimaryButton(title: "Button", disbled: true)
+private struct PrimaryButtonPreview: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            PrimaryButton(title: "Button")
+            PrimaryButton(title: "Button", disbled: true)
+        }
     }
 }
