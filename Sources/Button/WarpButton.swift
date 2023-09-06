@@ -249,23 +249,48 @@ protocol WarpButtonTypeColor {
     var borderColor: Color { get }
 }
 
-#Preview {
-    ScrollView(showsIndicators: false) {
-        WarpButton(title: "PrimaryButton", icon: "square.and.arrow.up", type: .primary)
-        WarpButton(title: "Disabled", type: .primary, disbled: true)
-        WarpButton(title: "SecondaryButton", type: .secondary)
-        WarpButton(title: "Disabled", type: .secondary, disbled: true)
-        WarpButton(title: "TertiaryButton", type: .tertiary)
-        WarpButton(title: "Disabled", type: .tertiary, disbled: true)
-        WarpButton(title: "CriticalButton", type: .critical)
-        WarpButton(title: "Disabled", type: .critical, disbled: true)
-        WarpButton(title: "CriticalTertiaryButton", type: .criticalTertiary)
-        WarpButton(title: "Disabled", type: .criticalTertiary, disbled: true)
-        WarpButton(title: "UtilityButton", type: .utility)
-        WarpButton(title: "Disabled", type: .utility, disbled: true)
-        WarpButton(title: "UtilityTertiaryButton", type: .utilityTertiary)
-        WarpButton(title: "Disabled", type: .utilityTertiary, disbled: true)
-        WarpButton(title: "UtilityOverlayButton", type: .utilityOverlay)
-        WarpButton(title: "Disabled", type: .utilityOverlay, disbled: true)
+private struct WarpButtonPreview: PreviewProvider {
+    static var previews: some View {
+        ScrollView(showsIndicators: false) {
+            Group {
+                WarpButton(title: "PrimaryButton", icon: "square.and.arrow.up", type: .primary)
+                WarpButton(title: "Disabled", type: .primary, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "SecondaryButton", type: .secondary)
+                WarpButton(title: "Disabled", type: .secondary, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "TertiaryButton", type: .tertiary)
+                WarpButton(title: "Disabled", type: .tertiary, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "CriticalButton", type: .critical)
+                WarpButton(title: "Disabled", type: .critical, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "CriticalTertiaryButton", type: .criticalTertiary)
+                WarpButton(title: "Disabled", type: .criticalTertiary, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "UtilityButton", type: .utility)
+                WarpButton(title: "Disabled", type: .utility, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "UtilityTertiaryButton", type: .utilityTertiary)
+                WarpButton(title: "Disabled", type: .utilityTertiary, disbled: true)
+            }
+
+            Group {
+                WarpButton(title: "UtilityOverlayButton", type: .utilityOverlay)
+                WarpButton(title: "Disabled", type: .utilityOverlay, disbled: true)
+            }
+        }
     }
 }
