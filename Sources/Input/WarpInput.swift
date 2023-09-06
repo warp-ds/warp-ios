@@ -30,7 +30,7 @@ public struct WarpInput: View {
     }
     
     var backgroundColor: Color {
-        state == .disabled ? colorProvider.inputBackgroundDisabled : Color(UIColor.systemBackground)
+        state == .disabled ? colorProvider.inputBackgroundDisabled: colorProvider.inputBackground
     }
     
     var helpTextForegroundColor: Color {
