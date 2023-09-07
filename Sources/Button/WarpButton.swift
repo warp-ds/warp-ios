@@ -104,20 +104,20 @@ struct WarpButton: View {
     var fontSize: Font {
         switch type {
         case .utility, .utilityTertiary, .utilityOverlay:
-            return .caption
+            return WarpTypography.detailStrong.font
         default:
-            return .callout
+            return WarpTypography.title4.font
         }
     }
     
-    var fontWeight: Font.Weight {
-        switch type {
-        case .utility, .utilityTertiary, .utilityOverlay:
-            return .regular
-        default:
-            return .medium
-        }
-    }
+//    var fontWeight: Font.Weight {
+//        switch type {
+//        case .utility, .utilityTertiary, .utilityOverlay:
+//            return .regular
+//        default:
+//            return .medium
+//        }
+//    }
     
     var body: some View {
         Button(action: {}) {
@@ -130,7 +130,7 @@ struct WarpButton: View {
                 }
                 Text(title)
                     .font(fontSize)
-                    .fontWeight(fontWeight)
+//                    .fontWeight(fontWeight)
 //                    .minimumScaleFactor(0.1)
                     .lineLimit(/*type == .critical ? Int.max : */1)
                     .truncationMode(/*type == .primary ? .tail : */.middle)
