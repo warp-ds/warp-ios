@@ -1,4 +1,4 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -13,7 +13,7 @@ let package = Package(
             targets: ["Warp-ios"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/markiv/SwiftUI-Shimmer", .exact("1.4.0")),
+        .package(url: "https://github.com/markiv/SwiftUI-Shimmer", exact: Version("1.4.0")),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -22,7 +22,8 @@ let package = Package(
             name: "Warp-ios",
             dependencies: [
                 .product(name: "Shimmer", package: "SwiftUI-Shimmer")
-            ]
+            ],
+            resources: [.process("Typography/Fonts")]
         ),
         .testTarget(
             name: "Warp-iosTests",

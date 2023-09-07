@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "824977862A893F400013475C"
+               BlueprintIdentifier = "82584F082AA1D6000052CCB3"
                BuildableName = "Finn.app"
                BlueprintName = "Finn"
                ReferencedContainer = "container:Warp-iosSampleApp.xcodeproj">
@@ -43,7 +43,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "824977862A893F400013475C"
+            BlueprintIdentifier = "82584F082AA1D6000052CCB3"
             BuildableName = "Finn.app"
             BlueprintName = "Finn"
             ReferencedContainer = "container:Warp-iosSampleApp.xcodeproj">
@@ -60,7 +60,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "824977862A893F400013475C"
+            BlueprintIdentifier = "82584F082AA1D6000052CCB3"
             BuildableName = "Finn.app"
             BlueprintName = "Finn"
             ReferencedContainer = "container:Warp-iosSampleApp.xcodeproj">

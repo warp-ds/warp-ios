@@ -1,5 +1,7 @@
 public struct Config {
     static var tokenProvider: TokenProvider {
+//        JBMono.registerFonts()
+
         switch warpTheme {
         case .finn:
             return FinnTokenProvider()
