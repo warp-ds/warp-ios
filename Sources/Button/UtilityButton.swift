@@ -5,12 +5,12 @@ extension Warp.Button {
     private static let utilityType: Warp.ButtonType = .tertiary
 
     /// <#Description#>
-    static func createUtility(
+    public static func createUtility(
         title: String,
         icon: String? = nil,
         action: @escaping () -> Void,
         size: Warp.ButtonSize = .big,
-        isEnabled: Bool = false,
+        isEnabled: Bool = true,
         fullWidth: Bool = false
     ) -> Warp.Button {
         Warp.Button(
@@ -25,7 +25,7 @@ extension Warp.Button {
     }
 
     /// <#Description#>
-    static func createDisabledUtility(
+    public static func createDisabledUtility(
         title: String,
         icon: String? = nil,
         size: Warp.ButtonSize = .big,

@@ -5,12 +5,12 @@ extension Warp.Button {
     private static let utilityOverlayType: Warp.ButtonType = .utilityOverlay
 
     /// <#Description#>
-    static func createUtilityOverlay(
+    public static func createUtilityOverlay(
         title: String,
         icon: String? = nil,
         action: @escaping () -> Void,
         size: Warp.ButtonSize = .big,
-        isEnabled: Bool = false,
+        isEnabled: Bool = true,
         fullWidth: Bool = false
     ) -> Warp.Button {
         Warp.Button(
@@ -25,7 +25,7 @@ extension Warp.Button {
     }
 
     /// <#Description#>
-    static func createDisabledUtilityOverlay(
+    public static func createDisabledUtilityOverlay(
         title: String,
         icon: String? = nil,
         size: Warp.ButtonSize = .big,

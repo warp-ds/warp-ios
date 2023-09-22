@@ -5,12 +5,12 @@ extension Warp.Button {
     private static let criticalTertiaryType: Warp.ButtonType = .criticalTertiary
 
     /// <#Description#>
-    static func createCriticalTertiary(
+    public static func createCriticalTertiary(
         title: String,
         icon: String? = nil,
         action: @escaping () -> Void,
         size: Warp.ButtonSize = .big,
-        isEnabled: Bool = false,
+        isEnabled: Bool = true,
         fullWidth: Bool = false
     ) -> Warp.Button {
         Warp.Button(
@@ -25,7 +25,7 @@ extension Warp.Button {
     }
 
     /// <#Description#>
-    static func createDisabledCriticalTertiary(
+    public static func createDisabledCriticalTertiary(
         title: String,
         icon: String? = nil,
         size: Warp.ButtonSize = .big,
