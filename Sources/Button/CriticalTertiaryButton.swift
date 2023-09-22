@@ -1,40 +1,81 @@
+import Foundation
 import SwiftUI
 
-public struct CriticalTertiaryButton: View {
-    let title: String
-    let icon: String
-    let size: WarpButtonSize
-    let disabled: Bool
-    let fullWidth: Bool
-    let colorProvider = Config.colorProvider
+extension WarpButton {
+    /// <#Description#>
+    static func createCriticalTertiary(
+        title: String,
+        icon: String? = nil,
+        action: @escaping () -> Void,
+        size: WarpButtonSize = .big,
+        isEnabled: Bool = false,
+        fullWidth: Bool = false
+    ) -> WarpButton {
+        WarpButton(
+            title: title,
+            icon: icon,
+            action: action,
+            type: .criticalTertiary,
+            size: size,
+            disbled: isEnabled,
+            fullWidth: fullWidth
+        )
+    }
+}
 
-    public init(title: String,
-                icon: String = "",
-                size: WarpButtonSize = .big,
-                disbled: Bool = false,
-                fullWidth: Bool = false) {
+public struct CriticalTertiaryButton: View {
+    /// <#Description#>
+    let title: String
+
+    /// <#Description#>
+    let icon: String?
+
+    /// <#Description#>
+    let action: () -> Void
+
+    /// <#Description#>
+    let size: WarpButtonSize
+
+    /// <#Description#>
+    let isEnabled: Bool
+
+    /// <#Description#>
+    let fullWidth: Bool
+
+    public init(
+        title: String,
+        icon: String?,
+        action: @escaping () -> Void,
+        size: WarpButtonSize,
+        isEnabled: Bool,
+        fullWidth: Bool
+    ) {
         self.title = title
         self.icon = icon
+        self.action = action
         self.size = size
-        self.disabled = disbled
+        self.isEnabled = isEnabled
         self.fullWidth = fullWidth
     }
-        
+
     public var body: some View {
-        WarpButton(title: title,
-                   icon: icon,
-                   type: .criticalTertiary,
-                   size: size,
-                   disbled: disabled,
-                   fullWidth: fullWidth)
+        WarpButton.createCriticalTertiary(
+            title: title,
+            icon: icon,
+            action: action,
+            size: size,
+            isEnabled: isEnabled,
+            fullWidth: fullWidth
+        )
     }
 }
 
 private struct CriticalTertiaryButtonPreview: PreviewProvider {
     static var previews: some View {
-        VStack {
-            CriticalTertiaryButton(title: "Button")
-            CriticalTertiaryButton(title: "Button", disbled: true)
+        VStack(spacing: 8) {
+            WarpButton.createCriticalTertiary(title: "Button", action: {})
+
+            WarpButton.createCriticalTertiary(title: "Disabled button", action: {}, isEnabled: false)
         }
     }
 }
