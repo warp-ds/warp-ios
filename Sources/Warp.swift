@@ -1,3 +1,3 @@
 import Foundation
 
-enum Warp {}
+public enum Warp {}
