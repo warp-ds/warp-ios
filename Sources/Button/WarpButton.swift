@@ -1,20 +1,36 @@
+import Foundation
 import SwiftUI
 
 struct WarpButton: View {
-    let title: String
-    let icon: String
-    let type: WarpButtonType
-    let size: WarpButtonSize
-    let disabled: Bool
-    let fullWidth: Bool
-    let colorProvider = Config.colorProvider
-    
-    init(title: String,
-         icon: String = "",
-         type: WarpButtonType,
-         size: WarpButtonSize = .big,
-         disbled: Bool = false,
-         fullWidth: Bool = false) {
+    /// <#Description#>
+    private let title: String
+
+    /// <#Description#>
+    private let icon: String?
+
+    /// <#Description#>
+    private let type: WarpButtonType
+
+    /// <#Description#>
+    private let size: WarpButtonSize
+
+    /// <#Description#>
+    private let disabled: Bool
+
+    /// <#Description#>
+    private let fullWidth: Bool
+
+    /// <#Description#>
+    private let colorProvider = Config.colorProvider
+
+    init(
+        title: String,
+        icon: String? = nil,
+        type: WarpButtonType,
+        size: WarpButtonSize = .big,
+        disbled: Bool = false,
+        fullWidth: Bool = false
+    ) {
         self.title = title
         self.icon = icon
         self.type = type
@@ -23,7 +39,7 @@ struct WarpButton: View {
         self.fullWidth = fullWidth
     }
     
-    var backgroundColor: Color {
+    private var backgroundColor: Color {
         if disabled {
             return type.disabledBackgroundColor
         } else {
@@ -31,7 +47,7 @@ struct WarpButton: View {
         }
     }
     
-    var foregroundColor: Color {
+    private var foregroundColor: Color {
         if disabled {
             return colorProvider.buttonDisabledText
         } else {
@@ -39,7 +55,7 @@ struct WarpButton: View {
         }
     }
     
-    var buttonBorderColor: Color {
+    private var buttonBorderColor: Color {
         if disabled {
             return colorProvider.buttonDisabledQuietBorder
         } else {
@@ -47,106 +63,124 @@ struct WarpButton: View {
         }
     }
     
-    var buttonBorderWidth: CGFloat {
+    private var buttonBorderWidth: CGFloat {
         switch type {
         case .utility:
             return 2
+
         default:
             return 4
         }
     }
     
-    var buttonCornerRadius: CGFloat {
+    private var buttonCornerRadius: CGFloat {
         switch type {
         case .utility:
             return 4
+
         default:
             return 8
         }
     }
     
-    var buttonVerticalPadding: CGFloat {
+    private var buttonVerticalPadding: CGFloat {
         switch type {
         case .utility, .utilityTertiary, .utilityOverlay:
             return 8
+
         default:
             return size == .big ? 13 : 8
         }
     }
     
-    var buttonHorizontalPadding: CGFloat {
+    private var horizontalPadding: CGFloat {
         switch type {
         case .utility, .utilityTertiary, .utilityOverlay:
             return 8
+
         default:
             return size == .big ? 16 : 12
         }
     }
     
-    var shadowRadius: CGFloat {
+    private var shadowRadius: CGFloat {
         switch type {
         case .utilityOverlay:
             return disabled ? 0 : 2
+
         default:
             return 0
         }
     }
     
-    var shadowY: CGFloat {
+    private var shadowY: CGFloat {
         switch type {
         case .utilityOverlay:
             return disabled ? 0 : 1
+
         default:
             return 0
         }
     }
     
-    var fontSize: Font {
+    private var fontSize: Font {
         switch type {
         case .utility, .utilityTertiary, .utilityOverlay:
             return .caption
+
         default:
             return .callout
         }
     }
     
-    var fontWeight: Font.Weight {
+    private var fontWeight: Font.Weight {
         switch type {
         case .utility, .utilityTertiary, .utilityOverlay:
             return .regular
+
         default:
             return .medium
         }
     }
     
     var body: some View {
-        Button(action: {}) {
-            HStack {
-                if fullWidth { Spacer() }
-                if !icon.isEmpty {
-                    Image(systemName: icon)
+        Button(
+            action: {},
+            label: {
+                HStack {
+                    if fullWidth { Spacer() }
+
+                    if let icon = icon {
+                        Image(systemName: icon)
+                            .font(fontSize)
+                            .padding(-2)
+                    }
+
+                    Text(title)
                         .font(fontSize)
-                        .padding(-2)
+                        .fontWeight(fontWeight)
+                    //                    .minimumScaleFactor(0.1)
+                        .lineLimit(/*type == .critical ? Int.max : */1)
+                        .truncationMode(/*type == .primary ? .tail : */.middle)
+
+                    if fullWidth { Spacer() }
                 }
-                Text(title)
-                    .font(fontSize)
-                    .fontWeight(fontWeight)
-//                    .minimumScaleFactor(0.1)
-                    .lineLimit(/*type == .critical ? Int.max : */1)
-                    .truncationMode(/*type == .primary ? .tail : */.middle)
-                if fullWidth { Spacer() }
             }
-        }
+        )
         .disabled(disabled)
         .foregroundColor(foregroundColor)
         .padding(.vertical, buttonVerticalPadding)
-        .padding(.horizontal, buttonHorizontalPadding)
+        .padding(.horizontal, horizontalPadding)
         .background(backgroundColor)
         .overlay(
             RoundedRectangle(cornerRadius: buttonCornerRadius)
-                .stroke(buttonBorderColor, lineWidth: buttonBorderWidth))
+                .stroke(buttonBorderColor, lineWidth: buttonBorderWidth)
+        )
         .cornerRadius(buttonCornerRadius)
-        .shadow(color: FinnColors.gray700.opacity(0.5), radius: shadowRadius, y: shadowY)
+        .shadow(
+            color: FinnColors.gray700.opacity(0.5),
+            radius: shadowRadius, y: shadowY
+        )
     }
 }
 
@@ -155,8 +189,15 @@ public enum WarpButtonSize {
 }
 
 enum WarpButtonType: WarpButtonTypeColor {
-    case primary, secondary, tertiary, critical, criticalTertiary, utility, utilityTertiary, utilityOverlay
-    
+    case primary,
+         secondary,
+         tertiary,
+         critical,
+         criticalTertiary,
+         utility,
+         utilityTertiary,
+         utilityOverlay
+
     var foregroundColor: Color {
         let colorProvider = Config.colorProvider
 
