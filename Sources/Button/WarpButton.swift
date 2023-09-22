@@ -7,6 +7,9 @@ struct WarpButton: View {
 
     /// <#Description#>
     private let icon: String?
+    
+    /// <#Description#>
+    private let action: () -> Void = {}
 
     /// <#Description#>
     private let type: WarpButtonType
@@ -26,6 +29,7 @@ struct WarpButton: View {
     init(
         title: String,
         icon: String? = nil,
+        action: () -> Void = {},
         type: WarpButtonType,
         size: WarpButtonSize = .big,
         disbled: Bool = false,
@@ -142,32 +146,26 @@ struct WarpButton: View {
             return .medium
         }
     }
-    
+
+    private var lineLimit: Int {
+        /*type == .critical ? Int.max : */
+        1
+    }
+
+    private var truncationMode: Text.TruncationMode {
+        /*type == .primary ? .tail : */
+        .middle
+    }
+
     var body: some View {
         Button(
-            action: {},
+            action: action,
             label: {
-                HStack {
-                    if fullWidth { Spacer() }
-
-                    if let icon = icon {
-                        Image(systemName: icon)
-                            .font(fontSize)
-                            .padding(-2)
-                    }
-
-                    Text(title)
-                        .font(fontSize)
-                        .fontWeight(fontWeight)
-                    //                    .minimumScaleFactor(0.1)
-                        .lineLimit(/*type == .critical ? Int.max : */1)
-                        .truncationMode(/*type == .primary ? .tail : */.middle)
-
-                    if fullWidth { Spacer() }
-                }
+                buttonView
             }
         )
         .disabled(disabled)
+//        .buttonStyle(WarpButtonStyle(type: type, size: size, isEnabled: !disabled))
         .foregroundColor(foregroundColor)
         .padding(.vertical, buttonVerticalPadding)
         .padding(.horizontal, horizontalPadding)
@@ -182,145 +180,43 @@ struct WarpButton: View {
             radius: shadowRadius, y: shadowY
         )
     }
-}
 
-public enum WarpButtonSize {
-    case big, small
-}
+    private var buttonView: some View {
+        HStack {
+            createFillerViewIfNeeded()
 
-enum WarpButtonType: WarpButtonTypeColor {
-    case primary,
-         secondary,
-         tertiary,
-         critical,
-         criticalTertiary,
-         utility,
-         utilityTertiary,
-         utilityOverlay
+            createIconIfPossible()
 
-    var foregroundColor: Color {
-        let colorProvider = Config.colorProvider
+            titleView
 
-        switch self {
-        case .primary:
-            return colorProvider.buttonPrimaryText
-
-        case .secondary:
-            return colorProvider.buttonSecondaryText
-
-        case .tertiary:
-            return colorProvider.buttonQuietText
-
-        case .critical:
-            return colorProvider.buttonNegativeText
-
-        case .criticalTertiary:
-            return colorProvider.buttonNegativeQuietText
-
-        case .utility:
-            return colorProvider.buttonUtilityText
-
-        case .utilityTertiary:
-            return colorProvider.buttonUtilityQuietText
-
-        case .utilityOverlay:
-            return colorProvider.buttonUtilityQuietText
+            createFillerViewIfNeeded()
         }
     }
-    
-    var backgroundColor: Color {
-        let colorProvider = Config.colorProvider
 
-        switch self {
-        case .primary:
-            return colorProvider.buttonPrimaryBackground
-
-        case .secondary:
-            return colorProvider.buttonSecondaryBackground
-
-        case .tertiary:
-            return colorProvider.buttonQuietBackground
-
-        case .critical:
-            return colorProvider.buttonNegativeBackground
-
-        case .criticalTertiary:
-            return colorProvider.buttonNegativeQuietBackground
-
-        case .utility:
-            return colorProvider.buttonUtilityBackground
-
-        case .utilityTertiary:
-            return colorProvider.buttonUtilityQuietBackground
-
-        case .utilityOverlay:
-            return colorProvider.buttonUtilityOverlayBackground
+    @ViewBuilder
+    private func createIconIfPossible() -> some View {
+        if let icon = icon {
+            Image(systemName: icon)
+                .font(fontSize)
+                .padding(-2)
         }
     }
-    
-    var disabledBackgroundColor: Color {
-        let colorProvider = Config.colorProvider
 
-        switch self {
-        case .primary:
-            return colorProvider.buttonDisabledBackground
+    private var titleView: some View {
+        Text(title)
+            .font(fontSize)
+            .fontWeight(fontWeight)
+        //  .minimumScaleFactor(0.1)
+            .lineLimit(lineLimit)
+            .truncationMode(truncationMode)
+    }
 
-        case .secondary:
-            return colorProvider.buttonDisabledBackground
-
-        case .tertiary:
-            return colorProvider.buttonDisabledBackground
-
-        case .critical:
-            return colorProvider.buttonDisabledBackground
-
-        case .criticalTertiary:
-            return colorProvider.buttonDisabledBackground
-
-        case .utility:
-            return colorProvider.buttonDisabledBackground
-
-        case .utilityTertiary:
-            return colorProvider.buttonDisabledBackground
-
-        case .utilityOverlay:
-            return colorProvider.buttonDisabledBackground
+    @ViewBuilder
+    private func createFillerViewIfNeeded() -> some View {
+        if fullWidth {
+            Spacer()
         }
     }
-    
-    var borderColor: Color {
-        lazy var colorProvider = Config.colorProvider
-
-        switch self {
-        case .primary:
-            return colorProvider.buttonPrimaryBorder
-
-        case .secondary:
-            return colorProvider.buttonSecondaryBorder
-
-        case .tertiary:
-            return colorProvider.buttonQuietBackground
-
-        case .critical:
-            return colorProvider.buttonNegativeBorder
-
-        case .criticalTertiary:
-            return colorProvider.buttonNegativeQuietBorder
-
-        case .utility:
-            return colorProvider.buttonUtilityBorder
-
-        default:
-            return .clear
-        }
-    }
-}
-
-protocol WarpButtonTypeColor {
-    var foregroundColor: Color { get }
-    var backgroundColor: Color { get }
-    var disabledBackgroundColor: Color { get }
-    var borderColor: Color { get }
 }
 
 private struct WarpButtonPreview: PreviewProvider {
