@@ -75,7 +75,7 @@ private struct SecondaryButtonPreview: PreviewProvider {
         VStack(spacing: 8) {
             WarpButton.createSecondary(title: "Button", action: {})
 
-            WarpButton.createSecondary(title: "Button", action: {}, isEnabled: true)
+            WarpButton.createSecondary(title: "Disabled button", action: {}, isEnabled: true)
         }
     }
 }
