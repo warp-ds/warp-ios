@@ -17,7 +17,7 @@ extension WarpButton {
             action: action,
             type: .criticalTertiary,
             size: size,
-            disbled: isEnabled,
+            isEnabled: isEnabled,
             fullWidth: fullWidth
         )
     }
