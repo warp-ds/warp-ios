@@ -238,7 +238,7 @@ extension Warp {
         private let size: Warp.ButtonSize
 
         /// <#Description#>
-        private let disabled: Bool
+        private let isEnabled: Bool
 
         /// <#Description#>
         private let fullWidth: Bool
@@ -252,14 +252,14 @@ extension Warp {
             action: () -> Void = {},
             type: Warp.ButtonType,
             size: Warp.ButtonSize = .big,
-            disbled: Bool = false,
+            isEnabled: Bool = true,
             fullWidth: Bool = false
         ) {
             self.title = title
             self.icon = icon
             self.type = type
             self.size = size
-            self.disabled = disbled
+            self.isEnabled = isEnabled
             self.fullWidth = fullWidth
         }
 
@@ -270,13 +270,13 @@ extension Warp {
                     buttonView
                 }
             )
-            .disabled(disabled)
+            .disabled(!isEnabled)
             .buttonStyle(
                 WarpButtonStyle(
                     type: type,
                     size: size,
                     colorProvider: colorProvider,
-                    isEnabled: !disabled
+                    isEnabled: isEnabled
                 )
             )
         }
@@ -306,7 +306,7 @@ extension Warp {
             Text(title)
 //                .font(fontSize)
 //                .fontWeight(fontWeight)
-            //  .minimumScaleFactor(0.1)
+//                .minimumScaleFactor(0.1)
 //                .lineLimit(lineLimit)
 //                .truncationMode(truncationMode)
         }
