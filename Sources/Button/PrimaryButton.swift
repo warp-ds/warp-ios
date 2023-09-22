@@ -7,17 +7,17 @@ extension WarpButton {
         title: String,
         icon: String? = nil,
         action: @escaping () -> Void,
-        size: WarpButtonSize = .big,
+        size: Warp.ButtonSize = .big,
         isEnabled: Bool = false,
         fullWidth: Bool = false
-    ) -> WarpButton {
-        WarpButton(
+    ) -> Warp.Button {
+        Warp.Button(
             title: title,
             icon: icon,
             action: action,
             type: .primary,
             size: size,
-            disbled: isEnabled,
+            isEnabled: isEnabled,
             fullWidth: fullWidth
         )
     }
@@ -34,7 +34,7 @@ public struct PrimaryButton: View {
     let action: () -> Void
 
     /// <#Description#>
-    let size: WarpButtonSize
+    let size: Warp.ButtonSize
 
     /// <#Description#>
     let isEnabled: Bool
@@ -46,7 +46,7 @@ public struct PrimaryButton: View {
         title: String,
         icon: String?,
         action: @escaping () -> Void,
-        size: WarpButtonSize,
+        size: Warp.ButtonSize,
         isEnabled: Bool,
         fullWidth: Bool
     ) {
