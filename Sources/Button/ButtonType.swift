@@ -1,17 +1,42 @@
 import Foundation
 import struct SwiftUI.Color
+import struct SwiftUI.Font
+
+protocol WarpButtonTypeColor {
+    var foregroundColor: Color { get }
+    var backgroundColor: Color { get }
+    var disabledBackgroundColor: Color { get }
+    var borderColor: Color { get }
+}
 
 public extension Warp {
+    /// <#Description#>
     enum ButtonType: WarpButtonTypeColor {
-        case primary,
-             secondary,
-             tertiary,
-             critical,
-             criticalTertiary,
-             utility,
-             utilityTertiary,
-             utilityOverlay
+        /// <#Description#>
+        case primary
 
+        /// <#Description#>
+        case secondary
+
+        /// <#Description#>
+        case tertiary
+
+        /// <#Description#>
+        case critical
+
+        /// <#Description#>
+        case criticalTertiary
+
+        /// <#Description#>
+        case utility
+
+        /// <#Description#>
+        case utilityTertiary
+
+        /// <#Description#>
+        case utilityOverlay
+        
+        /// <#Description#>
         var foregroundColor: Color {
             let colorProvider = Config.colorProvider
 
@@ -41,7 +66,8 @@ public extension Warp {
                     return colorProvider.buttonUtilityQuietText
             }
         }
-
+        
+        /// <#Description#>
         var backgroundColor: Color {
             let colorProvider = Config.colorProvider
 
@@ -71,7 +97,8 @@ public extension Warp {
                     return colorProvider.buttonUtilityOverlayBackground
             }
         }
-
+        
+        /// <#Description#>
         var disabledBackgroundColor: Color {
             let colorProvider = Config.colorProvider
 
@@ -101,7 +128,8 @@ public extension Warp {
                     return colorProvider.buttonDisabledBackground
             }
         }
-
+        
+        /// <#Description#>
         var borderColor: Color {
             lazy var colorProvider = Config.colorProvider
 
@@ -126,6 +154,72 @@ public extension Warp {
 
                 default:
                     return .clear
+            }
+        }
+        
+        /// <#Description#>
+        var fontWeight: Font.Weight {
+            switch self {
+                case .utility, .utilityTertiary, .utilityOverlay:
+                    return .regular
+
+                default:
+                    return .medium
+            }
+        }
+        
+        /// <#Description#>
+        var fontSize: Font {
+            switch self {
+                case .utility, .utilityTertiary, .utilityOverlay:
+                    return .caption
+
+                default:
+                    return .callout
+            }
+        }
+        
+        /// <#Description#>
+        var borderWidth: CGFloat {
+            switch self {
+                case .utility:
+                    return 2
+
+                default:
+                    return 4
+            }
+        }
+        
+        /// <#Description#>
+        var cornerRadius: CGFloat {
+            switch self {
+                case .utility:
+                    return 4
+
+                default:
+                    return 8
+            }
+        }
+        
+        /// <#Description#>
+        func verticalPadding(from size: Warp.ButtonSize) -> CGFloat {
+            switch self {
+                case .utility, .utilityTertiary, .utilityOverlay:
+                    return 8
+
+                default:
+                    return size == .big ? 13 : 8
+            }
+        }
+        
+        /// <#Description#>
+        func horizontalPadding(from size: Warp.ButtonSize) -> CGFloat {
+            switch self {
+                case .utility, .utilityTertiary, .utilityOverlay:
+                    return 8
+
+                default:
+                    return size == .big ? 16 : 12
             }
         }
     }
