@@ -58,7 +58,7 @@ public struct UtilityButton: View {
     }
 
     public var body: some View {
-        WarpButton.createUtilityOverlay(
+        WarpButton.createUtility(
             title: title,
             icon: icon,
             action: action,
