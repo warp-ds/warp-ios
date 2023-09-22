@@ -13,15 +13,17 @@ public struct WarpButtonStyle: ButtonStyle {
     private let isEnabled: Bool
     
     /// <#Description#>
-    private let colorProvider = Config.colorProvider
+    private let colorProvider: ColorProvider
 
     public init(
         type: Warp.ButtonType,
         size: Warp.ButtonSize,
+        colorProvider: ColorProvider,
         isEnabled: Bool
     ) {
         self.type = type
         self.size = size
+        self.colorProvider = colorProvider
         self.isEnabled = isEnabled
     }
 
