@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-extension WarpButton {
+extension Warp.Button {
     /// <#Description#>
     static func createCritical(
         title: String,
@@ -59,7 +59,7 @@ public struct CriticalButton: View {
     }
 
     public var body: some View {
-        WarpButton.createCritical(
+        Warp.Button.createCritical(
             title: title,
             icon: icon,
             action: action,
@@ -73,9 +73,9 @@ public struct CriticalButton: View {
 private struct CriticalButtonPreview: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 8) {
-            WarpButton.createCritical(title: "Button", action: {})
+            Warp.Button.createCritical(title: "Button", action: {})
 
-            WarpButton.createCritical(title: "Disabled button", action: {}, isEnabled: false)
+            Warp.Button.createCritical(title: "Disabled button", action: {}, isEnabled: false)
         }
     }
 }
