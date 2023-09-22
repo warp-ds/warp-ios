@@ -9,7 +9,7 @@ struct WarpButton: View {
     private let icon: String?
     
     /// <#Description#>
-    private let action: () -> Void = {}
+    private let action: () -> Void
 
     /// <#Description#>
     private let type: WarpButtonType
@@ -29,7 +29,7 @@ struct WarpButton: View {
     init(
         title: String,
         icon: String? = nil,
-        action: () -> Void = {},
+        action: @escaping () -> Void = {},
         type: WarpButtonType,
         size: WarpButtonSize = .big,
         disbled: Bool = false,
@@ -37,6 +37,7 @@ struct WarpButton: View {
     ) {
         self.title = title
         self.icon = icon
+        self.action = action
         self.type = type
         self.size = size
         self.disabled = disbled
@@ -215,6 +216,106 @@ struct WarpButton: View {
     private func createFillerViewIfNeeded() -> some View {
         if fullWidth {
             Spacer()
+        }
+    }
+}
+
+extension Warp {
+    struct Button: View {
+        /// <#Description#>
+        private let title: String
+
+        /// <#Description#>
+        private let icon: String?
+
+        /// <#Description#>
+        private let action: () -> Void = {}
+
+        /// <#Description#>
+        private let type: Warp.ButtonType
+
+        /// <#Description#>
+        private let size: Warp.ButtonSize
+
+        /// <#Description#>
+        private let disabled: Bool
+
+        /// <#Description#>
+        private let fullWidth: Bool
+
+        /// <#Description#>
+        private let colorProvider = Config.colorProvider
+
+        init(
+            title: String,
+            icon: String? = nil,
+            action: () -> Void = {},
+            type: Warp.ButtonType,
+            size: Warp.ButtonSize = .big,
+            disbled: Bool = false,
+            fullWidth: Bool = false
+        ) {
+            self.title = title
+            self.icon = icon
+            self.type = type
+            self.size = size
+            self.disabled = disbled
+            self.fullWidth = fullWidth
+        }
+
+        var body: some View {
+            SwiftUI.Button(
+                action: action,
+                label: {
+                    buttonView
+                }
+            )
+            .disabled(disabled)
+            .buttonStyle(
+                WarpButtonStyle(
+                    type: type,
+                    size: size,
+                    colorProvider: colorProvider,
+                    isEnabled: !disabled
+                )
+            )
+        }
+
+        private var buttonView: some View {
+            HStack {
+                createFillerViewIfNeeded()
+
+                createIconIfPossible()
+
+                titleView
+
+                createFillerViewIfNeeded()
+            }
+        }
+
+        @ViewBuilder
+        private func createIconIfPossible() -> some View {
+            if let icon = icon {
+                Image(systemName: icon)
+//                    .font(type.fontSize)
+                    .padding(-2)
+            }
+        }
+
+        private var titleView: some View {
+            Text(title)
+//                .font(fontSize)
+//                .fontWeight(fontWeight)
+            //  .minimumScaleFactor(0.1)
+//                .lineLimit(lineLimit)
+//                .truncationMode(truncationMode)
+        }
+
+        @ViewBuilder
+        private func createFillerViewIfNeeded() -> some View {
+            if fullWidth {
+                Spacer()
+            }
         }
     }
 }
