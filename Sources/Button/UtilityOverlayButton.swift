@@ -2,6 +2,8 @@ import Foundation
 import SwiftUI
 
 extension Warp.Button {
+    private static let utilityOverlayType: Warp.ButtonType = .utilityOverlay
+
     /// <#Description#>
     static func createUtilityOverlay(
         title: String,
@@ -15,9 +17,27 @@ extension Warp.Button {
             title: title,
             icon: icon,
             action: action,
-            type: .utilityOverlay,
+            type: utilityOverlayType,
             size: size,
             isEnabled: isEnabled,
+            fullWidth: fullWidth
+        )
+    }
+
+    /// <#Description#>
+    static func createDisabledUtilityOverlay(
+        title: String,
+        icon: String? = nil,
+        size: Warp.ButtonSize = .big,
+        fullWidth: Bool = false
+    ) -> Warp.Button {
+        Warp.Button(
+            title: title,
+            icon: icon,
+            action: {},
+            type: utilityOverlayType,
+            size: size,
+            isEnabled: false,
             fullWidth: fullWidth
         )
     }
@@ -75,7 +95,7 @@ private struct UtilityOverlayButtonPreview: PreviewProvider {
         VStack(spacing: 12) {
             Warp.Button.createUtilityOverlay(title: "Button", action: {})
 
-            Warp.Button.createUtilityOverlay(title: "Disabled button", action: {}, isEnabled: false)
+            Warp.Button.createDisabledUtilityOverlay(title: "Disabled button")
         }
     }
 }

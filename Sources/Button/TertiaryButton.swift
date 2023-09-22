@@ -2,6 +2,8 @@ import Foundation
 import SwiftUI
 
 extension Warp.Button {
+    private static let tertiaryType: Warp.ButtonType = .tertiary
+
     /// <#Description#>
     static func createTertiary(
         title: String,
@@ -15,9 +17,27 @@ extension Warp.Button {
             title: title,
             icon: icon,
             action: action,
-            type: .tertiary,
+            type: tertiaryType,
             size: size,
             isEnabled: isEnabled,
+            fullWidth: fullWidth
+        )
+    }
+
+    /// <#Description#>
+    static func createDisabledTertiary(
+        title: String,
+        icon: String? = nil,
+        size: Warp.ButtonSize = .big,
+        fullWidth: Bool = false
+    ) -> Warp.Button {
+        Warp.Button(
+            title: title,
+            icon: icon,
+            action: {},
+            type: tertiaryType,
+            size: size,
+            isEnabled: false,
             fullWidth: fullWidth
         )
     }
@@ -75,7 +95,7 @@ private struct TertiaryButtonPreview: PreviewProvider {
         VStack(spacing: 12) {
             Warp.Button.createTertiary(title: "Button", action: {})
 
-            Warp.Button.createTertiary(title: "Disabled button", action: {}, isEnabled: false)
+            Warp.Button.createDisabledTertiary(title: "Disabled button")
         }
     }
 }

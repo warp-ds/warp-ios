@@ -2,6 +2,8 @@ import Foundation
 import SwiftUI
 
 extension Warp.Button {
+    private static let criticalType: Warp.ButtonType = .critical
+
     /// <#Description#>
     static func createCritical(
         title: String,
@@ -15,9 +17,27 @@ extension Warp.Button {
             title: title,
             icon: icon,
             action: action,
-            type: .critical,
+            type: criticalType,
             size: size,
             isEnabled: isEnabled,
+            fullWidth: fullWidth
+        )
+    }
+
+    /// <#Description#>
+    static func createDisabledCritical(
+        title: String,
+        icon: String? = nil,
+        size: Warp.ButtonSize = .big,
+        fullWidth: Bool = false
+    ) -> Warp.Button {
+        Warp.Button(
+            title: title,
+            icon: icon,
+            action: {},
+            type: criticalType,
+            size: size,
+            isEnabled: false,
             fullWidth: fullWidth
         )
     }
@@ -75,7 +95,7 @@ private struct CriticalButtonPreview: PreviewProvider {
         VStack(spacing: 8) {
             Warp.Button.createCritical(title: "Button", action: {})
 
-            Warp.Button.createCritical(title: "Disabled button", action: {}, isEnabled: false)
+            Warp.Button.createDisabledCritical(title: "Disabled button")
         }
     }
 }

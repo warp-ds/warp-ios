@@ -2,6 +2,8 @@ import Foundation
 import SwiftUI
 
 extension Warp.Button {
+    private static let secondaryType: Warp.ButtonType = .secondary
+
     /// <#Description#>
     static func createSecondary(
         title: String,
@@ -15,9 +17,27 @@ extension Warp.Button {
             title: title,
             icon: icon,
             action: action,
-            type: .secondary,
+            type: secondaryType,
             size: size,
             isEnabled: isEnabled,
+            fullWidth: fullWidth
+        )
+    }
+
+    /// <#Description#>
+    static func createDisabledSecondary(
+        title: String,
+        icon: String? = nil,
+        size: Warp.ButtonSize = .big,
+        fullWidth: Bool = false
+    ) -> Warp.Button {
+        Warp.Button(
+            title: title,
+            icon: icon,
+            action: {},
+            type: secondaryType,
+            size: size,
+            isEnabled: false,
             fullWidth: fullWidth
         )
     }
@@ -75,7 +95,7 @@ private struct SecondaryButtonPreview: PreviewProvider {
         VStack(spacing: 8) {
             Warp.Button.createSecondary(title: "Button", action: {})
 
-            Warp.Button.createSecondary(title: "Disabled button", action: {}, isEnabled: true)
+            Warp.Button.createDisabledSecondary(title: "Disabled button")
         }
     }
 }

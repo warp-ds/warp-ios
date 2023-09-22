@@ -2,6 +2,8 @@ import Foundation
 import SwiftUI
 
 extension Warp.Button {
+    private static let primaryType: Warp.ButtonType = .primary
+
     /// <#Description#>
     static func createPrimary(
         title: String,
@@ -15,9 +17,27 @@ extension Warp.Button {
             title: title,
             icon: icon,
             action: action,
-            type: .primary,
+            type: primaryType,
             size: size,
             isEnabled: isEnabled,
+            fullWidth: fullWidth
+        )
+    }
+
+    /// <#Description#>
+    static func createDisabledPrimary(
+        title: String,
+        icon: String? = nil,
+        size: Warp.ButtonSize = .big,
+        fullWidth: Bool = false
+    ) -> Warp.Button {
+        Warp.Button(
+            title: title,
+            icon: icon,
+            action: {},
+            type: primaryType,
+            size: size,
+            isEnabled: false,
             fullWidth: fullWidth
         )
     }
@@ -75,7 +95,7 @@ private struct PrimaryButtonPreview: PreviewProvider {
         VStack(spacing: 8) {
             Warp.Button.createPrimary(title: "Button", action: {})
 
-            Warp.Button.createPrimary(title: "Disabled button", action: {}, isEnabled: true)
+            Warp.Button.createDisabledPrimary(title: "Disabled button")
         }
     }
 }
