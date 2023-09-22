@@ -6,3 +6,8 @@ public extension Warp {
         case small
     }
 }
+
+public enum WarpButtonSize {
+    case big
+    case small
+}
