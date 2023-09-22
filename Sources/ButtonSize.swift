@@ -1,13 +1,8 @@
 import Foundation
 
-public extension Warp {
-    enum ButtonSize {
+extension Warp {
+    public enum ButtonSize {
         case big
         case small
     }
-}
-
-public enum WarpButtonSize {
-    case big
-    case small
 }
