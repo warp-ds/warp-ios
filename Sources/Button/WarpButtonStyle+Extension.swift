@@ -71,6 +71,16 @@ public struct WarpButtonStyle: ButtonStyle {
         }
     }
 
+    private var lineLimit: Int {
+        /*type == .critical ? Int.max : */
+        1
+    }
+
+    private var truncationMode: Text.TruncationMode {
+        /*type == .primary ? .tail : */
+        .middle
+    }
+
     public func makeBody(configuration: Configuration) -> some View {
         configuration
             .label
@@ -85,6 +95,8 @@ public struct WarpButtonStyle: ButtonStyle {
                 radius: shadowRadius,
                 y: shadowY
             )
+            .lineLimit(lineLimit)
+            .truncationMode(truncationMode)
     }
 
     private var overlayView: some View {
@@ -93,5 +105,21 @@ public struct WarpButtonStyle: ButtonStyle {
                 buttonBorderColor,
                 lineWidth: type.borderWidth
             )
+    }
+}
+
+public extension ButtonStyle where Self == WarpButtonStyle {
+    static func warp(
+        type: Warp.ButtonType,
+        size: Warp.ButtonSize,
+        colorProvider: ColorProvider,
+        isEnabled: Bool
+    ) -> Self {
+        return WarpButtonStyle(
+            type: type,
+            size: size,
+            colorProvider: colorProvider,
+            isEnabled: isEnabled
+        )
     }
 }
