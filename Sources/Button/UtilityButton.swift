@@ -1,40 +1,80 @@
 import SwiftUI
 
-public struct UtilityButton: View {
-    let title: String
-    let icon: String
-    let size: WarpButtonSize
-    let disabled: Bool
-    let fullWidth: Bool
-    let colorProvider = Config.colorProvider
+extension WarpButton {
+    /// <#Description#>
+    static func createUtility(
+        title: String,
+        icon: String? = nil,
+        action: @escaping () -> Void,
+        size: WarpButtonSize = .big,
+        isEnabled: Bool = false,
+        fullWidth: Bool = false
+    ) -> WarpButton {
+        WarpButton(
+            title: title,
+            icon: icon,
+            action: action,
+            type: .utility,
+            size: size,
+            disbled: isEnabled,
+            fullWidth: fullWidth
+        )
+    }
+}
 
-    public init(title: String,
-                icon: String = "",
-                size: WarpButtonSize = .big,
-                disbled: Bool = false,
-                fullWidth: Bool = false) {
+public struct UtilityButton: View {
+    /// <#Description#>
+    let title: String
+
+    /// <#Description#>
+    let icon: String?
+
+    /// <#Description#>
+    let action: () -> Void
+
+    /// <#Description#>
+    let size: WarpButtonSize
+
+    /// <#Description#>
+    let isEnabled: Bool
+
+    /// <#Description#>
+    let fullWidth: Bool
+
+    public init(
+        title: String,
+        icon: String?,
+        action: @escaping () -> Void,
+        size: WarpButtonSize,
+        isEnabled: Bool,
+        fullWidth: Bool
+    ) {
         self.title = title
         self.icon = icon
+        self.action = action
         self.size = size
-        self.disabled = disbled
+        self.isEnabled = isEnabled
         self.fullWidth = fullWidth
     }
-    
+
     public var body: some View {
-        WarpButton(title: title,
-                   icon: icon,
-                   type: .utility,
-                   size: size,
-                   disbled: disabled,
-                   fullWidth: fullWidth)
+        WarpButton.createUtilityOverlay(
+            title: title,
+            icon: icon,
+            action: action,
+            size: size,
+            isEnabled: isEnabled,
+            fullWidth: fullWidth
+        )
     }
 }
 
 private struct UtilityButtonPreview: PreviewProvider {
     static var previews: some View {
-        VStack {
-            UtilityButton(title: "Button")
-            UtilityButton(title: "Button", disbled: true)
+        VStack(spacing: 12) {
+            WarpButton.createUtility(title: "Button", action: {})
+
+            WarpButton.createUtility(title: "Disabled button", action: {})
         }
     }
 }

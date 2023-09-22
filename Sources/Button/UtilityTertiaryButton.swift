@@ -37,24 +37,24 @@ public struct UtilityTertiaryButton: View {
     let size: WarpButtonSize
 
     /// <#Description#>
-    let disabled: Bool
+    let isEnabled: Bool
 
     /// <#Description#>
     let fullWidth: Bool
 
     public init(
         title: String,
-        icon: String? = nil,
+        icon: String?,
         action: @escaping () -> Void,
         size: WarpButtonSize = .big,
-        disbled: Bool = false,
-        fullWidth: Bool = false
+        isEnabled: Bool,
+        fullWidth: Bool
     ) {
         self.title = title
         self.icon = icon
         self.action = action
         self.size = size
-        self.disabled = disbled
+        self.isEnabled = isEnabled
         self.fullWidth = fullWidth
     }
 
@@ -64,7 +64,7 @@ public struct UtilityTertiaryButton: View {
             icon: icon,
             action: action,
             size: size,
-            isEnabled: disabled,
+            isEnabled: isEnabled,
             fullWidth: fullWidth
         )
     }
@@ -72,9 +72,10 @@ public struct UtilityTertiaryButton: View {
 
 private struct UtilityTertiaryButtonPreview: PreviewProvider {
     static var previews: some View {
-        VStack {
-            UtilityButton(title: "Button")
-            UtilityButton(title: "Button", disbled: true)
+        VStack(spacing: 12) {
+            WarpButton.createUtilityTertiary(title: "Button", action: {})
+
+            WarpButton.createUtilityTertiary(title: "Disabled button", action: {}, isEnabled: false)
         }
     }
 }
