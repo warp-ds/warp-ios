@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-extension WarpButton {
+extension Warp.Button {
     /// <#Description#>
     static func createUtility(
         title: String,
@@ -59,7 +59,7 @@ public struct UtilityButton: View {
     }
 
     public var body: some View {
-        WarpButton.createUtility(
+        Warp.Button.createUtility(
             title: title,
             icon: icon,
             action: action,
@@ -73,9 +73,9 @@ public struct UtilityButton: View {
 private struct UtilityButtonPreview: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 12) {
-            WarpButton.createUtility(title: "Button", action: {})
+            Warp.Button.createUtility(title: "Button", action: {})
 
-            WarpButton.createUtility(title: "Disabled button", action: {})
+            Warp.Button.createUtility(title: "Disabled button", action: {})
         }
     }
 }
