@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-extension WarpButton {
+extension Warp.Button {
     /// <#Description#>
     static func createUtilityOverlay(
         title: String,
@@ -59,7 +59,7 @@ public struct UtilityOverlayButton: View {
     }
 
     public var body: some View {
-        WarpButton.createUtilityOverlay(
+        Warp.Button.createUtilityOverlay(
             title: title,
             icon: icon,
             action: action,
@@ -73,9 +73,9 @@ public struct UtilityOverlayButton: View {
 private struct UtilityOverlayButtonPreview: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 12) {
-            WarpButton.createUtilityOverlay(title: "Button", action: {})
+            Warp.Button.createUtilityOverlay(title: "Button", action: {})
 
-            WarpButton.createUtilityOverlay(title: "Disabled button", action: {}, isEnabled: false)
+            Warp.Button.createUtilityOverlay(title: "Disabled button", action: {}, isEnabled: false)
         }
     }
 }
