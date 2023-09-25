@@ -69,7 +69,9 @@ extension Warp {
 
                 createIconIfPossible()
 
-                titleView
+                if !title.isEmpty {
+                    titleView
+                }
 
                 createFillerViewIfNeeded()
             }
