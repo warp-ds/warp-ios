@@ -4,16 +4,16 @@ import SwiftUI
 /// `SwiftUI` Button style that will transform button label style to `Warp` design style.
 public struct WarpButtonStyle: ButtonStyle {
     /// <#Description#>
-    private let type: Warp.ButtonType
+    private let isEnabled: Bool
 
     /// <#Description#>
-    private let size: Warp.ButtonSize
+    private let colorFactory: Warp.Button.ColorFactory
     
     /// <#Description#>
-    private let isEnabled: Bool
+    private let metricsFactory: Warp.Button.MetricsFactory
     
     /// <#Description#>
-    private let colorProvider: ColorProvider
+    private let typographyFactory: Warp.Button.TypographyFactory
 
     public init(
         type: Warp.ButtonType,
@@ -21,115 +21,57 @@ public struct WarpButtonStyle: ButtonStyle {
         colorProvider: ColorProvider,
         isEnabled: Bool
     ) {
-        self.type = type
-        self.size = size
-        self.colorProvider = colorProvider
         self.isEnabled = isEnabled
-    }
 
-    private var backgroundColor: Color {
-        if isEnabled {
-            return type.backgroundColor
-        }
+        colorFactory = Warp.Button.ColorFactory(
+            for: type,
+            consuming: colorProvider
+        )
 
-        return type.disabledBackgroundColor
-    }
+        metricsFactory = Warp.Button.MetricsFactory(
+            type: type,
+            size: size,
+            isEnabled: isEnabled
+        )
 
-    private var pressedBackgroundColor: Color {
-        type.pressedBackgroundColor
-    }
-
-    private var foregroundColor: Color {
-        if isEnabled {
-            return type.foregroundColor
-        }
-
-        return type.disabledForegroundColor
-    }
-
-    private var borderColor: Color {
-        if isEnabled {
-            return type.borderColor
-        }
-
-        return colorProvider.buttonDisabledQuietBorder
-    }
-
-    private var pressedBorderColor: Color {
-        return type.pressedBorderColor
-    }
-
-    private var shadowRadius: CGFloat {
-        switch type {
-            case .utilityOverlay:
-                return isEnabled ? 2: 0
-
-            default:
-                return 0
-        }
-    }
-
-    private var shadowY: CGFloat {
-        switch type {
-            case .utilityOverlay:
-                return isEnabled ? 1: 0
-
-            default:
-                return 0
-        }
-    }
-
-    private var lineLimit: Int {
-        /*type == .critical ? Int.max : */
-        1
-    }
-
-    private var truncationMode: Text.TruncationMode {
-        /*type == .primary ? .tail : */
-        .middle
+        typographyFactory = Warp.Button.TypographyFactory(type: type)
     }
 
     public func makeBody(configuration: Configuration) -> some View {
-        let _backgroundColor = {
-            if configuration.isPressed {
-                return pressedBackgroundColor
-            }
+        let backgroundColor = colorFactory.makeBackgroundColor(
+            isEnabled: isEnabled,
+            isPressed: configuration.isPressed
+        )
 
-            return backgroundColor
-        }()
+        let foregroundColor = colorFactory.makeForegroundColor(isEnabled: isEnabled)
 
         let overlayView = createOverlayView(isPressed: configuration.isPressed)
 
         return configuration
             .label
+            .font(typographyFactory.font)
             .foregroundColor(foregroundColor)
-            .padding(.vertical, type.verticalPadding(from: size))
-            .padding(.horizontal, type.horizontalPadding(from: size))
-            .background(_backgroundColor)
+            .padding(.vertical, metricsFactory.verticalPadding)
+            .padding(.horizontal, metricsFactory.horizontalPadding)
+            .background(backgroundColor)
             .overlay(overlayView)
-            .cornerRadius(type.cornerRadius)
+            .cornerRadius(metricsFactory.cornerRadius)
             .shadow(
-                color: FinnColors.gray700.opacity(0.5),
-                radius: shadowRadius,
-                y: shadowY
+                color: colorFactory.makeShadowColor(),
+                radius: metricsFactory.shadowRadius,
+                y: metricsFactory.shadowY
             )
-            .lineLimit(lineLimit)
-            .truncationMode(truncationMode)
+            .lineLimit(typographyFactory.lineLimit)
+            .truncationMode(typographyFactory.truncationMode)
     }
 
     private func createOverlayView(isPressed: Bool) -> some View {
-        let _borderColor = {
-            if isPressed {
-                return pressedBorderColor
-            }
+        let borderColor = colorFactory.makeBorderColor(isEnabled: isEnabled, isPressed: isPressed)
 
-            return borderColor
-        }()
-
-        return RoundedRectangle(cornerRadius: type.cornerRadius)
+        return RoundedRectangle(cornerRadius: metricsFactory.cornerRadius)
             .stroke(
-                _borderColor,
-                lineWidth: type.borderWidth
+                borderColor,
+                lineWidth: metricsFactory.borderWidth
             )
     }
 }
@@ -152,6 +94,7 @@ public extension ButtonStyle where Self == WarpButtonStyle {
 }
 
 extension Warp.Button {
+    /// Factory responsible for resloving button label's typography needs.
     struct TypographyFactory {
         private let type: Warp.ButtonType
 
@@ -195,6 +138,7 @@ extension Warp.Button {
 }
 
 extension Warp.Button {
+    /// Factory responsible for resolving button internal element UI drawing needs.
     struct MetricsFactory {
         private let type: Warp.ButtonType
 
@@ -286,6 +230,8 @@ extension Warp.Button {
 
 // ColorProviderProxy
 extension Warp.Button {
+    /// Factory responsible for creating button, UI element color,
+    /// based on button type and current state.
     struct ColorFactory {
         private let type: Warp.ButtonType
 
@@ -298,7 +244,6 @@ extension Warp.Button {
 
         // MARK: Foreground color
 
-        /// <#Description#>
         private var normalForegroundColor: Color {
             switch type {
                 case .primary:
@@ -327,7 +272,6 @@ extension Warp.Button {
             }
         }
 
-        /// <#Description#>
         private var disabledForegroundColor: Color {
             switch type {
                 case .primary:
@@ -353,6 +297,7 @@ extension Warp.Button {
             }
         }
 
+        /// Create foreground color based on button type for current state.
         func makeForegroundColor(isEnabled: Bool) -> Color {
             if !isEnabled {
                 return disabledForegroundColor
@@ -363,7 +308,6 @@ extension Warp.Button {
 
         // MARK: Background color
 
-        /// <#Description#>
         private var normalBackgroundColor: Color {
             switch type {
                 case .primary:
@@ -392,7 +336,6 @@ extension Warp.Button {
             }
         }
 
-        /// <#Description#>
         private var pressedBackgroundColor: Color {
             switch type {
                 case .primary:
@@ -421,7 +364,6 @@ extension Warp.Button {
             }
         }
 
-        /// <#Description#>
         private var disabledBackgroundColor: Color {
             switch type {
                 case .primary:
@@ -438,6 +380,7 @@ extension Warp.Button {
             }
         }
 
+        /// Create bacground color based on button type for current state.
         func makeBackgroundColor(isEnabled: Bool, isPressed: Bool) -> Color {
             if !isEnabled {
                 return disabledBackgroundColor
@@ -509,7 +452,7 @@ extension Warp.Button {
             return colorProvider.buttonDisabledQuietBorder
         }
 
-        /// <#Description#>
+        /// Create border color based on button type for current state.
         func makeBorderColor(isEnabled: Bool, isPressed: Bool) -> Color {
             if !isEnabled {
                 return disabledBorderColor
@@ -520,6 +463,16 @@ extension Warp.Button {
             }
 
             return normalBorderColor
+        }
+        
+        /// Create shadow color based on button type.
+        func makeShadowColor() -> Color {
+            if type == .utilityOverlay {
+                // TODO: R&D + Rework
+                return FinnColors.gray700.opacity(0.5)
+            }
+
+            return .clear
         }
     }
 }
