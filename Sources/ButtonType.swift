@@ -66,7 +66,29 @@ extension Warp {
                     return colorProvider.buttonUtilityQuietText
             }
         }
-        
+
+        /// <#Description#>
+        var disabledForegroundColor: Color {
+            let colorProvider = Config.colorProvider
+
+            switch self {
+                case .primary:
+                    return colorProvider.buttonPrimaryTextDisabled
+
+                case .secondary:
+                    return colorProvider.buttonSecondaryTextDisabled
+
+                case .tertiary:
+                    return colorProvider.buttonDisabledQuietText
+
+                case .critical, .criticalTertiary:
+                    return colorProvider.buttonDisabledText
+
+                case .utility, .utilityTertiary, .utilityOverlay:
+                    return colorProvider.buttonUtilityTextDisabled
+            }
+        }
+
         /// <#Description#>
         var backgroundColor: Color {
             let colorProvider = Config.colorProvider
