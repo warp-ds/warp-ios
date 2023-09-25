@@ -4,9 +4,6 @@ import SwiftUI
 /// `SwiftUI` Button style that will transform button label style to `Warp` design style.
 public struct WarpButtonStyle: ButtonStyle {
     /// <#Description#>
-    private let isEnabled: Bool
-
-    /// <#Description#>
     private let colorFactory: Warp.Button.ColorFactory
     
     /// <#Description#>
@@ -21,11 +18,10 @@ public struct WarpButtonStyle: ButtonStyle {
         colorProvider: ColorProvider,
         isEnabled: Bool
     ) {
-        self.isEnabled = isEnabled
-
         colorFactory = Warp.Button.ColorFactory(
             for: type,
-            consuming: colorProvider
+            consuming: colorProvider,
+            isEnabled: isEnabled
         )
 
         metricsFactory = Warp.Button.MetricsFactory(
@@ -39,11 +35,10 @@ public struct WarpButtonStyle: ButtonStyle {
 
     public func makeBody(configuration: Configuration) -> some View {
         let backgroundColor = colorFactory.makeBackgroundColor(
-            isEnabled: isEnabled,
             isPressed: configuration.isPressed
         )
 
-        let foregroundColor = colorFactory.makeForegroundColor(isEnabled: isEnabled)
+        let foregroundColor = colorFactory.makeForegroundColor()
 
         let overlayView = createOverlayView(isPressed: configuration.isPressed)
 
@@ -66,7 +61,7 @@ public struct WarpButtonStyle: ButtonStyle {
     }
 
     private func createOverlayView(isPressed: Bool) -> some View {
-        let borderColor = colorFactory.makeBorderColor(isEnabled: isEnabled, isPressed: isPressed)
+        let borderColor = colorFactory.makeBorderColor(isPressed: isPressed)
 
         return RoundedRectangle(cornerRadius: metricsFactory.cornerRadius)
             .stroke(
@@ -228,7 +223,6 @@ extension Warp.Button {
     }
 }
 
-// ColorProviderProxy
 extension Warp.Button {
     /// Factory responsible for creating button, UI element color,
     /// based on button type and current state.
@@ -237,9 +231,12 @@ extension Warp.Button {
 
         private let colorProvider: ColorProvider
 
-        init(for type: Warp.ButtonType, consuming colorProvider: ColorProvider) {
+        private let isEnabled: Bool
+
+        init(for type: Warp.ButtonType, consuming colorProvider: ColorProvider, isEnabled: Bool) {
             self.type = type
             self.colorProvider = colorProvider
+            self.isEnabled = isEnabled
         }
 
         // MARK: Foreground color
@@ -298,7 +295,7 @@ extension Warp.Button {
         }
 
         /// Create foreground color based on button type for current state.
-        func makeForegroundColor(isEnabled: Bool) -> Color {
+        func makeForegroundColor() -> Color {
             if !isEnabled {
                 return disabledForegroundColor
             }
@@ -381,7 +378,7 @@ extension Warp.Button {
         }
 
         /// Create bacground color based on button type for current state.
-        func makeBackgroundColor(isEnabled: Bool, isPressed: Bool) -> Color {
+        func makeBackgroundColor(isPressed: Bool) -> Color {
             if !isEnabled {
                 return disabledBackgroundColor
             }
@@ -453,7 +450,7 @@ extension Warp.Button {
         }
 
         /// Create border color based on button type for current state.
-        func makeBorderColor(isEnabled: Bool, isPressed: Bool) -> Color {
+        func makeBorderColor(isPressed: Bool) -> Color {
             if !isEnabled {
                 return disabledBorderColor
             }
