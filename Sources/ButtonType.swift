@@ -4,7 +4,7 @@ import struct SwiftUI.Font
 
 extension Warp {
     /// <#Description#>
-    public enum ButtonType {
+    public enum ButtonType: Equatable {
         /// <#Description#>
         case primary
 
