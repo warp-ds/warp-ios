@@ -28,270 +28,267 @@ extension Warp {
 
         /// <#Description#>
         case utilityOverlay
-        
-        /// <#Description#>
-        var foregroundColor: Color {
-            let colorProvider = Config.colorProvider
+    }
+}
 
-            switch self {
-                case .primary:
-                    return colorProvider.buttonPrimaryText
+// MARK: Color factory
+extension Warp.ButtonType {
+    /// <#Description#>
+    func makeForegroundColor(consuming colorProvider: ColorProvider) -> Color {
+        switch self {
+            case .primary:
+                return colorProvider.buttonPrimaryText
 
-                case .secondary:
-                    return colorProvider.buttonSecondaryText
+            case .secondary:
+                return colorProvider.buttonSecondaryText
 
-                case .tertiary:
-                    return colorProvider.buttonQuietText
+            case .tertiary:
+                return colorProvider.buttonQuietText
 
-                case .critical:
-                    return colorProvider.buttonNegativeText
+            case .critical:
+                return colorProvider.buttonNegativeText
 
-                case .criticalTertiary:
-                    return colorProvider.buttonNegativeQuietText
+            case .criticalTertiary:
+                return colorProvider.buttonNegativeQuietText
 
-                case .utility:
-                    return colorProvider.buttonUtilityText
+            case .utility:
+                return colorProvider.buttonUtilityText
 
-                case .utilityTertiary:
-                    return colorProvider.buttonUtilityQuietText
+            case .utilityTertiary:
+                return colorProvider.buttonUtilityQuietText
 
-                case .utilityOverlay:
-                    return colorProvider.buttonUtilityQuietText
-            }
+            case .utilityOverlay:
+                return colorProvider.buttonUtilityQuietText
         }
+    }
 
-        /// <#Description#>
-        var disabledForegroundColor: Color {
-            let colorProvider = Config.colorProvider
+    /// <#Description#>
+    func makeDisabledForegroundColor(consuming colorProvider: ColorProvider) -> Color {
+        switch self {
+            case .primary:
+                return colorProvider.buttonPrimaryTextDisabled
 
-            switch self {
-                case .primary:
-                    return colorProvider.buttonPrimaryTextDisabled
+            case .secondary:
+                return colorProvider.buttonDisabledText
+                // Wrong color palette, using default.
+                // return colorProvider.buttonSecondaryTextDisabled
 
-                case .secondary:
-                    return colorProvider.buttonDisabledText
-                    // Wrong color pallete, using default.
-                    // return colorProvider.buttonSecondaryTextDisabled
+            case .tertiary:
+                return colorProvider.buttonDisabledText
+                // Wrong color palette, using default.
+                // return colorProvider.buttonDisabledQuietText
 
-                case .tertiary:
-                    return colorProvider.buttonDisabledText
-                    // Wrong color pallete, using default.
-                    // return colorProvider.buttonDisabledQuietText
+            case .critical, .criticalTertiary:
+                return colorProvider.buttonDisabledText
 
-                case .critical, .criticalTertiary:
-                    return colorProvider.buttonDisabledText
-
-                case .utility, .utilityTertiary, .utilityOverlay:
-                    return colorProvider.buttonDisabledText
-                    // Wrong color pallete, using default.
-                    //return colorProvider.buttonUtilityTextDisabled
-            }
+            case .utility, .utilityTertiary, .utilityOverlay:
+                return colorProvider.buttonDisabledText
+                // Wrong color palette, using default.
+                //return colorProvider.buttonUtilityTextDisabled
         }
+    }
 
-        /// <#Description#>
-        var backgroundColor: Color {
-            let colorProvider = Config.colorProvider
+    /// <#Description#>
+    func makeBackgroundColor(consuming colorProvider: ColorProvider) -> Color {
+        switch self {
+            case .primary:
+                return colorProvider.buttonPrimaryBackground
 
-            switch self {
-                case .primary:
-                    return colorProvider.buttonPrimaryBackground
+            case .secondary:
+                return colorProvider.buttonSecondaryBackground
 
-                case .secondary:
-                    return colorProvider.buttonSecondaryBackground
+            case .tertiary:
+                return colorProvider.buttonQuietBackground
 
-                case .tertiary:
-                    return colorProvider.buttonQuietBackground
+            case .critical:
+                return colorProvider.buttonNegativeBackground
 
-                case .critical:
-                    return colorProvider.buttonNegativeBackground
+            case .criticalTertiary:
+                return colorProvider.buttonNegativeQuietBackground
 
-                case .criticalTertiary:
-                    return colorProvider.buttonNegativeQuietBackground
+            case .utility:
+                return colorProvider.buttonUtilityBackground
 
-                case .utility:
-                    return colorProvider.buttonUtilityBackground
+            case .utilityTertiary:
+                return colorProvider.buttonUtilityQuietBackground
 
-                case .utilityTertiary:
-                    return colorProvider.buttonUtilityQuietBackground
-
-                case .utilityOverlay:
-                    return colorProvider.buttonUtilityOverlayBackground
-            }
+            case .utilityOverlay:
+                return colorProvider.buttonUtilityOverlayBackground
         }
-        
-        /// <#Description#>
-        var pressedBackgroundColor: Color {
-            let colorProvider = Config.colorProvider
+    }
 
-            switch self {
-                case .primary:
-                    return colorProvider.buttonPrimaryBackgroundActive
+    /// <#Description#>
+    func makePressedBackgroundColor(consuming colorProvider: ColorProvider) -> Color {
+        switch self {
+            case .primary:
+                return colorProvider.buttonPrimaryBackgroundActive
 
-                case .secondary:
-                    return colorProvider.buttonSecondaryBackgroundActive
+            case .secondary:
+                return colorProvider.buttonSecondaryBackgroundActive
 
-                case .tertiary:
-                    return colorProvider.buttonQuietBackgroundActive
+            case .tertiary:
+                return colorProvider.buttonQuietBackgroundActive
 
-                case .critical:
-                    return colorProvider.buttonNegativeBackgroundActive
+            case .critical:
+                return colorProvider.buttonNegativeBackgroundActive
 
-                case .criticalTertiary:
-                    return colorProvider.buttonNegativeQuietBackgroundActive
+            case .criticalTertiary:
+                return colorProvider.buttonNegativeQuietBackgroundActive
 
-                case .utility:
-                    return colorProvider.buttonUtilityBackgroundActive
+            case .utility:
+                return colorProvider.buttonUtilityBackgroundActive
 
-                case .utilityTertiary:
-                    return colorProvider.buttonUtilityQuietBackgroundActive
+            case .utilityTertiary:
+                return colorProvider.buttonUtilityQuietBackgroundActive
 
-                case .utilityOverlay:
-                    return colorProvider.buttonUtilityOverlayBackground
-            }
+            case .utilityOverlay:
+                return colorProvider.buttonUtilityOverlayBackground
         }
+    }
 
-        /// <#Description#>
-        var disabledBackgroundColor: Color {
-            let colorProvider = Config.colorProvider
+    /// <#Description#>
+    func makeDisabledBackgroundColor(consuming colorProvider: ColorProvider) -> Color {
+        switch self {
+            case .primary:
+                return colorProvider.buttonPrimaryBackgroundDisabled
 
-            switch self {
-                case .primary:
-                    return colorProvider.buttonPrimaryBackgroundDisabled
+            case .secondary:
+                return colorProvider.buttonSecondaryBackgroundDisabled
 
-                case .secondary:
-                    return colorProvider.buttonSecondaryBackgroundDisabled
+            case .tertiary, .critical, .criticalTertiary:
+                return colorProvider.buttonDisabledBackground
 
-                case .tertiary, .critical, .criticalTertiary:
-                    return colorProvider.buttonDisabledBackground
-
-                case .utility, .utilityTertiary, .utilityOverlay:
-                    return colorProvider.buttonUtilityBackgroundDisabled
-            }
+            case .utility, .utilityTertiary, .utilityOverlay:
+                return colorProvider.buttonUtilityBackgroundDisabled
         }
-        
-        /// <#Description#>
-        var borderColor: Color {
-            lazy var colorProvider = Config.colorProvider
+    }
 
-            switch self {
-                case .primary:
-                    return colorProvider.buttonPrimaryBorder
+    /// <#Description#>
+    func makeBorderColor(consuming colorProvider: ColorProvider) -> Color {
+        switch self {
+            case .primary:
+                return colorProvider.buttonPrimaryBorder
 
-                case .secondary:
-                    return colorProvider.buttonSecondaryBorder
+            case .secondary:
+                return colorProvider.buttonSecondaryBorder
 
-                case .tertiary:
-                    return colorProvider.buttonQuietBackground
+            case .tertiary:
+                return colorProvider.buttonQuietBackground
 
-                case .critical:
-                    return colorProvider.buttonNegativeBorder
+            case .critical:
+                return colorProvider.buttonNegativeBorder
 
-                case .criticalTertiary:
-                    return colorProvider.buttonNegativeQuietBorder
+            case .criticalTertiary:
+                return colorProvider.buttonNegativeQuietBorder
 
-                case .utility:
-                    return colorProvider.buttonUtilityBorder
+            case .utility:
+                return colorProvider.buttonUtilityBorder
 
-                default:
-                    return .clear
-            }
+            default:
+                return .clear
         }
-        
-        /// <#Description#>
-        var pressedBorderColor: Color {
-            let colorProvider = Config.colorProvider
+    }
 
-            switch self {
-                case .primary:
-                    return colorProvider.buttonPrimaryBorderActive
+    /// <#Description#>
+    func makePressedBorderColor(consuming colorProvider: ColorProvider) -> Color {
+        switch self {
+            case .primary:
+                return colorProvider.buttonPrimaryBorderActive
 
-                case .secondary:
-                    return colorProvider.buttonSecondaryBorderActive
+            case .secondary:
+                return colorProvider.buttonSecondaryBorderActive
 
-                case .tertiary:
-                    return .clear
+            case .tertiary:
+                return .clear
 
-                case .critical:
-                    return colorProvider.buttonNegativeBorderActive
+            case .critical:
+                return colorProvider.buttonNegativeBorderActive
 
-                case .criticalTertiary:
-                    return colorProvider.buttonNegativeQuietBorderActive
+            case .criticalTertiary:
+                return colorProvider.buttonNegativeQuietBorderActive
 
-                case .utility:
-                    return colorProvider.buttonUtilityBorderActive
+            case .utility:
+                return colorProvider.buttonUtilityBorderActive
 
-                case .utilityTertiary:
-                    return colorProvider.buttonUtilityQuietBorderActive
+            case .utilityTertiary:
+                return colorProvider.buttonUtilityQuietBorderActive
 
-                case .utilityOverlay:
-                    return colorProvider.buttonUtilityOverlayBackground
-            }
+            case .utilityOverlay:
+                return colorProvider.buttonUtilityOverlayBackground
         }
+    }
+}
 
-        /// <#Description#>
-        var fontWeight: Font.Weight {
-            switch self {
-                case .utility, .utilityTertiary, .utilityOverlay:
-                    return .regular
+// MARK: Typography
 
-                default:
-                    return .medium
-            }
+extension Warp.ButtonType {
+    /// <#Description#>
+    var fontWeight: Font.Weight {
+        switch self {
+            case .utility, .utilityTertiary, .utilityOverlay:
+                return .regular
+
+            default:
+                return .medium
         }
-        
-        /// <#Description#>
-        var fontSize: Font {
-            switch self {
-                case .utility, .utilityTertiary, .utilityOverlay:
-                    return .caption
+    }
 
-                default:
-                    return .callout
-            }
+    /// <#Description#>
+    var fontSize: Font {
+        switch self {
+            case .utility, .utilityTertiary, .utilityOverlay:
+                return .caption
+
+            default:
+                return .callout
         }
-        
-        /// <#Description#>
-        var borderWidth: CGFloat {
-            switch self {
-                case .utility:
-                    return 2
+    }
+}
 
-                default:
-                    return 4
-            }
+// MARK: UI Metrics
+
+extension Warp.ButtonType {
+    /// <#Description#>
+    var borderWidth: CGFloat {
+        switch self {
+            case .utility:
+                return 2
+
+            default:
+                return 4
         }
-        
-        /// <#Description#>
-        var cornerRadius: CGFloat {
-            switch self {
-                case .utility:
-                    return 4
+    }
 
-                default:
-                    return 8
-            }
+    /// <#Description#>
+    var cornerRadius: CGFloat {
+        switch self {
+            case .utility:
+                return 4
+
+            default:
+                return 8
         }
-        
-        /// <#Description#>
-        func verticalPadding(from size: Warp.ButtonSize) -> CGFloat {
-            switch self {
-                case .utility, .utilityTertiary, .utilityOverlay:
-                    return 8
+    }
 
-                default:
-                    return size == .big ? 13 : 8
-            }
+    /// <#Description#>
+    func verticalPadding(from size: Warp.ButtonSize) -> CGFloat {
+        switch self {
+            case .utility, .utilityTertiary, .utilityOverlay:
+                return 8
+
+            default:
+                return size == .big ? 13 : 8
         }
-        
-        /// <#Description#>
-        func horizontalPadding(from size: Warp.ButtonSize) -> CGFloat {
-            switch self {
-                case .utility, .utilityTertiary, .utilityOverlay:
-                    return 8
+    }
 
-                default:
-                    return size == .big ? 16 : 12
-            }
+    /// <#Description#>
+    func horizontalPadding(from size: Warp.ButtonSize) -> CGFloat {
+        switch self {
+            case .utility, .utilityTertiary, .utilityOverlay:
+                return 8
+
+            default:
+                return size == .big ? 16 : 12
         }
     }
 }
