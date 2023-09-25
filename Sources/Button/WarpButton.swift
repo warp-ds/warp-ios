@@ -84,6 +84,9 @@ extension Warp {
         private func createIconIfPossible() -> some View {
             if let icon = icon {
                 icon
+                    .resizable()
+                    .frame(width: 16, height: 16)
+                    .clipped()
                     .padding(-2)
             }
         }
