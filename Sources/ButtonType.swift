@@ -2,16 +2,9 @@ import Foundation
 import struct SwiftUI.Color
 import struct SwiftUI.Font
 
-protocol WarpButtonTypeColor {
-    var foregroundColor: Color { get }
-    var backgroundColor: Color { get }
-    var disabledBackgroundColor: Color { get }
-    var borderColor: Color { get }
-}
-
 extension Warp {
     /// <#Description#>
-    public enum ButtonType: WarpButtonTypeColor {
+    public enum ButtonType {
         /// <#Description#>
         case primary
 
