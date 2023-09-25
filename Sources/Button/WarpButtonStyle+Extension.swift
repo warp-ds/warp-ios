@@ -35,6 +35,10 @@ public struct WarpButtonStyle: ButtonStyle {
         return type.disabledBackgroundColor
     }
 
+    private var pressedBackgroundColor: Color {
+        type.pressedBackgroundColor
+    }
+
     private var foregroundColor: Color {
         if isEnabled {
             return type.foregroundColor
@@ -43,12 +47,16 @@ public struct WarpButtonStyle: ButtonStyle {
         return colorProvider.buttonDisabledText
     }
 
-    private var buttonBorderColor: Color {
+    private var borderColor: Color {
         if isEnabled {
             return type.borderColor
         }
 
         return colorProvider.buttonDisabledQuietBorder
+    }
+
+    private var pressedBorderColor: Color {
+        return type.pressedBorderColor
     }
 
     private var shadowRadius: CGFloat {
@@ -82,12 +90,22 @@ public struct WarpButtonStyle: ButtonStyle {
     }
 
     public func makeBody(configuration: Configuration) -> some View {
-        configuration
+        let _backgroundColor = {
+            if configuration.isPressed {
+                return pressedBackgroundColor
+            }
+
+            return backgroundColor
+        }()
+
+        let overlayView = createOverlayView(isPressed: configuration.isPressed)
+
+        return configuration
             .label
             .foregroundColor(foregroundColor)
             .padding(.vertical, type.verticalPadding(from: size))
             .padding(.horizontal, type.horizontalPadding(from: size))
-            .background(backgroundColor)
+            .background(_backgroundColor)
             .overlay(overlayView)
             .cornerRadius(type.cornerRadius)
             .shadow(
@@ -99,10 +117,18 @@ public struct WarpButtonStyle: ButtonStyle {
             .truncationMode(truncationMode)
     }
 
-    private var overlayView: some View {
-        RoundedRectangle(cornerRadius: type.cornerRadius)
+    private func createOverlayView(isPressed: Bool) -> some View {
+        let _borderColor = {
+            if isPressed {
+                return pressedBorderColor
+            }
+
+            return borderColor
+        }()
+
+        return RoundedRectangle(cornerRadius: type.cornerRadius)
             .stroke(
-                buttonBorderColor,
+                _borderColor,
                 lineWidth: type.borderWidth
             )
     }
