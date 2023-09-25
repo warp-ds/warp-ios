@@ -29,12 +29,12 @@ extension Warp {
 
         public init(
             title: String,
-            icon: Image? = nil,
-            action: () -> Void = {},
+            icon: Image?,
+            action: () -> Void,
             type: Warp.ButtonType,
-            size: Warp.ButtonSize = .big,
-            isEnabled: Bool = true,
-            fullWidth: Bool = false
+            size: Warp.ButtonSize,
+            isEnabled: Bool,
+            fullWidth: Bool
         ) {
             self.title = title
             self.icon = icon
