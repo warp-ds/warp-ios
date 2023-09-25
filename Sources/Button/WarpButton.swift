@@ -98,7 +98,7 @@ extension Warp {
 
 /// Helper constructors introduced to extend image capabilities.
 extension Warp.Button {
-    init(
+    public init(
         title: String,
         imageName: String?,
         type: Warp.ButtonType,
@@ -120,7 +120,7 @@ extension Warp.Button {
         self.fullWidth = fullWidth
     }
 
-    init(
+    public init(
         title: String,
         imageSystemName: String?,
         type: Warp.ButtonType,
