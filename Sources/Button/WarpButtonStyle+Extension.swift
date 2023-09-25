@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-/// <#Description#>
+/// `SwiftUI` Button style that will transform button label style to `Warp` design style.
 public struct WarpButtonStyle: ButtonStyle {
     /// <#Description#>
     private let type: Warp.ButtonType
@@ -134,6 +134,7 @@ public struct WarpButtonStyle: ButtonStyle {
     }
 }
 
+/// Syntactic sugar to ease using warp button style.
 public extension ButtonStyle where Self == WarpButtonStyle {
     static func warp(
         type: Warp.ButtonType,

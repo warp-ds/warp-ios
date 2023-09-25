@@ -3,21 +3,21 @@ import struct SwiftUI.Color
 import struct SwiftUI.Font
 
 extension Warp {
-    /// <#Description#>
+    /// Warp button styles, that has been designed for certain scenarios.
     public enum ButtonType: Equatable {
-        /// <#Description#>
+        /// Primary button style as default `SwiftUI` button style.
         case primary
 
-        /// <#Description#>
+        /// Style as subtitle/caption buttons.
         case secondary
 
-        /// <#Description#>
+        /// Style for plain buttons without borders.
         case tertiary
 
-        /// <#Description#>
+        /// Style as red alert/destructive button.
         case critical
 
-        /// <#Description#>
+        /// Style for plain red alert/destructive buttons without borders.
         case criticalTertiary
 
         /// <#Description#>
