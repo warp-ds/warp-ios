@@ -11,7 +11,7 @@ extension Warp {
         private let icon: Image?
 
         /// <#Description#>
-        private let action: () -> Void = {}
+        private let action: () -> Void
 
         /// <#Description#>
         private let type: Warp.ButtonType
@@ -26,23 +26,26 @@ extension Warp {
         private let fullWidth: Bool
 
         /// <#Description#>
-        private let colorProvider = Config.colorProvider
+        private let colorProvider: ColorProvider
 
         public init(
             title: String,
             icon: Image?,
-            action: () -> Void,
+            action: @escaping () -> Void,
             type: Warp.ButtonType,
             size: Warp.ButtonSize,
             isEnabled: Bool,
-            fullWidth: Bool
+            fullWidth: Bool,
+            colorProvider: ColorProvider
         ) {
             self.title = title
             self.icon = icon
+            self.action = action
             self.type = type
             self.size = size
             self.isEnabled = isEnabled
             self.fullWidth = fullWidth
+            self.colorProvider = colorProvider
         }
 
         public var body: some View {
@@ -101,13 +104,16 @@ extension Warp {
 /// Helper constructors introduced to extend image capabilities.
 extension Warp.Button {
     public init(
+        type: Warp.ButtonType,
         title: String,
         imageName: String?,
-        type: Warp.ButtonType,
+        action: @escaping () -> Void,
         size: Warp.ButtonSize,
         isEnabled: Bool,
-        fullWidth: Bool
+        fullWidth: Bool,
+        colorProvider: ColorProvider
     ) {
+        self.type = type
         self.title = title
 
         if let imageName = imageName {
@@ -116,20 +122,24 @@ extension Warp.Button {
             icon = nil
         }
 
-        self.type = type
+        self.action = action
         self.size = size
         self.isEnabled = isEnabled
         self.fullWidth = fullWidth
+        self.colorProvider = colorProvider
     }
 
     public init(
+        type: Warp.ButtonType,
         title: String,
         imageSystemName: String?,
-        type: Warp.ButtonType,
+        action: @escaping () -> Void,
         size: Warp.ButtonSize,
         isEnabled: Bool,
-        fullWidth: Bool
+        fullWidth: Bool,
+        colorProvider: ColorProvider
     ) {
+        self.type = type
         self.title = title
 
         if let imageSystemName = imageSystemName {
@@ -138,10 +148,11 @@ extension Warp.Button {
             icon = nil
         }
 
-        self.type = type
+        self.action = action
         self.size = size
         self.isEnabled = isEnabled
         self.fullWidth = fullWidth
+        self.colorProvider = colorProvider
     }
 }
 
@@ -154,7 +165,8 @@ extension Warp.Button {
         action: @escaping () -> Void,
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
-        fullWidth: Bool = false
+        fullWidth: Bool = false,
+        colorProvider: ColorProvider = Config.colorProvider
     ) -> Warp.Button {
         switch buttonType {
             case .primary:
@@ -164,7 +176,8 @@ extension Warp.Button {
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
-                    fullWidth: fullWidth
+                    fullWidth: fullWidth,
+                    colorProvider: colorProvider
                 )
 
             case .secondary:
@@ -174,7 +187,8 @@ extension Warp.Button {
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
-                    fullWidth: fullWidth
+                    fullWidth: fullWidth,
+                    colorProvider: colorProvider
                 )
 
             case .tertiary:
@@ -184,7 +198,8 @@ extension Warp.Button {
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
-                    fullWidth: fullWidth
+                    fullWidth: fullWidth,
+                    colorProvider: colorProvider
                 )
 
             case .critical:
@@ -194,7 +209,8 @@ extension Warp.Button {
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
-                    fullWidth: fullWidth
+                    fullWidth: fullWidth,
+                    colorProvider: colorProvider
                 )
 
             case .criticalTertiary:
@@ -204,7 +220,8 @@ extension Warp.Button {
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
-                    fullWidth: fullWidth
+                    fullWidth: fullWidth,
+                    colorProvider: colorProvider
                 )
 
             case .utility:
@@ -214,7 +231,8 @@ extension Warp.Button {
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
-                    fullWidth: fullWidth
+                    fullWidth: fullWidth,
+                    colorProvider: colorProvider
                 )
 
             case .utilityTertiary:
@@ -224,7 +242,8 @@ extension Warp.Button {
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
-                    fullWidth: fullWidth
+                    fullWidth: fullWidth,
+                    colorProvider: colorProvider
                 )
 
             case .utilityOverlay:
@@ -234,7 +253,8 @@ extension Warp.Button {
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
-                    fullWidth: fullWidth
+                    fullWidth: fullWidth,
+                    colorProvider: colorProvider
                 )
         }
     }

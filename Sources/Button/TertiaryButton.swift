@@ -11,7 +11,8 @@ extension Warp.Button {
         action: @escaping () -> Void = {},
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
-        fullWidth: Bool = false
+        fullWidth: Bool = false,
+        colorProvider: ColorProvider = Config.colorProvider
     ) -> Warp.Button {
         Warp.Button(
             title: title,
@@ -20,7 +21,8 @@ extension Warp.Button {
             type: tertiaryType,
             size: size,
             isEnabled: isEnabled,
-            fullWidth: fullWidth
+            fullWidth: fullWidth,
+            colorProvider: colorProvider
         )
     }
 }
