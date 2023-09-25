@@ -135,27 +135,16 @@ extension Warp {
 
             switch self {
                 case .primary:
+                    return colorProvider.buttonPrimaryBackgroundDisabled
 
                 case .secondary:
+                    return colorProvider.buttonSecondaryBackgroundDisabled
+
+                case .tertiary, .critical, .criticalTertiary:
                     return colorProvider.buttonDisabledBackground
 
-                case .tertiary:
-                    return colorProvider.buttonDisabledBackground
-
-                case .critical:
-                    return colorProvider.buttonDisabledBackground
-
-                case .criticalTertiary:
-                    return colorProvider.buttonDisabledBackground
-
-                case .utility:
-                    return colorProvider.buttonDisabledBackground
-
-                case .utilityTertiary:
-                    return colorProvider.buttonDisabledBackground
-
-                case .utilityOverlay:
-                    return colorProvider.buttonDisabledBackground
+                case .utility, .utilityTertiary, .utilityOverlay:
+                    return colorProvider.buttonUtilityBackgroundDisabled
             }
         }
         
