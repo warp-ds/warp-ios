@@ -7,7 +7,7 @@ extension Warp {
         private let title: String
 
         /// <#Description#>
-        private let icon: String?
+        private let icon: Image?
 
         /// <#Description#>
         private let action: () -> Void = {}
@@ -29,7 +29,7 @@ extension Warp {
 
         public init(
             title: String,
-            icon: String? = nil,
+            icon: Image? = nil,
             action: () -> Void = {},
             type: Warp.ButtonType,
             size: Warp.ButtonSize = .big,
@@ -77,7 +77,7 @@ extension Warp {
         @ViewBuilder
         private func createIconIfPossible() -> some View {
             if let icon = icon {
-                Image(systemName: icon)
+                icon
                     .padding(-2)
             }
         }
@@ -92,6 +92,52 @@ extension Warp {
                 Spacer()
             }
         }
+    }
+}
+
+extension Warp.Button {
+    init(
+        title: String,
+        imageName: String?,
+        type: Warp.ButtonType,
+        size: Warp.ButtonSize,
+        isEnabled: Bool,
+        fullWidth: Bool
+    ) {
+        self.title = title
+
+        if let imageName = imageName {
+            icon = Image(imageName)
+        } else {
+            icon = nil
+        }
+
+        self.type = type
+        self.size = size
+        self.isEnabled = isEnabled
+        self.fullWidth = fullWidth
+    }
+
+    init(
+        title: String,
+        imageSystemName: String?,
+        type: Warp.ButtonType,
+        size: Warp.ButtonSize,
+        isEnabled: Bool,
+        fullWidth: Bool
+    ) {
+        self.title = title
+
+        if let imageSystemName = imageSystemName {
+            icon = Image(systemName: imageSystemName)
+        } else {
+            icon = nil
+        }
+
+        self.type = type
+        self.size = size
+        self.isEnabled = isEnabled
+        self.fullWidth = fullWidth
     }
 }
 
