@@ -186,6 +186,38 @@ extension Warp {
                     return .clear
             }
         }
+        
+        /// <#Description#>
+        var pressedBorderColor: Color {
+            let colorProvider = Config.colorProvider
+
+            switch self {
+                case .primary:
+                    return colorProvider.buttonPrimaryBorderActive
+
+                case .secondary:
+                    return colorProvider.buttonSecondaryBorderActive
+
+                case .tertiary:
+                    return .clear
+
+                case .critical:
+                    return colorProvider.buttonNegativeBorderActive
+
+                case .criticalTertiary:
+                    return colorProvider.buttonNegativeQuietBorderActive
+
+                case .utility:
+                    return colorProvider.buttonUtilityBorderActive
+
+                case .utilityTertiary:
+                    return colorProvider.buttonUtilityQuietBorderActive
+
+                case .utilityOverlay:
+                    return colorProvider.buttonUtilityOverlayBackground
+            }
+        }
+
         /// <#Description#>
         var fontWeight: Font.Weight {
             switch self {
