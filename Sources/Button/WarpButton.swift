@@ -95,6 +95,101 @@ extension Warp {
     }
 }
 
+extension Warp.Button {
+    /// <#Description#>
+    public static func create(
+        for buttonType: Warp.ButtonType,
+        title: String,
+        icon: String? = nil,
+        action: @escaping () -> Void,
+        size: Warp.ButtonSize = .big,
+        isEnabled: Bool = true,
+        fullWidth: Bool = false
+    ) -> Warp.Button {
+        switch buttonType {
+            case .primary:
+                return createPrimary(
+                    title: title,
+                    icon: icon,
+                    action: action,
+                    size: size,
+                    isEnabled: isEnabled,
+                    fullWidth: fullWidth
+                )
+
+            case .secondary:
+                return createSecondary(
+                    title: title,
+                    icon: icon,
+                    action: action,
+                    size: size,
+                    isEnabled: isEnabled,
+                    fullWidth: fullWidth
+                )
+
+            case .tertiary:
+                return createTertiary(
+                    title: title,
+                    icon: icon,
+                    action: action,
+                    size: size,
+                    isEnabled: isEnabled,
+                    fullWidth: fullWidth
+                )
+
+            case .critical:
+                return createCritical(
+                    title: title,
+                    icon: icon,
+                    action: action,
+                    size: size,
+                    isEnabled: isEnabled,
+                    fullWidth: fullWidth
+                )
+
+            case .criticalTertiary:
+                return createCriticalTertiary(
+                    title: title,
+                    icon: icon,
+                    action: action,
+                    size: size,
+                    isEnabled: isEnabled,
+                    fullWidth: fullWidth
+                )
+
+            case .utility:
+                return createUtility(
+                    title: title,
+                    icon: icon,
+                    action: action,
+                    size: size,
+                    isEnabled: isEnabled,
+                    fullWidth: fullWidth
+                )
+
+            case .utilityTertiary:
+                return createUtilityTertiary(
+                    title: title,
+                    icon: icon,
+                    action: action,
+                    size: size,
+                    isEnabled: isEnabled,
+                    fullWidth: fullWidth
+                )
+
+            case .utilityOverlay:
+                return createUtilityOverlay(
+                    title: title,
+                    icon: icon,
+                    action: action,
+                    size: size,
+                    isEnabled: isEnabled,
+                    fullWidth: fullWidth
+                )
+        }
+    }
+}
+
 private struct WarpButtonPreview: PreviewProvider {
     static var previews: some View {
         ScrollView(showsIndicators: false) {
