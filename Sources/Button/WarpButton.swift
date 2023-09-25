@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 
 extension Warp {
+    /// <#Description#>
     public struct Button: View {
         /// <#Description#>
         private let title: String
@@ -95,6 +96,7 @@ extension Warp {
     }
 }
 
+/// Helper constructors introduced to extend image capabilities.
 extension Warp.Button {
     init(
         title: String,
@@ -142,7 +144,7 @@ extension Warp.Button {
 }
 
 extension Warp.Button {
-    /// <#Description#>
+    /// Factory method.
     public static func create(
         for buttonType: Warp.ButtonType,
         title: String,
