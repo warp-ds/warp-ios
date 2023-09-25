@@ -270,25 +270,43 @@ extension Warp.ButtonType {
         }
     }
 
-    /// <#Description#>
-    func verticalPadding(from size: Warp.ButtonSize) -> CGFloat {
+    private var isUtilityRelatedButton: Bool {
         switch self {
             case .utility, .utilityTertiary, .utilityOverlay:
-                return 8
+                return true
 
             default:
-                return size == .big ? 13 : 8
+                return false
         }
     }
 
-    /// <#Description#>
-    func horizontalPadding(from size: Warp.ButtonSize) -> CGFloat {
-        switch self {
-            case .utility, .utilityTertiary, .utilityOverlay:
-                return 8
+    private var utilityButtonDefaultPadding: CGFloat {
+        return 8
+    }
 
-            default:
-                return size == .big ? 16 : 12
+    /// Button label vertical margin.
+    func getVerticalPadding(for size: Warp.ButtonSize) -> CGFloat {
+        if isUtilityRelatedButton {
+            return utilityButtonDefaultPadding
         }
+
+        if size == .big {
+            return 13
+        }
+
+        return 8
+    }
+
+    /// Button label horizontal margin.
+    func getHorizontalPadding(for size: Warp.ButtonSize) -> CGFloat {
+        if isUtilityRelatedButton {
+            return utilityButtonDefaultPadding
+        }
+
+        if size == .big {
+            return 16
+        }
+
+        return 12
     }
 }
