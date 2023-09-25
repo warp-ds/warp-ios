@@ -54,7 +54,7 @@ extension Warp {
             )
             .disabled(!isEnabled)
             .buttonStyle(
-                WarpButtonStyle(
+                .warp(
                     type: type,
                     size: size,
                     colorProvider: colorProvider,
