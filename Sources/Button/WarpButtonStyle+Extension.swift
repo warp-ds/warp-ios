@@ -296,8 +296,10 @@ extension Warp.Button {
             self.colorProvider = colorProvider
         }
 
+        // MARK: Foreground color
+
         /// <#Description#>
-        func makeNormalForegroundColor() -> Color {
+        private var normalForegroundColor: Color {
             switch type {
                 case .primary:
                     return colorProvider.buttonPrimaryText
@@ -326,7 +328,7 @@ extension Warp.Button {
         }
 
         /// <#Description#>
-        func makeDisabledForegroundColor() -> Color {
+        private var disabledForegroundColor: Color {
             switch type {
                 case .primary:
                     return colorProvider.buttonPrimaryTextDisabled
@@ -351,8 +353,18 @@ extension Warp.Button {
             }
         }
 
+        func makeForegroundColor(isEnabled: Bool) -> Color {
+            if !isEnabled {
+                return disabledForegroundColor
+            }
+
+            return normalForegroundColor
+        }
+
+        // MARK: Background color
+
         /// <#Description#>
-        func makeNormalBackgroundColor() -> Color {
+        private var normalBackgroundColor: Color {
             switch type {
                 case .primary:
                     return colorProvider.buttonPrimaryBackground
@@ -381,7 +393,7 @@ extension Warp.Button {
         }
 
         /// <#Description#>
-        func makePressedBackgroundColor() -> Color {
+        private var pressedBackgroundColor: Color {
             switch type {
                 case .primary:
                     return colorProvider.buttonPrimaryBackgroundActive
@@ -410,7 +422,7 @@ extension Warp.Button {
         }
 
         /// <#Description#>
-        func makeDisabledBackgroundColor() -> Color {
+        private var disabledBackgroundColor: Color {
             switch type {
                 case .primary:
                     return colorProvider.buttonPrimaryBackgroundDisabled
@@ -426,8 +438,21 @@ extension Warp.Button {
             }
         }
 
-        /// <#Description#>
-        func makeNormalBorderColor() -> Color {
+        func makeBackgroundColor(isEnabled: Bool, isPressed: Bool) -> Color {
+            if !isEnabled {
+                return disabledBackgroundColor
+            }
+
+            if isPressed {
+                return pressedBackgroundColor
+            }
+
+            return normalBackgroundColor
+        }
+
+        // MARK: Border color
+
+        private var normalBorderColor: Color {
             switch type {
                 case .primary:
                     return colorProvider.buttonPrimaryBorder
@@ -452,12 +477,7 @@ extension Warp.Button {
             }
         }
 
-        func makeDisabledBorderColor() -> Color {
-            return colorProvider.buttonDisabledQuietBorder
-        }
-
-        /// <#Description#>
-        func makePressedBorderColor() -> Color {
+        private var pressedBorderColor: Color {
             switch type {
                 case .primary:
                     return colorProvider.buttonPrimaryBorderActive
@@ -483,6 +503,23 @@ extension Warp.Button {
                 case .utilityOverlay:
                     return colorProvider.buttonUtilityOverlayBackground
             }
+        }
+
+        private var disabledBorderColor: Color {
+            return colorProvider.buttonDisabledQuietBorder
+        }
+
+        /// <#Description#>
+        func makeBorderColor(isEnabled: Bool, isPressed: Bool) -> Color {
+            if !isEnabled {
+                return disabledBorderColor
+            }
+
+            if isPressed {
+                return pressedBorderColor
+            }
+
+            return normalBorderColor
         }
     }
 }
