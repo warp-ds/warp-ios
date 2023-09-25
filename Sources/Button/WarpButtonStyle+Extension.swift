@@ -44,7 +44,7 @@ public struct WarpButtonStyle: ButtonStyle {
             return type.foregroundColor
         }
 
-        return colorProvider.buttonDisabledText
+        return type.disabledForegroundColor
     }
 
     private var borderColor: Color {
