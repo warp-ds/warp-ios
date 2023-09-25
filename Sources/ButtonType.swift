@@ -99,12 +99,42 @@ extension Warp {
         }
         
         /// <#Description#>
+        var pressedBackgroundColor: Color {
+            let colorProvider = Config.colorProvider
+
+            switch self {
+                case .primary:
+                    return colorProvider.buttonPrimaryBackgroundActive
+
+                case .secondary:
+                    return colorProvider.buttonSecondaryBackgroundActive
+
+                case .tertiary:
+                    return colorProvider.buttonQuietBackgroundActive
+
+                case .critical:
+                    return colorProvider.buttonNegativeBackgroundActive
+
+                case .criticalTertiary:
+                    return colorProvider.buttonNegativeQuietBackgroundActive
+
+                case .utility:
+                    return colorProvider.buttonUtilityBackgroundActive
+
+                case .utilityTertiary:
+                    return colorProvider.buttonUtilityQuietBackgroundActive
+
+                case .utilityOverlay:
+                    return colorProvider.buttonUtilityOverlayBackground
+            }
+        }
+
+        /// <#Description#>
         var disabledBackgroundColor: Color {
             let colorProvider = Config.colorProvider
 
             switch self {
                 case .primary:
-                    return colorProvider.buttonDisabledBackground
 
                 case .secondary:
                     return colorProvider.buttonDisabledBackground
@@ -156,7 +186,6 @@ extension Warp {
                     return .clear
             }
         }
-        
         /// <#Description#>
         var fontWeight: Font.Weight {
             switch self {
