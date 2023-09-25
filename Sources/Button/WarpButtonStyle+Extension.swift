@@ -89,7 +89,7 @@ public struct WarpButtonStyle: ButtonStyle {
             .padding(.horizontal, type.horizontalPadding(from: size))
             .background(backgroundColor)
             .overlay(overlayView)
-            .cornerRadius(type.borderWidth)
+            .cornerRadius(type.cornerRadius)
             .shadow(
                 color: FinnColors.gray700.opacity(0.5),
                 radius: shadowRadius,

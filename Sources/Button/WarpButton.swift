@@ -78,18 +78,12 @@ extension Warp {
         private func createIconIfPossible() -> some View {
             if let icon = icon {
                 Image(systemName: icon)
-//                    .font(type.fontSize)
                     .padding(-2)
             }
         }
 
         private var titleView: some View {
             Text(title)
-//                .font(fontSize)
-//                .fontWeight(fontWeight)
-//                .minimumScaleFactor(0.1)
-//                .lineLimit(lineLimit)
-//                .truncationMode(truncationMode)
         }
 
         @ViewBuilder
