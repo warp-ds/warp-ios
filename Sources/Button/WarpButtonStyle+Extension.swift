@@ -152,202 +152,204 @@ public extension ButtonStyle where Self == WarpButtonStyle {
 }
 
 // ColorProviderProxy
-struct ColorFactory {
-    private let type: Warp.ButtonType
+extension Warp.Button {
+    struct ColorFactory {
+        private let type: Warp.ButtonType
 
-    private let colorProvider: ColorProvider
+        private let colorProvider: ColorProvider
 
-    init(for type: Warp.ButtonType, consuming colorProvider: ColorProvider) {
-        self.type = type
-        self.colorProvider = colorProvider
-    }
-
-    /// <#Description#>
-    func makeNormalForegroundColor() -> Color {
-        switch type {
-            case .primary:
-                return colorProvider.buttonPrimaryText
-
-            case .secondary:
-                return colorProvider.buttonSecondaryText
-
-            case .tertiary:
-                return colorProvider.buttonQuietText
-
-            case .critical:
-                return colorProvider.buttonNegativeText
-
-            case .criticalTertiary:
-                return colorProvider.buttonNegativeQuietText
-
-            case .utility:
-                return colorProvider.buttonUtilityText
-
-            case .utilityTertiary:
-                return colorProvider.buttonUtilityQuietText
-
-            case .utilityOverlay:
-                return colorProvider.buttonUtilityQuietText
+        init(for type: Warp.ButtonType, consuming colorProvider: ColorProvider) {
+            self.type = type
+            self.colorProvider = colorProvider
         }
-    }
 
-    /// <#Description#>
-    func makeDisabledForegroundColor() -> Color {
-        switch type {
-            case .primary:
-                return colorProvider.buttonPrimaryTextDisabled
+        /// <#Description#>
+        func makeNormalForegroundColor() -> Color {
+            switch type {
+                case .primary:
+                    return colorProvider.buttonPrimaryText
 
-            case .secondary:
-                return colorProvider.buttonDisabledText
-                // Wrong color palette, using default.
-                // return colorProvider.buttonSecondaryTextDisabled
+                case .secondary:
+                    return colorProvider.buttonSecondaryText
 
-            case .tertiary:
-                return colorProvider.buttonDisabledText
-                // Wrong color palette, using default.
-                // return colorProvider.buttonDisabledQuietText
+                case .tertiary:
+                    return colorProvider.buttonQuietText
 
-            case .critical, .criticalTertiary:
-                return colorProvider.buttonDisabledText
+                case .critical:
+                    return colorProvider.buttonNegativeText
 
-            case .utility, .utilityTertiary, .utilityOverlay:
-                return colorProvider.buttonDisabledText
-                // Wrong color palette, using default.
-                //return colorProvider.buttonUtilityTextDisabled
+                case .criticalTertiary:
+                    return colorProvider.buttonNegativeQuietText
+
+                case .utility:
+                    return colorProvider.buttonUtilityText
+
+                case .utilityTertiary:
+                    return colorProvider.buttonUtilityQuietText
+
+                case .utilityOverlay:
+                    return colorProvider.buttonUtilityQuietText
+            }
         }
-    }
 
-    /// <#Description#>
-    func makeNormalBackgroundColor() -> Color {
-        switch type {
-            case .primary:
-                return colorProvider.buttonPrimaryBackground
+        /// <#Description#>
+        func makeDisabledForegroundColor() -> Color {
+            switch type {
+                case .primary:
+                    return colorProvider.buttonPrimaryTextDisabled
 
-            case .secondary:
-                return colorProvider.buttonSecondaryBackground
+                case .secondary:
+                    return colorProvider.buttonDisabledText
+                    // Wrong color palette, using default.
+                    // return colorProvider.buttonSecondaryTextDisabled
 
-            case .tertiary:
-                return colorProvider.buttonQuietBackground
+                case .tertiary:
+                    return colorProvider.buttonDisabledText
+                    // Wrong color palette, using default.
+                    // return colorProvider.buttonDisabledQuietText
 
-            case .critical:
-                return colorProvider.buttonNegativeBackground
+                case .critical, .criticalTertiary:
+                    return colorProvider.buttonDisabledText
 
-            case .criticalTertiary:
-                return colorProvider.buttonNegativeQuietBackground
-
-            case .utility:
-                return colorProvider.buttonUtilityBackground
-
-            case .utilityTertiary:
-                return colorProvider.buttonUtilityQuietBackground
-
-            case .utilityOverlay:
-                return colorProvider.buttonUtilityOverlayBackground
+                case .utility, .utilityTertiary, .utilityOverlay:
+                    return colorProvider.buttonDisabledText
+                    // Wrong color palette, using default.
+                    //return colorProvider.buttonUtilityTextDisabled
+            }
         }
-    }
 
-    /// <#Description#>
-    func makePressedBackgroundColor() -> Color {
-        switch type {
-            case .primary:
-                return colorProvider.buttonPrimaryBackgroundActive
+        /// <#Description#>
+        func makeNormalBackgroundColor() -> Color {
+            switch type {
+                case .primary:
+                    return colorProvider.buttonPrimaryBackground
 
-            case .secondary:
-                return colorProvider.buttonSecondaryBackgroundActive
+                case .secondary:
+                    return colorProvider.buttonSecondaryBackground
 
-            case .tertiary:
-                return colorProvider.buttonQuietBackgroundActive
+                case .tertiary:
+                    return colorProvider.buttonQuietBackground
 
-            case .critical:
-                return colorProvider.buttonNegativeBackgroundActive
+                case .critical:
+                    return colorProvider.buttonNegativeBackground
 
-            case .criticalTertiary:
-                return colorProvider.buttonNegativeQuietBackgroundActive
+                case .criticalTertiary:
+                    return colorProvider.buttonNegativeQuietBackground
 
-            case .utility:
-                return colorProvider.buttonUtilityBackgroundActive
+                case .utility:
+                    return colorProvider.buttonUtilityBackground
 
-            case .utilityTertiary:
-                return colorProvider.buttonUtilityQuietBackgroundActive
+                case .utilityTertiary:
+                    return colorProvider.buttonUtilityQuietBackground
 
-            case .utilityOverlay:
-                return colorProvider.buttonUtilityOverlayBackground
+                case .utilityOverlay:
+                    return colorProvider.buttonUtilityOverlayBackground
+            }
         }
-    }
 
-    /// <#Description#>
-    func makeDisabledBackgroundColor() -> Color {
-        switch type {
-            case .primary:
-                return colorProvider.buttonPrimaryBackgroundDisabled
+        /// <#Description#>
+        func makePressedBackgroundColor() -> Color {
+            switch type {
+                case .primary:
+                    return colorProvider.buttonPrimaryBackgroundActive
 
-            case .secondary:
-                return colorProvider.buttonSecondaryBackgroundDisabled
+                case .secondary:
+                    return colorProvider.buttonSecondaryBackgroundActive
 
-            case .tertiary, .critical, .criticalTertiary:
-                return colorProvider.buttonDisabledBackground
+                case .tertiary:
+                    return colorProvider.buttonQuietBackgroundActive
 
-            case .utility, .utilityTertiary, .utilityOverlay:
-                return colorProvider.buttonUtilityBackgroundDisabled
+                case .critical:
+                    return colorProvider.buttonNegativeBackgroundActive
+
+                case .criticalTertiary:
+                    return colorProvider.buttonNegativeQuietBackgroundActive
+
+                case .utility:
+                    return colorProvider.buttonUtilityBackgroundActive
+
+                case .utilityTertiary:
+                    return colorProvider.buttonUtilityQuietBackgroundActive
+
+                case .utilityOverlay:
+                    return colorProvider.buttonUtilityOverlayBackground
+            }
         }
-    }
 
-    /// <#Description#>
-    func makeNormalBorderColor() -> Color {
-        switch type {
-            case .primary:
-                return colorProvider.buttonPrimaryBorder
+        /// <#Description#>
+        func makeDisabledBackgroundColor() -> Color {
+            switch type {
+                case .primary:
+                    return colorProvider.buttonPrimaryBackgroundDisabled
 
-            case .secondary:
-                return colorProvider.buttonSecondaryBorder
+                case .secondary:
+                    return colorProvider.buttonSecondaryBackgroundDisabled
 
-            case .tertiary:
-                return colorProvider.buttonQuietBackground
+                case .tertiary, .critical, .criticalTertiary:
+                    return colorProvider.buttonDisabledBackground
 
-            case .critical:
-                return colorProvider.buttonNegativeBorder
-
-            case .criticalTertiary:
-                return colorProvider.buttonNegativeQuietBorder
-
-            case .utility:
-                return colorProvider.buttonUtilityBorder
-
-            default:
-                return .clear
+                case .utility, .utilityTertiary, .utilityOverlay:
+                    return colorProvider.buttonUtilityBackgroundDisabled
+            }
         }
-    }
 
-    func makeDisabledBorderColor() -> Color {
-        return colorProvider.buttonDisabledQuietBorder
-    }
+        /// <#Description#>
+        func makeNormalBorderColor() -> Color {
+            switch type {
+                case .primary:
+                    return colorProvider.buttonPrimaryBorder
 
-    /// <#Description#>
-    func makePressedBorderColor() -> Color {
-        switch type {
-            case .primary:
-                return colorProvider.buttonPrimaryBorderActive
+                case .secondary:
+                    return colorProvider.buttonSecondaryBorder
 
-            case .secondary:
-                return colorProvider.buttonSecondaryBorderActive
+                case .tertiary:
+                    return colorProvider.buttonQuietBackground
 
-            case .tertiary:
-                return .clear
+                case .critical:
+                    return colorProvider.buttonNegativeBorder
 
-            case .critical:
-                return colorProvider.buttonNegativeBorderActive
+                case .criticalTertiary:
+                    return colorProvider.buttonNegativeQuietBorder
 
-            case .criticalTertiary:
-                return colorProvider.buttonNegativeQuietBorderActive
+                case .utility:
+                    return colorProvider.buttonUtilityBorder
 
-            case .utility:
-                return colorProvider.buttonUtilityBorderActive
+                default:
+                    return .clear
+            }
+        }
 
-            case .utilityTertiary:
-                return colorProvider.buttonUtilityQuietBorderActive
+        func makeDisabledBorderColor() -> Color {
+            return colorProvider.buttonDisabledQuietBorder
+        }
 
-            case .utilityOverlay:
-                return colorProvider.buttonUtilityOverlayBackground
+        /// <#Description#>
+        func makePressedBorderColor() -> Color {
+            switch type {
+                case .primary:
+                    return colorProvider.buttonPrimaryBorderActive
+
+                case .secondary:
+                    return colorProvider.buttonSecondaryBorderActive
+
+                case .tertiary:
+                    return .clear
+
+                case .critical:
+                    return colorProvider.buttonNegativeBorderActive
+
+                case .criticalTertiary:
+                    return colorProvider.buttonNegativeQuietBorderActive
+
+                case .utility:
+                    return colorProvider.buttonUtilityBorderActive
+
+                case .utilityTertiary:
+                    return colorProvider.buttonUtilityQuietBorderActive
+
+                case .utilityOverlay:
+                    return colorProvider.buttonUtilityOverlayBackground
+            }
         }
     }
 }
