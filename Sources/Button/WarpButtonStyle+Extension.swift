@@ -227,10 +227,13 @@ extension Warp.Button {
     /// Factory responsible for creating button, UI element color,
     /// based on button type and current state.
     struct ColorFactory {
+        /// Button type.
         private let type: Warp.ButtonType
-
+        
+        /// Object responsible for providing colors in different environments and variants.
         private let colorProvider: ColorProvider
-
+        
+        /// Flag describing is button enabled for interactions.
         private let isEnabled: Bool
 
         init(for type: Warp.ButtonType, consuming colorProvider: ColorProvider, isEnabled: Bool) {
