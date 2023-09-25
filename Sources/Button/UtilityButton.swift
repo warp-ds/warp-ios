@@ -8,7 +8,7 @@ extension Warp.Button {
     static func createUtility(
         title: String,
         icon: Image? = nil,
-        action: @escaping () -> Void,
+        action: @escaping () -> Void = {},
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false
@@ -23,32 +23,14 @@ extension Warp.Button {
             fullWidth: fullWidth
         )
     }
-
-    /// <#Description#>
-    static func createDisabledUtility(
-        title: String,
-        icon: Image? = nil,
-        size: Warp.ButtonSize = .big,
-        fullWidth: Bool = false
-    ) -> Warp.Button {
-        Warp.Button(
-            title: title,
-            icon: icon,
-            action: {},
-            type: utilityType,
-            size: size,
-            isEnabled: false,
-            fullWidth: fullWidth
-        )
-    }
 }
 
 private struct UtilityButtonPreview: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 12) {
-            Warp.Button.createUtility(title: "Button", action: {})
+            Warp.Button.createUtility(title: "Button")
 
-            Warp.Button.createDisabledUtility(title: "Disabled button")
+            Warp.Button.createUtility(title: "Disabled button", isEnabled: false)
         }
     }
 }

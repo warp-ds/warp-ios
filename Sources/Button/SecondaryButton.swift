@@ -8,7 +8,7 @@ extension Warp.Button {
     static func createSecondary(
         title: String,
         icon: Image? = nil,
-        action: @escaping () -> Void,
+        action: @escaping () -> Void = {},
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false
@@ -23,32 +23,14 @@ extension Warp.Button {
             fullWidth: fullWidth
         )
     }
-
-    /// <#Description#>
-    static func createDisabledSecondary(
-        title: String,
-        icon: Image? = nil,
-        size: Warp.ButtonSize = .big,
-        fullWidth: Bool = false
-    ) -> Warp.Button {
-        Warp.Button(
-            title: title,
-            icon: icon,
-            action: {},
-            type: secondaryType,
-            size: size,
-            isEnabled: false,
-            fullWidth: fullWidth
-        )
-    }
 }
 
 private struct SecondaryButtonPreview: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 8) {
-            Warp.Button.createSecondary(title: "Button", action: {})
+            Warp.Button.createSecondary(title: "Button")
 
-            Warp.Button.createDisabledSecondary(title: "Disabled button")
+            Warp.Button.createSecondary(title: "Disabled button", isEnabled: false)
         }
     }
 }

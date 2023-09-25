@@ -8,7 +8,7 @@ extension Warp.Button {
     static func createCritical(
         title: String,
         icon: Image? = nil,
-        action: @escaping () -> Void,
+        action: @escaping () -> Void = {},
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false
@@ -23,32 +23,14 @@ extension Warp.Button {
             fullWidth: fullWidth
         )
     }
-
-    /// <#Description#>
-    static func createDisabledCritical(
-        title: String,
-        icon: Image? = nil,
-        size: Warp.ButtonSize = .big,
-        fullWidth: Bool = false
-    ) -> Warp.Button {
-        Warp.Button(
-            title: title,
-            icon: icon,
-            action: {},
-            type: criticalType,
-            size: size,
-            isEnabled: false,
-            fullWidth: fullWidth
-        )
-    }
 }
 
 private struct CriticalButtonPreview: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 8) {
-            Warp.Button.createCritical(title: "Button", action: {})
+            Warp.Button.createCritical(title: "Button")
 
-            Warp.Button.createDisabledCritical(title: "Disabled button")
+            Warp.Button.createCritical(title: "Disabled button", isEnabled: false)
         }
     }
 }

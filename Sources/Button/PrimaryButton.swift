@@ -8,7 +8,7 @@ extension Warp.Button {
     static func createPrimary(
         title: String,
         icon: Image? = nil,
-        action: @escaping () -> Void,
+        action: @escaping () -> Void = {},
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false
@@ -23,32 +23,14 @@ extension Warp.Button {
             fullWidth: fullWidth
         )
     }
-
-    /// <#Description#>
-    static func createDisabledPrimary(
-        title: String,
-        icon: Image? = nil,
-        size: Warp.ButtonSize = .big,
-        fullWidth: Bool = false
-    ) -> Warp.Button {
-        Warp.Button(
-            title: title,
-            icon: icon,
-            action: {},
-            type: primaryType,
-            size: size,
-            isEnabled: false,
-            fullWidth: fullWidth
-        )
-    }
 }
 
 private struct PrimaryButtonPreview: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 8) {
-            Warp.Button.createPrimary(title: "Button", action: {})
+            Warp.Button.createPrimary(title: "Button")
 
-            Warp.Button.createDisabledPrimary(title: "Disabled button")
+            Warp.Button.createPrimary(title: "Disabled button", isEnabled: false)
         }
     }
 }
