@@ -4,7 +4,7 @@ import SwiftUI
 extension Warp.Button {
     private static let utilityTertiaryType: Warp.ButtonType = .utilityTertiary
 
-    /// <#Description#>
+    /// Factory method for creating warp button with `UtilityTertiary` style.
     static func createUtilityTertiary(
         title: String,
         icon: Image? = nil,

@@ -4,7 +4,7 @@ import SwiftUI
 extension Warp.Button {
     private static let secondaryType: Warp.ButtonType = .secondary
 
-    /// <#Description#>
+    /// Factory method for creating warp button with `Secondary` style.
     static func createSecondary(
         title: String,
         icon: Image? = nil,

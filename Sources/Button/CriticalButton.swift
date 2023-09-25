@@ -4,7 +4,7 @@ import SwiftUI
 extension Warp.Button {
     private static let criticalType: Warp.ButtonType = .critical
 
-    /// <#Description#>
+    /// Factory method for creating warp button with `Critical` style.
     static func createCritical(
         title: String,
         icon: Image? = nil,
