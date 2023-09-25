@@ -7,7 +7,7 @@ extension Warp.Button {
     /// <#Description#>
     public static func createCritical(
         title: String,
-        icon: String? = nil,
+        icon: Image? = nil,
         action: @escaping () -> Void,
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
@@ -27,7 +27,7 @@ extension Warp.Button {
     /// <#Description#>
     public static func createDisabledCritical(
         title: String,
-        icon: String? = nil,
+        icon: Image? = nil,
         size: Warp.ButtonSize = .big,
         fullWidth: Bool = false
     ) -> Warp.Button {

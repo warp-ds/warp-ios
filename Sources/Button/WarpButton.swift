@@ -146,7 +146,7 @@ extension Warp.Button {
     public static func create(
         for buttonType: Warp.ButtonType,
         title: String,
-        icon: String? = nil,
+        icon: Image? = nil,
         action: @escaping () -> Void,
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
