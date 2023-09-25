@@ -76,16 +76,22 @@ extension Warp {
                     return colorProvider.buttonPrimaryTextDisabled
 
                 case .secondary:
-                    return colorProvider.buttonSecondaryTextDisabled
+                    return colorProvider.buttonDisabledText
+                    // Wrong color pallete, using default.
+                    // return colorProvider.buttonSecondaryTextDisabled
 
                 case .tertiary:
-                    return colorProvider.buttonDisabledQuietText
+                    return colorProvider.buttonDisabledText
+                    // Wrong color pallete, using default.
+                    // return colorProvider.buttonDisabledQuietText
 
                 case .critical, .criticalTertiary:
                     return colorProvider.buttonDisabledText
 
                 case .utility, .utilityTertiary, .utilityOverlay:
-                    return colorProvider.buttonUtilityTextDisabled
+                    return colorProvider.buttonDisabledText
+                    // Wrong color pallete, using default.
+                    //return colorProvider.buttonUtilityTextDisabled
             }
         }
 
