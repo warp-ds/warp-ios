@@ -41,28 +41,6 @@ extension Warp {
     }
 }
 
-// MARK: Typography
-
-extension Warp.ButtonType {
-    /// <#Description#>
-    var fontWeight: Font.Weight {
-        if isUtilityRelatedButton {
-            return .regular
-        }
-
-        return .medium
-    }
-
-    /// <#Description#>
-    var fontSize: Font {
-        if isUtilityRelatedButton {
-            return .caption
-        }
-
-        return .callout
-    }
-}
-
 // MARK: UI Metrics
 
 extension Warp.ButtonType {
