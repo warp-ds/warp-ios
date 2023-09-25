@@ -5,7 +5,7 @@ extension Warp.Button {
     private static let utilityOverlayType: Warp.ButtonType = .utilityOverlay
 
     /// <#Description#>
-    public static func createUtilityOverlay(
+    static func createUtilityOverlay(
         title: String,
         icon: Image? = nil,
         action: @escaping () -> Void,
@@ -25,7 +25,7 @@ extension Warp.Button {
     }
 
     /// <#Description#>
-    public static func createDisabledUtilityOverlay(
+    static func createDisabledUtilityOverlay(
         title: String,
         icon: Image? = nil,
         size: Warp.ButtonSize = .big,
