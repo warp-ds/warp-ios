@@ -29,7 +29,7 @@ extension Warp {
         /// <#Description#>
         case utilityOverlay
 
-        private var isUtilityRelatedButton: Bool {
+        var isUtilityRelatedButton: Bool {
             switch self {
                 case .utility, .utilityTertiary, .utilityOverlay:
                     return true
@@ -38,61 +38,5 @@ extension Warp {
                     return false
             }
         }
-    }
-}
-
-// MARK: UI Metrics
-
-extension Warp.ButtonType {
-    /// <#Description#>
-    var borderWidth: CGFloat {
-        switch self {
-            case .utility:
-                return 2
-
-            default:
-                return 4
-        }
-    }
-
-    /// <#Description#>
-    var cornerRadius: CGFloat {
-        switch self {
-            case .utility:
-                return 4
-
-            default:
-                return 8
-        }
-    }
-
-    private var utilityButtonDefaultPadding: CGFloat {
-        return 8
-    }
-
-    /// Button label vertical margin.
-    func getVerticalPadding(for size: Warp.ButtonSize) -> CGFloat {
-        if isUtilityRelatedButton {
-            return utilityButtonDefaultPadding
-        }
-
-        if size == .big {
-            return 13
-        }
-
-        return 8
-    }
-
-    /// Button label horizontal margin.
-    func getHorizontalPadding(for size: Warp.ButtonSize) -> CGFloat {
-        if isUtilityRelatedButton {
-            return utilityButtonDefaultPadding
-        }
-
-        if size == .big {
-            return 16
-        }
-
-        return 12
     }
 }
