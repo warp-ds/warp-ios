@@ -238,56 +238,56 @@ extension Warp.Button {
     }
 }
 
+extension Warp.ButtonType {
+    fileprivate static var allCases: [Warp.ButtonType] = [
+        .primary,
+        .secondary,
+        .tertiary,
+        .critical,
+        .criticalTertiary,
+        .utility,
+        .utilityTertiary,
+        .utilityOverlay
+    ]
+}
+
 private struct WarpButtonPreview: PreviewProvider {
     static var previews: some View {
         ScrollView(showsIndicators: false) {
-            Group {
-                Warp.Button.createPrimary(title: "Primary button", action: {})
-
-                Warp.Button.createDisabledPrimary(title: "Disabled primary button")
+            VStack (alignment: .leading) {
+                ForEach(Warp.ButtonType.allCases, id: \.self) { buttonType in
+                    createView(for: buttonType)
+                }
             }
-
-            Group {
-                Warp.Button.createSecondary(title: "Secondary button", action: {})
-
-                Warp.Button.createDisabledSecondary(title: "Disabled secondary button")
-            }
-
-            Group {
-                Warp.Button.createTertiary(title: "Tertiary button", action: {})
-
-                Warp.Button.createDisabledTertiary(title: "Disabled tertiary button")
-            }
-
-            Group {
-                Warp.Button.createCritical(title: "Critical button", action: {})
-
-                Warp.Button.createDisabledCritical(title: "Disabled critical button")
-            }
-
-            Group {
-                Warp.Button.createCriticalTertiary(title: "Critical tertiary button", action: {})
-
-                Warp.Button.createDisabledCriticalTertiary(title: "Disabled critical tertiary button")
-            }
-
-            Group {
-                Warp.Button.createUtility(title: "Utility button", action: {})
-
-                Warp.Button.createDisabledUtility(title: "Disabled utility button")
-            }
-
-            Group {
-                Warp.Button.createUtilityTertiary(title: "Utility tertiary button", action: {})
-
-                Warp.Button.createDisabledUtilityTertiaryType(title: "Disabled utility tertiary button")
-            }
-
-            Group {
-                Warp.Button.createUtilityOverlay(title: "Utility overlay button", action: {})
-
-                Warp.Button.createDisabledUtilityOverlay(title: "Disabled utility overlay button")
-            }
+            .padding(.horizontal)
         }
+    }
+
+    private static func createView(for buttonType: Warp.ButtonType) -> some View {
+        let name = String(describing: buttonType)
+        let capitalizedName = name.capitalized
+
+        return GroupBox(
+            content: {
+                VStack {
+                    // Normal
+                    Warp.Button.create(
+                        for: buttonType,
+                        title: "\(capitalizedName) button",
+                        action: {}
+                    )
+
+                    // Disabled
+                    Warp.Button.create(
+                        for: buttonType,
+                        title: "Disabled \(name) button",
+                        action: {},
+                        isEnabled: false
+                    )
+                }
+            }, label: {
+                Text(capitalizedName)
+            }
+        )
     }
 }
