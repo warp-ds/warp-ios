@@ -2,7 +2,7 @@ import Foundation
 
 extension Warp {
     /// <#Description#>
-    public enum ButtonSize {
+    public enum ButtonSize: Equatable, Comparable {
         case big
         case small
     }
