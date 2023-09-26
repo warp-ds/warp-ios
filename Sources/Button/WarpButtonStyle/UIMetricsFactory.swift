@@ -2,7 +2,7 @@ import Foundation
 
 extension Warp.Button {
     /// Factory responsible for resolving button internal element UI drawing needs.
-    struct MetricsFactory {
+    struct UIMetricsFactory {
         /// Button type.
         private let type: Warp.ButtonType
         

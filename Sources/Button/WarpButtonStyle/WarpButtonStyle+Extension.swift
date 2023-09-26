@@ -7,8 +7,8 @@ public struct WarpButtonStyle: ButtonStyle {
     private let colorFactory: Warp.Button.ColorFactory
     
     /// Object responsible for creating UI metrics based on `ButtonType`, `ButtonSize`.
-    private let metricsFactory: Warp.Button.MetricsFactory
-    
+    private let metricsFactory: Warp.Button.UIMetricsFactory
+
     /// Object responsible for creating button title typography requirements based on `ButtonType`.
     private let typographyFactory: Warp.Button.TypographyFactory
 
@@ -24,7 +24,7 @@ public struct WarpButtonStyle: ButtonStyle {
             isEnabled: isEnabled
         )
 
-        metricsFactory = Warp.Button.MetricsFactory(
+        metricsFactory = Warp.Button.UIMetricsFactory(
             type: type,
             size: size,
             isEnabled: isEnabled
@@ -108,7 +108,7 @@ private struct TypographyModifiers: ViewModifier {
 private struct UIModifiers: ViewModifier {
     let colorFactory: Warp.Button.ColorFactory
 
-    let metricsFactory: Warp.Button.MetricsFactory
+    let metricsFactory: Warp.Button.UIMetricsFactory
 
     let isPressed: Bool
 
