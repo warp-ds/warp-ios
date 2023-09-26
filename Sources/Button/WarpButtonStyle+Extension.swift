@@ -89,50 +89,6 @@ public extension ButtonStyle where Self == WarpButtonStyle {
 }
 
 extension Warp.Button {
-    /// Factory responsible for resloving button label's typography needs.
-    struct TypographyFactory {
-        private let type: Warp.ButtonType
-
-        init(type: Warp.ButtonType) {
-            self.type = type
-        }
-
-        /// <#Description#>
-        var font: Font {
-            let font: Font
-
-            if type.isUtilityRelatedButton {
-                font = .caption
-            } else {
-                font = .callout
-            }
-
-            return font.weight(fontWeight)
-        }
-
-        private var fontWeight: Font.Weight {
-            if type.isUtilityRelatedButton {
-                return .regular
-            }
-
-            return .medium
-        }
-        
-        /// <#Description#>
-        var lineLimit: Int {
-            /*type == .critical ? Int.max : */
-            1
-        }
-        
-        /// <#Description#>
-        var truncationMode: Text.TruncationMode {
-            /*type == .primary ? .tail : */
-            .middle
-        }
-    }
-}
-
-extension Warp.Button {
     /// Factory responsible for resolving button internal element UI drawing needs.
     struct MetricsFactory {
         private let type: Warp.ButtonType
