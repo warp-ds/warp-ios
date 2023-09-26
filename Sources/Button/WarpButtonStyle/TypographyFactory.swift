@@ -7,7 +7,7 @@ extension Warp.Button {
     struct TypographyFactory {
         private let type: Warp.ButtonType
 
-        init(type: Warp.ButtonType) {
+        init(for type: Warp.ButtonType) {
             self.type = type
         }
 

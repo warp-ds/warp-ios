@@ -30,7 +30,7 @@ public struct WarpButtonStyle: ButtonStyle {
             isEnabled: isEnabled
         )
 
-        typographyFactory = Warp.Button.TypographyFactory(type: type)
+        typographyFactory = Warp.Button.TypographyFactory(for: type)
     }
 
     public func makeBody(configuration: Configuration) -> some View {
