@@ -34,30 +34,23 @@ public struct WarpButtonStyle: ButtonStyle {
     }
 
     public func makeBody(configuration: Configuration) -> some View {
-        let backgroundColor = colorFactory.makeBackgroundColor(
-            isPressed: configuration.isPressed
+        let isPressed = configuration.isPressed
+
+        let typographyModifiers = TypographyModifiers(
+            typographyFactory: typographyFactory,
+            colorFactory: colorFactory
         )
 
-        let foregroundColor = colorFactory.makeForegroundColor()
-
-        let overlayView = createOverlayView(isPressed: configuration.isPressed)
+        let uiModifiers = UIModifiers(
+            colorFactory: colorFactory,
+            metricsFactory: metricsFactory,
+            isPressed: isPressed
+        )
 
         return configuration
             .label
-            .font(typographyFactory.font)
-            .foregroundColor(foregroundColor)
-            .padding(.vertical, metricsFactory.verticalPadding)
-            .padding(.horizontal, metricsFactory.horizontalPadding)
-            .background(backgroundColor)
-            .overlay(overlayView)
-            .cornerRadius(metricsFactory.cornerRadius)
-            .shadow(
-                color: colorFactory.makeShadowColor(),
-                radius: metricsFactory.shadowRadius,
-                y: metricsFactory.shadowVerticalOffset
-            )
-            .lineLimit(typographyFactory.lineLimit)
-            .truncationMode(typographyFactory.truncationMode)
+            .modifier(typographyModifiers)
+            .modifier(uiModifiers)
     }
 
     private func createOverlayView(isPressed: Bool) -> some View {
@@ -86,5 +79,60 @@ public extension ButtonStyle where Self == WarpButtonStyle {
             colorProvider: colorProvider,
             isEnabled: isEnabled
         )
+    }
+}
+
+private struct TypographyModifiers: ViewModifier {
+    let typographyFactory: Warp.Button.TypographyFactory
+
+    let colorFactory: Warp.Button.ColorFactory
+
+    func body(content: Content) -> some View {
+        let foregroundColor = colorFactory.makeForegroundColor()
+
+        return content
+            .foregroundColor(foregroundColor)
+            .font(typographyFactory.font)
+            .lineLimit(typographyFactory.lineLimit)
+            .truncationMode(typographyFactory.truncationMode)
+    }
+}
+
+private struct UIModifiers: ViewModifier {
+    let colorFactory: Warp.Button.ColorFactory
+
+    let metricsFactory: Warp.Button.MetricsFactory
+
+    let isPressed: Bool
+
+    func body(content: Content) -> some View {
+        let backgroundColor = colorFactory.makeBackgroundColor(
+            isPressed: isPressed
+        )
+
+        let overlayView = createOverlayView(isPressed: isPressed)
+
+        return content
+            .padding(.vertical, metricsFactory.verticalPadding)
+            .padding(.horizontal, metricsFactory.horizontalPadding)
+            .background(backgroundColor)
+            .overlay(overlayView)
+            .cornerRadius(metricsFactory.cornerRadius)
+            .shadow(
+                color: colorFactory.makeShadowColor(),
+                radius: metricsFactory.shadowRadius,
+                y: metricsFactory.shadowVerticalOffset
+            )
+            .cornerRadius(metricsFactory.cornerRadius)
+    }
+
+    private func createOverlayView(isPressed: Bool) -> some View {
+        let borderColor = colorFactory.makeBorderColor(isPressed: isPressed)
+
+        return RoundedRectangle(cornerRadius: metricsFactory.cornerRadius)
+            .stroke(
+                borderColor,
+                lineWidth: metricsFactory.borderWidth
+            )
     }
 }
