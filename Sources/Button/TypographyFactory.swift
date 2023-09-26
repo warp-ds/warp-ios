@@ -3,7 +3,7 @@ import struct SwiftUI.Font
 import struct SwiftUI.Text
 
 extension Warp.Button {
-    /// Factory responsible for resloving button label's typography needs.
+    /// Factory responsible for resolving button label's typography needs.
     struct TypographyFactory {
         private let type: Warp.ButtonType
 

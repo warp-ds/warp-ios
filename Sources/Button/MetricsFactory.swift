@@ -3,10 +3,14 @@ import Foundation
 extension Warp.Button {
     /// Factory responsible for resolving button internal element UI drawing needs.
     struct MetricsFactory {
+        /// Button type.
         private let type: Warp.ButtonType
-
+        
+        /// Button size.
         private let size: Warp.ButtonSize
-
+        
+        /// Button state.
+        /// Flag describing is button enabled for interactions.
         private let isEnabled: Bool
 
         init(type: Warp.ButtonType, size: Warp.ButtonSize, isEnabled: Bool) {
@@ -27,8 +31,9 @@ extension Warp.Button {
             }
         }
 
-        /// <#Description#>
-        var shadowY: CGFloat {
+        /// Button shadow vertical(Y) offset.
+        /// It will be determined based on button current state alongside with button type.
+        var shadowVerticalOffset: CGFloat {
             switch type {
                 case .utilityOverlay:
                     return isEnabled ? 1: 0
@@ -59,10 +64,9 @@ extension Warp.Button {
                     return 8
             }
         }
-
-        private var utilityButtonDefaultPadding: CGFloat {
-            return 8
-        }
+        
+        /// Default padding for utility related buttons.
+        private let utilityButtonDefaultPadding = 8.0
 
         /// Button label vertical margin.
         var verticalPadding: CGFloat {

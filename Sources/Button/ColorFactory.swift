@@ -18,6 +18,7 @@ extension Warp.Button {
         /// Object responsible for providing colors in different environments and variants.
         private let colorProvider: ColorProvider
 
+        /// Button state.
         /// Flag describing is button enabled for interactions.
         private let isEnabled: Bool
 
