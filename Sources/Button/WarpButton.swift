@@ -131,7 +131,7 @@ extension Warp.Button {
     public init(
         type: Warp.ButtonType,
         title: String,
-        imageName: String?,
+        image: Warp.Button.Icon?,
         action: @escaping () -> Void,
         size: Warp.ButtonSize,
         isEnabled: Bool,
@@ -141,8 +141,12 @@ extension Warp.Button {
         self.type = type
         self.title = title
 
-        if let imageName = imageName {
-            icon = Image(imageName)
+        if let image = image {
+            if let description = image.description {
+                icon = Image(image.name, label: Text(description))
+            } else {
+                icon = Image(image.name)
+            }
         } else {
             icon = nil
         }
