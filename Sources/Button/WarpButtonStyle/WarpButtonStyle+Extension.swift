@@ -90,9 +90,16 @@ private struct TypographyModifiers: ViewModifier {
     func body(content: Content) -> some View {
         let foregroundColor = colorFactory.makeForegroundColor()
 
+        let font = {
+            let font = typographyFactory.font
+            let weight = typographyFactory.fontWeight
+
+            return font.weight(weight)
+        }()
+
         return content
             .foregroundColor(foregroundColor)
-            .font(typographyFactory.font)
+            .font(font)
             .lineLimit(typographyFactory.lineLimit)
             .truncationMode(typographyFactory.truncationMode)
     }

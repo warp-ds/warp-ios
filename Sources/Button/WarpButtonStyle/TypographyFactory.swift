@@ -21,11 +21,11 @@ extension Warp.Button {
                 font = .callout
             }
 
-            return font.weight(fontWeight)
+            return font
         }
 
         /// Font weight associate with button type.
-        private var fontWeight: Font.Weight {
+        var fontWeight: Font.Weight {
             if type.isUtilityRelatedButton {
                 return .regular
             }
