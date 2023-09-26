@@ -54,7 +54,7 @@ public struct WarpButtonStyle: ButtonStyle {
             .shadow(
                 color: colorFactory.makeShadowColor(),
                 radius: metricsFactory.shadowRadius,
-                y: metricsFactory.shadowY
+                y: metricsFactory.shadowVerticalOffset
             )
             .lineLimit(typographyFactory.lineLimit)
             .truncationMode(typographyFactory.truncationMode)
