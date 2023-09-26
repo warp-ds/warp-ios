@@ -523,7 +523,7 @@ final class ColorFactorySmokeTests: XCTestCase {
             // UtilityOverlay
             ButtonVariant(
                 type: .utilityOverlay,
-                expectedColor: clearColor
+                expectedColor: FinnColors.gray700.opacity(0.5)
             ),
         ]
 
