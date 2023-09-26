@@ -1,15 +1,15 @@
 import Foundation
 import SwiftUI
 
-/// `SwiftUI` Button style that will transform button label style to `Warp` design style.
+/// `SwiftUI` Button style that will transform button label view to `Warp` design view style.
 public struct WarpButtonStyle: ButtonStyle {
-    /// <#Description#>
+    /// Object responsible for creating color, based on`ButtonType`,  button state.
     private let colorFactory: Warp.Button.ColorFactory
     
-    /// <#Description#>
+    /// Object responsible for creating UI metrics based on `ButtonType`, `ButtonSize`.
     private let metricsFactory: Warp.Button.MetricsFactory
     
-    /// <#Description#>
+    /// Object responsible for creating button title typography requirements based on `ButtonType`.
     private let typographyFactory: Warp.Button.TypographyFactory
 
     public init(
@@ -73,6 +73,7 @@ public struct WarpButtonStyle: ButtonStyle {
 
 /// Syntactic sugar to ease using warp button style.
 public extension ButtonStyle where Self == WarpButtonStyle {
+    /// Button style that will transform button label view to `Warp` design style view.
     static func warp(
         type: Warp.ButtonType,
         size: Warp.ButtonSize,
