@@ -1,10 +1,3 @@
-//
-//  TypographyFactorySmokeTests.swift
-//  
-//
-//  Created by Sajad Vishkai on 2023-09-26.
-//
-
 import XCTest
 import struct SwiftUI.Font
 import struct SwiftUI.Text
