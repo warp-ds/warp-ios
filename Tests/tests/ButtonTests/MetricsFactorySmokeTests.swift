@@ -2,7 +2,7 @@ import XCTest
 @testable import warp_ios
 
 final class MetricsFactorySmokeTests: XCTestCase {
-    private typealias MetricsFactory = Warp.Button.MetricsFactory
+    private typealias UIMetricsFactory = Warp.Button.UIMetricsFactory
 
     func testShadowRadius_Parameterized_ShouldBeEqual() throws {
         let zeroShadowRadiusExpectation = 0.0
@@ -42,7 +42,7 @@ final class MetricsFactorySmokeTests: XCTestCase {
         ]
 
         mockButtonVariants.forEach { variant in
-            let sut = MetricsFactory(
+            let sut = UIMetricsFactory(
                 type: variant.type,
                 size: variant.size,
                 isEnabled: variant.isEnabled
@@ -154,7 +154,7 @@ final class MetricsFactorySmokeTests: XCTestCase {
         ]
 
         mockButtonVariants.forEach { variant in
-            let sut = MetricsFactory(
+            let sut = UIMetricsFactory(
                 type: variant.type,
                 size: variant.size,
                 isEnabled: variant.isEnabled
@@ -218,7 +218,7 @@ final class MetricsFactorySmokeTests: XCTestCase {
         ]
 
         mockButtonVariants.forEach { variant in
-            let sut = MetricsFactory(
+            let sut = UIMetricsFactory(
                 type: variant.type,
                 size: variant.size,
                 isEnabled: variant.isEnabled
@@ -282,7 +282,7 @@ final class MetricsFactorySmokeTests: XCTestCase {
         ]
 
         mockButtonVariants.forEach { variant in
-            let sut = MetricsFactory(
+            let sut = UIMetricsFactory(
                 type: variant.type,
                 size: variant.size,
                 isEnabled: variant.isEnabled
@@ -404,7 +404,7 @@ final class MetricsFactorySmokeTests: XCTestCase {
         ]
 
         mockButtonVariants.forEach { variant in
-            let sut = MetricsFactory(
+            let sut = UIMetricsFactory(
                 type: variant.type,
                 size: variant.size,
                 isEnabled: variant.isEnabled
@@ -526,7 +526,7 @@ final class MetricsFactorySmokeTests: XCTestCase {
         ]
 
         mockButtonVariants.forEach { variant in
-            let sut = MetricsFactory(
+            let sut = UIMetricsFactory(
                 type: variant.type,
                 size: variant.size,
                 isEnabled: variant.isEnabled
