@@ -287,6 +287,45 @@ private struct ToolTipView: View {
     }
 }
 
+private struct HelperInformationView: View {
+    /// <#Description#>
+    let state: Warp.InputState
+    
+    /// <#Description#>
+    let errorMessage: () -> String?
+    
+    /// <#Description#>
+    let helpMessage: () -> String?
+
+    init(
+        state: Warp.InputState,
+        errorMessage: @autoclosure @escaping () -> String?,
+        helpMessage: @autoclosure @escaping () -> String?
+    ) {
+        self.state = state
+        self.errorMessage = errorMessage
+        self.helpMessage = helpMessage
+    }
+
+    var body: some View {
+        Text(helperTextView)
+            .foregroundColor(helpTextForegroundColor)
+            .font(.caption)
+            .fontWeight(.thin)
+    }
+
+    private var helpTextForegroundColor: Color {
+        state.helpTextForegroundColor
+    }
+
+    private var helperTextView: String {
+        let stateText = state == .error ? errorMessage(): helpMessage()
+        let defaultText = ""
+
+        return stateText ?? defaultText
+    }
+}
+
 extension Warp {
     /// <#Description#>
     public enum InputState {
