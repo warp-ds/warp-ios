@@ -1,81 +1,56 @@
 import SwiftUI
 
 extension Warp {
-    /// <#Description#>
-    public struct InputConfig {
-        /// <#Description#>
-        public let placeholder: String
-
-        /// <#Description#>
-        public let title: String?
-
-        /// <#Description#>
-        public let additionalInformation: String?
-
-        /// <#Description#>
-        public let infoToolTip: Image?
-
-        /// <#Description#>
-        public let iconLeft: Image?
-
-        /// <#Description#>
-        public let iconRight: Image?
-
-        /// <#Description#>
-        public let prefix: String?
-
-        /// <#Description#>
-        public let suffix: String?
-
-        public let isAnimated: Bool
-
-        init(
-            placeholder: String,
-            title: String? = nil,
-            additionalInformation: String? = nil,
-            infoToolTip: Image? = nil,
-            iconLeft: Image? = nil,
-            iconRight: Image? = nil,
-            prefix: String? = nil,
-            suffix: String? = nil,
-            isAnimated: Bool = false
-        ) {
-            self.placeholder = placeholder
-            self.title = title
-            self.additionalInformation = additionalInformation
-            self.infoToolTip = infoToolTip
-            self.iconLeft = iconLeft
-            self.iconRight = iconRight
-            self.prefix = prefix
-            self.suffix = suffix
-            self.isAnimated = isAnimated
-        }
-
-    }
-}
-
-extension Warp {
     public struct Input: View {
         /// <#Description#>
-        public static let inputDefaultInactiveState = Warp.InputState.normal
+        public static let inputDefaultInactiveState = InputState.normal
 
-        private let title: String
-        
+        /// <#Description#>
+        private let config: InputConfiguration
+
         /// <#Description#>
         public var text: Binding<String>
-        
-//        private var _state: Binding<Warp.InputState>
+
         /// <#Description#>
-        @Binding private var state: Warp.InputState
+        @Binding private var state: InputState
 
         private let colorProvider = Config.colorProvider
 
         public init(
-            title: String,
+            placeholder: String,
+            title: String?,
+            additionalInformation: String?,
+            infoToolTip: Image?,
+            iconLeft: Image?,
+            iconRight: Image?,
+            prefix: String?,
+            suffix: String?,
+            isAnimated: Bool,
             text: Binding<String>,
-            state: Binding<Warp.InputState>
+            state: Binding<InputState>
         ) {
-            self.title = title
+            self.config = InputConfiguration(
+                placeholder: placeholder,
+                title: title,
+                additionalInformation: additionalInformation,
+                infoToolTip: infoToolTip,
+                iconLeft: iconLeft,
+                iconRight: iconRight,
+                prefix: prefix,
+                suffix: suffix,
+                isAnimated: isAnimated
+            )
+
+            self.text = text
+            self._state = state
+        }
+
+        public init(
+            config: InputConfiguration,
+            text: Binding<String>,
+            state: Binding<InputState>
+        ) {
+            self.config = config
             self.text = text
             self._state = state
         }
@@ -83,19 +58,49 @@ extension Warp {
         init(
             title: String,
             text: String = "",
-            state: Warp.InputState = inputDefaultInactiveState
+            state: InputState = inputDefaultInactiveState
         ) {
-            self.title = title
+            self.config = InputConfiguration()
             self.text = .constant(text)
             self._state = .constant(state)
 
-//            self._state = .init(
-//                get: {
-//                    state
-//                }, set: { newState in
-//                    _state.wrappedValue = newState
-//                }
-//            )
+            //            self._state = .init(
+            //                get: {
+            //                    state
+            //                }, set: { newState in
+            //                    _state.wrappedValue = newState
+            //                }
+            //            )
+        }
+
+        public static func create(
+            placeholder: String = "",
+            title: String? = nil,
+            additionalInformation: String? = nil,
+            infoToolTip: Image? = nil,
+            iconLeft: Image? = nil,
+            iconRight: Image? = nil,
+            prefix: String? = nil,
+            suffix: String? = nil,
+            isAnimated: Bool = true,
+            text: Binding<String> = .constant(""),
+            state: Binding<InputState>
+        ) -> Warp.Input {
+            Warp.Input(
+                config: InputConfiguration(
+                    placeholder: placeholder,
+                    title: title,
+                    additionalInformation: additionalInformation,
+                    infoToolTip: infoToolTip,
+                    iconLeft: iconLeft,
+                    iconRight: iconRight,
+                    prefix: prefix,
+                    suffix: suffix,
+                    isAnimated: isAnimated
+                ),
+                text: text,
+                state: state
+            )
         }
 
         private var inputBorderColor: Color {
@@ -136,46 +141,63 @@ extension Warp {
         // MARK: - TopView
 
         private var topView: some View {
-            HStack {
-                titleView
+            ToolTipView(
+                title: config.title,
+                additionalInformation: config.additionalInformation,
+                infoToolTipView: config.infoToolTip,
+                colorProvider: colorProvider
+            )
+        }
 
-                optionalLabelView
-
-                rightImageView
+        @ViewBuilder
+        private var titleView: some View {
+            if let title = config.title {
+                Text(title)
+                    .font(.footnote)
+                    .foregroundColor(colorProvider.inputTextFilled)
             }
         }
 
-        private var titleView: some View {
-            Text(title)
-                .font(.footnote)
-                .foregroundColor(colorProvider.inputTextFilled)
-        }
-
+        @ViewBuilder
         private var optionalLabelView: some View {
-            Text("Optional")
-                .font(.caption)
-                .fontWeight(.thin)
-                .foregroundColor(FinnColors.gray500)
+            if let additionalInformation = config.additionalInformation {
+                Text(additionalInformation)
+                    .font(.caption)
+                    .fontWeight(.thin)
+                    .foregroundColor(FinnColors.gray500)
+            }
         }
 
+        @ViewBuilder
         private var rightImageView: some View {
-            Image(systemName: "exclamationmark.circle")
-                .foregroundColor(FinnColors.gray300)
+            if let infoToolTipImage = config.infoToolTip {
+                infoToolTipImage
+                    .foregroundColor(FinnColors.gray300)
+                    .frame(width: 16, height: 16)
+            }
         }
 
         // MARK: TopView -
 
         private var textFieldView: some View {
             TextField(
-                "Hint",
+                config.placeholder,
                 text: text,
                 onEditingChanged: { startedEditing in
-                    withAnimation {
+                    let updateState = {
                         if startedEditing {
                             _state.wrappedValue = .active
                         } else {
                             _state.wrappedValue = .normal
                         }
+                    }
+
+                    if config.isAnimated {
+                        withAnimation {
+                            updateState()
+                        }
+                    } else {
+                        updateState()
                     }
                 }
             )
@@ -194,10 +216,73 @@ extension Warp {
         }
 
         private var helperTextView: some View {
-            Text(_state.wrappedValue == .error ? "Error text" : "Help text")
-                .foregroundColor(helpTextForegroundColor)
+            HelperInformationView(
+                state: state,
+                errorMessage: config.errorMessage,
+                helpMessage: config.helpMessage
+            )
+        }
+
+        private var infoText: String {
+            let stateInfoText = _state.wrappedValue == .error ? config.errorMessage: config.helpMessage
+            let defaultText = ""
+
+            return stateInfoText ?? defaultText
+        }
+    }
+}
+
+private struct ToolTipView: View {
+    /// <#Description#>
+    let title: String?
+    
+    /// <#Description#>
+    let additionalInformation: String?
+    
+    /// <#Description#>
+    let infoToolTipView: Image?
+
+    let colorProvider: ColorProvider
+
+    var body: some View {
+        topView
+    }
+
+    private var topView: some View {
+        HStack {
+            titleView
+
+            optionalLabelView
+
+            rightImageView
+        }
+    }
+
+    @ViewBuilder
+    private var titleView: some View {
+        if let title = title {
+            Text(title)
+                .font(.footnote)
+                .foregroundColor(colorProvider.inputTextFilled)
+        }
+    }
+
+    @ViewBuilder
+    private var optionalLabelView: some View {
+        if let additionalInformation = additionalInformation {
+            Text(additionalInformation)
                 .font(.caption)
                 .fontWeight(.thin)
+                .foregroundColor(FinnColors.gray500)
+        }
+    }
+
+    @ViewBuilder
+    private var rightImageView: some View {
+        if let infoToolTipView = infoToolTipView {
+            infoToolTipView
+                .foregroundColor(FinnColors.gray300)
+                .frame(width: 16, height: 16)
         }
     }
 }
@@ -385,7 +470,11 @@ public struct WarpInput: View {
 }
 
 public enum WarpInputState {
-    case normal, active, disabled, error, readOnly
+    case normal
+    case active
+    case disabled
+    case error
+    case readOnly
 }
 
 private struct WarpInputPreview: PreviewProvider {
