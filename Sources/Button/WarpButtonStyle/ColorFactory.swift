@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Sajad Vishkai on 2023-09-26.
-//
-
 import Foundation
 import struct SwiftUI.Color
 
