@@ -189,17 +189,6 @@ private struct DirectTouchAccessibilityViewModifier: ViewModifier {
     }
 }
 
-extension Warp {
-    /// <#Description#>
-    public enum InputState {
-        case normal
-        case active
-        case disabled
-        case error
-        case readOnly
-    }
-}
-
 public struct WarpInput: View {
     let title: String
     @State var text: String = ""
