@@ -36,6 +36,9 @@ extension Warp {
         
         /// <#Description#>
         public let isAnimated: Bool
+        
+        /// <#Description#>
+        public let lineLimit: ClosedRange<UInt8>
 
         init() {
             placeholder = ""
@@ -49,6 +52,7 @@ extension Warp {
             errorMessage = nil
             helpMessage = nil
             isAnimated = true
+            lineLimit = 1...1
         }
 
         init(
@@ -62,7 +66,8 @@ extension Warp {
             suffix: String? = nil,
             errorMessage: String? = nil,
             helpMessage: String? = nil,
-            isAnimated: Bool = true
+            isAnimated: Bool = true,
+            lineLimit: ClosedRange<UInt8> = 1...1
         ) {
             self.placeholder = placeholder
             self.title = title
@@ -75,6 +80,7 @@ extension Warp {
             self.errorMessage = errorMessage
             self.helpMessage = helpMessage
             self.isAnimated = isAnimated
+            self.lineLimit = lineLimit
         }
     }
 }
