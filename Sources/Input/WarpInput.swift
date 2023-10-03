@@ -78,7 +78,7 @@ extension Warp {
             helpMessage: String? = nil,
             isAnimated: Bool = true,
             lineLimit: ClosedRange<UInt8> = .oneLineLimit,
-            text: Binding<String> = .constant(""),
+            text: Binding<String>,
             state: Binding<InputState>
         ) -> Warp.Input {
             Warp.Input(
@@ -114,7 +114,7 @@ extension Warp {
             helpMessage: String? = nil,
             isAnimated: Bool = true,
             lineLimit: ClosedRange<UInt8> = .oneLineLimit,
-            text: Binding<String> = .constant("")
+            text: Binding<String>
         ) -> Warp.Input {
             var tempState = inputDefaultInactiveState
 
