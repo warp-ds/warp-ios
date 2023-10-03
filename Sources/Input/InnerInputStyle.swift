@@ -9,6 +9,12 @@ extension Warp {
 
         /// <#Description#>
         let lineLimit: ClosedRange<UInt8>
+        
+        /// <#Description#>
+        let leftView: AnyView?
+        
+        /// <#Description#>
+        let rightView: AnyView?
 
         private var cornerRadius: CGFloat {
             4.0
@@ -20,19 +26,35 @@ extension Warp {
         }
 
         public func _body(configuration: TextField<Self._Label>) -> some View {
-            configuration
-                .frame(minHeight: minHeight, maxHeight: .infinity)
-                .modifier(LineLimitModifier(lineLimit: lineLimit))
-                .font(.callout)
-                .padding(.horizontal, state.horizontalPadding)
-                .background(state.backgroundColor)
-                .overlay(overlayView)
-                .cornerRadius(cornerRadius)
+            HStack(spacing: 8) {
+                if let leftView = leftView {
+                    createToolbarView(from: leftView)
+                }
+
+                configuration
+                    .frame(minHeight: minHeight, maxHeight: .infinity)
+                    .modifier(LineLimitModifier(lineLimit: lineLimit))
+                    .font(.callout)
+
+                if let rightView = rightView {
+                    createToolbarView(from: rightView)
+                }
+            }
+            .padding(.horizontal, state.horizontalPadding)
+            .overlay(overlayView)
+            .background(state.backgroundColor)
+            .cornerRadius(cornerRadius)
         }
 
         private var overlayView: some View {
             RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(state.inputBorderColor, lineWidth: state.inputBorderWidth)
+        }
+
+        private func createToolbarView(from toolbarView: some View) -> some View {
+            return toolbarView
+                .foregroundColor(FinnColors.gray500)
+                .frame(width: 16, height: 16)
         }
     }
 }
@@ -41,11 +63,30 @@ extension TextFieldStyle where Self == Warp.InnerInputStyle {
     /// <#Description#>
     static func innerStyle(
         state: Warp.InputState,
-        lineLimit: ClosedRange<UInt8>
+        lineLimit: ClosedRange<UInt8>,
+        leftView: AnyView? = nil,
+        rightView: AnyView? = nil
     ) -> Warp.InnerInputStyle {
         Warp.InnerInputStyle(
             state: state,
-            lineLimit: lineLimit
+            lineLimit: lineLimit,
+            leftView: leftView,
+            rightView: rightView
+        )
+    }
+
+    /// <#Description#>
+    static func innerStyle(
+        state: Warp.InputState,
+        lineLimit: ClosedRange<UInt8>,
+        leftView: some View,
+        rightView: some View
+    ) -> Warp.InnerInputStyle {
+        Warp.InnerInputStyle(
+            state: state,
+            lineLimit: lineLimit,
+            leftView: AnyView(leftView),
+            rightView: AnyView(rightView)
         )
     }
 }
@@ -120,7 +161,7 @@ extension Warp.InputState {
     }
 
     fileprivate var horizontalPadding: CGFloat {
-        self == .readOnly ? 0 : 8
+        self == .readOnly ? 4 : 8
     }
 }
 
