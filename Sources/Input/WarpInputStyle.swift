@@ -112,6 +112,10 @@ extension Warp {
                 inputLabels.append(additionalInformation)
             }
 
+            if let stateTitle = state.wrappedValue.stateTitle {
+                inputLabels.append(stateTitle)
+            }
+
             return inputLabels
         }
 
@@ -188,5 +192,33 @@ extension Warp.InputState {
         lazy var isReadOnly = self == .readOnly
 
         return isDisabled || isReadOnly
+    }
+
+    fileprivate var stateTitle: String? {
+        switch self {
+            case .disabled:
+                return NSLocalizedString(
+                    "Input.Disabled.Title",
+                    value: "Currently disabled",
+                    comment: ""
+                )
+
+            case .error:
+                return NSLocalizedString(
+                    "Input.Error.Title",
+                    value: "Has error",
+                    comment: ""
+                )
+
+            case .readOnly:
+                return NSLocalizedString(
+                    "Input.ReadOnly.Title",
+                    value: "Read only",
+                    comment: ""
+                )
+
+            default:
+                return nil
+        }
     }
 }
