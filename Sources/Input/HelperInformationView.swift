@@ -22,17 +22,18 @@ struct HelperInformationView: View {
     }
 
     var body: some View {
-        Text(helperTextView)
-            .foregroundColor(state.foregroundColor)
-            .font(.caption)
-            .fontWeight(.thin)
+        if let helperTextView = helperTextView {
+            Text(helperTextView)
+                .foregroundColor(state.foregroundColor)
+                .font(.caption)
+                .fontWeight(.thin)
+        }
     }
 
-    private var helperTextView: String {
+    private var helperTextView: String? {
         let stateText = state == .error ? errorMessage(): helpMessage()
-        let defaultText = ""
 
-        return stateText ?? defaultText
+        return stateText
     }
 }
 
@@ -45,6 +46,6 @@ extension Warp.InputState {
             return colorProvider.inputTextNegative
         }
 
-        return colorProvider.inputTextHint
+        return FinnColors.gray700
     }
 }
