@@ -140,6 +140,25 @@ extension Warp {
             self.isAnimated = isAnimated
             self.lineLimit = lineLimit
         }
+
+        public static let searchTextField = InputConfiguration(
+            placeholder: NSLocalizedString(
+                "InputConfiguration.Title.Search",
+                value: "Search",
+                comment: ""
+            ),
+            title: nil,
+            additionalInformation: nil,
+            infoToolTipView: nil,
+            iconLeft: Image(systemName: "magnifyingglass"),
+            iconRight: nil,
+            prefix: nil,
+            suffix: nil,
+            errorMessage: nil,
+            helpMessage: nil,
+            isAnimated: true,
+            lineLimit: .oneLineLimit
+        )
     }
 }
 
