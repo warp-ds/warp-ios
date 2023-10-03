@@ -109,7 +109,7 @@ extension Warp {
             ToolTipView(
                 title: configuration.title,
                 additionalInformation: configuration.additionalInformation,
-                infoToolTipView: configuration.infoToolTip,
+                infoToolTipView: configuration.infoToolTipView,
                 colorProvider: colorProvider
             )
         }
@@ -132,7 +132,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         placeholder: String = "",
         title: String? = nil,
         additionalInformation: String? = nil,
-        infoToolTip: Image? = nil,
+        infoToolTipView: AnyView? = nil,
         iconLeft: Image? = nil,
         iconRight: Image? = nil,
         prefix: String? = nil,
@@ -149,7 +149,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
             placeholder: placeholder,
             title: title,
             additionalInformation: additionalInformation,
-            infoToolTip: infoToolTip,
+            infoToolTipView: infoToolTipView,
             iconLeft: iconLeft,
             iconRight: iconRight,
             prefix: prefix,
@@ -173,7 +173,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         placeholder: String = "",
         title: String? = nil,
         additionalInformation: String? = nil,
-        infoToolTip: Image? = nil,
+        infoToolTipView: AnyView? = nil,
         iconLeft: Image? = nil,
         iconRight: Image? = nil,
         prefix: String? = nil,
@@ -190,7 +190,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
             placeholder: placeholder,
             title: title,
             additionalInformation: additionalInformation,
-            infoToolTip: infoToolTip,
+            infoToolTipView: infoToolTipView,
             iconLeft: iconLeft,
             iconRight: iconRight,
             prefix: prefix,

@@ -9,7 +9,7 @@ struct ToolTipView: View {
     let additionalInformation: String?
 
     /// <#Description#>
-    let infoToolTipView: Image?
+    let infoToolTipView: AnyView?
 
     /// <#Description#>
     let colorProvider: ColorProvider

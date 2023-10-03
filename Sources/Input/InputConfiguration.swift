@@ -16,7 +16,7 @@ extension Warp {
         public let additionalInformation: String?
 
         /// <#Description#>
-        public let infoToolTip: Image?
+        public let infoToolTipView: AnyView?
 
         /// <#Description#>
         public let leftView: AnyView?
@@ -46,7 +46,7 @@ extension Warp {
             placeholder = ""
             title = nil
             additionalInformation = nil
-            infoToolTip = nil
+            infoToolTipView = nil
             leftView = nil
             rightView = nil
             prefix = nil
@@ -61,7 +61,7 @@ extension Warp {
             placeholder: String = "",
             title: String? = nil,
             additionalInformation: String? = nil,
-            infoToolTip: Image? = nil,
+            infoToolTipImage: AnyView? = nil,
             leftView: AnyView? = nil,
             rightView: AnyView? = nil,
             prefix: String? = nil,
@@ -74,7 +74,7 @@ extension Warp {
             self.placeholder = placeholder
             self.title = title
             self.additionalInformation = additionalInformation
-            self.infoToolTip = infoToolTip
+            self.infoToolTipView = infoToolTipImage.flatMap(AnyView.init)
             self.leftView = leftView
             self.rightView = rightView
             self.prefix = prefix
@@ -89,7 +89,7 @@ extension Warp {
             placeholder: String = "",
             title: String? = nil,
             additionalInformation: String? = nil,
-            infoToolTip: Image? = nil,
+            infoToolTipView: AnyView? = nil,
             iconLeft: Image?,
             iconRight: Image? = nil,
             prefix: String? = nil,
@@ -102,7 +102,7 @@ extension Warp {
             self.placeholder = placeholder
             self.title = title
             self.additionalInformation = additionalInformation
-            self.infoToolTip = infoToolTip
+            self.infoToolTipView = infoToolTipView
             self.leftView = iconLeft.flatMap(AnyView.init)
             self.rightView = iconRight.flatMap(AnyView.init)
             self.prefix = prefix
@@ -117,7 +117,7 @@ extension Warp {
             placeholder: String = "",
             title: String? = nil,
             additionalInformation: String? = nil,
-            infoToolTip: Image? = nil,
+            infoToolTipView: AnyView? = nil,
             leftPriceSymbol: String? = nil,
             rightPriceSymbol: String?,
             prefix: String? = nil,
@@ -130,7 +130,7 @@ extension Warp {
             self.placeholder = placeholder
             self.title = title
             self.additionalInformation = additionalInformation
-            self.infoToolTip = infoToolTip
+            self.infoToolTipView = infoToolTipView
             self.leftView = leftPriceSymbol.flatMap(Text.init).flatMap(AnyView.init)
             self.rightView = rightPriceSymbol.flatMap(Text.init).flatMap(AnyView.init)
             self.prefix = prefix
