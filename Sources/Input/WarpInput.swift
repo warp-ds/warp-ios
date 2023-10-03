@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(iOS 17.0, *)
 extension Warp {
     public struct Input: View {
         /// <#Description#>
@@ -14,6 +15,9 @@ extension Warp {
         /// <#Description#>
         @Binding private var state: InputState
 
+        @FocusState private var isFocused: Bool
+
+        /// <#Description#>
         private let colorProvider = Config.colorProvider
 
         public init(
@@ -103,30 +107,6 @@ extension Warp {
             )
         }
 
-        private var inputBorderColor: Color {
-            state.inputBorderColor
-        }
-
-        private var backgroundColor: Color {
-            state.backgroundColor
-        }
-
-        private var helpTextForegroundColor: Color {
-            state.helpTextForegroundColor
-        }
-
-        private var inputBorderWidth: CGFloat {
-            state.inputBorderWidth
-        }
-
-        private var shouldBeDisabled: Bool {
-            state.shouldBeDisabled
-        }
-
-        private var horizontalPadding: CGFloat {
-            state.horizontalPadding
-        }
-
         public var body: some View {
             VStack(alignment: .leading) {
                 topView
@@ -135,7 +115,34 @@ extension Warp {
 
                 helperTextView
             }
-            .padding()
+            .onTapGesture {
+                isFocused = true
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityRepresentation {
+                TextField(config.placeholder, text: text)
+                    .accessibilityInputLabels(accessibilityInformation)
+                    .accessibilityLabel(accessibilityInformation.joined(separator: ", "))
+                    .accessibilityHint(config.placeholder)
+            }
+        }
+
+//        .textFieldStyle(.roundedBorder)
+//        private var textContentType
+
+        /// Information that will be produced for Accessibility engine based on current configuration.
+        private var accessibilityInformation: [String] {
+            var inputLabels: [String] = []
+
+            if let title = config.title {
+                inputLabels.append(title)
+            }
+
+            if let additionalInformation = config.additionalInformation {
+                inputLabels.append(additionalInformation)
+            }
+
+            return inputLabels
         }
 
         // MARK: - TopView
@@ -149,70 +156,17 @@ extension Warp {
             )
         }
 
-        @ViewBuilder
-        private var titleView: some View {
-            if let title = config.title {
-                Text(title)
-                    .font(.footnote)
-                    .foregroundColor(colorProvider.inputTextFilled)
-            }
-        }
-
-        @ViewBuilder
-        private var optionalLabelView: some View {
-            if let additionalInformation = config.additionalInformation {
-                Text(additionalInformation)
-                    .font(.caption)
-                    .fontWeight(.thin)
-                    .foregroundColor(FinnColors.gray500)
-            }
-        }
-
-        @ViewBuilder
-        private var rightImageView: some View {
-            if let infoToolTipImage = config.infoToolTip {
-                infoToolTipImage
-                    .foregroundColor(FinnColors.gray300)
-                    .frame(width: 16, height: 16)
-            }
-        }
-
         // MARK: TopView -
 
         private var textFieldView: some View {
-            TextField(
-                config.placeholder,
+            TextFieldView(
+                placeholder: config.placeholder,
                 text: text,
-                onEditingChanged: { startedEditing in
-                    let updateState = {
-                        if startedEditing {
-                            _state.wrappedValue = .active
-                        } else {
-                            _state.wrappedValue = .normal
-                        }
-                    }
-
-                    if config.isAnimated {
-                        withAnimation {
-                            updateState()
-                        }
-                    } else {
-                        updateState()
-                    }
-                }
+                isAnimated: config.isAnimated,
+                lineLimit: config.lineLimit,
+                isFocused: $isFocused,
+                state: $state
             )
-            .font(.callout)
-            .disabled(shouldBeDisabled)
-            .padding(.vertical)
-            .padding(.horizontal, horizontalPadding)
-            .background(backgroundColor)
-            .overlay(overlayView)
-            .cornerRadius(4)
-        }
-
-        private var overlayView: some View {
-            RoundedRectangle(cornerRadius: 4)
-                .stroke(inputBorderColor, lineWidth: inputBorderWidth)
         }
 
         private var helperTextView: some View {
@@ -222,13 +176,123 @@ extension Warp {
                 helpMessage: config.helpMessage
             )
         }
+    }
+}
 
-        private var infoText: String {
-            let stateInfoText = _state.wrappedValue == .error ? config.errorMessage: config.helpMessage
-            let defaultText = ""
-
-            return stateInfoText ?? defaultText
+private struct DirectTouchAccessibilityViewModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 17.0, *) {
+            content
+                .accessibilityDirectTouch(true, options: .requiresActivation)
         }
+    }
+}
+
+@available(iOS 17.0, *)
+private struct TextFieldView: View {
+    /// <#Description#>
+    let placeholder: String
+    
+    /// <#Description#>
+    let text: Binding<String>
+    
+    /// <#Description#>
+    let isAnimated: Bool
+    
+    /// <#Description#>
+    let lineLimit: ClosedRange<UInt8>
+
+    /// <#Description#>
+    var isFocused: FocusState<Bool>.Binding
+
+    /// <#Description#>
+    @Binding var state: Warp.InputState
+
+    private var inputBorderColor: Color {
+        state.inputBorderColor
+    }
+
+    private var backgroundColor: Color {
+        state.backgroundColor
+    }
+
+    private var inputBorderWidth: CGFloat {
+        state.inputBorderWidth
+    }
+
+    private var shouldBeDisabled: Bool {
+        state.shouldBeDisabled
+    }
+
+    private var horizontalPadding: CGFloat {
+        8.0
+    }
+
+    private var cornerRadius: CGFloat {
+        4.0
+    }
+
+    private var minHeight: CGFloat {
+        28.0
+    }
+
+    var body: some View {
+        TextField(
+            placeholder,
+            text: text,
+            onEditingChanged: { startedEditing in
+                let updateState = {
+                    if startedEditing {
+                        _state.wrappedValue = .active
+                    } else {
+                        _state.wrappedValue = .normal
+                    }
+                }
+
+                if isAnimated {
+                    withAnimation {
+                        updateState()
+                    }
+                } else {
+                    updateState()
+                }
+            }
+        )
+        .focused(isFocused)
+        .modifier(LineLimitModifier(lineLimit: lineLimit))
+        .font(.callout)
+        .disabled(shouldBeDisabled)
+        .padding(.horizontal, horizontalPadding)
+        .frame(minHeight: minHeight, maxHeight: .infinity)
+        .background(backgroundColor)
+        .overlay(overlayView)
+        .cornerRadius(cornerRadius)
+    }
+
+    private var overlayView: some View {
+        RoundedRectangle(cornerRadius: cornerRadius)
+            .stroke(inputBorderColor, lineWidth: inputBorderWidth)
+    }
+}
+
+private struct LineLimitModifier: ViewModifier {
+    let lineLimit: ClosedRange<UInt8>
+
+    func body(content: Content) -> some View {
+        if #available(iOS 16.0, *) {
+            let lineLimitRange = ClosedRange<Int>(lineLimit)
+
+            return content
+                .lineLimit(lineLimitRange)
+        }
+
+        return content
+    }
+}
+
+extension ClosedRange where Bound == Int {
+    init(_ range: ClosedRange<UInt8>) {
+        self.init(uncheckedBounds: (lower: Int(range.lowerBound), upper: Int(range.upperBound)))
     }
 }
 
@@ -241,7 +305,8 @@ private struct ToolTipView: View {
     
     /// <#Description#>
     let infoToolTipView: Image?
-
+    
+    /// <#Description#>
     let colorProvider: ColorProvider
 
     var body: some View {
@@ -307,15 +372,15 @@ private struct HelperInformationView: View {
         self.helpMessage = helpMessage
     }
 
+    private var helpTextForegroundColor: Color {
+        state.helpTextForegroundColor
+    }
+
     var body: some View {
         Text(helperTextView)
             .foregroundColor(helpTextForegroundColor)
             .font(.caption)
             .fontWeight(.thin)
-    }
-
-    private var helpTextForegroundColor: Color {
-        state.helpTextForegroundColor
     }
 
     private var helperTextView: String {
