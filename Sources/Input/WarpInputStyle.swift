@@ -2,123 +2,166 @@ import Foundation
 import SwiftUI
 
 extension Warp {
-    struct InnerInputStyle: TextFieldStyle {
+    /// <#Description#>
+    public struct InputStyle: TextFieldStyle {
         /// <#Description#>
-        let state: Warp.InputState
-        
-        /// <#Description#>
-        let lineLimit: ClosedRange<UInt8>
+        public static let inputDefaultInactiveState = InputState.normal
 
-        private var cornerRadius: CGFloat {
-            4.0
+        /// <#Description#>
+        private let config: InputConfiguration
+
+        /// <#Description#>
+        public var text: Binding<String>
+
+        /// <#Description#>
+        private var state: Binding<InputState>
+
+        /// <#Description#>
+        @FocusState private var isFocused: Bool
+
+        /// <#Description#>
+        private let colorProvider: ColorProvider
+
+        public init(
+            configuration: Warp.InputConfiguration,
+            text: Binding<String>,
+            state: Binding<Warp.InputState>,
+            colorProvider: ColorProvider
+        ) {
+            self.config = configuration
+            self.text = text
+            self.colorProvider = colorProvider
+            self.state = state
+        }
+
+        public init(
+            configuration: Warp.InputConfiguration,
+            text: Binding<String>,
+            state: Warp.InputState = inputDefaultInactiveState,
+            colorProvider: ColorProvider
+        ) {
+            self.config = configuration
+            self.text = text
+            self.colorProvider = colorProvider
+
+            var tempState = state
+
+            self.state = Binding {
+                return tempState
+            } set: { newValue in
+                tempState = newValue
+            }
         }
 
         public func _body(configuration: TextField<Self._Label>) -> some View {
-            configuration
-                .modifier(LineLimitModifier(lineLimit: lineLimit))
-                .font(.callout)
-                .padding(.horizontal, state.horizontalPadding)
-                .background(state.backgroundColor)
-                .overlay(overlayView)
-                .cornerRadius(cornerRadius)
+            VStack(alignment: .leading) {
+                topView
+
+                configuration
+                    .body
+                    .focused($isFocused) { isFocused in
+                        let updateState = {
+                            if isFocused {
+                                state.wrappedValue = .active
+                            } else {
+                                state.wrappedValue = .normal
+                            }
+                        }
+
+                        if config.isAnimated {
+                            withAnimation {
+                                updateState()
+                            }
+                        } else {
+                            updateState()
+                        }
+                    }
+                    .textFieldStyle(
+                        .innerStyle(
+                            state: state.wrappedValue,
+                            lineLimit: config.lineLimit
+                        )
+                    )
+
+                helperTextView
+            }
+            .onTapGesture {
+                if !isFocused {
+                    isFocused = true
+                }
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityRepresentation {
+                TextField(config.placeholder, text: text)
+                    .accessibilityInputLabels(accessibilityInformation)
+                    .accessibilityLabel(accessibilityInformation.joined(separator: ", "))
+                    .accessibilityHint(config.placeholder)
+            }
         }
 
-        private var overlayView: some View {
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(state.inputBorderColor, lineWidth: state.inputBorderWidth)
+        /// Information that will be produced for Accessibility engine based on current configuration.
+        private var accessibilityInformation: [String] {
+            var inputLabels: [String] = []
+
+            if let title = config.title {
+                inputLabels.append(title)
+            }
+
+            if let additionalInformation = config.additionalInformation {
+                inputLabels.append(additionalInformation)
+            }
+
+            return inputLabels
+        }
+
+        // MARK: - TopView
+
+        private var topView: some View {
+            ToolTipView(
+                title: config.title,
+                additionalInformation: config.additionalInformation,
+                infoToolTipView: config.infoToolTip,
+                colorProvider: colorProvider
+            )
+        }
+
+        // MARK: - Helper text
+
+        private var helperTextView: some View {
+            HelperInformationView(
+                state: state.wrappedValue,
+                errorMessage: config.errorMessage,
+                helpMessage: config.helpMessage
+            )
         }
     }
 }
 
-extension TextFieldStyle where Self == Warp.InnerInputStyle {
+extension TextFieldStyle where Self == Warp.InputStyle {
     /// <#Description#>
-    static func innerStyle(
-        state: Warp.InputState,
-        lineLimit: ClosedRange<UInt8>
-    ) -> Warp.InnerInputStyle {
-        Warp.InnerInputStyle(
+    public static func warp(
+        configuration: Warp.InputConfiguration,
+        text: Binding<String>,
+        state: Warp.InputState = .normal,
+        colorProvider: ColorProvider
+    ) -> Warp.InputStyle {
+        Warp.InputStyle(
+            configuration: configuration,
+            text: text,
             state: state,
-            lineLimit: lineLimit
+            colorProvider: colorProvider
         )
     }
 }
 
-private struct LineLimitModifier: ViewModifier {
-    let lineLimit: ClosedRange<UInt8>
-
-    func body(content: Content) -> some View {
-        if #available(iOS 16.0, *) {
-            let lineLimitRange = ClosedRange<Int>(lineLimit)
-
-            return content
-                .lineLimit(lineLimitRange)
-        }
-
-        return content
-    }
-}
-
-extension Warp.InputState {
-    /// <#Description#>
-    fileprivate var inputBorderColor: Color {
-        let colorProvider = Config.colorProvider
-
-        switch self {
-            case .normal:
-                return colorProvider.inputBorder
-
-            case .active:
-                return colorProvider.inputBorderActive
-
-            case .disabled:
-                return colorProvider.inputBorderDisabled
-
-            case .error:
-                return colorProvider.inputBorderNegative
-
-            case .readOnly:
-                return colorProvider.inputBorder
-        }
-    }
-
-    /// <#Description#>
-    fileprivate var backgroundColor: Color {
-        let colorProvider = Config.colorProvider
-
-        if self == .disabled {
-            return colorProvider.inputBackgroundDisabled
-        }
-
-        return colorProvider.inputBackground
-    }
-
-    /// <#Description#>
-    fileprivate var inputBorderWidth: CGFloat {
-        switch self {
-            case .normal:
-                return 2
-
-            case .active:
-                return 4
-
-            case .disabled:
-                return 2
-
-            case .error:
-                return 2
-
-            case .readOnly:
-                return 0
-        }
-    }
-
-    fileprivate var horizontalPadding: CGFloat {
-        self == .readOnly ? 0 : 8
-    }
-}
-
-extension ClosedRange where Bound == Int {
-    fileprivate init(_ range: ClosedRange<UInt8>) {
-        self.init(uncheckedBounds: (lower: Int(range.lowerBound), upper: Int(range.upperBound)))
+extension View {
+    fileprivate func focused(
+        _ condition: FocusState<Bool>.Binding,
+        onFocus: @escaping (Bool) -> Void
+    ) -> some View {
+        focused(condition)
+            .onChange(of: condition.wrappedValue) { value in
+                onFocus(value == true)
+            }
     }
 }
