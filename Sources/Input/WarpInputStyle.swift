@@ -126,6 +126,7 @@ extension Warp {
     }
 }
 
+// Variants + syntactic sugar.
 extension TextFieldStyle where Self == Warp.InputStyle {
     /// <#Description#>
     public static func warp(
