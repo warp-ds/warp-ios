@@ -332,11 +332,54 @@ public enum WarpInputState {
 
 private struct WarpInputPreview: PreviewProvider {
     static var previews: some View {
-        VStack {
-            WarpInput(title: "Label", text: "Text")
-            WarpInput(title: "Label", text: "Text", state: .disabled)
-            WarpInput(title: "Label", text: "Text", state: .error)
-            WarpInput(title: "Label", text: "Text", state: .readOnly)
+        ScrollView(showsIndicators: false) {
+            VStack (alignment: .leading) {
+                ForEach(Warp.InputState.allCases, id: \.self) { state in
+                    createView(for: state)
+                }
+            }
         }
+    }
+
+    private static func createView(for state: Warp.InputState) -> some View {
+        var text = state.title
+
+        let bindingText = Binding {
+            text
+        } set: { newValue in
+            text = newValue
+        }
+
+        var state = state
+
+        let bindingState = Binding {
+            state
+        } set: { newValue in
+            state = newValue
+        }
+
+        return GroupBox(
+            content: {
+                Warp.Input.create(text: bindingText, state: bindingState)
+            }, label: {
+                Text(state.title)
+            }
+        )
+    }
+}
+
+extension Warp.InputState {
+    fileprivate static var allCases: [Warp.InputState] = [
+        .normal,
+        .active,
+        .disabled,
+        .error,
+        .readOnly
+    ]
+}
+
+extension Warp.InputState {
+    fileprivate var title: String {
+        String(describing: self).localizedCapitalized
     }
 }
