@@ -2,7 +2,7 @@ import Foundation
 
 extension Warp {
     /// <#Description#>
-    public enum InputState {
+    public enum InputState: Equatable, Comparable {
         case normal
         case active
         case disabled
