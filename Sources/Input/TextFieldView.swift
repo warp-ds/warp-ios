@@ -18,7 +18,7 @@ struct TextFieldView: View {
     var isFocused: FocusState<Bool>.Binding
 
     /// <#Description#>
-    @Binding var state: Warp.InputState
+    var state: Binding<Warp.InputState>
 
     private var minHeight: CGFloat {
         28.0
@@ -31,9 +31,9 @@ struct TextFieldView: View {
             onEditingChanged: { startedEditing in
                 let updateState = {
                     if startedEditing {
-                        _state.wrappedValue = .active
+                        state.wrappedValue = .active
                     } else {
-                        _state.wrappedValue = .normal
+                        state.wrappedValue = .normal
                     }
                 }
 
@@ -50,7 +50,7 @@ struct TextFieldView: View {
         .frame(minHeight: minHeight, maxHeight: .infinity)
         .textFieldStyle(
             .innerStyle(
-                state: state,
+                state: state.wrappedValue,
                 lineLimit: lineLimit
             )
         )

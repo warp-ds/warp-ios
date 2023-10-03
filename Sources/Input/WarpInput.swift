@@ -65,24 +65,6 @@ extension Warp {
             self._state = state
         }
 
-        init(
-            title: String,
-            text: String = "",
-            state: InputState = inputDefaultInactiveState
-        ) {
-            self.config = InputConfiguration()
-            self.text = .constant(text)
-            self._state = .constant(state)
-
-            //            self._state = .init(
-            //                get: {
-            //                    state
-            //                }, set: { newState in
-            //                    _state.wrappedValue = newState
-            //                }
-            //            )
-        }
-
         public static func create(
             placeholder: String = "",
             title: String? = nil,
@@ -119,6 +101,49 @@ extension Warp {
             )
         }
 
+        public static func create(
+            placeholder: String = "",
+            title: String? = nil,
+            additionalInformation: String? = nil,
+            infoToolTip: Image? = nil,
+            iconLeft: Image? = nil,
+            iconRight: Image? = nil,
+            prefix: String? = nil,
+            suffix: String? = nil,
+            errorMessage: String? = nil,
+            helpMessage: String? = nil,
+            isAnimated: Bool = true,
+            lineLimit: ClosedRange<UInt8> = .oneLineLimit,
+            text: Binding<String> = .constant("")
+        ) -> Warp.Input {
+            var tempState = inputDefaultInactiveState
+
+            let stateBinding = Binding {
+                return tempState
+            } set: { newValue in
+                tempState = newValue
+            }
+
+            return Warp.Input(
+                config: InputConfiguration(
+                    placeholder: placeholder,
+                    title: title,
+                    additionalInformation: additionalInformation,
+                    infoToolTip: infoToolTip,
+                    iconLeft: iconLeft,
+                    iconRight: iconRight,
+                    prefix: prefix,
+                    suffix: suffix,
+                    errorMessage: errorMessage,
+                    helpMessage: helpMessage,
+                    isAnimated: isAnimated,
+                    lineLimit: lineLimit
+                ),
+                text: text,
+                state: stateBinding
+            )
+        }
+
         public var body: some View {
             VStack(alignment: .leading) {
                 topView
@@ -139,8 +164,6 @@ extension Warp {
             }
             .disabled(state.shouldBeDisabled)
         }
-
-//        .textFieldStyle(.roundedBorder)
 
         /// Information that will be produced for Accessibility engine based on current configuration.
         private var accessibilityInformation: [String] {
