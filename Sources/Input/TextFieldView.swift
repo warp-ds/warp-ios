@@ -20,10 +20,6 @@ struct TextFieldView: View {
     /// <#Description#>
     var state: Binding<Warp.InputState>
 
-    private var minHeight: CGFloat {
-        28.0
-    }
-
     var body: some View {
         TextField(
             placeholder,
@@ -47,7 +43,6 @@ struct TextFieldView: View {
             }
         )
         .focused(isFocused)
-        .frame(minHeight: minHeight, maxHeight: .infinity)
         .textFieldStyle(
             .innerStyle(
                 state: state.wrappedValue,
