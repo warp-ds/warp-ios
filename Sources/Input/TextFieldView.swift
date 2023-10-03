@@ -46,6 +46,7 @@ struct TextFieldView: View {
                 }
             }
         )
+        .focused(isFocused)
         .frame(minHeight: minHeight, maxHeight: .infinity)
         .textFieldStyle(
             .innerStyle(

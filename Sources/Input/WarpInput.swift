@@ -137,6 +137,7 @@ extension Warp {
                     .accessibilityLabel(accessibilityInformation.joined(separator: ", "))
                     .accessibilityHint(config.placeholder)
             }
+            .disabled(state.shouldBeDisabled)
         }
 
 //        .textFieldStyle(.roundedBorder)
@@ -187,6 +188,15 @@ extension Warp {
                 helpMessage: config.helpMessage
             )
         }
+    }
+}
+
+extension Warp.InputState {
+    fileprivate var shouldBeDisabled: Bool {
+        let isDisabled = self == .disabled
+        lazy var isReadOnly = self == .readOnly
+
+        return isDisabled || isReadOnly
     }
 }
 

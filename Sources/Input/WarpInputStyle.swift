@@ -17,7 +17,6 @@ extension Warp {
             configuration
                 .modifier(LineLimitModifier(lineLimit: lineLimit))
                 .font(.callout)
-                .disabled(state.shouldBeDisabled)
                 .padding(.horizontal, state.horizontalPadding)
                 .background(state.backgroundColor)
                 .overlay(overlayView)
@@ -82,10 +81,6 @@ extension Warp.InputState {
         }
     }
 
-    private var isDisabled: Bool {
-        return self == .disabled
-    }
-
     /// <#Description#>
     fileprivate var backgroundColor: Color {
         let colorProvider = Config.colorProvider
@@ -115,13 +110,6 @@ extension Warp.InputState {
             case .readOnly:
                 return 0
         }
-    }
-
-    fileprivate var shouldBeDisabled: Bool {
-        let isDisabled = self == .disabled
-        lazy var isReadOnly = self == .readOnly
-
-        return isDisabled || isReadOnly
     }
 
     fileprivate var horizontalPadding: CGFloat {

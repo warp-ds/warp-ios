@@ -8,5 +8,9 @@ extension Warp {
         case disabled
         case error
         case readOnly
+
+        var isDisabled: Bool {
+            return self == .disabled
+        }
     }
 }

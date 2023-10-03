@@ -40,7 +40,7 @@ extension Warp {
         /// <#Description#>
         public let lineLimit: ClosedRange<UInt8>
 
-        init() {
+        public init() {
             placeholder = ""
             title = nil
             additionalInformation = nil
@@ -55,8 +55,8 @@ extension Warp {
             lineLimit = 1...1
         }
 
-        init(
-            placeholder: String,
+        public init(
+            placeholder: String = "",
             title: String? = nil,
             additionalInformation: String? = nil,
             infoToolTip: Image? = nil,
