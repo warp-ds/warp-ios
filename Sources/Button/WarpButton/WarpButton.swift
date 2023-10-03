@@ -87,7 +87,7 @@ extension Warp {
                     .resizable()
                     .frame(width: 16, height: 16)
                     .clipped()
-                    .padding(-2)
+                    .padding(.trailing, 4)
             }
         }
 
