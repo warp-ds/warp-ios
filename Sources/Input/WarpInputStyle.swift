@@ -50,7 +50,7 @@ extension Warp {
                         }
 
                         if self.configuration.isAnimated {
-                            withAnimation {
+                            withAnimation(.smooth) {
                                 updateState()
                             }
                         } else {
@@ -60,18 +60,21 @@ extension Warp {
                     .textFieldStyle(
                         .innerStyle(
                             state: state.wrappedValue,
-                            lineLimit: self.configuration.lineLimit
+                            lineLimit: self.configuration.lineLimit,
+                            leftView: self.configuration.leftView,
+                            rightView: self.configuration.rightView
                         )
                     )
 
                 helperTextView
             }
+            .disabled(state.wrappedValue.shouldBeDisabled)
             .onTapGesture {
+                // Not checking for stateful disable logic, since whole will be disabled.
                 if !isFocused {
                     isFocused = true
                 }
             }
-            .disabled(state.wrappedValue.shouldBeDisabled)
             .accessibilityElement(children: .combine)
             .accessibilityRepresentation {
                 TextField(self.configuration.placeholder, text: text)
