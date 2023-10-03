@@ -7,40 +7,40 @@ extension Warp {
     /// <#Description#>
     public struct InputConfiguration {
         /// <#Description#>
-        public let placeholder: String
+        public var placeholder: String
 
         /// <#Description#>
-        public let title: String?
+        public var title: String?
 
         /// <#Description#>
-        public let additionalInformation: String?
+        public var additionalInformation: String?
 
         /// <#Description#>
-        public let infoToolTipView: AnyView?
+        public var infoToolTipView: AnyView?
 
         /// <#Description#>
-        public let leftView: AnyView?
+        public var leftView: AnyView?
 
         /// <#Description#>
-        public let rightView: AnyView?
+        public var rightView: AnyView?
 
         /// <#Description#>
-        public let prefix: String?
+        public var prefix: String?
 
         /// <#Description#>
-        public let suffix: String?
-        
+        public var suffix: String?
+
         /// <#Description#>
-        public let errorMessage: String?
-        
+        public var errorMessage: String?
+
         /// <#Description#>
-        public let helpMessage: String?
-        
+        public var helpMessage: String?
+
         /// <#Description#>
-        public let isAnimated: Bool
-        
+        public var isAnimated: Bool
+
         /// <#Description#>
-        public let lineLimit: ClosedRange<UInt8>
+        public var lineLimit: ClosedRange<UInt8>
 
         public init() {
             placeholder = ""
@@ -61,7 +61,7 @@ extension Warp {
             placeholder: String = "",
             title: String? = nil,
             additionalInformation: String? = nil,
-            infoToolTipImage: AnyView? = nil,
+            infoToolTipView: AnyView? = nil,
             leftView: AnyView? = nil,
             rightView: AnyView? = nil,
             prefix: String? = nil,
@@ -74,7 +74,7 @@ extension Warp {
             self.placeholder = placeholder
             self.title = title
             self.additionalInformation = additionalInformation
-            self.infoToolTipView = infoToolTipImage.flatMap(AnyView.init)
+            self.infoToolTipView = infoToolTipView.flatMap(AnyView.init)
             self.leftView = leftView
             self.rightView = rightView
             self.prefix = prefix
