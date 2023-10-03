@@ -67,7 +67,7 @@ extension Warp {
             errorMessage: String? = nil,
             helpMessage: String? = nil,
             isAnimated: Bool = true,
-            lineLimit: ClosedRange<UInt8> = 1...1
+            lineLimit: ClosedRange<UInt8> = .oneLineLimit
         ) {
             self.placeholder = placeholder
             self.title = title
@@ -83,4 +83,8 @@ extension Warp {
             self.lineLimit = lineLimit
         }
     }
+}
+
+extension ClosedRange where Bound == UInt8 {
+    public static let oneLineLimit: ClosedRange<UInt8> = 1...1
 }

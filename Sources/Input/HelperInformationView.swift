@@ -28,13 +28,9 @@ struct HelperInformationView: View {
         self.helpMessage = helpMessage
     }
 
-    private var helpTextForegroundColor: Color {
-        state.helpTextForegroundColor
-    }
-
     var body: some View {
         Text(helperTextView)
-            .foregroundColor(helpTextForegroundColor)
+            .foregroundColor(state.foregroundColor)
             .font(.caption)
             .fontWeight(.thin)
     }
@@ -49,7 +45,7 @@ struct HelperInformationView: View {
 
 extension Warp.InputState {
     /// <#Description#>
-    fileprivate var helpTextForegroundColor: Color {
+    fileprivate var foregroundColor: Color {
         let colorProvider = Config.colorProvider
 
         if self == .error {

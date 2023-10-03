@@ -1,6 +1,5 @@
 import SwiftUI
 
-@available(iOS 17.0, *)
 extension Warp {
     public struct Input: View {
         /// <#Description#>
@@ -30,7 +29,10 @@ extension Warp {
             iconRight: Image?,
             prefix: String?,
             suffix: String?,
-            isAnimated: Bool,
+            errorMessage: String? = nil,
+            helpMessage: String? = nil,
+            isAnimated: Bool = true,
+            lineLimit: ClosedRange<UInt8>,
             text: Binding<String>,
             state: Binding<InputState>
         ) {
@@ -43,7 +45,10 @@ extension Warp {
                 iconRight: iconRight,
                 prefix: prefix,
                 suffix: suffix,
-                isAnimated: isAnimated
+                errorMessage: errorMessage,
+                helpMessage: helpMessage,
+                isAnimated: isAnimated,
+                lineLimit: lineLimit
             )
 
             self.text = text
@@ -87,7 +92,10 @@ extension Warp {
             iconRight: Image? = nil,
             prefix: String? = nil,
             suffix: String? = nil,
+            errorMessage: String? = nil,
+            helpMessage: String? = nil,
             isAnimated: Bool = true,
+            lineLimit: ClosedRange<UInt8> = .oneLineLimit,
             text: Binding<String> = .constant(""),
             state: Binding<InputState>
         ) -> Warp.Input {
@@ -101,7 +109,10 @@ extension Warp {
                     iconRight: iconRight,
                     prefix: prefix,
                     suffix: suffix,
-                    isAnimated: isAnimated
+                    errorMessage: errorMessage,
+                    helpMessage: helpMessage,
+                    isAnimated: isAnimated,
+                    lineLimit: lineLimit
                 ),
                 text: text,
                 state: state
@@ -129,7 +140,6 @@ extension Warp {
         }
 
 //        .textFieldStyle(.roundedBorder)
-//        private var textContentType
 
         /// Information that will be produced for Accessibility engine based on current configuration.
         private var accessibilityInformation: [String] {
