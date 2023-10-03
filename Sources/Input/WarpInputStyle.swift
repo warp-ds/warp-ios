@@ -90,6 +90,7 @@ extension Warp {
                     isFocused = true
                 }
             }
+            .disabled(state.wrappedValue.shouldBeDisabled)
             .accessibilityElement(children: .combine)
             .accessibilityRepresentation {
                 TextField(config.placeholder, text: text)
@@ -142,6 +143,21 @@ extension TextFieldStyle where Self == Warp.InputStyle {
     public static func warp(
         configuration: Warp.InputConfiguration,
         text: Binding<String>,
+        state: Binding<Warp.InputState>,
+        colorProvider: ColorProvider
+    ) -> Warp.InputStyle {
+        Warp.InputStyle(
+            configuration: configuration,
+            text: text,
+            state: state,
+            colorProvider: colorProvider
+        )
+    }
+
+    /// <#Description#>
+    public static func warp(
+        configuration: Warp.InputConfiguration,
+        text: Binding<String>,
         state: Warp.InputState = .normal,
         colorProvider: ColorProvider
     ) -> Warp.InputStyle {
@@ -163,5 +179,14 @@ extension View {
             .onChange(of: condition.wrappedValue) { value in
                 onFocus(value == true)
             }
+    }
+}
+
+extension Warp.InputState {
+    fileprivate var shouldBeDisabled: Bool {
+        let isDisabled = self == .disabled
+        lazy var isReadOnly = self == .readOnly
+
+        return isDisabled || isReadOnly
     }
 }
