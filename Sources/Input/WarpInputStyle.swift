@@ -8,7 +8,7 @@ extension Warp {
         public static let inputDefaultInactiveState = InputState.normal
 
         /// <#Description#>
-        private let config: InputConfiguration
+        private let configuration: InputConfiguration
 
         /// <#Description#>
         public var text: Binding<String>
@@ -28,29 +28,10 @@ extension Warp {
             state: Binding<Warp.InputState>,
             colorProvider: ColorProvider
         ) {
-            self.config = configuration
+            self.configuration = configuration
             self.text = text
             self.colorProvider = colorProvider
             self.state = state
-        }
-
-        public init(
-            configuration: Warp.InputConfiguration,
-            text: Binding<String>,
-            state: Warp.InputState = inputDefaultInactiveState,
-            colorProvider: ColorProvider
-        ) {
-            self.config = configuration
-            self.text = text
-            self.colorProvider = colorProvider
-
-            var tempState = state
-
-            self.state = Binding {
-                return tempState
-            } set: { newValue in
-                tempState = newValue
-            }
         }
 
         public func _body(configuration: TextField<Self._Label>) -> some View {
@@ -68,7 +49,7 @@ extension Warp {
                             }
                         }
 
-                        if config.isAnimated {
+                        if self.configuration.isAnimated {
                             withAnimation {
                                 updateState()
                             }
@@ -79,7 +60,7 @@ extension Warp {
                     .textFieldStyle(
                         .innerStyle(
                             state: state.wrappedValue,
-                            lineLimit: config.lineLimit
+                            lineLimit: self.configuration.lineLimit
                         )
                     )
 
@@ -93,10 +74,10 @@ extension Warp {
             .disabled(state.wrappedValue.shouldBeDisabled)
             .accessibilityElement(children: .combine)
             .accessibilityRepresentation {
-                TextField(config.placeholder, text: text)
+                TextField(self.configuration.placeholder, text: text)
                     .accessibilityInputLabels(accessibilityInformation)
                     .accessibilityLabel(accessibilityInformation.joined(separator: ", "))
-                    .accessibilityHint(config.placeholder)
+                    .accessibilityHint(self.configuration.placeholder)
             }
         }
 
@@ -104,11 +85,11 @@ extension Warp {
         private var accessibilityInformation: [String] {
             var inputLabels: [String] = []
 
-            if let title = config.title {
+            if let title = configuration.title {
                 inputLabels.append(title)
             }
 
-            if let additionalInformation = config.additionalInformation {
+            if let additionalInformation = configuration.additionalInformation {
                 inputLabels.append(additionalInformation)
             }
 
@@ -123,9 +104,9 @@ extension Warp {
 
         private var topView: some View {
             ToolTipView(
-                title: config.title,
-                additionalInformation: config.additionalInformation,
-                infoToolTipView: config.infoToolTip,
+                title: configuration.title,
+                additionalInformation: configuration.additionalInformation,
+                infoToolTipView: configuration.infoToolTip,
                 colorProvider: colorProvider
             )
         }
@@ -135,14 +116,104 @@ extension Warp {
         private var helperTextView: some View {
             HelperInformationView(
                 state: state.wrappedValue,
-                errorMessage: config.errorMessage,
-                helpMessage: config.helpMessage
+                errorMessage: configuration.errorMessage,
+                helpMessage: configuration.helpMessage
             )
         }
     }
 }
 
 extension TextFieldStyle where Self == Warp.InputStyle {
+    /// <#Description#>
+    public static func warp(
+        placeholder: String = "",
+        title: String? = nil,
+        additionalInformation: String? = nil,
+        infoToolTip: Image? = nil,
+        iconLeft: Image? = nil,
+        iconRight: Image? = nil,
+        prefix: String? = nil,
+        suffix: String? = nil,
+        errorMessage: String? = nil,
+        helpMessage: String? = nil,
+        isAnimated: Bool = true,
+        lineLimit: ClosedRange<UInt8> = .oneLineLimit,
+        text: Binding<String>,
+        state: Binding<Warp.InputState>,
+        colorProvider: ColorProvider
+    ) -> Warp.InputStyle {
+        let configuration = Warp.InputConfiguration(
+            placeholder: placeholder,
+            title: title,
+            additionalInformation: additionalInformation,
+            infoToolTip: infoToolTip,
+            iconLeft: iconLeft,
+            iconRight: iconRight,
+            prefix: prefix,
+            suffix: suffix,
+            errorMessage: errorMessage,
+            helpMessage: helpMessage,
+            isAnimated: isAnimated,
+            lineLimit: lineLimit
+        )
+
+        return Warp.InputStyle(
+            configuration: configuration,
+            text: text,
+            state: state,
+            colorProvider: colorProvider
+        )
+    }
+
+    /// <#Description#>
+    public static func warp(
+        placeholder: String = "",
+        title: String? = nil,
+        additionalInformation: String? = nil,
+        infoToolTip: Image? = nil,
+        iconLeft: Image? = nil,
+        iconRight: Image? = nil,
+        prefix: String? = nil,
+        suffix: String? = nil,
+        errorMessage: String? = nil,
+        helpMessage: String? = nil,
+        isAnimated: Bool = true,
+        lineLimit: ClosedRange<UInt8> = .oneLineLimit,
+        text: Binding<String>,
+        state: Warp.InputState = .normal,
+        colorProvider: ColorProvider
+    ) -> Warp.InputStyle {
+        let configuration = Warp.InputConfiguration(
+            placeholder: placeholder,
+            title: title,
+            additionalInformation: additionalInformation,
+            infoToolTip: infoToolTip,
+            iconLeft: iconLeft,
+            iconRight: iconRight,
+            prefix: prefix,
+            suffix: suffix,
+            errorMessage: errorMessage,
+            helpMessage: helpMessage,
+            isAnimated: isAnimated,
+            lineLimit: lineLimit
+        )
+
+        var tempState = state
+
+        let bindingState = Binding {
+            return tempState
+        } set: { newValue in
+            tempState = newValue
+        }
+
+        return Warp.InputStyle(
+            configuration: configuration,
+            text: text,
+            state: bindingState,
+            colorProvider: colorProvider
+        )
+    }
+
     /// <#Description#>
     public static func warp(
         configuration: Warp.InputConfiguration,
@@ -165,10 +236,18 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         state: Warp.InputState = .normal,
         colorProvider: ColorProvider
     ) -> Warp.InputStyle {
-        Warp.InputStyle(
+        var tempState = state
+
+        let bindingState = Binding {
+            return tempState
+        } set: { newValue in
+            tempState = newValue
+        }
+
+        return Warp.InputStyle(
             configuration: configuration,
             text: text,
-            state: state,
+            state: bindingState,
             colorProvider: colorProvider
         )
     }
