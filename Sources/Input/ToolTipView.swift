@@ -15,16 +15,12 @@ struct ToolTipView: View {
     let colorProvider: ColorProvider
 
     var body: some View {
-        topView
-    }
-
-    private var topView: some View {
         HStack {
             titleView
 
             optionalLabelView
 
-            rightImageView
+            toolTipView
         }
     }
 
@@ -48,7 +44,7 @@ struct ToolTipView: View {
     }
 
     @ViewBuilder
-    private var rightImageView: some View {
+    private var toolTipView: some View {
         if let infoToolTipView = infoToolTipView {
             infoToolTipView
                 .foregroundColor(FinnColors.gray300)
