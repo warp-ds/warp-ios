@@ -178,6 +178,30 @@ extension Warp {
                 lineLimit: .oneLineLimit
             )
         }
+
+        /// <#Description#>
+        public static func decimal(
+            placeholder: String = "",
+            title: String = "",
+            additionalInformation: String? = nil,
+            leftSymbol: String? = nil,
+            rightSymbol: String? = nil,
+            errorMessage: String? = nil,
+            helpMessage: String? = nil
+        ) -> InputConfiguration {
+            InputConfiguration(
+                placeholder: placeholder,
+                title: title,
+                additionalInformation: additionalInformation,
+                infoToolTipView: nil,
+                leftView: leftSymbol.flatMap(Text.init).flatMap(AnyView.init),
+                rightView: rightSymbol.flatMap(Text.init).flatMap(AnyView.init),
+                errorMessage: errorMessage,
+                helpMessage: helpMessage,
+                isAnimated: true,
+                lineLimit: .oneLineLimit
+            )
+        }
     }
 }
 
