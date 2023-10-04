@@ -68,7 +68,7 @@ extension Warp {
 
                 helperTextView
             }
-            .frame(minHeight: 34)
+            .frame(minHeight: 34, maxHeight: .infinity)
             .disabled(state.wrappedValue.shouldBeDisabled)
             .onTapGesture {
                 // Not checking for stateful disable logic, since whole will be disabled.

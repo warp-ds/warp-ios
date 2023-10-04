@@ -127,7 +127,7 @@ extension Warp.Input {
         leftSymbol: String? = nil,
         rightSymbol: String? = nil
     ) -> some View {
-        let configuration: Warp.InputConfiguration = .price(
+        let configuration: Warp.InputConfiguration = .decimal(
             leftSymbol: leftSymbol,
             rightSymbol: rightSymbol
         )
