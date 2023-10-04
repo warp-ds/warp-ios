@@ -54,7 +54,7 @@ extension Warp {
             errorMessage = nil
             helpMessage = nil
             isAnimated = true
-            lineLimit = 1...1
+            lineLimit = .oneLineLimit
         }
         
         public init(
@@ -140,7 +140,24 @@ extension Warp {
             self.isAnimated = isAnimated
             self.lineLimit = lineLimit
         }
+        
+        /// <#Description#>
+        public static let `default` = InputConfiguration(
+            placeholder: "",
+            title: nil,
+            additionalInformation: nil,
+            infoToolTipView: nil,
+            iconLeft: nil,
+            iconRight: nil,
+            prefix: nil,
+            suffix: nil,
+            errorMessage: nil,
+            helpMessage: nil,
+            isAnimated: true,
+            lineLimit: .oneLineLimit
+        )
 
+        /// <#Description#>
         public static let searchTextField = InputConfiguration(
             placeholder: NSLocalizedString(
                 "InputConfiguration.Title.Search",
@@ -159,6 +176,32 @@ extension Warp {
             isAnimated: true,
             lineLimit: .oneLineLimit
         )
+
+        /// <#Description#>
+        public static func form(
+            placeholder: String = "",
+            title: String,
+            additionalInformation: String? = nil,
+            leftView: AnyView? = nil,
+            rightView: AnyView? = nil,
+            errorMessage: String? = nil,
+            helpMessage: String? = nil
+        ) -> InputConfiguration {
+            InputConfiguration(
+                placeholder: placeholder,
+                title: title,
+                additionalInformation: additionalInformation,
+                infoToolTipView: nil,
+                leftView: leftView,
+                rightView: rightView,
+                prefix: nil,
+                suffix: nil,
+                errorMessage: errorMessage,
+                helpMessage: helpMessage,
+                isAnimated: true,
+                lineLimit: .oneLineLimit
+            )
+        }
     }
 }
 
