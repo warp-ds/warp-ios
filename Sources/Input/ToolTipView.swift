@@ -48,7 +48,7 @@ struct ToolTipView: View {
         if let infoToolTipView = infoToolTipView {
             infoToolTipView
                 .foregroundColor(FinnColors.gray300)
-                .frame(width: 16, height: 16)
+                .inputAdditionalView()
         }
     }
 }

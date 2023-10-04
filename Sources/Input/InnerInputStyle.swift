@@ -54,8 +54,7 @@ extension Warp {
         private func createToolbarView(from toolbarView: some View) -> some View {
             return toolbarView
                 .foregroundColor(FinnColors.gray500)
-                .frame(maxWidth: 16, maxHeight: 16)
-                .clipped()
+                .inputAdditionalView()
         }
     }
 }
