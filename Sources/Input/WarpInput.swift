@@ -129,6 +129,7 @@ extension Warp {
 
 // Input variants
 extension Warp.Input {
+    /// <#Description#>
     public static func createSearchTextField(
         text: Binding<String>
     ) -> some View {
@@ -143,8 +144,69 @@ extension Warp.Input {
 
         return textField
             .submitLabel(.search)
+            .accessibilityAddTraits(.isSearchField)
     }
+    
+    /// <#Description#>
+    public static func createPasswordTextField(
+        configuration: Warp.InputConfiguration,
+        text: Binding<String>,
+        state: Binding<Warp.InputState>,
+        isSecured: Binding<Bool>
+    ) -> some View {
+        var configuration = configuration
 
+        let showHideButton = SwiftUI.Button(
+            action: {
+                let toggle = {
+                    isSecured.wrappedValue.toggle()
+                }
+
+                if configuration.isAnimated {
+                    withAnimation(.easeInOut) {
+                        toggle()
+                    }
+                } else {
+                    toggle()
+                }
+            }, label: {
+                let showImage = "eye"
+                let hideImage = "eye.slash"
+
+                Image(systemName: isSecured.wrappedValue ? showImage: hideImage)
+                    .resizable()
+                    .scaledToFit()
+            }
+        )
+
+        configuration.rightView = AnyView(showHideButton)
+
+        return Group {
+            if isSecured.wrappedValue {
+                SecureField(configuration.placeholder, text: text)
+                    .textFieldStyle(
+                        .warp(
+                            configuration: configuration,
+                            text: text,
+                            state: .normal,
+                            colorProvider: Config.colorProvider
+                        )
+                    )
+                    .textContentType(.password)
+                    .accessibilityRepresentation {
+                        SecureField(configuration.placeholder, text: text)
+                    }
+            } else {
+                Warp.Input(
+                    config: configuration,
+                    text: text,
+                    state: state
+                )
+            }
+        }
+    }
+    
+    /// <#Description#>
     public static func createWithDiscardButton(
         configuration: Warp.InputConfiguration,
         text: Binding<String>,
