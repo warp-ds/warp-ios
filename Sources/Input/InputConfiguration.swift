@@ -25,12 +25,6 @@ extension Warp {
         public var rightView: AnyView?
 
         /// <#Description#>
-        public var prefix: String?
-
-        /// <#Description#>
-        public var suffix: String?
-
-        /// <#Description#>
         public var errorMessage: String?
 
         /// <#Description#>
@@ -49,8 +43,6 @@ extension Warp {
             infoToolTipView = nil
             leftView = nil
             rightView = nil
-            prefix = nil
-            suffix = nil
             errorMessage = nil
             helpMessage = nil
             isAnimated = true
@@ -64,8 +56,6 @@ extension Warp {
             infoToolTipView: AnyView? = nil,
             leftView: AnyView? = nil,
             rightView: AnyView? = nil,
-            prefix: String? = nil,
-            suffix: String? = nil,
             errorMessage: String? = nil,
             helpMessage: String? = nil,
             isAnimated: Bool = true,
@@ -77,8 +67,6 @@ extension Warp {
             self.infoToolTipView = infoToolTipView.flatMap(AnyView.init)
             self.leftView = leftView
             self.rightView = rightView
-            self.prefix = prefix
-            self.suffix = suffix
             self.errorMessage = errorMessage
             self.helpMessage = helpMessage
             self.isAnimated = isAnimated
@@ -92,8 +80,6 @@ extension Warp {
             infoToolTipView: AnyView? = nil,
             iconLeft: Image?,
             iconRight: Image? = nil,
-            prefix: String? = nil,
-            suffix: String? = nil,
             errorMessage: String? = nil,
             helpMessage: String? = nil,
             isAnimated: Bool = true,
@@ -105,8 +91,6 @@ extension Warp {
             self.infoToolTipView = infoToolTipView
             self.leftView = iconLeft.flatMap(AnyView.init)
             self.rightView = iconRight.flatMap(AnyView.init)
-            self.prefix = prefix
-            self.suffix = suffix
             self.errorMessage = errorMessage
             self.helpMessage = helpMessage
             self.isAnimated = isAnimated
@@ -133,8 +117,6 @@ extension Warp {
             self.infoToolTipView = infoToolTipView
             self.leftView = leftPriceSymbol.flatMap(Text.init).flatMap(AnyView.init)
             self.rightView = rightPriceSymbol.flatMap(Text.init).flatMap(AnyView.init)
-            self.prefix = prefix
-            self.suffix = suffix
             self.errorMessage = errorMessage
             self.helpMessage = helpMessage
             self.isAnimated = isAnimated
@@ -149,8 +131,6 @@ extension Warp {
             infoToolTipView: nil,
             iconLeft: nil,
             iconRight: nil,
-            prefix: nil,
-            suffix: nil,
             errorMessage: nil,
             helpMessage: nil,
             isAnimated: true,
@@ -169,8 +149,6 @@ extension Warp {
             infoToolTipView: nil,
             iconLeft: Image(systemName: "magnifyingglass"),
             iconRight: nil,
-            prefix: nil,
-            suffix: nil,
             errorMessage: nil,
             helpMessage: nil,
             isAnimated: true,
@@ -194,8 +172,6 @@ extension Warp {
                 infoToolTipView: nil,
                 leftView: leftView,
                 rightView: rightView,
-                prefix: nil,
-                suffix: nil,
                 errorMessage: errorMessage,
                 helpMessage: helpMessage,
                 isAnimated: true,
