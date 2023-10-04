@@ -122,6 +122,26 @@ extension Warp {
 // Input variants
 extension Warp.Input {
     /// <#Description#>
+    public static func createDecimalTextField(
+        text: Binding<String>,
+        leftSymbol: String? = nil,
+        rightSymbol: String? = nil
+    ) -> some View {
+        let configuration: Warp.InputConfiguration = .price(
+            leftSymbol: leftSymbol,
+            rightSymbol: rightSymbol
+        )
+        let constantState: Warp.InputState = .normal
+
+        return Warp.Input(
+            config: configuration,
+            text: text,
+            state: .constant(constantState)
+        )
+        .keyboardType(.decimalPad)
+    }
+
+    /// <#Description#>
     public static func createSearchTextField(
         text: Binding<String>
     ) -> some View {
