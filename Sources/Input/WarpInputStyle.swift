@@ -265,13 +265,15 @@ extension View {
 }
 
 extension Warp.InputState {
+    /// <#Description#>
     fileprivate var shouldBeDisabled: Bool {
         let isDisabled = self == .disabled
         lazy var isReadOnly = self == .readOnly
 
         return isDisabled || isReadOnly
     }
-
+    
+    /// <#Description#>
     fileprivate var stateTitle: String? {
         switch self {
             case .disabled:
