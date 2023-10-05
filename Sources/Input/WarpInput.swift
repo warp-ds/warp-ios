@@ -4,9 +4,6 @@ import Combine
 extension Warp {
     public struct Input: View {
         /// <#Description#>
-        public static let inputDefaultInactiveState = InputState.normal
-
-        /// <#Description#>
         private let config: InputConfiguration
 
         /// <#Description#>
@@ -61,7 +58,7 @@ extension Warp {
             helpMessage: String? = nil,
             isAnimated: Bool = true,
             text: Binding<String>,
-            state: InputState = .normal
+            state: InputState = Warp.inputDefaultInactiveState
         ) {
             self.config = InputConfiguration(
                 placeholder: placeholder,
@@ -163,6 +160,7 @@ extension Warp.Input {
         isSecured: Binding<Bool>
     ) -> some View {
         var configuration = configuration
+        let constantState: Warp.InputState = .normal
 
         let showHideButton = SwiftUI.Button(
             action: {
@@ -196,7 +194,7 @@ extension Warp.Input {
                         .warp(
                             configuration: configuration,
                             text: text,
-                            state: .normal,
+                            state: constantState,
                             colorProvider: Config.colorProvider
                         )
                     )

@@ -2,24 +2,24 @@ import Foundation
 import SwiftUI
 
 extension Warp {
-    /// <#Description#>
-    public struct InputStyle: TextFieldStyle {
-        /// <#Description#>
-        public static let inputDefaultInactiveState = InputState.normal
+    /// Inactive state of input.
+    public static let inputDefaultInactiveState = InputState.normal
 
-        /// <#Description#>
+    /// Style that is responsible to transform TextField into warp design system input.
+    public struct InputStyle: TextFieldStyle {
+        /// Input configurations.
         private let configuration: InputConfiguration
 
-        /// <#Description#>
+        /// One-way binding of input text.
         public var text: Binding<String>
 
-        /// <#Description#>
+        /// Two-way binding of input state.
         private var state: Binding<InputState>
 
-        /// <#Description#>
+        /// Flag indicating if input is focused.
         @FocusState private var isFocused: Bool
 
-        /// <#Description#>
+        /// Object responsible for providing needed colors.
         private let colorProvider: ColorProvider
 
         public init(
@@ -45,7 +45,7 @@ extension Warp {
                             if isFocused {
                                 state.wrappedValue = .active
                             } else {
-                                state.wrappedValue = .normal
+                                state.wrappedValue = inputDefaultInactiveState
                             }
                         }
 
@@ -128,7 +128,8 @@ extension Warp {
 
 // Variants + syntactic sugar.
 extension TextFieldStyle where Self == Warp.InputStyle {
-    /// <#Description#>
+    /// Style that is responsible for transforming TextField to warp designed TextField.
+    /// TextField will be wrapped inside borders with additional arbitrary views.
     public static func warp(
         placeholder: String = "",
         title: String? = nil,
@@ -163,7 +164,8 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         )
     }
 
-    /// <#Description#>
+    /// Style that is responsible for transforming TextField to warp designed TextField.
+    /// TextField will be wrapped inside borders with additional arbitrary views.
     public static func warp(
         placeholder: String = "",
         title: String? = nil,
@@ -177,7 +179,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         helpMessage: String? = nil,
         isAnimated: Bool = true,
         text: Binding<String>,
-        state: Warp.InputState = .normal,
+        state: Warp.InputState = Warp.inputDefaultInactiveState,
         colorProvider: ColorProvider
     ) -> Warp.InputStyle {
         let configuration = Warp.InputConfiguration(
@@ -208,7 +210,8 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         )
     }
 
-    /// <#Description#>
+    /// Style that is responsible for transforming TextField to warp designed TextField.
+    /// TextField will be wrapped inside borders with additional arbitrary views.
     public static func warp(
         configuration: Warp.InputConfiguration,
         text: Binding<String>,
@@ -223,11 +226,12 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         )
     }
 
-    /// <#Description#>
+    /// Style that is responsible for transforming TextField to warp designed TextField.
+    /// TextField will be wrapped inside borders with additional arbitrary views.
     public static func warp(
         configuration: Warp.InputConfiguration,
         text: Binding<String>,
-        state: Warp.InputState = .normal,
+        state: Warp.InputState = Warp.inputDefaultInactiveState,
         colorProvider: ColorProvider
     ) -> Warp.InputStyle {
         var tempState = state
