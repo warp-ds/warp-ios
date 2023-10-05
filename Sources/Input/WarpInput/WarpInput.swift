@@ -7,7 +7,7 @@ extension Warp {
 
     public struct Input: View {
         /// <#Description#>
-        private let config: InputConfiguration
+        private let configuration: InputConfiguration
 
         /// <#Description#>
         public var text: Binding<String>
@@ -34,7 +34,7 @@ extension Warp {
             text: Binding<String>,
             state: Binding<InputState>
         ) {
-            self.config = InputConfiguration(
+            self.configuration = InputConfiguration(
                 placeholder: placeholder,
                 title: title,
                 additionalInformation: additionalInformation,
@@ -63,7 +63,7 @@ extension Warp {
             text: Binding<String>,
             state: InputState = Warp.inputDefaultInactiveState
         ) {
-            self.config = InputConfiguration(
+            self.configuration = InputConfiguration(
                 placeholder: placeholder,
                 title: title,
                 additionalInformation: additionalInformation,
@@ -93,19 +93,19 @@ extension Warp {
             text: Binding<String>,
             state: Binding<InputState>
         ) {
-            self.config = config
+            self.configuration = config
             self.text = text
             self._state = state
         }
 
         public var body: some View {
             TextField(
-                config.placeholder,
+                configuration.placeholder,
                 text: text
             )
             .textFieldStyle(
                 .warp(
-                    configuration: config,
+                    configuration: configuration,
                     text: text,
                     state: $state,
                     colorProvider: colorProvider
