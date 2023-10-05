@@ -2,19 +2,19 @@ import Foundation
 import SwiftUI
 
 struct HelperInformationView: View {
-    /// <#Description#>
+    /// State of input.
     let state: Warp.InputState
 
-    /// <#Description#>
+    /// Lazy error message that will be shown in case of state gets changed to `Warp.InputState.error`.
     let errorMessage: () -> String?
 
-    /// <#Description#>
-    let helpMessage: () -> String?
+    /// Helper message that will be shown at the bottom when state is not error..
+    let helpMessage: String?
 
     init(
         state: Warp.InputState,
         errorMessage: @autoclosure @escaping () -> String?,
-        helpMessage: @autoclosure @escaping () -> String?
+        helpMessage: String?
     ) {
         self.state = state
         self.errorMessage = errorMessage
@@ -31,7 +31,7 @@ struct HelperInformationView: View {
     }
 
     private var helperTextView: String? {
-        let stateText = state == .error ? errorMessage(): helpMessage()
+        let stateText = state == .error ? errorMessage(): helpMessage
 
         return stateText
     }
