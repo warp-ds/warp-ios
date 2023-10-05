@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 
+/// Helper view that will be shown at the bottom of input.
 struct HelperInformationView: View {
     /// State of input.
     let state: Warp.InputState

@@ -2,9 +2,6 @@ import Foundation
 import SwiftUI
 
 extension Warp {
-    /// Inactive state of input.
-    public static let inputDefaultInactiveState = InputState.normal
-
     /// Style that is responsible to transform TextField into warp design system input.
     public struct InputStyle: TextFieldStyle {
         /// Input configurations.

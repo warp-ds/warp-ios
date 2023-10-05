@@ -2,6 +2,9 @@ import SwiftUI
 import Combine
 
 extension Warp {
+    /// Inactive state of input.
+    public static let inputDefaultInactiveState = InputState.normal
+
     public struct Input: View {
         /// <#Description#>
         private let config: InputConfiguration
