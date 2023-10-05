@@ -33,9 +33,6 @@ extension Warp {
         /// <#Description#>
         public var isAnimated: Bool
 
-        /// <#Description#>
-        public var lineLimit: ClosedRange<UInt8>
-
         public init() {
             placeholder = ""
             title = nil
@@ -46,7 +43,6 @@ extension Warp {
             errorMessage = nil
             helpMessage = nil
             isAnimated = true
-            lineLimit = .oneLineLimit
         }
         
         public init(
@@ -58,8 +54,7 @@ extension Warp {
             rightView: AnyView? = nil,
             errorMessage: String? = nil,
             helpMessage: String? = nil,
-            isAnimated: Bool = true,
-            lineLimit: ClosedRange<UInt8> = .oneLineLimit
+            isAnimated: Bool = true
         ) {
             self.placeholder = placeholder
             self.title = title
@@ -70,7 +65,6 @@ extension Warp {
             self.errorMessage = errorMessage
             self.helpMessage = helpMessage
             self.isAnimated = isAnimated
-            self.lineLimit = lineLimit
         }
 
         public init(
@@ -82,8 +76,7 @@ extension Warp {
             iconRight: Image? = nil,
             errorMessage: String? = nil,
             helpMessage: String? = nil,
-            isAnimated: Bool = true,
-            lineLimit: ClosedRange<UInt8> = .oneLineLimit
+            isAnimated: Bool = true
         ) {
             self.placeholder = placeholder
             self.title = title
@@ -94,7 +87,6 @@ extension Warp {
             self.errorMessage = errorMessage
             self.helpMessage = helpMessage
             self.isAnimated = isAnimated
-            self.lineLimit = lineLimit
         }
 
         public init(
@@ -108,8 +100,7 @@ extension Warp {
             suffix: String? = nil,
             errorMessage: String? = nil,
             helpMessage: String? = nil,
-            isAnimated: Bool = true,
-            lineLimit: ClosedRange<UInt8> = .oneLineLimit
+            isAnimated: Bool = true
         ) {
             self.placeholder = placeholder
             self.title = title
@@ -120,7 +111,6 @@ extension Warp {
             self.errorMessage = errorMessage
             self.helpMessage = helpMessage
             self.isAnimated = isAnimated
-            self.lineLimit = lineLimit
         }
         
         /// <#Description#>
@@ -133,8 +123,7 @@ extension Warp {
             iconRight: nil,
             errorMessage: nil,
             helpMessage: nil,
-            isAnimated: true,
-            lineLimit: .oneLineLimit
+            isAnimated: true
         )
 
         /// <#Description#>
@@ -151,8 +140,7 @@ extension Warp {
             iconRight: nil,
             errorMessage: nil,
             helpMessage: nil,
-            isAnimated: true,
-            lineLimit: .oneLineLimit
+            isAnimated: true
         )
 
         /// <#Description#>
@@ -174,8 +162,7 @@ extension Warp {
                 rightView: rightView,
                 errorMessage: errorMessage,
                 helpMessage: helpMessage,
-                isAnimated: true,
-                lineLimit: .oneLineLimit
+                isAnimated: true
             )
         }
 
@@ -198,13 +185,8 @@ extension Warp {
                 rightView: rightSymbol.flatMap(Text.init).flatMap(AnyView.init),
                 errorMessage: errorMessage,
                 helpMessage: helpMessage,
-                isAnimated: true,
-                lineLimit: .oneLineLimit
+                isAnimated: true
             )
         }
     }
-}
-
-extension ClosedRange where Bound == UInt8 {
-    public static let oneLineLimit: ClosedRange<UInt8> = 1...1
 }

@@ -60,7 +60,6 @@ extension Warp {
                     .textFieldStyle(
                         .innerStyle(
                             state: state.wrappedValue,
-                            lineLimit: self.configuration.lineLimit,
                             leftView: self.configuration.leftView,
                             rightView: self.configuration.rightView
                         )
@@ -140,7 +139,6 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         errorMessage: String? = nil,
         helpMessage: String? = nil,
         isAnimated: Bool = true,
-        lineLimit: ClosedRange<UInt8> = .oneLineLimit,
         text: Binding<String>,
         state: Binding<Warp.InputState>,
         colorProvider: ColorProvider
@@ -154,8 +152,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
             iconRight: iconRight,
             errorMessage: errorMessage,
             helpMessage: helpMessage,
-            isAnimated: isAnimated,
-            lineLimit: lineLimit
+            isAnimated: isAnimated
         )
 
         return Warp.InputStyle(
@@ -179,7 +176,6 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         errorMessage: String? = nil,
         helpMessage: String? = nil,
         isAnimated: Bool = true,
-        lineLimit: ClosedRange<UInt8> = .oneLineLimit,
         text: Binding<String>,
         state: Warp.InputState = .normal,
         colorProvider: ColorProvider
@@ -193,8 +189,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
             iconRight: iconRight,
             errorMessage: errorMessage,
             helpMessage: helpMessage,
-            isAnimated: isAnimated,
-            lineLimit: lineLimit
+            isAnimated: isAnimated
         )
 
         var tempState = state

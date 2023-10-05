@@ -31,7 +31,6 @@ extension Warp {
             errorMessage: String? = nil,
             helpMessage: String? = nil,
             isAnimated: Bool = true,
-            lineLimit: ClosedRange<UInt8> = .oneLineLimit,
             text: Binding<String>,
             state: Binding<InputState>
         ) {
@@ -44,8 +43,7 @@ extension Warp {
                 rightView: rightView,
                 errorMessage: errorMessage,
                 helpMessage: helpMessage,
-                isAnimated: isAnimated,
-                lineLimit: lineLimit
+                isAnimated: isAnimated
             )
 
             self.text = text
@@ -62,7 +60,6 @@ extension Warp {
             errorMessage: String? = nil,
             helpMessage: String? = nil,
             isAnimated: Bool = true,
-            lineLimit: ClosedRange<UInt8> = .oneLineLimit,
             text: Binding<String>,
             state: InputState = .normal
         ) {
@@ -75,8 +72,7 @@ extension Warp {
                 rightView: rightView,
                 errorMessage: errorMessage,
                 helpMessage: helpMessage,
-                isAnimated: isAnimated,
-                lineLimit: lineLimit
+                isAnimated: isAnimated
             )
 
             self.text = text

@@ -45,8 +45,8 @@ struct TextFieldView: View {
         .focused(isFocused)
         .textFieldStyle(
             .innerStyle(
-                state: state.wrappedValue,
-                lineLimit: lineLimit
+                state: state.wrappedValue
+//                lineLimit: lineLimit
             )
         )
     }

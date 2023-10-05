@@ -2,25 +2,23 @@ import Foundation
 import SwiftUI
 
 extension Warp {
-    /// <#Description#>
+    /// Text field style that will be used internally.
+    /// Responsible for configuring text field inside the borders.
     struct InnerInputStyle: TextFieldStyle {
-        /// <#Description#>
+        /// State of input.
         let state: Warp.InputState
-
-        /// <#Description#>
-        let lineLimit: ClosedRange<UInt8>
         
-        /// <#Description#>
+        /// View that can be added as a helper in left side of the text field.
         let leftView: AnyView?
         
-        /// <#Description#>
+        /// View that can be added as a helper in right side of the text field.
         let rightView: AnyView?
 
         private var cornerRadius: CGFloat {
             4.0
         }
 
-        /// <#Description#>
+        /// Minimum height reserved for text field in order to keep it elegant.
         private var minHeight: CGFloat {
             28.0
         }
@@ -33,7 +31,6 @@ extension Warp {
 
                 configuration
                     .frame(minHeight: minHeight, maxHeight: .infinity)
-                    .modifier(LineLimitModifier(lineLimit: lineLimit))
                     .font(.callout)
 
                 if let rightView = rightView {
@@ -60,49 +57,30 @@ extension Warp {
 }
 
 extension TextFieldStyle where Self == Warp.InnerInputStyle {
-    /// <#Description#>
+    /// A text field style with ability to add arbitrary view in left or right side.
     static func innerStyle(
         state: Warp.InputState,
-        lineLimit: ClosedRange<UInt8>,
         leftView: AnyView? = nil,
         rightView: AnyView? = nil
     ) -> Warp.InnerInputStyle {
         Warp.InnerInputStyle(
             state: state,
-            lineLimit: lineLimit,
             leftView: leftView,
             rightView: rightView
         )
     }
 
-    /// <#Description#>
+    /// A text field style with ability to add arbitrary view in left or right side.
     static func innerStyle(
         state: Warp.InputState,
-        lineLimit: ClosedRange<UInt8>,
         leftView: some View,
         rightView: some View
     ) -> Warp.InnerInputStyle {
         Warp.InnerInputStyle(
             state: state,
-            lineLimit: lineLimit,
             leftView: AnyView(leftView),
             rightView: AnyView(rightView)
         )
-    }
-}
-
-private struct LineLimitModifier: ViewModifier {
-    let lineLimit: ClosedRange<UInt8>
-
-    func body(content: Content) -> some View {
-        if #available(iOS 16.0, *) {
-            let lineLimitRange = ClosedRange<Int>(lineLimit)
-
-            return content
-                .lineLimit(lineLimitRange)
-        }
-
-        return content
     }
 }
 
@@ -162,11 +140,5 @@ extension Warp.InputState {
 
     fileprivate var horizontalPadding: CGFloat {
         self == .readOnly ? 4 : 8
-    }
-}
-
-extension ClosedRange where Bound == Int {
-    fileprivate init(_ range: ClosedRange<UInt8>) {
-        self.init(uncheckedBounds: (lower: Int(range.lowerBound), upper: Int(range.upperBound)))
     }
 }
