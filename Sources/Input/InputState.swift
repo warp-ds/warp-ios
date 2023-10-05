@@ -1,23 +1,24 @@
 import Foundation
 
 extension Warp {
-    /// <#Description#>
+    /// States of input view.
     public enum InputState: Equatable, Comparable {
-        /// <#Description#>
+        /// None active input.
         case normal
 
-        /// <#Description#>
+        /// Focused input.
         case active
 
-        /// <#Description#>
+        /// Disabled input.
         case disabled
 
-        /// <#Description#>
+        /// Input that associated validation has failed.
         case error
 
-        /// <#Description#>
+        /// Read only input.
         case readOnly
-
+        
+        /// Flag indicating is input interactive.
         var isDisabled: Bool {
             return self == .disabled
         }
