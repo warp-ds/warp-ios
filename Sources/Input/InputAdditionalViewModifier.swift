@@ -1,7 +1,8 @@
 import Foundation
 import SwiftUI
 
-/// <#Description#>
+/// Modifier that will be applied to input additional views to fit the expected area.
+/// (left/right view and info tool tip view)
 struct InputAdditionalViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -12,7 +13,7 @@ struct InputAdditionalViewModifier: ViewModifier {
 }
 
 extension View {
-    /// <#Description#>
+    /// Modifier that will prepare input additional views to fit the expected area.
     func inputAdditionalView() -> some View {
         modifier(InputAdditionalViewModifier())
     }
