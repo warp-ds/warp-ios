@@ -4,33 +4,33 @@ import struct SwiftUI.Image
 import struct SwiftUI.Text
 
 extension Warp {
-    /// <#Description#>
+    /// Configurations that will be applied to input.
     public struct InputConfiguration {
-        /// <#Description#>
+        /// TextField placeholder.
         public var placeholder: String
 
-        /// <#Description#>
+        /// Info tool tip title.
         public var title: String?
 
-        /// <#Description#>
+        /// Info tool tip additional brief information that will be shown after `title`.
         public var additionalInformation: String?
 
-        /// <#Description#>
+        /// Info tool tip view that will be show after `additionalInformation`.
         public var infoToolTipView: AnyView?
 
-        /// <#Description#>
+        /// Additional view that will be placed on the left side, inside the borders.
         public var leftView: AnyView?
 
-        /// <#Description#>
+        /// Additional view that will be placed on the right side, inside the borders.
         public var rightView: AnyView?
 
-        /// <#Description#>
+        /// Error message that will be shown when state changes to error.
         public var errorMessage: String?
 
-        /// <#Description#>
+        /// Helper message.
         public var helpMessage: String?
 
-        /// <#Description#>
+        /// Flag indicating if input changes should be animated.
         public var isAnimated: Bool
 
         public init() {
@@ -113,7 +113,7 @@ extension Warp {
             self.isAnimated = isAnimated
         }
         
-        /// <#Description#>
+        /// Plain TextField configuration.
         public static let `default` = InputConfiguration(
             placeholder: "",
             title: nil,
@@ -126,7 +126,7 @@ extension Warp {
             isAnimated: true
         )
 
-        /// <#Description#>
+        /// Common search TextField configuration.
         public static let searchTextField = InputConfiguration(
             placeholder: NSLocalizedString(
                 "InputConfiguration.Title.Search",
@@ -143,7 +143,7 @@ extension Warp {
             isAnimated: true
         )
 
-        /// <#Description#>
+        /// Configuration for a TextField that will be used inside a form.
         public static func form(
             placeholder: String = "",
             title: String,
@@ -166,7 +166,7 @@ extension Warp {
             )
         }
 
-        /// <#Description#>
+        /// Configuration for a TextField that will be used to gather numeric values.
         public static func decimal(
             placeholder: String = "",
             title: String = "",
