@@ -58,7 +58,8 @@ extension Warp {
                         .innerStyle(
                             state: state.wrappedValue,
                             leftView: self.configuration.leftView,
-                            rightView: self.configuration.rightView
+                            rightView: self.configuration.rightView,
+                            colorProvider: colorProvider
                         )
                     )
 

@@ -16,15 +16,72 @@ extension Warp {
         
         /// View that can be added as a helper in right side of the text field.
         let rightView: AnyView?
+        
+        /// Object responsible for providing needed colors.
+        let colorProvider: ColorProvider
 
         private var cornerRadius: CGFloat {
             4.0
         }
 
+        private var borderColor: Color {
+            switch state {
+                case .normal:
+                    return colorProvider.inputBorder
+
+                case .active:
+                    return colorProvider.inputBorderActive
+
+                case .disabled:
+                    return colorProvider.inputBorderDisabled
+
+                case .error:
+                    return colorProvider.inputBorderNegative
+
+                case .readOnly:
+                    return colorProvider.inputBorder
+            }
+        }
+
+        private var backgroundColor: Color {
+            if state == .disabled {
+                return colorProvider.inputBackgroundDisabled
+            }
+
+            return colorProvider.inputBackground
+        }
+
+        private var inputBorderWidth: CGFloat {
+            switch state {
+                case .normal:
+                    return 2
+
+                case .active:
+                    return 4
+
+                case .disabled:
+                    return 2
+
+                case .error:
+                    return 2
+
+                case .readOnly:
+                    return 0
+            }
+        }
+
+        private var horizontalPadding: CGFloat {
+            state == .readOnly ? 4 : 8
+        }
+
+        private var additionalViewForegroundColor: Color {
+            FinnColors.gray500
+        }
+
         public func _body(configuration: TextField<Self._Label>) -> some View {
             HStack(spacing: 8) {
                 if let leftView = leftView {
-                    createToolbarView(from: leftView)
+                    createAdditionalView(from: leftView)
                 }
 
                 configuration
@@ -32,23 +89,23 @@ extension Warp {
                     .font(.callout)
 
                 if let rightView = rightView {
-                    createToolbarView(from: rightView)
+                    createAdditionalView(from: rightView)
                 }
             }
-            .padding(.horizontal, state.horizontalPadding)
+            .padding(.horizontal, horizontalPadding)
             .overlay(overlayView)
-            .background(state.backgroundColor)
+            .background(backgroundColor)
             .cornerRadius(cornerRadius)
         }
 
         private var overlayView: some View {
             RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(state.inputBorderColor, lineWidth: state.inputBorderWidth)
+                .stroke(borderColor, lineWidth: inputBorderWidth)
         }
 
-        private func createToolbarView(from toolbarView: some View) -> some View {
-            return toolbarView
-                .foregroundColor(FinnColors.gray500)
+        private func createAdditionalView(from view: some View) -> some View {
+            return view
+                .foregroundColor(additionalViewForegroundColor)
                 .inputAdditionalView()
         }
     }
@@ -59,84 +116,14 @@ extension TextFieldStyle where Self == Warp.InnerInputStyle {
     static func innerStyle(
         state: Warp.InputState,
         leftView: AnyView? = nil,
-        rightView: AnyView? = nil
+        rightView: AnyView? = nil,
+        colorProvider: ColorProvider
     ) -> Warp.InnerInputStyle {
         Warp.InnerInputStyle(
             state: state,
             leftView: leftView,
-            rightView: rightView
+            rightView: rightView,
+            colorProvider: colorProvider
         )
-    }
-
-    /// A text field style with ability to add arbitrary view in left or right side.
-    static func innerStyle(
-        state: Warp.InputState,
-        leftView: some View,
-        rightView: some View
-    ) -> Warp.InnerInputStyle {
-        Warp.InnerInputStyle(
-            state: state,
-            leftView: AnyView(leftView),
-            rightView: AnyView(rightView)
-        )
-    }
-}
-
-extension Warp.InputState {
-    /// <#Description#>
-    fileprivate var inputBorderColor: Color {
-        let colorProvider = Config.colorProvider
-
-        switch self {
-            case .normal:
-                return colorProvider.inputBorder
-
-            case .active:
-                return colorProvider.inputBorderActive
-
-            case .disabled:
-                return colorProvider.inputBorderDisabled
-
-            case .error:
-                return colorProvider.inputBorderNegative
-
-            case .readOnly:
-                return colorProvider.inputBorder
-        }
-    }
-
-    /// <#Description#>
-    fileprivate var backgroundColor: Color {
-        let colorProvider = Config.colorProvider
-
-        if self == .disabled {
-            return colorProvider.inputBackgroundDisabled
-        }
-
-        return colorProvider.inputBackground
-    }
-
-    /// <#Description#>
-    fileprivate var inputBorderWidth: CGFloat {
-        switch self {
-            case .normal:
-                return 2
-
-            case .active:
-                return 4
-
-            case .disabled:
-                return 2
-
-            case .error:
-                return 2
-
-            case .readOnly:
-                return 0
-        }
-    }
-
-    fileprivate var horizontalPadding: CGFloat {
-        self == .readOnly ? 4 : 8
     }
 }
