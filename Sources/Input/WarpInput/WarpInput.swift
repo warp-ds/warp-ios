@@ -6,20 +6,20 @@ extension Warp {
     public static let inputDefaultInactiveState = InputState.normal
 
     public struct Input: View {
-        /// <#Description#>
+        /// Input configurations.
         private let configuration: InputConfiguration
 
-        /// <#Description#>
+        /// One-way binding TextField text.
         public var text: Binding<String>
 
-        /// <#Description#>
+        /// Two-way binding input state.
         @Binding private var state: InputState
         
-        /// <#Description#>
+        /// Two-way binding flag indicating input is first responder (focused).
         @FocusState private var isFocused: Bool
 
-        /// <#Description#>
-        private let colorProvider = Config.colorProvider
+        /// Object responsible for providing needed colors.
+        private let colorProvider: ColorProvider
 
         public init(
             placeholder: String = "",
@@ -32,7 +32,8 @@ extension Warp {
             helpMessage: String? = nil,
             isAnimated: Bool = true,
             text: Binding<String>,
-            state: Binding<InputState>
+            state: Binding<InputState>,
+            colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.configuration = InputConfiguration(
                 placeholder: placeholder,
@@ -48,6 +49,7 @@ extension Warp {
 
             self.text = text
             self._state = state
+            self.colorProvider = colorProvider
         }
 
         public init(
@@ -61,7 +63,8 @@ extension Warp {
             helpMessage: String? = nil,
             isAnimated: Bool = true,
             text: Binding<String>,
-            state: InputState = Warp.inputDefaultInactiveState
+            state: InputState = Warp.inputDefaultInactiveState,
+            colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.configuration = InputConfiguration(
                 placeholder: placeholder,
@@ -86,16 +89,20 @@ extension Warp {
                     tempState = newValue
                 }
             )
+
+            self.colorProvider = colorProvider
         }
 
         public init(
             config: InputConfiguration,
             text: Binding<String>,
-            state: Binding<InputState>
+            state: Binding<InputState>,
+            colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.configuration = config
             self.text = text
             self._state = state
+            self.colorProvider = colorProvider
         }
 
         public var body: some View {
@@ -121,7 +128,8 @@ extension Warp.Input {
     public static func createDecimalTextField(
         text: Binding<String>,
         leftSymbol: String? = nil,
-        rightSymbol: String? = nil
+        rightSymbol: String? = nil,
+        colorProvider: ColorProvider = Config.colorProvider
     ) -> some View {
         let configuration: Warp.InputConfiguration = .decimal(
             leftSymbol: leftSymbol,
@@ -132,14 +140,16 @@ extension Warp.Input {
         return Warp.Input(
             config: configuration,
             text: text,
-            state: .constant(constantState)
+            state: .constant(constantState),
+            colorProvider: colorProvider
         )
         .keyboardType(.decimalPad)
     }
 
     /// <#Description#>
     public static func createSearchTextField(
-        text: Binding<String>
+        text: Binding<String>,
+        colorProvider: ColorProvider = Config.colorProvider
     ) -> some View {
         let configuration: Warp.InputConfiguration = .searchTextField
         let constantState: Warp.InputState = .normal
@@ -160,7 +170,8 @@ extension Warp.Input {
         configuration: Warp.InputConfiguration,
         text: Binding<String>,
         state: Binding<Warp.InputState>,
-        isSecured: Binding<Bool>
+        isSecured: Binding<Bool>,
+        colorProvider: ColorProvider = Config.colorProvider
     ) -> some View {
         var configuration = configuration
         let constantState: Warp.InputState = .normal
@@ -198,7 +209,7 @@ extension Warp.Input {
                             configuration: configuration,
                             text: text,
                             state: constantState,
-                            colorProvider: Config.colorProvider
+                            colorProvider: colorProvider
                         )
                     )
                     .textContentType(.password)
@@ -209,7 +220,8 @@ extension Warp.Input {
                 Warp.Input(
                     config: configuration,
                     text: text,
-                    state: state
+                    state: state,
+                    colorProvider: colorProvider
                 )
             }
         }
@@ -219,7 +231,8 @@ extension Warp.Input {
     public static func createWithDiscardButton(
         configuration: Warp.InputConfiguration,
         text: Binding<String>,
-        state: Binding<Warp.InputState>
+        state: Binding<Warp.InputState>,
+        colorProvider: ColorProvider = Config.colorProvider
     ) -> Warp.Input {
         var configuration = configuration
 
@@ -241,12 +254,15 @@ extension Warp.Input {
         return Warp.Input(
             config: configuration,
             text: text,
-            state: state
+            state: state,
+            colorProvider: colorProvider
         )
     }
 }
 
 private struct WarpInputPreview: PreviewProvider {
+    private static let colorProvider = Config.colorProvider
+
     static var previews: some View {
         ScrollView(showsIndicators: false) {
             VStack (alignment: .leading) {
@@ -276,7 +292,7 @@ private struct WarpInputPreview: PreviewProvider {
 
         return GroupBox(
             content: {
-                Warp.Input(text: bindingText, state: bindingState)
+                Warp.Input(text: bindingText, state: bindingState, colorProvider: colorProvider)
             }, label: {
                 Text(state.title)
             }
