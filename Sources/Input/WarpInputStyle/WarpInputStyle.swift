@@ -1,6 +1,9 @@
 import Foundation
 import SwiftUI
 
+/// Minimum height reserved for input in order to keep it elegant.
+private let inputMinHeight = 34.0
+
 extension Warp {
     /// Style that is responsible to transform TextField into warp design system input.
     public struct InputStyle: TextFieldStyle {
@@ -67,7 +70,7 @@ extension Warp {
 
                 helperTextView
             }
-            .frame(minHeight: 34, maxHeight: .infinity)
+            .frame(minHeight: inputMinHeight, maxHeight: .infinity)
             .disabled(state.wrappedValue.shouldBeDisabled)
             .onTapGesture {
                 // Not checking for stateful disable logic, since whole will be disabled.
@@ -273,15 +276,14 @@ extension View {
 }
 
 extension Warp.InputState {
-    /// <#Description#>
+    /// Flag indicating input should be disabled based on current state.
     fileprivate var shouldBeDisabled: Bool {
         let isDisabled = self == .disabled
         lazy var isReadOnly = self == .readOnly
 
         return isDisabled || isReadOnly
     }
-    
-    /// <#Description#>
+
     fileprivate var stateTitle: String? {
         switch self {
             case .disabled:
