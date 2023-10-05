@@ -100,6 +100,10 @@ extension Warp.Input {
                     state: state,
                     colorProvider: colorProvider
                 )
+                .textContentType(.password)
+                .keyboardType(.asciiCapable)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled(true)
             }
         }
     }
