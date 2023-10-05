@@ -117,7 +117,8 @@ extension Warp {
             HelperInformationView(
                 state: state.wrappedValue,
                 errorMessage: configuration.errorMessage,
-                helpMessage: configuration.helpMessage
+                helpMessage: configuration.helpMessage,
+                colorProvider: colorProvider
             )
         }
     }

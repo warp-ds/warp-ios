@@ -11,21 +11,34 @@ struct HelperInformationView: View {
 
     /// Helper message that will be shown at the bottom when state is not error..
     let helpMessage: String?
+    
+    /// Object responsible for providing colors.
+    let colorProvider: ColorProvider
 
     init(
         state: Warp.InputState,
         errorMessage: @autoclosure @escaping () -> String?,
-        helpMessage: String?
+        helpMessage: String?,
+        colorProvider: ColorProvider
     ) {
         self.state = state
         self.errorMessage = errorMessage
         self.helpMessage = helpMessage
+        self.colorProvider = colorProvider
+    }
+
+    var foregroundColor: Color {
+        if state == .error {
+            return colorProvider.inputTextNegative
+        }
+
+        return FinnColors.gray700
     }
 
     var body: some View {
         if let helperTextView = helperTextView {
             Text(helperTextView)
-                .foregroundColor(state.foregroundColor)
+                .foregroundColor(foregroundColor)
                 .font(.caption)
                 .fontWeight(.thin)
         }
@@ -35,18 +48,5 @@ struct HelperInformationView: View {
         let stateText = state == .error ? errorMessage(): helpMessage
 
         return stateText
-    }
-}
-
-extension Warp.InputState {
-    /// <#Description#>
-    fileprivate var foregroundColor: Color {
-        let colorProvider = Config.colorProvider
-
-        if self == .error {
-            return colorProvider.inputTextNegative
-        }
-
-        return FinnColors.gray700
     }
 }
