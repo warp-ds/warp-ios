@@ -1,17 +1,18 @@
 import Foundation
 import SwiftUI
 
+/// Information tool tip view that will be shown on the top of input.
 struct ToolTipView: View {
-    /// <#Description#>
+    /// Tool tip title.
     let title: String?
 
-    /// <#Description#>
+    /// Info tool tip additional brief information that will be shown after `title`.
     let additionalInformation: String?
 
-    /// <#Description#>
+    /// Info tool tip view that will be show after `additionalInformation`.
     let infoToolTipView: AnyView?
 
-    /// <#Description#>
+    /// Object responsible for providing needed colors.
     let colorProvider: ColorProvider
 
     var body: some View {
