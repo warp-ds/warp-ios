@@ -12,11 +12,12 @@ extension Warp {
         /// One-way binding TextField text.
         public var text: Binding<String>
 
+        State has bug!
         /// Two-way binding input state.
         @Binding private var state: InputState
         
         /// Two-way binding flag indicating input is first responder (focused).
-        @FocusState private var isFocused: Bool
+        private var isFocused: FocusState<Bool>
 
         /// Object responsible for providing needed colors.
         private let colorProvider: ColorProvider
@@ -33,6 +34,7 @@ extension Warp {
             isAnimated: Bool = true,
             text: Binding<String>,
             state: Binding<InputState>,
+            isFocused: FocusState<Bool> = FocusState(),
             colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.configuration = InputConfiguration(
@@ -49,6 +51,7 @@ extension Warp {
 
             self.text = text
             self._state = state
+            self.isFocused = isFocused
             self.colorProvider = colorProvider
         }
 
@@ -64,6 +67,7 @@ extension Warp {
             isAnimated: Bool = true,
             text: Binding<String>,
             state: InputState = Warp.inputDefaultInactiveState,
+            isFocused: FocusState<Bool> = FocusState(),
             colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.configuration = InputConfiguration(
@@ -90,6 +94,7 @@ extension Warp {
                 }
             )
 
+            self.isFocused = isFocused
             self.colorProvider = colorProvider
         }
 
@@ -97,11 +102,13 @@ extension Warp {
             config: InputConfiguration,
             text: Binding<String>,
             state: Binding<InputState>,
+            isFocused: FocusState<Bool> = FocusState(),
             colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.configuration = config
             self.text = text
             self._state = state
+            self.isFocused = isFocused
             self.colorProvider = colorProvider
         }
 
@@ -115,6 +122,7 @@ extension Warp {
                     configuration: configuration,
                     text: text,
                     state: $state,
+                    isFocused: isFocused,
                     colorProvider: colorProvider
                 )
             )
