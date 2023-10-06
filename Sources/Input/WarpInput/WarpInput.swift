@@ -12,7 +12,6 @@ extension Warp {
         /// One-way binding TextField text.
         public var text: Binding<String>
 
-        State has bug!
         /// Two-way binding input state.
         @Binding private var state: InputState
         
