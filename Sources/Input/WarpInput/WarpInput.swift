@@ -14,9 +14,6 @@ extension Warp {
 
         /// Two-way binding input state.
         @Binding private var state: InputState
-        
-        /// Two-way binding flag indicating input is first responder (focused).
-        private var isFocused: FocusState<Bool>
 
         /// Object responsible for providing needed colors.
         private let colorProvider: ColorProvider
@@ -33,7 +30,6 @@ extension Warp {
             isAnimated: Bool = true,
             text: Binding<String>,
             state: Binding<InputState>,
-            isFocused: FocusState<Bool> = FocusState(),
             colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.configuration = InputConfiguration(
@@ -50,7 +46,6 @@ extension Warp {
 
             self.text = text
             self._state = state
-            self.isFocused = isFocused
             self.colorProvider = colorProvider
         }
 
@@ -66,7 +61,6 @@ extension Warp {
             isAnimated: Bool = true,
             text: Binding<String>,
             state: InputState = Warp.inputDefaultInactiveState,
-            isFocused: FocusState<Bool> = FocusState(),
             colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.configuration = InputConfiguration(
@@ -83,17 +77,7 @@ extension Warp {
 
             self.text = text
 
-            var tempState = state
-
-            self._state = Binding(
-                get: {
-                    tempState
-                }, set: { newValue in
-                    tempState = newValue
-                }
-            )
-
-            self.isFocused = isFocused
+            self._state = State(initialValue: state).projectedValue
             self.colorProvider = colorProvider
         }
 
@@ -101,13 +85,11 @@ extension Warp {
             config: InputConfiguration,
             text: Binding<String>,
             state: Binding<InputState>,
-            isFocused: FocusState<Bool> = FocusState(),
             colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.configuration = config
             self.text = text
             self._state = state
-            self.isFocused = isFocused
             self.colorProvider = colorProvider
         }
 
@@ -121,7 +103,6 @@ extension Warp {
                     configuration: configuration,
                     text: text.wrappedValue,
                     state: $state,
-                    isFocused: isFocused,
                     colorProvider: colorProvider
                 )
             )
@@ -151,17 +132,9 @@ private struct WarpInputPreview: PreviewProvider {
             text = newValue
         }
 
-        var state = state
-
-        let bindingState = Binding {
-            state
-        } set: { newValue in
-            state = newValue
-        }
-
         return GroupBox(
             content: {
-                Warp.Input(text: bindingText, state: bindingState, colorProvider: colorProvider)
+                Warp.Input(text: bindingText, state: state, colorProvider: colorProvider)
             }, label: {
                 Text(state.title)
             }

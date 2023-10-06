@@ -18,7 +18,7 @@ extension Warp {
         private var state: Binding<InputState>
 
         /// Flag indicating if input is focused.
-        private var isFocused: FocusState<Bool>
+        @FocusState private var isFocused: Bool
 
         /// Object responsible for providing needed colors.
         private let colorProvider: ColorProvider
@@ -27,13 +27,11 @@ extension Warp {
             configuration: Warp.InputConfiguration,
             text: String,
             state: Binding<Warp.InputState>,
-            isFocused: FocusState<Bool>,
             colorProvider: ColorProvider
         ) {
             self.configuration = configuration
             self.text = text
             self.state = state
-            self.isFocused = isFocused
             self.colorProvider = colorProvider
         }
 
@@ -43,7 +41,15 @@ extension Warp {
 
                 configuration
                     .body
-                    .focused(isFocused.projectedValue) { isFocused in
+                    .textFieldStyle(
+                        .innerStyle(
+                            state: state.wrappedValue,
+                            leftView: self.configuration.leftView,
+                            rightView: self.configuration.rightView,
+                            colorProvider: colorProvider
+                        )
+                    )
+                    .focused($isFocused) { isFocused in
                         let updateState = {
                             if isFocused {
                                 state.wrappedValue = .active
@@ -60,14 +66,6 @@ extension Warp {
                             updateState()
                         }
                     }
-                    .textFieldStyle(
-                        .innerStyle(
-                            state: state.wrappedValue,
-                            leftView: self.configuration.leftView,
-                            rightView: self.configuration.rightView,
-                            colorProvider: colorProvider
-                        )
-                    )
 
                 helperTextView
             }
@@ -75,8 +73,8 @@ extension Warp {
             .disabled(state.wrappedValue.shouldBeDisabled)
             .onTapGesture {
                 // Not checking for stateful disable logic, since whole will be disabled.
-                if !isFocused.wrappedValue {
-                    isFocused.wrappedValue = true
+                if !isFocused {
+                    isFocused = true
                 }
             }
             .accessibilityElement(children: .combine)
@@ -147,7 +145,6 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         isAnimated: Bool = true,
         text: String,
         state: Binding<Warp.InputState>,
-        isFocused: FocusState<Bool> = FocusState(),
         colorProvider: ColorProvider
     ) -> Warp.InputStyle {
         let configuration = Warp.InputConfiguration(
@@ -166,7 +163,6 @@ extension TextFieldStyle where Self == Warp.InputStyle {
             configuration: configuration,
             text: text,
             state: state,
-            isFocused: isFocused,
             colorProvider: colorProvider
         )
     }
@@ -187,7 +183,6 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         isAnimated: Bool = true,
         text: String,
         state: Warp.InputState = Warp.inputDefaultInactiveState,
-        isFocused: FocusState<Bool> = FocusState(),
         colorProvider: ColorProvider
     ) -> Warp.InputStyle {
         let configuration = Warp.InputConfiguration(
@@ -208,7 +203,6 @@ extension TextFieldStyle where Self == Warp.InputStyle {
             configuration: configuration,
             text: text,
             state: bindingState,
-            isFocused: isFocused,
             colorProvider: colorProvider
         )
     }
@@ -219,14 +213,12 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         configuration: Warp.InputConfiguration,
         text: String,
         state: Binding<Warp.InputState>,
-        isFocused: FocusState<Bool> = FocusState(),
         colorProvider: ColorProvider
     ) -> Warp.InputStyle {
         Warp.InputStyle(
             configuration: configuration,
             text: text,
             state: state,
-            isFocused: isFocused,
             colorProvider: colorProvider
         )
     }
@@ -237,7 +229,6 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         configuration: Warp.InputConfiguration,
         text: String,
         state: Warp.InputState = Warp.inputDefaultInactiveState,
-        isFocused: FocusState<Bool> = FocusState(),
         colorProvider: ColorProvider
     ) -> Warp.InputStyle {
         let bindingState = createStateBinding(from: state)
@@ -246,21 +237,15 @@ extension TextFieldStyle where Self == Warp.InputStyle {
             configuration: configuration,
             text: text,
             state: bindingState,
-            isFocused: isFocused,
             colorProvider: colorProvider
         )
     }
 
-    private static func createStateBinding(from state: Warp.InputState) -> Binding<Warp.InputState> {
-        var tempState = state
-
-        let bindingState = Binding {
-            return tempState
-        } set: { newValue in
-            tempState = newValue
-        }
-
-        return bindingState
+    private static func createStateBinding(
+        from state: Warp.InputState
+    ) -> Binding<Warp.InputState> {
+        let state = State(initialValue: state)
+        return state.projectedValue
     }
 }
 
