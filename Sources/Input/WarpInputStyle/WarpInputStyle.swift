@@ -35,6 +35,24 @@ extension Warp {
             self.colorProvider = colorProvider
         }
 
+        public init(
+            configuration: Warp.InputConfiguration,
+            text: String,
+            state: Warp.InputState,
+            colorProvider: ColorProvider
+        ) {
+            self.configuration = configuration
+            var _state = state
+
+            self.text = text
+            self.state = Binding(
+                get: { _state },
+                set: { _state = $0 }
+            )
+            
+            self.colorProvider = colorProvider
+        }
+
         public func _body(configuration: TextField<Self._Label>) -> some View {
             VStack(alignment: .leading) {
                 topView
@@ -197,12 +215,10 @@ extension TextFieldStyle where Self == Warp.InputStyle {
             isAnimated: isAnimated
         )
 
-        let bindingState = createStateBinding(from: state)
-
         return Warp.InputStyle(
             configuration: configuration,
             text: text,
-            state: bindingState,
+            state: state,
             colorProvider: colorProvider
         )
     }
@@ -231,21 +247,12 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         state: Warp.InputState = Warp.inputDefaultInactiveState,
         colorProvider: ColorProvider
     ) -> Warp.InputStyle {
-        let bindingState = createStateBinding(from: state)
-
         return Warp.InputStyle(
             configuration: configuration,
             text: text,
-            state: bindingState,
+            state: state,
             colorProvider: colorProvider
         )
-    }
-
-    private static func createStateBinding(
-        from state: Warp.InputState
-    ) -> Binding<Warp.InputState> {
-        let state = State(initialValue: state)
-        return state.projectedValue
     }
 }
 
