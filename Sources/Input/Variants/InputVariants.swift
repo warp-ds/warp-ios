@@ -84,7 +84,7 @@ extension Warp.Input {
                     .textFieldStyle(
                         .warp(
                             configuration: configuration,
-                            text: text,
+                            text: text.wrappedValue,
                             state: state,
                             colorProvider: colorProvider
                         )

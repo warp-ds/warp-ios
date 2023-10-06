@@ -120,7 +120,7 @@ extension Warp {
             .textFieldStyle(
                 .warp(
                     configuration: configuration,
-                    text: text,
+                    text: text.wrappedValue,
                     state: $state,
                     isFocused: isFocused,
                     colorProvider: colorProvider

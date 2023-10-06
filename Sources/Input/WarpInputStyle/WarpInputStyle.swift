@@ -10,8 +10,9 @@ extension Warp {
         /// Input configurations.
         private let configuration: InputConfiguration
 
-        /// One-way binding of input text.
-        public var text: Binding<String>
+        /// Input text.
+        /// It will be consumed in accessibility engine in order to proxy input interactions to a TextField.
+        public var text: String
 
         /// Two-way binding of input state.
         private var state: Binding<InputState>
@@ -24,7 +25,7 @@ extension Warp {
 
         public init(
             configuration: Warp.InputConfiguration,
-            text: Binding<String>,
+            text: String,
             state: Binding<Warp.InputState>,
             isFocused: FocusState<Bool>,
             colorProvider: ColorProvider
@@ -80,7 +81,7 @@ extension Warp {
             }
             .accessibilityElement(children: .combine)
             .accessibilityRepresentation {
-                TextField(self.configuration.placeholder, text: text)
+                TextField(self.configuration.placeholder, text: .constant(text))
                     .accessibilityInputLabels(accessibilityInformation)
                     .accessibilityLabel(accessibilityInformation.joined(separator: ", "))
                     .accessibilityHint(self.configuration.placeholder)
@@ -144,7 +145,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         errorMessage: String? = nil,
         helpMessage: String? = nil,
         isAnimated: Bool = true,
-        text: Binding<String>,
+        text: String,
         state: Binding<Warp.InputState>,
         isFocused: FocusState<Bool> = FocusState(),
         colorProvider: ColorProvider
@@ -184,7 +185,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         errorMessage: String? = nil,
         helpMessage: String? = nil,
         isAnimated: Bool = true,
-        text: Binding<String>,
+        text: String,
         state: Warp.InputState = Warp.inputDefaultInactiveState,
         isFocused: FocusState<Bool> = FocusState(),
         colorProvider: ColorProvider
@@ -216,7 +217,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
     /// TextField will be wrapped inside borders with additional arbitrary views.
     public static func warp(
         configuration: Warp.InputConfiguration,
-        text: Binding<String>,
+        text: String,
         state: Binding<Warp.InputState>,
         isFocused: FocusState<Bool> = FocusState(),
         colorProvider: ColorProvider
@@ -234,7 +235,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
     /// TextField will be wrapped inside borders with additional arbitrary views.
     public static func warp(
         configuration: Warp.InputConfiguration,
-        text: Binding<String>,
+        text: String,
         state: Warp.InputState = Warp.inputDefaultInactiveState,
         isFocused: FocusState<Bool> = FocusState(),
         colorProvider: ColorProvider
