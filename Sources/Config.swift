@@ -7,7 +7,7 @@ public struct Config {
             return ToriTokenProvider()
         }
     }()
-    static var colorProvider: ColorProvider = {
+    public static var colorProvider: ColorProvider = {
         ColorProvider(token: tokenProvider)
     }()
     public static var warpTheme: WarpTheme = .finn
