@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 /// Helper view that will be shown at the bottom of input.
-struct HelperInformationView: View {
+struct HelperInformationView: View, Hashable {
     /// State of input.
     let state: Warp.InputState
 
@@ -14,6 +14,14 @@ struct HelperInformationView: View {
     
     /// Object responsible for providing colors.
     let colorProvider: ColorProvider
+
+    public static func == (lhs: HelperInformationView, rhs: HelperInformationView) -> Bool {
+        lhs.state == rhs.state
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(state)
+    }
 
     init(
         state: Warp.InputState,
