@@ -2,30 +2,30 @@ import Foundation
 import SwiftUI
 
 extension Warp {
-    /// <#Description#>
+    /// A control that initiates an action with `Warp` designed label.
     public struct Button: View {
-        /// <#Description#>
+        /// Button title.
         private let title: String
 
-        /// <#Description#>
+        /// Leading icon for button.
         private let icon: Image?
 
-        /// <#Description#>
+        /// Button action.
         private let action: () -> Void
 
-        /// <#Description#>
+        /// Button type.
         private let type: Warp.ButtonType
 
-        /// <#Description#>
+        /// Button size.
         private let size: Warp.ButtonSize
 
-        /// <#Description#>
+        /// Flag indicating that interactions are enabled.
         private let isEnabled: Bool
 
-        /// <#Description#>
+        /// Flag indicating whether this view should fill the parent view horizontally.
         private let fullWidth: Bool
 
-        /// <#Description#>
+        /// Object that will provide needed colors.
         private let colorProvider: ColorProvider
 
         public init(

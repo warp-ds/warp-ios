@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 extension Warp.Input {
-    /// <#Description#>
+    /// Input that will resolve common needs to work with decimals.
     public static func createDecimalTextField(
         text: Binding<String>,
         leftSymbol: String? = nil,
@@ -24,7 +24,7 @@ extension Warp.Input {
         .keyboardType(.decimalPad)
     }
 
-    /// <#Description#>
+    /// Input that will have common design for a search text field.
     public static func createSearchTextField(
         text: Binding<String>,
         colorProvider: ColorProvider = Config.colorProvider
@@ -43,8 +43,9 @@ extension Warp.Input {
             .accessibilityAddTraits(.isSearchField)
     }
 
-    /// <#Description#>
-    public static func createPasswordTextField(
+    /// Input that will be used to handle secure text,
+    /// it will contain a button as right view in order to secure/unsecure current text.
+    public static func createSecureTextField(
         configuration: Warp.InputConfiguration,
         text: Binding<String>,
         state: Binding<Warp.InputState>,
@@ -108,7 +109,7 @@ extension Warp.Input {
         }
     }
 
-    /// <#Description#>
+    /// `Warp.Input` that will contain a button as right view, that will have the responsibility of discarding current text.
     public static func createWithDiscardButton(
         configuration: Warp.InputConfiguration,
         text: Binding<String>,

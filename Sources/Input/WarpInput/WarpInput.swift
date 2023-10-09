@@ -5,6 +5,7 @@ extension Warp {
     /// Inactive state of input.
     public static let inputDefaultInactiveState = InputState.normal
 
+    /// A control that displays an editable text with `Warp` designed interface.
     public struct Input: View {
         /// Input configurations.
         private let configuration: InputConfiguration
