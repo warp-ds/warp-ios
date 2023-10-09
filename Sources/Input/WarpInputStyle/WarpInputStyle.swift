@@ -15,7 +15,7 @@ extension Warp {
         public var text: String
 
         /// Two-way binding of input state.
-        private var state: Binding<InputState>
+        @Binding private var state: InputState
 
         /// Flag indicating if input is focused.
         @FocusState private var isFocused: Bool
@@ -31,25 +31,7 @@ extension Warp {
         ) {
             self.configuration = configuration
             self.text = text
-            self.state = state
-            self.colorProvider = colorProvider
-        }
-
-        public init(
-            configuration: Warp.InputConfiguration,
-            text: String,
-            state: Warp.InputState,
-            colorProvider: ColorProvider
-        ) {
-            self.configuration = configuration
-            var _state = state
-
-            self.text = text
-            self.state = Binding(
-                get: { _state },
-                set: { _state = $0 }
-            )
-            
+            self._state = state
             self.colorProvider = colorProvider
         }
 
@@ -61,7 +43,7 @@ extension Warp {
                     .body
                     .textFieldStyle(
                         .innerStyle(
-                            state: state.wrappedValue,
+                            state: state,
                             leftView: self.configuration.leftView,
                             rightView: self.configuration.rightView,
                             colorProvider: colorProvider
@@ -70,9 +52,9 @@ extension Warp {
                     .focused($isFocused) { isFocused in
                         let updateState = {
                             if isFocused {
-                                state.wrappedValue = .active
+                                state = .active
                             } else {
-                                state.wrappedValue = inputDefaultInactiveState
+                                state = inputDefaultInactiveState
                             }
                         }
 
@@ -88,7 +70,7 @@ extension Warp {
                 helperTextView
             }
             .frame(minHeight: inputMinHeight, maxHeight: .infinity)
-            .disabled(state.wrappedValue.shouldBeDisabled)
+            .disabled(state.shouldBeDisabled)
             .onTapGesture {
                 // Not checking for stateful disable logic, since whole will be disabled.
                 if !isFocused {
@@ -116,8 +98,8 @@ extension Warp {
                 inputLabels.append(additionalInformation)
             }
 
-            if let stateTitle = state.wrappedValue.stateTitle {
-                inputLabels.append(stateTitle)
+            if let description = state.description {
+                inputLabels.append(description)
             }
 
             return inputLabels
@@ -138,7 +120,7 @@ extension Warp {
 
         private var helperTextView: some View {
             HelperInformationView(
-                state: state.wrappedValue,
+                state: state,
                 errorMessage: configuration.errorMessage,
                 helpMessage: configuration.helpMessage,
                 colorProvider: colorProvider
@@ -162,45 +144,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         helpMessage: String? = nil,
         isAnimated: Bool = true,
         text: String,
-        state: Binding<Warp.InputState>,
-        colorProvider: ColorProvider
-    ) -> Warp.InputStyle {
-        let configuration = Warp.InputConfiguration(
-            placeholder: placeholder,
-            title: title,
-            additionalInformation: additionalInformation,
-            infoToolTipView: infoToolTipView,
-            iconLeft: iconLeft,
-            iconRight: iconRight,
-            errorMessage: errorMessage,
-            helpMessage: helpMessage,
-            isAnimated: isAnimated
-        )
-
-        return Warp.InputStyle(
-            configuration: configuration,
-            text: text,
-            state: state,
-            colorProvider: colorProvider
-        )
-    }
-
-    /// Style that is responsible for transforming TextField to warp designed TextField.
-    /// TextField will be wrapped inside borders with additional arbitrary views.
-    public static func warp(
-        placeholder: String = "",
-        title: String? = nil,
-        additionalInformation: String? = nil,
-        infoToolTipView: AnyView? = nil,
-        iconLeft: Image? = nil,
-        iconRight: Image? = nil,
-        prefix: String? = nil,
-        suffix: String? = nil,
-        errorMessage: String? = nil,
-        helpMessage: String? = nil,
-        isAnimated: Bool = true,
-        text: String,
-        state: Warp.InputState = Warp.inputDefaultInactiveState,
+        state: Binding<Warp.InputState> = .constant(Warp.inputDefaultInactiveState),
         colorProvider: ColorProvider
     ) -> Warp.InputStyle {
         let configuration = Warp.InputConfiguration(
@@ -228,26 +172,10 @@ extension TextFieldStyle where Self == Warp.InputStyle {
     public static func warp(
         configuration: Warp.InputConfiguration,
         text: String,
-        state: Binding<Warp.InputState>,
+        state: Binding<Warp.InputState> = .constant(Warp.inputDefaultInactiveState),
         colorProvider: ColorProvider
     ) -> Warp.InputStyle {
         Warp.InputStyle(
-            configuration: configuration,
-            text: text,
-            state: state,
-            colorProvider: colorProvider
-        )
-    }
-
-    /// Style that is responsible for transforming TextField to warp designed TextField.
-    /// TextField will be wrapped inside borders with additional arbitrary views.
-    public static func warp(
-        configuration: Warp.InputConfiguration,
-        text: String,
-        state: Warp.InputState = Warp.inputDefaultInactiveState,
-        colorProvider: ColorProvider
-    ) -> Warp.InputStyle {
-        return Warp.InputStyle(
             configuration: configuration,
             text: text,
             state: state,
@@ -277,7 +205,7 @@ extension Warp.InputState {
         return isDisabled || isReadOnly
     }
 
-    fileprivate var stateTitle: String? {
+    fileprivate var description: String? {
         switch self {
             case .disabled:
                 return NSLocalizedString(
