@@ -77,7 +77,12 @@ extension Warp {
 
             self.text = text
 
-            self._state = State(initialValue: state).projectedValue
+            var __state = state
+            self._state = Binding(
+                get: { __state },
+                set: { __state = $0 }
+            )
+
             self.colorProvider = colorProvider
         }
 
