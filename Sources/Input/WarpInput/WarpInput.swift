@@ -10,7 +10,7 @@ extension Warp {
         private let configuration: InputConfiguration
 
         /// One-way binding TextField text.
-        public var text: Binding<String>
+        private var text: Binding<String>
 
         /// Two-way binding input state.
         @Binding private var state: InputState

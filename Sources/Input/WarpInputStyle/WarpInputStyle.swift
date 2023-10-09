@@ -12,7 +12,7 @@ extension Warp {
 
         /// Input text.
         /// It will be consumed in accessibility engine in order to proxy input interactions to a TextField.
-        public var text: String
+        private var text: String
 
         /// Two-way binding of input state.
         @Binding private var state: InputState

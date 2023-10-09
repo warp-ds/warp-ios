@@ -15,7 +15,7 @@ struct HelperInformationView: View, Hashable {
     /// Object responsible for providing colors.
     let colorProvider: ColorProvider
 
-    public static func == (lhs: HelperInformationView, rhs: HelperInformationView) -> Bool {
+    static func == (lhs: HelperInformationView, rhs: HelperInformationView) -> Bool {
         lhs.state == rhs.state
     }
 
@@ -35,12 +35,18 @@ struct HelperInformationView: View, Hashable {
         self.colorProvider = colorProvider
     }
 
-    var foregroundColor: Color {
+    private var foregroundColor: Color {
         if state == .error {
             return colorProvider.inputTextNegative
         }
 
         return FinnColors.gray700
+    }
+
+    private var helperTextView: String? {
+        let stateText = state == .error ? errorMessage(): helpMessage
+
+        return stateText
     }
 
     var body: some View {
@@ -50,11 +56,5 @@ struct HelperInformationView: View, Hashable {
                 .font(.caption)
                 .fontWeight(.thin)
         }
-    }
-
-    private var helperTextView: String? {
-        let stateText = state == .error ? errorMessage(): helpMessage
-
-        return stateText
     }
 }

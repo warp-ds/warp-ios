@@ -15,12 +15,12 @@ struct ToolTipView: View, Hashable {
     /// Object responsible for providing needed colors.
     let colorProvider: ColorProvider
 
-    public static func == (lhs: ToolTipView, rhs: ToolTipView) -> Bool {
+    static func == (lhs: ToolTipView, rhs: ToolTipView) -> Bool {
         lhs.title == rhs.title &&
         lhs.additionalInformation == rhs.additionalInformation
     }
 
-    public func hash(into hasher: inout Hasher) {
+    func hash(into hasher: inout Hasher) {
         hasher.combine(title)
         hasher.combine(additionalInformation)
     }
