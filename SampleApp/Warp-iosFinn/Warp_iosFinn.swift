@@ -5,7 +5,7 @@ import Warp
 struct Wrap_iosFinn: App {
     
     init() {
-        Config.warpTheme = .finn
+        Warp.Config.warpTheme = .finn
     }
     
     var body: some Scene {

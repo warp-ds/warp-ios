@@ -3,7 +3,7 @@ import Warp
 
 struct InputView: View {
     @State private var state = Warp.InputState.normal
-    private let colorProvider = Config.colorProvider
+    private let colorProvider = Warp.Config.colorProvider
 
     @State private var randomUsageTextFieldText = ""
     @State private var searchTextFieldText = ""
@@ -133,7 +133,7 @@ struct InputView: View {
                                     configuration: .default,
                                     text: styleTextFieldText,
                                     state: $state,
-                                    colorProvider: Config.colorProvider
+                                    colorProvider: colorProvider
                                 )
                             )
                             .padding()
@@ -150,7 +150,7 @@ struct InputView: View {
                                     .warp(
                                         configuration: .default,
                                         text: multilineTextFieldText,
-                                        colorProvider: Config.colorProvider
+                                        colorProvider: colorProvider
                                     )
                                 )
                                 .lineLimit(...4)

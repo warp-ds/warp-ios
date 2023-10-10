@@ -5,7 +5,7 @@ import Warp
 struct Wrap_iosTori: App {
     
     init() {
-        Config.warpTheme = .tori
+        Warp.Config.warpTheme = .tori
     }
     
     var body: some Scene {

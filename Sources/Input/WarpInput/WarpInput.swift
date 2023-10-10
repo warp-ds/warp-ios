@@ -117,7 +117,7 @@ extension Warp {
 }
 
 private struct WarpInputPreview: PreviewProvider {
-    private static let colorProvider = Config.colorProvider
+    private static let colorProvider = Warp.Config.colorProvider
 
     static var previews: some View {
         ScrollView(showsIndicators: false) {
