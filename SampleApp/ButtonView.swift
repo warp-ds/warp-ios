@@ -1,56 +1,59 @@
 import SwiftUI
 import warp_ios
 
+extension Warp.ButtonType: CaseIterable {
+    public static var allCases: [Warp.ButtonType] = [
+        .primary,
+        .secondary,
+        .tertiary,
+        .critical,
+        .criticalTertiary,
+        .utility,
+        .utilityTertiary,
+        .utilityOverlay
+    ]
+}
+
 struct ButtonView: View {
-    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack (alignment: .leading) {
-                Text("PrimaryButton")
-                HStack {
-                    PrimaryButton(title: "Button")
-                    PrimaryButton(title: "Disabled", disbled: true)
+                ForEach(Warp.ButtonType.allCases, id: \.self) { buttonType in
+                    createView(for: buttonType)
                 }
-                .padding(.bottom)
-                Divider()
-                Text("SecondaryButton")
-                HStack {
-                    SecondaryButton(title: "Button")
-                    SecondaryButton(title: "Disabled", disbled: true)
-                }
-                .padding(.bottom)
-                Divider()
-                Text("TertiaryButton")
-                HStack {
-                    TertiaryButton(title: "Button")
-                    TertiaryButton(title: "Disabled", disbled: true)
-                }
-                .padding(.bottom)
-                Divider()
-                Text("CriticalButton")
-                HStack {
-                    CriticalButton(title: "Button")
-                    CriticalButton(title: "Disabled", disbled: true)
-                }
-                .padding(.bottom)
-                Divider()
-                Text("CriticalTertiaryButton")
-                HStack {
-                    CriticalTertiaryButton(title: "Button")
-                    CriticalTertiaryButton(title: "Disabled", disbled: true)
-                }
-                .padding(.bottom)
-                Divider()
-                Text("UtilityButton")
-                HStack {
-                    UtilityButton(title: "Button")
-                    UtilityButton(title: "Disabled", disbled: true)
-                }
-                .padding(.bottom)
-                Divider()
             }
             .padding(.horizontal)
         }
+    }
+
+    private func createView(for buttonType: Warp.ButtonType) -> some View {
+        let name = String(describing: buttonType)
+        let capitalizedName = name.capitalized
+
+        return GroupBox(
+            content: {
+                VStack {
+                    // Normal
+                    Warp.Button.create(
+                        for: buttonType,
+                        title: "\(capitalizedName) button",
+                        icon: Image(systemName: "plus"),
+                        action: {}
+                    )
+
+
+                    // Disabled
+                    Warp.Button.create(
+                        for: buttonType,
+                        title: "Disabled \(name) button",
+                        action: {},
+                        isEnabled: false
+                    )
+                }
+            }, label: {
+                Text(capitalizedName)
+            }
+        )
     }
 }
 
