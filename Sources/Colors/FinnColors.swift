@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=15834355
-class FinnColors {
+struct FinnColors {
     static let blue50  = Color(hex: "#eff5ff")
     static let blue100 = Color(hex: "#e1edfe")
     static let blue200 = Color(hex: "#c2dafe")
