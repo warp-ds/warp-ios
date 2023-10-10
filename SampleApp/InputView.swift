@@ -1,5 +1,5 @@
 import SwiftUI
-import warp_ios
+import Warp
 
 struct InputView: View {
     @State private var state = Warp.InputState.normal
@@ -123,8 +123,6 @@ struct InputView: View {
                         Text("Random usage")
                     }
                 )
-
-                let _ = Self._printChanges()
 
                 GroupBox(
                     content: {

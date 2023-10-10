@@ -1,4 +1,4 @@
-import warp_ios
+import Warp
 import SwiftUI
 
 //class FinnColorProvider: ColorProvider {

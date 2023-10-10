@@ -1,5 +1,5 @@
 import SwiftUI
-import warp_ios
+import Warp
 
 extension Warp.ButtonType: CaseIterable {
     public static var allCases: [Warp.ButtonType] = [

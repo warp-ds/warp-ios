@@ -1,5 +1,5 @@
 import SwiftUI
-import warp_ios
+import Warp
 
 struct ContentView: View {
     @State private var isShowingButtonView = false
