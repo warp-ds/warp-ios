@@ -11,18 +11,18 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "warp-ios",
-            targets: ["warp-ios"]
+            name: "Warp",
+            targets: ["Warp"]
         ),
     ],
     targets: [
         .target(
-            name: "warp-ios",
+            name: "Warp",
             path: "Sources"
         ),
         .testTarget(
             name: "tests",
-            dependencies: ["warp-ios"]
+            dependencies: ["Warp"]
         )
     ]
 )
