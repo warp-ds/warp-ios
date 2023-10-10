@@ -22,11 +22,19 @@ struct ContentView: View {
                 }
                 .padding()
             }
-            .navigationTitle( Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String)
+            .navigationTitle(Bundle.main.applicationName)
         }
     }
 }
 
 #Preview {
     ContentView()
+}
+
+extension Bundle {
+    // Name of the app - title under the icon.
+    fileprivate var applicationName: String {
+        return object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ??
+        object(forInfoDictionaryKey: "CFBundleName") as? String ?? ""
+    }
 }
