@@ -1,11 +1,11 @@
 import SwiftUI
-import Warp_ios
+import warp_ios
 
 @main
 struct Wrap_iosTori: App {
     
     init() {
-        Warp_ios.Config.warpTheme = .tori
+        warp_ios.Config.warpTheme = .tori
     }
     
     var body: some Scene {

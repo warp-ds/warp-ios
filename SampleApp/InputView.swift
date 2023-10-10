@@ -1,5 +1,5 @@
 import SwiftUI
-import Warp_ios
+import warp_ios
 
 struct InputView: View {
     var body: some View {
