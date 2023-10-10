@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34A278AA2AD5414600EE6ED8 /* Finn+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B092A8CD0AA0023EB11 /* Finn+Color.swift */; };
 		34A278C02AD5472E00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278BF2AD5472E00EE6ED8 /* Warp */; };
 		34A278C22AD5473C00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278C12AD5473C00EE6ED8 /* Warp */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
-		82355AFF2A8CCBE70023EB11 /* Tori+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355AFB2A8CCBE70023EB11 /* Tori+Color.swift */; };
 		82355B002A8CCBE70023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
 		82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */; };
 		82355B0C2A8CD0AA0023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355B082A8CD0AA0023EB11 /* Assets.xcassets */; };
@@ -28,12 +26,10 @@
 /* Begin PBXFileReference section */
 		8206620F2A8CC97C0088677D /* warp-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "warp-ios"; path = ..; sourceTree = "<group>"; };
 		82355AFA2A8CCBE70023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		82355AFB2A8CCBE70023EB11 /* Tori+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tori+Color.swift"; sourceTree = "<group>"; };
 		82355AFC2A8CCBE70023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Warp_iosSampleApp.entitlements; path = "Warp-iosFinn/Warp_iosSampleApp.entitlements"; sourceTree = "<group>"; };
 		82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Warp_iosFinn.swift; path = "Warp-iosFinn/Warp_iosFinn.swift"; sourceTree = "<group>"; };
 		82355B082A8CD0AA0023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Warp-iosFinn/Assets.xcassets"; sourceTree = "<group>"; };
-		82355B092A8CD0AA0023EB11 /* Finn+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Finn+Color.swift"; path = "Warp-iosFinn/Finn+Color.swift"; sourceTree = "<group>"; };
 		82355B0A2A8CD0AA0023EB11 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "Warp-iosFinn/ContentView.swift"; sourceTree = "<group>"; };
 		82355B0B2A8CD0AA0023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Preview Content"; path = "Warp-iosFinn/Preview Content"; sourceTree = "<group>"; };
 		82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosTori.swift; sourceTree = "<group>"; };
@@ -67,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */,
-				82355AFB2A8CCBE70023EB11 /* Tori+Color.swift */,
 				82355AFA2A8CCBE70023EB11 /* Assets.xcassets */,
 				82355AFC2A8CCBE70023EB11 /* Preview Content */,
 			);
@@ -108,7 +103,6 @@
 				82355B0A2A8CD0AA0023EB11 /* ContentView.swift */,
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
 				82A2155B2A8DF93B0062FB9E /* InputView.swift */,
-				82355B092A8CD0AA0023EB11 /* Finn+Color.swift */,
 				82355B082A8CD0AA0023EB11 /* Assets.xcassets */,
 				82355B0B2A8CD0AA0023EB11 /* Preview Content */,
 				82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */,
@@ -224,7 +218,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34A278AA2AD5414600EE6ED8 /* Finn+Color.swift in Sources */,
 				82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */,
 				82A2155C2A8DF93B0062FB9E /* InputView.swift in Sources */,
 				82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
@@ -236,7 +229,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82355AFF2A8CCBE70023EB11 /* Tori+Color.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
 				82A2155D2A8DF93B0062FB9E /* InputView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
