@@ -1,5 +1,5 @@
 public struct Config {
-    static var tokenProvider: TokenProvider = {
+    public static var tokenProvider: TokenProvider = {
         switch warpTheme {
         case .finn:
             return FinnTokenProvider()
