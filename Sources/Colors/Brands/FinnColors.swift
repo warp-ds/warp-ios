@@ -34,7 +34,7 @@ struct FinnColors {
     static let green700 = Color(hex: "#1d7454")
     static let green800 = Color(hex: "#1b4d39")
     static let green900 = Color(hex: "#14291f")
-    
+
     static let yellow50  = Color(hex: "#fff8e6")
     static let yellow100 = Color(hex: "#fff5c8")
     static let yellow200 = Color(hex: "#feef90")
@@ -78,7 +78,7 @@ struct FinnColors {
     static let gray700 = Color(hex: "#3f3f46")
     static let gray800 = Color(hex: "#27272a")
     static let gray900 = Color(hex: "#18181b")
-    
+
     static let white = Color(hex: "#ffffff")
     static let black = Color(hex: "#000000")
 }

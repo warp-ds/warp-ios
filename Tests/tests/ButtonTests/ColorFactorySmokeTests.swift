@@ -1,6 +1,6 @@
 import XCTest
 import struct SwiftUI.Color
-@testable import warp_ios
+@testable import Warp
 
 final class ColorFactorySmokeTests: XCTestCase {
     private typealias ColorFactory = Warp.Button.ColorFactory

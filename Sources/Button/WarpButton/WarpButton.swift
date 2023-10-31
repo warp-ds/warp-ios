@@ -173,7 +173,7 @@ extension Warp.Button {
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false,
-        colorProvider: ColorProvider = Config.colorProvider
+        colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> Warp.Button {
         switch buttonType {
             case .primary:

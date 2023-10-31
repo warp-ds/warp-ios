@@ -1,7 +1,7 @@
 import XCTest
 import struct SwiftUI.Font
 import struct SwiftUI.Text
-@testable import warp_ios
+@testable import Warp
 
 final class TypographyFactorySmokeTests: XCTestCase {
     private typealias TypographyFactory = Warp.Button.TypographyFactory

@@ -1,5 +1,5 @@
 import XCTest
-@testable import warp_ios
+@testable import Warp
 
 final class MetricsFactorySmokeTests: XCTestCase {
     private typealias UIMetricsFactory = Warp.Button.UIMetricsFactory

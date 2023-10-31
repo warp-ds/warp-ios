@@ -1,11 +1,11 @@
 import SwiftUI
-import Warp_ios
+import Warp
 
 @main
 struct Wrap_iosFinn: App {
     
     init() {
-        Warp_ios.Config.warpTheme = .finn
+        Warp.Config.warpTheme = .finn
     }
     
     var body: some Scene {

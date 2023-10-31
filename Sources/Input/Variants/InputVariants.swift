@@ -7,7 +7,7 @@ extension Warp.Input {
         text: Binding<String>,
         leftSymbol: String? = nil,
         rightSymbol: String? = nil,
-        colorProvider: ColorProvider = Config.colorProvider
+        colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> some View {
         let configuration: Warp.InputConfiguration = .decimal(
             leftSymbol: leftSymbol,
@@ -27,7 +27,7 @@ extension Warp.Input {
     /// Input that will have common design for a search text field.
     public static func createSearchTextField(
         text: Binding<String>,
-        colorProvider: ColorProvider = Config.colorProvider
+        colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> some View {
         let configuration: Warp.InputConfiguration = .searchTextField
         let constantState: Warp.InputState = .normal
@@ -50,7 +50,7 @@ extension Warp.Input {
         text: Binding<String>,
         state: Binding<Warp.InputState>,
         isSecured: Binding<Bool>,
-        colorProvider: ColorProvider = Config.colorProvider
+        colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> some View {
         var configuration = configuration
 
@@ -114,7 +114,7 @@ extension Warp.Input {
         configuration: Warp.InputConfiguration,
         text: Binding<String>,
         state: Binding<Warp.InputState>,
-        colorProvider: ColorProvider = Config.colorProvider
+        colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> Warp.Input {
         var configuration = configuration
 
