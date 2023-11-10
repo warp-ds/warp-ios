@@ -142,6 +142,166 @@ public protocol TokenProvider {
     var textNotification: Color { get }
 }
 
+public protocol UITokenProvider {
+    /// Background
+    var background: UIColor { get }
+    var backgroundHover: UIColor { get }
+    var backgroundActive: UIColor { get }
+    var backgroundDisabled: UIColor { get }
+    var backgroundSubtle: UIColor { get }
+    var backgroundSubtleHover: UIColor { get }
+    var backgroundSubtleActive: UIColor { get }
+    var backgroundSelected: UIColor { get }
+    var backgroundSelectedHover: UIColor { get }
+                        
+    var backgroundInverted: UIColor { get }
+              
+    var backgroundButtonPrimary: UIColor { get } // Not on documents
+    var backgroundPrimary: UIColor { get }
+    var backgroundPrimaryHover: UIColor { get }
+    var backgroundPrimaryActive: UIColor { get }
+    var backgroundPrimarySubtle: UIColor { get }
+    var backgroundPrimarySubtleHover: UIColor { get }
+    var backgroundPrimarySubtleActive: UIColor { get }
+                        
+    var backgroundPositive: UIColor { get }
+    var backgroundPositiveHover: UIColor { get }
+    var backgroundPositiveActive: UIColor { get }
+    var backgroundPositiveSubtle: UIColor { get }
+    var backgroundPositiveSubtleHover: UIColor { get }
+    var backgroundPositiveSubtleActive: UIColor { get }
+    var backgroundPositiveSelected: UIColor { get }
+    var backgroundPositiveSelectedHover: UIColor { get }
+                        
+    var backgroundNegative: UIColor { get }
+    var backgroundNegativeHover: UIColor { get }
+    var backgroundNegativeActive: UIColor { get }
+    var backgroundNegativeSubtle: UIColor { get }
+    var backgroundNegativeSubtleHover: UIColor { get }
+    var backgroundNegativeSubtleActive: UIColor { get }
+    var backgroundNegativeSelected: UIColor { get }
+    var backgroundNegativeSelectedHover: UIColor { get }
+                        
+    var backgroundWarning: UIColor { get }
+    var backgroundWarningHover: UIColor { get }
+    var backgroundWarningActive: UIColor { get }
+    var backgroundWarningSubtle: UIColor { get }
+    var backgroundWarningSubtleHover: UIColor { get }
+    var backgroundWarningSubtleActive: UIColor { get }
+    var backgroundWarningSelected: UIColor { get }
+    var backgroundWarningSelectedHover: UIColor { get }
+                        
+    var backgroundInfo: UIColor { get }
+    var backgroundInfoHover: UIColor { get }
+    var backgroundInfoActive: UIColor { get }
+    var backgroundInfoSubtle: UIColor { get }
+    var backgroundInfoSubtleHover: UIColor { get }
+    var backgroundInfoSubtleActive: UIColor { get }
+    var backgroundInfoSelected: UIColor { get }
+                        
+    var backgroundNotification: UIColor { get }
+                        
+    /// Border
+    var border: UIColor { get }
+    var borderHover: UIColor { get }
+    var borderActive: UIColor { get }
+    var borderDisabled: UIColor { get }
+    var borderSelected: UIColor { get }
+    var borderSelectedHover: UIColor { get }
+              
+    var borderButtonPrimary: UIColor { get } // Not on documents
+    var borderButtonSecondary: UIColor { get } // Not on documents
+    var borderPrimary: UIColor { get }
+    var borderPrimaryHover: UIColor { get }
+    var borderPrimaryActive: UIColor { get }
+    var borderPrimarySubtle: UIColor { get }
+    var borderPrimarySubtleHover: UIColor { get }
+    var borderPrimarySubtleActive: UIColor { get }
+                        
+    var borderPositive: UIColor { get }
+    var borderPositiveHover: UIColor { get }
+    var borderPositiveActive: UIColor { get }
+    var borderPositiveSubtle: UIColor { get }
+    var borderPositiveSubtleHover: UIColor { get }
+    var borderPositiveSubtleActive: UIColor { get }
+                        
+    var borderNegative: UIColor { get }
+    var borderNegativeHover: UIColor { get }
+    var borderNegativeActive: UIColor { get }
+    var borderNegativeSubtle: UIColor { get }
+    var borderNegativeSubtleHover: UIColor { get }
+    var borderNegativeSubtleActive: UIColor { get }
+                        
+    var borderWarning: UIColor { get }
+    var borderWarningHover: UIColor { get }
+    var borderWarningActive: UIColor { get }
+    var borderWarningSubtle: UIColor { get }
+    var borderWarningSubtleHover: UIColor { get }
+    var borderWarningSubtleActive: UIColor { get }
+                        
+    var borderInfo: UIColor { get }
+    var borderInfoHover: UIColor { get }
+    var borderInfoActive: UIColor { get }
+    var borderInfoSubtle: UIColor { get }
+    var borderInfoSubtleHover: UIColor { get }
+    var borderInfoSubtleActive: UIColor { get }
+                        
+    /// Icon
+    var icon: UIColor { get }
+    var iconHover: UIColor { get }
+    var iconActive: UIColor { get }
+    var iconSelected: UIColor { get }
+    var iconSelectedHover: UIColor { get }
+    var iconDisabled: UIColor { get }
+    var iconSubtle: UIColor { get }
+    var iconSubtleHover: UIColor { get }
+    var iconSubtleActive: UIColor { get }
+    var iconInverted: UIColor { get }
+    var iconInvertedHover: UIColor { get }
+    var iconInvertedActive: UIColor { get }
+    var iconPrimary: UIColor { get }
+    var iconPositive: UIColor { get }
+    var iconNegative: UIColor { get }
+    var iconWarning: UIColor { get }
+    var iconInfo: UIColor { get }
+                        
+    var iconNotification: UIColor { get }
+                        
+    /// Text
+    var text: UIColor { get }
+    var textSubtle: UIColor { get }
+    var textPlaceholder: UIColor { get }
+    var textInverted: UIColor { get }
+    var textInvertedSubtle: UIColor { get }
+    var textLink: UIColor { get }
+    var textDisabled: UIColor { get }
+    var textNegative: UIColor { get }
+    var textPositive: UIColor { get }
+    var textNotification: UIColor { get }
+}
+
+public extension UIColor {
+    /// Base initializer, it creates an instance of `UIColor` using an HEX string.
+    ///
+    /// - Parameter hex: The base HEX string to create the color.
+    convenience init(hex: String) {
+        let noHashString = hex.replacingOccurrences(of: "#", with: "")
+        let scanner = Scanner(string: noHashString)
+        scanner.charactersToBeSkipped = CharacterSet.symbols
+
+        var hexInt: UInt64 = 0
+        if scanner.scanHexInt64(&hexInt) {
+            let red = (hexInt >> 16) & 0xFF
+            let green = (hexInt >> 8) & 0xFF
+            let blue = (hexInt) & 0xFF
+
+            self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+        } else {
+            self.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        }
+    }
+}
+
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -178,10 +338,6 @@ extension Color {
                 darkModeColor: UIColor(darkModeColor)
             )
         )
-    }
-    
-    public var uiColor: UIColor {
-        return UIColor(self)
     }
 }
 
