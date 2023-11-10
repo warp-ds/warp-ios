@@ -179,6 +179,10 @@ extension Color {
             )
         )
     }
+    
+    public var uiColor: UIColor {
+        return UIColor(self)
+    }
 }
 
 extension UIColor {
