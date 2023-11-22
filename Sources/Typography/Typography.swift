@@ -51,8 +51,12 @@ public extension Font {
 }
 
 
-
-
+private enum FontName: String {
+    case finMedium = "FINNType-Medium"
+    case toriBold = "ToriSans-Bold"
+    case finLight = "FINNType-Light"
+    case toriRegular = "ToriSans-Regular"
+}
 
 /// Source:
 public enum WarpTypography {
@@ -66,30 +70,27 @@ public enum WarpTypography {
         theme == .finn
     }
 
-    //    private enum Apps {
-    //        case tori(Fonts)
-    //        case fin(Fonts)
-    //
-    //        enum Fonts {
-    //            case me
-    //        }
-    //    }
-
-    enum Fonts: String {
-        case finMedium = "FINNType-Medium"
-        case toriBold = "ToriSans-Bold"
+    private func _createFont(
+        _ fontName: FontName,
+        size: CGFloat,
+        style: Font.TextStyle
+    ) -> Font {
+        return .custom(fontName.rawValue, size: size, relativeTo: style)
+    }
+    
+    private func createMediumBoldFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
+        if isFinnApp {
+            return _createFont(.finMedium, size: size, style: fontStyle)
+        } else {
+            return _createFont(.toriBold, size: size, style: fontStyle)
+        }
     }
 
-    private func createFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
-        //        let size = 48.0
-        //        let fontStyle: Font.TextStyle = .largeTitle
-        let finMedium = "FINNType-Medium"
-        let toriBold = "ToriSans-Bold"
-
+    private func createLightRegularFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
         if isFinnApp {
-            return .custom(finMedium, size: size, relativeTo: fontStyle)
+            return _createFont(.finLight, size: size, style: fontStyle)
         } else {
-            return .custom(toriBold, size: size, relativeTo: fontStyle)
+            return _createFont(.toriRegular, size: size, style: fontStyle)
         }
     }
 
@@ -99,87 +100,85 @@ public enum WarpTypography {
                 let size = 48.0
                 let fontStyle: Font.TextStyle = .largeTitle
 
-                return createFont(for: size, with: fontStyle)
+                return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title1:
                 let size = 34.0
                 let fontStyle: Font.TextStyle = .largeTitle
 
-                return createFont(for: size, with: fontStyle)
+                return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title2:
                 let size = 28.0
                 let fontStyle: Font.TextStyle = .title
 
-                return createFont(for: size, with: fontStyle)
+                return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title3:
                 let size = 22.0
                 let fontStyle: Font.TextStyle = .title2
 
-                return createFont(for: size, with: fontStyle)
+                return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title4:
                 let size = 16.0
                 let fontStyle: Font.TextStyle = .callout
 
-                return createFont(for: size, with: fontStyle)
+                return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title5:
                 let size = 14.0
                 let fontStyle: Font.TextStyle = .footnote
 
-                return createFont(for: size, with: fontStyle)
+                return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title6:
                 let size = 12.0
                 let fontStyle: Font.TextStyle = .caption
 
-                return createFont(for: size, with: fontStyle)
+                return createMediumBoldFont(for: size, with: fontStyle)
 
             case .preamble:
-                if isFinnApp {
-                    return .custom("FINNType-Light", size: 20, relativeTo: .title3)
-                } else {
-                    return .custom("ToriSans-Regular", size: 20, relativeTo: .title3)
-                }
+                let size = 20.0
+                let fontStyle: Font.TextStyle = .title3
+
+                return createLightRegularFont(for: size, with: fontStyle)
 
             case .body:
-                if isFinnApp {
-                    return .custom("FINNType-Light", size: 16, relativeTo: .callout)
-                } else {
-                    return .custom("ToriSans-Regular", size: 16, relativeTo: .callout)
-                }
+                let size = 16.0
+                let fontStyle: Font.TextStyle = .callout
+                
+                return createLightRegularFont(for: size, with: fontStyle)
+
             case .bodyStrong:
-                if isFinnApp {
-                    return .custom("FINNType-Medium", size: 16, relativeTo: .callout)
-                } else {
-                    return .custom("ToriSans-Bold", size: 16, relativeTo: .callout)
-                }
+                let size = 16.0
+                let fontStyle: Font.TextStyle = .callout
+
+                return createMediumBoldFont(for: size, with: fontStyle)
+
             case .caption:
-                if isFinnApp {
-                    return .custom("FINNType-Light", size: 14, relativeTo: .footnote)
-                } else {
-                    return .custom("ToriSans-Regular", size: 14, relativeTo: .footnote)
-                }
+                let size = 14.0
+                let fontStyle: Font.TextStyle = .footnote
+
+                return createLightRegularFont(for: size, with: fontStyle)
+
             case .captionStrong:
-                if isFinnApp {
-                    return .custom("FINNType-Medium", size: 14, relativeTo: .footnote)
-                } else {
-                    return .custom("ToriSans-Bold", size: 14, relativeTo: .footnote)
-                }
+                let size = 14.0
+                let fontStyle: Font.TextStyle = .footnote
+
+                return createMediumBoldFont(for: size, with: fontStyle)
+
             case .detail:
-                if isFinnApp {
-                    return .custom("FINNType-Light", size: 12, relativeTo: .caption)
-                } else {
-                    return .custom("ToriSans-Regular", size: 12, relativeTo: .caption)
-                }
+                let size = 12.0
+                let fontStyle: Font.TextStyle = .caption
+
+                return createLightRegularFont(for: size, with: fontStyle)
+
             case .detailStrong:
-                if isFinnApp {
-                    return .custom("FINNType-Medium", size: 12, relativeTo: .caption)
-                } else {
-                    return .custom("ToriSans-Bold", size: 12, relativeTo: .caption)
-                }
+                let size = 12.0
+                let fontStyle: Font.TextStyle = .caption
+
+                return createMediumBoldFont(for: size, with: fontStyle)
         }
     }
 }
