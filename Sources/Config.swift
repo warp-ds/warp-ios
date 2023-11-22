@@ -1,20 +1,22 @@
-public struct Config {
-    static var tokenProvider: TokenProvider {
-//        JBMono.registerFonts()
+extension Warp {
+    public struct Config {
+        public static var tokenProvider: TokenProvider = {
+            switch warpTheme {
+                case .finn:
+                    return FinnTokenProvider()
+                case .tori:
+                    return ToriTokenProvider()
+            }
+        }()
+        
+        public static var colorProvider: ColorProvider = {
+            ColorProvider(token: tokenProvider)
+        }()
 
-        switch warpTheme {
-        case .finn:
-            return FinnTokenProvider()
-        case .tori:
-            return ToriTokenProvider()
-        }
+        public static var warpTheme: Theme = .finn
     }
-    static var colorProvider: ColorProvider {
-        ColorProvider(token: tokenProvider)
-    }
-    public static var warpTheme: WarpTheme = .finn
-}
 
-public enum WarpTheme: String, CaseIterable {
-    case finn, tori
+    public enum Theme {
+        case finn, tori
+    }
 }

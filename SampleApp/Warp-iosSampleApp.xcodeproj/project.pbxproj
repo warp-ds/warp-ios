@@ -7,38 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		82043B7D2AA1B4ED00200643 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82043B7B2AA1B4ED00200643 /* TypographyView.swift */; };
-		82043B852AA1B79C00200643 /* WarpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82043B842AA1B79C00200643 /* WarpApp.swift */; };
-		82043B892AA1B79F00200643 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82043B882AA1B79F00200643 /* Assets.xcassets */; };
-		82043B8C2AA1B79F00200643 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82043B8B2AA1B79F00200643 /* Preview Assets.xcassets */; };
-		82043B902AA1B8A900200643 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B0A2A8CD0AA0023EB11 /* ContentView.swift */; };
-		82043B912AA1B8B000200643 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
-		82043B922AA1B8B300200643 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82043B7B2AA1B4ED00200643 /* TypographyView.swift */; };
-		82043B932AA1B8B500200643 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
-		82043B952AA1B94000200643 /* Warp-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 82043B942AA1B94000200643 /* Warp-ios */; };
+		34A278C02AD5472E00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278BF2AD5472E00EE6ED8 /* Warp */; };
+		34A278C22AD5473C00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278C12AD5473C00EE6ED8 /* Warp */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
 		82355B002A8CCBE70023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
-		82355B022A8CCC810023EB11 /* Warp-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 82355B012A8CCC810023EB11 /* Warp-ios */; };
+		82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */; };
+		82355B0C2A8CD0AA0023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355B082A8CD0AA0023EB11 /* Assets.xcassets */; };
+		82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B0A2A8CD0AA0023EB11 /* ContentView.swift */; };
+		82355B0F2A8CD0AA0023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355B0B2A8CD0AA0023EB11 /* Preview Content */; };
 		82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */; };
 		82355B122A8CD1120023EB11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B0A2A8CD0AA0023EB11 /* ContentView.swift */; };
-		82584F182AA1D63E0052CCB3 /* Warp-ios in Frameworks */ = {isa = PBXBuildFile; productRef = 82584F172AA1D63E0052CCB3 /* Warp-ios */; };
-		82584F192AA1D69A0052CCB3 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */; };
-		82584F1A2AA1D69D0052CCB3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B0A2A8CD0AA0023EB11 /* ContentView.swift */; };
-		82584F1B2AA1D6A00052CCB3 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
-		82584F1C2AA1D6A20052CCB3 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
-		82584F1D2AA1D6A40052CCB3 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82043B7B2AA1B4ED00200643 /* TypographyView.swift */; };
-		82584F1E2AA1D6A70052CCB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355B082A8CD0AA0023EB11 /* Assets.xcassets */; };
-		82584F1F2AA1D6AD0052CCB3 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355B0B2A8CD0AA0023EB11 /* Preview Content */; };
+		82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
 		82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
+		82A2155C2A8DF93B0062FB9E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
 		82A2155D2A8DF93B0062FB9E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		82043B7B2AA1B4ED00200643 /* TypographyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyView.swift; sourceTree = "<group>"; };
-		82043B822AA1B79C00200643 /* Warp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Warp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		82043B842AA1B79C00200643 /* WarpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarpApp.swift; sourceTree = "<group>"; };
-		82043B882AA1B79F00200643 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		82043B8B2AA1B79F00200643 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8206620F2A8CC97C0088677D /* warp-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "warp-ios"; path = ..; sourceTree = "<group>"; };
 		82355AFA2A8CCBE70023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82355AFC2A8CCBE70023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
@@ -48,26 +33,18 @@
 		82355B0A2A8CD0AA0023EB11 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "Warp-iosFinn/ContentView.swift"; sourceTree = "<group>"; };
 		82355B0B2A8CD0AA0023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Preview Content"; path = "Warp-iosFinn/Preview Content"; sourceTree = "<group>"; };
 		82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosTori.swift; sourceTree = "<group>"; };
-		82584F092AA1D6000052CCB3 /* Finn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finn.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		824977872A893F400013475C /* Finn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		827C4B952A89410800660D82 /* Tori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A215582A8DF4DC0062FB9E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		82A2155B2A8DF93B0062FB9E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		82043B7F2AA1B79C00200643 /* Frameworks */ = {
+		824977842A893F400013475C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82043B952AA1B94000200643 /* Warp-ios in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82584F062AA1D6000052CCB3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				82584F182AA1D63E0052CCB3 /* Warp-ios in Frameworks */,
+				34A278C02AD5472E00EE6ED8 /* Warp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,31 +52,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82355B022A8CCC810023EB11 /* Warp-ios in Frameworks */,
+				34A278C22AD5473C00EE6ED8 /* Warp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		82043B832AA1B79C00200643 /* Warp */ = {
-			isa = PBXGroup;
-			children = (
-				82043B842AA1B79C00200643 /* WarpApp.swift */,
-				82043B882AA1B79F00200643 /* Assets.xcassets */,
-				82043B8A2AA1B79F00200643 /* Preview Content */,
-			);
-			path = Warp;
-			sourceTree = "<group>";
-		};
-		82043B8A2AA1B79F00200643 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				82043B8B2AA1B79F00200643 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		82355AF82A8CCBC90023EB11 /* Warp-iosTori */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +75,6 @@
 				8206620F2A8CC97C0088677D /* warp-ios */,
 				828547C92A8CCA3300401DA3 /* Warp-iosFinn */,
 				82355AF82A8CCBC90023EB11 /* Warp-iosTori */,
-				82043B832AA1B79C00200643 /* Warp */,
 				824977882A893F400013475C /* Products */,
 				827C4B8E2A89407F00660D82 /* Frameworks */,
 			);
@@ -125,9 +83,8 @@
 		824977882A893F400013475C /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				824977872A893F400013475C /* Finn.app */,
 				827C4B952A89410800660D82 /* Tori.app */,
-				82043B822AA1B79C00200643 /* Warp.app */,
-				82584F092AA1D6000052CCB3 /* Finn.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,7 +103,6 @@
 				82355B0A2A8CD0AA0023EB11 /* ContentView.swift */,
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
 				82A2155B2A8DF93B0062FB9E /* InputView.swift */,
-				82043B7B2AA1B4ED00200643 /* TypographyView.swift */,
 				82355B082A8CD0AA0023EB11 /* Assets.xcassets */,
 				82355B0B2A8CD0AA0023EB11 /* Preview Content */,
 				82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */,
@@ -157,33 +113,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		82043B812AA1B79C00200643 /* Warp */ = {
+		824977862A893F400013475C /* Finn */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 82043B8D2AA1B79F00200643 /* Build configuration list for PBXNativeTarget "Warp" */;
+			buildConfigurationList = 824977AC2A893F430013475C /* Build configuration list for PBXNativeTarget "Finn" */;
 			buildPhases = (
-				82043B7E2AA1B79C00200643 /* Sources */,
-				82043B7F2AA1B79C00200643 /* Frameworks */,
-				82043B802AA1B79C00200643 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Warp;
-			packageProductDependencies = (
-				82043B942AA1B94000200643 /* Warp-ios */,
-			);
-			productName = Warp;
-			productReference = 82043B822AA1B79C00200643 /* Warp.app */;
-			productType = "com.apple.product-type.application";
-		};
-		82584F082AA1D6000052CCB3 /* Finn */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 82584F142AA1D6030052CCB3 /* Build configuration list for PBXNativeTarget "Finn" */;
-			buildPhases = (
-				82584F052AA1D6000052CCB3 /* Sources */,
-				82584F062AA1D6000052CCB3 /* Frameworks */,
-				82584F072AA1D6000052CCB3 /* Resources */,
+				824977832A893F400013475C /* Sources */,
+				824977842A893F400013475C /* Frameworks */,
+				824977852A893F400013475C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -191,10 +127,10 @@
 			);
 			name = Finn;
 			packageProductDependencies = (
-				82584F172AA1D63E0052CCB3 /* Warp-ios */,
+				34A278BF2AD5472E00EE6ED8 /* Warp */,
 			);
-			productName = "Wrap-ios.Finn";
-			productReference = 82584F092AA1D6000052CCB3 /* Finn.app */;
+			productName = "Wrap-iOS";
+			productReference = 824977872A893F400013475C /* Finn.app */;
 			productType = "com.apple.product-type.application";
 		};
 		827C4B942A89410800660D82 /* Tori */ = {
@@ -211,7 +147,7 @@
 			);
 			name = Tori;
 			packageProductDependencies = (
-				82355B012A8CCC810023EB11 /* Warp-ios */,
+				34A278C12AD5473C00EE6ED8 /* Warp */,
 			);
 			productName = "Wrap-iOS-Tori";
 			productReference = 827C4B952A89410800660D82 /* Tori.app */;
@@ -227,11 +163,9 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					82043B812AA1B79C00200643 = {
+					824977862A893F400013475C = {
 						CreatedOnToolsVersion = 15.0;
-					};
-					82584F082AA1D6000052CCB3 = {
-						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
 					};
 					827C4B942A89410800660D82 = {
 						CreatedOnToolsVersion = 15.0;
@@ -248,35 +182,23 @@
 				Base,
 			);
 			mainGroup = 8249777E2A893F400013475C;
-			packageReferences = (
-			);
 			productRefGroup = 824977882A893F400013475C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				82584F082AA1D6000052CCB3 /* Finn */,
+				824977862A893F400013475C /* Finn */,
 				827C4B942A89410800660D82 /* Tori */,
-				82043B812AA1B79C00200643 /* Warp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		82043B802AA1B79C00200643 /* Resources */ = {
+		824977852A893F400013475C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82043B8C2AA1B79F00200643 /* Preview Assets.xcassets in Resources */,
-				82043B892AA1B79F00200643 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82584F072AA1D6000052CCB3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				82584F1F2AA1D6AD0052CCB3 /* Preview Content in Resources */,
-				82584F1E2AA1D6A70052CCB3 /* Assets.xcassets in Resources */,
+				82355B0F2A8CD0AA0023EB11 /* Preview Content in Resources */,
+				82355B0C2A8CD0AA0023EB11 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,27 +214,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		82043B7E2AA1B79C00200643 /* Sources */ = {
+		824977832A893F400013475C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82043B902AA1B8A900200643 /* ContentView.swift in Sources */,
-				82043B922AA1B8B300200643 /* TypographyView.swift in Sources */,
-				82043B932AA1B8B500200643 /* InputView.swift in Sources */,
-				82043B852AA1B79C00200643 /* WarpApp.swift in Sources */,
-				82043B912AA1B8B000200643 /* ButtonView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		82584F052AA1D6000052CCB3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				82584F1A2AA1D69D0052CCB3 /* ContentView.swift in Sources */,
-				82584F1C2AA1D6A20052CCB3 /* InputView.swift in Sources */,
-				82584F192AA1D69A0052CCB3 /* Warp_iosFinn.swift in Sources */,
-				82584F1B2AA1D6A00052CCB3 /* ButtonView.swift in Sources */,
-				82584F1D2AA1D6A40052CCB3 /* TypographyView.swift in Sources */,
+				82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */,
+				82A2155C2A8DF93B0062FB9E /* InputView.swift in Sources */,
+				82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
+				82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,93 +233,12 @@
 				82A2155D2A8DF93B0062FB9E /* InputView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				82355B122A8CD1120023EB11 /* ContentView.swift in Sources */,
-				82043B7D2AA1B4ED00200643 /* TypographyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		82043B8E2AA1B79F00200643 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Warp/Preview Content\"";
-				DEVELOPMENT_TEAM = 42VL46DB59;
-				ENABLE_PREVIEWS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"WARP=1",
-				);
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Warp;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "-DWARP";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nmp.Warp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		82043B8F2AA1B79F00200643 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Warp/Preview Content\"";
-				DEVELOPMENT_TEAM = 42VL46DB59;
-				ENABLE_PREVIEWS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "WARP=1";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Warp;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "-DWARP";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nmp.Warp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		824977AA2A893F430013475C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -525,76 +353,86 @@
 			};
 			name = Release;
 		};
-		82584F152AA1D6030052CCB3 /* Debug */ = {
+		824977AD2A893F430013475C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Warp-iosFinn/Warp_iosSampleApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "Warp-iosFinn/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
 				DEVELOPMENT_TEAM = 42VL46DB59;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Finn Warp";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nmp.warp-ios.Finn";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		82584F162AA1D6030052CCB3 /* Release */ = {
+		824977AE2A893F430013475C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Warp-iosFinn/Warp_iosSampleApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "Warp-iosFinn/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
 				DEVELOPMENT_TEAM = 42VL46DB59;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Finn Warp";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nmp.warp-ios.Finn";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -610,7 +448,6 @@
 				DEVELOPMENT_TEAM = 42VL46DB59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Tori Warp";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -622,7 +459,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nmp.warp-ios.Tori";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -649,7 +485,6 @@
 				DEVELOPMENT_TEAM = 42VL46DB59;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Tori Warp";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -661,7 +496,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nmp.warp-ios.Tori";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -679,15 +513,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		82043B8D2AA1B79F00200643 /* Build configuration list for PBXNativeTarget "Warp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				82043B8E2AA1B79F00200643 /* Debug */,
-				82043B8F2AA1B79F00200643 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		824977822A893F400013475C /* Build configuration list for PBXProject "Warp-iosSampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -697,11 +522,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		82584F142AA1D6030052CCB3 /* Build configuration list for PBXNativeTarget "Finn" */ = {
+		824977AC2A893F430013475C /* Build configuration list for PBXNativeTarget "Finn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				82584F152AA1D6030052CCB3 /* Debug */,
-				82584F162AA1D6030052CCB3 /* Release */,
+				824977AD2A893F430013475C /* Debug */,
+				824977AE2A893F430013475C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -718,17 +543,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		82043B942AA1B94000200643 /* Warp-ios */ = {
+		34A278BF2AD5472E00EE6ED8 /* Warp */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "Warp-ios";
+			productName = Warp;
 		};
-		82355B012A8CCC810023EB11 /* Warp-ios */ = {
+		34A278C12AD5473C00EE6ED8 /* Warp */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "Warp-ios";
-		};
-		82584F172AA1D63E0052CCB3 /* Warp-ios */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = "Warp-ios";
+			productName = Warp;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

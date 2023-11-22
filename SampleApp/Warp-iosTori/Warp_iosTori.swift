@@ -1,11 +1,11 @@
 import SwiftUI
-import Warp_ios
+import Warp
 
 @main
 struct Wrap_iosTori: App {
     
     init() {
-        Warp_ios.Config.warpTheme = .tori
+        Warp.Config.warpTheme = .tori
         JBMono.registerFonts()
     }
     

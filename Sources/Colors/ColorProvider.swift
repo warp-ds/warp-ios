@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=1588196525
-struct ColorProvider {
+public struct ColorProvider {
     let token: TokenProvider
 //    Alert
 //    alertInfoText    text
@@ -73,82 +73,82 @@ struct ColorProvider {
 //    broadcastIcon    icon-warning
             
     /// Button        primary button in Tori should use watermelon instead of the semantic token
-    var buttonPrimaryText: Color { token.textInverted }
-    var buttonPrimaryTextDisabled: Color { token.textInverted }
-    var buttonPrimaryBackground: Color { token.backgroundButtonPrimary }
-    var buttonPrimaryBackgroundHover: Color { token.backgroundPrimaryHover }
-    var buttonPrimaryBackgroundActive: Color { token.backgroundPrimaryActive }
-    var buttonPrimaryBackgroundDisabled: Color { token.backgroundDisabled }
-    var buttonPrimaryBorder: Color { token.borderButtonPrimary }
-    var buttonPrimaryBorderHover: Color { token.borderPrimaryHover }
-    var buttonPrimaryBorderActive: Color { token.borderPrimaryActive }
-    var buttonPrimaryBorderDisabled: Color { token.borderDisabled }
-    var buttonPrimaryIcon: Color { token.iconInverted }
-    var buttonSecondaryText: Color { token.textLink }
-    var buttonSecondaryTextDisabled: Color { token.textDisabled }
-    var buttonSecondaryBackground: Color { token.background }
-    var buttonSecondaryBackgroundHover: Color { token.backgroundHover }
-    var buttonSecondaryBackgroundActive: Color { token.backgroundActive }
-    var buttonSecondaryBackgroundDisabled: Color { token.backgroundDisabled }
-    var buttonSecondaryBorder: Color { token.borderButtonSecondary }
-    var buttonSecondaryBorderHover: Color { token.borderHover }
-    var buttonSecondaryBorderActive: Color { token.borderActive }
-    var buttonSecondaryIcon: Color { token.iconPrimary }
-    var buttonQuietText: Color { token.textLink }
-    var buttonQuietBackground: Color { .clear }
-    var buttonQuietBackgroundHover: Color { token.backgroundHover } //    Change to gray background
-    var buttonQuietBackgroundActive: Color { token.backgroundActive }
-    var buttonQuietIcon: Color { token.iconPrimary }
-    var buttonNegativeText: Color { token.textInverted }
-    var buttonNegativeBackground: Color { token.backgroundNegative }
-    var buttonNegativeBackgroundHover: Color { token.backgroundNegativeHover }
-    var buttonNegativeBackgroundActive: Color { token.backgroundNegativeActive }
-    var buttonNegativeBorder: Color { token.borderNegative }
-    var buttonNegativeBorderHover: Color { token.borderNegativeHover }
-    var buttonNegativeBorderActive: Color { token.borderNegativeActive }
-    var buttonNegativeIcon: Color { token.iconInverted }
-    var buttonNegativeQuietText: Color { token.textNegative }
-    var buttonNegativeQuietBackground: Color { .clear }
-    var buttonNegativeQuietBackgroundHover: Color { token.backgroundNegativeSubtleHover }
-    var buttonNegativeQuietBackgroundActive: Color { token.backgroundNegativeSubtleActive }
-    var buttonNegativeQuietBorder: Color { .clear }
-    var buttonNegativeQuietBorderHover: Color { .clear }
-    var buttonNegativeQuietBorderActive: Color { .clear }
-    var buttonNegativeQuietIcon: Color { token.iconNegative }
-    var buttonDisabledText: Color { token.textInverted }
-    var buttonDisabledBackground: Color { token.backgroundDisabled }
-    var buttonDisabledQuietText: Color { token.textDisabled }
-    var buttonDisabledQuietBorder: Color { token.borderDisabled } //   Set to a semantic background token on purpose?
-    var buttonPillBackground: Color { .clear }
-    var buttonPillBackgroundHover: Color { .clear } //    Could we find something to use as default value here?
+    public var buttonPrimaryText: Color { token.textInverted }
+    public var buttonPrimaryTextDisabled: Color { token.textInverted }
+    public var buttonPrimaryBackground: Color { token.backgroundButtonPrimary }
+    public var buttonPrimaryBackgroundHover: Color { token.backgroundPrimaryHover }
+    public var buttonPrimaryBackgroundActive: Color { token.backgroundPrimaryActive }
+    public var buttonPrimaryBackgroundDisabled: Color { token.backgroundDisabled }
+    public var buttonPrimaryBorder: Color { token.borderButtonPrimary }
+    public var buttonPrimaryBorderHover: Color { token.borderPrimaryHover }
+    public var buttonPrimaryBorderActive: Color { token.borderPrimaryActive }
+    public var buttonPrimaryBorderDisabled: Color { token.borderDisabled }
+    public var buttonPrimaryIcon: Color { token.iconInverted }
+    public var buttonSecondaryText: Color { token.textLink }
+    public var buttonSecondaryTextDisabled: Color { token.textDisabled }
+    public var buttonSecondaryBackground: Color { token.background }
+    public var buttonSecondaryBackgroundHover: Color { token.backgroundHover }
+    public var buttonSecondaryBackgroundActive: Color { token.backgroundActive }
+    public var buttonSecondaryBackgroundDisabled: Color { token.backgroundDisabled }
+    public var buttonSecondaryBorder: Color { token.borderButtonSecondary }
+    public var buttonSecondaryBorderHover: Color { token.borderHover }
+    public var buttonSecondaryBorderActive: Color { token.borderActive }
+    public var buttonSecondaryIcon: Color { token.iconPrimary }
+    public var buttonQuietText: Color { token.textLink }
+    public var buttonQuietBackground: Color { .clear }
+    public var buttonQuietBackgroundHover: Color { token.backgroundHover } //    Change to gray background
+    public var buttonQuietBackgroundActive: Color { token.backgroundActive }
+    public var buttonQuietIcon: Color { token.iconPrimary }
+    public var buttonNegativeText: Color { token.textInverted }
+    public var buttonNegativeBackground: Color { token.backgroundNegative }
+    public var buttonNegativeBackgroundHover: Color { token.backgroundNegativeHover }
+    public var buttonNegativeBackgroundActive: Color { token.backgroundNegativeActive }
+    public var buttonNegativeBorder: Color { token.borderNegative }
+    public var buttonNegativeBorderHover: Color { token.borderNegativeHover }
+    public var buttonNegativeBorderActive: Color { token.borderNegativeActive }
+    public var buttonNegativeIcon: Color { token.iconInverted }
+    public var buttonNegativeQuietText: Color { token.textNegative }
+    public var buttonNegativeQuietBackground: Color { .clear }
+    public var buttonNegativeQuietBackgroundHover: Color { token.backgroundNegativeSubtleHover }
+    public var buttonNegativeQuietBackgroundActive: Color { token.backgroundNegativeSubtleActive }
+    public var buttonNegativeQuietBorder: Color { .clear }
+    public var buttonNegativeQuietBorderHover: Color { .clear }
+    public var buttonNegativeQuietBorderActive: Color { .clear }
+    public var buttonNegativeQuietIcon: Color { token.iconNegative }
+    public var buttonDisabledText: Color { token.textInverted }
+    public var buttonDisabledBackground: Color { token.backgroundDisabled }
+    public var buttonDisabledQuietText: Color { token.textDisabled }
+    public var buttonDisabledQuietBorder: Color { token.borderDisabled } //   Set to a semantic background token on purpose?
+    public var buttonPillBackground: Color { .clear }
+    public var buttonPillBackgroundHover: Color { .clear } //    Could we find something to use as default value here?
     //var buttonPillBackgroundActive
-    var buttonPillIcon: Color { token.icon }
-    var buttonPillIconHover: Color { token.iconHover }
-    var buttonPillIconActive: Color { token.iconActive }
-    var buttonPillOverlayIcon: Color { token.iconInverted }
-    var buttonPillOverlayIconHover: Color { token.iconInvertedHover }
-    var buttonPillOverlayIconActive: Color { token.iconInvertedActive }
-    var buttonLoadingText: Color { token.textSubtle }
-    var buttonLoadingBackground: Color { token.backgroundSubtle } //    Custom striped animation with a mix of brand grays 900 + 700
-    var buttonLoadingIcon: Color { token.icon } //    Used gray-500 in Figma to match text
+    public var buttonPillIcon: Color { token.icon }
+    public var buttonPillIconHover: Color { token.iconHover }
+    public var buttonPillIconActive: Color { token.iconActive }
+    public var buttonPillOverlayIcon: Color { token.iconInverted }
+    public var buttonPillOverlayIconHover: Color { token.iconInvertedHover }
+    public var buttonPillOverlayIconActive: Color { token.iconInvertedActive }
+    public var buttonLoadingText: Color { token.textSubtle }
+    public var buttonLoadingBackground: Color { token.backgroundSubtle } //    Custom striped animation with a mix of brand grays 900 + 700
+    public var buttonLoadingIcon: Color { token.icon } //    Used gray-500 in Figma to match text
     
-    var buttonUtilityText: Color { token.text }
-    var buttonUtilityTextDisabled: Color { token.textDisabled }
-    var buttonUtilityBackground: Color { token.background }
-    var buttonUtilityBackgroundHover: Color { token.backgroundHover }
-    var buttonUtilityBackgroundActive: Color { token.backgroundActive }
-    var buttonUtilityBackgroundDisabled: Color { token.backgroundDisabled }
-    var buttonUtilityBorder: Color { token.border }
-    var buttonUtilityBorderHover: Color { token.borderHover }
-    var buttonUtilityBorderActive: Color { token.borderActive }
-    var buttonUtilityQuietText: Color { token.text }
-    var buttonUtilityQuietBackground: Color { .clear }
-    var buttonUtilityOverlayBackground: Color { Color(UIColor.systemBackground) } // Not on documents
-    var buttonUtilityQuietBackgroundHover: Color { token.backgroundSubtleHover }
-    var buttonUtilityQuietBackgroundActive: Color { token.backgroundSubtleActive } //    There are no "activeHover" tokens anymore?
-    var buttonUtilityQuietBorder: Color { .clear }
-    var buttonUtilityQuietBorderHover: Color { .clear }
-    var buttonUtilityQuietBorderActive: Color { .clear }
+    public var buttonUtilityText: Color { token.text }
+    public var buttonUtilityTextDisabled: Color { token.textDisabled }
+    public var buttonUtilityBackground: Color { token.background }
+    public var buttonUtilityBackgroundHover: Color { token.backgroundHover }
+    public var buttonUtilityBackgroundActive: Color { token.backgroundActive }
+    public var buttonUtilityBackgroundDisabled: Color { token.backgroundDisabled }
+    public var buttonUtilityBorder: Color { token.border }
+    public var buttonUtilityBorderHover: Color { token.borderHover }
+    public var buttonUtilityBorderActive: Color { token.borderActive }
+    public var buttonUtilityQuietText: Color { token.text }
+    public var buttonUtilityQuietBackground: Color { .clear }
+    public var buttonUtilityOverlayBackground: Color { .gray.opacity(0.3) } // Not on documents
+    public var buttonUtilityQuietBackgroundHover: Color { token.backgroundSubtleHover }
+    public var buttonUtilityQuietBackgroundActive: Color { token.backgroundSubtleActive } //    There are no "activeHover" tokens anymore?
+    public var buttonUtilityQuietBorder: Color { .clear }
+    public var buttonUtilityQuietBorderHover: Color { .clear }
+    public var buttonUtilityQuietBorderActive: Color { .clear }
             
 //    Button group        Button group has primary and utility sub groups in code?
 //    button-groupText    textLink    This is the current FINN segmented control
@@ -243,21 +243,21 @@ struct ColorProvider {
 //    imagePlaceholderIcon    iconDisabled
             
     /// Input (includes text area)
-    var inputTextHint: Color { token.textPlaceholder } //    Renamed to inputTextPlaceholder in code
-    var inputTextFilled: Color { token.text }
-    var inputTextDisabled: Color { token.textDisabled } //    textLinkDisabled renamed
-    var inputTextNegative: Color { token.textNegative }
-    var inputTextReadOnly: Color { token.text }
-    var inputBackground: Color { token.background }
-    var inputBackgroundDisabled: Color { token.backgroundDisabled } //   Should this be a text token? https://schChat.slack.com/archives/C04EK4XHUJJ/p1688979135628889?thread_ts=1688975572.125649&cid=C04EK4XHUJJ
-    var inputBorder: Color { token.border }
-    var inputBorderHover: Color { token.borderHover }
-    var inputBorderActive: Color { token.borderSelected } //   Not needed Used in code: sBorderSelected
-    var inputBorderFilled: Color { token.border }
-    var inputBorderDisabled: Color { token.borderDisabled }
-    var inputBorderNegative: Color { token.borderNegative }
-    var inputIcon: Color { token.icon }
-    var inputCaret: Color { token.icon }
+    public var inputTextHint: Color { token.textPlaceholder } //    Renamed to inputTextPlaceholder in code
+    public var inputTextFilled: Color { token.text }
+    public var inputTextDisabled: Color { token.textDisabled } //    textLinkDisabled renamed
+    public var inputTextNegative: Color { token.textNegative }
+    public var inputTextReadOnly: Color { token.text }
+    public var inputBackground: Color { token.background }
+    public var inputBackgroundDisabled: Color { token.backgroundDisabled } //   Should this be a text token? https://schChat.slack.com/archives/C04EK4XHUJJ/p1688979135628889?thread_ts=1688975572.125649&cid=C04EK4XHUJJ
+    public var inputBorder: Color { token.border }
+    public var inputBorderHover: Color { token.borderHover }
+    public var inputBorderActive: Color { token.borderSelected } //   Not needed Used in code: sBorderSelected
+    public var inputBorderFilled: Color { token.border }
+    public var inputBorderDisabled: Color { token.borderDisabled }
+    public var inputBorderNegative: Color { token.borderNegative }
+    public var inputIcon: Color { token.icon }
+    public var inputCaret: Color { token.icon }
             
 //    Label
 //    labelText    text
