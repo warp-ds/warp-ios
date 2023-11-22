@@ -3,7 +3,7 @@ import Warp
 
 struct ContentView: View {
     @State private var isShowingButtonView = false
-    @State private var selectedTheme = WarpTheme.finn
+    @State private var selectedTheme = Warp.Theme.finn
 
     var body: some View {
         NavigationView {

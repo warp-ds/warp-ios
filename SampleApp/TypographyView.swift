@@ -1,5 +1,5 @@
 import SwiftUI
-import Warp_ios
+import Warp
 
 struct TypographyView: View {
     var body: some View {
