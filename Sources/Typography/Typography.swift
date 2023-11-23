@@ -21,7 +21,7 @@ extension Warp {
 
 extension Warp.Typography {
     public var font: Font {
-        let size = fontSize
+        let fontSize = fontSize
         let fontStyle = fontStyle
 
         switch self {
@@ -35,13 +35,13 @@ extension Warp.Typography {
                  .bodyStrong,
                  .captionStrong,
                  .detailStrong:
-                return createMediumBoldFont(for: size, with: fontStyle)
+                return createMediumBoldFont(for: fontSize, with: fontStyle)
 
             case .preamble,
                  .body,
                  .caption,
                  .detail:
-                return createLightRegularFont(for: size, with: fontStyle)
+                return createLightRegularFont(for: fontSize, with: fontStyle)
         }
     }
 
