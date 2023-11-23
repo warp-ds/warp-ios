@@ -3,12 +3,14 @@ import UIKit
 
 extension Warp.Typography {
     public static func registerFonts() throws {
-        try FontName.allCases.forEach {
-            try registerFont(bundle: .module, fontName: $0.fileName)
+        try Warp.Font.allCases.forEach {
+            try registerFont(fontName: $0.fileName)
         }
     }
 
-    fileprivate static func registerFont(bundle: Bundle, fontName: String) throws {
+    fileprivate static func registerFont(fontName: String) throws {
+        let bundle = Bundle.module
+        
         // static font extension
         let fontExtension = "otf"
 
