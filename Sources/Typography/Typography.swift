@@ -23,51 +23,6 @@ extension Warp.Typography {
     public var font: Font {
         let size = fontSize
 
-        let fontStyle: Font.TextStyle
-
-        switch self {
-            case .display:
-                fontStyle = .largeTitle
-
-            case .title1:
-                fontStyle = .largeTitle
-
-            case .title2:
-                fontStyle = .title
-
-            case .title3:
-                fontStyle = .title2
-
-            case .title4:
-                fontStyle = .callout
-
-            case .title5:
-                fontStyle = .footnote
-
-            case .title6:
-                fontStyle = .caption
-
-            case .preamble:
-                fontStyle = .title3
-
-            case .body:
-                fontStyle = .callout
-
-            case .bodyStrong:
-                fontStyle = .callout
-
-            case .caption:
-                fontStyle = .footnote
-
-            case .captionStrong:
-                fontStyle = .footnote
-
-            case .detail:
-                fontStyle = .caption
-
-            case .detailStrong:
-                fontStyle = .caption
-        }
 
         switch self {
             case .display:
@@ -148,6 +103,52 @@ extension Warp.Typography {
 
             case .detail, .detailStrong:
                 return 12.0
+        }
+    }
+
+    private var fontStyle: Font.TextStyle {
+        switch self {
+            case .display:
+                return .largeTitle
+
+            case .title1:
+                return .largeTitle
+
+            case .title2:
+                return .title
+
+            case .title3:
+                return .title2
+
+            case .title4:
+                return .callout
+
+            case .title5:
+                return .footnote
+
+            case .title6:
+                return .caption
+
+            case .preamble:
+                return .title3
+
+            case .body:
+                return .callout
+
+            case .bodyStrong:
+                return .callout
+
+            case .caption:
+                return .footnote
+
+            case .captionStrong:
+                return .footnote
+
+            case .detail:
+                return .caption
+
+            case .detailStrong:
+                return .caption
         }
     }
 }
