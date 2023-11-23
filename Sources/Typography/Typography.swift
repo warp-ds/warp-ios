@@ -21,89 +21,139 @@ extension Warp {
 
 extension Warp.Typography {
     public var font: Font {
+        let size: CGFloat
+
         switch self {
             case .display:
-                let size = 48.0
-                let fontStyle: Font.TextStyle = .largeTitle
+                size = 48.0
 
+            case .title1:
+                size = 34.0
+
+            case .title2:
+                size = 28.0
+
+            case .title3:
+                size = 22.0
+
+            case .title4:
+                size = 16.0
+
+            case .title5:
+                size = 14.0
+
+            case .title6:
+                size = 12.0
+
+            case .preamble:
+                size = 20.0
+
+            case .body:
+                size = 16.0
+
+            case .bodyStrong:
+                size = 16.0
+
+            case .caption:
+                size = 14.0
+
+            case .captionStrong:
+                size = 14.0
+
+            case .detail:
+                size = 12.0
+
+            case .detailStrong:
+                size = 12.0
+        }
+
+        let fontStyle: Font.TextStyle
+
+        switch self {
+            case .display:
+                fontStyle = .largeTitle
+
+            case .title1:
+                fontStyle = .largeTitle
+
+            case .title2:
+                fontStyle = .title
+
+            case .title3:
+                fontStyle = .title2
+
+            case .title4:
+                fontStyle = .callout
+
+            case .title5:
+                fontStyle = .footnote
+
+            case .title6:
+                fontStyle = .caption
+
+            case .preamble:
+                fontStyle = .title3
+
+            case .body:
+                fontStyle = .callout
+
+            case .bodyStrong:
+                fontStyle = .callout
+
+            case .caption:
+                fontStyle = .footnote
+
+            case .captionStrong:
+                fontStyle = .footnote
+
+            case .detail:
+                fontStyle = .caption
+
+            case .detailStrong:
+                fontStyle = .caption
+        }
+
+        switch self {
+            case .display:
                 return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title1:
-                let size = 34.0
-                let fontStyle: Font.TextStyle = .largeTitle
-
                 return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title2:
-                let size = 28.0
-                let fontStyle: Font.TextStyle = .title
-
                 return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title3:
-                let size = 22.0
-                let fontStyle: Font.TextStyle = .title2
-
                 return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title4:
-                let size = 16.0
-                let fontStyle: Font.TextStyle = .callout
-
                 return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title5:
-                let size = 14.0
-                let fontStyle: Font.TextStyle = .footnote
-
                 return createMediumBoldFont(for: size, with: fontStyle)
 
             case .title6:
-                let size = 12.0
-                let fontStyle: Font.TextStyle = .caption
-
                 return createMediumBoldFont(for: size, with: fontStyle)
 
             case .preamble:
-                let size = 20.0
-                let fontStyle: Font.TextStyle = .title3
-
                 return createLightRegularFont(for: size, with: fontStyle)
 
             case .body:
-                let size = 16.0
-                let fontStyle: Font.TextStyle = .callout
-                
                 return createLightRegularFont(for: size, with: fontStyle)
 
             case .bodyStrong:
-                let size = 16.0
-                let fontStyle: Font.TextStyle = .callout
-
                 return createMediumBoldFont(for: size, with: fontStyle)
 
             case .caption:
-                let size = 14.0
-                let fontStyle: Font.TextStyle = .footnote
-
                 return createLightRegularFont(for: size, with: fontStyle)
 
             case .captionStrong:
-                let size = 14.0
-                let fontStyle: Font.TextStyle = .footnote
-
                 return createMediumBoldFont(for: size, with: fontStyle)
 
             case .detail:
-                let size = 12.0
-                let fontStyle: Font.TextStyle = .caption
-
                 return createLightRegularFont(for: size, with: fontStyle)
 
             case .detailStrong:
-                let size = 12.0
-                let fontStyle: Font.TextStyle = .caption
-
                 return createMediumBoldFont(for: size, with: fontStyle)
         }
     }
