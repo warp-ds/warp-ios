@@ -25,47 +25,23 @@ extension Warp.Typography {
         let fontStyle = fontStyle
 
         switch self {
-            case .display:
+            case .display,
+                 .title1,
+                 .title2,
+                 .title3,
+                 .title4,
+                 .title5,
+                 .title6,
+                 .bodyStrong,
+                 .captionStrong,
+                 .detailStrong:
                 return createMediumBoldFont(for: size, with: fontStyle)
 
-            case .title1:
-                return createMediumBoldFont(for: size, with: fontStyle)
-
-            case .title2:
-                return createMediumBoldFont(for: size, with: fontStyle)
-
-            case .title3:
-                return createMediumBoldFont(for: size, with: fontStyle)
-
-            case .title4:
-                return createMediumBoldFont(for: size, with: fontStyle)
-
-            case .title5:
-                return createMediumBoldFont(for: size, with: fontStyle)
-
-            case .title6:
-                return createMediumBoldFont(for: size, with: fontStyle)
-
-            case .preamble:
+            case .preamble,
+                 .body,
+                 .caption,
+                 .detail:
                 return createLightRegularFont(for: size, with: fontStyle)
-
-            case .body:
-                return createLightRegularFont(for: size, with: fontStyle)
-
-            case .bodyStrong:
-                return createMediumBoldFont(for: size, with: fontStyle)
-
-            case .caption:
-                return createLightRegularFont(for: size, with: fontStyle)
-
-            case .captionStrong:
-                return createMediumBoldFont(for: size, with: fontStyle)
-
-            case .detail:
-                return createLightRegularFont(for: size, with: fontStyle)
-
-            case .detailStrong:
-                return createMediumBoldFont(for: size, with: fontStyle)
         }
     }
 
