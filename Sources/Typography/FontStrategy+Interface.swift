@@ -12,59 +12,81 @@ enum FontName: CaseIterable {
     case toriRegular
 
     var fileName: String {
+        let component: String
+
+        switch self {
+            case .finnLight, .finnMedium:
+                component = "finntype"
+
+            default:
+                component = "torisans"
+        }
+
+        let fontWeight: String
+
         switch self {
             case .finnLight:
-                return "finntype_light"
+                fontWeight = "light"
 
-            case .finnMedium:
-                return "finntype_medium"
+            case .finnMedium, .toriMedium:
+                fontWeight = "medium"
 
             case .toriBold:
-                return "torisans_bold"
+                fontWeight = "bold"
 
             case .toriBoldItalic:
-                return "torisans_bolditalic"
+                fontWeight = "bolditalic"
 
             case .toriItalic:
-                return "torisans_italic"
-
-            case .toriMedium:
-                return "torisans_medium"
+                fontWeight = "italic"
 
             case .toriMediumItalic:
-                return "torisans_mediumitalic"
+                fontWeight = "mediumitalic"
 
             case .toriRegular:
-                return "torisans_regular"
+                fontWeight = "regular"
         }
+
+        return "\(component)_\(fontWeight)"
     }
 
     var fontName: String {
+        let component: String
+
+        switch self {
+            case .finnLight, .finnMedium:
+                component = "FINNType"
+
+            default:
+                component = "ToriSans"
+        }
+
+        let fontWeight: String
+
         switch self {
             case .finnLight:
-                return "FINNType-Light"
+                fontWeight = "Light"
 
-            case .finnMedium:
-                return "FINNType-Medium"
+            case .finnMedium, .toriMedium:
+                fontWeight = "Medium"
 
             case .toriBold:
-                return "ToriSans-Bold"
+                fontWeight = "Bold"
 
             case .toriBoldItalic:
-                return "ToriSans-BoldItalic"
+                fontWeight = "BoldItalic"
 
             case .toriItalic:
-                return "ToriSans-Italic"
-
-            case .toriMedium:
-                return "ToriSans-Medium"
+                fontWeight = "Italic"
 
             case .toriMediumItalic:
-                return "ToriSans-MediumItalic"
+                fontWeight = "MediumItalic"
 
             case .toriRegular:
-                return "ToriSans-Regular"
+                fontWeight = "Regular"
         }
+
+        return "\(component)_\(fontWeight)"
     }
 }
 
