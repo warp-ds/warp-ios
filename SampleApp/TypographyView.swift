@@ -16,7 +16,7 @@ struct TypographyView: View {
     @ViewBuilder
     private func createView(for typography: Warp.Typography, text: String) -> some View {
         Text(text)
-            .font(typography)
+            .font(from: typography)
 
         Divider()
     }
