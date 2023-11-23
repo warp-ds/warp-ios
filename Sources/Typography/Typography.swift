@@ -1,6 +1,7 @@
 import SwiftUI
 
 extension Warp {
+    /// Warp representation of the style and appearance of visual text matter.
     public enum Typography {
         case display
         case title1
@@ -20,6 +21,8 @@ extension Warp {
 }
 
 extension Warp.Typography {
+    /// Bridge between `Warp` and `SwiftUI` font.
+    /// Provides a font with size and font weight based on given typography.
     public var font: Font {
         let fontSize = fontSize
         let fontStyle = fontStyle
