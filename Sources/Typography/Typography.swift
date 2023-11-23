@@ -140,22 +140,13 @@ extension Warp.Typography {
             case .preamble:
                 return 20.0
 
-            case .body:
+            case .body, .bodyStrong:
                 return 16.0
 
-            case .bodyStrong:
-                return 16.0
-
-            case .caption:
+            case .caption, .captionStrong:
                 return 14.0
 
-            case .captionStrong:
-                return 14.0
-
-            case .detail:
-                return 12.0
-
-            case .detailStrong:
+            case .detail, .detailStrong:
                 return 12.0
         }
     }
