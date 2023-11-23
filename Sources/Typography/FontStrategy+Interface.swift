@@ -1,103 +1,105 @@
 import Foundation
 import struct SwiftUI.Font
 
-enum FontName: CaseIterable {
-    case finnLight
-    case finnMedium
-    case toriBold
-    case toriBoldItalic
-    case toriItalic
-    case toriMedium
-    case toriMediumItalic
-    case toriRegular
+extension Warp {
+    enum Font: CaseIterable {
+        case finnLight
+        case finnMedium
+        case toriBold
+        case toriBoldItalic
+        case toriItalic
+        case toriMedium
+        case toriMediumItalic
+        case toriRegular
 
-    var fileName: String {
-        let component: String
+        var fileName: String {
+            let component: String
 
-        switch self {
-            case .finnLight, .finnMedium:
-                component = "finntype"
+            switch self {
+                case .finnLight, .finnMedium:
+                    component = "finntype"
 
-            default:
-                component = "torisans"
+                default:
+                    component = "torisans"
+            }
+
+            let fontWeight: String
+
+            switch self {
+                case .finnLight:
+                    fontWeight = "light"
+
+                case .finnMedium, .toriMedium:
+                    fontWeight = "medium"
+
+                case .toriBold:
+                    fontWeight = "bold"
+
+                case .toriBoldItalic:
+                    fontWeight = "bolditalic"
+
+                case .toriItalic:
+                    fontWeight = "italic"
+
+                case .toriMediumItalic:
+                    fontWeight = "mediumitalic"
+
+                case .toriRegular:
+                    fontWeight = "regular"
+            }
+
+            return "\(component)_\(fontWeight)"
         }
 
-        let fontWeight: String
+        var name: String {
+            let component: String
 
-        switch self {
-            case .finnLight:
-                fontWeight = "light"
+            switch self {
+                case .finnLight, .finnMedium:
+                    component = "FINNType"
 
-            case .finnMedium, .toriMedium:
-                fontWeight = "medium"
+                default:
+                    component = "ToriSans"
+            }
 
-            case .toriBold:
-                fontWeight = "bold"
+            let fontWeight: String
 
-            case .toriBoldItalic:
-                fontWeight = "bolditalic"
+            switch self {
+                case .finnLight:
+                    fontWeight = "Light"
 
-            case .toriItalic:
-                fontWeight = "italic"
+                case .finnMedium, .toriMedium:
+                    fontWeight = "Medium"
 
-            case .toriMediumItalic:
-                fontWeight = "mediumitalic"
+                case .toriBold:
+                    fontWeight = "Bold"
 
-            case .toriRegular:
-                fontWeight = "regular"
+                case .toriBoldItalic:
+                    fontWeight = "BoldItalic"
+
+                case .toriItalic:
+                    fontWeight = "Italic"
+
+                case .toriMediumItalic:
+                    fontWeight = "MediumItalic"
+
+                case .toriRegular:
+                    fontWeight = "Regular"
+            }
+
+            return "\(component)-\(fontWeight)"
         }
-
-        return "\(component)_\(fontWeight)"
-    }
-
-    var fontName: String {
-        let component: String
-
-        switch self {
-            case .finnLight, .finnMedium:
-                component = "FINNType"
-
-            default:
-                component = "ToriSans"
-        }
-
-        let fontWeight: String
-
-        switch self {
-            case .finnLight:
-                fontWeight = "Light"
-
-            case .finnMedium, .toriMedium:
-                fontWeight = "Medium"
-
-            case .toriBold:
-                fontWeight = "Bold"
-
-            case .toriBoldItalic:
-                fontWeight = "BoldItalic"
-
-            case .toriItalic:
-                fontWeight = "Italic"
-
-            case .toriMediumItalic:
-                fontWeight = "MediumItalic"
-
-            case .toriRegular:
-                fontWeight = "Regular"
-        }
-
-        return "\(component)_\(fontWeight)"
     }
 }
 
 protocol FontStrategyInterface {
-    var name: FontName { get }
+    var font: Warp.Font { get }
     var size: CGFloat { get }
     var style: Font.TextStyle { get }
 }
 
 struct FinnMediumFont: FontStrategyInterface {
-    let name: FontName = .finnMedium
+    let font: Warp.Font = .finnMedium
 
     let size: CGFloat
 
@@ -110,7 +112,7 @@ struct FinnMediumFont: FontStrategyInterface {
 }
 
 struct FinnLightFont: FontStrategyInterface {
-    let name: FontName = .finnLight
+    let font: Warp.Font = .finnLight
 
     let size: CGFloat
 
@@ -123,7 +125,7 @@ struct FinnLightFont: FontStrategyInterface {
 }
 
 struct ToriBoldFont: FontStrategyInterface {
-    let name: FontName = .toriBold
+    let font: Warp.Font = .toriBold
 
     let size: CGFloat
 
@@ -136,7 +138,7 @@ struct ToriBoldFont: FontStrategyInterface {
 }
 
 struct ToriRegularFont: FontStrategyInterface {
-    let name: FontName = .toriRegular
+    let font: Warp.Font = .toriRegular
 
     let size: CGFloat
 
