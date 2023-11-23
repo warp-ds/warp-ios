@@ -22,7 +22,7 @@ extension Warp {
 extension Warp.Typography {
     public var font: Font {
         let size = fontSize
-
+        let fontStyle = fontStyle
 
         switch self {
             case .display:
@@ -108,10 +108,7 @@ extension Warp.Typography {
 
     private var fontStyle: Font.TextStyle {
         switch self {
-            case .display:
-                return .largeTitle
-
-            case .title1:
+            case .display, .title1:
                 return .largeTitle
 
             case .title2:
@@ -132,22 +129,13 @@ extension Warp.Typography {
             case .preamble:
                 return .title3
 
-            case .body:
+            case .body, .bodyStrong:
                 return .callout
 
-            case .bodyStrong:
-                return .callout
-
-            case .caption:
+            case .caption, .captionStrong:
                 return .footnote
 
-            case .captionStrong:
-                return .footnote
-
-            case .detail:
-                return .caption
-
-            case .detailStrong:
+            case .detail, .detailStrong:
                 return .caption
         }
     }
