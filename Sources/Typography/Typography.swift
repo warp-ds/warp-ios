@@ -19,36 +19,7 @@ extension Warp {
     }
 }
 
-/// Source:
 extension Warp.Typography {
-    private var isFinnApp: Bool {
-        Warp.Config.warpTheme == .finn
-    }
-
-    private func createFont(from fontStrategy: FontStrategyInterface) -> Font {
-        return .custom(
-            fontStrategy.name.fontName,
-            size: fontStrategy.size,
-            relativeTo: fontStrategy.style
-        )
-    }
-
-    private func createMediumBoldFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
-        if isFinnApp {
-            return createFont(from: FinnMediumFont(size: size, style: fontStyle))
-        } else {
-            return createFont(from: ToriBoldFont(size: size, style: fontStyle))
-        }
-    }
-
-    private func createLightRegularFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
-        if isFinnApp {
-            return createFont(from: FinnLightFont(size: size, style: fontStyle))
-        } else {
-            return createFont(from: ToriRegularFont(size: size, style: fontStyle))
-        }
-    }
-
     public var font: Font {
         switch self {
             case .display:
@@ -138,3 +109,32 @@ extension Warp.Typography {
     }
 }
 
+extension Warp.Typography {
+    private var isFinnApp: Bool {
+        Warp.Config.warpTheme == .finn
+    }
+
+    private func createFont(from fontStrategy: FontStrategyInterface) -> Font {
+        return .custom(
+            fontStrategy.font.name,
+            size: fontStrategy.size,
+            relativeTo: fontStrategy.style
+        )
+    }
+
+    private func createMediumBoldFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
+        if isFinnApp {
+            return createFont(from: FinnMediumFont(size: size, style: fontStyle))
+        } else {
+            return createFont(from: ToriBoldFont(size: size, style: fontStyle))
+        }
+    }
+
+    private func createLightRegularFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
+        if isFinnApp {
+            return createFont(from: FinnLightFont(size: size, style: fontStyle))
+        } else {
+            return createFont(from: ToriRegularFont(size: size, style: fontStyle))
+        }
+    }
+}
