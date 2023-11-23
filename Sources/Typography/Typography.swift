@@ -21,51 +21,7 @@ extension Warp {
 
 extension Warp.Typography {
     public var font: Font {
-        let size: CGFloat
-
-        switch self {
-            case .display:
-                size = 48.0
-
-            case .title1:
-                size = 34.0
-
-            case .title2:
-                size = 28.0
-
-            case .title3:
-                size = 22.0
-
-            case .title4:
-                size = 16.0
-
-            case .title5:
-                size = 14.0
-
-            case .title6:
-                size = 12.0
-
-            case .preamble:
-                size = 20.0
-
-            case .body:
-                size = 16.0
-
-            case .bodyStrong:
-                size = 16.0
-
-            case .caption:
-                size = 14.0
-
-            case .captionStrong:
-                size = 14.0
-
-            case .detail:
-                size = 12.0
-
-            case .detailStrong:
-                size = 12.0
-        }
+        let size = fontSize
 
         let fontStyle: Font.TextStyle
 
@@ -155,6 +111,52 @@ extension Warp.Typography {
 
             case .detailStrong:
                 return createMediumBoldFont(for: size, with: fontStyle)
+        }
+    }
+
+    private var fontSize: CGFloat {
+        switch self {
+            case .display:
+                return 48.0
+
+            case .title1:
+                return 34.0
+
+            case .title2:
+                return 28.0
+
+            case .title3:
+                return 22.0
+
+            case .title4:
+                return 16.0
+
+            case .title5:
+                return 14.0
+
+            case .title6:
+                return 12.0
+
+            case .preamble:
+                return 20.0
+
+            case .body:
+                return 16.0
+
+            case .bodyStrong:
+                return 16.0
+
+            case .caption:
+                return 14.0
+
+            case .captionStrong:
+                return 14.0
+
+            case .detail:
+                return 12.0
+
+            case .detailStrong:
+                return 12.0
         }
     }
 }
