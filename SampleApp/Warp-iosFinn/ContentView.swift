@@ -17,7 +17,7 @@ struct ContentView: View {
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
                 .onChange(of: selectedTheme) { newValue in
-                    Warp_ios.Config.warpTheme = selectedTheme
+                    Config.warpTheme = selectedTheme
                 }
                 #endif
                 VStack (alignment: .leading) {

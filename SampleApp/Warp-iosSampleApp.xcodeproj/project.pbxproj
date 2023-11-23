@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		349586642B0EAD2D00A14570 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
+		349586652B0F727600A14570 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
 		34A278C02AD5472E00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278BF2AD5472E00EE6ED8 /* Warp */; };
 		34A278C22AD5473C00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278C12AD5473C00EE6ED8 /* Warp */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
@@ -233,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				349586652B0F727600A14570 /* TypographyView.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
 				82A2155D2A8DF93B0062FB9E /* InputView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,

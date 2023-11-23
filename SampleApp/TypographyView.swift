@@ -4,53 +4,41 @@ import Warp
 struct TypographyView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack (alignment: .leading) {
-                Text("Display")
-                    .font(WarpTypography.display.font)
-                Divider()
-                Text("Title 1")
-                    .font(WarpTypography.title1.font)
-                Divider()
-                Text("Title 2")
-                    .font(WarpTypography.title2.font)
-                Divider()
-                Text("Title 3")
-                    .font(WarpTypography.title3.font)
-                Divider()
-                Text("Title 4")
-                    .font(WarpTypography.title4.font)
-                Divider()
-                Text("Title 5")
-                    .font(WarpTypography.title5.font)
-                Divider()
-                Text("Title 6")
-                    .font(WarpTypography.title6.font)
-                Divider()
-                Text("Preamble")
-                    .font(WarpTypography.preamble.font)
-                Divider()
-                Text("Body")
-                    .font(WarpTypography.body.font)
-                Divider()
-                Text("Body Strong")
-                    .font(WarpTypography.bodyStrong.font)
-                Divider()
-                Text("Caption")
-                    .font(WarpTypography.caption.font)
-                Divider()
-                Text("Caption Strong")
-                    .font(WarpTypography.captionStrong.font)
-                Divider()
-                Text("Detail")
-                    .font(WarpTypography.detail.font)
-                Divider()
-                Text("Detail Strong")
-                    .font(WarpTypography.detailStrong.font)
-                Divider()
+            VStack (alignment: .leading, spacing: 8) {
+                ForEach(Warp.Typography.allCases, id: \.name) { `case` in
+                    createView(for: `case`.typography, text: `case`.name)
+                }
             }
             .padding(.horizontal)
         }
     }
+
+    @ViewBuilder
+    private func createView(for typography: Warp.Typography, text: String) -> some View {
+        Text(text)
+            .font(typography)
+
+        Divider()
+    }
+}
+
+extension Warp.Typography {
+    fileprivate static var allCases: [(typography: Warp.Typography, name: String)] = [
+        (.display, "Display"),
+        (.title1, "Title 1"),
+        (.title2, "Title 2"),
+        (.title3, "Title 3"),
+        (.title4, "Title 4"),
+        (.title5, "Title 5"),
+        (.title6, "Title 6"),
+        (.preamble, "Preamble"),
+        (.body, "Body"),
+        (.bodyStrong, "Body Strong"),
+        (.caption, "Caption"),
+        (.captionStrong, "Caption Strong"),
+        (.detail, "Detail"),
+        (.detailStrong, "Detail Strong"),
+    ]
 }
 
 #Preview {

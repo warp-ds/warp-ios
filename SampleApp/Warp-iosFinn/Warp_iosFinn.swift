@@ -6,7 +6,7 @@ struct Wrap_iosFinn: App {
     
     init() {
         Warp.Config.warpTheme = .finn
-        JBMono.registerFonts()
+        try! Warp.Typography.registerFonts()
     }
     
     var body: some Scene {

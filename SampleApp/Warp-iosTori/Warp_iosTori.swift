@@ -6,7 +6,7 @@ struct Wrap_iosTori: App {
     
     init() {
         Warp.Config.warpTheme = .tori
-        JBMono.registerFonts()
+        try! Warp.Typography.registerFonts()
     }
     
     var body: some Scene {
