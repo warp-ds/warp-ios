@@ -52,16 +52,6 @@ public struct WarpButtonStyle: ButtonStyle {
             .modifier(typographyModifiers)
             .modifier(uiModifiers)
     }
-
-    private func createOverlayView(isPressed: Bool) -> some View {
-        let borderColor = colorFactory.makeBorderColor(isPressed: isPressed)
-
-        return RoundedRectangle(cornerRadius: metricsFactory.cornerRadius)
-            .stroke(
-                borderColor,
-                lineWidth: metricsFactory.borderWidth
-            )
-    }
 }
 
 /// Syntactic sugar to ease using warp button style.
