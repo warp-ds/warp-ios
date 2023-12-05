@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		349586642B0EAD2D00A14570 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
+		349586652B0F727600A14570 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
 		34A278C02AD5472E00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278BF2AD5472E00EE6ED8 /* Warp */; };
 		34A278C22AD5473C00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278C12AD5473C00EE6ED8 /* Warp */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
@@ -24,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		349586632B0EAD2D00A14570 /* TypographyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypographyView.swift; sourceTree = "<group>"; };
 		8206620F2A8CC97C0088677D /* warp-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "warp-ios"; path = ..; sourceTree = "<group>"; };
 		82355AFA2A8CCBE70023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82355AFC2A8CCBE70023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 		828547C92A8CCA3300401DA3 /* Warp-iosFinn */ = {
 			isa = PBXGroup;
 			children = (
+				349586632B0EAD2D00A14570 /* TypographyView.swift */,
 				82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */,
 				82355B0A2A8CD0AA0023EB11 /* ContentView.swift */,
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
@@ -222,6 +226,7 @@
 				82A2155C2A8DF93B0062FB9E /* InputView.swift in Sources */,
 				82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */,
+				349586642B0EAD2D00A14570 /* TypographyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				349586652B0F727600A14570 /* TypographyView.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
 				82A2155D2A8DF93B0062FB9E /* InputView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
