@@ -75,11 +75,11 @@ public struct ColorProvider {
     /// Button        primary button in Tori should use watermelon instead of the semantic token
     public var buttonPrimaryText: Color { token.textInverted }
     public var buttonPrimaryTextDisabled: Color { token.textInverted }
-    public var buttonPrimaryBackground: Color { token.backgroundButtonPrimary }
+    public var buttonPrimaryBackground: Color { token.backgroundPrimary }
     public var buttonPrimaryBackgroundHover: Color { token.backgroundPrimaryHover }
     public var buttonPrimaryBackgroundActive: Color { token.backgroundPrimaryActive }
     public var buttonPrimaryBackgroundDisabled: Color { token.backgroundDisabled }
-    public var buttonPrimaryBorder: Color { token.borderButtonPrimary }
+    public var buttonPrimaryBorder: Color { token.borderPrimary }
     public var buttonPrimaryBorderHover: Color { token.borderPrimaryHover }
     public var buttonPrimaryBorderActive: Color { token.borderPrimaryActive }
     public var buttonPrimaryBorderDisabled: Color { token.borderDisabled }
@@ -90,7 +90,7 @@ public struct ColorProvider {
     public var buttonSecondaryBackgroundHover: Color { token.backgroundHover }
     public var buttonSecondaryBackgroundActive: Color { token.backgroundActive }
     public var buttonSecondaryBackgroundDisabled: Color { token.backgroundDisabled }
-    public var buttonSecondaryBorder: Color { token.borderButtonSecondary }
+    public var buttonSecondaryBorder: Color { token.borderSecondary }
     public var buttonSecondaryBorderHover: Color { token.borderHover }
     public var buttonSecondaryBorderActive: Color { token.borderActive }
     public var buttonSecondaryIcon: Color { token.iconPrimary }
