@@ -10,22 +10,26 @@ public protocol TokenProvider {
     var backgroundHover: Color { get }
     var backgroundActive: Color { get }
     var backgroundDisabled: Color { get }
+    var backgroundDisabledSubtle: Color { get }
     var backgroundSubtle: Color { get }
     var backgroundSubtleHover: Color { get }
     var backgroundSubtleActive: Color { get }
     var backgroundSelected: Color { get }
     var backgroundSelectedHover: Color { get }
-                        
+    
     var backgroundInverted: Color { get }
-              
-    var backgroundButtonPrimary: Color { get } // Not on documents
+    
     var backgroundPrimary: Color { get }
     var backgroundPrimaryHover: Color { get }
     var backgroundPrimaryActive: Color { get }
     var backgroundPrimarySubtle: Color { get }
     var backgroundPrimarySubtleHover: Color { get }
     var backgroundPrimarySubtleActive: Color { get }
-                        
+    
+    var backgroundSecondary: Color { get }
+    var backgroundSecondaryHover: Color { get }
+    var backgroundSecondaryActive: Color { get }
+    
     var backgroundPositive: Color { get }
     var backgroundPositiveHover: Color { get }
     var backgroundPositiveActive: Color { get }
@@ -34,7 +38,7 @@ public protocol TokenProvider {
     var backgroundPositiveSubtleActive: Color { get }
     var backgroundPositiveSelected: Color { get }
     var backgroundPositiveSelectedHover: Color { get }
-                        
+    
     var backgroundNegative: Color { get }
     var backgroundNegativeHover: Color { get }
     var backgroundNegativeActive: Color { get }
@@ -43,7 +47,7 @@ public protocol TokenProvider {
     var backgroundNegativeSubtleActive: Color { get }
     var backgroundNegativeSelected: Color { get }
     var backgroundNegativeSelectedHover: Color { get }
-                        
+    
     var backgroundWarning: Color { get }
     var backgroundWarningHover: Color { get }
     var backgroundWarningActive: Color { get }
@@ -52,7 +56,7 @@ public protocol TokenProvider {
     var backgroundWarningSubtleActive: Color { get }
     var backgroundWarningSelected: Color { get }
     var backgroundWarningSelectedHover: Color { get }
-                        
+    
     var backgroundInfo: Color { get }
     var backgroundInfoHover: Color { get }
     var backgroundInfoActive: Color { get }
@@ -60,9 +64,10 @@ public protocol TokenProvider {
     var backgroundInfoSubtleHover: Color { get }
     var backgroundInfoSubtleActive: Color { get }
     var backgroundInfoSelected: Color { get }
-                        
+    var backgroundInfoSelectedHover: Color { get }
+    
     var backgroundNotification: Color { get }
-                        
+    
     /// Border
     var border: Color { get }
     var borderHover: Color { get }
@@ -70,44 +75,46 @@ public protocol TokenProvider {
     var borderDisabled: Color { get }
     var borderSelected: Color { get }
     var borderSelectedHover: Color { get }
-              
-    var borderButtonPrimary: Color { get } // Not on documents
-    var borderButtonSecondary: Color { get } // Not on documents
+    
     var borderPrimary: Color { get }
     var borderPrimaryHover: Color { get }
     var borderPrimaryActive: Color { get }
     var borderPrimarySubtle: Color { get }
     var borderPrimarySubtleHover: Color { get }
     var borderPrimarySubtleActive: Color { get }
-                        
+    
+    var borderSecondary: Color { get }
+    var borderSecondaryHover: Color { get }
+    var borderSecondaryActive: Color { get }
+    
     var borderPositive: Color { get }
     var borderPositiveHover: Color { get }
     var borderPositiveActive: Color { get }
     var borderPositiveSubtle: Color { get }
     var borderPositiveSubtleHover: Color { get }
     var borderPositiveSubtleActive: Color { get }
-                        
+    
     var borderNegative: Color { get }
     var borderNegativeHover: Color { get }
     var borderNegativeActive: Color { get }
     var borderNegativeSubtle: Color { get }
     var borderNegativeSubtleHover: Color { get }
     var borderNegativeSubtleActive: Color { get }
-                        
+    
     var borderWarning: Color { get }
     var borderWarningHover: Color { get }
     var borderWarningActive: Color { get }
     var borderWarningSubtle: Color { get }
     var borderWarningSubtleHover: Color { get }
     var borderWarningSubtleActive: Color { get }
-                        
+    
     var borderInfo: Color { get }
     var borderInfoHover: Color { get }
     var borderInfoActive: Color { get }
     var borderInfoSubtle: Color { get }
     var borderInfoSubtleHover: Color { get }
     var borderInfoSubtleActive: Color { get }
-                        
+    
     /// Icon
     var icon: Color { get }
     var iconHover: Color { get }
@@ -122,13 +129,16 @@ public protocol TokenProvider {
     var iconInvertedHover: Color { get }
     var iconInvertedActive: Color { get }
     var iconPrimary: Color { get }
+    var iconSecondary: Color { get }
+    var iconSecondaryHover: Color { get }
+    var iconSecondaryActive: Color { get }
     var iconPositive: Color { get }
     var iconNegative: Color { get }
     var iconWarning: Color { get }
     var iconInfo: Color { get }
-                        
+    
     var iconNotification: Color { get }
-                        
+    
     /// Text
     var text: Color { get }
     var textSubtle: Color { get }
@@ -148,22 +158,26 @@ public protocol UITokenProvider {
     var backgroundHover: UIColor { get }
     var backgroundActive: UIColor { get }
     var backgroundDisabled: UIColor { get }
+    var backgroundDisabledSubtle: UIColor { get }
     var backgroundSubtle: UIColor { get }
     var backgroundSubtleHover: UIColor { get }
     var backgroundSubtleActive: UIColor { get }
     var backgroundSelected: UIColor { get }
     var backgroundSelectedHover: UIColor { get }
-                        
+    
     var backgroundInverted: UIColor { get }
-              
-    var backgroundButtonPrimary: UIColor { get } // Not on documents
+    
     var backgroundPrimary: UIColor { get }
     var backgroundPrimaryHover: UIColor { get }
     var backgroundPrimaryActive: UIColor { get }
     var backgroundPrimarySubtle: UIColor { get }
     var backgroundPrimarySubtleHover: UIColor { get }
     var backgroundPrimarySubtleActive: UIColor { get }
-                        
+    
+    var backgroundSecondary: UIColor { get }
+    var backgroundSecondaryHover: UIColor { get }
+    var backgroundSecondaryActive: UIColor { get }
+    
     var backgroundPositive: UIColor { get }
     var backgroundPositiveHover: UIColor { get }
     var backgroundPositiveActive: UIColor { get }
@@ -172,7 +186,7 @@ public protocol UITokenProvider {
     var backgroundPositiveSubtleActive: UIColor { get }
     var backgroundPositiveSelected: UIColor { get }
     var backgroundPositiveSelectedHover: UIColor { get }
-                        
+    
     var backgroundNegative: UIColor { get }
     var backgroundNegativeHover: UIColor { get }
     var backgroundNegativeActive: UIColor { get }
@@ -181,7 +195,7 @@ public protocol UITokenProvider {
     var backgroundNegativeSubtleActive: UIColor { get }
     var backgroundNegativeSelected: UIColor { get }
     var backgroundNegativeSelectedHover: UIColor { get }
-                        
+    
     var backgroundWarning: UIColor { get }
     var backgroundWarningHover: UIColor { get }
     var backgroundWarningActive: UIColor { get }
@@ -190,7 +204,7 @@ public protocol UITokenProvider {
     var backgroundWarningSubtleActive: UIColor { get }
     var backgroundWarningSelected: UIColor { get }
     var backgroundWarningSelectedHover: UIColor { get }
-                        
+    
     var backgroundInfo: UIColor { get }
     var backgroundInfoHover: UIColor { get }
     var backgroundInfoActive: UIColor { get }
@@ -198,9 +212,10 @@ public protocol UITokenProvider {
     var backgroundInfoSubtleHover: UIColor { get }
     var backgroundInfoSubtleActive: UIColor { get }
     var backgroundInfoSelected: UIColor { get }
-                        
+    var backgroundInfoSelectedHover: UIColor { get }
+    
     var backgroundNotification: UIColor { get }
-                        
+    
     /// Border
     var border: UIColor { get }
     var borderHover: UIColor { get }
@@ -208,44 +223,46 @@ public protocol UITokenProvider {
     var borderDisabled: UIColor { get }
     var borderSelected: UIColor { get }
     var borderSelectedHover: UIColor { get }
-              
-    var borderButtonPrimary: UIColor { get } // Not on documents
-    var borderButtonSecondary: UIColor { get } // Not on documents
+    
     var borderPrimary: UIColor { get }
     var borderPrimaryHover: UIColor { get }
     var borderPrimaryActive: UIColor { get }
     var borderPrimarySubtle: UIColor { get }
     var borderPrimarySubtleHover: UIColor { get }
     var borderPrimarySubtleActive: UIColor { get }
-                        
+    
+    var borderSecondary: UIColor { get }
+    var borderSecondaryHover: UIColor { get }
+    var borderSecondaryActive: UIColor { get }
+    
     var borderPositive: UIColor { get }
     var borderPositiveHover: UIColor { get }
     var borderPositiveActive: UIColor { get }
     var borderPositiveSubtle: UIColor { get }
     var borderPositiveSubtleHover: UIColor { get }
     var borderPositiveSubtleActive: UIColor { get }
-                        
+    
     var borderNegative: UIColor { get }
     var borderNegativeHover: UIColor { get }
     var borderNegativeActive: UIColor { get }
     var borderNegativeSubtle: UIColor { get }
     var borderNegativeSubtleHover: UIColor { get }
     var borderNegativeSubtleActive: UIColor { get }
-                        
+    
     var borderWarning: UIColor { get }
     var borderWarningHover: UIColor { get }
     var borderWarningActive: UIColor { get }
     var borderWarningSubtle: UIColor { get }
     var borderWarningSubtleHover: UIColor { get }
     var borderWarningSubtleActive: UIColor { get }
-                        
+    
     var borderInfo: UIColor { get }
     var borderInfoHover: UIColor { get }
     var borderInfoActive: UIColor { get }
     var borderInfoSubtle: UIColor { get }
     var borderInfoSubtleHover: UIColor { get }
     var borderInfoSubtleActive: UIColor { get }
-                        
+    
     /// Icon
     var icon: UIColor { get }
     var iconHover: UIColor { get }
@@ -260,13 +277,16 @@ public protocol UITokenProvider {
     var iconInvertedHover: UIColor { get }
     var iconInvertedActive: UIColor { get }
     var iconPrimary: UIColor { get }
+    var iconSecondary: UIColor { get }
+    var iconSecondaryHover: UIColor { get }
+    var iconSecondaryActive: UIColor { get }
     var iconPositive: UIColor { get }
     var iconNegative: UIColor { get }
     var iconWarning: UIColor { get }
     var iconInfo: UIColor { get }
-                        
+    
     var iconNotification: UIColor { get }
-                        
+    
     /// Text
     var text: UIColor { get }
     var textSubtle: UIColor { get }

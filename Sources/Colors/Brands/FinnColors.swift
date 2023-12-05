@@ -12,7 +12,7 @@ struct FinnColors {
     static let blue700 = Color(hex: "#244eb3")
     static let blue800 = Color(hex: "#223474")
     static let blue900 = Color(hex: "#191d34")
-
+    
     static let aqua50  = Color(hex: "#f1f9ff")
     static let aqua100 = Color(hex: "#e0f6ff")
     static let aqua200 = Color(hex: "#b6f0ff")
@@ -34,7 +34,7 @@ struct FinnColors {
     static let green700 = Color(hex: "#1d7454")
     static let green800 = Color(hex: "#1b4d39")
     static let green900 = Color(hex: "#14291f")
-
+    
     static let yellow50  = Color(hex: "#fff8e6")
     static let yellow100 = Color(hex: "#fff5c8")
     static let yellow200 = Color(hex: "#feef90")
@@ -45,7 +45,7 @@ struct FinnColors {
     static let yellow700 = Color(hex: "#9b621e")
     static let yellow800 = Color(hex: "#654118")
     static let yellow900 = Color(hex: "#352310")
-
+    
     static let red50  = Color(hex: "#fff5f5")
     static let red100 = Color(hex: "#ffefef")
     static let red200 = Color(hex: "#ffd1d1")
@@ -56,7 +56,7 @@ struct FinnColors {
     static let red700 = Color(hex: "#9e2216")
     static let red800 = Color(hex: "#681d11")
     static let red900 = Color(hex: "#38140b")
-
+    
     static let blueGray50  = Color(hex: "#f8fafc")
     static let blueGray100 = Color(hex: "#f1f4f9")
     static let blueGray200 = Color(hex: "#e1e6ee")
@@ -67,7 +67,7 @@ struct FinnColors {
     static let blueGray700 = Color(hex: "#3B4353")
     static let blueGray800 = Color(hex: "#292d38")
     static let blueGray900 = Color(hex: "#181a1f")
-
+    
     static let gray50  = Color(hex: "#fafafa")
     static let gray100 = Color(hex: "#f4f4f5")
     static let gray200 = Color(hex: "#e4e4e7")
@@ -78,7 +78,7 @@ struct FinnColors {
     static let gray700 = Color(hex: "#3f3f46")
     static let gray800 = Color(hex: "#27272a")
     static let gray900 = Color(hex: "#18181b")
-
+    
     static let white = Color(hex: "#ffffff")
     static let black = Color(hex: "#000000")
 }
@@ -94,7 +94,7 @@ struct FinnUIColors {
     static let blue700 = UIColor(hex: "#244eb3")
     static let blue800 = UIColor(hex: "#223474")
     static let blue900 = UIColor(hex: "#191d34")
-
+    
     static let aqua50  = UIColor(hex: "#f1f9ff")
     static let aqua100 = UIColor(hex: "#e0f6ff")
     static let aqua200 = UIColor(hex: "#b6f0ff")
@@ -116,7 +116,7 @@ struct FinnUIColors {
     static let green700 = UIColor(hex: "#1d7454")
     static let green800 = UIColor(hex: "#1b4d39")
     static let green900 = UIColor(hex: "#14291f")
-
+    
     static let yellow50  = UIColor(hex: "#fff8e6")
     static let yellow100 = UIColor(hex: "#fff5c8")
     static let yellow200 = UIColor(hex: "#feef90")
@@ -127,7 +127,7 @@ struct FinnUIColors {
     static let yellow700 = UIColor(hex: "#9b621e")
     static let yellow800 = UIColor(hex: "#654118")
     static let yellow900 = UIColor(hex: "#352310")
-
+    
     static let red50  = UIColor(hex: "#fff5f5")
     static let red100 = UIColor(hex: "#ffefef")
     static let red200 = UIColor(hex: "#ffd1d1")
@@ -138,7 +138,7 @@ struct FinnUIColors {
     static let red700 = UIColor(hex: "#9e2216")
     static let red800 = UIColor(hex: "#681d11")
     static let red900 = UIColor(hex: "#38140b")
-
+    
     static let blueGray50  = UIColor(hex: "#f8fafc")
     static let blueGray100 = UIColor(hex: "#f1f4f9")
     static let blueGray200 = UIColor(hex: "#e1e6ee")
@@ -149,7 +149,7 @@ struct FinnUIColors {
     static let blueGray700 = UIColor(hex: "#3B4353")
     static let blueGray800 = UIColor(hex: "#292d38")
     static let blueGray900 = UIColor(hex: "#181a1f")
-
+    
     static let gray50  = UIColor(hex: "#fafafa")
     static let gray100 = UIColor(hex: "#f4f4f5")
     static let gray200 = UIColor(hex: "#e4e4e7")
@@ -160,7 +160,7 @@ struct FinnUIColors {
     static let gray700 = UIColor(hex: "#3f3f46")
     static let gray800 = UIColor(hex: "#27272a")
     static let gray900 = UIColor(hex: "#18181b")
-
+    
     static let white = UIColor(hex: "#ffffff")
     static let black = UIColor(hex: "#000000")
 }
