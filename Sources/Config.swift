@@ -8,6 +8,14 @@ extension Warp {
                     return ToriTokenProvider()
             }
         }()
+        public static var uiTokenProvider: UITokenProvider = {
+            switch warpTheme {
+                case .finn:
+                    return FinnUITokenProvider()
+                case .tori:
+                    return ToriUITokenProvider()
+            }
+        }()
         
         public static var colorProvider: ColorProvider = {
             ColorProvider(token: tokenProvider)
