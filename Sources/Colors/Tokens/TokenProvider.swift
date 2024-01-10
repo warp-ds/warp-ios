@@ -75,6 +75,7 @@ public protocol TokenProvider {
     var borderDisabled: Color { get }
     var borderSelected: Color { get }
     var borderSelectedHover: Color { get }
+    var borderFocus: Color { get }
     
     var borderPrimary: Color { get }
     var borderPrimaryHover: Color { get }
@@ -223,6 +224,7 @@ public protocol UITokenProvider {
     var borderDisabled: UIColor { get }
     var borderSelected: UIColor { get }
     var borderSelectedHover: UIColor { get }
+    var borderFocus: UIColor { get }
     
     var borderPrimary: UIColor { get }
     var borderPrimaryHover: UIColor { get }
