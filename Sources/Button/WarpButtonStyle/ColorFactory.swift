@@ -111,7 +111,7 @@ extension Warp.Button {
                     return colorProvider.buttonUtilityQuietBackground
 
                 case .utilityOverlay:
-                    return colorProvider.buttonUtilityOverlayBackground
+                    return colorProvider.buttonUtilityBackground
             }
         }
 
@@ -139,7 +139,7 @@ extension Warp.Button {
                     return colorProvider.buttonUtilityQuietBackgroundActive
 
                 case .utilityOverlay:
-                    return colorProvider.buttonUtilityOverlayBackground
+                    return colorProvider.buttonUtilityBackgroundActive
             }
         }
 
@@ -223,7 +223,7 @@ extension Warp.Button {
                     return colorProvider.buttonUtilityQuietBorderActive
 
                 case .utilityOverlay:
-                    return colorProvider.buttonUtilityOverlayBackground
+                    return colorProvider.buttonUtilityBorderActive
             }
         }
 

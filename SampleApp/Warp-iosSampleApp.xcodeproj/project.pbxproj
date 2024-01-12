@@ -19,6 +19,8 @@
 		82355B0F2A8CD0AA0023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355B0B2A8CD0AA0023EB11 /* Preview Content */; };
 		82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */; };
 		82355B122A8CD1120023EB11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B0A2A8CD0AA0023EB11 /* ContentView.swift */; };
+		8251E8CA2B4E8B7D00106720 /* BrandTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */; };
+		8251E8CB2B4E8B7D00106720 /* BrandTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */; };
 		82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
 		82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
 		82A2155C2A8DF93B0062FB9E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
@@ -37,6 +39,7 @@
 		82355B0B2A8CD0AA0023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Preview Content"; path = "Warp-iosFinn/Preview Content"; sourceTree = "<group>"; };
 		82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosTori.swift; sourceTree = "<group>"; };
 		824977872A893F400013475C /* Finn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finn.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTokensView.swift; sourceTree = "<group>"; };
 		827C4B952A89410800660D82 /* Tori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A215582A8DF4DC0062FB9E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		82A2155B2A8DF93B0062FB9E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 				349586632B0EAD2D00A14570 /* TypographyView.swift */,
 				82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */,
 				82355B0A2A8CD0AA0023EB11 /* ContentView.swift */,
+				8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */,
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
 				82A2155B2A8DF93B0062FB9E /* InputView.swift */,
 				82355B082A8CD0AA0023EB11 /* Assets.xcassets */,
@@ -225,6 +229,7 @@
 				82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */,
 				82A2155C2A8DF93B0062FB9E /* InputView.swift in Sources */,
 				82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
+				8251E8CA2B4E8B7D00106720 /* BrandTokensView.swift in Sources */,
 				82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */,
 				349586642B0EAD2D00A14570 /* TypographyView.swift in Sources */,
 			);
@@ -237,6 +242,7 @@
 				349586652B0F727600A14570 /* TypographyView.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
 				82A2155D2A8DF93B0062FB9E /* InputView.swift in Sources */,
+				8251E8CB2B4E8B7D00106720 /* BrandTokensView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				82355B122A8CD1120023EB11 /* ContentView.swift in Sources */,
 			);
