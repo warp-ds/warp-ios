@@ -7,22 +7,22 @@ struct ToriColors {
     static let watermelon200 = Color(hex: "#FECBC7")
     static let watermelon300 = Color(hex: "#FEB0AC")
     static let watermelon400 = Color(hex: "#FD948F")
-    static let watermelon500 = Color(hex: "#FD7372")
-    static let watermelon600 = Color(hex: "#F75159")
-    static let watermelon700 = Color(hex: "#B24046")
-    static let watermelon800 = Color(hex: "#742E30")
-    static let watermelon900 = Color(hex: "#3C1B1B")
+    static let watermelon500 = Color(hex: "#F95157")
+    static let watermelon600 = Color(hex: "#D43D4F")
+    static let watermelon700 = Color(hex: "#982C38")
+    static let watermelon800 = Color(hex: "#5B1920")
+    static let watermelon900 = Color(hex: "#29080C")
     
-    static let petroleum50  = Color(hex: "#EEF4F5")
-    static let petroleum100 = Color(hex: "#DDE9EC")
-    static let petroleum200 = Color(hex: "#BAD3DA")
-    static let petroleum300 = Color(hex: "#97BDC6")
-    static let petroleum400 = Color(hex: "#74A8B4")
-    static let petroleum500 = Color(hex: "#4D93A2")
-    static let petroleum600 = Color(hex: "#167A8B")
-    static let petroleum700 = Color(hex: "#1B5E6A")
-    static let petroleum800 = Color(hex: "#193F47")
-    static let petroleum900 = Color(hex: "#122226")
+    static let blueberry50  = Color(hex: "#F7F9FD")
+    static let blueberry100 = Color(hex: "#D7E0F4")
+    static let blueberry200 = Color(hex: "#B4C9EC")
+    static let blueberry300 = Color(hex: "#91B2E4")
+    static let blueberry400 = Color(hex: "#6E9BDC")
+    static let blueberry500 = Color(hex: "#4D88DB")
+    static let blueberry600 = Color(hex: "#296DCC")
+    static let blueberry700 = Color(hex: "#1D4E92")
+    static let blueberry800 = Color(hex: "#122F58")
+    static let blueberry900 = Color(hex: "#06101E")
     
     static let blue50  = Color(hex: "#ECF7FE")
     static let blue100 = Color(hex: "#C7E7FB")
@@ -57,16 +57,16 @@ struct ToriColors {
     static let yellow800 = Color(hex: "#673A12")
     static let yellow900 = Color(hex: "#221102")
     
-    static let red50  = Color(hex: "#FFF0F1")
-    static let red100 = Color(hex: "#F7CACC")
-    static let red200 = Color(hex: "#EFA3A6")
-    static let red300 = Color(hex: "#E77C80")
-    static let red400 = Color(hex: "#DF555A")
-    static let red500 = Color(hex: "#D72E34")
-    static let red600 = Color(hex: "#CF070E")
-    static let red700 = Color(hex: "#96050A")
-    static let red800 = Color(hex: "#5D0306")
-    static let red900 = Color(hex: "#230103")
+    static let red50  = Color(hex: "#FEF6F7")
+    static let red100 = Color(hex: "#EDCED1")
+    static let red200 = Color(hex: "#DBA7AD")
+    static let red300 = Color(hex: "#C98089")
+    static let red400 = Color(hex: "#B75965")
+    static let red500 = Color(hex: "#A53241")
+    static let red600 = Color(hex: "#930B1D")
+    static let red700 = Color(hex: "#7D1024")
+    static let red800 = Color(hex: "#520B18")
+    static let red900 = Color(hex: "#27070D")
     
     static let gray50  = Color(hex: "#FAFAFA")
     static let gray100 = Color(hex: "#F5F5F5")
@@ -89,22 +89,22 @@ struct ToriUIColors {
     static let watermelon200 = UIColor(hex: "#FECBC7")
     static let watermelon300 = UIColor(hex: "#FEB0AC")
     static let watermelon400 = UIColor(hex: "#FD948F")
-    static let watermelon500 = UIColor(hex: "#FD7372")
-    static let watermelon600 = UIColor(hex: "#F75159")
-    static let watermelon700 = UIColor(hex: "#B24046")
-    static let watermelon800 = UIColor(hex: "#742E30")
-    static let watermelon900 = UIColor(hex: "#3C1B1B")
+    static let watermelon500 = UIColor(hex: "#F95157")
+    static let watermelon600 = UIColor(hex: "#D43D4F")
+    static let watermelon700 = UIColor(hex: "#982C38")
+    static let watermelon800 = UIColor(hex: "#5B1920")
+    static let watermelon900 = UIColor(hex: "#29080C")
     
-    static let petroleum50  = UIColor(hex: "#EEF4F5")
-    static let petroleum100 = UIColor(hex: "#DDE9EC")
-    static let petroleum200 = UIColor(hex: "#BAD3DA")
-    static let petroleum300 = UIColor(hex: "#97BDC6")
-    static let petroleum400 = UIColor(hex: "#74A8B4")
-    static let petroleum500 = UIColor(hex: "#4D93A2")
-    static let petroleum600 = UIColor(hex: "#167A8B")
-    static let petroleum700 = UIColor(hex: "#1B5E6A")
-    static let petroleum800 = UIColor(hex: "#193F47")
-    static let petroleum900 = UIColor(hex: "#122226")
+    static let blueberry50  = UIColor(hex: "#F7F9FD")
+    static let blueberry100 = UIColor(hex: "#D7E0F4")
+    static let blueberry200 = UIColor(hex: "#B4C9EC")
+    static let blueberry300 = UIColor(hex: "#91B2E4")
+    static let blueberry400 = UIColor(hex: "#6E9BDC")
+    static let blueberry500 = UIColor(hex: "#4D88DB")
+    static let blueberry600 = UIColor(hex: "#296DCC")
+    static let blueberry700 = UIColor(hex: "#1D4E92")
+    static let blueberry800 = UIColor(hex: "#122F58")
+    static let blueberry900 = UIColor(hex: "#06101E")
     
     static let blue50  = UIColor(hex: "#ECF7FE")
     static let blue100 = UIColor(hex: "#C7E7FB")
@@ -139,16 +139,16 @@ struct ToriUIColors {
     static let yellow800 = UIColor(hex: "#673A12")
     static let yellow900 = UIColor(hex: "#221102")
     
-    static let red50  = UIColor(hex: "#FFF0F1")
-    static let red100 = UIColor(hex: "#F7CACC")
-    static let red200 = UIColor(hex: "#EFA3A6")
-    static let red300 = UIColor(hex: "#E77C80")
-    static let red400 = UIColor(hex: "#DF555A")
-    static let red500 = UIColor(hex: "#D72E34")
-    static let red600 = UIColor(hex: "#CF070E")
-    static let red700 = UIColor(hex: "#96050A")
-    static let red800 = UIColor(hex: "#5D0306")
-    static let red900 = UIColor(hex: "#230103")
+    static let red50  = UIColor(hex: "#FEF6F7")
+    static let red100 = UIColor(hex: "#EDCED1")
+    static let red200 = UIColor(hex: "#DBA7AD")
+    static let red300 = UIColor(hex: "#C98089")
+    static let red400 = UIColor(hex: "#B75965")
+    static let red500 = UIColor(hex: "#A53241")
+    static let red600 = UIColor(hex: "#930B1D")
+    static let red700 = UIColor(hex: "#7D1024")
+    static let red800 = UIColor(hex: "#520B18")
+    static let red900 = UIColor(hex: "#27070D")
     
     static let gray50  = UIColor(hex: "#FAFAFA")
     static let gray100 = UIColor(hex: "#F5F5F5")
@@ -163,4 +163,119 @@ struct ToriUIColors {
     
     static let white = UIColor(hex: "#ffffff")
     static let black = UIColor(hex: "#000000")
+}
+
+public struct ToriColorsView: View {
+    public init() {}
+
+    public var body: some View {
+        ScrollView(showsIndicators: false) {
+            VStack (alignment: .leading) {
+                createView(for: "Watermelon",
+                           colors: [ToriColors.watermelon50,
+                                    ToriColors.watermelon100,
+                                    ToriColors.watermelon200,
+                                    ToriColors.watermelon300,
+                                    ToriColors.watermelon400,
+                                    ToriColors.watermelon500,
+                                    ToriColors.watermelon600,
+                                    ToriColors.watermelon700,
+                                    ToriColors.watermelon800,
+                                    ToriColors.watermelon900])
+                
+                createView(for: "Blueberry",
+                           colors: [ToriColors.blueberry50,
+                                    ToriColors.blueberry100,
+                                    ToriColors.blueberry200,
+                                    ToriColors.blueberry300,
+                                    ToriColors.blueberry400,
+                                    ToriColors.blueberry500,
+                                    ToriColors.blueberry600,
+                                    ToriColors.blueberry700,
+                                    ToriColors.blueberry800,
+                                    ToriColors.blueberry900])
+                
+                createView(for: "Blue",
+                           colors: [ToriColors.blue50,
+                                    ToriColors.blue100,
+                                    ToriColors.blue200,
+                                    ToriColors.blue300,
+                                    ToriColors.blue400,
+                                    ToriColors.blue500,
+                                    ToriColors.blue600,
+                                    ToriColors.blue700,
+                                    ToriColors.blue800,
+                                    ToriColors.blue900])
+                
+                createView(for: "Green",
+                           colors: [ToriColors.green50,
+                                    ToriColors.green100,
+                                    ToriColors.green200,
+                                    ToriColors.green300,
+                                    ToriColors.green400,
+                                    ToriColors.green500,
+                                    ToriColors.green600,
+                                    ToriColors.green700,
+                                    ToriColors.green800,
+                                    ToriColors.green900])
+                
+                createView(for: "Yellow",
+                           colors: [ToriColors.yellow50,
+                                    ToriColors.yellow100,
+                                    ToriColors.yellow200,
+                                    ToriColors.yellow300,
+                                    ToriColors.yellow400,
+                                    ToriColors.yellow500,
+                                    ToriColors.yellow600,
+                                    ToriColors.yellow700,
+                                    ToriColors.yellow800,
+                                    ToriColors.yellow900])
+                
+                createView(for: "Red",
+                           colors: [ToriColors.red50,
+                                    ToriColors.red100,
+                                    ToriColors.red200,
+                                    ToriColors.red300,
+                                    ToriColors.red400,
+                                    ToriColors.red500,
+                                    ToriColors.red600,
+                                    ToriColors.red700,
+                                    ToriColors.red800,
+                                    ToriColors.red900])
+                
+                createView(for: "Gray",
+                           colors: [ToriColors.gray50,
+                                    ToriColors.gray100,
+                                    ToriColors.gray200,
+                                    ToriColors.gray300,
+                                    ToriColors.gray400,
+                                    ToriColors.gray500,
+                                    ToriColors.gray600,
+                                    ToriColors.gray700,
+                                    ToriColors.gray800,
+                                    ToriColors.gray900])
+            }
+            .padding(.horizontal)
+        }
+    }
+
+    private func createView(for colorGroup: String, colors: [Color]) -> some View {
+        return GroupBox(
+            content: {
+                HStack(spacing: 1) {
+                    ForEach(colors, id: \.self) { color in
+                        Rectangle()
+                            .aspectRatio(1.0, contentMode: .fit)
+                            .foregroundColor(color)
+                    }
+                }
+            }, label: {
+                Text(colorGroup)
+            }
+        )
+    }
+}
+
+#Preview {
+    ToriColorsView()
 }

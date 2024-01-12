@@ -22,6 +22,29 @@ struct ContentView: View {
                 #endif
                 VStack (alignment: .leading) {
                     Divider()
+                    switch Warp.Config.warpTheme {
+                    case .finn:
+                        NavigationLink(destination: FinnColorsView()) {
+                            Text("BrandColors")
+                                .padding()
+                        }
+                    case .tori:
+                        NavigationLink(destination: ToriColorsView()) {
+                            Text("BrandColors")
+                                .padding()
+                        }
+                    }
+                    Divider()
+                    NavigationLink(destination: BrandTokensView()) {
+                        Text("BrandTokens")
+                            .padding()
+                    }
+                    Divider()
+                    NavigationLink(destination: TypographyView()) {
+                        Text("WarpTypography")
+                            .padding()
+                    }
+                    Divider()
                     NavigationLink(destination: ButtonView()) {
                         Text("WarpButton")
                             .padding()
@@ -29,11 +52,6 @@ struct ContentView: View {
                     Divider()
                     NavigationLink(destination: InputView()) {
                         Text("WarpInput")
-                            .padding()
-                    }
-                    Divider()
-                    NavigationLink(destination: TypographyView()) {
-                        Text("WarpTypography")
                             .padding()
                     }
                     Divider()
