@@ -6,20 +6,20 @@ extension Warp {
         /// Badge text.
         private let text: String
         /// Badge type.
-        private let style: Warp.Badge.Style
+        private let variant: Warp.Badge.Variant
         /// Badge corner variant.
-        private let alignment: Warp.Badge.Alignment
+        private let position: Warp.Badge.Position
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Config.colorProvider
 
         public init(
             text: String,
-            style: Warp.Badge.Style,
-            alignment: Warp.Badge.Alignment = .default
+            variant: Warp.Badge.Variant,
+            position: Warp.Badge.Position = .default
         ) {
             self.text = text
-            self.style = style
-            self.alignment = alignment
+            self.variant = variant
+            self.position = position
         }
 
         public var body: some View {
@@ -33,7 +33,7 @@ extension Warp {
         }
         
         private var foregroundColor: Color {
-            switch style {
+            switch variant {
             case .info:
                 return colorProvider.badgeInfoText
             case .success:
@@ -52,7 +52,7 @@ extension Warp {
         }
         
         private var backgroundColor: Color {
-            switch style {
+            switch variant {
             case .info:
                 return colorProvider.badgeInfoBackground
             case .success:
@@ -71,7 +71,7 @@ extension Warp {
         }
         
         private var corners: UIRectCorner {
-            switch alignment {
+            switch position {
             case .default:
                 return .allCorners
             case .topLeft, .bottomRight:
@@ -85,21 +85,21 @@ extension Warp {
 
 #Preview {
     return ScrollView(showsIndicators: false) {
-        ForEach(Warp.Badge.Style.allCases, id: \.self) { style in
-            createView(for: style)
+        ForEach(Warp.Badge.Variant.allCases, id: \.self) { variant in
+            createView(for: variant)
         }
         .padding(.horizontal)
     }
     
-    func createView(for style: Warp.Badge.Style) -> some View {
-        let name = String(describing: style)
+    func createView(for variant: Warp.Badge.Variant) -> some View {
+        let name = String(describing: variant)
         let capitalizedName = name.capitalized
         
         return GroupBox(
             content: {
                 VStack(alignment: .trailing, spacing: 8) {
-                    ForEach(Warp.Badge.Alignment.allCases, id: \.self) { alignment in
-                        createView(for: style, alignment: alignment)
+                    ForEach(Warp.Badge.Position.allCases, id: \.self) { position in
+                        createView(for: variant, position: position)
                     }
                 }
             }, label: {
@@ -108,10 +108,10 @@ extension Warp {
         )
     }
     
-    func createView(for style: Warp.Badge.Style, alignment: Warp.Badge.Alignment) -> some View {
+    func createView(for variant: Warp.Badge.Variant, position: Warp.Badge.Position) -> some View {
         HStack {
-            Text(String(describing: alignment))
-            Warp.Badge(text: String(describing: style), style: style, alignment: alignment)
+            Text(String(describing: position))
+            Warp.Badge(text: String(describing: variant), variant: variant, position: position)
         }
     }
 }

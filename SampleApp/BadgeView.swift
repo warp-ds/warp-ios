@@ -4,22 +4,22 @@ import Warp
 struct BadgeView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
-            ForEach(Warp.Badge.Style.allCases, id: \.self) { style in
-                createView(for: style)
+            ForEach(Warp.Badge.Variant.allCases, id: \.self) { variant in
+                createView(for: variant)
             }
             .padding(.horizontal)
         }
     }
 
-    private func createView(for style: Warp.Badge.Style) -> some View {
-        let name = String(describing: style)
+    private func createView(for variant: Warp.Badge.Variant) -> some View {
+        let name = String(describing: variant)
         let capitalizedName = name.capitalized
         
         return GroupBox(
             content: {
                 VStack(alignment: .trailing, spacing: 8) {
-                    ForEach(Warp.Badge.Alignment.allCases, id: \.self) { alignment in
-                        createView(for: style, alignment: alignment)
+                    ForEach(Warp.Badge.Position.allCases, id: \.self) { position in
+                        createView(for: variant, position: position)
                     }
                 }
             }, label: {
@@ -28,10 +28,10 @@ struct BadgeView: View {
         )
     }
     
-    private func createView(for style: Warp.Badge.Style, alignment: Warp.Badge.Alignment) -> some View {
+    private func createView(for variant: Warp.Badge.Variant, position: Warp.Badge.Position) -> some View {
         HStack {
-            Text(String(describing: alignment))
-            Warp.Badge(text: String(describing: style), style: style, alignment: alignment)
+            Text(String(describing: position))
+            Warp.Badge(text: String(describing: variant), variant: variant, position: position)
         }
     }
 }
