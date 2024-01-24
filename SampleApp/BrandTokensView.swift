@@ -28,6 +28,8 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.backgroundSelected])
                 createView(for: "backgroundSelectedHover",
                            colors: [tokenProvider.backgroundSelectedHover])
+                createView(for: "backgroundSelectedActive",
+                           colors: [tokenProvider.backgroundSelectedActive])
                 
                 createView(for: "backgroundInverted",
                            colors: [tokenProvider.backgroundInverted])
@@ -68,6 +70,8 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.backgroundPositiveSelected])
                 createView(for: "backgroundPositiveSelectedHover",
                            colors: [tokenProvider.backgroundPositiveSelectedHover])
+                createView(for: "backgroundPositiveSelectedActive",
+                           colors: [tokenProvider.backgroundPositiveSelectedActive])
                 
                 createView(for: "backgroundNegative",
                            colors: [tokenProvider.backgroundNegative])
@@ -85,6 +89,8 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.backgroundNegativeSelected])
                 createView(for: "backgroundNegativeSelectedHover",
                            colors: [tokenProvider.backgroundNegativeSelectedHover])
+                createView(for: "backgroundNegativeSelectedActive",
+                           colors: [tokenProvider.backgroundNegativeSelectedActive])
                 
                 createView(for: "backgroundWarning",
                            colors: [tokenProvider.backgroundWarning])
@@ -102,6 +108,8 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.backgroundWarningSelected])
                 createView(for: "backgroundWarningSelectedHover",
                            colors: [tokenProvider.backgroundWarningSelectedHover])
+                createView(for: "backgroundWarningSelectedActive",
+                           colors: [tokenProvider.backgroundWarningSelectedActive])
                 
                 createView(for: "backgroundInfo",
                            colors: [tokenProvider.backgroundInfo])
@@ -119,6 +127,8 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.backgroundInfoSelected])
                 createView(for: "backgroundInfoSelectedHover",
                            colors: [tokenProvider.backgroundInfoSelectedHover])
+                createView(for: "backgroundInfoSelectedActive",
+                           colors: [tokenProvider.backgroundInfoSelectedActive])
                 
                 createView(for: "backgroundNotification",
                            colors: [tokenProvider.backgroundNotification])
@@ -136,6 +146,8 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.borderSelected])
                 createView(for: "borderSelectedHover",
                            colors: [tokenProvider.borderSelectedHover])
+                createView(for: "borderSelectedActive",
+                           colors: [tokenProvider.borderSelectedActive])
                 createView(for: "borderFocus",
                            colors: [tokenProvider.borderFocus])
                 
@@ -222,6 +234,8 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.iconSelected])
                 createView(for: "iconSelectedHover",
                            colors: [tokenProvider.iconSelectedHover])
+                createView(for: "iconSelectedActive",
+                           colors: [tokenProvider.iconSelectedActive])
                 createView(for: "iconDisabled",
                            colors: [tokenProvider.iconDisabled])
                 createView(for: "iconSubtle",
