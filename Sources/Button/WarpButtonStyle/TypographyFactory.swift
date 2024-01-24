@@ -16,9 +16,9 @@ extension Warp.Button {
             let font: Font
 
             if type.isUtilityRelatedButton {
-                font = .caption
+                font = Warp.Typography.detailStrong.font
             } else {
-                font = .callout
+                font = Warp.Typography.title4.font
             }
 
             return font
