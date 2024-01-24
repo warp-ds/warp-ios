@@ -55,6 +55,11 @@ struct ContentView: View {
                             .padding()
                     }
                     Divider()
+                    NavigationLink(destination: BadgeView()) {
+                        Text("WarpBadge")
+                            .padding()
+                    }
+                    Divider()
                 }
                 .padding()
             }
