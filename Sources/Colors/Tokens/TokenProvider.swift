@@ -16,6 +16,7 @@ public protocol TokenProvider {
     var backgroundSubtleActive: Color { get }
     var backgroundSelected: Color { get }
     var backgroundSelectedHover: Color { get }
+    var backgroundSelectedActive: Color { get }
     
     var backgroundInverted: Color { get }
     
@@ -38,6 +39,7 @@ public protocol TokenProvider {
     var backgroundPositiveSubtleActive: Color { get }
     var backgroundPositiveSelected: Color { get }
     var backgroundPositiveSelectedHover: Color { get }
+    var backgroundPositiveSelectedActive: Color { get }
     
     var backgroundNegative: Color { get }
     var backgroundNegativeHover: Color { get }
@@ -47,6 +49,7 @@ public protocol TokenProvider {
     var backgroundNegativeSubtleActive: Color { get }
     var backgroundNegativeSelected: Color { get }
     var backgroundNegativeSelectedHover: Color { get }
+    var backgroundNegativeSelectedActive: Color { get }
     
     var backgroundWarning: Color { get }
     var backgroundWarningHover: Color { get }
@@ -56,6 +59,7 @@ public protocol TokenProvider {
     var backgroundWarningSubtleActive: Color { get }
     var backgroundWarningSelected: Color { get }
     var backgroundWarningSelectedHover: Color { get }
+    var backgroundWarningSelectedActive: Color { get }
     
     var backgroundInfo: Color { get }
     var backgroundInfoHover: Color { get }
@@ -65,6 +69,7 @@ public protocol TokenProvider {
     var backgroundInfoSubtleActive: Color { get }
     var backgroundInfoSelected: Color { get }
     var backgroundInfoSelectedHover: Color { get }
+    var backgroundInfoSelectedActive: Color { get }
     
     var backgroundNotification: Color { get }
     
@@ -75,6 +80,7 @@ public protocol TokenProvider {
     var borderDisabled: Color { get }
     var borderSelected: Color { get }
     var borderSelectedHover: Color { get }
+    var borderSelectedActive: Color { get }
     var borderFocus: Color { get }
     
     var borderPrimary: Color { get }
@@ -122,6 +128,7 @@ public protocol TokenProvider {
     var iconActive: Color { get }
     var iconSelected: Color { get }
     var iconSelectedHover: Color { get }
+    var iconSelectedActive: Color { get }
     var iconDisabled: Color { get }
     var iconSubtle: Color { get }
     var iconSubtleHover: Color { get }
@@ -165,6 +172,7 @@ public protocol UITokenProvider {
     var backgroundSubtleActive: UIColor { get }
     var backgroundSelected: UIColor { get }
     var backgroundSelectedHover: UIColor { get }
+    var backgroundSelectedActive: UIColor { get }
     
     var backgroundInverted: UIColor { get }
     
@@ -187,6 +195,7 @@ public protocol UITokenProvider {
     var backgroundPositiveSubtleActive: UIColor { get }
     var backgroundPositiveSelected: UIColor { get }
     var backgroundPositiveSelectedHover: UIColor { get }
+    var backgroundPositiveSelectedActive: UIColor { get }
     
     var backgroundNegative: UIColor { get }
     var backgroundNegativeHover: UIColor { get }
@@ -196,6 +205,7 @@ public protocol UITokenProvider {
     var backgroundNegativeSubtleActive: UIColor { get }
     var backgroundNegativeSelected: UIColor { get }
     var backgroundNegativeSelectedHover: UIColor { get }
+    var backgroundNegativeSelectedActive: UIColor { get }
     
     var backgroundWarning: UIColor { get }
     var backgroundWarningHover: UIColor { get }
@@ -205,6 +215,7 @@ public protocol UITokenProvider {
     var backgroundWarningSubtleActive: UIColor { get }
     var backgroundWarningSelected: UIColor { get }
     var backgroundWarningSelectedHover: UIColor { get }
+    var backgroundWarningSelectedActive: UIColor { get }
     
     var backgroundInfo: UIColor { get }
     var backgroundInfoHover: UIColor { get }
@@ -214,6 +225,7 @@ public protocol UITokenProvider {
     var backgroundInfoSubtleActive: UIColor { get }
     var backgroundInfoSelected: UIColor { get }
     var backgroundInfoSelectedHover: UIColor { get }
+    var backgroundInfoSelectedActive: UIColor { get }
     
     var backgroundNotification: UIColor { get }
     
@@ -224,6 +236,7 @@ public protocol UITokenProvider {
     var borderDisabled: UIColor { get }
     var borderSelected: UIColor { get }
     var borderSelectedHover: UIColor { get }
+    var borderSelectedActive: UIColor { get }
     var borderFocus: UIColor { get }
     
     var borderPrimary: UIColor { get }
@@ -271,6 +284,7 @@ public protocol UITokenProvider {
     var iconActive: UIColor { get }
     var iconSelected: UIColor { get }
     var iconSelectedHover: UIColor { get }
+    var iconSelectedActive: UIColor { get }
     var iconDisabled: UIColor { get }
     var iconSubtle: UIColor { get }
     var iconSubtleHover: UIColor { get }

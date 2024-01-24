@@ -96,14 +96,14 @@ public struct ColorProvider {
         }
     }
     var badgeNotificationBackground: Color { token.backgroundNotification }
-    //    var badgeNotificationSponsored: Color {
-    //        switch Warp.Config.warpTheme {
-    //        case .finn:
-    //            return Color.dynamicColor(defaultColor: FinnColors.aqua200, darkModeColor: FinnColors.aqua200)
-    //        case .tori:
-    //            return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray700)
-    //        }
-    //    }
+    var badgeSponsoredBackground: Color {
+        switch Warp.Config.warpTheme {
+        case .finn:
+            return Color.dynamicColor(defaultColor: FinnColors.aqua200, darkModeColor: FinnColors.aqua600)
+        case .tori:
+            return Color.dynamicColor(defaultColor: ToriColors.blue200, darkModeColor: ToriColors.blue600)
+        }
+    }
     
     /// Box
     var boxNeutralText: Color { token.text }
@@ -315,7 +315,7 @@ public struct ColorProvider {
     var cardFlatBorderActive: Color { token.borderActive }
     var cardFlatBorderSelected: Color { token.borderSelected }
     var cardFlatBorderSelectedHover: Color { token.borderSelectedHover }
-    //    var cardFlatBorderSelectedActive: Color { token.borderSelectedActive }
+    var cardFlatBorderSelectedActive: Color { token.borderSelectedActive }
     
     
     /// Checkbox
