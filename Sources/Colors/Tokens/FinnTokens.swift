@@ -74,7 +74,7 @@ struct FinnTokenProvider: TokenProvider {
     public var border: Color { Color.dynamicColor(defaultColor: FinnColors.blueGray300, darkModeColor: FinnColors.blueGray600) }
     public var borderHover: Color { Color.dynamicColor(defaultColor: FinnColors.blueGray400, darkModeColor: FinnColors.blueGray700) }
     public var borderActive: Color { Color.dynamicColor(defaultColor: FinnColors.blueGray500, darkModeColor: FinnColors.blueGray800) }
-    public var borderDisabled: Color { Color.dynamicColor(defaultColor: FinnColors.blueGray300, darkModeColor: FinnColors.blueGray300) }
+    public var borderDisabled: Color { Color.dynamicColor(defaultColor: FinnColors.blueGray300, darkModeColor: FinnColors.blueGray700) }
     public var borderSelected: Color { Color.dynamicColor(defaultColor: FinnColors.blue600, darkModeColor: FinnColors.blue500) }
     public var borderSelectedHover: Color { Color.dynamicColor(defaultColor: FinnColors.blue700, darkModeColor: FinnColors.blue600) }
     public var borderSelectedActive: Color { Color.dynamicColor(defaultColor: FinnColors.blue800, darkModeColor: FinnColors.blue500) }
@@ -230,7 +230,7 @@ struct FinnUITokenProvider: UITokenProvider {
     public var border: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.blueGray300, darkModeColor: FinnUIColors.blueGray600) }
     public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.blueGray400, darkModeColor: FinnUIColors.blueGray700) }
     public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.blueGray500, darkModeColor: FinnUIColors.blueGray800) }
-    public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.blueGray300, darkModeColor: FinnUIColors.blueGray300) }
+    public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.blueGray300, darkModeColor: FinnUIColors.blueGray700) }
     public var borderSelected: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.blue600, darkModeColor: FinnUIColors.blue500) }
     public var borderSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.blue700, darkModeColor: FinnUIColors.blue600) }
     public var borderSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.blue800, darkModeColor: FinnUIColors.blue500) }
