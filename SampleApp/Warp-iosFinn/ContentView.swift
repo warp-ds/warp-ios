@@ -50,8 +50,8 @@ struct ContentView: View {
                             .padding()
                     }
                     Divider()
-                    NavigationLink(destination: InputView()) {
-                        Text("WarpInput")
+                    NavigationLink(destination: TextFieldView()) {
+                        Text("WarpTextField")
                             .padding()
                     }
                     Divider()

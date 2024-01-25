@@ -42,5 +42,5 @@ extension Warp.Typography {
 }
 
 #Preview {
-    InputView()
+    TextFieldView()
 }

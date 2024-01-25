@@ -1,8 +1,8 @@
 import SwiftUI
 import Warp
 
-struct InputView: View {
-    @State private var state = Warp.InputState.normal
+struct TextFieldView: View {
+    @State private var state = Warp.TextFieldState.normal
     private let colorProvider = Warp.Config.colorProvider
 
     @State private var randomUsageTextFieldText = ""
@@ -16,18 +16,18 @@ struct InputView: View {
 
     @FocusState private var isFocused: Bool
 
-    private static let defaultConfiguration = Warp.InputConfiguration.default
+    private static let defaultConfiguration = Warp.TextFieldConfiguration.default
 
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack (alignment: .leading) {
-                ForEach(Warp.InputState.allCases, id: \.self) { state in
+                ForEach(Warp.TextFieldState.allCases, id: \.self) { state in
                     createView(for: state)
                 }
 
                 GroupBox(
                     content: {
-                        Warp.Input.createSearchTextField(text: $searchTextFieldText)
+                        Warp.TextField.createSearchTextField(text: $searchTextFieldText)
                             .padding()
                     }, label: {
                         Text("Search TextField")
@@ -36,7 +36,7 @@ struct InputView: View {
 
                 GroupBox(
                     content: {
-                        Warp.Input.createWithDiscardButton(
+                        Warp.TextField.createWithDiscardButton(
                             configuration: Self.defaultConfiguration,
                             text: $discardableTextFieldText,
                             state: .constant(.normal)
@@ -49,7 +49,7 @@ struct InputView: View {
 
                 GroupBox(
                     content: {
-                        Warp.Input.createSecureTextField(
+                        Warp.TextField.createSecureTextField(
                             configuration: Self.defaultConfiguration,
                             text: $passwordTextFieldText,
                             state: .constant(.normal),
@@ -64,7 +64,7 @@ struct InputView: View {
 
                 GroupBox(
                     content: {
-                        Warp.Input.createDecimalTextField(
+                        Warp.TextField.createDecimalTextField(
                             text: $moneyTextFieldText,
                             leftSymbol: "kr"
                         )
@@ -76,7 +76,7 @@ struct InputView: View {
 
                 GroupBox(
                     content: {
-                        Warp.Input.createDecimalTextField(
+                        Warp.TextField.createDecimalTextField(
                             text: $moneyTextFieldText,
                             rightSymbol: "kr"
                         )
@@ -88,9 +88,9 @@ struct InputView: View {
 
                 GroupBox(
                     content: {
-                        Warp.Input(
+                        Warp.TextField(
                             placeholder: "Warp",
-                            title: "WarpInput",
+                            title: "WarpTextField",
                             additionalInformation: "Optional",
                             infoToolTipView: AnyView(Image(systemName: "exclamationmark.circle")),
                             leftView: AnyView(Image(systemName: "magnifyingglass")),
@@ -107,9 +107,9 @@ struct InputView: View {
 
                 GroupBox(
                     content: {
-                        Warp.Input(
+                        Warp.TextField(
                             placeholder: "Warp",
-                            title: "WarpInput",
+                            title: "WarpTextField",
                             additionalInformation: "Optional",
                             infoToolTipView: AnyView(Image(systemName: "exclamationmark.circle")),
                             leftView: AnyView(Image(systemName: "magnifyingglass")),
@@ -126,7 +126,7 @@ struct InputView: View {
 
                 GroupBox(
                     content: {
-                        TextField("", text: $styleTextFieldText)
+                        SwiftUI.TextField("", text: $styleTextFieldText)
                             .focused($isFocused)
                             .textFieldStyle(
                                 .warp(
@@ -145,7 +145,7 @@ struct InputView: View {
                 if #available(iOS 16.0, *) {
                     GroupBox(
                         content: {
-                            TextField("", text: $multilineTextFieldText, axis: .vertical)
+                            SwiftUI.TextField("", text: $multilineTextFieldText, axis: .vertical)
                                 .textFieldStyle(
                                     .warp(
                                         configuration: .default,
@@ -165,7 +165,7 @@ struct InputView: View {
         }
     }
 
-    private func createView(for state: Warp.InputState) -> some View {
+    private func createView(for state: Warp.TextFieldState) -> some View {
         var text = state.title
 
         let bindingText = Binding {
@@ -176,7 +176,7 @@ struct InputView: View {
 
         return GroupBox(
             content: {
-                Warp.Input(text: bindingText, state: state)
+                Warp.TextField(text: bindingText, state: state)
                     .padding()
             }, label: {
                 Text(state.title)
@@ -186,11 +186,11 @@ struct InputView: View {
 }
 
 #Preview {
-    InputView()
+    TextFieldView()
 }
 
-extension Warp.InputState: CaseIterable {
-    public static var allCases: [Warp.InputState] = [
+extension Warp.TextFieldState: CaseIterable {
+    public static var allCases: [Warp.TextFieldState] = [
         .normal,
         .active,
         .disabled,
@@ -199,7 +199,7 @@ extension Warp.InputState: CaseIterable {
     ]
 }
 
-extension Warp.InputState {
+extension Warp.TextFieldState {
     fileprivate var title: String {
         String(describing: self).localizedCapitalized
     }
