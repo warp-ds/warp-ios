@@ -1,5 +1,162 @@
 import Foundation
 import SwiftUI
+
+extension Warp {
+    public struct Alert: View, Hashable {
+        /// <#Description#>
+        let style: AlertStyle
+        
+        /// <#Description#>
+        let title: String
+        
+        /// <#Description#>
+        let subtitle: String
+
+        public typealias ButtonConstructor = (title: String, action: () -> Void)
+        
+        /// <#Description#>
+        let linkProvider: ButtonConstructor?
+        
+        /// <#Description#>
+        let primaryButtonProvider: ButtonConstructor?
+        
+        /// <#Description#>
+        let secondaryButtonProvider: ButtonConstructor?
+        
+        /// <#Description#>
+        let colorProvider: ColorProvider
+
+        public static func == (lhs: Alert, rhs: Alert) -> Bool {
+            lhs.style == rhs.style && lhs.title == rhs.title
+        }
+
+        public func hash(into hasher: inout Hasher) {
+            hasher.combine(style)
+            hasher.combine(title)
+        }
+
+        public init(
+            style: Warp.AlertStyle,
+            title: String,
+            subtitle: String,
+            linkProvider: ButtonConstructor?,
+            primaryButtonProvider: ButtonConstructor?,
+            secondaryButtonProvider: ButtonConstructor?,
+            colorProvider: ColorProvider = Config.colorProvider
+        ) {
+            self.style = style
+            self.title = title
+            self.subtitle = subtitle
+            self.linkProvider = linkProvider
+            self.primaryButtonProvider = primaryButtonProvider
+            self.secondaryButtonProvider = secondaryButtonProvider
+            self.colorProvider = colorProvider
+        }
+
+        public var body: some View {
+            ZStack {
+                backgroundView
+
+                foregroundView
+                    .border(style.getBorderColor(from: colorProvider), width: 1)
+            }
+            .cornerRadius(4)
+        }
+
+        private var backgroundView: some View {
+            style.getBackgroundColor(from: colorProvider)
+        }
+
+        private var foregroundView: some View {
+            HStack(spacing: 8) {
+                leftLineView
+                    .frame(width: 5)
+
+                toolTipView
+
+                informationView
+                    .padding(.vertical, 16)
+
+                Spacer()
+            }
+        }
+
+        private var leftLineView: some View {
+            style.getLeftLineColor(from: colorProvider)
+        }
+
+        private var toolTipView: some View {
+            VStack {
+                Spacer()
+                    .frame(height: 17)
+
+                Image(systemName: style.titleImageName)
+                    .foregroundStyle(style.getLeftLineColor(from: colorProvider))
+                    .frame(width: 16, height: 16)
+                    .padding(.leading, 8)
+
+                Spacer()
+            }
+        }
+
+        private var informationView: some View {
+            VStack(alignment: .leading, spacing: 8) {
+                titleView
+
+                subtitleView
+
+                linkView
+                    .padding(.vertical, 8)
+
+                buttonsView
+                    .padding(.top, 4)
+                    .padding(.bottom, 8)
+            }
+        }
+
+        private var titleView: some View {
+            Text(title)
+                .font(from: Typography.title4)
+                .foregroundColor(.black)
+                .accessibilityAddTraits(.isHeader)
+        }
+
+        private var subtitleView: some View {
+            Text(subtitle)
+                .font(from: Typography.body)
+                .foregroundColor(colorProvider.boxInfoText)
+        }
+
+        @ViewBuilder
+        private var linkView: some View {
+            if let linkProvider = linkProvider {
+                SwiftUI.Button(
+                    action: linkProvider.action,
+                    label: {
+                        HStack {
+                            Text(linkProvider.title)
+                                .font(from: Typography.caption)
+                                .modifier(UnderlinedLinkModifier())
+
+                            Spacer()
+                        }
+                    }
+                )
+                .accessibilityRemoveTraits(.isButton)
+                .accessibilityAddTraits(.isLink)
+            }
+        }
+
+        private var buttonsView: some View {
+            ButtonsView(
+                primaryButtonProvider: primaryButtonProvider,
+                secondaryButtonProvider: secondaryButtonProvider,
+                colorProvider: colorProvider
+            )
+        }
+    }
+}
+
 private struct ButtonsView: View, Hashable {
     let primaryButtonProvider: Warp.Alert.ButtonConstructor?
 
