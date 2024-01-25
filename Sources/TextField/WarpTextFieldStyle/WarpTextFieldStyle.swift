@@ -1,32 +1,32 @@
 import Foundation
 import SwiftUI
 
-/// Minimum height reserved for input in order to keep it elegant.
-private let inputMinHeight = 34.0
+/// Minimum height reserved for TextField in order to keep it elegant.
+private let textFieldMinHeight = 34.0
 
 extension Warp {
-    /// Style that is responsible to transform TextField into warp design system input.
-    public struct InputStyle: TextFieldStyle {
-        /// Input configurations.
-        private let configuration: InputConfiguration
+    /// Style that is responsible to transform TextField into warp design system TextField.
+    public struct TextFieldStyle: SwiftUI.TextFieldStyle {
+        /// TextField configurations.
+        private let configuration: TextFieldConfiguration
 
-        /// Input text.
-        /// It will be consumed in accessibility engine in order to proxy input interactions to a TextField.
+        /// TextField text.
+        /// It will be consumed in accessibility engine in order to proxy TextField interactions to a TextField.
         private var text: String
 
-        /// Two-way binding of input state.
-        @Binding private var state: InputState
+        /// Two-way binding of TextField state.
+        @Binding private var state: TextFieldState
 
-        /// Flag indicating if input is focused.
+        /// Flag indicating if TextField is focused.
         @FocusState private var isFocused: Bool
 
         /// Object responsible for providing needed colors.
         private let colorProvider: ColorProvider
 
         public init(
-            configuration: Warp.InputConfiguration,
+            configuration: Warp.TextFieldConfiguration,
             text: String,
-            state: Binding<Warp.InputState>,
+            state: Binding<Warp.TextFieldState>,
             colorProvider: ColorProvider
         ) {
             self.configuration = configuration
@@ -35,7 +35,7 @@ extension Warp {
             self.colorProvider = colorProvider
         }
 
-        public func _body(configuration: TextField<Self._Label>) -> some View {
+        public func _body(configuration: SwiftUI.TextField<Self._Label>) -> some View {
             VStack(alignment: .leading) {
                 topView
 
@@ -54,7 +54,7 @@ extension Warp {
                             if isFocused {
                                 state = .active
                             } else {
-                                state = inputDefaultInactiveState
+                                state = textFieldDefaultInactiveState
                             }
                         }
 
@@ -69,7 +69,7 @@ extension Warp {
 
                 helperTextView
             }
-            .frame(minHeight: inputMinHeight, maxHeight: .infinity)
+            .frame(minHeight: textFieldMinHeight, maxHeight: .infinity)
             .disabled(state.shouldBeDisabled)
             .onTapGesture {
                 // Not checking for stateful disable logic, since whole will be disabled.
@@ -79,7 +79,7 @@ extension Warp {
             }
             .accessibilityElement(children: .combine)
             .accessibilityRepresentation {
-                TextField(self.configuration.placeholder, text: .constant(text))
+                SwiftUI.TextField(self.configuration.placeholder, text: .constant(text))
                     .accessibilityInputLabels(accessibilityInformation)
                     .accessibilityLabel(accessibilityInformation.joined(separator: ", "))
                     .accessibilityHint(self.configuration.placeholder)
@@ -88,21 +88,21 @@ extension Warp {
 
         /// Information that will be produced for Accessibility engine based on current configuration.
         private var accessibilityInformation: [String] {
-            var inputLabels: [String] = []
+            var textFieldLabels: [String] = []
 
             if let title = configuration.title {
-                inputLabels.append(title)
+                textFieldLabels.append(title)
             }
 
             if let additionalInformation = configuration.additionalInformation {
-                inputLabels.append(additionalInformation)
+                textFieldLabels.append(additionalInformation)
             }
 
             if let description = state.description {
-                inputLabels.append(description)
+                textFieldLabels.append(description)
             }
 
-            return inputLabels
+            return textFieldLabels
         }
 
         // MARK: - TopView
@@ -130,7 +130,7 @@ extension Warp {
 }
 
 // Variants + syntactic sugar.
-extension TextFieldStyle where Self == Warp.InputStyle {
+extension SwiftUI.TextFieldStyle where Self == Warp.TextFieldStyle {
     /// Style that is responsible for transforming TextField to warp designed TextField.
     /// TextField will be wrapped inside borders with additional arbitrary views.
     public static func warp(
@@ -144,10 +144,10 @@ extension TextFieldStyle where Self == Warp.InputStyle {
         helpMessage: String? = nil,
         isAnimated: Bool = true,
         text: String,
-        state: Binding<Warp.InputState> = .constant(Warp.inputDefaultInactiveState),
+        state: Binding<Warp.TextFieldState> = .constant(Warp.textFieldDefaultInactiveState),
         colorProvider: ColorProvider
-    ) -> Warp.InputStyle {
-        let configuration = Warp.InputConfiguration(
+    ) -> Warp.TextFieldStyle {
+        let configuration = Warp.TextFieldConfiguration(
             placeholder: placeholder,
             title: title,
             additionalInformation: additionalInformation,
@@ -159,7 +159,7 @@ extension TextFieldStyle where Self == Warp.InputStyle {
             isAnimated: isAnimated
         )
 
-        return Warp.InputStyle(
+        return Warp.TextFieldStyle(
             configuration: configuration,
             text: text,
             state: state,
@@ -170,12 +170,12 @@ extension TextFieldStyle where Self == Warp.InputStyle {
     /// Style that is responsible for transforming TextField to warp designed TextField.
     /// TextField will be wrapped inside borders with additional arbitrary views.
     public static func warp(
-        configuration: Warp.InputConfiguration,
+        configuration: Warp.TextFieldConfiguration,
         text: String,
-        state: Binding<Warp.InputState> = .constant(Warp.inputDefaultInactiveState),
+        state: Binding<Warp.TextFieldState> = .constant(Warp.textFieldDefaultInactiveState),
         colorProvider: ColorProvider
-    ) -> Warp.InputStyle {
-        Warp.InputStyle(
+    ) -> Warp.TextFieldStyle {
+        Warp.TextFieldStyle(
             configuration: configuration,
             text: text,
             state: state,
@@ -196,8 +196,8 @@ extension View {
     }
 }
 
-extension Warp.InputState {
-    /// Flag indicating input should be disabled based on current state.
+extension Warp.TextFieldState {
+    /// Flag indicating TextField should be disabled based on current state.
     fileprivate var shouldBeDisabled: Bool {
         let isDisabled = self == .disabled
         lazy var isReadOnly = self == .readOnly
@@ -209,21 +209,21 @@ extension Warp.InputState {
         switch self {
             case .disabled:
                 return NSLocalizedString(
-                    "Input.Disabled.Title",
+                    "TextField.Disabled.Title",
                     value: "Currently disabled",
                     comment: ""
                 )
 
             case .error:
                 return NSLocalizedString(
-                    "Input.Error.Title",
+                    "TextField.Error.Title",
                     value: "Has error",
                     comment: ""
                 )
 
             case .readOnly:
                 return NSLocalizedString(
-                    "Input.ReadOnly.Title",
+                    "TextField.ReadOnly.Title",
                     value: "Read only",
                     comment: ""
                 )

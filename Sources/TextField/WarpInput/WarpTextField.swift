@@ -2,19 +2,19 @@ import SwiftUI
 import Combine
 
 extension Warp {
-    /// Inactive state of input.
-    public static let inputDefaultInactiveState = InputState.normal
+    /// Inactive state of TextField.
+    public static let textFieldDefaultInactiveState = TextFieldState.normal
 
     /// A control that displays an editable text with `Warp` designed interface.
-    public struct Input: View {
-        /// Input configurations.
-        private let configuration: InputConfiguration
+    public struct TextField: View {
+        /// TextField configurations.
+        private let configuration: TextFieldConfiguration
 
         /// One-way binding TextField text.
         private var text: Binding<String>
 
-        /// Two-way binding input state.
-        @Binding private var state: InputState
+        /// Two-way binding TextField state.
+        @Binding private var state: TextFieldState
 
         /// Object responsible for providing needed colors.
         private let colorProvider: ColorProvider
@@ -30,10 +30,10 @@ extension Warp {
             helpMessage: String? = nil,
             isAnimated: Bool = true,
             text: Binding<String>,
-            state: Binding<InputState>,
+            state: Binding<TextFieldState>,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
-            self.configuration = InputConfiguration(
+            self.configuration = TextFieldConfiguration(
                 placeholder: placeholder,
                 title: title,
                 additionalInformation: additionalInformation,
@@ -61,10 +61,10 @@ extension Warp {
             helpMessage: String? = nil,
             isAnimated: Bool = true,
             text: Binding<String>,
-            state: InputState = Warp.inputDefaultInactiveState,
+            state: TextFieldState = Warp.textFieldDefaultInactiveState,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
-            self.configuration = InputConfiguration(
+            self.configuration = TextFieldConfiguration(
                 placeholder: placeholder,
                 title: title,
                 additionalInformation: additionalInformation,
@@ -88,9 +88,9 @@ extension Warp {
         }
 
         public init(
-            config: InputConfiguration,
+            config: TextFieldConfiguration,
             text: Binding<String>,
-            state: Binding<InputState>,
+            state: Binding<TextFieldState>,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.configuration = config
@@ -100,7 +100,7 @@ extension Warp {
         }
 
         public var body: some View {
-            TextField(
+            SwiftUI.TextField(
                 configuration.placeholder,
                 text: text
             )
@@ -116,20 +116,20 @@ extension Warp {
     }
 }
 
-private struct WarpInputPreview: PreviewProvider {
+private struct WarpTextFieldPreview: PreviewProvider {
     private static let colorProvider = Warp.Config.colorProvider
 
     static var previews: some View {
         ScrollView(showsIndicators: false) {
             VStack (alignment: .leading) {
-                ForEach(Warp.InputState.allCases, id: \.self) { state in
+                ForEach(Warp.TextFieldState.allCases, id: \.self) { state in
                     createView(for: state)
                 }
             }
         }
     }
 
-    private static func createView(for state: Warp.InputState) -> some View {
+    private static func createView(for state: Warp.TextFieldState) -> some View {
         var text = state.title
 
         let bindingText = Binding {
@@ -140,7 +140,7 @@ private struct WarpInputPreview: PreviewProvider {
 
         return GroupBox(
             content: {
-                Warp.Input(text: bindingText, state: state, colorProvider: colorProvider)
+                Warp.TextField(text: bindingText, state: state, colorProvider: colorProvider)
             }, label: {
                 Text(state.title)
             }
@@ -148,8 +148,8 @@ private struct WarpInputPreview: PreviewProvider {
     }
 }
 
-extension Warp.InputState {
-    fileprivate static var allCases: [Warp.InputState] = [
+extension Warp.TextFieldState {
+    fileprivate static var allCases: [Warp.TextFieldState] = [
         .normal,
         .active,
         .disabled,
@@ -158,7 +158,7 @@ extension Warp.InputState {
     ]
 }
 
-extension Warp.InputState {
+extension Warp.TextFieldState {
     fileprivate var title: String {
         String(describing: self).localizedCapitalized
     }
