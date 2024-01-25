@@ -1,21 +1,21 @@
 import Foundation
 import SwiftUI
 
-extension Warp.Input {
-    /// Input that will resolve common needs to work with decimals.
+extension Warp.TextField {
+    /// TextField that will resolve common needs to work with decimals.
     public static func createDecimalTextField(
         text: Binding<String>,
         leftSymbol: String? = nil,
         rightSymbol: String? = nil,
         colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> some View {
-        let configuration: Warp.InputConfiguration = .decimal(
+        let configuration: Warp.TextFieldConfiguration = .decimal(
             leftSymbol: leftSymbol,
             rightSymbol: rightSymbol
         )
-        let constantState: Warp.InputState = .normal
+        let constantState: Warp.TextFieldState = .normal
 
-        return Warp.Input(
+        return Warp.TextField(
             config: configuration,
             text: text,
             state: .constant(constantState),
@@ -24,13 +24,13 @@ extension Warp.Input {
         .keyboardType(.decimalPad)
     }
 
-    /// Input that will have common design for a search text field.
+    /// TextField that will have common design for a search text field.
     public static func createSearchTextField(
         text: Binding<String>,
         colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> some View {
-        let configuration: Warp.InputConfiguration = .searchTextField
-        let constantState: Warp.InputState = .normal
+        let configuration: Warp.TextFieldConfiguration = .searchTextField
+        let constantState: Warp.TextFieldState = .normal
 
         let textField = createWithDiscardButton(
             configuration: configuration,
@@ -43,12 +43,12 @@ extension Warp.Input {
             .accessibilityAddTraits(.isSearchField)
     }
 
-    /// Input that will be used to handle secure text,
+    /// TextField that will be used to handle secure text,
     /// it will contain a button as right view in order to secure/unsecure current text.
     public static func createSecureTextField(
-        configuration: Warp.InputConfiguration,
+        configuration: Warp.TextFieldConfiguration,
         text: Binding<String>,
-        state: Binding<Warp.InputState>,
+        state: Binding<Warp.TextFieldState>,
         isSecured: Binding<Bool>,
         colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> some View {
@@ -95,7 +95,7 @@ extension Warp.Input {
                         SecureField(configuration.placeholder, text: text)
                     }
             } else {
-                Warp.Input(
+                Warp.TextField(
                     config: configuration,
                     text: text,
                     state: state,
@@ -109,13 +109,13 @@ extension Warp.Input {
         }
     }
 
-    /// `Warp.Input` that will contain a button as right view, that will have the responsibility of discarding current text.
+    /// `Warp.TextField` that will contain a button as right view, that will have the responsibility of discarding current text.
     public static func createWithDiscardButton(
-        configuration: Warp.InputConfiguration,
+        configuration: Warp.TextFieldConfiguration,
         text: Binding<String>,
-        state: Binding<Warp.InputState>,
+        state: Binding<Warp.TextFieldState>,
         colorProvider: ColorProvider = Warp.Config.colorProvider
-    ) -> Warp.Input {
+    ) -> Warp.TextField {
         var configuration = configuration
 
         let clearButton = SwiftUI.Button(
@@ -133,7 +133,7 @@ extension Warp.Input {
             configuration.rightView = nil
         }
 
-        return Warp.Input(
+        return Warp.TextField(
             config: configuration,
             text: text,
             state: state,
@@ -142,7 +142,7 @@ extension Warp.Input {
     }
 }
 
-private struct InputVariantsPreview: PreviewProvider {
+private struct TextFieldVariantsPreview: PreviewProvider {
     static var previews: some View {
         Text("")
     }

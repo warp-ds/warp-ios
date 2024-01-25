@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-/// Information tool tip view that will be shown on the top of input.
+/// Information tool tip view that will be shown on the top of TextField.
 struct ToolTipView: View, Hashable {
     /// Tool tip title.
     let title: String?
@@ -59,7 +59,7 @@ struct ToolTipView: View, Hashable {
         if let infoToolTipView = infoToolTipView {
             infoToolTipView
                 .foregroundColor(FinnColors.gray300)
-                .inputAdditionalView()
+                .textFieldAdditionalView()
         }
     }
 }

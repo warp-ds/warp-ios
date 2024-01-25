@@ -4,8 +4,8 @@ import struct SwiftUI.Image
 import struct SwiftUI.Text
 
 extension Warp {
-    /// Configurations that will be applied to input.
-    public struct InputConfiguration: Equatable {
+    /// Configurations that will be applied to TextField.
+    public struct TextFieldConfiguration: Equatable {
         /// TextField placeholder.
         public var placeholder: String
 
@@ -30,10 +30,10 @@ extension Warp {
         /// Helper message.
         public var helpMessage: String?
 
-        /// Flag indicating if input changes should be animated.
+        /// Flag indicating if TextField changes should be animated.
         public var isAnimated: Bool
 
-        public static func == (lhs: InputConfiguration, rhs: InputConfiguration) -> Bool {
+        public static func == (lhs: TextFieldConfiguration, rhs: TextFieldConfiguration) -> Bool {
             lhs.placeholder == rhs.placeholder
         }
 
@@ -118,7 +118,7 @@ extension Warp {
         }
         
         /// Plain TextField configuration.
-        public static let `default` = InputConfiguration(
+        public static let `default` = TextFieldConfiguration(
             placeholder: "",
             title: nil,
             additionalInformation: nil,
@@ -131,9 +131,9 @@ extension Warp {
         )
 
         /// Common search TextField configuration.
-        public static let searchTextField = InputConfiguration(
+        public static let searchTextField = TextFieldConfiguration(
             placeholder: NSLocalizedString(
-                "InputConfiguration.Title.Search",
+                "TextFieldConfiguration.Title.Search",
                 value: "Search",
                 comment: ""
             ),
@@ -156,8 +156,8 @@ extension Warp {
             rightView: AnyView? = nil,
             errorMessage: String? = nil,
             helpMessage: String? = nil
-        ) -> InputConfiguration {
-            InputConfiguration(
+        ) -> TextFieldConfiguration {
+            TextFieldConfiguration(
                 placeholder: placeholder,
                 title: title,
                 additionalInformation: additionalInformation,
@@ -179,8 +179,8 @@ extension Warp {
             rightSymbol: String? = nil,
             errorMessage: String? = nil,
             helpMessage: String? = nil
-        ) -> InputConfiguration {
-            InputConfiguration(
+        ) -> TextFieldConfiguration {
+            TextFieldConfiguration(
                 placeholder: placeholder,
                 title: title,
                 additionalInformation: additionalInformation,

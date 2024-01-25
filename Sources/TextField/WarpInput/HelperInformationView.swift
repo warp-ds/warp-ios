@@ -1,12 +1,12 @@
 import Foundation
 import SwiftUI
 
-/// Helper view that will be shown at the bottom of input.
+/// Helper view that will be shown at the bottom of TextField.
 struct HelperInformationView: View, Hashable {
-    /// State of input.
-    let state: Warp.InputState
+    /// State of TextField.
+    let state: Warp.TextFieldState
 
-    /// Lazy error message that will be shown in case of state gets changed to `Warp.InputState.error`.
+    /// Lazy error message that will be shown in case of state gets changed to `Warp.TextFieldState.error`.
     let errorMessage: () -> String?
 
     /// Helper message that will be shown at the bottom when state is not error..
@@ -24,7 +24,7 @@ struct HelperInformationView: View, Hashable {
     }
 
     init(
-        state: Warp.InputState,
+        state: Warp.TextFieldState,
         errorMessage: @autoclosure @escaping () -> String?,
         helpMessage: String?,
         colorProvider: ColorProvider

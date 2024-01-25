@@ -7,9 +7,9 @@ private let textFieldMinHeight = 28.0
 extension Warp {
     /// Text field style that will be used internally.
     /// Responsible for configuring text field inside the borders.
-    struct InnerInputStyle: TextFieldStyle {
-        /// State of input.
-        let state: Warp.InputState
+    struct InnerTextFieldStyle: SwiftUI.TextFieldStyle {
+        /// State of TextField.
+        let state: Warp.TextFieldState
         
         /// View that can be added as a helper in left side of the text field.
         let leftView: AnyView?
@@ -51,7 +51,7 @@ extension Warp {
             return colorProvider.inputBackground
         }
 
-        private var inputBorderWidth: CGFloat {
+        private var textFieldBorderWidth: CGFloat {
             switch state {
                 case .normal:
                     return 2
@@ -78,7 +78,7 @@ extension Warp {
             FinnColors.gray500
         }
 
-        public func _body(configuration: TextField<Self._Label>) -> some View {
+        public func _body(configuration: SwiftUI.TextField<Self._Label>) -> some View {
             HStack(spacing: 8) {
                 if let leftView = leftView {
                     createAdditionalView(from: leftView)
@@ -100,26 +100,26 @@ extension Warp {
 
         private var overlayView: some View {
             RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(borderColor, lineWidth: inputBorderWidth)
+                .stroke(borderColor, lineWidth: textFieldBorderWidth)
         }
 
         private func createAdditionalView(from view: some View) -> some View {
             return view
                 .foregroundColor(additionalViewForegroundColor)
-                .inputAdditionalView()
+                .textFieldAdditionalView()
         }
     }
 }
 
-extension TextFieldStyle where Self == Warp.InnerInputStyle {
+extension SwiftUI.TextFieldStyle where Self == Warp.InnerTextFieldStyle {
     /// A text field style with ability to add arbitrary view in left or right side.
     static func innerStyle(
-        state: Warp.InputState,
+        state: Warp.TextFieldState,
         leftView: AnyView? = nil,
         rightView: AnyView? = nil,
         colorProvider: ColorProvider
-    ) -> Warp.InnerInputStyle {
-        Warp.InnerInputStyle(
+    ) -> Warp.InnerTextFieldStyle {
+        Warp.InnerTextFieldStyle(
             state: state,
             leftView: leftView,
             rightView: rightView,

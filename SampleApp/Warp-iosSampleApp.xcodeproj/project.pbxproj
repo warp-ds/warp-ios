@@ -25,8 +25,8 @@
 		828E7D462B61239100869C58 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E7D442B61239100869C58 /* BadgeView.swift */; };
 		82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
 		82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
-		82A2155C2A8DF93B0062FB9E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
-		82A2155D2A8DF93B0062FB9E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* InputView.swift */; };
+		82A2155C2A8DF93B0062FB9E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
+		82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +45,7 @@
 		827C4B952A89410800660D82 /* Tori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		828E7D442B61239100869C58 /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		82A215582A8DF4DC0062FB9E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
-		82A2155B2A8DF93B0062FB9E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 				8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */,
 				828E7D442B61239100869C58 /* BadgeView.swift */,
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
-				82A2155B2A8DF93B0062FB9E /* InputView.swift */,
+				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
 				82355B082A8CD0AA0023EB11 /* Assets.xcassets */,
 				82355B0B2A8CD0AA0023EB11 /* Preview Content */,
 				82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */,
@@ -232,7 +232,7 @@
 			files = (
 				82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */,
 				828E7D452B61239100869C58 /* BadgeView.swift in Sources */,
-				82A2155C2A8DF93B0062FB9E /* InputView.swift in Sources */,
+				82A2155C2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
 				82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				8251E8CA2B4E8B7D00106720 /* BrandTokensView.swift in Sources */,
 				82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */,
@@ -247,7 +247,7 @@
 				349586652B0F727600A14570 /* TypographyView.swift in Sources */,
 				828E7D462B61239100869C58 /* BadgeView.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
-				82A2155D2A8DF93B0062FB9E /* InputView.swift in Sources */,
+				82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
 				8251E8CB2B4E8B7D00106720 /* BrandTokensView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				82355B122A8CD1120023EB11 /* ContentView.swift in Sources */,
