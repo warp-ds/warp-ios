@@ -48,4 +48,18 @@ extension Warp.AlertStyle {
                 return FinnColors.green500
         }
     }
+
+    fileprivate var titleImageName: String {
+        switch self {
+            case .info:
+                return "info.circle.fill"
+
+            case .warning, .critical:
+                return "exclamationmark.circle.fill"
+
+            case .success:
+                return "checkmark.circle.fill"
+        }
+    }
+}
 }
