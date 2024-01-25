@@ -32,4 +32,20 @@ extension Warp.AlertStyle {
                 return FinnColors.green300
         }
     }
+
+    fileprivate func getLeftLineColor(from colorProvider: ColorProvider) -> Color {
+        switch self {
+            case .info:
+                return FinnColors.aqua500
+
+            case .warning:
+                return FinnColors.yellow500
+
+            case .critical:
+                return FinnColors.red500
+
+            case .success:
+                return FinnColors.green500
+        }
+    }
 }
