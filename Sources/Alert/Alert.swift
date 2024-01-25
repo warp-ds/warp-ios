@@ -1,5 +1,27 @@
 import Foundation
 import SwiftUI
+private struct UnderlinedLinkModifier: ViewModifier {
+    private var linkColor: Color {
+        Color.blue
+    }
+
+    func body(content: Content) -> some View {
+        if #available(iOS 16.0, *) {
+            content
+                .underline(true, color: linkColor)
+        } else {
+            content
+                .background(lineBackground)
+        }
+    }
+
+    private var lineBackground: some View {
+        linkColor
+            .frame(height: 1)
+            .offset(y: 8)
+    }
+}
+
 extension Warp.AlertStyle {
     fileprivate func getBackgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
