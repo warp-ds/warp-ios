@@ -329,4 +329,38 @@ extension Warp.AlertStyle {
         }
     }
 }
+
+extension Warp.AlertStyle {
+    fileprivate static var allCases: [Warp.AlertStyle] = [
+        .info,
+        .warning,
+        .critical,
+        .success
+    ]
+}
+
+#Preview("Simple use case") {
+    ForEach(Warp.AlertStyle.allCases, id: \.self) { style in
+        Warp.Alert(
+            style: style,
+            title: "Title",
+            subtitle: "Use this variant to call extra attention to useful, contextual information.",
+            linkProvider: nil,
+            primaryButtonProvider: nil,
+            secondaryButtonProvider: nil
+        )
+    }
+}
+
+#Preview("Full experience use case") {
+    ForEach(Warp.AlertStyle.allCases, id: \.self) { style in
+        Warp.Alert(
+            style: style,
+            title: "Title",
+            subtitle: "Use this variant to call extra attention to useful, contextual information.",
+            linkProvider: (title: "Link to more information", action: {}),
+            primaryButtonProvider: (title: "Button", action: {}),
+            secondaryButtonProvider: (title: "Button", action: {})
+        )
+    }
 }
