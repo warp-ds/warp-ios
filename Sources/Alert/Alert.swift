@@ -3,27 +3,30 @@ import SwiftUI
 
 extension Warp {
     public struct Alert: View, Hashable {
-        /// <#Description#>
+        /// Preferred style of alert.
         let style: AlertStyle
         
-        /// <#Description#>
+        /// Text that will be shown at the top of alert.
         let title: String
         
-        /// <#Description#>
+        /// Text that will be shown after title in the middle of the alert.
         let subtitle: String
 
         public typealias ButtonConstructor = (title: String, action: () -> Void)
         
-        /// <#Description#>
+        /// Tuple that will provide a title and an action for creating a link view below subtitle.
+        /// Passing `nil` will skip adding link view.
         let linkProvider: ButtonConstructor?
         
-        /// <#Description#>
+        /// Tuple that will provide a title and an action for creating a primary button view below link.
+        /// Passing `nil` will skip adding primary button view.
         let primaryButtonProvider: ButtonConstructor?
         
-        /// <#Description#>
+        /// Tuple that will provide a title and an action for creating a secondary button view below link.
+        /// Passing `nil` will skip adding secondary button view.
         let secondaryButtonProvider: ButtonConstructor?
         
-        /// <#Description#>
+        /// Object responsible for providing colors in different environments and variants.
         let colorProvider: ColorProvider
 
         public static func == (lhs: Alert, rhs: Alert) -> Bool {
@@ -36,6 +39,24 @@ extension Warp {
         }
 
         public init(
+            style: Warp.AlertStyle,
+            title: String,
+            subtitle: String,
+            link: ButtonConstructor? = nil,
+            primaryButton: ButtonConstructor? = nil,
+            secondaryButton: ButtonConstructor? = nil,
+            colorProvider: ColorProvider = Config.colorProvider
+        ) {
+            self.style = style
+            self.title = title
+            self.subtitle = subtitle
+            self.linkProvider = link
+            self.primaryButtonProvider = primaryButton
+            self.secondaryButtonProvider = secondaryButton
+            self.colorProvider = colorProvider
+        }
+
+        init(
             style: Warp.AlertStyle,
             title: String,
             subtitle: String,
