@@ -139,7 +139,7 @@ extension Warp {
         private var titleView: some View {
             Text(title)
                 .font(from: Typography.title4)
-                .foregroundColor(.black)
+                .foregroundColor(style.getTextColor(from: colorProvider))
                 .accessibilityAddTraits(.isHeader)
         }
 
