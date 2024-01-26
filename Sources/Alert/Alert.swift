@@ -366,6 +366,22 @@ extension Warp.AlertStyle {
                 return "checkmark.circle.fill"
         }
     }
+
+    fileprivate func getToolTipIconColor(from colorProvider: ColorProvider) -> Color {
+        switch self {
+            case .info:
+                return colorProvider.alertInfoIcon
+
+            case .warning:
+                return colorProvider.alertWarningIcon
+
+            case .critical:
+                return colorProvider.alertNegativeIcon
+
+            case .success:
+                return colorProvider.alertPositiveIcon
+        }
+    }
 }
 
 extension Warp.AlertStyle {
