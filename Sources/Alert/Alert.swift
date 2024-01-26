@@ -338,14 +338,19 @@ extension Warp.AlertStyle {
         }
     }
 
+    fileprivate func getTextColor(from colorProvider: ColorProvider) -> Color {
+        switch self {
+            case .info:
+                return colorProvider.alertInfoText
+
             case .warning:
-                return FinnColors.yellow500
+                return colorProvider.alertWarningText
 
             case .critical:
-                return FinnColors.red500
+                return colorProvider.alertNegativeText
 
             case .success:
-                return FinnColors.green500
+                return colorProvider.alertPositiveText
         }
     }
 
