@@ -293,16 +293,16 @@ extension Warp.AlertStyle {
     fileprivate func getBackgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
             case .info:
-                return FinnColors.aqua50
+                return colorProvider.alertInfoBackground
 
             case .warning:
-                return FinnColors.yellow50
+                return colorProvider.alertWarningBackground
 
             case .critical:
-                return FinnColors.red50
+                return colorProvider.alertNegativeBackground
 
             case .success:
-                return FinnColors.green50
+                return colorProvider.alertPositiveBackground
         }
     }
 
