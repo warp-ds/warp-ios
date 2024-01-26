@@ -17,9 +17,9 @@ struct AlertView: View {
                     style: style,
                     title: "Title",
                     subtitle: "Use this variant to call extra attention to useful, contextual information.",
-                    linkProvider: nil,
-                    primaryButtonProvider: nil,
-                    secondaryButtonProvider: nil
+                    link: nil,
+                    primaryButton: nil,
+                    secondaryButton: nil
                 )
                 .padding()
             }
@@ -29,9 +29,9 @@ struct AlertView: View {
                     style: style,
                     title: "Title",
                     subtitle: "Use this variant to call extra attention to useful, contextual information.",
-                    linkProvider: (title: "Link to more information", action: {}),
-                    primaryButtonProvider: (title: "Button", action: {}),
-                    secondaryButtonProvider: (title: "Button", action: {})
+                    link: (title: "Link to more information", action: {}),
+                    primaryButton: (title: "Button", action: {}),
+                    secondaryButton: (title: "Button", action: {})
                 )
                 .padding()
             }
