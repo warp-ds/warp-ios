@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 
 extension Warp {
+    /// View that show high-signal messages meant to be noticed and prompting users to take action.
     public struct Alert: View, Hashable {
         /// Preferred style of alert.
         let style: AlertStyle
