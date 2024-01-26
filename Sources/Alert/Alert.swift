@@ -2,6 +2,8 @@ import Foundation
 import SwiftUI
 
 extension Warp {
+    private static let alertCornerRadius = 4.0
+
     /// View that show high-signal messages meant to be noticed and prompting users to take action.
     public struct Alert: View, Hashable {
         /// Preferred style of alert.
@@ -80,9 +82,8 @@ extension Warp {
                 backgroundView
 
                 foregroundView
-                    .border(style.getBorderColor(from: colorProvider), width: 1)
             }
-            .cornerRadius(4)
+            .cornerRadius(alertCornerRadius)
         }
 
         private var backgroundView: some View {
