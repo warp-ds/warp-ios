@@ -3,16 +3,16 @@ import Foundation
 extension Warp {
     /// <#Description#>
     public enum AlertStyle: Equatable {
-        /// <#Description#>
+        /// Display messages to provide user with general information.
         case info
 
-        /// <#Description#>
+        /// Indicate that something is not working as expected.
         case warning
 
-        /// <#Description#>
+        /// Indicate a severe problem or error.
         case critical
 
-        /// <#Description#>
+        /// Indicating a successful action or completing a task.
         case success
     }
 }
