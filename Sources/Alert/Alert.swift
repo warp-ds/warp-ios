@@ -88,6 +88,11 @@ extension Warp {
 
         private var backgroundView: some View {
             style.getBackgroundColor(from: colorProvider)
+                // Border with rounded edges.
+                .overlay(
+                    RoundedRectangle(cornerRadius: alertCornerRadius)
+                        .stroke(style.getBorderColor(from: colorProvider), lineWidth: 1)
+                )
         }
 
         private var foregroundView: some View {
