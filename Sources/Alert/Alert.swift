@@ -361,16 +361,24 @@ extension Warp.AlertStyle {
     }
 
     fileprivate var titleImageName: String {
+        let prefix = "icon_alert"
+        let postfix: String
+
         switch self {
             case .info:
-                return "info.circle.fill"
+                postfix = "info"
 
-            case .warning, .critical:
-                return "exclamationmark.circle.fill"
+            case .warning:
+                postfix = "warning"
+
+            case .critical:
+                postfix = "critical"
 
             case .success:
-                return "checkmark.circle.fill"
+                postfix = "success"
         }
+
+        return "\(prefix)-\(postfix)"
     }
 
     fileprivate func getToolTipIconColor(from colorProvider: ColorProvider) -> Color {
