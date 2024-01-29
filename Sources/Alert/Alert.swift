@@ -119,7 +119,9 @@ extension Warp {
                     .frame(height: 17)
 
                 Image(style.titleImageName, bundle: .module)
+                    .renderingMode(.template)
                     .frame(width: 16, height: 16)
+                    .foregroundColor(style.getLeftLineColor(from: colorProvider))
                     .padding(.leading, 8)
 
                 Spacer()
@@ -314,22 +316,6 @@ extension Warp.AlertStyle {
     fileprivate func getBorderColor(from colorProvider: ColorProvider) -> Color {
         switch self {
             case .info:
-                return colorProvider.alertInfoBorder
-
-            case .warning:
-                return colorProvider.alertWarningBorder
-
-            case .critical:
-                return colorProvider.alertNegativeBorder
-
-            case .success:
-                return colorProvider.alertPositiveBorder
-        }
-    }
-
-    fileprivate func getLeftLineColor(from colorProvider: ColorProvider) -> Color {
-        switch self {
-            case .info:
                 return colorProvider.alertInfoSubtleBorder
 
             case .warning:
@@ -340,6 +326,22 @@ extension Warp.AlertStyle {
 
             case .success:
                 return colorProvider.alertPositiveSubtleBorder
+        }
+    }
+
+    fileprivate func getLeftLineColor(from colorProvider: ColorProvider) -> Color {
+        switch self {
+            case .info:
+                return colorProvider.alertInfoIcon
+
+            case .warning:
+                return colorProvider.alertWarningIcon
+
+            case .critical:
+                return colorProvider.alertNegativeIcon
+
+            case .success:
+                return colorProvider.alertPositiveIcon
         }
     }
 
