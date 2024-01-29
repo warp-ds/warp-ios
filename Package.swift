@@ -21,7 +21,7 @@ let package = Package(
             path: "Sources",
             resources: [
                 .process("Typography/Fonts"),
-                .process("../Resources")
+                .process("Resources")
             ]
         ),
         .testTarget(
