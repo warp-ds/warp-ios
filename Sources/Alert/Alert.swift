@@ -117,8 +117,8 @@ extension Warp {
             VStack {
                 Spacer()
                     .frame(height: 17)
-
-                Image(style.titleImageName, bundle: .module)
+                Image(systemName: style.titleImageName)
+                //                Image(style.titleImageName, bundle: .module)
                     .renderingMode(.template)
                     .frame(width: 16, height: 16)
                     .foregroundColor(style.getLeftLineColor(from: colorProvider))
@@ -362,24 +362,39 @@ extension Warp.AlertStyle {
     }
 
     fileprivate var titleImageName: String {
-        let prefix = "icon_alert"
-        let postfix: String
-
+        // Remove this when icon problem is solved
         switch self {
-            case .info:
-                postfix = "info"
-
-            case .warning:
-                postfix = "warning"
-
-            case .critical:
-                postfix = "critical"
-
-            case .success:
-                postfix = "success"
+        case .info:
+            return "exclamationmark.circle.fill"
+            
+        case .warning:
+            return "exclamationmark.triangle.fill"
+            
+        case .critical:
+            return "exclamationmark.octagon.fill"
+            
+        case .success:
+            return "exclamationmark.circle.fill"
         }
-
-        return "\(prefix)-\(postfix)"
+        
+//        let prefix = "icon_alert"
+//        let postfix: String
+//
+//        switch self {
+//            case .info:
+//                postfix = "info"
+//
+//            case .warning:
+//                postfix = "warning"
+//
+//            case .critical:
+//                postfix = "critical"
+//
+//            case .success:
+//                postfix = "success"
+//        }
+//
+//        return "\(prefix)-\(postfix)"
     }
 
     fileprivate func getToolTipIconColor(from colorProvider: ColorProvider) -> Color {
