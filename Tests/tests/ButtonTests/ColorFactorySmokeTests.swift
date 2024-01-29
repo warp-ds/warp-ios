@@ -266,13 +266,13 @@ final class ColorFactorySmokeTests: XCTestCase {
                 type: .utilityOverlay,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonUtilityOverlayBackground
+                expectedColor: colorProvider.buttonUtilityBackground
             ),
             ButtonVariant(
                 type: .utilityOverlay,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonUtilityOverlayBackground
+                expectedColor: colorProvider.buttonUtilityBackground
             ),
             ButtonVariant(
                 type: .utilityOverlay,
@@ -448,7 +448,7 @@ final class ColorFactorySmokeTests: XCTestCase {
                 type: .utilityOverlay,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonUtilityOverlayBackground
+                expectedColor: colorProvider.buttonUtilityBackground
             ),
             ButtonVariant(
                 type: .utilityOverlay,
