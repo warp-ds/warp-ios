@@ -100,7 +100,7 @@ extension Warp {
                 leftLineView
                     .frame(width: 5)
 
-                toolTipView
+                toolTipIconView
 
                 informationView
                     .padding(.vertical, 16)
@@ -113,13 +113,12 @@ extension Warp {
             style.getLeftLineColor(from: colorProvider)
         }
 
-        private var toolTipView: some View {
+        private var toolTipIconView: some View {
             VStack {
                 Spacer()
                     .frame(height: 17)
 
-                Image(systemName: style.titleImageName)
-                    .foregroundStyle(style.getLeftLineColor(from: colorProvider))
+                Image(style.titleImageName, bundle: .module)
                     .frame(width: 16, height: 16)
                     .padding(.leading, 8)
 
