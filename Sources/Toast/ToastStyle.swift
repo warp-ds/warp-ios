@@ -2,13 +2,13 @@ import Foundation
 
 extension Warp {
     public enum ToastStyle: Equatable, CaseIterable {
-        /// Indicate a severe problem or error.
+        /// Disruptive message describes a critical, fatal error that affects action. Example: Internal server error
         case error
 
-        /// Indicating a successful action or completing a task.
+        /// Positive message, which describes successful action. Example: Item added
         case success
 
-        /// Indicate that something is not working as expected.
+        /// Non-critical message, which describes unsuccessful action. Example: Internet disconnected
         case warning
     }
 }

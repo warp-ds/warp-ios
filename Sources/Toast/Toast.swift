@@ -5,9 +5,13 @@ extension Warp {
     private static let toastCornerRadius: Double = 8
 
     /**
-        The `Toast` view can be used to show "toast" style messages to the user, who can then dismiss these messages.
+        A toast is a message, which provides quick, at-a-glance feedback on the outcome of an action.
 
-         To use the `Toast` you need to provide it with
+        **When to use**
+
+        The Toast is best used for short success, warning, and error messages to confirm an action.
+
+         To use the iOS `Toast` View you need to provide it with
         - a `ToastStyle` (can be `.error`, `.success` or `.warning`)
         - a `title`
         - a `ToastEdge` (can be `.bottom` or `.top`)
@@ -55,7 +59,7 @@ extension Warp {
             contentView
             .overlay(
                 RoundedRectangle(cornerRadius: toastCornerRadius)
-                    .stroke(style.subtleBorderColor(from: colorProvider), lineWidth: 2)
+                    .stroke(style.subtleBorderColor(from: colorProvider), lineWidth: 3)
             )
             .frame(maxWidth: .infinity)
             .background(style.backgroundColor(from: colorProvider))
@@ -71,6 +75,8 @@ extension Warp {
         private var contentView: some View {
             HStack(spacing: 0) {
                 style.icon
+                    .renderingMode(.template)
+                    .foregroundColor(style.iconColor(from: colorProvider))
 
                 Text(title)
                     .padding(.leading, 8)
@@ -120,14 +126,29 @@ extension Warp.ToastStyle {
         }
     }
 
-    fileprivate var icon: Image {
+    fileprivate func iconColor(from colorProvider: ColorProvider) -> Color {
         switch self {
         case .error:
-            Image("icon_toast-error", bundle: .module)
+            colorProvider.toastNegativeIcon
         case .success:
-            Image("icon_toast-success", bundle: .module)
+            colorProvider.toastPositiveIcon
         case .warning:
-            Image("icon_toast-warning", bundle: .module)
+            colorProvider.toastWarningIcon
+        }
+    }
+
+    fileprivate var icon: Image {
+        switch self {
+        // TODO: Change to Alert variants when we have variants with transparent icons
+        case .error:
+//            Image("icon_toast-error", bundle: .module)
+            Image(systemName: "exclamationmark.octagon.fill")
+        case .success:
+//            Image("icon_toast-success", bundle: .module)
+            Image(systemName: "checkmark.circle.fill")
+        case .warning:
+//            Image("icon_toast-warning", bundle: .module)
+            Image(systemName: "exclamationmark.triangle.fill")
         }
     }
 }
