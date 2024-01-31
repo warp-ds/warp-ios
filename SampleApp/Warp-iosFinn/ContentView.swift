@@ -65,6 +65,10 @@ struct ContentView: View {
                             .padding()
                     }
                     Divider()
+                    NavigationLink(destination: AlertView()) {
+                        Text("WarpAlert")
+                            .padding()
+                    }
                 }
                 .padding()
             }
