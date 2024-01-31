@@ -13,6 +13,7 @@ extension Warp {
                     alignment: edge.asAlignment,
                     content: warpToastOverlay
                 )
+                .padding(.horizontal, 16)
                 .zIndex(1)
                 .animation(.default, value: isPresented)
         }

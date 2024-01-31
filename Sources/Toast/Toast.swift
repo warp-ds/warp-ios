@@ -4,6 +4,15 @@ import SwiftUI
 extension Warp {
     private static let toastCornerRadius: Double = 8
 
+    /**
+        The `Toast` view can be used to show "toast" style messages to the user, who can then dismiss these messages.
+
+         To use the `Toast` you need to provide it with
+        - a `ToastStyle` (can be `.error`, `.success` or `.warning`)
+        - a `title`
+        - a `ToastEdge` (can be `.bottom` or `.top`)
+        - a Binding to a boolean value allowing the `Toast` to dismiss
+     */
     public struct Toast: View {
 
         /// Preferred style of toast
@@ -12,14 +21,22 @@ extension Warp {
         /// Text that will be shown in toast
         let title: String
 
-        /// Egde from where the toast is presented
+        /// Edge from where the toast is presented
         let toastEdge: Warp.ToastEdge
 
+        /// Binding to a boolean value that allows the toast to control dismissal
         @Binding public var isPresented: Bool
 
         /// Object responsible for providing colors in different environments and variants.
         let colorProvider: ColorProvider
 
+        /**
+         - Parameter style: The `ToastStyle` of the `Toast`
+         - Parameter title: Text to display in the `Toast`
+         - Parameter toastEdge: The `ToastEdge` on where to present the `Toast`
+         - Parameter isPresented: Is the `Toast` presented or not
+         - Parameter colorProvider: ColorProvider used for styling the `Toast`, default value is read from `Config`
+         */
         public init(
             style: Warp.ToastStyle,
             title: String,
@@ -43,7 +60,6 @@ extension Warp {
             .frame(maxWidth: .infinity)
             .background(style.backgroundColor(from: colorProvider))
             .cornerRadius(toastCornerRadius)
-            .padding(.horizontal, 16)
             .transition(AnyTransition.move(edge: toastEdge.asEdge).combined(with: .opacity))
             .onTapGesture {
                 withAnimation {

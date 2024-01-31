@@ -7,65 +7,79 @@ struct ToastView: View {
     @State var toastEdge: Warp.ToastEdge = .top
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Text("Toast View Demo")
-                    .font(.title)
+        ScrollView(showsIndicators: false) {
 
-                Spacer()
-            }
-
-            Text("Experiment with Toast Style and Toast Edge to see the variants")
-
-            Text("Toast Style")
-                .font(.caption)
-            Picker("Toast Style:", selection: $toastStyle) {
-                ForEach(Warp.ToastStyle.allCases, id: \.self) { currentStyle in
-                    Text(currentStyle.description)
-                }
-            }
-            .pickerStyle(.segmented)
-
-            Divider()
-
-            Text("Toast Edge")
-                .font(.caption)
-            Picker("Toast Edge:", selection: $toastEdge) {
-                ForEach(Warp.ToastEdge.allCases, id: \.self) { currentEdge in
-                    Text(currentEdge.description)
-                }
-            }
-            .pickerStyle(.segmented)
-
-            Divider()
-
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 16) {
                 HStack {
-                    Text("Right now the toast is ") +
-                    Text(toastStatus)
-                        .bold()
+                    Text("Toast View Demo")
+                        .font(.title)
 
                     Spacer()
                 }
 
-                if(toastIsPresented) {
-                    Text("You can tap the toast to dismiss it")
-                } else {
-                    Button(action: {
-                        toastIsPresented = true
-                    }, label: {
-                        Text("Tap me to show the toast again")
-                            .frame(maxWidth: .infinity)
-                    })
-                    .buttonStyle(.borderedProminent)
+                ForEach(Warp.ToastStyle.allCases, id: \.self) { currentStyle in
+                    Warp.Toast(
+                        style: currentStyle,
+                        title: "A toast to you",
+                        toastEdge: .top,
+                        isPresented: .constant(true)
+                    )
                 }
-            }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color.secondary)
-            .cornerRadius(8)
 
-            Spacer()
+                Text("Playground")
+                    .font(.title2)
+                Text("Experiment with Toast Style and Toast Edge to see the variants")
+
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Right now the toast is ") +
+                        Text(toastStatus)
+                            .bold()
+
+                        Spacer()
+                    }
+
+                    if(toastIsPresented) {
+                        Text("You can tap the toast to dismiss it")
+                    } else {
+                        Button(action: {
+                            toastIsPresented = true
+                        }, label: {
+                            Text("Tap me to show the toast again")
+                                .frame(maxWidth: .infinity)
+                        })
+                        .buttonStyle(.borderedProminent)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.secondary)
+                .cornerRadius(8)
+
+                Text("Toast Style")
+                    .font(.caption)
+                Picker("Toast Style:", selection: $toastStyle) {
+                    ForEach(Warp.ToastStyle.allCases, id: \.self) { currentStyle in
+                        Text(currentStyle.description)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                Divider()
+
+                Text("Toast Edge")
+                    .font(.caption)
+                Picker("Toast Edge:", selection: $toastEdge) {
+                    ForEach(Warp.ToastEdge.allCases, id: \.self) { currentEdge in
+                        Text(currentEdge.description)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                Divider()
+
+                Spacer()
+            }
         }
         .padding()
         .warpToast(
