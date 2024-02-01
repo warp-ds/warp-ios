@@ -59,7 +59,7 @@ extension Warp {
             contentView
             .overlay(
                 RoundedRectangle(cornerRadius: toastCornerRadius)
-                    .stroke(style.subtleBorderColor(from: colorProvider), lineWidth: 3)
+                    .stroke(style.subtleBorderColor(from: colorProvider), lineWidth: 4)
             )
             .frame(maxWidth: .infinity)
             .background(style.backgroundColor(from: colorProvider))
