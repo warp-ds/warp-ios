@@ -64,6 +64,11 @@ struct ContentView: View {
                         Text("WarpAlert")
                             .padding()
                     }
+                    Divider()
+                    NavigationLink(destination: ToastView()) {
+                        Text("WarpToast")
+                            .padding()
+                    }
                 }
                 .padding()
             }
