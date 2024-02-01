@@ -69,6 +69,9 @@ struct ContentView: View {
                         Text("WarpToast")
                             .padding()
                     }
+                    Divider()
+                    Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
+                        .font(.caption2)
                 }
                 .padding()
             }
@@ -86,5 +89,11 @@ extension Bundle {
     fileprivate var applicationName: String {
         return object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ??
         object(forInfoDictionaryKey: "CFBundleName") as? String ?? ""
+    }
+    fileprivate var releaseVersionNumber: String {
+        return infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    }
+    fileprivate var buildVersionNumber: String {
+        return infoDictionary?["CFBundleVersion"] as? String ?? ""
     }
 }
