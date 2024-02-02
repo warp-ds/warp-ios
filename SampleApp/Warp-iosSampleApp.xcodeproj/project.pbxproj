@@ -25,12 +25,18 @@
 		8251E8CB2B4E8B7D00106720 /* BrandTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */; };
 		82838CF12B62B35400E3C495 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82838CF02B62B35400E3C495 /* PillView.swift */; };
 		82838CF22B62B35400E3C495 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82838CF02B62B35400E3C495 /* PillView.swift */; };
+		82838CF42B6BECEF00E3C495 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82838CF32B6BECEF00E3C495 /* GoogleService-Info.plist */; };
+		82838CF62B6BED0000E3C495 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82838CF52B6BED0000E3C495 /* GoogleService-Info.plist */; };
+		82838CF92B6BED9700E3C495 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 82838CF82B6BED9700E3C495 /* FirebaseAnalytics */; };
+		82838CFB2B6BEDA400E3C495 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 82838CFA2B6BEDA400E3C495 /* FirebaseAnalytics */; };
 		828E7D452B61239100869C58 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E7D442B61239100869C58 /* BadgeView.swift */; };
 		828E7D462B61239100869C58 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E7D442B61239100869C58 /* BadgeView.swift */; };
 		82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
 		82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
 		82A2155C2A8DF93B0062FB9E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
 		82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
+		B2922A6E2B68E7F200A3E9F4 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */; };
+		B2922A6F2B68E7F200A3E9F4 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,9 +55,12 @@
 		8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTokensView.swift; sourceTree = "<group>"; };
 		827C4B952A89410800660D82 /* Tori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82838CF02B62B35400E3C495 /* PillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
+		82838CF32B6BECEF00E3C495 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		82838CF52B6BED0000E3C495 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		828E7D442B61239100869C58 /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		82A215582A8DF4DC0062FB9E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82838CF92B6BED9700E3C495 /* FirebaseAnalytics in Frameworks */,
 				34A278C02AD5472E00EE6ED8 /* Warp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82838CFB2B6BEDA400E3C495 /* FirebaseAnalytics in Frameworks */,
 				34A278C22AD5473C00EE6ED8 /* Warp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */,
+				82838CF52B6BED0000E3C495 /* GoogleService-Info.plist */,
 				82355AFA2A8CCBE70023EB11 /* Assets.xcassets */,
 				82355AFC2A8CCBE70023EB11 /* Preview Content */,
 			);
@@ -114,6 +126,7 @@
 		828547C92A8CCA3300401DA3 /* Warp-iosFinn */ = {
 			isa = PBXGroup;
 			children = (
+				B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */,
 				349586632B0EAD2D00A14570 /* TypographyView.swift */,
 				82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */,
 				82355B0A2A8CD0AA0023EB11 /* ContentView.swift */,
@@ -123,6 +136,7 @@
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
 				349D0E122B62D67A00AAB421 /* AlertView.swift */,
 				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
+				82838CF32B6BECEF00E3C495 /* GoogleService-Info.plist */,
 				82355B082A8CD0AA0023EB11 /* Assets.xcassets */,
 				82355B0B2A8CD0AA0023EB11 /* Preview Content */,
 				82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */,
@@ -148,6 +162,7 @@
 			name = Finn;
 			packageProductDependencies = (
 				34A278BF2AD5472E00EE6ED8 /* Warp */,
+				82838CF82B6BED9700E3C495 /* FirebaseAnalytics */,
 			);
 			productName = "Wrap-iOS";
 			productReference = 824977872A893F400013475C /* Finn.app */;
@@ -168,6 +183,7 @@
 			name = Tori;
 			packageProductDependencies = (
 				34A278C12AD5473C00EE6ED8 /* Warp */,
+				82838CFA2B6BEDA400E3C495 /* FirebaseAnalytics */,
 			);
 			productName = "Wrap-iOS-Tori";
 			productReference = 827C4B952A89410800660D82 /* Tori.app */;
@@ -202,6 +218,9 @@
 				Base,
 			);
 			mainGroup = 8249777E2A893F400013475C;
+			packageReferences = (
+				82838CF72B6BED4200E3C495 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 824977882A893F400013475C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -219,6 +238,7 @@
 			files = (
 				82355B0F2A8CD0AA0023EB11 /* Preview Content in Resources */,
 				82355B0C2A8CD0AA0023EB11 /* Assets.xcassets in Resources */,
+				82838CF42B6BECEF00E3C495 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +248,7 @@
 			files = (
 				82355B002A8CCBE70023EB11 /* Preview Content in Resources */,
 				82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */,
+				82838CF62B6BED0000E3C495 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +267,7 @@
 				82838CF12B62B35400E3C495 /* PillView.swift in Sources */,
 				349D0E132B62D67A00AAB421 /* AlertView.swift in Sources */,
 				82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */,
+				B2922A6E2B68E7F200A3E9F4 /* ToastView.swift in Sources */,
 				349586642B0EAD2D00A14570 /* TypographyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +284,7 @@
 				82838CF22B62B35400E3C495 /* PillView.swift in Sources */,
 				349D0E142B62D67E00AAB421 /* AlertView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
+				B2922A6F2B68E7F200A3E9F4 /* ToastView.swift in Sources */,
 				82355B122A8CD1120023EB11 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,7 +416,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
-				DEVELOPMENT_TEAM = 42VL46DB59;
+				DEVELOPMENT_TEAM = J5FN75WZ65;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -411,7 +434,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nmp.warp-ios.Finn";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -435,7 +458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
-				DEVELOPMENT_TEAM = 42VL46DB59;
+				DEVELOPMENT_TEAM = J5FN75WZ65;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -453,7 +476,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nmp.warp-ios.Finn";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -475,7 +498,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
-				DEVELOPMENT_TEAM = 42VL46DB59;
+				DEVELOPMENT_TEAM = J5FN75WZ65;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -488,7 +511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nmp.warp-ios.Tori";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -512,7 +535,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
-				DEVELOPMENT_TEAM = 42VL46DB59;
+				DEVELOPMENT_TEAM = J5FN75WZ65;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -525,7 +548,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nmp.warp-ios.Tori";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -572,6 +595,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		82838CF72B6BED4200E3C495 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 10.20.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		34A278BF2AD5472E00EE6ED8 /* Warp */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -580,6 +614,16 @@
 		34A278C12AD5473C00EE6ED8 /* Warp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Warp;
+		};
+		82838CF82B6BED9700E3C495 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82838CF72B6BED4200E3C495 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		82838CFA2B6BEDA400E3C495 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82838CF72B6BED4200E3C495 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
