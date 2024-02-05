@@ -2,106 +2,111 @@ import Foundation
 import SwiftUI
 
 extension Warp {
-    public struct Callout<Content: View>: View {
+    public struct Callout: View {
+        /// Title to present in the callout view
+        private var title: String
+
+        /// Height of the arrow to draw, default value is 8 px
         private let arrowHeight: Double
+
+        /// Width of the arrow to draw, default value is 18 px
         private let arrowWidth: Double
-        private var edge: Edge
+
+        /// Edge where to draw the arrow
+        private var arrowEdge: Edge
 
         /// Object responsible for providing colors in different environments and variants.
         private let colorProvider: ColorProvider
 
-        private var content: Content
-
         public init(
+            title: String,
             arrowHeight: Double = 8,
             arrowWidth: Double = 18,
-            edge: Edge = .top,
-            colorProvider: ColorProvider = Config.colorProvider,
-            @ViewBuilder content: () -> Content
+            arrowEdge: Edge = .top,
+            colorProvider: ColorProvider = Config.colorProvider
         ) {
+            self.title = title
             self.arrowHeight = arrowHeight
             self.arrowWidth = arrowWidth
-            self.edge = edge
+            self.arrowEdge = arrowEdge
             self.colorProvider = colorProvider
-            self.content = content()
         }
 
         public var body: some View {
-            content
+            Text(title)
+                .font(from: Typography.body)
+                .foregroundStyle(colorProvider.calloutText)
                 .padding()
                 .offset(
-                    y: (arrowHeight / 2) * offsetMultiplier
+                    x: xOffset, y: yOffset
                 )
                 .background(
                     CalloutShape(
                         arrowHeight: arrowHeight,
-                        edge: edge
+                        edge: arrowEdge
                     )
                     .inset(by: 1)
                     .fill(colorProvider.calloutBackground)
                     .overlay {
                         CalloutShape(
                             arrowHeight: arrowHeight,
-                            edge: edge
+                            edge: arrowEdge
                         )
                         .strokeBorder(colorProvider.calloutBorder, lineWidth: 2)
                     }
                     .rotation3DEffect(
                         .degrees(rotationDegrees),
-                        axis: (x: xAxisRotation, y: yAxisRotation, z: 0.0)
+                        axis: axis
                     )
                 )
         }
 
-        private var offsetMultiplier: Double {
-            switch edge {
-            case .top:
-                -1.0
+        private var xOffset: Double {
+            // for leading and trailing arrows we want to push the content half the arrow height away from the arrow
+            // on the x axis
+            switch arrowEdge {
             case .leading:
-                0.0
-            case .bottom:
-                1.0
+                (arrowHeight / 2)
             case .trailing:
-                0.0
+                -(arrowHeight / 2)
+            case .top, .bottom:
+                0
+            }
+        }
+
+        private var yOffset: Double {
+            // for top and bottom arrows we want to push the content half the arrow height away from the arrow
+            // on the y axis
+            switch arrowEdge {
+            case .top:
+                (arrowHeight / 2)
+            case .bottom:
+                -(arrowHeight / 2)
+            case .leading, .trailing:
+                0
+            }
+        }
+
+        private var axis: (x: CGFloat, y: CGFloat, z: CGFloat) {
+            // we're interested in rotating the "bubble" around either the x or y axis in bottom/trailing scenarios
+            // and in top/leading scenarios we do nothing
+            switch arrowEdge {
+            case .top, .leading:
+                (x: 0.0, y: 0.0, z: 0.0)
+            case .bottom:
+                (x: 1.0, y: 0.0, z: 0.0)
+            case .trailing:
+                (x: 0.0, y: 1.0, z: 0.0)
             }
         }
 
         private var rotationDegrees: Double {
-            switch edge {
-            case .top:
+            // same as above, for bottom/trailing we want to rotate 180 degrees and for top/leading: no rotation
+            switch arrowEdge {
+            case .top, .leading:
+                0
+            case .bottom, .trailing:
                 180
-            case .leading:
-                180
-            case .bottom:
-                0
-            case .trailing:
-                0
-            }
-        }
-
-        private var xAxisRotation: Double {
-            switch edge {
-            case .top:
-                1
-            case .leading:
-                0
-            case .bottom:
-                0
-            case .trailing:
-                0
-            }
-        }
-
-        private var yAxisRotation: Double {
-            switch edge {
-            case .top:
-                0
-            case .leading:
-                1
-            case .bottom:
-                0
-            case .trailing:
-                0
             }
         }
     }

@@ -2,6 +2,9 @@ import SwiftUI
 
 extension Warp.Callout {
 
+    /*
+     https://stackoverflow.com/questions/66838135/what-are-the-tangent-parameters-found-in-the-addarc-method-for-swiftui
+     */
     struct CalloutShape: Shape {
         private struct Corner: Hashable {
             enum Location {
