@@ -2,6 +2,19 @@ import Foundation
 import SwiftUI
 
 extension Warp {
+    /**
+     Callouts are snippets of information, drawing attention to important content.
+
+     **When to use**
+
+     Call attention to important pieces of information.
+
+    To use the iOS `Callout` View you need to provide it with
+     - a `title`
+     - an `arrowHeight`, if you don't provide this, the default value is 8 px
+     - an `arrowWidth`, if you don't provide this, the default value is 18px
+     - an `arrowEdge` where you want the Callout to appear from
+     */
     public struct Callout: View {
         /// Title to present in the callout view
         private var title: String
@@ -12,12 +25,19 @@ extension Warp {
         /// Width of the arrow to draw, default value is 18 px
         private let arrowWidth: Double
 
-        /// Edge where to draw the arrow
+        /// Edge where to draw the arrow, default value is `.top`
         private var arrowEdge: Edge
 
         /// Object responsible for providing colors in different environments and variants.
         private let colorProvider: ColorProvider
 
+        /**
+         - Parameter title: String to display in the `Callout`
+         - Parameter arrowHeight: Height of the arrow to draw, default value is 8 px
+         - Parameter arrowWidth: Width of the arrow to draw, default value is 18 px
+         - Parameter arrowEdge: Edge where to draw the arrow, default value is `.top`
+         - Parameter colorProvider: ColorProvider used for styling the `Callout`, default value is read from `Config`
+         */
         public init(
             title: String,
             arrowHeight: Double = 8,

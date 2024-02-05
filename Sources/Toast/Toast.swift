@@ -36,7 +36,7 @@ extension Warp {
 
         /**
          - Parameter style: The `ToastStyle` of the `Toast`
-         - Parameter title: Text to display in the `Toast`
+         - Parameter title: String to display in the `Toast`
          - Parameter toastEdge: The `ToastEdge` on where to present the `Toast`
          - Parameter isPresented: Is the `Toast` presented or not
          - Parameter colorProvider: ColorProvider used for styling the `Toast`, default value is read from `Config`
