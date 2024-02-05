@@ -1,6 +1,6 @@
-extension Warp.Pill {
+extension Warp {
     /// The style the Pill component has
-    public enum Style: Equatable, CaseIterable {
+    public enum PillStyle: Equatable, CaseIterable {
         /// Used to represent a removable value the user has chosen.
         case filter
         /// Used to represent a proposed/recommended value a user can choose.
@@ -8,7 +8,7 @@ extension Warp.Pill {
     }
     
     /// The state the Pill component is in
-    public enum State: Equatable, CaseIterable {
+    public enum PillState: Equatable, CaseIterable {
         case `default`
         case hover
         case active

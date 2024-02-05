@@ -28,9 +28,9 @@ extension Warp {
         /// The content description of the close icon. Used for accessibility purposes.
         private let iconContentDescription: String?
         /// Pill style.
-        private let style: Warp.Pill.Style
+        private let style: Warp.PillStyle
         /// Pill state.
-        private let state: Warp.Pill.State
+        private let state: Warp.PillState
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Config.colorProvider
 
@@ -40,8 +40,8 @@ extension Warp {
             onTap: @escaping () -> Void = {},
             onClose: @escaping () -> Void = {},
             iconContentDescription: String? = nil,
-            style: Warp.Pill.Style = .filter,
-            state: Warp.Pill.State = .default
+            style: Warp.PillStyle = .filter,
+            state: Warp.PillState = .default
         ) {
             self.text = text
             self.isClosable = isClosable
@@ -115,20 +115,20 @@ extension Warp {
 
 #Preview {
     return ScrollView(showsIndicators: false) {
-        ForEach(Warp.Pill.Style.allCases, id: \.self) { style in
+        ForEach(Warp.PillStyle.allCases, id: \.self) { style in
             createView(for: style)
         }
         .padding(.horizontal)
     }
     
-    func createView(for style: Warp.Pill.Style) -> some View {
+    func createView(for style: Warp.PillStyle) -> some View {
         let name = String(describing: style)
         let capitalizedName = name.capitalized
         
         return GroupBox(
             content: {
                 VStack(alignment: .trailing, spacing: 8) {
-                    ForEach(Warp.Pill.State.allCases, id: \.self) { state in
+                    ForEach(Warp.PillState.allCases, id: \.self) { state in
                         createView(for: style, state: state)
                     }
                 }
@@ -138,7 +138,7 @@ extension Warp {
         )
     }
     
-    func createView(for style: Warp.Pill.Style, state: Warp.Pill.State) -> some View {
+    func createView(for style: Warp.PillStyle, state: Warp.PillState) -> some View {
         HStack {
             Text(String(describing: state))
             Warp.Pill(text: String(describing: style), style: style, state: state)
