@@ -53,27 +53,31 @@ extension Warp {
         }
 
         public var body: some View {
-            HStack(spacing: 8) {
-                Text(text)
-                if isClosable {
-                    SwiftUI.Button {
-                        onClose()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .foregroundStyle(foregroundColor)
-                    }
-                    .accessibilityLabel(iconContentDescription ?? "Close")
-                }
-            }
-            .onTapGesture {
+            SwiftUI.Button {
                 onTap()
+            } label: {
+                HStack(spacing: 8) {
+                    Text(text)
+                    if isClosable {
+                        SwiftUI.Button {
+                            onClose()
+                        } label: {
+                            Image(systemName: "xmark")
+                                .foregroundStyle(foregroundColor)
+                        }
+                        .accessibilityLabel(iconContentDescription ?? "Close")
+                    }
+                }
+                .font(from: typography)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
             }
-            .font(from: typography)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 8)
-            .foregroundColor(foregroundColor)
-            .background(backgroundColor)
-            .cornerRadius(100)
+            .buttonStyle(
+                .warp(
+                    style: style,
+                    colorProvider: colorProvider
+                )
+            )
         }
         
         private var typography: Warp.Typography {
@@ -127,22 +131,13 @@ extension Warp {
         
         return GroupBox(
             content: {
-                VStack(alignment: .trailing, spacing: 8) {
-                    ForEach(Warp.PillState.allCases, id: \.self) { state in
-                        createView(for: style, state: state)
-                    }
+                HStack {
+                    Warp.Pill(text: String(describing: style), style: style)
+                    Warp.Pill(text: String(describing: style), isClosable: true, style: style)
                 }
             }, label: {
                 Text(capitalizedName)
             }
         )
-    }
-    
-    func createView(for style: Warp.PillStyle, state: Warp.PillState) -> some View {
-        HStack {
-            Text(String(describing: state))
-            Warp.Pill(text: String(describing: style), style: style, state: state)
-            Warp.Pill(text: String(describing: style), isClosable: true, style: style, state: state)
-        }
     }
 }
