@@ -19,7 +19,7 @@ struct PillView: View {
             content: {
                 HStack {
                     Warp.Pill(text: String(describing: style), style: style)
-                    Warp.Pill(text: String(describing: style), isClosable: true, style: style)
+                    Warp.Pill(text: String(describing: style), onClose: {}, style: style)
                 }
             }, label: {
                 Text(capitalizedName)

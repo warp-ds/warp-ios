@@ -6,50 +6,40 @@ extension Warp {
         public static func == (lhs: Warp.Pill, rhs: Warp.Pill) -> Bool {
             lhs.text == rhs.text &&
             lhs.isClosable == rhs.isClosable &&
-            lhs.style == rhs.style &&
-            lhs.state == rhs.state
+            lhs.style == rhs.style
         }
         
         public func hash(into hasher: inout Hasher) {
             hasher.combine(text)
             hasher.combine(isClosable)
             hasher.combine(style)
-            hasher.combine(state)
         }
         
         /// Pill text.
         private let text: String
-        /// Toggle the show or hide the close icon.
-        private let isClosable: Bool
         /// Triggered when Pill is tapped.
         private let onTap: () -> Void
         /// Triggered when Pill is closed.
-        private let onClose: () -> Void
+        private let onClose: (() -> Void)?
         /// The content description of the close icon. Used for accessibility purposes.
         private let iconContentDescription: String?
         /// Pill style.
         private let style: Warp.PillStyle
-        /// Pill state.
-        private let state: Warp.PillState
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Config.colorProvider
 
         public init(
             text: String,
-            isClosable: Bool = false,
             onTap: @escaping () -> Void = {},
-            onClose: @escaping () -> Void = {},
+            onClose: (() -> Void)? = nil,
             iconContentDescription: String? = nil,
-            style: Warp.PillStyle = .filter,
-            state: Warp.PillState = .default
+            style: Warp.PillStyle = .filter
         ) {
             self.text = text
-            self.isClosable = isClosable
             self.onTap = onTap
             self.onClose = onClose
             self.iconContentDescription = iconContentDescription
             self.style = style
-            self.state = state
         }
 
         public var body: some View {
@@ -60,10 +50,9 @@ extension Warp {
                     Text(text)
                     if isClosable {
                         SwiftUI.Button {
-                            onClose()
+                            onClose?()
                         } label: {
                             Image(systemName: "xmark")
-                                .foregroundStyle(foregroundColor)
                         }
                         .accessibilityLabel(iconContentDescription ?? "Close")
                     }
@@ -80,6 +69,10 @@ extension Warp {
             )
         }
         
+        private var isClosable: Bool {
+            onClose != nil
+        }
+        
         private var typography: Warp.Typography {
             switch style {
             case .filter:
@@ -87,33 +80,7 @@ extension Warp {
             case .suggestion:
                 return Warp.Typography.captionStrong
             }
-        }
-        
-        private var foregroundColor: Color {
-            switch style {
-            case .filter:
-                return colorProvider.pillFilterText
-            case .suggestion:
-                return colorProvider.pillSuggestionText
-            }
-        }
-        
-        private var backgroundColor: Color {
-            switch (style, state) {
-            case (.filter, .default):
-                return colorProvider.pillFilterBackground
-            case (.suggestion, .default):
-                return colorProvider.pillSuggestionBackground
-            case (.filter, .hover):
-                return colorProvider.pillFilterBackgroundHover
-            case (.suggestion, .hover):
-                return colorProvider.pillSuggestionBackgroundHover
-            case (.filter, .active):
-                return colorProvider.pillFilterBackgroundActive
-            case (.suggestion, .active):
-                return colorProvider.pillSuggestionBackgroundActive
-            }
-        }
+        }        
     }
 }
 
@@ -133,7 +100,7 @@ extension Warp {
             content: {
                 HStack {
                     Warp.Pill(text: String(describing: style), style: style)
-                    Warp.Pill(text: String(describing: style), isClosable: true, style: style)
+                    Warp.Pill(text: String(describing: style), onClose: {}, style: style)
                 }
             }, label: {
                 Text(capitalizedName)

@@ -9,13 +9,6 @@ extension Warp {
         /// Used to represent a proposed/recommended value a user can choose.
         case suggestion
     }
-    
-    /// The state the Pill component is in
-    public enum PillState: Equatable, CaseIterable {
-        case `default`
-        case hover
-        case active
-    }
 }
 
 extension Warp.Pill {
