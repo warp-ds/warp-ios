@@ -27,8 +27,6 @@ struct CalloutView: View {
 
                 Text("This one sits under the content")
 
-                Warp.Callout(title: <#T##String#>)
-
                 Warp.Callout(
                     title: "ArrowEdge: .top",
                     arrowEdge: .top

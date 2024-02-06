@@ -2,9 +2,6 @@ import SwiftUI
 
 extension Warp.Callout {
 
-    /*
-     https://stackoverflow.com/questions/66838135/what-are-the-tangent-parameters-found-in-the-addarc-method-for-swiftui
-     */
     struct CalloutShape: Shape {
         private struct Corner: Hashable {
             enum Location {
@@ -32,9 +29,9 @@ extension Warp.Callout {
         var insetAmount = 0.0
 
         init(
-            arrowHeight: Double = 16,
-            arrowWidth: Double = 20,
-            cornerRadius: Double = 8,
+            arrowHeight: Double,
+            arrowWidth: Double,
+            cornerRadius: Double,
             edge: Edge
         ) {
             self.arrowHeight = arrowHeight
@@ -44,6 +41,73 @@ extension Warp.Callout {
         }
 
         func path(in rect: CGRect) -> Path {
+            /*
+             I'll dump my knowledge here in case I - or someone else - needs to revisit this.
+
+             Basically the strategy is:
+
+             1. We can draw a callout shape either like this (edge: .top)
+
+              +-----^-----+
+              |           |
+              +-----------+
+
+             or like this (edge: . leading)
+
+              +-----------+
+             <            |
+              +-----------+
+
+             and if we need a .bottom or .trailing variant we flip the shape in the `Callout` view
+
+             2. Before we draw, we need to calculate where the corners are.
+
+             - In the .top edge scenario we need to add some room above the top line for the arrow
+             - In the .leading edge scenario we need to add some room to the left for the arrow
+
+             That is handled in:
+
+             `CalloutShape.corners(for:edge:)`
+
+
+             3. Time to draw! We always start in the top left corner and use:
+
+             `Path.addArc(center:radius:startAngle:endAngle:clockwise:transform:)` 
+
+             to draw the corners. We don't have to add lines between those arc'es, that is handled for us.
+
+             4. Armed with this you could draw a shape with rounded corners, but we need to add the arrow as well.
+
+             For that we have to use the:
+
+             `Path.addArc(tangent1End:tangent2End:radius:transform:)`
+
+             variant of addArc.
+
+             For an introduction to how that works, please see this:
+
+             https://stackoverflow.com/questions/66838135/what-are-the-tangent-parameters-found-in-the-addarc-method-for-swiftui
+
+             -  if we are drawing the .top variant we start in the top left corner, then we add an arc at midX - half of
+                the arrow width (tangent1End at X1, tangent2End at X2)
+             -  we add another arc at midX, minY (+ inset to take a border into account) (tangent1End at Y1, tangent2End at Y2)
+             -  we add a final arc at midX + half of the arrow width (tangent1End at Z1, tangent2End at Z2)
+
+
+                       midX, minY
+                         Y1
+                        /  \
+                       X2  Y2
+                      /      \
+             +------X1       Z1----Z2----
+
+             -  if we are drawing the .leading variant it is the same...just different :) Instead of midX we operate
+                around midY and work our way towards minX.
+
+
+             I hope the above helps you (me) to understand the drawing code below
+             */
+
             let corners = corners(for: rect, edge: edge)
             guard
                 let topLeft = corners[.topLeft],
@@ -54,7 +118,7 @@ extension Warp.Callout {
 
             return switch edge {
             case .top, .bottom:
-                verticalCalloutPath(
+                horizontalCalloutPath(
                     for: rect,
                     topLeft: topLeft,
                     topRight: topRight,
@@ -62,7 +126,7 @@ extension Warp.Callout {
                     bottomLeft: bottomLeft
                 )
             case .leading, .trailing:
-                horizontalCalloutPath(
+                verticalCalloutPath(
                     for: rect,
                     topLeft: topLeft,
                     topRight: topRight,
@@ -72,7 +136,7 @@ extension Warp.Callout {
             }
         }
 
-        private func verticalCalloutPath(
+        private func horizontalCalloutPath(
             for rect: CGRect,
             topLeft: Corner,
             topRight: Corner,
@@ -90,25 +154,17 @@ extension Warp.Callout {
                     )
                 )
 
-                // move to before middle
-                path.addLine(
-                    to: CGPoint(
-                        x: rect.midX - (arrowWidth + insetAmount),
-                        y: rect.minY + (arrowHeight + insetAmount)
-                    )
-                )
-
                 // edge up
                 path.addArc(
                     tangent1End: .init(
-                        x: rect.midX - (halfArrowWidth + insetAmount),
+                        x: rect.midX - halfArrowWidth,
                         y: rect.minY + (arrowHeight + insetAmount)
                     ),
                     tangent2End: .init(
-                        x: rect.midX - ((halfArrowWidth / 2) + insetAmount),
+                        x: rect.midX - (halfArrowWidth / 2),
                         y: rect.minY + ((arrowHeight / 2) + insetAmount)
                     ),
-                    radius: cornerRadius
+                    radius: cornerRadius / 4
                 )
 
                 // over top
@@ -118,23 +174,23 @@ extension Warp.Callout {
                         y: rect.minY + insetAmount
                     ),
                     tangent2End: .init(
-                        x: rect.midX + ((halfArrowWidth / 2) + insetAmount),
+                        x: rect.midX + (halfArrowWidth / 2),
                         y: rect.minY + ((arrowHeight / 2) + insetAmount)
                     ),
-                    radius: 4
+                    radius: cornerRadius / 2
                 )
 
                 // edge down
                 path.addArc(
                     tangent1End: .init(
-                        x: rect.midX + (halfArrowWidth + insetAmount),
+                        x: rect.midX + halfArrowWidth,
                         y: rect.minY + (arrowHeight + insetAmount)
                     ),
                     tangent2End: .init(
-                        x: rect.midX + (arrowWidth + insetAmount),
+                        x: rect.midX + arrowWidth,
                         y: rect.minY + (arrowHeight + insetAmount)
                     ),
-                    radius: cornerRadius
+                    radius: cornerRadius / 4
                 )
 
 
@@ -176,7 +232,7 @@ extension Warp.Callout {
             }
         }
 
-        private func horizontalCalloutPath(
+        private func verticalCalloutPath(
             for rect: CGRect,
             topLeft: Corner,
             topRight: Corner,
@@ -221,25 +277,17 @@ extension Warp.Callout {
                     clockwise: false
                 )
 
-                // move to before almost middle
-                path.addLine(
-                    to: CGPoint(
-                        x: rect.minX + arrowHeight + insetAmount,
-                        y: rect.midY + arrowWidth
-                    )
-                )
-
                 // edge left
                 path.addArc(
                     tangent1End: .init(
                         x: rect.minX + arrowHeight + insetAmount,
-                        y: rect.midY + (halfArrowWidth + insetAmount)
+                        y: rect.midY + halfArrowWidth
                     ),
                     tangent2End: .init(
                         x: rect.minX + ((arrowHeight / 2) + insetAmount),
-                        y: rect.midY + ((arrowWidth / 4) + insetAmount)
+                        y: rect.midY + (halfArrowWidth / 2)
                     ),
-                    radius: cornerRadius
+                    radius: cornerRadius / 4
                 )
 
                 // over top
@@ -250,22 +298,22 @@ extension Warp.Callout {
                     ),
                     tangent2End: .init(
                         x: rect.minX + ((arrowHeight / 2) + insetAmount),
-                        y: rect.midY - ((arrowWidth / 4) + insetAmount)
+                        y: rect.midY - (halfArrowWidth / 2)
                     ),
-                    radius: 4
+                    radius: cornerRadius / 2
                 )
 
                 // edge down
                 path.addArc(
                     tangent1End: .init(
                         x: rect.minX + arrowHeight + insetAmount,
-                        y: rect.midY - (halfArrowWidth + insetAmount)
+                        y: rect.midY - halfArrowWidth
                     ),
                     tangent2End: .init(
                         x: rect.minX + arrowHeight + insetAmount,
                         y: rect.midY - arrowWidth
                     ),
-                    radius: cornerRadius
+                    radius: cornerRadius / 4
                 )
 
                 // top left
@@ -346,7 +394,7 @@ extension Warp.Callout {
                     ),
                     .bottomLeft: .init(
                         point: .init(
-                            x: rect.minX + arrowHeight + (cornerRadius + insetAmount),
+                            x: rect.minX + cornerRadius + (arrowHeight + insetAmount),
                             y: rect.maxY - (cornerRadius + insetAmount)
                         ),
                         startAngle: .degrees(90),

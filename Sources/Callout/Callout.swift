@@ -14,6 +14,7 @@ extension Warp {
      - an `arrowHeight`, if you don't provide this, the default value is 8 px
      - an `arrowWidth`, if you don't provide this, the default value is 18px
      - an `arrowEdge` where you want the Callout to appear from
+     - a `cornerRadius`, if you don't provide this, the default value is 8px
      */
     public struct Callout: View {
         /// Title to present in the callout view
@@ -25,8 +26,12 @@ extension Warp {
         /// Width of the arrow to draw, default value is 18 px
         private let arrowWidth: Double
 
+
         /// Edge where to draw the arrow, default value is `.top`
         private var arrowEdge: Edge
+
+        /// Corner radius,
+        private let cornerRadius: Double
 
         /// Object responsible for providing colors in different environments and variants.
         private let colorProvider: ColorProvider
@@ -36,6 +41,7 @@ extension Warp {
          - Parameter arrowHeight: Height of the arrow to draw, default value is 8 px
          - Parameter arrowWidth: Width of the arrow to draw, default value is 18 px
          - Parameter arrowEdge: Edge where to draw the arrow, default value is `.top`
+         - Parameter cornerRadius: Radius of corners, default value is 8
          - Parameter colorProvider: ColorProvider used for styling the `Callout`, default value is read from `Config`
          */
         public init(
@@ -43,12 +49,14 @@ extension Warp {
             arrowHeight: Double = 8,
             arrowWidth: Double = 18,
             arrowEdge: Edge = .top,
+            cornerRadius: Double = 8,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.title = title
             self.arrowHeight = arrowHeight
             self.arrowWidth = arrowWidth
             self.arrowEdge = arrowEdge
+            self.cornerRadius = cornerRadius
             self.colorProvider = colorProvider
         }
 
@@ -56,13 +64,16 @@ extension Warp {
             Text(title)
                 .font(from: Typography.body)
                 .foregroundStyle(colorProvider.calloutText)
-                .padding()
+                .padding(.horizontal, 12)
+                .padding(.vertical, 9)
                 .offset(
                     x: xOffset, y: yOffset
                 )
                 .background(
                     CalloutShape(
                         arrowHeight: arrowHeight,
+                        arrowWidth: arrowWidth,
+                        cornerRadius: cornerRadius,
                         edge: arrowEdge
                     )
                     .inset(by: 1)
@@ -70,6 +81,8 @@ extension Warp {
                     .overlay {
                         CalloutShape(
                             arrowHeight: arrowHeight,
+                            arrowWidth: arrowWidth,
+                            cornerRadius: cornerRadius,
                             edge: arrowEdge
                         )
                         .strokeBorder(colorProvider.calloutBorder, lineWidth: 2)
