@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Warp {
-    /// Use badges to highlight status of an ad (Active/Inactive/Sold/Removed) or to mark paid placements (Sponsored/Ad/House of the week).
+    /// Used to visually label objects on a page for quick recognition. They allow users to filter a list or label information. 
     public struct Pill: View, Hashable {
         public static func == (lhs: Warp.Pill, rhs: Warp.Pill) -> Bool {
             lhs.text == rhs.text &&
