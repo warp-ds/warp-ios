@@ -85,7 +85,7 @@ extension Warp {
 
                 Spacer()
 
-                Image("icon_toast-close", bundle: .module)
+                Image("icon-close", bundle: .module)
             }
             .padding(16)
         }

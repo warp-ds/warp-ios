@@ -17,14 +17,20 @@ extension Warp {
      - a `cornerRadius`, if you don't provide this, the default value is 8px
      */
     public struct Callout: View {
+        /// Size of callout
+        private let size: CalloutSize
+
+        /// Callout type, default is inline
+        private let type: CalloutType
+
         /// Title to present in the callout view
         private var title: String
 
-        /// Height of the arrow to draw, default value is 8 px
-        private let arrowHeight: Double
+        /// Height of the arrow to draw, value is 8 px
+        private let arrowHeight: Double = 8
 
-        /// Width of the arrow to draw, default value is 18 px
-        private let arrowWidth: Double
+        /// Width of the arrow to draw, value is 18 px
+        private let arrowWidth: Double = 18
 
 
         /// Edge where to draw the arrow, default value is `.top`
@@ -37,61 +43,96 @@ extension Warp {
         private let colorProvider: ColorProvider
 
         /**
+         - Parameter size: Size of callout, default value is `.default`
+         - Parameter type:  Type of callout, default is `.inline`
          - Parameter title: String to display in the `Callout`
-         - Parameter arrowHeight: Height of the arrow to draw, default value is 8 px
-         - Parameter arrowWidth: Width of the arrow to draw, default value is 18 px
          - Parameter arrowEdge: Edge where to draw the arrow, default value is `.top`
-         - Parameter cornerRadius: Radius of corners, default value is 8
          - Parameter colorProvider: ColorProvider used for styling the `Callout`, default value is read from `Config`
          */
         public init(
+            size: CalloutSize = .default,
+            type: CalloutType = .inline,
             title: String,
-            arrowHeight: Double = 8,
-            arrowWidth: Double = 18,
             arrowEdge: Edge = .top,
-            cornerRadius: Double = 8,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
+            self.size = size
+            self.type = type
             self.title = title
-            self.arrowHeight = arrowHeight
-            self.arrowWidth = arrowWidth
             self.arrowEdge = arrowEdge
-            self.cornerRadius = cornerRadius
+            self.cornerRadius = size.cornerRadius
             self.colorProvider = colorProvider
         }
 
         public var body: some View {
-            Text(title)
-                .font(from: Typography.body)
-                .foregroundStyle(colorProvider.calloutText)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 9)
-                .offset(
-                    x: xOffset, y: yOffset
-                )
+            contentView
                 .background(
-                    CalloutShape(
-                        arrowHeight: arrowHeight,
-                        arrowWidth: arrowWidth,
-                        cornerRadius: cornerRadius,
-                        edge: arrowEdge
-                    )
-                    .inset(by: 1)
-                    .fill(colorProvider.calloutBackground)
-                    .overlay {
-                        CalloutShape(
-                            arrowHeight: arrowHeight,
-                            arrowWidth: arrowWidth,
-                            cornerRadius: cornerRadius,
-                            edge: arrowEdge
-                        )
-                        .strokeBorder(colorProvider.calloutBorder, lineWidth: 2)
-                    }
-                    .rotation3DEffect(
-                        .degrees(rotationDegrees),
-                        axis: axis
-                    )
+                    calloutBackground
                 )
+        }
+
+        private var contentView: some View {
+            HStack {
+                Text(title)
+                    .font(from: size.typography)
+                    .foregroundStyle(colorProvider.calloutText)
+
+                switch type {
+                case .inline:
+                    EmptyView()
+                case .popover(let type):
+                    switch type {
+                    case .nondismissable:
+                        EmptyView()
+                    case .dismissable:
+                        Image("icon-close", bundle: .module)
+                    }
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 9)
+            .offset(
+                x: xOffset, y: yOffset
+            )
+            .onTapGesture {
+                type.onTapped?()
+            }
+        }
+
+        @ViewBuilder
+        private var calloutBackground: some View {
+            switch type {
+            case .inline:
+                sharedBackground
+            case .popover:
+                sharedBackground
+                    .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 10)
+                    .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 6)
+            }
+        }
+
+        private var sharedBackground: some View {
+            CalloutShape(
+                arrowHeight: arrowHeight,
+                arrowWidth: arrowWidth,
+                cornerRadius: cornerRadius,
+                edge: arrowEdge
+            )
+            .inset(by: 1)
+            .fill(colorProvider.calloutBackground)
+            .overlay {
+                CalloutShape(
+                    arrowHeight: arrowHeight,
+                    arrowWidth: arrowWidth,
+                    cornerRadius: cornerRadius,
+                    edge: arrowEdge
+                )
+                .strokeBorder(colorProvider.calloutBorder, lineWidth: 2)
+            }
+            .rotation3DEffect(
+                .degrees(rotationDegrees),
+                axis: axis
+            )
         }
 
         private var xOffset: Double {
