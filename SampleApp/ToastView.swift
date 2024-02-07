@@ -57,7 +57,7 @@ struct ToastView: View {
                 .cornerRadius(8)
 
                 Text("Toast Style")
-                    .font(.caption)
+                    .font(.headline)
                 Picker("Toast Style:", selection: $toastStyle) {
                     ForEach(Warp.ToastStyle.allCases, id: \.self) { currentStyle in
                         Text(currentStyle.description)
@@ -68,7 +68,8 @@ struct ToastView: View {
                 Divider()
 
                 Text("Toast Edge")
-                    .font(.caption)
+                    .font(.headline)
+
                 Picker("Toast Edge:", selection: $toastEdge) {
                     ForEach(Warp.ToastEdge.allCases, id: \.self) { currentEdge in
                         Text(currentEdge.description)

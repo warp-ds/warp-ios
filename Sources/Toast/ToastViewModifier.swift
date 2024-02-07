@@ -5,6 +5,7 @@ extension Warp {
         let style: Warp.ToastStyle
         let title: String
         let edge: ToastEdge
+        private let horizontalPadding: Double = 16
         @Binding var isPresented: Bool
 
         public func body(content: Content) -> some View {
@@ -13,7 +14,6 @@ extension Warp {
                     alignment: edge.asAlignment,
                     content: warpToastOverlay
                 )
-                .padding(.horizontal, 16)
                 .zIndex(1)
                 .animation(.default, value: isPresented)
         }
@@ -27,6 +27,7 @@ extension Warp {
                     toastEdge: edge,
                     isPresented: $isPresented
                 )
+                .padding(.horizontal, horizontalPadding)
             }
         }
 
