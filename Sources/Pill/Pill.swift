@@ -1,17 +1,15 @@
 import SwiftUI
 
 extension Warp {
-    /// Used to visually label objects on a page for quick recognition. They allow users to filter a list or label information. 
+    /// Used to visually label objects on a page for quick recognition. They allow users to filter a list or label information.
     public struct Pill: View, Hashable {
         public static func == (lhs: Warp.Pill, rhs: Warp.Pill) -> Bool {
             lhs.text == rhs.text &&
-            lhs.isClosable == rhs.isClosable &&
             lhs.style == rhs.style
         }
         
         public func hash(into hasher: inout Hasher) {
             hasher.combine(text)
-            hasher.combine(isClosable)
             hasher.combine(style)
         }
         
@@ -48,9 +46,9 @@ extension Warp {
             } label: {
                 HStack(spacing: 8) {
                     Text(text)
-                    if isClosable {
+                    if let onClose {
                         SwiftUI.Button {
-                            onClose?()
+                            onClose()
                         } label: {
                             Image(systemName: "xmark")
                         }
@@ -62,15 +60,11 @@ extension Warp {
                 .padding(.vertical, 8)
             }
             .buttonStyle(
-                .warp(
+                .warpPill(
                     style: style,
                     colorProvider: colorProvider
                 )
             )
-        }
-        
-        private var isClosable: Bool {
-            onClose != nil
         }
         
         private var typography: Warp.Typography {

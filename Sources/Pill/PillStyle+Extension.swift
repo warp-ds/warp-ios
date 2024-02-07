@@ -94,7 +94,7 @@ struct WarpPillStyle: ButtonStyle {
 /// Syntactic sugar to ease using warp button style.
 extension ButtonStyle where Self == WarpPillStyle {
     /// Button style that will transform pill background view to `Warp` design style view.
-    static func warp(
+    static func warpPill(
         style: Warp.PillStyle,
         colorProvider: ColorProvider
     ) -> Self {
