@@ -5,7 +5,6 @@ struct ToastView: View {
     @State var toastIsPresented: Bool = true
     @State var toastStyle: Warp.ToastStyle = .success
     @State var toastEdge: Warp.ToastEdge = .top
-    @State var horizontalPadding: Double = 0
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -80,23 +79,6 @@ struct ToastView: View {
 
                 Divider()
 
-                Text("Horizontal Padding on Toast")
-                    .font(.headline)
-
-                HStack {
-                    Text("0")
-                    Slider(value: $horizontalPadding, in: 0...64)
-                    Text("64")
-                }
-
-                Text("Current value: ")
-                +
-                Text(
-                    horizontalPadding,
-                    format: .number.rounded(rule: .down, increment: 1.0)
-                )
-
-
                 Spacer()
             }
         }
@@ -105,7 +87,6 @@ struct ToastView: View {
             style: toastStyle,
             title: "Here's a toast of type \(toastStyle.description) located at the \(toastEdge.description) edge",
             edge: toastEdge,
-            horizontalPadding: horizontalPadding,
             isPresented: $toastIsPresented
         )
     }
