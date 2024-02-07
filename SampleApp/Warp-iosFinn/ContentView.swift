@@ -60,6 +60,11 @@ struct ContentView: View {
                             .padding()
                     }
                     Divider()
+                    NavigationLink(destination: PillView()) {
+                        Text("WarpPill")
+                            .padding()
+                    }
+                    Divider()
                     NavigationLink(destination: AlertView()) {
                         Text("WarpAlert")
                             .padding()
