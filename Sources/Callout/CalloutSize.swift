@@ -26,9 +26,9 @@ extension Warp {
         public var verticalPadding: Double {
             switch self {
             case .small:
-                8
-            case .default:
                 7
+            case .default:
+                8
             }
         }
     }

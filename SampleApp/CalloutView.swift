@@ -70,7 +70,7 @@ struct CalloutView: View {
                 HStack {
                     Warp.Callout(
                         size: showDefault ? .default : .small,
-                        title: "ArrowEdge: .trailing",
+                        title: "Short",
                         arrowEdge: .trailing
                     )
 
@@ -90,7 +90,7 @@ struct CalloutView: View {
 
                     Warp.Callout(
                         size: showDefault ? .default : .small,
-                        title: "ArrowEdge: .leading",
+                        title: "Short",
                         arrowEdge: .leading
                     )
 
@@ -174,13 +174,11 @@ struct CalloutView: View {
             if isVisibleValue.wrappedValue {
                 Warp.Callout(
                     size: showDefault ? .default : .small,
-                    type: .popover(
-                        type: .dismissable(onTapped: {
-                            withAnimation {
-                                isVisibleValue.wrappedValue = false
-                            }
-                        })
-                    ),
+                    type: .popover(onTapped: {
+                        withAnimation {
+                            isVisibleValue.wrappedValue = false
+                        }
+                    }),
                     title: calloutTitle,
                     arrowEdge: calloutEdge
                 )
@@ -210,13 +208,11 @@ struct CalloutView: View {
             if isVisibleValue.wrappedValue {
                 Warp.Callout(
                     size: showDefault ? .default : .small,
-                    type: .popover(
-                        type: .dismissable(onTapped: {
-                            withAnimation {
-                                isVisibleValue.wrappedValue = false
-                            }
-                        })
-                    ),
+                    type: .popover(onTapped: {
+                        withAnimation {
+                            isVisibleValue.wrappedValue = false
+                        }
+                    }),
                     title: calloutTitle,
                     arrowEdge: calloutEdge
                 )

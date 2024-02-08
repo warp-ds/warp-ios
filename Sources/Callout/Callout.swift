@@ -80,23 +80,15 @@ extension Warp {
                 switch type {
                 case .inline:
                     EmptyView()
-                case .popover(let type):
-                    switch type {
-                    case .nondismissable:
-                        EmptyView()
-                    case .dismissable:
-                        Image("icon-close", bundle: .module)
-                    }
+                case .popover:
+                    Image("icon-close", bundle: .module)
                 }
             }
             .padding(.horizontal, 16)
-            .padding(.vertical, 9)
+            .padding(.vertical, size.verticalPadding)
             .offset(
                 x: xOffset, y: yOffset
             )
-            .onTapGesture {
-                type.onTapped?()
-            }
         }
 
         @ViewBuilder
@@ -106,6 +98,9 @@ extension Warp {
                 sharedBackground
             case .popover:
                 sharedBackground
+                    .onTapGesture {
+                        type.onTapped?()
+                    }
                     .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 10)
                     .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 6)
             }

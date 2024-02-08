@@ -281,7 +281,7 @@ extension Warp.Callout {
                 path.addArc(
                     tangent1End: .init(
                         x: rect.minX + arrowHeight + insetAmount,
-                        y: rect.midY + halfArrowWidth
+                        y: rect.midY + (halfArrowWidth - 1)
                     ),
                     tangent2End: .init(
                         x: rect.minX + ((arrowHeight / 2) + insetAmount),
@@ -307,7 +307,7 @@ extension Warp.Callout {
                 path.addArc(
                     tangent1End: .init(
                         x: rect.minX + arrowHeight + insetAmount,
-                        y: rect.midY - halfArrowWidth
+                        y: rect.midY - (halfArrowWidth - 1)
                     ),
                     tangent2End: .init(
                         x: rect.minX + arrowHeight + insetAmount,
