@@ -92,7 +92,7 @@ extension Warp {
         }
 
         private var titleView: some View {
-            Text(title)
+            SwiftUI.Text(title)
         }
 
         @ViewBuilder

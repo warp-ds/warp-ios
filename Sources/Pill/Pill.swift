@@ -45,7 +45,7 @@ extension Warp {
                 onTap()
             } label: {
                 HStack(spacing: 8) {
-                    Text(text)
+                    Text(text, style: textStyle)
                     if let onClose {
                         SwiftUI.Button {
                             onClose()
@@ -55,7 +55,6 @@ extension Warp {
                         .accessibilityLabel(iconContentDescription ?? "Close")
                     }
                 }
-                .font(from: typography)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
             }
@@ -67,12 +66,12 @@ extension Warp {
             )
         }
         
-        private var typography: Warp.Typography {
+        private var textStyle: Warp.TextStyle {
             switch style {
             case .filter:
-                return Warp.Typography.caption
+                return .caption
             case .suggestion:
-                return Warp.Typography.captionStrong
+                return .captionStrong
             }
         }        
     }

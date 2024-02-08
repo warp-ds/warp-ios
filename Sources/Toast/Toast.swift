@@ -78,10 +78,9 @@ extension Warp {
                     .renderingMode(.template)
                     .foregroundColor(style.iconColor(from: colorProvider))
 
-                Text(title)
+                Text(title, style: .body)
                     .padding(.leading, 8)
                     .foregroundStyle(style.textColor(from: colorProvider))
-                    .font(from: Typography.body)
 
                 Spacer()
 
