@@ -84,7 +84,7 @@ extension Warp {
                     Image("icon-close", bundle: .module)
                 }
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 12)
             .padding(.vertical, size.verticalPadding)
             .offset(
                 x: xOffset, y: yOffset
