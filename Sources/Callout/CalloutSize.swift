@@ -5,12 +5,12 @@ extension Warp {
         case small
         case `default`
 
-        public var typography: Warp.Typography {
+        public var textStyle: Warp.TextStyle {
             switch self {
             case .small:
-                Typography.caption
+                .caption
             case .default:
-                Typography.body
+                .body
             }
         }
 

@@ -110,8 +110,8 @@ extension Warp {
             self.title = title
             self.additionalInformation = additionalInformation
             self.infoToolTipView = infoToolTipView
-            self.leftView = leftPriceSymbol.flatMap(Text.init).flatMap(AnyView.init)
-            self.rightView = rightPriceSymbol.flatMap(Text.init).flatMap(AnyView.init)
+            self.leftView = leftPriceSymbol.flatMap(SwiftUI.Text.init).flatMap(AnyView.init)
+            self.rightView = rightPriceSymbol.flatMap(SwiftUI.Text.init).flatMap(AnyView.init)
             self.errorMessage = errorMessage
             self.helpMessage = helpMessage
             self.isAnimated = isAnimated
@@ -185,8 +185,8 @@ extension Warp {
                 title: title,
                 additionalInformation: additionalInformation,
                 infoToolTipView: nil,
-                leftView: leftSymbol.flatMap(Text.init).flatMap(AnyView.init),
-                rightView: rightSymbol.flatMap(Text.init).flatMap(AnyView.init),
+                leftView: leftSymbol.flatMap(SwiftUI.Text.init).flatMap(AnyView.init),
+                rightView: rightSymbol.flatMap(SwiftUI.Text.init).flatMap(AnyView.init),
                 errorMessage: errorMessage,
                 helpMessage: helpMessage,
                 isAnimated: true

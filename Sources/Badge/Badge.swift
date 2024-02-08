@@ -35,8 +35,7 @@ extension Warp {
         }
 
         public var body: some View {
-            Text(text)
-                .font(from: Warp.Typography.detail)
+            Text(text, style: .detail)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
                 .foregroundColor(foregroundColor)
