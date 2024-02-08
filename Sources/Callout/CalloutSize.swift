@@ -23,12 +23,13 @@ extension Warp {
             }
         }
 
-        public var verticalPadding: Double {
-            switch self {
+        public func verticalPadding(for edge: Edge, arrowHeight: Double) -> Double {
+            let additionalPadding = edge == .top || edge == .bottom ? arrowHeight / 2 : 0
+            return switch self {
             case .small:
-                7
+                7 + additionalPadding
             case .default:
-                8
+                8 + additionalPadding
             }
         }
     }

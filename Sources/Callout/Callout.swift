@@ -85,7 +85,7 @@ extension Warp {
                 }
             }
             .padding(.horizontal, 12)
-            .padding(.vertical, size.verticalPadding)
+            .padding(.vertical, size.verticalPadding(for:arrowEdge, arrowHeight: arrowHeight))
             .offset(
                 x: xOffset, y: yOffset
             )
