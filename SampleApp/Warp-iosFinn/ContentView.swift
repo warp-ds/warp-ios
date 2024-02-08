@@ -75,6 +75,10 @@ struct ContentView: View {
                             .padding()
                     }
                     Divider()
+                    NavigationLink(destination: CalloutView()) {
+                        Text("WarpCallout")
+                            .padding()
+                    }
                     Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
                         .font(.caption2)
                 }

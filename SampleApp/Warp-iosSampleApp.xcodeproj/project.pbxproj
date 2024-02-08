@@ -37,6 +37,8 @@
 		82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
 		B2922A6E2B68E7F200A3E9F4 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */; };
 		B2922A6F2B68E7F200A3E9F4 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */; };
+		B2A8B2792B6D33B800122DBC /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A8B2782B6D33B800122DBC /* CalloutView.swift */; };
+		B2A8B27A2B6D33B800122DBC /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A8B2782B6D33B800122DBC /* CalloutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,7 @@
 		82A215582A8DF4DC0062FB9E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		B2A8B2782B6D33B800122DBC /* CalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */,
+				B2A8B2782B6D33B800122DBC /* CalloutView.swift */,
 				349586632B0EAD2D00A14570 /* TypographyView.swift */,
 				82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */,
 				82355B0A2A8CD0AA0023EB11 /* ContentView.swift */,
@@ -262,6 +266,7 @@
 				82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */,
 				828E7D452B61239100869C58 /* BadgeView.swift in Sources */,
 				82A2155C2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
+				B2A8B2792B6D33B800122DBC /* CalloutView.swift in Sources */,
 				82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				8251E8CA2B4E8B7D00106720 /* BrandTokensView.swift in Sources */,
 				82838CF12B62B35400E3C495 /* PillView.swift in Sources */,
@@ -279,6 +284,7 @@
 				349586652B0F727600A14570 /* TypographyView.swift in Sources */,
 				828E7D462B61239100869C58 /* BadgeView.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
+				B2A8B27A2B6D33B800122DBC /* CalloutView.swift in Sources */,
 				82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
 				8251E8CB2B4E8B7D00106720 /* BrandTokensView.swift in Sources */,
 				82838CF22B62B35400E3C495 /* PillView.swift in Sources */,
