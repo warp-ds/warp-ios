@@ -73,8 +73,7 @@ extension Warp {
 
         private var contentView: some View {
             HStack {
-                Text(title)
-                    .font(from: size.typography)
+                Text(title, style: size.textStyle)
                     .foregroundStyle(colorProvider.calloutText)
 
                 switch type {
