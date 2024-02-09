@@ -270,6 +270,41 @@ private struct ButtonsView: View, Hashable {
     }
 }
 
+private struct AccessibilityTraitBuilder: ViewModifier {
+    let primaryButtonProvider: Warp.Alert.ButtonConstructor?
+    let secondaryButtonProvider: Warp.Alert.ButtonConstructor?
+    let linkProvider: Warp.Alert.ButtonConstructor?
+
+    func body(content: Content) -> some View {
+        let hasButton: Bool = {
+            let isPrimaryButtonAvailable = primaryButtonProvider != nil
+            lazy var isSecondaryButtonAvailable = primaryButtonProvider != nil
+
+            return isPrimaryButtonAvailable || isSecondaryButtonAvailable
+        }()
+
+        let hasLink = linkProvider != nil
+
+        switch (hasLink, hasButton) {
+            case (true, true):
+                content
+                    .accessibilityAddTraits(.isLink)
+                    .accessibilityAddTraits(.isButton)
+
+            case (true, false):
+                content
+                    .accessibilityAddTraits(.isLink)
+
+            case (false, true):
+                content
+                    .accessibilityAddTraits(.isButton)
+
+            case (false, false):
+                content
+                    .accessibilityAddTraits(.isStaticText)
+        }
+    }
+}
 private struct UnderlinedLinkModifier: ViewModifier {
     let colorProvider: ColorProvider
 
