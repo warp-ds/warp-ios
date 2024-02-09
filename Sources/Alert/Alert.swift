@@ -118,7 +118,6 @@ extension Warp {
                 Spacer()
                     .frame(height: 17)
                 Image(systemName: style.titleImageName)
-                //                Image(style.titleImageName, bundle: .module)
                     .renderingMode(.template)
                     .frame(width: 16, height: 16)
                     .foregroundColor(style.getLeftLineColor(from: colorProvider))
@@ -272,8 +271,10 @@ private struct ButtonsView: View, Hashable {
 }
 
 private struct UnderlinedLinkModifier: ViewModifier {
+    let colorProvider: ColorProvider
+
     private var linkColor: Color {
-        Color.blue
+        colorProvider.token.textLink
     }
 
     func body(content: Content) -> some View {
