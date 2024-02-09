@@ -305,6 +305,32 @@ private struct AccessibilityTraitBuilder: ViewModifier {
         }
     }
 }
+
+private struct AccessibilityButtonActionBuilder: ViewModifier {
+    let primaryButtonProvider: Warp.Alert.ButtonConstructor?
+    let secondaryButtonProvider: Warp.Alert.ButtonConstructor?
+
+    func body(content: Content) -> some View {
+        switch (primaryButtonProvider, secondaryButtonProvider) {
+            case (.some(let primaryButtonProvider), .some(let secondaryButtonProvider)):
+                content
+                    .accessibilityAction(.default, primaryButtonProvider.action)
+                    .accessibilityAction(.escape, secondaryButtonProvider.action)
+
+            case (.some(let buttonProvider), .none):
+                content
+                    .accessibilityAction(.default, buttonProvider.action)
+
+            case (.none, .some(let buttonProvider)):
+                content
+                    .accessibilityAction(.default, buttonProvider.action)
+
+            case (.none, .none):
+                content
+        }
+    }
+}
+
 private struct UnderlinedLinkModifier: ViewModifier {
     let colorProvider: ColorProvider
 
