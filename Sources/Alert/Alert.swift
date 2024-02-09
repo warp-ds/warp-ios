@@ -436,6 +436,22 @@ extension Warp.AlertStyle {
         }
     }
 
+    fileprivate var tooltipImageTitle: String {
+        switch self {
+            case .info:
+                return "Info"
+
+            case .warning:
+                return "Warning"
+
+            case .critical:
+                return "Error"
+
+            case .success:
+                return "Success"
+        }
+    }
+
     fileprivate func getToolTipIconColor(from colorProvider: ColorProvider) -> Color {
         switch self {
             case .info:
