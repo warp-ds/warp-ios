@@ -46,7 +46,6 @@ extension Warp {
             subtitle: String,
             link: ButtonConstructor? = nil,
             button: ButtonConstructor? = nil,
-            secondaryButton: ButtonConstructor? = nil,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.style = style
