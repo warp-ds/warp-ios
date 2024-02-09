@@ -272,7 +272,7 @@ private struct UnderlinedLinkModifier: ViewModifier {
     let colorProvider: ColorProvider
 
     private var linkColor: Color {
-        Color.blue
+        colorProvider.token.textLink
     }
 
     func body(content: Content) -> some View {
