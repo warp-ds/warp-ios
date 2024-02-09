@@ -84,6 +84,20 @@ extension Warp {
                 foregroundView
             }
             .cornerRadius(alertCornerRadius)
+            .accessibilityElement(children: .combine)
+            .modifier(
+                AccessibilityTraitBuilder(
+                    primaryButtonProvider: primaryButtonProvider,
+                    secondaryButtonProvider: secondaryButtonProvider,
+                    linkProvider: linkProvider
+                )
+            )
+            .modifier(
+                AccessibilityButtonActionBuilder(
+                    primaryButtonProvider: primaryButtonProvider,
+                    secondaryButtonProvider: secondaryButtonProvider
+                )
+            )
         }
 
         private var backgroundView: some View {
@@ -117,11 +131,12 @@ extension Warp {
             VStack {
                 Spacer()
                     .frame(height: 17)
-                Image(systemName: style.titleImageName)
+                Image(systemName: style.tooltipImageName)
                     .renderingMode(.template)
                     .frame(width: 16, height: 16)
                     .foregroundColor(style.getLeftLineColor(from: colorProvider))
                     .padding(.leading, 8)
+                    .accessibilityLabel(style.tooltipImageTitle)
 
                 Spacer()
             }
@@ -151,6 +166,7 @@ extension Warp {
         private var subtitleView: some View {
             Text(subtitle, style: .body)
                 .foregroundColor(colorProvider.boxInfoText)
+                .accessibilityRemoveTraits(.isHeader)
         }
 
         @ViewBuilder
@@ -420,7 +436,7 @@ extension Warp.AlertStyle {
         }
     }
 
-    fileprivate var titleImageName: String {
+    fileprivate var tooltipImageName: String {
         switch self {
         case .info:
             return "exclamationmark.circle.fill"
