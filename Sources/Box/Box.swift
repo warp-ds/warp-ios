@@ -11,6 +11,9 @@ extension Warp {
     public struct Box: View, Hashable {
         /// Preferred style of box.
         let style: BoxStyle
+        
+        /// Flag indicating tooltip image should be shown.
+        let shouldShowToolTipImage: Bool
 
         /// Text that will be shown as box's heading.
         let title: String?
@@ -43,6 +46,7 @@ extension Warp {
         public init(
             style: Warp.BoxStyle,
             title: String?,
+            shouldShowToolTipImage: Bool = true,
             subtitle: String,
             link: ButtonConstructor? = nil,
             button: ButtonConstructor? = nil,
@@ -50,6 +54,7 @@ extension Warp {
         ) {
             self.style = style
             self.title = title
+            self.shouldShowToolTipImage = shouldShowToolTipImage
             self.subtitle = subtitle
             self.linkProvider = link
             buttonProvider = button
@@ -59,6 +64,7 @@ extension Warp {
         init(
             style: Warp.BoxStyle,
             title: String?,
+            shouldShowToolTipImage: Bool = true,
             subtitle: String,
             linkProvider: ButtonConstructor?,
             buttonProvider: ButtonConstructor?,
@@ -66,6 +72,7 @@ extension Warp {
         ) {
             self.style = style
             self.title = title
+            self.shouldShowToolTipImage = shouldShowToolTipImage
             self.subtitle = subtitle
             self.linkProvider = linkProvider
             self.buttonProvider = buttonProvider
@@ -117,7 +124,7 @@ extension Warp {
 
         @ViewBuilder
         private var toolTipIconView: some View {
-            if true {
+            if shouldShowToolTipImage {
                 VStack {
                     Image(toolTipImageName, bundle: .module)
                         .renderingMode(.template)
