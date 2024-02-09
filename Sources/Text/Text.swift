@@ -30,6 +30,7 @@ extension Warp {
         public var body: some View {
             SwiftUI.Text(text)
                 .font(from: style.asTypography)
+                .foregroundColor(colorProvider.labelText)
         }
     }
 }
