@@ -155,16 +155,14 @@ extension Warp {
         @ViewBuilder
         private var titleView: some View {
             if let title {
-                Text(title)
-                    .font(from: Typography.title3)
+                Text(title, style: .title3)
                     .foregroundColor(style.getTextColor(from: colorProvider))
                     .accessibilityAddTraits(.isHeader)
             }
         }
 
         private var subtitleView: some View {
-            Text(subtitle)
-                .font(from: Typography.body)
+            Text(subtitle, style: .body)
                 .foregroundColor(colorProvider.boxInfoText)
                 .accessibilityRemoveTraits(.isHeader)
         }
@@ -176,8 +174,7 @@ extension Warp {
                     action: linkProvider.action,
                     label: {
                         HStack {
-                            Text(linkProvider.title)
-                                .font(from: Typography.caption)
+                            Text(linkProvider.title, style: .caption)
                                 .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
 
                             Spacer()
