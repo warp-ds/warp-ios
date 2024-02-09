@@ -161,7 +161,7 @@ extension Warp {
                     label: {
                         HStack {
                             Text(linkProvider.title, style: .caption)
-                                .modifier(UnderlinedLinkModifier())
+                                .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
 
                             Spacer()
                         }
@@ -360,7 +360,6 @@ extension Warp.AlertStyle {
     }
 
     fileprivate var titleImageName: String {
-        // Remove this when icon problem is solved
         switch self {
         case .info:
             return "exclamationmark.circle.fill"
@@ -374,25 +373,6 @@ extension Warp.AlertStyle {
         case .success:
             return "exclamationmark.circle.fill"
         }
-        
-//        let prefix = "icon_alert"
-//        let postfix: String
-//
-//        switch self {
-//            case .info:
-//                postfix = "info"
-//
-//            case .warning:
-//                postfix = "warning"
-//
-//            case .critical:
-//                postfix = "critical"
-//
-//            case .success:
-//                postfix = "success"
-//        }
-//
-//        return "\(prefix)-\(postfix)"
     }
 
     fileprivate func getToolTipIconColor(from colorProvider: ColorProvider) -> Color {
