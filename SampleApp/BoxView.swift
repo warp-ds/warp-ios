@@ -41,6 +41,15 @@ struct BoxView: View {
                     Text("Title")
                 }
             )
+
+            GroupBox(
+                content: {
+                    TextField("Write the desired subtitle", text: $boxSubtitle)
+                        .padding(.all, 8)
+                }, label: {
+                    Text("Subtitle")
+                }
+            )
     @ViewBuilder
     private func createBoxView(basedOn state: (hasLink: Bool, hasButton: Bool)) -> some View {
         lazy var linkProvider: Warp.Box.ButtonConstructor = {
