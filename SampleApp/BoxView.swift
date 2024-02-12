@@ -42,6 +42,20 @@ extension Warp.BoxStyle: CaseIterable {
         .info,
         .bordered
     ]
+
+    fileprivate var styleName: String {
+        switch self {
+            case .neutral:
+                return "Neutral"
+
+            case .info:
+                return "Info"
+
+            case .bordered:
+                return "Bordered"
+        }
+    }
+}
 }
 
 #Preview {
