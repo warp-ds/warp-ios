@@ -69,6 +69,28 @@ struct BoxView: View {
                     Text("Link")
                 }
             )
+
+            GroupBox(
+                content: {
+                    let buttonStaticText = "button"
+
+                    Toggle(isOn: $hasButton.defaultAnimation()) {
+                        HStack {
+                            let prependStaticText = !hasButton ? "Add": "Remove"
+
+                            Text(prependStaticText + " " + buttonStaticText)
+
+                            Spacer()
+                        }
+                    }
+                    .padding()
+                }, label: {
+                    Text("Button")
+                }
+            )
+        }
+    }
+
     @ViewBuilder
     private func createBoxView(basedOn state: (hasLink: Bool, hasButton: Bool)) -> some View {
         lazy var linkProvider: Warp.Box.ButtonConstructor = {
