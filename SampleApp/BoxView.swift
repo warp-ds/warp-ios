@@ -10,8 +10,11 @@ import Warp
 
 struct BoxView: View {
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            ForEach(Warp.BoxStyle.allCases, id: \.self) { style in
+        Form {
+            createBoxView(basedOn: (hasLink, hasButton))
+                .padding(.top)
+                .padding(.bottom, 6)
+
             GroupBox(
                 content: {
                     Picker("Pick your box style please", selection: $style.animation(.easeIn)) {
