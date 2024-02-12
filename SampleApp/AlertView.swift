@@ -46,6 +46,24 @@ extension Warp.AlertStyle: CaseIterable {
         .critical,
         .success
     ]
+
+    fileprivate var styleName: String {
+        switch self {
+            case .info:
+                return "Info"
+
+            case .warning:
+                return "Warning"
+
+            case .critical:
+                return "Critical"
+
+            case .success:
+                return "Success"
+        }
+    }
+}
+
 private extension Binding<Bool> {
     func defaultAnimation() -> Binding<Bool> {
         animation(.bouncy)
