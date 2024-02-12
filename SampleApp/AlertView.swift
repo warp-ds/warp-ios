@@ -51,12 +51,17 @@ private extension Binding<Bool> {
         animation(.bouncy)
     }
 }
+
 private extension View {
     func textFieldDefaultOverlay(basedOn colorScheme: ColorScheme) -> some View {
         overlay {
             RoundedRectangle(cornerRadius: 4)
                 .stroke(colorScheme == .dark ? Color.white: Color.gray.opacity(0.5), lineWidth: 1)
         }
+    }
+
+    func defaultPadding() -> some View {
+        padding(.all, 8)
     }
 }
 
