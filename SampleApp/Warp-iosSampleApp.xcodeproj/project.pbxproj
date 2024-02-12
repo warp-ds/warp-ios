@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		341B20E82B751BD30068FF43 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341B20E72B751BD30068FF43 /* BoxView.swift */; };
+		341B20E92B751C250068FF43 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341B20E72B751BD30068FF43 /* BoxView.swift */; };
 		349586642B0EAD2D00A14570 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
 		349586652B0F727600A14570 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
 		349D0E132B62D67A00AAB421 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349D0E122B62D67A00AAB421 /* AlertView.swift */; };
@@ -44,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		341B20E72B751BD30068FF43 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
 		349586632B0EAD2D00A14570 /* TypographyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypographyView.swift; sourceTree = "<group>"; };
 		349D0E122B62D67A00AAB421 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		8206620F2A8CC97C0088677D /* warp-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "warp-ios"; path = ..; sourceTree = "<group>"; };
@@ -141,6 +144,7 @@
 				828E7D442B61239100869C58 /* BadgeView.swift */,
 				82838CF02B62B35400E3C495 /* PillView.swift */,
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
+				341B20E72B751BD30068FF43 /* BoxView.swift */,
 				349D0E122B62D67A00AAB421 /* AlertView.swift */,
 				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
 				82B168112B750BED00DCDDE5 /* TextView.swift */,
@@ -276,6 +280,7 @@
 				8251E8CA2B4E8B7D00106720 /* BrandTokensView.swift in Sources */,
 				82838CF12B62B35400E3C495 /* PillView.swift in Sources */,
 				349D0E132B62D67A00AAB421 /* AlertView.swift in Sources */,
+				341B20E82B751BD30068FF43 /* BoxView.swift in Sources */,
 				82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */,
 				B2922A6E2B68E7F200A3E9F4 /* ToastView.swift in Sources */,
 				349586642B0EAD2D00A14570 /* TypographyView.swift in Sources */,
@@ -295,6 +300,7 @@
 				8251E8CB2B4E8B7D00106720 /* BrandTokensView.swift in Sources */,
 				82838CF22B62B35400E3C495 /* PillView.swift in Sources */,
 				349D0E142B62D67E00AAB421 /* AlertView.swift in Sources */,
+				341B20E92B751C250068FF43 /* BoxView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				B2922A6F2B68E7F200A3E9F4 /* ToastView.swift in Sources */,
 				82355B122A8CD1120023EB11 /* ContentView.swift in Sources */,

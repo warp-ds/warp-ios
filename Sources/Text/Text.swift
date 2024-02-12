@@ -17,20 +17,24 @@ extension Warp {
         private let text: String
         /// Text style.
         private let style: Warp.TextStyle
+        /// Text color.
+        private let color: Color
         private let colorProvider: ColorProvider = Warp.Config.colorProvider
 
         public init(
             _ text: String,
-            style: Warp.TextStyle
+            style: Warp.TextStyle,
+            color: Color = Warp.Config.colorProvider.token.text
         ) {
             self.text = text
             self.style = style
+            self.color = color
         }
 
         public var body: some View {
             SwiftUI.Text(text)
                 .font(from: style.asTypography)
-                .foregroundColor(colorProvider.labelText)
+                .foregroundColor(color)
         }
     }
 }

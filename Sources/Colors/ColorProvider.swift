@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=1588196525
 public struct ColorProvider {
-    let token: TokenProvider
+    public let token: TokenProvider
     
     /// Alert
     var alertInfoText: Color { token.text }

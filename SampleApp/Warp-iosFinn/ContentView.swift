@@ -70,6 +70,11 @@ struct ContentView: View {
                             .padding()
                     }
                     Divider()
+                    NavigationLink(destination: BoxView()) {
+                        Text("WarpBox")
+                            .padding()
+                    }
+                    Divider()
                     NavigationLink(destination: ToastView()) {
                         Text("WarpToast")
                             .padding()
