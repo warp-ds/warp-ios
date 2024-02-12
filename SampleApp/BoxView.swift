@@ -130,6 +130,11 @@ extension Warp.BoxStyle: CaseIterable {
         }
     }
 }
+
+private extension Binding<Bool> {
+    func defaultAnimation() -> Binding<Bool> {
+        animation(.smooth)
+    }
 }
 
 #Preview {
