@@ -35,6 +35,13 @@ struct AlertView: View {
                 )
                 .padding()
             }
+    private func createToggleLabelView(hasValue: Bool, tag: String) -> some View {
+        HStack {
+            let prependStaticText = !hasValue ? "Add": "Remove"
+
+            Text(prependStaticText + " \(tag)")
+
+            Spacer()
         }
     }
 }
