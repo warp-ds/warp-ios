@@ -35,7 +35,19 @@ extension Warp {
         let colorProvider: ColorProvider
 
         public static func == (lhs: Box, rhs: Box) -> Bool {
-            lhs.style == rhs.style && lhs.title == rhs.title
+            let styleComparison = lhs.style == rhs.style
+            lazy var titleComparison = lhs.title == rhs.title
+            lazy var iconComparison = lhs.shouldShowToolTipImage == rhs.shouldShowToolTipImage
+            lazy var subtitleComparison = lhs.subtitle == rhs.subtitle
+            lazy var linkProviderComparison = lhs.linkProvider?.title == rhs.linkProvider?.title
+            lazy var buttonProviderComparison = lhs.buttonProvider?.title == rhs.buttonProvider?.title
+
+            return styleComparison &&
+            titleComparison &&
+            iconComparison &&
+            subtitleComparison &&
+            linkProviderComparison &&
+            buttonProviderComparison
         }
 
         public func hash(into hasher: inout Hasher) {
