@@ -129,7 +129,7 @@ extension Warp {
                     Image(toolTipImageName, bundle: .module)
                         .renderingMode(.template)
                         .frame(width: 24, height: 24)
-                        .foregroundColor(colorProvider.labelIcon)
+                        .foregroundColor(colorProvider.token.iconSelected)
                         .padding(.leading, 8)
 
                     Spacer()
@@ -174,7 +174,7 @@ extension Warp {
                     action: linkProvider.action,
                     label: {
                         HStack {
-                            Text(linkProvider.title, style: .caption)
+                            Text(linkProvider.title, style: .caption, color: colorProvider.token.textLink)
                                 .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
 
                             Spacer()
