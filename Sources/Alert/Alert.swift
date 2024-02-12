@@ -84,6 +84,20 @@ extension Warp {
                 foregroundView
             }
             .cornerRadius(alertCornerRadius)
+            .accessibilityElement(children: .combine)
+            .modifier(
+                AccessibilityTraitBuilder(
+                    primaryButtonProvider: primaryButtonProvider,
+                    secondaryButtonProvider: secondaryButtonProvider,
+                    linkProvider: linkProvider
+                )
+            )
+            .modifier(
+                AccessibilityButtonActionBuilder(
+                    primaryButtonProvider: primaryButtonProvider,
+                    secondaryButtonProvider: secondaryButtonProvider
+                )
+            )
         }
 
         private var backgroundView: some View {
@@ -118,12 +132,12 @@ extension Warp {
                 Spacer()
                     .frame(height: 17)
 
-                Image(systemName: style.titleImageName)
-                //                Image(style.titleImageName, bundle: .module)
+                Image(systemName: style.tooltipImageName)
                     .renderingMode(.template)
                     .frame(width: 16, height: 16)
                     .foregroundColor(style.getLeftLineColor(from: colorProvider))
                     .padding(.leading, 8)
+                    .accessibilityLabel(style.tooltipImageTitle)
 
                 Spacer()
             }
@@ -153,6 +167,7 @@ extension Warp {
         private var subtitleView: some View {
             Text(subtitle, style: .body)
                 .foregroundColor(colorProvider.boxInfoText)
+                .accessibilityRemoveTraits(.isHeader)
         }
 
         @ViewBuilder
@@ -163,7 +178,7 @@ extension Warp {
                     label: {
                         HStack {
                             Text(linkProvider.title, style: .caption)
-                                .modifier(UnderlinedLinkModifier())
+                                .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
 
                             Spacer()
                         }
@@ -272,9 +287,72 @@ private struct ButtonsView: View, Hashable {
     }
 }
 
+private struct AccessibilityTraitBuilder: ViewModifier {
+    let primaryButtonProvider: Warp.Alert.ButtonConstructor?
+    let secondaryButtonProvider: Warp.Alert.ButtonConstructor?
+    let linkProvider: Warp.Alert.ButtonConstructor?
+
+    func body(content: Content) -> some View {
+        let hasButton: Bool = {
+            let isPrimaryButtonAvailable = primaryButtonProvider != nil
+            lazy var isSecondaryButtonAvailable = primaryButtonProvider != nil
+
+            return isPrimaryButtonAvailable || isSecondaryButtonAvailable
+        }()
+
+        let hasLink = linkProvider != nil
+
+        switch (hasLink, hasButton) {
+            case (true, true):
+                content
+                    .accessibilityAddTraits(.isLink)
+                    .accessibilityAddTraits(.isButton)
+
+            case (true, false):
+                content
+                    .accessibilityAddTraits(.isLink)
+
+            case (false, true):
+                content
+                    .accessibilityAddTraits(.isButton)
+
+            case (false, false):
+                content
+                    .accessibilityAddTraits(.isStaticText)
+        }
+    }
+}
+
+private struct AccessibilityButtonActionBuilder: ViewModifier {
+    let primaryButtonProvider: Warp.Alert.ButtonConstructor?
+    let secondaryButtonProvider: Warp.Alert.ButtonConstructor?
+
+    func body(content: Content) -> some View {
+        switch (primaryButtonProvider, secondaryButtonProvider) {
+            case (.some(let primaryButtonProvider), .some(let secondaryButtonProvider)):
+                content
+                    .accessibilityAction(.default, primaryButtonProvider.action)
+                    .accessibilityAction(.escape, secondaryButtonProvider.action)
+
+            case (.some(let buttonProvider), .none):
+                content
+                    .accessibilityAction(.default, buttonProvider.action)
+
+            case (.none, .some(let buttonProvider)):
+                content
+                    .accessibilityAction(.default, buttonProvider.action)
+
+            case (.none, .none):
+                content
+        }
+    }
+}
+
 private struct UnderlinedLinkModifier: ViewModifier {
+    let colorProvider: ColorProvider
+
     private var linkColor: Color {
-        Color.blue
+        colorProvider.token.textLink
     }
 
     func body(content: Content) -> some View {
@@ -359,8 +437,7 @@ extension Warp.AlertStyle {
         }
     }
 
-    fileprivate var titleImageName: String {
-        // Remove this when icon problem is solved
+    fileprivate var tooltipImageName: String {
         switch self {
         case .info:
             return "exclamationmark.circle.fill"
@@ -374,25 +451,22 @@ extension Warp.AlertStyle {
         case .success:
             return "exclamationmark.circle.fill"
         }
-        
-//        let prefix = "icon_alert"
-//        let postfix: String
-//
-//        switch self {
-//            case .info:
-//                postfix = "info"
-//
-//            case .warning:
-//                postfix = "warning"
-//
-//            case .critical:
-//                postfix = "critical"
-//
-//            case .success:
-//                postfix = "success"
-//        }
-//
-//        return "\(prefix)-\(postfix)"
+    }
+
+    fileprivate var tooltipImageTitle: String {
+        switch self {
+            case .info:
+                return "Info"
+
+            case .warning:
+                return "Warning"
+
+            case .critical:
+                return "Error"
+
+            case .success:
+                return "Success"
+        }
     }
 
     fileprivate func getToolTipIconColor(from colorProvider: ColorProvider) -> Color {
