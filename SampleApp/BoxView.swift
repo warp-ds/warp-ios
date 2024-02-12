@@ -19,6 +19,8 @@ struct BoxView: View {
 
     @State private var hasButton = false
 
+    @Environment(\.colorScheme) private var colorScheme
+
     var body: some View {
         Form {
             createBoxView(basedOn: (hasLink, hasButton))
@@ -42,14 +44,8 @@ struct BoxView: View {
             GroupBox(
                 content: {
                     TextField("Write the desired title", text: $boxTitle)
-                        .padding()
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 4)
-                                .stroke(
-                                    Color.white,
-                                    lineWidth: 1
-                                )
-                        }
+                        .padding(.all, 8)
+                        .textFieldDefaultOverlay(basedOn: colorScheme)
                 }, label: {
                     Text("Title")
                 }
@@ -59,6 +55,7 @@ struct BoxView: View {
                 content: {
                     TextField("Write the desired subtitle", text: $boxSubtitle)
                         .padding(.all, 8)
+                        .textFieldDefaultOverlay(basedOn: colorScheme)
                 }, label: {
                     Text("Subtitle")
                 }
@@ -188,6 +185,15 @@ extension Warp.BoxStyle: CaseIterable {
 private extension Binding<Bool> {
     func defaultAnimation() -> Binding<Bool> {
         animation(.smooth)
+    }
+}
+
+private extension View {
+    func textFieldDefaultOverlay(basedOn colorScheme: ColorScheme) -> some View {
+        overlay {
+            RoundedRectangle(cornerRadius: 4)
+                .stroke(colorScheme == .dark ? Color.white: Color.gray.opacity(0.5), lineWidth: 1)
+        }
     }
 }
 
