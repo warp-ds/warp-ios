@@ -12,26 +12,62 @@ struct BoxView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             ForEach(Warp.BoxStyle.allCases, id: \.self) { style in
+    @ViewBuilder
+    private func createBoxView(basedOn state: (hasLink: Bool, hasButton: Bool)) -> some View {
+        lazy var linkProvider: Warp.Box.ButtonConstructor = {
+            (
+                title: "Link",
+                action: {
+                    UIApplication.shared.open(URL(string: "https://github.com/warp-ds/warp-ios")!)
+                }
+            )
+        }()
+
+        lazy var buttonProvider: Warp.Box.ButtonConstructor = {
+            (
+                title: "Click me!",
+                action: {
+                    // no-op
+                }
+            )
+        }()
+
+        switch state {
+            case (true, true):
                 Warp.Box(
                     style: style,
-                    title: "Title",
-                    subtitle: "Use this variant to call extra attention to useful, contextual information.",
+                    title: boxTitle,
+                    subtitle: boxSubtitle,
+                    link: linkProvider,
+                    button: buttonProvider
+                )
+
+            case (true, false):
+                Warp.Box(
+                    style: style,
+                    title: boxTitle,
+                    subtitle: boxSubtitle,
+                    link: linkProvider,
+                    button: nil
+                )
+
+            case (false, true):
+                Warp.Box(
+                    style: style,
+                    title: boxTitle,
+                    subtitle: boxSubtitle,
+                    link: nil,
+                    button: buttonProvider
+                )
+
+            case (false, false):
+                Warp.Box(
+                    style: style,
+                    title: boxTitle,
+                    subtitle: boxSubtitle,
                     link: nil,
                     button: nil
                 )
-                .padding()
-            }
-
-            ForEach(Warp.BoxStyle.allCases, id: \.self) { style in
-                Warp.Box(
-                    style: style,
-                    title: "Title",
-                    subtitle: "Information",
-                    link: (title: "Link to more information", action: { print("Link") }),
-                    button: (title: "Button", action: { print("Button") })
-                )
-                .padding()
-            }
         }
     }
 }
