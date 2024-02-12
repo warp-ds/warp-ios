@@ -46,6 +46,11 @@ extension Warp.AlertStyle: CaseIterable {
         .critical,
         .success
     ]
+private extension Binding<Bool> {
+    func defaultAnimation() -> Binding<Bool> {
+        animation(.bouncy)
+    }
+}
 }
 
 #Preview {
