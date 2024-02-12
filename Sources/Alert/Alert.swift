@@ -131,6 +131,7 @@ extension Warp {
             VStack {
                 Spacer()
                     .frame(height: 17)
+
                 Image(systemName: style.tooltipImageName)
                     .renderingMode(.template)
                     .frame(width: 16, height: 16)
