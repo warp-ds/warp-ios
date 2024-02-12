@@ -9,6 +9,16 @@ import SwiftUI
 import Warp
 
 struct BoxView: View {
+    @State private var style: Warp.BoxStyle = .info
+
+    @State private var boxTitle = "Title"
+
+    @State private var boxSubtitle = "Use this variant to call extra attention to useful, contextual information."
+
+    @State private var hasLink = false
+
+    @State private var hasButton = false
+
     var body: some View {
         Form {
             createBoxView(basedOn: (hasLink, hasButton))
