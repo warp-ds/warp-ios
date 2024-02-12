@@ -11,6 +11,8 @@ import Warp
 struct BoxView: View {
     @State private var style: Warp.BoxStyle = .info
 
+    @State private var shouldShowIcon = true
+
     @State private var boxTitle = "Title"
 
     @State private var boxSubtitle = "Use this variant to call extra attention to useful, contextual information."
@@ -23,144 +25,137 @@ struct BoxView: View {
 
     var body: some View {
         Form {
-            createBoxView(basedOn: (hasLink, hasButton))
-                .padding(.top)
-                .padding(.bottom, 6)
+            VStack {
+                createBoxView(basedOn: (hasLink, hasButton))
+                    .padding(.top)
+                    .padding(.bottom, 6)
 
-            GroupBox(
-                content: {
-                    Picker("Pick your box style please", selection: $style.animation(.easeIn)) {
-                        ForEach(Warp.BoxStyle.allCases, id: \.self) { style in
-                            Text(style.styleName)
+                GroupBox(
+                    content: {
+                        Picker("Pick your box style please", selection: $style.animation(.easeIn)) {
+                            ForEach(Warp.BoxStyle.allCases, id: \.self) { style in
+                                Text(style.styleName)
+                            }
                         }
+                        .pickerStyle(.segmented)
+                        .defaultPadding()
+                    }, label: {
+                        Text("Style")
                     }
-                    .pickerStyle(.segmented)
-                    .padding()
-                }, label: {
-                    Text("Style")
-                }
-            )
+                )
 
-            GroupBox(
-                content: {
-                    TextField("Write the desired title", text: $boxTitle)
-                        .padding(.all, 8)
-                        .textFieldDefaultOverlay(basedOn: colorScheme)
-                }, label: {
-                    Text("Title")
-                }
-            )
+                GroupBox(
+                    content: {
+                        TextField("Write the desired title", text: $boxTitle)
+                            .defaultPadding()
+                            .textFieldDefaultOverlay(basedOn: colorScheme)
+                    }, label: {
+                        Text("Title")
+                    }
+                )
 
-            GroupBox(
-                content: {
-                    TextField("Write the desired subtitle", text: $boxSubtitle)
-                        .padding(.all, 8)
-                        .textFieldDefaultOverlay(basedOn: colorScheme)
-                }, label: {
-                    Text("Subtitle")
-                }
-            )
+                GroupBox(
+                    content: {
+                        Toggle(isOn: $shouldShowIcon.animation(.bouncy)) {
+                            HStack {
+                                Text(shouldShowIcon ? "Hide icon": "Show icon")
 
-            GroupBox(
-                content: {
-                    let buttonStaticText = "link"
-
-                    Toggle(isOn: $hasLink.defaultAnimation()) {
-                        HStack {
-                            let prependStaticText = !hasLink ? "Add": "Remove"
-
-                            Text(prependStaticText + " " + buttonStaticText)
-
-                            Spacer()
+                                Spacer()
+                            }
                         }
+                        .defaultPadding()
+                    }, label: {
+                        Text("Tool tip icon")
                     }
-                    .padding()
-                }, label: {
-                    Text("Link")
-                }
-            )
+                )
 
-            GroupBox(
-                content: {
-                    let buttonStaticText = "button"
+                GroupBox(
+                    content: {
+                        TextField("Write the desired subtitle", text: $boxSubtitle)
+                            .defaultPadding()
+                            .textFieldDefaultOverlay(basedOn: colorScheme)
+                    }, label: {
+                        Text("Subtitle")
+                    }
+                )
 
-                    Toggle(isOn: $hasButton.defaultAnimation()) {
-                        HStack {
-                            let prependStaticText = !hasButton ? "Add": "Remove"
+                GroupBox(
+                    content: {
+                        Toggle(isOn: $hasLink.defaultAnimation()) {
+                            HStack {
+                                let prependStaticText = !hasLink ? "Add": "Remove"
 
-                            Text(prependStaticText + " " + buttonStaticText)
+                                Text(prependStaticText + " link")
 
-                            Spacer()
+                                Spacer()
+                            }
                         }
+                        .defaultPadding()
+                    }, label: {
+                        Text("Link")
                     }
-                    .padding()
-                }, label: {
-                    Text("Button")
-                }
-            )
+                )
+
+                GroupBox(
+                    content: {
+                        Toggle(isOn: $hasButton.defaultAnimation()) {
+                            HStack {
+                                let prependStaticText = !hasButton ? "Add": "Remove"
+
+                                Text(prependStaticText + " button")
+
+                                Spacer()
+                            }
+                        }
+                        .defaultPadding()
+                    }, label: {
+                        Text("Button")
+                    }
+                )
+            }
         }
     }
 
-    @ViewBuilder
     private func createBoxView(basedOn state: (hasLink: Bool, hasButton: Bool)) -> some View {
-        lazy var linkProvider: Warp.Box.ButtonConstructor = {
-            (
-                title: "Link",
-                action: {
-                    UIApplication.shared.open(URL(string: "https://github.com/warp-ds/warp-ios")!)
-                }
-            )
+        let linkProvider: Warp.Box.ButtonConstructor? = {
+            if state.hasLink {
+                return (
+                    title: "Link",
+                    action: {
+                        UIApplication.shared.open(URL(string: "https://github.com/warp-ds/warp-ios")!)
+                    }
+                )
+            }
+            
+            return nil
         }()
 
-        lazy var buttonProvider: Warp.Box.ButtonConstructor = {
-            (
-                title: "Click me!",
-                action: {
-                    // no-op
-                }
-            )
+        let buttonProvider: Warp.Box.ButtonConstructor? = {
+            if state.hasButton {
+                return (
+                    title: "Click me!",
+                    action: {
+                        // no-op
+                    }
+                )
+            }
+
+            return nil
         }()
 
         let style = style
         let title = boxTitle.isEmpty ? nil: boxTitle
+        let shouldShowToolTipImage = shouldShowIcon
+        let boxSubtitle = boxSubtitle
 
-        switch state {
-            case (true, true):
-                Warp.Box(
-                    style: style,
-                    title: title,
-                    subtitle: boxSubtitle,
-                    link: linkProvider,
-                    button: buttonProvider
-                )
-
-            case (true, false):
-                Warp.Box(
-                    style: style,
-                    title: title,
-                    subtitle: boxSubtitle,
-                    link: linkProvider,
-                    button: nil
-                )
-
-            case (false, true):
-                Warp.Box(
-                    style: style,
-                    title: title,
-                    subtitle: boxSubtitle,
-                    link: nil,
-                    button: buttonProvider
-                )
-
-            case (false, false):
-                Warp.Box(
-                    style: style,
-                    title: title,
-                    subtitle: boxSubtitle,
-                    link: nil,
-                    button: nil
-                )
-        }
+        return Warp.Box(
+            style: style,
+            title: title,
+            shouldShowToolTipImage: shouldShowToolTipImage,
+            subtitle: boxSubtitle,
+            link: linkProvider,
+            button: buttonProvider
+        )
     }
 }
 
@@ -197,6 +192,10 @@ private extension View {
             RoundedRectangle(cornerRadius: 4)
                 .stroke(colorScheme == .dark ? Color.white: Color.gray.opacity(0.5), lineWidth: 1)
         }
+    }
+
+    func defaultPadding() -> some View {
+        padding(.all, 8)
     }
 }
 
