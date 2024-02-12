@@ -10,6 +10,20 @@ import SwiftUI
 import Warp
 
 struct AlertView: View {
+    @State private var style: Warp.AlertStyle = .info
+
+    @State private var alertTitle = "Title"
+
+    @State private var alertSubtitle = "Use this variant to call extra attention to useful, contextual information."
+
+    @State private var hasLink = false
+
+    @State private var hasPrimaryButton = false
+
+    @State private var hasSecondaryButton = false
+
+    @Environment(\.colorScheme) private var colorScheme
+
     var body: some View {
         ScrollView {
             VStack {
