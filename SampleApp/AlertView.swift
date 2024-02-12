@@ -11,15 +11,83 @@ import Warp
 
 struct AlertView: View {
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            ForEach(Warp.AlertStyle.allCases, id: \.self) { style in
-                Warp.Alert(
-                    style: style,
-                    title: "Title",
-                    subtitle: "Use this variant to call extra attention to useful, contextual information.",
-                    link: nil,
-                    primaryButton: nil,
-                    secondaryButton: nil
+        ScrollView {
+            VStack {
+                createAlertView(basedOn: (hasLink, hasPrimaryButton, hasSecondaryButton))
+                    .padding(.top)
+                    .padding(.bottom, 6)
+
+                GroupBox(
+                    content: {
+                        Picker("Pick your box style please", selection: $style.animation(.smooth)) {
+                            ForEach(Warp.AlertStyle.allCases, id: \.self) { style in
+                                Text(style.styleName)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .defaultPadding()
+                    }, label: {
+                        Text("Style")
+                    }
+                )
+
+                GroupBox(
+                    content: {
+                        TextField("Write the desired title", text: $alertTitle)
+                            .defaultPadding()
+                            .textFieldDefaultOverlay(basedOn: colorScheme)
+                    }, label: {
+                        Text("Title")
+                    }
+                )
+
+                GroupBox(
+                    content: {
+                        TextField("Write the desired subtitle", text: $alertSubtitle)
+                            .defaultPadding()
+                            .textFieldDefaultOverlay(basedOn: colorScheme)
+                    }, label: {
+                        Text("Subtitle")
+                    }
+                )
+
+                GroupBox(
+                    content: {
+                        Toggle(isOn: $hasLink.defaultAnimation()) {
+                            createToggleLabelView(hasValue: hasLink, tag: "link")
+                        }
+                        .defaultPadding()
+                    }, label: {
+                        Text("Link")
+                    }
+                )
+
+                GroupBox(
+                    content: {
+                        Toggle(isOn: $hasPrimaryButton.defaultAnimation()) {
+                            createToggleLabelView(hasValue: hasPrimaryButton, tag: "primary button")
+                        }
+                        .defaultPadding()
+                    }, label: {
+                        Text("Primary button")
+                    }
+                )
+
+                GroupBox(
+                    content: {
+                        Toggle(isOn: $hasSecondaryButton) {
+                            createToggleLabelView(hasValue: hasSecondaryButton, tag: "secondary button")
+                        }
+                        .defaultPadding()
+                    }, label: {
+                        Text("Secondary button")
+                    }
+                )
+            }
+            .padding(.horizontal, 20)
+        }
+    }
+
     private func createAlertView(
         basedOn state: (hasLink: Bool, hasPrimaryButton: Bool, hasSecondaryButton: Bool)
     ) -> some View {
@@ -57,7 +125,6 @@ struct AlertView: View {
                         // no-op
                     }
                 )
-                .padding()
             }
 
             return nil
