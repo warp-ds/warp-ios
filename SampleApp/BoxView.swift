@@ -121,11 +121,14 @@ struct BoxView: View {
             )
         }()
 
+        let style = style
+        let title = boxTitle.isEmpty ? nil: boxTitle
+
         switch state {
             case (true, true):
                 Warp.Box(
                     style: style,
-                    title: boxTitle,
+                    title: title,
                     subtitle: boxSubtitle,
                     link: linkProvider,
                     button: buttonProvider
@@ -134,7 +137,7 @@ struct BoxView: View {
             case (true, false):
                 Warp.Box(
                     style: style,
-                    title: boxTitle,
+                    title: title,
                     subtitle: boxSubtitle,
                     link: linkProvider,
                     button: nil
@@ -143,7 +146,7 @@ struct BoxView: View {
             case (false, true):
                 Warp.Box(
                     style: style,
-                    title: boxTitle,
+                    title: title,
                     subtitle: boxSubtitle,
                     link: nil,
                     button: buttonProvider
@@ -152,7 +155,7 @@ struct BoxView: View {
             case (false, false):
                 Warp.Box(
                     style: style,
-                    title: boxTitle,
+                    title: title,
                     subtitle: boxSubtitle,
                     link: nil,
                     button: nil
