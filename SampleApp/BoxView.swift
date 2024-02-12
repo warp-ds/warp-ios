@@ -25,6 +25,22 @@ struct BoxView: View {
                     Text("Style")
                 }
             )
+
+            GroupBox(
+                content: {
+                    TextField("Write the desired title", text: $boxTitle)
+                        .padding()
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(
+                                    Color.white,
+                                    lineWidth: 1
+                                )
+                        }
+                }, label: {
+                    Text("Title")
+                }
+            )
     @ViewBuilder
     private func createBoxView(basedOn state: (hasLink: Bool, hasButton: Bool)) -> some View {
         lazy var linkProvider: Warp.Box.ButtonConstructor = {
