@@ -24,7 +24,7 @@ struct BoxView: View {
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
-        Form {
+        ScrollView {
             VStack {
                 createBoxView(basedOn: (hasLink, hasButton))
                     .padding(.top)
@@ -113,6 +113,7 @@ struct BoxView: View {
                     }
                 )
             }
+            .padding(.horizontal, 20)
         }
     }
 
