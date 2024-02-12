@@ -12,6 +12,19 @@ struct BoxView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             ForEach(Warp.BoxStyle.allCases, id: \.self) { style in
+            GroupBox(
+                content: {
+                    Picker("Pick your box style please", selection: $style.animation(.easeIn)) {
+                        ForEach(Warp.BoxStyle.allCases, id: \.self) { style in
+                            Text(style.styleName)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .padding()
+                }, label: {
+                    Text("Style")
+                }
+            )
     @ViewBuilder
     private func createBoxView(basedOn state: (hasLink: Bool, hasButton: Bool)) -> some View {
         lazy var linkProvider: Warp.Box.ButtonConstructor = {
