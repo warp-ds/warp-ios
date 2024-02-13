@@ -90,6 +90,11 @@ struct ContentView: View {
                             .padding()
                     }
                     Divider()
+                    NavigationLink(destination: BroadcastView()) {
+                        Text("WarpBroadcast")
+                            .padding()
+                    }
+                    Divider()
                     Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
                         .font(.caption2)
                 }
