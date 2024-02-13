@@ -49,11 +49,11 @@ extension Warp {
         }
 
         public var body: some View {
-            contentView
-            .overlay(
+            ZStack {
                 RoundedRectangle(cornerRadius: broadcastCornerRadius)
-                    .stroke(colorProvider.broadcastBorder, lineWidth: 4)
-            )
+                    .stroke(colorProvider.broadcastBorderSubtle, lineWidth: 4)
+                contentView
+            }
             .frame(maxWidth: .infinity)
             .background(colorProvider.broadcastBackground)
             .cornerRadius(broadcastCornerRadius)
@@ -67,19 +67,23 @@ extension Warp {
 
         private var contentView: some View {
             HStack(spacing: 0) {
-                Image(systemName: "exclamationmark.triangle.fill")
-                    .renderingMode(.template)
-                    .foregroundColor(colorProvider.broadcastIcon)
-
-                Text(title, style: .body)
-                    .padding(.leading, 8)
-                    .foregroundStyle(colorProvider.broadcastText)
-
-                Spacer()
-
-                Image("icon-close", bundle: .module)
+                colorProvider.broadcastBorder
+                    .frame(width: 4)
+                HStack(spacing: 0) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .renderingMode(.template)
+                        .foregroundColor(colorProvider.broadcastIcon)
+                    
+                    Text(title, style: .body)
+                        .padding(.leading, 8)
+                        .foregroundStyle(colorProvider.broadcastText)
+                    
+                    Spacer()
+                    
+                    Image("icon-close", bundle: .module)
+                }
+                .padding(16)
             }
-            .padding(16)
         }
         
         private var leftLineView: some View {
