@@ -145,7 +145,7 @@ struct BoxView: View {
         }()
 
         let style = style
-        let title = boxTitle.isEmpty ? nil: boxTitle
+        let title = boxTitle
         let shouldShowToolTipImage = shouldShowIcon
         let boxSubtitle = boxSubtitle
 
