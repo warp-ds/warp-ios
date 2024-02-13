@@ -2,7 +2,7 @@ import SwiftUI
 
 extension Warp {
     public struct BroadcastViewModifier: ViewModifier {
-        let title: String
+        let text: String
         let edge: BroadcastEdge
         private let horizontalPadding: Double = 16
         @Binding var isPresented: Bool
@@ -21,7 +21,7 @@ extension Warp {
         func warpBroadcastOverlay() -> some View {
             if isPresented {
                 Warp.Broadcast(
-                    title: title,
+                    text: text,
                     broadcastEdge: edge,
                     isPresented: $isPresented
                 )
@@ -34,13 +34,13 @@ extension Warp {
 
 public extension View {
     func warpBroadcast(
-        title: String,
+        text: String,
         edge: Warp.BroadcastEdge,
         isPresented: Binding<Bool>
     ) -> some View {
         self.modifier(
             Warp.BroadcastViewModifier(
-                title: title,
+                text: text,
                 edge: edge,
                 isPresented: isPresented
             )

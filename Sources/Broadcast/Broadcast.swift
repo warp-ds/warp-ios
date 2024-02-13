@@ -19,7 +19,7 @@ extension Warp {
     public struct Broadcast: View {
 
         /// Text that will be shown in broadcast
-        let title: String
+        let text: String
 
         /// Edge from where the broadcast is presented
         let broadcastEdge: Warp.BroadcastEdge
@@ -31,29 +31,31 @@ extension Warp {
         let colorProvider: ColorProvider
 
         /**
-         - Parameter title: String to display in the `Broadcast`
+         - Parameter text: String to display in the `Broadcast`
          - Parameter broadcastEdge: The `BroadcastEdge` on where to present the `Broadcast`
          - Parameter isPresented: Is the `Broadcast` presented or not
          - Parameter colorProvider: ColorProvider used for styling the `Broadcast`, default value is read from `Config`
          */
         public init(
-            title: String,
+            text: String,
             broadcastEdge: Warp.BroadcastEdge,
             isPresented: Binding<Bool>,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
-            self.title = title
+            self.text = text
             self.broadcastEdge = broadcastEdge
             self._isPresented = isPresented
             self.colorProvider = colorProvider
         }
 
         public var body: some View {
-            ZStack {
-                RoundedRectangle(cornerRadius: broadcastCornerRadius)
-                    .stroke(colorProvider.broadcastBorderSubtle, lineWidth: 4)
-                contentView
-            }
+            contentView
+            .overlay(
+                HStack(spacing: 0) {
+                    RoundedRectangle(cornerRadius: broadcastCornerRadius)
+                        .stroke(colorProvider.broadcastBorderSubtle, lineWidth: 4)
+                }
+            )
             .frame(maxWidth: .infinity)
             .background(colorProvider.broadcastBackground)
             .cornerRadius(broadcastCornerRadius)
@@ -69,12 +71,14 @@ extension Warp {
             HStack(spacing: 0) {
                 colorProvider.broadcastBorder
                     .frame(width: 4)
-                HStack(spacing: 0) {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .renderingMode(.template)
-                        .foregroundColor(colorProvider.broadcastIcon)
+                HStack(alignment: .top, spacing: 0) {
+                    VStack {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .renderingMode(.template)
+                            .foregroundColor(colorProvider.broadcastIcon)
+                    }
                     
-                    Text(title, style: .body)
+                    Text(text, style: .body)
                         .padding(.leading, 8)
                         .foregroundStyle(colorProvider.broadcastText)
                     
@@ -87,14 +91,14 @@ extension Warp {
         }
         
         private var leftLineView: some View {
-            return colorProvider.alertWarningIcon
+            return colorProvider.broadcastBorder
         }
     }
 }
 
 #Preview {
     Warp.Broadcast(
-        title: "This is a success broadcast",
+        text: "This is a success broadcast",
         broadcastEdge: .top,
         isPresented: .constant(true)
     )
