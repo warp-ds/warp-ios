@@ -51,9 +51,11 @@ extension Warp {
         public var body: some View {
             contentView
             .overlay(
-                HStack(spacing: 0) {
+                ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: broadcastCornerRadius)
                         .stroke(colorProvider.broadcastBorderSubtle, lineWidth: 4)
+                    colorProvider.broadcastBorder
+                        .frame(width: 6)
                 }
             )
             .frame(maxWidth: .infinity)
@@ -69,8 +71,6 @@ extension Warp {
 
         private var contentView: some View {
             HStack(spacing: 0) {
-                colorProvider.broadcastBorder
-                    .frame(width: 4)
                 HStack(alignment: .top, spacing: 0) {
                     VStack {
                         Image(systemName: "exclamationmark.triangle.fill")
