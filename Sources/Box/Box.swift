@@ -137,7 +137,15 @@ extension Warp {
 
         @ViewBuilder
         private var toolTipIconView: some View {
-            if shouldShowToolTipImage, title.isAvailableAndNotEmpty {
+            lazy var isTitleAvailableAndNotEmpty = {
+                if let title {
+                    return !title.isEmpty
+                }
+
+                return false
+            }()
+
+            if shouldShowToolTipImage, isTitleAvailableAndNotEmpty {
                 VStack {
                     Image(toolTipImageName, bundle: .module)
                         .renderingMode(.template)
@@ -343,16 +351,6 @@ extension Warp.BoxStyle {
             case .bordered:
                 return colorProvider.boxBorderedText
         }
-    }
-}
-
-extension String? {
-    fileprivate var isAvailableAndNotEmpty: Bool {
-        if let _string = self {
-            return !_string.isEmpty
-        }
-
-        return false
     }
 }
 
