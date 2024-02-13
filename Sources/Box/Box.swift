@@ -53,6 +53,7 @@ extension Warp {
         public func hash(into hasher: inout Hasher) {
             hasher.combine(style)
             hasher.combine(title)
+            hasher.combine(subtitle)
         }
 
         public init(
@@ -136,7 +137,7 @@ extension Warp {
 
         @ViewBuilder
         private var toolTipIconView: some View {
-            if shouldShowToolTipImage {
+            if shouldShowToolTipImage, title.isAvailableAndNotEmpty {
                 VStack {
                     Image(toolTipImageName, bundle: .module)
                         .renderingMode(.template)
@@ -166,7 +167,7 @@ extension Warp {
 
         @ViewBuilder
         private var titleView: some View {
-            if let title {
+            if let title, !title.isEmpty {
                 Text(title, style: .title3)
                     .foregroundColor(style.getTextColor(from: colorProvider))
                     .accessibilityAddTraits(.isHeader)
@@ -342,6 +343,16 @@ extension Warp.BoxStyle {
             case .bordered:
                 return colorProvider.boxBorderedText
         }
+    }
+}
+
+extension String? {
+    fileprivate var isAvailableAndNotEmpty: Bool {
+        if let _string = self {
+            return !_string.isEmpty
+        }
+
+        return false
     }
 }
 
