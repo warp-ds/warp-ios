@@ -35,12 +35,25 @@ extension Warp {
         let colorProvider: ColorProvider
 
         public static func == (lhs: Box, rhs: Box) -> Bool {
-            lhs.style == rhs.style && lhs.title == rhs.title
+            let styleComparison = lhs.style == rhs.style
+            lazy var titleComparison = lhs.title == rhs.title
+            lazy var iconComparison = lhs.shouldShowToolTipImage == rhs.shouldShowToolTipImage
+            lazy var subtitleComparison = lhs.subtitle == rhs.subtitle
+            lazy var linkProviderComparison = lhs.linkProvider?.title == rhs.linkProvider?.title
+            lazy var buttonProviderComparison = lhs.buttonProvider?.title == rhs.buttonProvider?.title
+
+            return styleComparison &&
+            titleComparison &&
+            iconComparison &&
+            subtitleComparison &&
+            linkProviderComparison &&
+            buttonProviderComparison
         }
 
         public func hash(into hasher: inout Hasher) {
             hasher.combine(style)
             hasher.combine(title)
+            hasher.combine(subtitle)
         }
 
         public init(
@@ -124,7 +137,15 @@ extension Warp {
 
         @ViewBuilder
         private var toolTipIconView: some View {
-            if shouldShowToolTipImage {
+            lazy var isTitleAvailableAndNotEmpty = {
+                if let title {
+                    return !title.isEmpty
+                }
+
+                return false
+            }()
+
+            if shouldShowToolTipImage, isTitleAvailableAndNotEmpty {
                 VStack {
                     Image(toolTipImageName, bundle: .module)
                         .renderingMode(.template)
@@ -154,7 +175,7 @@ extension Warp {
 
         @ViewBuilder
         private var titleView: some View {
-            if let title {
+            if let title, !title.isEmpty {
                 Text(title, style: .title3)
                     .foregroundColor(style.getTextColor(from: colorProvider))
                     .accessibilityAddTraits(.isHeader)
@@ -174,8 +195,12 @@ extension Warp {
                     action: linkProvider.action,
                     label: {
                         HStack {
-                            Text(linkProvider.title, style: .caption, color: colorProvider.token.textLink)
-                                .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
+                            Text(
+                                linkProvider.title,
+                                style: .caption,
+                                color: colorProvider.token.textLink
+                            )
+                            .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
 
                             Spacer()
                         }
