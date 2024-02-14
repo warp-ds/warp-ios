@@ -33,7 +33,19 @@ extension Warp {
         let colorProvider: ColorProvider
 
         public static func == (lhs: Alert, rhs: Alert) -> Bool {
-            lhs.style == rhs.style && lhs.title == rhs.title
+            let styleComparison = lhs.style == rhs.style
+            lazy var titleComparison = lhs.title == rhs.title
+            lazy var subtitleComparison = lhs.subtitle == rhs.subtitle
+            lazy var linkProviderComparison = lhs.linkProvider?.title == rhs.linkProvider?.title
+            lazy var primaryButtonProviderComparison = lhs.primaryButtonProvider?.title == rhs.primaryButtonProvider?.title
+            lazy var secondaryButtonProviderComparison = lhs.secondaryButtonProvider?.title == rhs.secondaryButtonProvider?.title
+
+            return styleComparison &&
+            titleComparison &&
+            subtitleComparison &&
+            linkProviderComparison &&
+            primaryButtonProviderComparison &&
+            secondaryButtonProviderComparison
         }
 
         public func hash(into hasher: inout Hasher) {
@@ -105,7 +117,7 @@ extension Warp {
                 // Border with rounded edges.
                 .overlay(
                     RoundedRectangle(cornerRadius: alertCornerRadius)
-                        .stroke(style.getBorderColor(from: colorProvider), lineWidth: 1)
+                        .stroke(style.getBorderColor(from: colorProvider), lineWidth: 2)
                 )
         }
 
@@ -177,8 +189,12 @@ extension Warp {
                     action: linkProvider.action,
                     label: {
                         HStack {
-                            Text(linkProvider.title, style: .caption)
-                                .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
+                            Text(
+                                linkProvider.title,
+                                style: .caption,
+                                color: colorProvider.token.textLink
+                            )
+                            .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
 
                             Spacer()
                         }
