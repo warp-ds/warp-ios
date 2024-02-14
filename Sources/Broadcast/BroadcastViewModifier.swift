@@ -18,7 +18,7 @@ extension Warp {
         }
 
         @ViewBuilder
-        func warpBroadcastOverlay() -> some View {
+        private func warpBroadcastOverlay() -> some View {
             if isPresented {
                 Warp.Broadcast(
                     text: text,
@@ -38,7 +38,7 @@ public extension View {
         edge: Warp.BroadcastEdge,
         isPresented: Binding<Bool>
     ) -> some View {
-        self.modifier(
+        modifier(
             Warp.BroadcastViewModifier(
                 text: text,
                 edge: edge,

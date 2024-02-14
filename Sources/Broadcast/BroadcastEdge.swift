@@ -4,7 +4,7 @@ extension Warp {
     /**
         Enum describing  which edge the Broadcast view will appear from/disappear to
      */
-    public enum BroadcastEdge: CaseIterable {
+    public enum BroadcastEdge: CaseIterable, Equatable {
         case top
         case bottom
 

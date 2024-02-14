@@ -50,44 +50,52 @@ extension Warp {
 
         public var body: some View {
             contentView
-            .overlay(
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: broadcastCornerRadius)
-                        .stroke(colorProvider.broadcastBorderSubtle, lineWidth: 4)
-                    colorProvider.broadcastBorder
-                        .frame(width: 6)
+                .overlay(
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: broadcastCornerRadius)
+                            .stroke(colorProvider.broadcastBorderSubtle, lineWidth: 4)
+                        colorProvider.broadcastBorder
+                            .frame(width: 6)
+                    }
+                )
+                .frame(maxWidth: .infinity)
+                .background(colorProvider.broadcastBackground)
+                .cornerRadius(broadcastCornerRadius)
+                .transition(.move(edge: broadcastEdge.asEdge).combined(with: .opacity))
+                .onTapGesture {
+                    withAnimation {
+                        isPresented = false
+                    }
                 }
-            )
-            .frame(maxWidth: .infinity)
-            .background(colorProvider.broadcastBackground)
-            .cornerRadius(broadcastCornerRadius)
-            .transition(AnyTransition.move(edge: broadcastEdge.asEdge).combined(with: .opacity))
-            .onTapGesture {
-                withAnimation {
-                    isPresented.toggle()
-                }
-            }
         }
 
         private var contentView: some View {
-            HStack(spacing: 0) {
-                HStack(alignment: .top, spacing: 0) {
-                    VStack {
-                        Image(systemName: "exclamationmark.triangle.fill")
-                            .renderingMode(.template)
-                            .foregroundColor(colorProvider.broadcastIcon)
-                    }
-                    
-                    Text(text, style: .body)
-                        .padding(.leading, 8)
-                        .foregroundStyle(colorProvider.broadcastText)
-                    
-                    Spacer()
-                    
-                    Image("icon-close", bundle: .module)
-                }
-                .padding(16)
+            HStack(alignment: .top, spacing: 0) {
+                warningImageView
+                
+                textView
+                
+                Spacer()
+                
+                closeView
             }
+            .padding(16)
+        }
+        
+        private var warningImageView: some View {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .renderingMode(.template)
+                .foregroundColor(colorProvider.broadcastIcon)
+        }
+        
+        private var textView: some View {
+            Text(text, style: .body)
+                .padding(.leading, 8)
+                .foregroundStyle(colorProvider.broadcastText)
+        }
+        
+        private var closeView: some View {
+            Image("icon-close", bundle: .module)
         }
         
         private var leftLineView: some View {
