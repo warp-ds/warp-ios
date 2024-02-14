@@ -189,8 +189,12 @@ extension Warp {
                     action: linkProvider.action,
                     label: {
                         HStack {
-                            Text(linkProvider.title, style: .caption)
-                                .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
+                            Text(
+                                linkProvider.title,
+                                style: .caption,
+                                color: colorProvider.token.textLink
+                            )
+                            .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
 
                             Spacer()
                         }
