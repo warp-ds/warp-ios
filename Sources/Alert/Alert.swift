@@ -117,7 +117,7 @@ extension Warp {
                 // Border with rounded edges.
                 .overlay(
                     RoundedRectangle(cornerRadius: alertCornerRadius)
-                        .stroke(style.getBorderColor(from: colorProvider), lineWidth: 1)
+                        .stroke(style.getBorderColor(from: colorProvider), lineWidth: 2)
                 )
         }
 
