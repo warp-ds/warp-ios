@@ -3,6 +3,21 @@ import Warp
 
             GroupBox(
                 content: {
+                    Toggle(isOn: $buttonHasIcon.animation(.bouncy)) {
+                        HStack {
+                            Text(buttonHasIcon ? "Hide icon": "Show icon")
+
+                            Spacer()
+                        }
+                    }
+                    .defaultPadding()
+                }, label: {
+                    Text("Icon")
+                }
+            )
+
+            GroupBox(
+                content: {
                     Picker("Pick your box style please", selection: $buttonSize.animation(.interpolatingSpring)) {
                         ForEach(Warp.ButtonSize.allCases, id: \.self) { type in
                             Text(type.name)
