@@ -1,6 +1,21 @@
 import SwiftUI
 import Warp
 
+struct ButtonView: View {
+    @State private var type: Warp.ButtonType = .primary
+
+    @State private var buttonTitle = "Title"
+
+    @State private var buttonHasIcon = false
+
+    @State private var buttonSize: Warp.ButtonSize = .big
+
+    @State private var isButtonEnabled = true
+
+    @State private var isButtonFullWidth = false
+
+    @Environment(\.colorScheme) private var colorScheme
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             createButton()
