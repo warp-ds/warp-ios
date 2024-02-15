@@ -12,6 +12,12 @@ extension Warp.ButtonType: CaseIterable {
         .utilityTertiary,
         .utilityOverlay
     ]
+
+    fileprivate var name: String {
+        let _name = String(describing: self)
+
+        return _name.capitalized
+    }
 }
 
 struct ButtonView: View {
