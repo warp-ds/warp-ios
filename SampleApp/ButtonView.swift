@@ -3,6 +3,20 @@ import Warp
 
             GroupBox(
                 content: {
+                    Picker("Pick your box style please", selection: $buttonSize.animation(.interpolatingSpring)) {
+                        ForEach(Warp.ButtonSize.allCases, id: \.self) { type in
+                            Text(type.name)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .defaultPadding()
+                }, label: {
+                    Text("Size")
+                }
+            )
+
+            GroupBox(
+                content: {
                     Toggle(isOn: $isButtonEnabled.defaultAnimation()) {
                         HStack {
                             Text(isButtonEnabled ? "Disable button": "Enable button")
