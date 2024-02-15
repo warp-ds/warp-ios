@@ -1,6 +1,19 @@
 import SwiftUI
 import Warp
 
+    private func createButton() -> some View {
+        Warp.Button.create(
+            for: type,
+            title: buttonTitle,
+            icon: buttonHasIcon ? Image(systemName: "plus"): nil,
+            action: {},
+            size: buttonSize,
+            isEnabled: isButtonEnabled,
+            fullWidth: isButtonFullWidth
+        )
+    }
+}
+
 extension Warp.ButtonType: CaseIterable {
     public static var allCases: [Warp.ButtonType] = [
         .primary,
