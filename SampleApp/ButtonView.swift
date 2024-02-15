@@ -41,6 +41,12 @@ extension Warp.ButtonSize: CaseIterable {
         return _name.capitalized
     }
 }
+
+private extension Binding<Bool> {
+    func defaultAnimation() -> Binding<Bool> {
+        animation(.smooth)
+    }
+}
         }
     }
 
