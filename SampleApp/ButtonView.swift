@@ -3,6 +3,21 @@ import Warp
 
             GroupBox(
                 content: {
+                    Toggle(isOn: $isButtonEnabled.defaultAnimation()) {
+                        HStack {
+                            Text(isButtonEnabled ? "Disable button": "Enable button")
+
+                            Spacer()
+                        }
+                    }
+                    .defaultPadding()
+                }, label: {
+                    Text("Enabled/Disable")
+                }
+            )
+
+            GroupBox(
+                content: {
                     Toggle(isOn: $isButtonFullWidth.defaultAnimation()) {
                         HStack {
                             Text(isButtonFullWidth ? "Size to fit button": "Full width button")
