@@ -3,6 +3,16 @@ import Warp
 
             GroupBox(
                 content: {
+                    TextField("Write the desired title", text: $buttonTitle)
+                        .defaultPadding()
+                        .textFieldDefaultOverlay(basedOn: colorScheme)
+                }, label: {
+                    Text("Title")
+                }
+            )
+
+            GroupBox(
+                content: {
                     Toggle(isOn: $buttonHasIcon.animation(.bouncy)) {
                         HStack {
                             Text(buttonHasIcon ? "Hide icon": "Show icon")
