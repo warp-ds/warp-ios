@@ -20,15 +20,6 @@ extension Warp.ButtonType: CaseIterable {
     }
 }
 
-struct ButtonView: View {
-    var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack (alignment: .leading) {
-                ForEach(Warp.ButtonType.allCases, id: \.self) { buttonType in
-                    createView(for: buttonType)
-                }
-            }
-            .padding(.horizontal)
 extension Warp.ButtonSize: CaseIterable {
     public static var allCases: [Warp.ButtonSize] = [
         .big,
@@ -47,37 +38,17 @@ private extension Binding<Bool> {
         animation(.smooth)
     }
 }
+
+private extension View {
+    func textFieldDefaultOverlay(basedOn colorScheme: ColorScheme) -> some View {
+        overlay {
+            RoundedRectangle(cornerRadius: 4)
+                .stroke(colorScheme == .dark ? Color.white: Color.gray.opacity(0.5), lineWidth: 1)
         }
     }
 
-    private func createView(for buttonType: Warp.ButtonType) -> some View {
-        let name = String(describing: buttonType)
-        let capitalizedName = name.capitalized
-
-        return GroupBox(
-            content: {
-                VStack {
-                    // Normal
-                    Warp.Button.create(
-                        for: buttonType,
-                        title: "\(capitalizedName) button",
-                        icon: Image(systemName: "plus"),
-                        action: {}
-                    )
-
-
-                    // Disabled
-                    Warp.Button.create(
-                        for: buttonType,
-                        title: "Disabled \(name) button",
-                        action: {},
-                        isEnabled: false
-                    )
-                }
-            }, label: {
-                Text(capitalizedName)
-            }
-        )
+    func defaultPadding() -> some View {
+        padding(.all, 8)
     }
 }
 
