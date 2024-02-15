@@ -3,6 +3,20 @@ import Warp
 
             GroupBox(
                 content: {
+                    Picker("Pick your box style please", selection: $type.animation(.smooth)) {
+                        ForEach(Warp.ButtonType.allCases, id: \.self) { type in
+                            Text(type.name)
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .defaultPadding()
+                }, label: {
+                    Text("Type")
+                }
+            )
+
+            GroupBox(
+                content: {
                     TextField("Write the desired title", text: $buttonTitle)
                         .defaultPadding()
                         .textFieldDefaultOverlay(basedOn: colorScheme)
