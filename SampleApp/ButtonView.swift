@@ -1,6 +1,24 @@
 import SwiftUI
 import Warp
 
+            GroupBox(
+                content: {
+                    Toggle(isOn: $isButtonFullWidth.defaultAnimation()) {
+                        HStack {
+                            Text(isButtonFullWidth ? "Size to fit button": "Full width button")
+
+                            Spacer()
+                        }
+                    }
+                    .defaultPadding()
+                }, label: {
+                    Text("Button width")
+                }
+            )
+        }
+        .padding(.horizontal, 20)
+    }
+
     private func createButton() -> some View {
         Warp.Button.create(
             for: type,
