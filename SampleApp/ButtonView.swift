@@ -1,6 +1,12 @@
 import SwiftUI
 import Warp
 
+    var body: some View {
+        ScrollView(showsIndicators: false) {
+            createButton()
+                .frame(height: 50)
+                .padding(.vertical)
+
             GroupBox(
                 content: {
                     Picker("Pick your box style please", selection: $type.animation(.smooth)) {
