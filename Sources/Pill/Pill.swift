@@ -45,7 +45,10 @@ extension Warp {
                 onTap()
             } label: {
                 HStack(spacing: 8) {
-                    Text(text, style: textStyle)
+                    Text(text,
+                         style: textStyle,
+                         color: textColor
+                    )
                     if let onClose {
                         SwiftUI.Button {
                             onClose()
@@ -64,6 +67,15 @@ extension Warp {
                     colorProvider: colorProvider
                 )
             )
+        }
+        
+        private var textColor: Color {
+            switch style {
+            case .filter:
+                return colorProvider.pillFilterText
+            case .suggestion:
+                return colorProvider.pillSuggestionText
+            }
         }
         
         private var textStyle: Warp.TextStyle {
