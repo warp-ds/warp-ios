@@ -29,6 +29,18 @@ struct ButtonView: View {
                 }
             }
             .padding(.horizontal)
+extension Warp.ButtonSize: CaseIterable {
+    public static var allCases: [Warp.ButtonSize] = [
+        .big,
+        .small
+    ]
+
+    fileprivate var name: String {
+        let _name = String(describing: self)
+
+        return _name.capitalized
+    }
+}
         }
     }
 
