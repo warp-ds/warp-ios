@@ -14,8 +14,6 @@ struct ButtonView: View {
 
     @State private var isButtonFullWidth = false
 
-    @Environment(\.colorScheme) private var colorScheme
-
     var body: some View {
         ScrollView(showsIndicators: false) {
             createButton()

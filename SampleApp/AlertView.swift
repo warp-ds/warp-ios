@@ -22,8 +22,6 @@ struct AlertView: View {
 
     @State private var hasSecondaryButton = false
 
-    @Environment(\.colorScheme) private var colorScheme
-
     var body: some View {
         ScrollView {
             VStack {
@@ -47,9 +45,8 @@ struct AlertView: View {
 
                 GroupBox(
                     content: {
-                        TextField("Write the desired title", text: $alertTitle)
+                        Warp.TextField(text: $alertTitle)
                             .defaultPadding()
-                            .textFieldDefaultOverlay(basedOn: colorScheme)
                     }, label: {
                         Text("Title")
                     }
@@ -57,9 +54,8 @@ struct AlertView: View {
 
                 GroupBox(
                     content: {
-                        TextField("Write the desired subtitle", text: $alertSubtitle)
+                        Warp.TextField(text: $alertSubtitle)
                             .defaultPadding()
-                            .textFieldDefaultOverlay(basedOn: colorScheme)
                     }, label: {
                         Text("Subtitle")
                     }
@@ -202,13 +198,6 @@ private extension Binding<Bool> {
 }
 
 private extension View {
-    func textFieldDefaultOverlay(basedOn colorScheme: ColorScheme) -> some View {
-        overlay {
-            RoundedRectangle(cornerRadius: 4)
-                .stroke(colorScheme == .dark ? Color.white: Color.gray.opacity(0.5), lineWidth: 1)
-        }
-    }
-
     func defaultPadding() -> some View {
         padding(.all, 8)
     }
