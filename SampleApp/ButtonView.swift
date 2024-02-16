@@ -38,9 +38,8 @@ struct ButtonView: View {
 
             GroupBox(
                 content: {
-                    TextField("Write the desired title", text: $buttonTitle)
+                    Warp.TextField(text: $buttonTitle)
                         .defaultPadding()
-                        .textFieldDefaultOverlay(basedOn: colorScheme)
                 }, label: {
                     Text("Title")
                 }
@@ -160,13 +159,6 @@ private extension Binding<Bool> {
 }
 
 private extension View {
-    func textFieldDefaultOverlay(basedOn colorScheme: ColorScheme) -> some View {
-        overlay {
-            RoundedRectangle(cornerRadius: 4)
-                .stroke(colorScheme == .dark ? Color.white: Color.gray.opacity(0.5), lineWidth: 1)
-        }
-    }
-
     func defaultPadding() -> some View {
         padding(.all, 8)
     }
