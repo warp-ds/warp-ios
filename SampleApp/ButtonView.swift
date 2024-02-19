@@ -17,92 +17,53 @@ struct ButtonView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             createButton()
-                .frame(height: 50)
                 .padding(.vertical)
-
-            GroupBox(
-                content: {
-                    Picker("Pick your box style please", selection: $type.animation(.smooth)) {
-                        ForEach(Warp.ButtonType.allCases, id: \.self) { type in
-                            Text(type.name)
-                        }
+            Divider()
+            HStack {
+                Warp.Text("Type", style: .bodyStrong)
+                Picker("Pick your box style please", selection: $type.animation(.smooth)) {
+                    ForEach(Warp.ButtonType.allCases, id: \.self) { type in
+                        Text(type.name)
                     }
-                    .pickerStyle(.wheel)
-                    .defaultPadding()
-                }, label: {
-                    Text("Type")
                 }
-            )
-
-            GroupBox(
-                content: {
-                    Warp.TextField(text: $buttonTitle)
-                        .defaultPadding()
-                }, label: {
-                    Text("Title")
-                }
-            )
-
-            GroupBox(
-                content: {
-                    Toggle(isOn: $buttonHasIcon.animation(.bouncy)) {
-                        HStack {
-                            Text(buttonHasIcon ? "Hide icon": "Show icon")
-
-                            Spacer()
-                        }
+                .pickerStyle(.wheel)
+            }
+            Divider()
+            HStack {
+                Warp.Text("Title", style: .bodyStrong)
+                Spacer()
+                Warp.TextField(text: $buttonTitle)
+            }
+            Divider()
+            createToggle(binding: $buttonHasIcon, text: ("Hide icon", "Show icon"))
+            Divider()
+            HStack {
+                Warp.Text("Size", style: .bodyStrong)
+                Spacer()
+                Picker("Pick your box style please", selection: $buttonSize.animation(.interpolatingSpring)) {
+                    ForEach(Warp.ButtonSize.allCases, id: \.self) { type in
+                        Text(type.name)
                     }
-                    .defaultPadding()
-                }, label: {
-                    Text("Icon")
                 }
-            )
+                .pickerStyle(.segmented)
+                .padding(.all, 4)
 
-            GroupBox(
-                content: {
-                    Picker("Pick your box style please", selection: $buttonSize.animation(.interpolatingSpring)) {
-                        ForEach(Warp.ButtonSize.allCases, id: \.self) { type in
-                            Text(type.name)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .defaultPadding()
-                }, label: {
-                    Text("Size")
-                }
-            )
-
-            GroupBox(
-                content: {
-                    Toggle(isOn: $isButtonEnabled.defaultAnimation()) {
-                        HStack {
-                            Text(isButtonEnabled ? "Disable button": "Enable button")
-
-                            Spacer()
-                        }
-                    }
-                    .defaultPadding()
-                }, label: {
-                    Text("Enabled/Disable")
-                }
-            )
-
-            GroupBox(
-                content: {
-                    Toggle(isOn: $isButtonFullWidth.defaultAnimation()) {
-                        HStack {
-                            Text(isButtonFullWidth ? "Size to fit button": "Full width button")
-
-                            Spacer()
-                        }
-                    }
-                    .defaultPadding()
-                }, label: {
-                    Text("Button width")
-                }
-            )
+            }
+            Divider()
+            createToggle(binding: $isButtonEnabled, text: ("Disable button", "Enable button"))
+            Divider()
+            createToggle(binding: $isButtonFullWidth, text: ("Size to fit button", "Full width button"))
+            Divider()
         }
+        .navigationBarTitleDisplayMode(.inline)
         .padding(.horizontal, 20)
+    }
+    
+    private func createToggle(binding: Binding<Bool>, text: (true: String, false: String)) -> some View {
+        Toggle(isOn: binding.animation(.smooth)) {
+            Warp.Text(binding.wrappedValue ? text.true: text.false, style: .bodyStrong)
+        }
+        .padding(.trailing, 4)
     }
 
     private func createButton() -> some View {
@@ -147,18 +108,6 @@ extension Warp.ButtonSize: CaseIterable {
         let _name = String(describing: self)
 
         return _name.capitalized
-    }
-}
-
-private extension Binding<Bool> {
-    func defaultAnimation() -> Binding<Bool> {
-        animation(.smooth)
-    }
-}
-
-private extension View {
-    func defaultPadding() -> some View {
-        padding(.all, 8)
     }
 }
 
