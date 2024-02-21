@@ -30,7 +30,7 @@ public struct ColorProvider {
     var avatarBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.blueGray100, darkModeColor: FinnColors.blueGray800)
+            return Color.dynamicColor(defaultColor: FinnColors.gray100, darkModeColor: FinnColors.gray800)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray100)
         }
@@ -49,7 +49,7 @@ public struct ColorProvider {
     var badgeNeutralBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.blueGray100, darkModeColor: FinnColors.blueGray700)
+            return Color.dynamicColor(defaultColor: FinnColors.gray100, darkModeColor: FinnColors.gray700)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray700)
         }
