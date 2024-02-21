@@ -68,16 +68,19 @@ struct ToriColors {
     static let red800 = Color(hex: "#520B18")
     static let red900 = Color(hex: "#27070D")
     
-    static let gray50  = Color(hex: "#FAFAFA")
-    static let gray100 = Color(hex: "#F5F5F5")
-    static let gray200 = Color(hex: "#E6E6E6")
-    static let gray300 = Color(hex: "#D6D6D6")
-    static let gray400 = Color(hex: "#A5A5A5")
-    static let gray500 = Color(hex: "#767676")
-    static let gray600 = Color(hex: "#575757")
-    static let gray700 = Color(hex: "#434343")
-    static let gray800 = Color(hex: "#292929")
-    static let gray900 = Color(hex: "#1A1A1A")
+    static let gray50  = Color(hex: "#F6F6F6")
+    static let gray100 = Color(hex: "#E6E6EB")
+    static let gray200 = Color(hex: "#D1D1D6")
+    static let gray300 = Color(hex: "#BBBBC2")
+    static let gray400 = Color(hex: "#A5A5AD")
+    static let gray500 = Color(hex: "#80808A")
+    static let gray600 = Color(hex: "#5C5C66")
+    static let gray700 = Color(hex: "#47474F")
+    static let gray750 = Color(hex: "#333338")
+    static let gray800 = Color(hex: "#2B2B30")
+    static let gray850 = Color(hex: "#26262B")
+    static let gray900 = Color(hex: "#1B1B1F")
+    static let gray950 = Color(hex: "#121212")
     
     static let white = Color(hex: "#ffffff")
     static let black = Color(hex: "#000000")
@@ -150,16 +153,19 @@ struct ToriUIColors {
     static let red800 = UIColor(hex: "#520B18")
     static let red900 = UIColor(hex: "#27070D")
     
-    static let gray50  = UIColor(hex: "#FAFAFA")
-    static let gray100 = UIColor(hex: "#F5F5F5")
-    static let gray200 = UIColor(hex: "#E6E6E6")
-    static let gray300 = UIColor(hex: "#D6D6D6")
-    static let gray400 = UIColor(hex: "#A5A5A5")
-    static let gray500 = UIColor(hex: "#767676")
-    static let gray600 = UIColor(hex: "#575757")
-    static let gray700 = UIColor(hex: "#434343")
-    static let gray800 = UIColor(hex: "#292929")
-    static let gray900 = UIColor(hex: "#1A1A1A")
+    static let gray50  = UIColor(hex: "#F6F6F6")
+    static let gray100 = UIColor(hex: "#E6E6EB")
+    static let gray200 = UIColor(hex: "#D1D1D6")
+    static let gray300 = UIColor(hex: "#BBBBC2")
+    static let gray400 = UIColor(hex: "#A5A5AD")
+    static let gray500 = UIColor(hex: "#80808A")
+    static let gray600 = UIColor(hex: "#5C5C66")
+    static let gray700 = UIColor(hex: "#47474F")
+    static let gray750 = UIColor(hex: "#333338")
+    static let gray800 = UIColor(hex: "#2B2B30")
+    static let gray850 = UIColor(hex: "#26262B")
+    static let gray900 = UIColor(hex: "#1B1B1F")
+    static let gray950 = UIColor(hex: "#121212")
     
     static let white = UIColor(hex: "#ffffff")
     static let black = UIColor(hex: "#000000")
@@ -252,8 +258,11 @@ public struct ToriColorsView: View {
                                     ToriColors.gray500,
                                     ToriColors.gray600,
                                     ToriColors.gray700,
+                                    ToriColors.gray750,
                                     ToriColors.gray800,
-                                    ToriColors.gray900])
+                                    ToriColors.gray850,
+                                    ToriColors.gray900,
+                                    ToriColors.gray950,])
             }
             .padding(.horizontal)
         }

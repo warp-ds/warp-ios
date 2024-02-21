@@ -57,27 +57,19 @@ struct FinnColors {
     static let red800 = Color(hex: "#681d11")
     static let red900 = Color(hex: "#38140b")
     
-    static let blueGray50  = Color(hex: "#f8fafc")
-    static let blueGray100 = Color(hex: "#f1f4f9")
-    static let blueGray200 = Color(hex: "#e1e6ee")
-    static let blueGray300 = Color(hex: "#c3ccd9")
-    static let blueGray400 = Color(hex: "#9ba8ba")
-    static let blueGray500 = Color(hex: "#6f7d90")
-    static let blueGray600 = Color(hex: "#4d586f")
-    static let blueGray700 = Color(hex: "#3B4353")
-    static let blueGray800 = Color(hex: "#292d38")
-    static let blueGray900 = Color(hex: "#181a1f")
-    
-    static let gray50  = Color(hex: "#fafafa")
-    static let gray100 = Color(hex: "#f4f4f5")
-    static let gray200 = Color(hex: "#e4e4e7")
-    static let gray300 = Color(hex: "#d4d4d8")
-    static let gray400 = Color(hex: "#a1a1aa")
-    static let gray500 = Color(hex: "#71717a")
-    static let gray600 = Color(hex: "#52525b")
-    static let gray700 = Color(hex: "#3f3f46")
-    static let gray800 = Color(hex: "#27272a")
-    static let gray900 = Color(hex: "#18181b")
+    static let gray50  = Color(hex: "#F6F6F6")
+    static let gray100 = Color(hex: "#E6E6EB")
+    static let gray200 = Color(hex: "#D1D1D6")
+    static let gray300 = Color(hex: "#BBBBC2")
+    static let gray400 = Color(hex: "#A5A5AD")
+    static let gray500 = Color(hex: "#80808A")
+    static let gray600 = Color(hex: "#5C5C66")
+    static let gray700 = Color(hex: "#47474F")
+    static let gray750 = Color(hex: "#333338")
+    static let gray800 = Color(hex: "#2B2B30")
+    static let gray850 = Color(hex: "#26262B")
+    static let gray900 = Color(hex: "#1B1B1F")
+    static let gray950 = Color(hex: "#121212")
     
     static let white = Color(hex: "#ffffff")
     static let black = Color(hex: "#000000")
@@ -139,27 +131,19 @@ struct FinnUIColors {
     static let red800 = UIColor(hex: "#681d11")
     static let red900 = UIColor(hex: "#38140b")
     
-    static let blueGray50  = UIColor(hex: "#f8fafc")
-    static let blueGray100 = UIColor(hex: "#f1f4f9")
-    static let blueGray200 = UIColor(hex: "#e1e6ee")
-    static let blueGray300 = UIColor(hex: "#c3ccd9")
-    static let blueGray400 = UIColor(hex: "#9ba8ba")
-    static let blueGray500 = UIColor(hex: "#6f7d90")
-    static let blueGray600 = UIColor(hex: "#4d586f")
-    static let blueGray700 = UIColor(hex: "#3B4353")
-    static let blueGray800 = UIColor(hex: "#292d38")
-    static let blueGray900 = UIColor(hex: "#181a1f")
-    
-    static let gray50  = UIColor(hex: "#fafafa")
-    static let gray100 = UIColor(hex: "#f4f4f5")
-    static let gray200 = UIColor(hex: "#e4e4e7")
-    static let gray300 = UIColor(hex: "#d4d4d8")
-    static let gray400 = UIColor(hex: "#a1a1aa")
-    static let gray500 = UIColor(hex: "#71717a")
-    static let gray600 = UIColor(hex: "#52525b")
-    static let gray700 = UIColor(hex: "#3f3f46")
-    static let gray800 = UIColor(hex: "#27272a")
-    static let gray900 = UIColor(hex: "#18181b")
+    static let gray50  = UIColor(hex: "#F6F6F6")
+    static let gray100 = UIColor(hex: "#E6E6EB")
+    static let gray200 = UIColor(hex: "#D1D1D6")
+    static let gray300 = UIColor(hex: "#BBBBC2")
+    static let gray400 = UIColor(hex: "#A5A5AD")
+    static let gray500 = UIColor(hex: "#80808A")
+    static let gray600 = UIColor(hex: "#5C5C66")
+    static let gray700 = UIColor(hex: "#47474F")
+    static let gray750 = UIColor(hex: "#333338")
+    static let gray800 = UIColor(hex: "#2B2B30")
+    static let gray850 = UIColor(hex: "#26262B")
+    static let gray900 = UIColor(hex: "#1B1B1F")
+    static let gray950 = UIColor(hex: "#121212")
     
     static let white = UIColor(hex: "#ffffff")
     static let black = UIColor(hex: "#000000")
@@ -231,18 +215,6 @@ public struct FinnColorsView: View {
                                     FinnColors.red800,
                                     FinnColors.red900])
                 
-                createView(for: "BlueGray",
-                           colors: [FinnColors.blueGray50,
-                                    FinnColors.blueGray100,
-                                    FinnColors.blueGray200,
-                                    FinnColors.blueGray300,
-                                    FinnColors.blueGray400,
-                                    FinnColors.blueGray500,
-                                    FinnColors.blueGray600,
-                                    FinnColors.blueGray700,
-                                    FinnColors.blueGray800,
-                                    FinnColors.blueGray900])
-                
                 createView(for: "Gray",
                            colors: [FinnColors.gray50,
                                     FinnColors.gray100,
@@ -252,8 +224,11 @@ public struct FinnColorsView: View {
                                     FinnColors.gray500,
                                     FinnColors.gray600,
                                     FinnColors.gray700,
+                                    FinnColors.gray750,
                                     FinnColors.gray800,
-                                    FinnColors.gray900])
+                                    FinnColors.gray850,
+                                    FinnColors.gray900,
+                                    FinnColors.gray950])
             }
             .padding(.horizontal)
         }
