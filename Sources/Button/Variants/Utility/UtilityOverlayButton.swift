@@ -7,7 +7,8 @@ extension Warp.Button {
     /// Factory method for creating warp button with `UtilityOverlay` style.
     static func createUtilityOverlay(
         title: String,
-        icon: Image? = nil,
+        leadingIcon: Image? = nil,
+        trailingIcon: Image? = nil,
         action: @escaping () -> Void = {},
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
@@ -16,7 +17,8 @@ extension Warp.Button {
     ) -> Warp.Button {
         Warp.Button(
             title: title,
-            icon: icon,
+            leadingIcon: leadingIcon,
+            trailingIcon: trailingIcon,
             action: action,
             type: utilityOverlayType,
             size: size,
