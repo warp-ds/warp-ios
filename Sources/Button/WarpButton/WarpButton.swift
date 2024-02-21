@@ -8,7 +8,10 @@ extension Warp {
         private let title: String
 
         /// Leading icon for button.
-        private let icon: Image?
+        private let leadingIcon: Image?
+        
+        /// Trailing icon for button.
+        private let trailingIcon: Image?
 
         /// Button action.
         private let action: () -> Void
@@ -30,7 +33,8 @@ extension Warp {
 
         public init(
             title: String,
-            icon: Image?,
+            leadingIcon: Image?,
+            trailingIcon: Image?,
             action: @escaping () -> Void,
             type: Warp.ButtonType,
             size: Warp.ButtonSize,
@@ -39,7 +43,8 @@ extension Warp {
             colorProvider: ColorProvider
         ) {
             self.title = title
-            self.icon = icon
+            self.leadingIcon = leadingIcon
+            self.trailingIcon = trailingIcon
             self.action = action
             self.type = type
             self.size = size
@@ -70,23 +75,25 @@ extension Warp {
             HStack {
                 createFillerViewIfNeeded()
 
-                createIconIfPossible()
+                createIconIfPossible(from: leadingIcon)
 
                 if !title.isEmpty {
                     titleView
                 }
+
+                createIconIfPossible(from: trailingIcon)
 
                 createFillerViewIfNeeded()
             }
         }
 
         @ViewBuilder
-        private func createIconIfPossible() -> some View {
+        private func createIconIfPossible(from icon: Image?) -> some View {
             if let icon = icon {
                 icon
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 16, height: 16)
-                    .clipped()
                     .padding(.trailing, 4)
             }
         }
@@ -109,7 +116,8 @@ extension Warp.Button {
     public init(
         type: Warp.ButtonType,
         title: String,
-        image: Warp.Button.Icon?,
+        leadingImage: Warp.Button.Icon?,
+        trailingImage: Warp.Button.Icon?,
         action: @escaping () -> Void,
         size: Warp.ButtonSize,
         isEnabled: Bool,
@@ -119,14 +127,24 @@ extension Warp.Button {
         self.type = type
         self.title = title
 
-        if let image = image {
+        if let image = leadingImage {
             if let description = image.description {
-                icon = Image(image.name, label: Text(description))
+                leadingIcon = Image(image.name, label: Text(description))
             } else {
-                icon = Image(image.name)
+                leadingIcon = Image(image.name)
             }
         } else {
-            icon = nil
+            leadingIcon = nil
+        }
+        
+        if let image = trailingImage {
+            if let description = image.description {
+                trailingIcon = Image(image.name, label: Text(description))
+            } else {
+                trailingIcon = Image(image.name)
+            }
+        } else {
+            trailingIcon = nil
         }
 
         self.action = action
@@ -139,7 +157,8 @@ extension Warp.Button {
     public init(
         type: Warp.ButtonType,
         title: String,
-        imageSystemName: String?,
+        leadingImageSystemName: String?,
+        trailingImageSystemName: String?,
         action: @escaping () -> Void,
         size: Warp.ButtonSize,
         isEnabled: Bool,
@@ -149,10 +168,16 @@ extension Warp.Button {
         self.type = type
         self.title = title
 
-        if let imageSystemName = imageSystemName {
-            icon = Image(systemName: imageSystemName)
+        if let imageSystemName = leadingImageSystemName {
+            leadingIcon = Image(systemName: imageSystemName)
         } else {
-            icon = nil
+            leadingIcon = nil
+        }
+        
+        if let imageSystemName = trailingImageSystemName {
+            trailingIcon = Image(systemName: imageSystemName)
+        } else {
+            trailingIcon = nil
         }
 
         self.action = action
@@ -168,7 +193,8 @@ extension Warp.Button {
     public static func create(
         for buttonType: Warp.ButtonType,
         title: String,
-        icon: Image? = nil,
+        leadingIcon: Image? = nil,
+        trailingIcon: Image? = nil,
         action: @escaping () -> Void,
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
@@ -179,7 +205,8 @@ extension Warp.Button {
             case .primary:
                 return createPrimary(
                     title: title,
-                    icon: icon,
+                    leadingIcon: leadingIcon,
+                    trailingIcon: trailingIcon,
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
@@ -190,7 +217,8 @@ extension Warp.Button {
             case .secondary:
                 return createSecondary(
                     title: title,
-                    icon: icon,
+                    leadingIcon: leadingIcon,
+                    trailingIcon: trailingIcon,
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
@@ -201,7 +229,8 @@ extension Warp.Button {
             case .tertiary:
                 return createTertiary(
                     title: title,
-                    icon: icon,
+                    leadingIcon: leadingIcon,
+                    trailingIcon: trailingIcon,
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
@@ -212,7 +241,8 @@ extension Warp.Button {
             case .critical:
                 return createCritical(
                     title: title,
-                    icon: icon,
+                    leadingIcon: leadingIcon,
+                    trailingIcon: trailingIcon,
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
@@ -223,7 +253,8 @@ extension Warp.Button {
             case .criticalTertiary:
                 return createCriticalTertiary(
                     title: title,
-                    icon: icon,
+                    leadingIcon: leadingIcon,
+                    trailingIcon: trailingIcon,
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
@@ -234,7 +265,8 @@ extension Warp.Button {
             case .utility:
                 return createUtility(
                     title: title,
-                    icon: icon,
+                    leadingIcon: leadingIcon,
+                    trailingIcon: trailingIcon,
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
@@ -245,7 +277,8 @@ extension Warp.Button {
             case .utilityTertiary:
                 return createUtilityTertiary(
                     title: title,
-                    icon: icon,
+                    leadingIcon: leadingIcon,
+                    trailingIcon: trailingIcon,
                     action: action,
                     size: size,
                     isEnabled: isEnabled,
@@ -256,7 +289,8 @@ extension Warp.Button {
             case .utilityOverlay:
                 return createUtilityOverlay(
                     title: title,
-                    icon: icon,
+                    leadingIcon: leadingIcon,
+                    trailingIcon: trailingIcon,
                     action: action,
                     size: size,
                     isEnabled: isEnabled,

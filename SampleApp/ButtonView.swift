@@ -6,7 +6,9 @@ struct ButtonView: View {
 
     @State private var buttonTitle = "Title"
 
-    @State private var buttonHasIcon = false
+    @State private var buttonHasLeadingIcon = false
+    
+    @State private var buttonHasTrailingIcon = false
 
     @State private var buttonSize: Warp.ButtonSize = .big
 
@@ -35,7 +37,9 @@ struct ButtonView: View {
                 Warp.TextField(text: $buttonTitle)
             }
             Divider()
-            createToggle(binding: $buttonHasIcon, text: ("Hide icon", "Show icon"))
+            createToggle(binding: $buttonHasLeadingIcon, text: ("Hide leadingIcon", "Show leadingIcon"))
+            Divider()
+            createToggle(binding: $buttonHasTrailingIcon, text: ("Hide trailingIcon", "Show trailingIcon"))
             Divider()
             HStack {
                 Warp.Text("Size", style: .bodyStrong)
@@ -70,7 +74,8 @@ struct ButtonView: View {
         Warp.Button.create(
             for: type,
             title: buttonTitle,
-            icon: buttonHasIcon ? Image(systemName: "plus"): nil,
+            leadingIcon: buttonHasLeadingIcon ? Image(systemName: "plus"): nil,
+            trailingIcon: buttonHasTrailingIcon ? Image(systemName: "square.and.arrow.up"): nil,
             action: {},
             size: buttonSize,
             isEnabled: isButtonEnabled,
