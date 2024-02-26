@@ -2,25 +2,28 @@ import SwiftUI
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=888578831
 struct ToriTokenProvider: TokenProvider {
+    /// Surface
+    public var surfaceSunken: Color { Color.dynamicColor(defaultColor: ToriColors.gray50, darkModeColor: ToriColors.gray950) }
+    public var surfaceElevated100: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.gray850) }
+    public var surfaceElevated100Hover: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray800) }
+    public var surfaceElevated100Active: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray850) }
+    public var surfaceElevated200: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.gray800) }
+    public var surfaceElevated200Hover: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray750) }
+    public var surfaceElevated200Active: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray800) }
+    public var surfaceElevated300: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.gray750) }
+    public var surfaceElevated300Hover: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray700) }
+    public var surfaceElevated300Active: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray750) }
+    
+    
     /// Background
-    public var backgroundSunken: Color { Color.dynamicColor(defaultColor: ToriColors.gray50, darkModeColor: ToriColors.gray950) }
     public var background: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.gray900) }
     public var backgroundHover: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray850) }
     public var backgroundActive: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray900) }
-    public var backgroundElevated100: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.gray850) }
-    public var backgroundElevated100Hover: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray800) }
-    public var backgroundElevated100Active: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray850) }
-    public var backgroundElevated200: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.gray800) }
-    public var backgroundElevated200Hover: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray750) }
-    public var backgroundElevated200Active: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray800) }
-    public var backgroundElevated300: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.gray750) }
-    public var backgroundElevated300Hover: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray700) }
-    public var backgroundElevated300Active: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray750) }
     public var backgroundDisabled: Color { Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray700) }
     public var backgroundDisabledSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600) }
-    public var backgroundSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray750) }
-    public var backgroundSubtleHover: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray700) }
-    public var backgroundSubtleActive: Color { Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray750) }
+    public var backgroundNeutralSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray750) }
+    public var backgroundNeutralSubtleHover: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray700) }
+    public var backgroundNeutralSubtleActive: Color { Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray750) }
     public var backgroundSelected: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry50, darkModeColor: ToriColors.blueberry900) }
     public var backgroundSelectedHover: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry100, darkModeColor: ToriColors.blueberry800) }
     public var backgroundSelectedActive: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry200, darkModeColor: ToriColors.blueberry900) }
@@ -173,25 +176,28 @@ struct ToriTokenProvider: TokenProvider {
 }
 
 struct ToriUITokenProvider: UITokenProvider {
+    /// Surface
+    public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray50, darkModeColor: ToriUIColors.gray950) }
+    public var surfaceElevated100: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.white, darkModeColor: ToriUIColors.gray850) }
+    public var surfaceElevated100Hover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray800) }
+    public var surfaceElevated100Active: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray850) }
+    public var surfaceElevated200: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.white, darkModeColor: ToriUIColors.gray800) }
+    public var surfaceElevated200Hover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray750) }
+    public var surfaceElevated200Active: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray800) }
+    public var surfaceElevated300: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.white, darkModeColor: ToriUIColors.gray750) }
+    public var surfaceElevated300Hover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray700) }
+    public var surfaceElevated300Active: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray750) }
+    
+    
     /// Background
-    public var backgroundSunken: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray50, darkModeColor: ToriUIColors.gray950) }
     public var background: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.white, darkModeColor: ToriUIColors.gray900) }
     public var backgroundHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray850) }
     public var backgroundActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray900) }
-    public var backgroundElevated100: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.white, darkModeColor: ToriUIColors.gray850) }
-    public var backgroundElevated100Hover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray800) }
-    public var backgroundElevated100Active: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray850) }
-    public var backgroundElevated200: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.white, darkModeColor: ToriUIColors.gray800) }
-    public var backgroundElevated200Hover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray750) }
-    public var backgroundElevated200Active: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray800) }
-    public var backgroundElevated300: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.white, darkModeColor: ToriUIColors.gray750) }
-    public var backgroundElevated300Hover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray700) }
-    public var backgroundElevated300Active: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray750) }
     public var backgroundDisabled: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray700) }
     public var backgroundDisabledSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600) }
-    public var backgroundSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray750) }
-    public var backgroundSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray700) }
-    public var backgroundSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray750) }
+    public var backgroundNeutralSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray750) }
+    public var backgroundNeutralSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray700) }
+    public var backgroundNeutralSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray750) }
     public var backgroundSelected: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry50, darkModeColor: ToriUIColors.blueberry900) }
     public var backgroundSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry100, darkModeColor: ToriUIColors.blueberry800) }
     public var backgroundSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry200, darkModeColor: ToriUIColors.blueberry900) }

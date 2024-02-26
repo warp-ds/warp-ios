@@ -5,25 +5,28 @@ import UIKit
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=888578831
 public protocol TokenProvider {
+    /// Surface
+    var surfaceSunken: Color { get }
+    var surfaceElevated100: Color { get }
+    var surfaceElevated100Hover: Color { get }
+    var surfaceElevated100Active: Color { get }
+    var surfaceElevated200: Color { get }
+    var surfaceElevated200Hover: Color { get }
+    var surfaceElevated200Active: Color { get }
+    var surfaceElevated300: Color { get }
+    var surfaceElevated300Hover: Color { get }
+    var surfaceElevated300Active: Color { get }
+    
+    
     /// Background
-    var backgroundSunken: Color { get }
     var background: Color { get }
     var backgroundHover: Color { get }
     var backgroundActive: Color { get }
-    var backgroundElevated100: Color { get }
-    var backgroundElevated100Hover: Color { get }
-    var backgroundElevated100Active: Color { get }
-    var backgroundElevated200: Color { get }
-    var backgroundElevated200Hover: Color { get }
-    var backgroundElevated200Active: Color { get }
-    var backgroundElevated300: Color { get }
-    var backgroundElevated300Hover: Color { get }
-    var backgroundElevated300Active: Color { get }
     var backgroundDisabled: Color { get }
     var backgroundDisabledSubtle: Color { get }
-    var backgroundSubtle: Color { get }
-    var backgroundSubtleHover: Color { get }
-    var backgroundSubtleActive: Color { get }
+    var backgroundNeutralSubtle: Color { get }
+    var backgroundNeutralSubtleHover: Color { get }
+    var backgroundNeutralSubtleActive: Color { get }
     var backgroundSelected: Color { get }
     var backgroundSelectedHover: Color { get }
     var backgroundSelectedActive: Color { get }
@@ -176,25 +179,28 @@ public protocol TokenProvider {
 }
 
 public protocol UITokenProvider {
+    /// Surface
+    var surfaceSunken: UIColor { get }
+    var surfaceElevated100: UIColor { get }
+    var surfaceElevated100Hover: UIColor { get }
+    var surfaceElevated100Active: UIColor { get }
+    var surfaceElevated200: UIColor { get }
+    var surfaceElevated200Hover: UIColor { get }
+    var surfaceElevated200Active: UIColor { get }
+    var surfaceElevated300: UIColor { get }
+    var surfaceElevated300Hover: UIColor { get }
+    var surfaceElevated300Active: UIColor { get }
+    
+    
     /// Background
-    var backgroundSunken: UIColor { get }
     var background: UIColor { get }
     var backgroundHover: UIColor { get }
     var backgroundActive: UIColor { get }
-    var backgroundElevated100: UIColor { get }
-    var backgroundElevated100Hover: UIColor { get }
-    var backgroundElevated100Active: UIColor { get }
-    var backgroundElevated200: UIColor { get }
-    var backgroundElevated200Hover: UIColor { get }
-    var backgroundElevated200Active: UIColor { get }
-    var backgroundElevated300: UIColor { get }
-    var backgroundElevated300Hover: UIColor { get }
-    var backgroundElevated300Active: UIColor { get }
     var backgroundDisabled: UIColor { get }
     var backgroundDisabledSubtle: UIColor { get }
-    var backgroundSubtle: UIColor { get }
-    var backgroundSubtleHover: UIColor { get }
-    var backgroundSubtleActive: UIColor { get }
+    var backgroundNeutralSubtle: UIColor { get }
+    var backgroundNeutralSubtleHover: UIColor { get }
+    var backgroundNeutralSubtleActive: UIColor { get }
     var backgroundSelected: UIColor { get }
     var backgroundSelectedHover: UIColor { get }
     var backgroundSelectedActive: UIColor { get }
