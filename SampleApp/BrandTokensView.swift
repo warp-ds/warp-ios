@@ -7,6 +7,29 @@ struct BrandTokensView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack (alignment: .leading) {
+                /// Surface
+                createView(for: "surfaceSunken",
+                           colors: [tokenProvider.surfaceSunken])
+                createView(for: "surfaceElevated100",
+                           colors: [tokenProvider.surfaceElevated100])
+                createView(for: "surfaceElevated100Hover",
+                           colors: [tokenProvider.surfaceElevated100Hover])
+                createView(for: "surfaceElevated100Active",
+                           colors: [tokenProvider.surfaceElevated100Active])
+                createView(for: "surfaceElevated200",
+                           colors: [tokenProvider.surfaceElevated200])
+                createView(for: "surfaceElevated200Hover",
+                           colors: [tokenProvider.surfaceElevated200Hover])
+                createView(for: "surfaceElevated200Active",
+                           colors: [tokenProvider.surfaceElevated200Active])
+                createView(for: "surfaceElevated300",
+                           colors: [tokenProvider.surfaceElevated300])
+                createView(for: "surfaceElevated300Hover",
+                           colors: [tokenProvider.surfaceElevated300Hover])
+                createView(for: "surfaceElevated300Active",
+                           colors: [tokenProvider.surfaceElevated300Active])
+                
+                
                 /// Background
                 createView(for: "background",
                            colors: [tokenProvider.background])
@@ -18,12 +41,12 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.backgroundDisabled])
                 createView(for: "backgroundDisabledSubtle",
                            colors: [tokenProvider.backgroundDisabledSubtle])
-                createView(for: "backgroundSubtle",
-                           colors: [tokenProvider.backgroundSubtle])
-                createView(for: "backgroundSubtleHover",
-                           colors: [tokenProvider.backgroundSubtleHover])
-                createView(for: "backgroundSubtleActive",
-                           colors: [tokenProvider.backgroundSubtleActive])
+                createView(for: "backgroundNeutralSubtle",
+                           colors: [tokenProvider.backgroundNeutralSubtle])
+                createView(for: "backgroundNeutralSubtleHover",
+                           colors: [tokenProvider.backgroundNeutralSubtleHover])
+                createView(for: "backgroundNeutralSubtleActive",
+                           colors: [tokenProvider.backgroundNeutralSubtleActive])
                 createView(for: "backgroundSelected",
                            colors: [tokenProvider.backgroundSelected])
                 createView(for: "backgroundSelectedHover",
@@ -133,6 +156,7 @@ struct BrandTokensView: View {
                 createView(for: "backgroundNotification",
                            colors: [tokenProvider.backgroundNotification])
                 
+                
                 /// Border
                 createView(for: "border",
                            colors: [tokenProvider.border])
@@ -226,6 +250,8 @@ struct BrandTokensView: View {
                 /// Icon
                 createView(for: "icon",
                            colors: [tokenProvider.icon])
+                createView(for: "iconStatic",
+                           colors: [tokenProvider.iconStatic])
                 createView(for: "iconHover",
                            colors: [tokenProvider.iconHover])
                 createView(for: "iconActive",
@@ -250,6 +276,8 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.iconInvertedHover])
                 createView(for: "iconInvertedActive",
                            colors: [tokenProvider.iconInvertedActive])
+                createView(for: "iconInvertedStatic",
+                           colors: [tokenProvider.iconInvertedStatic])
                 createView(for: "iconPrimary",
                            colors: [tokenProvider.iconPrimary])
                 createView(for: "iconSecondary",
@@ -273,12 +301,16 @@ struct BrandTokensView: View {
                 /// Text
                 createView(for: "text",
                            colors: [tokenProvider.text])
+                createView(for: "textStatic",
+                           colors: [tokenProvider.textStatic])
                 createView(for: "textSubtle",
                            colors: [tokenProvider.textSubtle])
                 createView(for: "textPlaceholder",
                            colors: [tokenProvider.textPlaceholder])
                 createView(for: "textInverted",
                            colors: [tokenProvider.textInverted])
+                createView(for: "textInvertedStatic",
+                           colors: [tokenProvider.textInvertedStatic])
                 createView(for: "textInvertedSubtle",
                            colors: [tokenProvider.textInvertedSubtle])
                 createView(for: "textLink",
