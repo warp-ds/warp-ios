@@ -2,6 +2,7 @@ import SwiftUI
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=1864511726
 struct ToriColors {
+    /// Tori color palette
     static let watermelon50  = Color(hex: "#FFF3F2")
     static let watermelon100 = Color(hex: "#FFE6E4")
     static let watermelon200 = Color(hex: "#FECBC7")
@@ -69,7 +70,7 @@ struct ToriColors {
     static let red900 = Color(hex: "#27070D")
     
     static let gray50  = Color(hex: "#F6F6F6")
-    static let gray100 = Color(hex: "#E6E6EB")
+    static let gray100 = Color(hex: "#F0F0F2")
     static let gray200 = Color(hex: "#D1D1D6")
     static let gray300 = Color(hex: "#BBBBC2")
     static let gray400 = Color(hex: "#A5A5AD")
@@ -87,6 +88,7 @@ struct ToriColors {
 }
 
 struct ToriUIColors {
+    /// Tori color palette
     static let watermelon50  = UIColor(hex: "#FFF3F2")
     static let watermelon100 = UIColor(hex: "#FFE6E4")
     static let watermelon200 = UIColor(hex: "#FECBC7")
@@ -154,7 +156,7 @@ struct ToriUIColors {
     static let red900 = UIColor(hex: "#27070D")
     
     static let gray50  = UIColor(hex: "#F6F6F6")
-    static let gray100 = UIColor(hex: "#E6E6EB")
+    static let gray100 = UIColor(hex: "#F0F0F2")
     static let gray200 = UIColor(hex: "#D1D1D6")
     static let gray300 = UIColor(hex: "#BBBBC2")
     static let gray400 = UIColor(hex: "#A5A5AD")

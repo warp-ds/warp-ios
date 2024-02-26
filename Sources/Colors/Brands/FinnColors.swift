@@ -2,6 +2,7 @@ import SwiftUI
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=15834355
 struct FinnColors {
+    /// FINN color palette
     static let blue50  = Color(hex: "#eff5ff")
     static let blue100 = Color(hex: "#e1edfe")
     static let blue200 = Color(hex: "#c2dafe")
@@ -58,7 +59,7 @@ struct FinnColors {
     static let red900 = Color(hex: "#38140b")
     
     static let gray50  = Color(hex: "#F6F6F6")
-    static let gray100 = Color(hex: "#E6E6EB")
+    static let gray100 = Color(hex: "#F0F0F2")
     static let gray200 = Color(hex: "#D1D1D6")
     static let gray300 = Color(hex: "#BBBBC2")
     static let gray400 = Color(hex: "#A5A5AD")
@@ -76,6 +77,7 @@ struct FinnColors {
 }
 
 struct FinnUIColors {
+    /// FINN color palette
     static let blue50  = UIColor(hex: "#eff5ff")
     static let blue100 = UIColor(hex: "#e1edfe")
     static let blue200 = UIColor(hex: "#c2dafe")
@@ -132,7 +134,7 @@ struct FinnUIColors {
     static let red900 = UIColor(hex: "#38140b")
     
     static let gray50  = UIColor(hex: "#F6F6F6")
-    static let gray100 = UIColor(hex: "#E6E6EB")
+    static let gray100 = UIColor(hex: "#F0F0F2")
     static let gray200 = UIColor(hex: "#D1D1D6")
     static let gray300 = UIColor(hex: "#BBBBC2")
     static let gray400 = UIColor(hex: "#A5A5AD")
