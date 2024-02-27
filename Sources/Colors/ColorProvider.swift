@@ -27,14 +27,7 @@ public struct ColorProvider {
     var alertWarningIcon: Color { token.iconWarning }
     
     /// Avatar
-    var avatarBackground: Color {
-        switch Warp.Config.warpTheme {
-        case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.blueGray100, darkModeColor: FinnColors.blueGray800)
-        case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray100)
-        }
-    }
+    var avatarBackground: Color { token.backgroundNeutralSubtle }
     var avatarIcon: Color { token.iconDisabled }
     
     /// Badge
@@ -44,14 +37,14 @@ public struct ColorProvider {
     var badgeWarningText: Color { token.text }
     var badgeNegativeText: Color { token.text }
     var badgeDisabledText: Color { token.text }
-    var badgePriceText: Color { token.textInverted }
+    var badgePriceText: Color { token.textInvertedStatic }
     var badgeNotificationText: Color { token.textNotification }
     var badgeNeutralBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.blueGray100, darkModeColor: FinnColors.blueGray700)
+            return Color.dynamicColor(defaultColor: FinnColors.gray100, darkModeColor: token.backgroundDisabledSubtle)
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray700)
+            return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: token.backgroundDisabledSubtle)
         }
     }
     var badgeInfoBackground: Color {
@@ -90,9 +83,9 @@ public struct ColorProvider {
     var badgePriceBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.black.opacity(0.7), darkModeColor: FinnColors.black.opacity(0.7))
+            return FinnColors.black.opacity(0.7)
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.black.opacity(0.7), darkModeColor: ToriColors.black.opacity(0.7))
+            return ToriColors.black.opacity(0.7)
         }
     }
     var badgeNotificationBackground: Color { token.backgroundNotification }
@@ -109,11 +102,11 @@ public struct ColorProvider {
     var boxNeutralText: Color { token.text }
     var boxBorderedText: Color { token.text }
     var boxInfoText: Color { token.text }
-    var boxNeutralBackground: Color { token.backgroundSubtle }
+    var boxNeutralBackground: Color { token.backgroundNeutralSubtle }
     var boxBorderedBackground: Color { token.background }
     var boxInfoBackground: Color { token.backgroundInfoSubtle }
     var boxBorderedBorder: Color { token.border }
-    var boxNeutralBackgroundHover: Color { token.backgroundSubtleHover }
+    var boxNeutralBackgroundHover: Color { token.backgroundNeutralSubtleHover }
     var boxBorderedBackgroundHover: Color { token.backgroundHover }
     var boxInfoBackgroundHover: Color { token.backgroundInfoSubtleHover }
     var boxBorderedBorderHover: Color { token.borderHover }
@@ -138,7 +131,7 @@ public struct ColorProvider {
         case .finn:
             return token.backgroundPrimary
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon600)
+            return ToriColors.watermelon600
         }
     }
     var buttonPrimaryBackgroundHover: Color {
@@ -146,7 +139,7 @@ public struct ColorProvider {
         case .finn:
             return token.backgroundPrimaryHover
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.watermelon700, darkModeColor: ToriColors.watermelon700)
+            return ToriColors.watermelon700
         }
     }
     var buttonPrimaryBackgroundActive: Color {
@@ -154,7 +147,7 @@ public struct ColorProvider {
         case .finn:
             return token.backgroundPrimaryActive
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon800)
+            return ToriColors.watermelon800
         }
     }
     var buttonPrimaryBackgroundDisabled: Color { token.backgroundDisabled }
@@ -163,7 +156,7 @@ public struct ColorProvider {
         case .finn:
             return token.borderPrimary
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon600)
+            return ToriColors.watermelon600
         }
     }
     var buttonPrimaryBorderHover: Color {
@@ -171,7 +164,7 @@ public struct ColorProvider {
         case .finn:
             return token.borderPrimaryHover
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.watermelon700, darkModeColor: ToriColors.watermelon700)
+            return ToriColors.watermelon700
         }
     }
     var buttonPrimaryBorderActive: Color {
@@ -179,7 +172,7 @@ public struct ColorProvider {
         case .finn:
             return token.borderPrimaryActive
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon800)
+            return ToriColors.watermelon800
         }
     }
     var buttonPrimaryBorderDisabled: Color { token.borderDisabled }
@@ -223,43 +216,43 @@ public struct ColorProvider {
     var buttonPillBackgroundHover: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.blue300.opacity(0.3), darkModeColor: FinnColors.blue300.opacity(0.3))
+            return FinnColors.blue300.opacity(0.3)
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.gray300.opacity(0.3), darkModeColor: ToriColors.gray300.opacity(0.3))
+            return ToriColors.blueberry300.opacity(0.3)
         }
     }
     var buttonPillBackgroundActive: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.blue400.opacity(0.3), darkModeColor: FinnColors.blue400.opacity(0.3))
+            return FinnColors.blue400.opacity(0.3)
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.gray400.opacity(0.3), darkModeColor: ToriColors.gray400.opacity(0.3))
+            return ToriColors.blueberry400.opacity(0.3)
         }
     }
     var buttonPillIcon: Color { token.icon }
     var buttonPillIconHover: Color { token.iconHover }
     var buttonPillIconActive: Color { token.iconActive }
     var buttonPillIconSelected: Color { token.iconSelected }
-    var buttonPillOverlayIcon: Color { token.iconInverted }
+    var buttonPillOverlayIcon: Color { token.iconInvertedStatic }
     var buttonPillOverlayIconHover: Color { token.iconInvertedHover }
     var buttonPillOverlayIconActive: Color { token.iconInvertedActive }
     var buttonLoadingText: Color { token.text }
-    var buttonLoadingBackground: Color { token.backgroundSubtle }
+    var buttonLoadingBackground: Color { .clear }
     var buttonLoadingIcon: Color { token.icon }
     
     var buttonUtilityText: Color { token.text }
     var buttonUtilityTextDisabled: Color { token.textDisabled }
-    var buttonUtilityBackground: Color { token.background }
-    var buttonUtilityBackgroundHover: Color { token.backgroundHover }
-    var buttonUtilityBackgroundActive: Color { token.backgroundActive }
+    var buttonUtilityBackground: Color { token.surfaceElevated300 }
+    var buttonUtilityBackgroundHover: Color { token.surfaceElevated300Hover }
+    var buttonUtilityBackgroundActive: Color { token.surfaceElevated300Active }
     var buttonUtilityBackgroundDisabled: Color { token.backgroundDisabled }
     var buttonUtilityBorder: Color { token.border }
     var buttonUtilityBorderHover: Color { token.borderHover }
     var buttonUtilityBorderActive: Color { token.borderActive }
     var buttonUtilityQuietText: Color { token.text }
     var buttonUtilityQuietBackground: Color { .clear }
-    var buttonUtilityQuietBackgroundHover: Color { token.backgroundSubtleHover }
-    var buttonUtilityQuietBackgroundActive: Color { token.backgroundSubtleActive }
+    var buttonUtilityQuietBackgroundHover: Color { token.backgroundNegativeSubtleHover }
+    var buttonUtilityQuietBackgroundActive: Color { token.backgroundNegativeSubtleActive }
     var buttonUtilityQuietBorder: Color { .clear }
     var buttonUtilityQuietBorderHover: Color { .clear }
     var buttonUtilityQuietBorderActive: Color { .clear }
@@ -273,6 +266,38 @@ public struct ColorProvider {
     var buttonGroupBackgroundSelected: Color { token.backgroundPrimary }
     var buttonGroupBorder: Color { token.border }
     var buttonGroupBorderSelected: Color { token.borderPrimary }
+    var buttonGroupUtilityBackgroundHover: Color {
+        switch Warp.Config.warpTheme {
+        case .finn:
+            return FinnColors.gray100
+        case .tori:
+            return ToriColors.gray100
+        }
+    }
+    var buttonGroupUtilityBackgroundSelected: Color {
+        switch Warp.Config.warpTheme {
+        case .finn:
+            return FinnColors.gray200
+        case .tori:
+            return ToriColors.gray200
+        }
+    }
+    var buttonGroupUtilityBorder: Color {
+        switch Warp.Config.warpTheme {
+        case .finn:
+            return FinnColors.gray300
+        case .tori:
+            return ToriColors.gray300
+        }
+    }
+    var buttonGroupUtilityBorderSelected: Color {
+        switch Warp.Config.warpTheme {
+        case .finn:
+            return FinnColors.gray700
+        case .tori:
+            return ToriColors.gray700
+        }
+    }
     
     /// Callout
     var calloutText: Color { token.text }
@@ -296,9 +321,9 @@ public struct ColorProvider {
     /// Card
     //    var shadowCard: Color { token.shadowSmall }
     //    var shadowCardHover: Color { token.shadowMedium }
-    var cardBackground: Color { token.background }
-    var cardBackgroundHover: Color { token.backgroundSubtleHover }
-    var cardBackgroundActive: Color { token.backgroundActive }
+    var cardBackground: Color { token.surfaceElevated200 }
+    var cardBackgroundHover: Color { token.surfaceElevated200Hover }
+    var cardBackgroundActive: Color { token.surfaceElevated200Active }
     var cardBackgroundSelected: Color { token.backgroundSelected }
     var cardBackgroundSelectedHover: Color { token.backgroundSelectedHover }
     var cardBorder: Color { .clear }
@@ -306,7 +331,7 @@ public struct ColorProvider {
     var cardBorderActive: Color { .clear }
     var cardBorderSelected: Color { token.borderSelected }
     var cardFlatBackground: Color { token.background }
-    var cardFlatBackgroundHover: Color { token.backgroundSubtleHover }
+    var cardFlatBackgroundHover: Color { token.backgroundHover }
     var cardFlatBackgroundActive: Color { token.backgroundActive }
     var cardFlatBackgroundSelected: Color { token.backgroundSelected }
     var cardFlatBackgroundSelectedHover: Color { token.backgroundSelectedHover }
@@ -320,7 +345,7 @@ public struct ColorProvider {
     
     /// Checkbox
     var checkboxBackground: Color { token.background }
-    var checkboxBackgroundHover: Color { token.backgroundSubtle }
+    var checkboxBackgroundHover: Color { token.backgroundHover }
     var checkboxBackgroundSelected: Color { token.backgroundPrimary }
     var checkboxBackgroundSelectedHover: Color { token.backgroundPrimaryHover }
     var checkboxBackgroundDisabled: Color { token.backgroundDisabledSubtle }
@@ -352,8 +377,8 @@ public struct ColorProvider {
     /// Expandable
     var expandableTitleText: Color { token.text }
     var expandableParagraphText: Color { token.text }
-    var expandableBackground: Color { token.backgroundSubtle }
-    var expandableBackgroundHover: Color { token.backgroundSubtleHover }
+    var expandableBackground: Color { token.backgroundNeutralSubtle }
+    var expandableBackgroundHover: Color { token.backgroundNeutralSubtleHover }
     var expandableIcon: Color { token.icon }
     
     /// Footer
@@ -366,7 +391,7 @@ public struct ColorProvider {
     var helptextPositiveText: Color { token.textPositive }
     
     /// Image placeholder
-    var imagePlaceholderBackground: Color { token.backgroundSubtle }
+    var imagePlaceholderBackground: Color { token.backgroundNeutralSubtle }
     var imagePlaceholderIcon: Color { token.iconDisabled }
     
     /// Input (aka Text field, includes text area)
@@ -379,7 +404,7 @@ public struct ColorProvider {
     var inputBackgroundDisabled: Color { token.backgroundDisabledSubtle }
     var inputBorder: Color { token.border }
     var inputBorderHover: Color { token.borderHover }
-    var inputBorderActive: Color { token.borderSelected }
+    var inputBorderActive: Color { token.borderFocus }
     var inputBorderFilled: Color { token.border }
     var inputBorderDisabled: Color { token.borderDisabled }
     var inputBorderNegative: Color { token.borderNegative }
@@ -401,8 +426,8 @@ public struct ColorProvider {
     /// Modal
     var modalTextTitle: Color { token.text }
     var modalTextParagraph: Color { token.text }
-    var modalBackground: Color { token.background }
-    //    var shadowModal: Color { token.shadowMedium }
+    var modalBackground: Color { token.surfaceElevated100 }
+    //    var shadowModal: Color { token.shadowModal }
     
     /// Nav Bar
     var navbarIconSelected: Color {
@@ -418,12 +443,12 @@ public struct ColorProvider {
         case .finn:
             return Color.dynamicColor(defaultColor: token.borderSelected, darkModeColor: FinnColors.blue500)
         case .tori:
-            return Color.dynamicColor(defaultColor: token.borderSecondary, darkModeColor: token.iconSecondary)
+            return token.borderSecondary
         }
     }
     
     /// Page indicator
-    var pageIndicatorBackground: Color { token.iconDisabled }
+    var pageIndicatorBackground: Color { token.backgroundDisabledSubtle }
     var pageIndicatorBackgroundHover: Color { token.iconSubtle }
     var pageIndicatorBackgroundSelected: Color { token.iconSelected }
     
@@ -460,9 +485,9 @@ public struct ColorProvider {
     var pillSuggestionBackgroundActive: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.gray400, darkModeColor: FinnColors.gray800)
+            return Color.dynamicColor(defaultColor: FinnColors.gray400, darkModeColor: FinnColors.gray600)
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.gray400, darkModeColor: ToriColors.gray800)
+            return Color.dynamicColor(defaultColor: ToriColors.gray400, darkModeColor: ToriColors.gray600)
         }
     }
     var pillSuggestionIcon: Color { token.icon }
@@ -470,8 +495,8 @@ public struct ColorProvider {
     /// Popover
     var popoverTitleText: Color { token.text }
     var popoverParagraphText: Color { token.text }
-    var popoverBackground: Color { token.background }
-    //    var shadowPopover
+    var popoverBackground: Color { token.surfaceElevated300 }
+    //    var shadowPopover: Color { token.shadowPopover }
     
     /// Radio
     var radioBackground: Color { token.background }
@@ -507,7 +532,7 @@ public struct ColorProvider {
     var sliderHandleBorder: Color { token.borderPrimary }
     var sliderHandleBorderHover: Color { token.borderPrimaryHover }
     var sliderHandleBorderActive: Color { token.borderPrimaryActive }
-    var sliderTrackBackground: Color { token.backgroundDisabled }
+    var sliderTrackBackground: Color { token.backgroundDisabledSubtle }
     var sliderTrackBackgroundActive: Color { token.backgroundPrimary }
     //    var shadowSliderHandle: Color { token.shadowS }
     var sliderHandleBackgroundDisabled: Color { token.backgroundDisabled }
@@ -533,17 +558,17 @@ public struct ColorProvider {
     var switchTrackBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray300)
+            return Color.dynamicColor(defaultColor: FinnColors.gray200, darkModeColor: FinnColors.gray600)
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray300)
+            return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
         }
     }
-    var switchTrackBackgroundHover : Color {
+    var switchTrackBackgroundHover: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.gray400, darkModeColor: FinnColors.gray400)
+            return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray700)
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.gray400, darkModeColor: ToriColors.gray400)
+            return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray700)
         }
     }
     var switchTrackBackgroundSelected: Color { token.backgroundPrimary }
@@ -580,16 +605,9 @@ public struct ColorProvider {
     var toastNegativeBorder: Color { token.borderNegative }
     var toastNegativeSubtleBorder: Color { token.borderNegativeSubtle }
     var toastNegativeIcon: Color { token.iconNegative }
-                        
+    
     /// Tooltip
-    var tooltipText: Color { token.textInverted }
-    var tooltipBackground: Color {
-        switch Warp.Config.warpTheme {
-        case .finn:
-            return Color.dynamicColor(defaultColor: token.backgroundInverted , darkModeColor: token.backgroundSubtle)
-        case .tori:
-            return token.backgroundInverted
-        }
-    }
-    //  var shadowTooltip: Color { token.shadowM }
+    var tooltipText: Color { token.textInvertedStatic }
+    var tooltipBackgroundStatic: Color { Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300) }
+    //    var shadowTooltip: Color { toek.shadow-m }
 }

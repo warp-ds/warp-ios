@@ -5,15 +5,28 @@ import UIKit
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=888578831
 public protocol TokenProvider {
+    /// Surface
+    var surfaceSunken: Color { get }
+    var surfaceElevated100: Color { get }
+    var surfaceElevated100Hover: Color { get }
+    var surfaceElevated100Active: Color { get }
+    var surfaceElevated200: Color { get }
+    var surfaceElevated200Hover: Color { get }
+    var surfaceElevated200Active: Color { get }
+    var surfaceElevated300: Color { get }
+    var surfaceElevated300Hover: Color { get }
+    var surfaceElevated300Active: Color { get }
+    
+    
     /// Background
     var background: Color { get }
     var backgroundHover: Color { get }
     var backgroundActive: Color { get }
     var backgroundDisabled: Color { get }
     var backgroundDisabledSubtle: Color { get }
-    var backgroundSubtle: Color { get }
-    var backgroundSubtleHover: Color { get }
-    var backgroundSubtleActive: Color { get }
+    var backgroundNeutralSubtle: Color { get }
+    var backgroundNeutralSubtleHover: Color { get }
+    var backgroundNeutralSubtleActive: Color { get }
     var backgroundSelected: Color { get }
     var backgroundSelectedHover: Color { get }
     var backgroundSelectedActive: Color { get }
@@ -73,6 +86,7 @@ public protocol TokenProvider {
     
     var backgroundNotification: Color { get }
     
+    
     /// Border
     var border: Color { get }
     var borderHover: Color { get }
@@ -124,6 +138,7 @@ public protocol TokenProvider {
     
     /// Icon
     var icon: Color { get }
+    var iconStatic: Color { get }
     var iconHover: Color { get }
     var iconActive: Color { get }
     var iconSelected: Color { get }
@@ -136,6 +151,7 @@ public protocol TokenProvider {
     var iconInverted: Color { get }
     var iconInvertedHover: Color { get }
     var iconInvertedActive: Color { get }
+    var iconInvertedStatic: Color { get }
     var iconPrimary: Color { get }
     var iconSecondary: Color { get }
     var iconSecondaryHover: Color { get }
@@ -149,9 +165,11 @@ public protocol TokenProvider {
     
     /// Text
     var text: Color { get }
+    var textStatic: Color { get }
     var textSubtle: Color { get }
     var textPlaceholder: Color { get }
     var textInverted: Color { get }
+    var textInvertedStatic: Color { get }
     var textInvertedSubtle: Color { get }
     var textLink: Color { get }
     var textDisabled: Color { get }
@@ -161,15 +179,28 @@ public protocol TokenProvider {
 }
 
 public protocol UITokenProvider {
+    /// Surface
+    var surfaceSunken: UIColor { get }
+    var surfaceElevated100: UIColor { get }
+    var surfaceElevated100Hover: UIColor { get }
+    var surfaceElevated100Active: UIColor { get }
+    var surfaceElevated200: UIColor { get }
+    var surfaceElevated200Hover: UIColor { get }
+    var surfaceElevated200Active: UIColor { get }
+    var surfaceElevated300: UIColor { get }
+    var surfaceElevated300Hover: UIColor { get }
+    var surfaceElevated300Active: UIColor { get }
+    
+    
     /// Background
     var background: UIColor { get }
     var backgroundHover: UIColor { get }
     var backgroundActive: UIColor { get }
     var backgroundDisabled: UIColor { get }
     var backgroundDisabledSubtle: UIColor { get }
-    var backgroundSubtle: UIColor { get }
-    var backgroundSubtleHover: UIColor { get }
-    var backgroundSubtleActive: UIColor { get }
+    var backgroundNeutralSubtle: UIColor { get }
+    var backgroundNeutralSubtleHover: UIColor { get }
+    var backgroundNeutralSubtleActive: UIColor { get }
     var backgroundSelected: UIColor { get }
     var backgroundSelectedHover: UIColor { get }
     var backgroundSelectedActive: UIColor { get }
@@ -229,6 +260,7 @@ public protocol UITokenProvider {
     
     var backgroundNotification: UIColor { get }
     
+    
     /// Border
     var border: UIColor { get }
     var borderHover: UIColor { get }
@@ -280,6 +312,7 @@ public protocol UITokenProvider {
     
     /// Icon
     var icon: UIColor { get }
+    var iconStatic: UIColor { get }
     var iconHover: UIColor { get }
     var iconActive: UIColor { get }
     var iconSelected: UIColor { get }
@@ -292,6 +325,7 @@ public protocol UITokenProvider {
     var iconInverted: UIColor { get }
     var iconInvertedHover: UIColor { get }
     var iconInvertedActive: UIColor { get }
+    var iconInvertedStatic: UIColor { get }
     var iconPrimary: UIColor { get }
     var iconSecondary: UIColor { get }
     var iconSecondaryHover: UIColor { get }
@@ -305,9 +339,11 @@ public protocol UITokenProvider {
     
     /// Text
     var text: UIColor { get }
+    var textStatic: UIColor { get }
     var textSubtle: UIColor { get }
     var textPlaceholder: UIColor { get }
     var textInverted: UIColor { get }
+    var textInvertedStatic: UIColor { get }
     var textInvertedSubtle: UIColor { get }
     var textLink: UIColor { get }
     var textDisabled: UIColor { get }
@@ -324,13 +360,13 @@ public extension UIColor {
         let noHashString = hex.replacingOccurrences(of: "#", with: "")
         let scanner = Scanner(string: noHashString)
         scanner.charactersToBeSkipped = CharacterSet.symbols
-
+        
         var hexInt: UInt64 = 0
         if scanner.scanHexInt64(&hexInt) {
             let red = (hexInt >> 16) & 0xFF
             let green = (hexInt >> 8) & 0xFF
             let blue = (hexInt) & 0xFF
-
+            
             self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
         } else {
             self.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
@@ -403,10 +439,10 @@ extension Color {
         if isInDarkMode {
             return darkModeColor
         }
-
+        
         return defaultColor
     }
-
+    
     private static var isInDarkMode: Bool {
         NSApplication
             .shared
