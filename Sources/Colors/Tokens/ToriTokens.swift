@@ -21,9 +21,9 @@ struct ToriTokenProvider: TokenProvider {
     public var backgroundActive: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray900) }
     public var backgroundDisabled: Color { Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray700) }
     public var backgroundDisabledSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600) }
-    public var backgroundNeutralSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray750) }
-    public var backgroundNeutralSubtleHover: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray700) }
-    public var backgroundNeutralSubtleActive: Color { Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray750) }
+    public var backgroundSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray750) }
+    public var backgroundSubtleHover: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray700) }
+    public var backgroundSubtleActive: Color { Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray750) }
     public var backgroundSelected: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry50, darkModeColor: ToriColors.blueberry900) }
     public var backgroundSelectedHover: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry100, darkModeColor: ToriColors.blueberry800) }
     public var backgroundSelectedActive: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry200, darkModeColor: ToriColors.blueberry900) }
@@ -47,9 +47,6 @@ struct ToriTokenProvider: TokenProvider {
     public var backgroundPositiveSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.green50, darkModeColor: ToriColors.green900) }
     public var backgroundPositiveSubtleHover: Color { Color.dynamicColor(defaultColor: ToriColors.green100, darkModeColor: ToriColors.green800) }
     public var backgroundPositiveSubtleActive: Color { Color.dynamicColor(defaultColor: ToriColors.green200, darkModeColor: ToriColors.green900) }
-    public var backgroundPositiveSelected: Color { Color.dynamicColor(defaultColor: ToriColors.green50, darkModeColor: ToriColors.green900) }
-    public var backgroundPositiveSelectedHover: Color { Color.dynamicColor(defaultColor: ToriColors.green100, darkModeColor: ToriColors.green800) }
-    public var backgroundPositiveSelectedActive: Color { Color.dynamicColor(defaultColor: ToriColors.green200, darkModeColor: ToriColors.green900) }
     
     public var backgroundNegative: Color { Color.dynamicColor(defaultColor: ToriColors.red600, darkModeColor: ToriColors.red300) }
     public var backgroundNegativeHover: Color { Color.dynamicColor(defaultColor: ToriColors.red700, darkModeColor: ToriColors.red200) }
@@ -57,9 +54,6 @@ struct ToriTokenProvider: TokenProvider {
     public var backgroundNegativeSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.red50, darkModeColor: ToriColors.red900) }
     public var backgroundNegativeSubtleHover: Color { Color.dynamicColor(defaultColor: ToriColors.red100, darkModeColor: ToriColors.red800) }
     public var backgroundNegativeSubtleActive: Color { Color.dynamicColor(defaultColor: ToriColors.red200, darkModeColor: ToriColors.red900) }
-    public var backgroundNegativeSelected: Color { Color.dynamicColor(defaultColor: ToriColors.red50, darkModeColor: ToriColors.red900) }
-    public var backgroundNegativeSelectedHover: Color { Color.dynamicColor(defaultColor: ToriColors.red100, darkModeColor: ToriColors.red800) }
-    public var backgroundNegativeSelectedActive: Color { Color.dynamicColor(defaultColor: ToriColors.red200, darkModeColor: ToriColors.red900) }
     
     public var backgroundWarning: Color { Color.dynamicColor(defaultColor: ToriColors.yellow600, darkModeColor: ToriColors.yellow500) }
     public var backgroundWarningHover: Color { Color.dynamicColor(defaultColor: ToriColors.yellow700, darkModeColor: ToriColors.yellow400) }
@@ -67,9 +61,6 @@ struct ToriTokenProvider: TokenProvider {
     public var backgroundWarningSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.yellow50, darkModeColor: ToriColors.yellow900) }
     public var backgroundWarningSubtleHover: Color { Color.dynamicColor(defaultColor: ToriColors.yellow100, darkModeColor: ToriColors.yellow800) }
     public var backgroundWarningSubtleActive: Color { Color.dynamicColor(defaultColor: ToriColors.yellow200, darkModeColor: ToriColors.yellow900) }
-    public var backgroundWarningSelected: Color { Color.dynamicColor(defaultColor: ToriColors.yellow50, darkModeColor: ToriColors.yellow900) }
-    public var backgroundWarningSelectedHover: Color { Color.dynamicColor(defaultColor: ToriColors.yellow100, darkModeColor: ToriColors.yellow800) }
-    public var backgroundWarningSelectedActive: Color { Color.dynamicColor(defaultColor: ToriColors.yellow200, darkModeColor: ToriColors.yellow900) }
     
     public var backgroundInfo: Color { Color.dynamicColor(defaultColor: ToriColors.blue600, darkModeColor: ToriColors.blue500) }
     public var backgroundInfoHover: Color { Color.dynamicColor(defaultColor: ToriColors.blue700, darkModeColor: ToriColors.blue400) }
@@ -77,9 +68,6 @@ struct ToriTokenProvider: TokenProvider {
     public var backgroundInfoSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.blue50, darkModeColor: ToriColors.blue900) }
     public var backgroundInfoSubtleHover: Color { Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue800) }
     public var backgroundInfoSubtleActive: Color { Color.dynamicColor(defaultColor: ToriColors.blue200, darkModeColor: ToriColors.blue900) }
-    public var backgroundInfoSelected: Color { Color.dynamicColor(defaultColor: ToriColors.blue50, darkModeColor: ToriColors.blue900) }
-    public var backgroundInfoSelectedHover: Color { Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue800) }
-    public var backgroundInfoSelectedActive: Color { Color.dynamicColor(defaultColor: ToriColors.blue200, darkModeColor: ToriColors.blue900) }
     
     public var backgroundNotification: Color { Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon500) }
     
@@ -195,9 +183,9 @@ struct ToriUITokenProvider: UITokenProvider {
     public var backgroundActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray900) }
     public var backgroundDisabled: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray700) }
     public var backgroundDisabledSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600) }
-    public var backgroundNeutralSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray750) }
-    public var backgroundNeutralSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray700) }
-    public var backgroundNeutralSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray750) }
+    public var backgroundSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray750) }
+    public var backgroundSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray700) }
+    public var backgroundSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray750) }
     public var backgroundSelected: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry50, darkModeColor: ToriUIColors.blueberry900) }
     public var backgroundSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry100, darkModeColor: ToriUIColors.blueberry800) }
     public var backgroundSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry200, darkModeColor: ToriUIColors.blueberry900) }
@@ -221,9 +209,6 @@ struct ToriUITokenProvider: UITokenProvider {
     public var backgroundPositiveSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.green50, darkModeColor: ToriUIColors.green900) }
     public var backgroundPositiveSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.green100, darkModeColor: ToriUIColors.green800) }
     public var backgroundPositiveSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.green200, darkModeColor: ToriUIColors.green900) }
-    public var backgroundPositiveSelected: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.green50, darkModeColor: ToriUIColors.green900) }
-    public var backgroundPositiveSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.green100, darkModeColor: ToriUIColors.green800) }
-    public var backgroundPositiveSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.green200, darkModeColor: ToriUIColors.green900) }
     
     public var backgroundNegative: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.red600, darkModeColor: ToriUIColors.red300) }
     public var backgroundNegativeHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.red700, darkModeColor: ToriUIColors.red200) }
@@ -231,9 +216,6 @@ struct ToriUITokenProvider: UITokenProvider {
     public var backgroundNegativeSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.red50, darkModeColor: ToriUIColors.red900) }
     public var backgroundNegativeSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.red100, darkModeColor: ToriUIColors.red800) }
     public var backgroundNegativeSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.red200, darkModeColor: ToriUIColors.red900) }
-    public var backgroundNegativeSelected: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.red50, darkModeColor: ToriUIColors.red900) }
-    public var backgroundNegativeSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.red100, darkModeColor: ToriUIColors.red800) }
-    public var backgroundNegativeSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.red200, darkModeColor: ToriUIColors.red900) }
     
     public var backgroundWarning: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.yellow600, darkModeColor: ToriUIColors.yellow500) }
     public var backgroundWarningHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.yellow700, darkModeColor: ToriUIColors.yellow400) }
@@ -241,9 +223,6 @@ struct ToriUITokenProvider: UITokenProvider {
     public var backgroundWarningSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.yellow50, darkModeColor: ToriUIColors.yellow900) }
     public var backgroundWarningSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.yellow100, darkModeColor: ToriUIColors.yellow800) }
     public var backgroundWarningSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.yellow200, darkModeColor: ToriUIColors.yellow900) }
-    public var backgroundWarningSelected: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.yellow50, darkModeColor: ToriUIColors.yellow900) }
-    public var backgroundWarningSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.yellow100, darkModeColor: ToriUIColors.yellow800) }
-    public var backgroundWarningSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.yellow200, darkModeColor: ToriUIColors.yellow900) }
     
     public var backgroundInfo: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blue600, darkModeColor: ToriUIColors.blue500) }
     public var backgroundInfoHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blue700, darkModeColor: ToriUIColors.blue400) }
@@ -251,9 +230,6 @@ struct ToriUITokenProvider: UITokenProvider {
     public var backgroundInfoSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blue50, darkModeColor: ToriUIColors.blue900) }
     public var backgroundInfoSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blue100, darkModeColor: ToriUIColors.blue800) }
     public var backgroundInfoSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blue200, darkModeColor: ToriUIColors.blue900) }
-    public var backgroundInfoSelected: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blue50, darkModeColor: ToriUIColors.blue900) }
-    public var backgroundInfoSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blue100, darkModeColor: ToriUIColors.blue800) }
-    public var backgroundInfoSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blue200, darkModeColor: ToriUIColors.blue900) }
     
     public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon600, darkModeColor: ToriUIColors.watermelon500) }
     

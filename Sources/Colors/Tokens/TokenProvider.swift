@@ -24,9 +24,9 @@ public protocol TokenProvider {
     var backgroundActive: Color { get }
     var backgroundDisabled: Color { get }
     var backgroundDisabledSubtle: Color { get }
-    var backgroundNeutralSubtle: Color { get }
-    var backgroundNeutralSubtleHover: Color { get }
-    var backgroundNeutralSubtleActive: Color { get }
+    var backgroundSubtle: Color { get }
+    var backgroundSubtleHover: Color { get }
+    var backgroundSubtleActive: Color { get }
     var backgroundSelected: Color { get }
     var backgroundSelectedHover: Color { get }
     var backgroundSelectedActive: Color { get }
@@ -50,9 +50,6 @@ public protocol TokenProvider {
     var backgroundPositiveSubtle: Color { get }
     var backgroundPositiveSubtleHover: Color { get }
     var backgroundPositiveSubtleActive: Color { get }
-    var backgroundPositiveSelected: Color { get }
-    var backgroundPositiveSelectedHover: Color { get }
-    var backgroundPositiveSelectedActive: Color { get }
     
     var backgroundNegative: Color { get }
     var backgroundNegativeHover: Color { get }
@@ -60,9 +57,6 @@ public protocol TokenProvider {
     var backgroundNegativeSubtle: Color { get }
     var backgroundNegativeSubtleHover: Color { get }
     var backgroundNegativeSubtleActive: Color { get }
-    var backgroundNegativeSelected: Color { get }
-    var backgroundNegativeSelectedHover: Color { get }
-    var backgroundNegativeSelectedActive: Color { get }
     
     var backgroundWarning: Color { get }
     var backgroundWarningHover: Color { get }
@@ -70,9 +64,6 @@ public protocol TokenProvider {
     var backgroundWarningSubtle: Color { get }
     var backgroundWarningSubtleHover: Color { get }
     var backgroundWarningSubtleActive: Color { get }
-    var backgroundWarningSelected: Color { get }
-    var backgroundWarningSelectedHover: Color { get }
-    var backgroundWarningSelectedActive: Color { get }
     
     var backgroundInfo: Color { get }
     var backgroundInfoHover: Color { get }
@@ -80,9 +71,6 @@ public protocol TokenProvider {
     var backgroundInfoSubtle: Color { get }
     var backgroundInfoSubtleHover: Color { get }
     var backgroundInfoSubtleActive: Color { get }
-    var backgroundInfoSelected: Color { get }
-    var backgroundInfoSelectedHover: Color { get }
-    var backgroundInfoSelectedActive: Color { get }
     
     var backgroundNotification: Color { get }
     
@@ -198,9 +186,9 @@ public protocol UITokenProvider {
     var backgroundActive: UIColor { get }
     var backgroundDisabled: UIColor { get }
     var backgroundDisabledSubtle: UIColor { get }
-    var backgroundNeutralSubtle: UIColor { get }
-    var backgroundNeutralSubtleHover: UIColor { get }
-    var backgroundNeutralSubtleActive: UIColor { get }
+    var backgroundSubtle: UIColor { get }
+    var backgroundSubtleHover: UIColor { get }
+    var backgroundSubtleActive: UIColor { get }
     var backgroundSelected: UIColor { get }
     var backgroundSelectedHover: UIColor { get }
     var backgroundSelectedActive: UIColor { get }
@@ -224,9 +212,6 @@ public protocol UITokenProvider {
     var backgroundPositiveSubtle: UIColor { get }
     var backgroundPositiveSubtleHover: UIColor { get }
     var backgroundPositiveSubtleActive: UIColor { get }
-    var backgroundPositiveSelected: UIColor { get }
-    var backgroundPositiveSelectedHover: UIColor { get }
-    var backgroundPositiveSelectedActive: UIColor { get }
     
     var backgroundNegative: UIColor { get }
     var backgroundNegativeHover: UIColor { get }
@@ -234,9 +219,6 @@ public protocol UITokenProvider {
     var backgroundNegativeSubtle: UIColor { get }
     var backgroundNegativeSubtleHover: UIColor { get }
     var backgroundNegativeSubtleActive: UIColor { get }
-    var backgroundNegativeSelected: UIColor { get }
-    var backgroundNegativeSelectedHover: UIColor { get }
-    var backgroundNegativeSelectedActive: UIColor { get }
     
     var backgroundWarning: UIColor { get }
     var backgroundWarningHover: UIColor { get }
@@ -244,9 +226,6 @@ public protocol UITokenProvider {
     var backgroundWarningSubtle: UIColor { get }
     var backgroundWarningSubtleHover: UIColor { get }
     var backgroundWarningSubtleActive: UIColor { get }
-    var backgroundWarningSelected: UIColor { get }
-    var backgroundWarningSelectedHover: UIColor { get }
-    var backgroundWarningSelectedActive: UIColor { get }
     
     var backgroundInfo: UIColor { get }
     var backgroundInfoHover: UIColor { get }
@@ -254,9 +233,6 @@ public protocol UITokenProvider {
     var backgroundInfoSubtle: UIColor { get }
     var backgroundInfoSubtleHover: UIColor { get }
     var backgroundInfoSubtleActive: UIColor { get }
-    var backgroundInfoSelected: UIColor { get }
-    var backgroundInfoSelectedHover: UIColor { get }
-    var backgroundInfoSelectedActive: UIColor { get }
     
     var backgroundNotification: UIColor { get }
     
