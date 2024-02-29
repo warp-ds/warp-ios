@@ -27,7 +27,7 @@ public struct ColorProvider {
     var alertWarningIcon: Color { token.iconWarning }
     
     /// Avatar
-    var avatarBackground: Color { token.backgroundNeutralSubtle }
+    var avatarBackground: Color { token.backgroundSubtle }
     var avatarIcon: Color { token.iconDisabled }
     
     /// Badge
@@ -42,9 +42,9 @@ public struct ColorProvider {
     var badgeNeutralBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.gray100, darkModeColor: token.backgroundDisabledSubtle)
+            return Color.dynamicColor(defaultColor: FinnColors.gray100, darkModeColor: FinnColors.gray600)
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: token.backgroundDisabledSubtle)
+            return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray600)
         }
     }
     var badgeInfoBackground: Color {
@@ -102,11 +102,11 @@ public struct ColorProvider {
     var boxNeutralText: Color { token.text }
     var boxBorderedText: Color { token.text }
     var boxInfoText: Color { token.text }
-    var boxNeutralBackground: Color { token.backgroundNeutralSubtle }
+    var boxNeutralBackground: Color { token.backgroundSubtle }
     var boxBorderedBackground: Color { token.background }
     var boxInfoBackground: Color { token.backgroundInfoSubtle }
     var boxBorderedBorder: Color { token.border }
-    var boxNeutralBackgroundHover: Color { token.backgroundNeutralSubtleHover }
+    var boxNeutralBackgroundHover: Color { token.backgroundSubtleHover }
     var boxBorderedBackgroundHover: Color { token.backgroundHover }
     var boxInfoBackgroundHover: Color { token.backgroundInfoSubtleHover }
     var boxBorderedBorderHover: Color { token.borderHover }
@@ -377,8 +377,8 @@ public struct ColorProvider {
     /// Expandable
     var expandableTitleText: Color { token.text }
     var expandableParagraphText: Color { token.text }
-    var expandableBackground: Color { token.backgroundNeutralSubtle }
-    var expandableBackgroundHover: Color { token.backgroundNeutralSubtleHover }
+    var expandableBackground: Color { token.backgroundSubtle }
+    var expandableBackgroundHover: Color { token.backgroundSubtleHover }
     var expandableIcon: Color { token.icon }
     
     /// Footer
@@ -391,7 +391,7 @@ public struct ColorProvider {
     var helptextPositiveText: Color { token.textPositive }
     
     /// Image placeholder
-    var imagePlaceholderBackground: Color { token.backgroundNeutralSubtle }
+    var imagePlaceholderBackground: Color { token.backgroundSubtle }
     var imagePlaceholderIcon: Color { token.iconDisabled }
     
     /// Input (aka Text field, includes text area)

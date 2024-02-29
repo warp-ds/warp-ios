@@ -41,12 +41,12 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.backgroundDisabled])
                 createView(for: "backgroundDisabledSubtle",
                            colors: [tokenProvider.backgroundDisabledSubtle])
-                createView(for: "backgroundNeutralSubtle",
-                           colors: [tokenProvider.backgroundNeutralSubtle])
-                createView(for: "backgroundNeutralSubtleHover",
-                           colors: [tokenProvider.backgroundNeutralSubtleHover])
-                createView(for: "backgroundNeutralSubtleActive",
-                           colors: [tokenProvider.backgroundNeutralSubtleActive])
+                createView(for: "backgroundSubtle",
+                           colors: [tokenProvider.backgroundSubtle])
+                createView(for: "backgroundSubtleHover",
+                           colors: [tokenProvider.backgroundSubtleHover])
+                createView(for: "backgroundSubtleActive",
+                           colors: [tokenProvider.backgroundSubtleActive])
                 createView(for: "backgroundSelected",
                            colors: [tokenProvider.backgroundSelected])
                 createView(for: "backgroundSelectedHover",
@@ -89,12 +89,6 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.backgroundPositiveSubtleHover])
                 createView(for: "backgroundPositiveSubtleActive",
                            colors: [tokenProvider.backgroundPositiveSubtleActive])
-                createView(for: "backgroundPositiveSelected",
-                           colors: [tokenProvider.backgroundPositiveSelected])
-                createView(for: "backgroundPositiveSelectedHover",
-                           colors: [tokenProvider.backgroundPositiveSelectedHover])
-                createView(for: "backgroundPositiveSelectedActive",
-                           colors: [tokenProvider.backgroundPositiveSelectedActive])
                 
                 createView(for: "backgroundNegative",
                            colors: [tokenProvider.backgroundNegative])
@@ -108,12 +102,6 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.backgroundNegativeSubtleHover])
                 createView(for: "backgroundNegativeSubtleActive",
                            colors: [tokenProvider.backgroundNegativeSubtleActive])
-                createView(for: "backgroundNegativeSelected",
-                           colors: [tokenProvider.backgroundNegativeSelected])
-                createView(for: "backgroundNegativeSelectedHover",
-                           colors: [tokenProvider.backgroundNegativeSelectedHover])
-                createView(for: "backgroundNegativeSelectedActive",
-                           colors: [tokenProvider.backgroundNegativeSelectedActive])
                 
                 createView(for: "backgroundWarning",
                            colors: [tokenProvider.backgroundWarning])
@@ -127,12 +115,6 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.backgroundWarningSubtleHover])
                 createView(for: "backgroundWarningSubtleActive",
                            colors: [tokenProvider.backgroundWarningSubtleActive])
-                createView(for: "backgroundWarningSelected",
-                           colors: [tokenProvider.backgroundWarningSelected])
-                createView(for: "backgroundWarningSelectedHover",
-                           colors: [tokenProvider.backgroundWarningSelectedHover])
-                createView(for: "backgroundWarningSelectedActive",
-                           colors: [tokenProvider.backgroundWarningSelectedActive])
                 
                 createView(for: "backgroundInfo",
                            colors: [tokenProvider.backgroundInfo])
@@ -146,12 +128,6 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.backgroundInfoSubtleHover])
                 createView(for: "backgroundInfoSubtleActive",
                            colors: [tokenProvider.backgroundInfoSubtleActive])
-                createView(for: "backgroundInfoSelected",
-                           colors: [tokenProvider.backgroundInfoSelected])
-                createView(for: "backgroundInfoSelectedHover",
-                           colors: [tokenProvider.backgroundInfoSelectedHover])
-                createView(for: "backgroundInfoSelectedActive",
-                           colors: [tokenProvider.backgroundInfoSelectedActive])
                 
                 createView(for: "backgroundNotification",
                            colors: [tokenProvider.backgroundNotification])
