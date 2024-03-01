@@ -243,15 +243,5 @@ extension Warp.Button {
 
             return normalBorderColor
         }
-
-        /// Create shadow color based on button type.
-        func makeShadowColor() -> Color {
-            if type == .utilityOverlay {
-                // TODO: R&D + Rework
-                return FinnColors.gray700.opacity(0.5)
-            }
-
-            return .clear
-        }
     }
 }
