@@ -100,8 +100,7 @@ extension Warp {
                     .onTapGesture {
                         type.onTapped?()
                     }
-                    .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 10)
-                    .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 6)
+                    .shadow(.large)
             }
         }
 

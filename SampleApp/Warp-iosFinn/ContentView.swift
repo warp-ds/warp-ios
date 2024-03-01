@@ -40,6 +40,11 @@ struct ContentView: View {
                             .padding()
                     }
                     Divider()
+                    NavigationLink(destination: ShadowView()) {
+                        Text("ShadowView")
+                            .padding()
+                    }
+                    Divider()
                     NavigationLink(destination: TypographyView()) {
                         Text("WarpTypography")
                             .padding()

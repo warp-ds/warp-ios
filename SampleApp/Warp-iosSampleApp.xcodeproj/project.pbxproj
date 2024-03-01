@@ -15,6 +15,8 @@
 		349D0E142B62D67E00AAB421 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349D0E122B62D67A00AAB421 /* AlertView.swift */; };
 		34A278C02AD5472E00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278BF2AD5472E00EE6ED8 /* Warp */; };
 		34A278C22AD5473C00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278C12AD5473C00EE6ED8 /* Warp */; };
+		8213D0AF2B9078D700FCA310 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
+		8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
 		82355B002A8CCBE70023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
 		82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */; };
@@ -52,6 +54,7 @@
 		349586632B0EAD2D00A14570 /* TypographyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypographyView.swift; sourceTree = "<group>"; };
 		349D0E122B62D67A00AAB421 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		8206620F2A8CC97C0088677D /* warp-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "warp-ios"; path = ..; sourceTree = "<group>"; };
+		8213D0AE2B9078D700FCA310 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		82355AFA2A8CCBE70023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82355AFC2A8CCBE70023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Warp_iosSampleApp.entitlements; path = "Warp-iosFinn/Warp_iosSampleApp.entitlements"; sourceTree = "<group>"; };
@@ -139,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */,
+				8213D0AE2B9078D700FCA310 /* ShadowView.swift */,
 				82C7E6F42B7B85E000760C08 /* BroadcastView.swift */,
 				B2A8B2782B6D33B800122DBC /* CalloutView.swift */,
 				349586632B0EAD2D00A14570 /* TypographyView.swift */,
@@ -284,6 +288,7 @@
 				82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				8251E8CA2B4E8B7D00106720 /* BrandTokensView.swift in Sources */,
 				82838CF12B62B35400E3C495 /* PillView.swift in Sources */,
+				8213D0AF2B9078D700FCA310 /* ShadowView.swift in Sources */,
 				349D0E132B62D67A00AAB421 /* AlertView.swift in Sources */,
 				341B20E82B751BD30068FF43 /* BoxView.swift in Sources */,
 				82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */,
@@ -305,6 +310,7 @@
 				82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
 				8251E8CB2B4E8B7D00106720 /* BrandTokensView.swift in Sources */,
 				82838CF22B62B35400E3C495 /* PillView.swift in Sources */,
+				8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */,
 				349D0E142B62D67E00AAB421 /* AlertView.swift in Sources */,
 				341B20E92B751C250068FF43 /* BoxView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
