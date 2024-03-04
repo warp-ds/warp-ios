@@ -3,7 +3,7 @@ import SwiftUI
 
 struct ShadowView: View {
     private let colorProvider: ColorProvider = Warp.Config.colorProvider
-    @State private var shadow = Shadow.small
+    @State private var shadow = Warp.Shadow.small
 
     var body: some View {
         ZStack {
@@ -30,7 +30,7 @@ struct ShadowView: View {
                 .shadow(shadow)
                 Spacer()
                 Picker("Pick your shadow", selection: $shadow.animation(.interpolatingSpring)) {
-                    ForEach(Shadow.allCases, id: \.self) { shadow in
+                    ForEach(Warp.Shadow.allCases, id: \.self) { shadow in
                         Text(shadow.rawValue)
                     }
                 }
@@ -39,6 +39,31 @@ struct ShadowView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+extension Warp.Shadow {
+    fileprivate static var allCases: [Warp.Shadow] = [
+        .small,
+        .medium,
+        .large,
+        .xLarge
+    ]
+    
+    fileprivate var rawValue: String {
+        switch self {
+            case .small:
+                return "Small"
+
+            case .medium:
+                return "Medium"
+
+            case .large:
+                return "Large"
+
+        case .xLarge:
+            return "xLarge"
+        }
     }
 }
 

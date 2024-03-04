@@ -21,7 +21,7 @@ extension Warp.Button {
         
         /// Button shadow.
         /// It will be determined based on button current state alongside with button type.
-        var shadow: Shadow? {
+        var shadow: Warp.Shadow? {
             if type == .utilityOverlay, isEnabled {
                 return .small
             }
