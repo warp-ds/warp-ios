@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 /// Information tool tip view that will be shown on the top of TextField.
-struct ToolTipView: View, Hashable {
+struct ToolTipView: View {
     /// Tool tip title.
     let title: String?
 
@@ -14,16 +14,6 @@ struct ToolTipView: View, Hashable {
 
     /// Object responsible for providing needed colors.
     let colorProvider: ColorProvider
-
-    static func == (lhs: ToolTipView, rhs: ToolTipView) -> Bool {
-        lhs.title == rhs.title &&
-        lhs.additionalInformation == rhs.additionalInformation
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(title)
-        hasher.combine(additionalInformation)
-    }
 
     var body: some View {
         HStack {
