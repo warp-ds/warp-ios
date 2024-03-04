@@ -242,17 +242,17 @@ public struct ColorProvider {
     
     var buttonUtilityText: Color { token.text }
     var buttonUtilityTextDisabled: Color { token.textDisabled }
-    var buttonUtilityBackground: Color { token.surfaceElevated300 }
-    var buttonUtilityBackgroundHover: Color { token.surfaceElevated300Hover }
-    var buttonUtilityBackgroundActive: Color { token.surfaceElevated300Active }
+    var buttonUtilityBackground: Color { token.background }
+    var buttonUtilityBackgroundHover: Color { token.backgroundHover }
+    var buttonUtilityBackgroundActive: Color { token.backgroundActive }
     var buttonUtilityBackgroundDisabled: Color { token.backgroundDisabled }
     var buttonUtilityBorder: Color { token.border }
     var buttonUtilityBorderHover: Color { token.borderHover }
     var buttonUtilityBorderActive: Color { token.borderActive }
     var buttonUtilityQuietText: Color { token.text }
     var buttonUtilityQuietBackground: Color { .clear }
-    var buttonUtilityQuietBackgroundHover: Color { token.backgroundNegativeSubtleHover }
-    var buttonUtilityQuietBackgroundActive: Color { token.backgroundNegativeSubtleActive }
+    var buttonUtilityQuietBackgroundHover: Color { token.backgroundHover }
+    var buttonUtilityQuietBackgroundActive: Color { token.backgroundActive }
     var buttonUtilityQuietBorder: Color { .clear }
     var buttonUtilityQuietBorderHover: Color { .clear }
     var buttonUtilityQuietBorderActive: Color { .clear }
