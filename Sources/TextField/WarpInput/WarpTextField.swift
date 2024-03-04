@@ -26,8 +26,7 @@ extension Warp {
             infoToolTipView: AnyView? = nil,
             leftView: AnyView? = nil,
             rightView: AnyView? = nil,
-            errorMessage: String? = nil,
-            helpMessage: String? = nil,
+            informationState: Warp.TextField.InformationState = .none,
             isAnimated: Bool = true,
             text: Binding<String>,
             state: Binding<TextFieldState>,
@@ -40,8 +39,7 @@ extension Warp {
                 infoToolTipView: infoToolTipView,
                 leftView: leftView,
                 rightView: rightView,
-                errorMessage: errorMessage,
-                helpMessage: helpMessage,
+                informationState: informationState,
                 isAnimated: isAnimated
             )
 
@@ -57,8 +55,7 @@ extension Warp {
             infoToolTipView: AnyView? = nil,
             leftView: AnyView? = nil,
             rightView: AnyView? = nil,
-            errorMessage: String? = nil,
-            helpMessage: String? = nil,
+            informationState: Warp.TextField.InformationState = .none,
             isAnimated: Bool = true,
             text: Binding<String>,
             state: TextFieldState = Warp.textFieldDefaultInactiveState,
@@ -71,8 +68,7 @@ extension Warp {
                 infoToolTipView: infoToolTipView,
                 leftView: leftView,
                 rightView: rightView,
-                errorMessage: errorMessage,
-                helpMessage: helpMessage,
+                informationState: informationState,
                 isAnimated: isAnimated
             )
 
