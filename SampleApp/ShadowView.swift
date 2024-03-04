@@ -31,7 +31,7 @@ struct ShadowView: View {
                 Spacer()
                 Picker("Pick your shadow", selection: $shadow.animation(.interpolatingSpring)) {
                     ForEach(Warp.Shadow.allCases, id: \.self) { shadow in
-                        Text(shadow.rawValue)
+                        Text(shadow.name)
                     }
                 }
                 .pickerStyle(.segmented)
@@ -50,7 +50,7 @@ extension Warp.Shadow {
         .xLarge
     ]
     
-    fileprivate var rawValue: String {
+    fileprivate var name: String {
         switch self {
             case .small:
                 return "Small"
