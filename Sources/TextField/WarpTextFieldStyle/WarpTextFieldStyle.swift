@@ -72,7 +72,7 @@ extension Warp {
             .frame(minHeight: textFieldMinHeight, maxHeight: .infinity)
             .disabled(state.shouldBeDisabled)
             .onTapGesture {
-                // Not checking for stateful disable logic, since whole will be disabled.
+                // Not checking for stateful disable logic.
                 if !isFocused {
                     isFocused = true
                 }
@@ -120,9 +120,8 @@ extension Warp {
 
         private var helperTextView: some View {
             HelperInformationView(
-                state: state,
-                errorMessage: configuration.errorMessage,
-                helpMessage: configuration.helpMessage,
+                textFieldState: state,
+                informationState: configuration.informationState,
                 colorProvider: colorProvider
             )
         }
@@ -140,8 +139,7 @@ extension SwiftUI.TextFieldStyle where Self == Warp.TextFieldStyle {
         infoToolTipView: AnyView? = nil,
         iconLeft: Image? = nil,
         iconRight: Image? = nil,
-        errorMessage: String? = nil,
-        helpMessage: String? = nil,
+        informationState: Warp.TextField.InformationState = .none,
         isAnimated: Bool = true,
         text: String,
         state: Binding<Warp.TextFieldState> = .constant(Warp.textFieldDefaultInactiveState),
@@ -154,8 +152,7 @@ extension SwiftUI.TextFieldStyle where Self == Warp.TextFieldStyle {
             infoToolTipView: infoToolTipView,
             iconLeft: iconLeft,
             iconRight: iconRight,
-            errorMessage: errorMessage,
-            helpMessage: helpMessage,
+            informationState: informationState,
             isAnimated: isAnimated
         )
 
