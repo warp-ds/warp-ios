@@ -20,7 +20,30 @@ extension Warp {
         
         /// Flag indicating is TextField interactive.
         var isDisabled: Bool {
-            return self == .disabled
+            return self == .disabled || self == .readOnly
+        }
+    }
+}
+
+extension Warp.TextField {
+    public enum InformationState: Hashable, Equatable, Comparable {
+        case none
+
+        case error(String)
+
+        case helper(String)
+
+        var helperText: String? {
+            switch self {
+                case .none:
+                    return nil
+
+                case let .error(error):
+                    return error
+
+                case let .helper(helpText):
+                    return helpText
+            }
         }
     }
 }
