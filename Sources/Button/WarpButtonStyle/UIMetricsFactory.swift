@@ -18,29 +18,15 @@ extension Warp.Button {
             self.size = size
             self.isEnabled = isEnabled
         }
-
-        /// Button shadow radius.
+        
+        /// Button shadow.
         /// It will be determined based on button current state alongside with button type.
-        var shadowRadius: CGFloat {
-            switch type {
-                case .utilityOverlay:
-                    return isEnabled ? 2: 0
-
-                default:
-                    return 0
+        var shadow: Warp.Shadow? {
+            if type == .utilityOverlay, isEnabled {
+                return .small
             }
-        }
-
-        /// Button shadow vertical(Y) offset.
-        /// It will be determined based on button current state alongside with button type.
-        var shadowVerticalOffset: CGFloat {
-            switch type {
-                case .utilityOverlay:
-                    return isEnabled ? 1: 0
-
-                default:
-                    return 0
-            }
+            
+            return nil
         }
 
         /// Button border width based on current type.
@@ -56,13 +42,11 @@ extension Warp.Button {
 
         /// Button corner radius based on current type.
         var cornerRadius: CGFloat {
-            switch type {
-                case .utility:
-                    return 4
-
-                default:
-                    return 8
+            if type.isUtilityRelatedButton {
+                return 4
             }
+            
+            return 8
         }
         
         /// Default padding for utility related buttons.

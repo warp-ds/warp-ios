@@ -51,6 +51,9 @@ public struct WarpButtonStyle: ButtonStyle {
             .label
             .modifier(typographyModifiers)
             .modifier(uiModifiers)
+            .iflet(metricsFactory.shadow) { view, shadow in
+                view.shadow(shadow)
+            }
     }
 
     private func createOverlayView(isPressed: Bool) -> some View {
@@ -124,12 +127,6 @@ private struct UIModifiers: ViewModifier {
             .padding(.horizontal, metricsFactory.horizontalPadding)
             .background(backgroundColor)
             .overlay(overlayView)
-            .cornerRadius(metricsFactory.cornerRadius)
-            .shadow(
-                color: colorFactory.makeShadowColor(),
-                radius: metricsFactory.shadowRadius,
-                y: metricsFactory.shadowVerticalOffset
-            )
             .cornerRadius(metricsFactory.cornerRadius)
     }
 
