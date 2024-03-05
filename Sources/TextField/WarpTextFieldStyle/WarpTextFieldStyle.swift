@@ -121,7 +121,6 @@ extension Warp {
         private var helperTextView: some View {
             HelperInformationView(
                 textFieldState: state,
-                informationState: configuration.informationState,
                 colorProvider: colorProvider
             )
         }
