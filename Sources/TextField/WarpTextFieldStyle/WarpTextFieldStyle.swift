@@ -224,6 +224,15 @@ extension Warp.TextFieldState {
                     value: "Read only",
                     comment: ""
                 )
+        }
+    }
+}
+
+extension Warp.TextFieldState {
+    fileprivate var informationState: Warp.TextField.InformationState? {
+        switch self {
+            case .normal(let state), .active(let state):
+                return state
 
             default:
                 return nil
