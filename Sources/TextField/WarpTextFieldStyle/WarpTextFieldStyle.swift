@@ -206,21 +206,25 @@ extension Warp.TextFieldState {
         switch self {
             case .disabled:
                 return NSLocalizedString(
-                    "TextField.Disabled.Title",
+                    "Warp.TextField.Disabled.Title",
                     value: "Currently disabled",
                     comment: ""
                 )
 
-            case .error:
-                return NSLocalizedString(
-                    "TextField.Error.Title",
-                    value: "Has error",
-                    comment: ""
-                )
+            case .active(let state), .normal(let state):
+                if case .error = state {
+                    return NSLocalizedString(
+                        "Warp.TextField.Error.Title",
+                        value: "Has error",
+                        comment: ""
+                    )
+                }
+
+                return nil
 
             case .readOnly:
                 return NSLocalizedString(
-                    "TextField.ReadOnly.Title",
+                    "Warp.TextField.ReadOnly.Title",
                     value: "Read only",
                     comment: ""
                 )
