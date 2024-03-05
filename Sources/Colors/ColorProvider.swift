@@ -233,9 +233,6 @@ public struct ColorProvider {
     var buttonPillIconHover: Color { token.iconHover }
     var buttonPillIconActive: Color { token.iconActive }
     var buttonPillIconSelected: Color { token.iconSelected }
-    var buttonPillOverlayIcon: Color { token.iconInvertedStatic }
-    var buttonPillOverlayIconHover: Color { token.iconInvertedHover }
-    var buttonPillOverlayIconActive: Color { token.iconInvertedActive }
     var buttonLoadingText: Color { token.text }
     var buttonLoadingBackground: Color { .clear }
     var buttonLoadingIcon: Color { token.icon }
