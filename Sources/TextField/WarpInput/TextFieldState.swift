@@ -40,6 +40,16 @@ extension Warp.TextField {
 
         case helper(String)
 
+        var isError: Bool {
+            switch self {
+                case .error:
+                    return true
+
+                default:
+                    return false
+            }
+        }
+
         var helperText: String? {
             switch self {
                 case .none:
