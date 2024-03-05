@@ -19,6 +19,16 @@ extension Warp {
         var isDisabled: Bool {
             return self == .disabled || self == .readOnly
         }
+
+        var hasError: Bool {
+            switch self {
+                case .normal(let informationState), .active(let informationState):
+                    return informationState.isError
+
+                default:
+                    return false
+            }
+        }
         
         var helperText: String? {
             switch self {
