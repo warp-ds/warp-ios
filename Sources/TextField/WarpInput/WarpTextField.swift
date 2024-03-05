@@ -3,7 +3,7 @@ import Combine
 
 extension Warp {
     /// Inactive state of TextField.
-    public static let textFieldDefaultInactiveState = TextFieldState.normal
+    public static let textFieldDefaultInactiveState = TextFieldState.normal(.none)
 
     /// A control that displays an editable text with `Warp` designed interface.
     public struct TextField: View {
@@ -146,10 +146,10 @@ private struct WarpTextFieldPreview: PreviewProvider {
 
 extension Warp.TextFieldState {
     fileprivate static var allCases: [Warp.TextFieldState] = [
-        .normal,
-        .active,
+        .normal(.none),
+        .active(.none),
         .disabled,
-        .error,
+        .normal(.error("Error")),
         .readOnly
     ]
 }
