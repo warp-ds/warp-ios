@@ -2,18 +2,15 @@ import Foundation
 
 extension Warp {
     /// States of TextField view.
-    public enum TextFieldState: Equatable, Comparable {
+    public enum TextFieldState: Equatable, Comparable, Hashable {
         /// None active TextField.
-        case normal
+        case normal(Warp.TextField.InformationState)
 
         /// Focused TextField.
-        case active
+        case active(Warp.TextField.InformationState)
 
         /// Disabled TextField.
         case disabled
-
-        /// TextField that associated validation has failed.
-        case error
 
         /// Read only TextField.
         case readOnly
