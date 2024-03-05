@@ -13,7 +13,7 @@ extension Warp.TextField {
             leftSymbol: leftSymbol,
             rightSymbol: rightSymbol
         )
-        let constantState: Warp.TextFieldState = .normal
+        let constantState: Warp.TextFieldState = Warp.textFieldDefaultInactiveState
 
         return Warp.TextField(
             config: configuration,
@@ -30,7 +30,7 @@ extension Warp.TextField {
         colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> some View {
         let configuration: Warp.TextFieldConfiguration = .searchTextField
-        let constantState: Warp.TextFieldState = .normal
+        let constantState: Warp.TextFieldState = Warp.textFieldDefaultInactiveState
 
         let textField = createWithDiscardButton(
             configuration: configuration,
