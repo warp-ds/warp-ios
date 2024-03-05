@@ -25,18 +25,25 @@ extension Warp {
         }
 
         private var borderColor: Color {
+            lazy var errorColor = colorProvider.inputBorderNegative
+
             switch state {
-                case .normal:
+                case let .normal(state):
+                    if state.isError {
+                        return errorColor
+                    }
+
                     return colorProvider.inputBorder
 
-                case .active:
+                case let .active(state):
+                    if state.isError {
+                        return errorColor
+                    }
+
                     return colorProvider.inputBorderActive
 
                 case .disabled:
                     return colorProvider.inputBorderDisabled
-
-                case .error:
-                    return colorProvider.inputBorderNegative
 
                 case .readOnly:
                     return colorProvider.inputBorder
@@ -56,13 +63,14 @@ extension Warp {
                 case .normal:
                     return 2
 
-                case .active:
+                case let .active(state):
+                    if state.isError {
+                        return 2
+                    }
+
                     return 4
 
                 case .disabled:
-                    return 2
-
-                case .error:
                     return 2
 
                 case .readOnly:
