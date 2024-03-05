@@ -51,10 +51,20 @@ extension Warp {
                     )
                     .focused($isFocused) { isFocused in
                         let updateState = {
+                            let informationState = state.informationState
+
                             if isFocused {
-                                state = .active
+                                if let informationState {
+                                    state = .active(informationState)
+                                } else {
+                                    state = .active(.none)
+                                }
                             } else {
-                                state = textFieldDefaultInactiveState
+                                if let informationState {
+                                    state = .normal(informationState)
+                                } else {
+                                    state = textFieldDefaultInactiveState
+                                }
                             }
                         }
 
