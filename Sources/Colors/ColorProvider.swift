@@ -55,7 +55,7 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue700)
         }
     }
-    var badgePositiveBackground: Color {
+    public var badgePositiveBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.green100, darkModeColor: FinnColors.green700)
@@ -89,7 +89,7 @@ public struct ColorProvider {
         }
     }
     var badgeNotificationBackground: Color { token.backgroundNotification }
-    var badgeSponsoredBackground: Color {
+    public var badgeSponsoredBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.aqua200, darkModeColor: FinnColors.aqua600)
