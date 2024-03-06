@@ -134,9 +134,10 @@ extension View {
 
 extension UIView {
     public func dropShadow(_ shadow: Warp.Shadow) {
-        var view = UIView()
+        layer.sublayers?.removeAll()
+        let view = UIView()
         view.frame = frame
-        var shadows = UIView()
+        let shadows = UIView()
         shadows.frame = view.frame
         shadows.clipsToBounds = false
         view.addSubview(shadows)
@@ -163,7 +164,7 @@ extension UIView {
         layer1.position = shadows.center
         shadows.layer.addSublayer(layer1)
 
-        var shapes = UIView()
+        let shapes = UIView()
         shapes.frame = view.frame
         shapes.clipsToBounds = true
         view.addSubview(shapes)
