@@ -20,6 +20,10 @@ extension Warp {
         public static var colorProvider: ColorProvider = {
             ColorProvider(token: tokenProvider)
         }()
+        
+        public static var uiColorProvider: UIColorProvider = {
+            UIColorProvider(token: uiTokenProvider)
+        }()
 
         public static var warpTheme: Theme = .finn
     }
