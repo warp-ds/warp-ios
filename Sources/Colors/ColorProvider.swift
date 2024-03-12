@@ -39,7 +39,7 @@ public struct ColorProvider {
     var badgeDisabledText: Color { token.text }
     var badgePriceText: Color { token.textInvertedStatic }
     var badgeNotificationText: Color { token.textNotification }
-    var badgeNeutralBackground: Color {
+    public var badgeNeutralBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.gray100, darkModeColor: FinnColors.gray600)
@@ -63,7 +63,7 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.green100, darkModeColor: ToriColors.green700)
         }
     }
-    var badgeWarningBackground: Color {
+    public var badgeWarningBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.yellow100, darkModeColor: FinnColors.yellow700)
@@ -71,7 +71,7 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.yellow100, darkModeColor: ToriColors.yellow700)
         }
     }
-    var badgeNegativeBackground: Color {
+    public var badgeNegativeBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.red100, darkModeColor: FinnColors.red700)
@@ -79,7 +79,7 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.red100, darkModeColor: ToriColors.red700)
         }
     }
-    var badgeDisabledBackground: Color { token.backgroundDisabled }
+    public var badgeDisabledBackground: Color { token.backgroundDisabled }
     var badgePriceBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
@@ -647,7 +647,7 @@ public struct UIColorProvider {
     var badgeDisabledText: UIColor { token.text }
     var badgePriceText: UIColor { token.textInvertedStatic }
     var badgeNotificationText: UIColor { token.textNotification }
-    var badgeNeutralBackground: UIColor {
+    public var badgeNeutralBackground: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray100, darkModeColor: FinnUIColors.gray600)
@@ -671,7 +671,7 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.green100, darkModeColor: ToriUIColors.green700)
         }
     }
-    var badgeWarningBackground: UIColor {
+    public var badgeWarningBackground: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.yellow100, darkModeColor: FinnUIColors.yellow700)
@@ -679,7 +679,7 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.yellow100, darkModeColor: ToriUIColors.yellow700)
         }
     }
-    var badgeNegativeBackground: UIColor {
+    public var badgeNegativeBackground: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.red100, darkModeColor: FinnUIColors.red700)
@@ -687,7 +687,7 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.red100, darkModeColor: ToriUIColors.red700)
         }
     }
-    var badgeDisabledBackground: UIColor { token.backgroundDisabled }
+    public var badgeDisabledBackground: UIColor { token.backgroundDisabled }
     var badgePriceBackground: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
