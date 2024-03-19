@@ -5,7 +5,7 @@ import struct SwiftUI.Text
 
 extension Warp {
     /// Configurations that will be applied to TextField.
-    public struct TextFieldConfiguration: Equatable {
+    public struct TextFieldConfiguration {
         /// TextField placeholder.
         public var placeholder: String
 
@@ -29,10 +29,6 @@ extension Warp {
 
         /// Flag indicating if TextField changes should be animated.
         public var isAnimated: Bool
-
-        public static func == (lhs: TextFieldConfiguration, rhs: TextFieldConfiguration) -> Bool {
-            lhs.placeholder == rhs.placeholder
-        }
 
         public init() {
             placeholder = ""
