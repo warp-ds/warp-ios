@@ -1,18 +1,31 @@
 import SwiftUI
 import Warp
 
+private let allowedTextFieldStates: [Warp.TextFieldState] = [.normal(.none), .disabled, .readOnly]
+
 struct TextFieldView: View {
-    @State private var state = Warp.TextFieldState.normal
+    @State private var state = Warp.TextFieldState.normal(.none)
+
     private let colorProvider = Warp.Config.colorProvider
 
-    @State private var randomUsageTextFieldText = ""
-    @State private var searchTextFieldText = ""
-    @State private var discardableTextFieldText = ""
-    @State private var passwordTextFieldText = ""
-    @State private var moneyTextFieldText = ""
-    @State private var styleTextFieldText = ""
-    @State private var multilineTextFieldText = ""
-    @State private var isSecured = true
+    @State private var textFieldText = ""
+    
+    @State private var textFieldPlaceholder = "Warp"
+
+    @State private var textFieldTitle = "WarpTextField"
+
+    @State private var textFieldAdditionalInformation = "Optional"
+
+    @State private var hasInfoToolTipView = true
+    
+    @State private var hasLeftView = true
+
+    @State private var hasRightView = true
+
+    @State private var informationState: Warp.TextField.InformationState = .none
+
+    @State private var isSecured = false
+    @State private var isTextSecured = true
 
     @FocusState private var isFocused: Bool
 
@@ -21,167 +34,141 @@ struct TextFieldView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack (alignment: .leading) {
-                ForEach(Warp.TextFieldState.allCases, id: \.self) { state in
-                    createView(for: state)
-                }
+                createView()
+                    .padding(.vertical)
 
-                GroupBox(
-                    content: {
-                        Warp.TextField.createSearchTextField(text: $searchTextFieldText)
-                            .padding()
-                    }, label: {
-                        Text("Search TextField")
-                    }
-                )
+                Divider()
 
-                GroupBox(
-                    content: {
-                        Warp.TextField.createWithDiscardButton(
-                            configuration: Self.defaultConfiguration,
-                            text: $discardableTextFieldText,
-                            state: .constant(.normal)
-                        )
-                        .padding()
-                    }, label: {
-                        Text("TextField with discardable button")
-                    }
-                )
+                HStack {
+                    Warp.Text("Type", style: .bodyStrong)
 
-                GroupBox(
-                    content: {
-                        Warp.TextField.createSecureTextField(
-                            configuration: Self.defaultConfiguration,
-                            text: $passwordTextFieldText,
-                            state: .constant(.normal),
-                            isSecured: $isSecured
-                        )
-
-                        .padding()
-                    }, label: {
-                        Text("Password TextField")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Warp.TextField.createDecimalTextField(
-                            text: $moneyTextFieldText,
-                            leftSymbol: "kr"
-                        )
-                        .padding()
-                    }, label: {
-                        Text("Left kr TextField")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Warp.TextField.createDecimalTextField(
-                            text: $moneyTextFieldText,
-                            rightSymbol: "kr"
-                        )
-                        .padding()
-                    }, label: {
-                        Text("Right kr TextField")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Warp.TextField(
-                            placeholder: "Warp",
-                            title: "WarpTextField",
-                            additionalInformation: "Optional",
-                            infoToolTipView: AnyView(Image(systemName: "exclamationmark.circle")),
-                            leftView: AnyView(Image(systemName: "magnifyingglass")),
-                            rightView: AnyView(Image(systemName: "xmark")),
-                            errorMessage: "Error message",
-                            helpMessage: "Help message",
-                            text: $randomUsageTextFieldText
-                        )
-                        .padding()
-                    }, label: {
-                        Text("Random usage")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Warp.TextField(
-                            placeholder: "Warp",
-                            title: "WarpTextField",
-                            additionalInformation: "Optional",
-                            infoToolTipView: AnyView(Image(systemName: "exclamationmark.circle")),
-                            leftView: AnyView(Image(systemName: "magnifyingglass")),
-                            rightView: AnyView(Image(systemName: "xmark")),
-                            errorMessage: "Error message",
-                            helpMessage: "Help message",
-                            text: $randomUsageTextFieldText
-                        )
-                        .padding()
-                    }, label: {
-                        Text("Random usage")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        SwiftUI.TextField("", text: $styleTextFieldText)
-                            .focused($isFocused)
-                            .textFieldStyle(
-                                .warp(
-                                    configuration: .default,
-                                    text: styleTextFieldText,
-                                    state: $state,
-                                    colorProvider: colorProvider
-                                )
-                            )
-                            .padding()
-                    }, label: {
-                        Text("TextField style")
-                    }
-                )
-
-                if #available(iOS 16.0, *) {
-                    GroupBox(
-                        content: {
-                            SwiftUI.TextField("", text: $multilineTextFieldText, axis: .vertical)
-                                .textFieldStyle(
-                                    .warp(
-                                        configuration: .default,
-                                        text: multilineTextFieldText,
-                                        colorProvider: colorProvider
-                                    )
-                                )
-                                .lineLimit(...4)
-                                .padding()
-                        }, label: {
-                            Text("Multiline TextField")
+                    Picker("", selection: $state.animation(.smooth)) {
+                        ForEach(allowedTextFieldStates, id: \.self) { state in
+                            Text(state.title)
                         }
-                    )
+                    }
+                    .pickerStyle(.wheel)
                 }
+
+                Divider()
+
+                HStack {
+                    Warp.Text("Placeholder", style: .bodyStrong)
+
+                    Spacer()
+
+                    Warp.TextField(text: $textFieldPlaceholder)
+                }
+
+                Divider()
+
+                HStack {
+                    Warp.Text("Title", style: .bodyStrong)
+
+                    Spacer()
+
+                    Warp.TextField(text: $textFieldTitle)
+                }
+
+                Divider()
+
+                HStack {
+                    Warp.Text("Additional Information", style: .bodyStrong)
+
+                    Spacer()
+
+                    Warp.TextField(text: $textFieldAdditionalInformation)
+                }
+
+                createToggle(binding: $hasInfoToolTipView, text: ("Hide info tool tip view", "Show info tool tip view"))
+
+                Divider()
+
+                createToggle(binding: $hasLeftView, text: ("Hide left view", "Show left view"))
+
+                Divider()
+
+                createToggle(binding: $hasRightView, text: ("Hide right view", "Show right view"))
+
+                Divider()
+
+                HStack {
+                    Warp.Text("Information state", style: .bodyStrong)
+
+                    Picker("", selection: $informationState.animation(.smooth)) {
+                        ForEach(Warp.TextField.InformationState.allCases, id: \.self) { state in
+                            Text(state.title)
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                }
+
+                Divider()
+
+                createToggle(binding: $isSecured, text: ("Secured", "Unsecured"))
             }
             .padding(.horizontal)
+            .navigationBarTitleDisplayMode(.inline)
+            .onChange(of: informationState) { newInformationState in
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                
+                switch newInformationState {
+                    case .error:
+                        state = .normal(.error("Error message"))
+
+                    case .helper:
+                        state = .normal(.helper("Helper message"))
+
+                    case .none:
+                        break
+                }
+            }
         }
     }
 
-    private func createView(for state: Warp.TextFieldState) -> some View {
-        var text = state.title
-
-        let bindingText = Binding {
-            text
-        } set: { newValue in
-            text = newValue
+    private func createToggle(binding: Binding<Bool>, text: (true: String, false: String)) -> some View {
+        Toggle(isOn: binding.animation(.smooth)) {
+            Warp.Text(binding.wrappedValue ? text.true: text.false, style: .bodyStrong)
         }
+        .padding(.trailing, 4)
+    }
 
-        return GroupBox(
-            content: {
-                Warp.TextField(text: bindingText, state: state)
-                    .padding()
-            }, label: {
-                Text(state.title)
-            }
-        )
+    @ViewBuilder
+    private func createView() -> some View {
+        let infoToolTipView = hasInfoToolTipView ? AnyView(Image(systemName: "exclamationmark.circle")): nil
+        let leftView = hasLeftView ? AnyView(Image(systemName: "magnifyingglass")): nil
+        let rightView = hasRightView ? AnyView(Image(systemName: "xmark")): nil
+
+        if isSecured {
+            Warp.TextField.createSecureTextField(
+                configuration: Warp.TextFieldConfiguration(
+                    placeholder: textFieldPlaceholder,
+                    title: textFieldTitle,
+                    additionalInformation: textFieldAdditionalInformation,
+                    infoToolTipView: infoToolTipView,
+                    leftView: leftView,
+                    rightView: rightView,
+                    informationState: informationState
+                ),
+                text: $textFieldText,
+                state: $state,
+                isSecured: $isTextSecured
+            )
+            .padding()
+        } else {
+            Warp.TextField(
+                placeholder: textFieldPlaceholder,
+                title: textFieldTitle,
+                additionalInformation: textFieldAdditionalInformation,
+                infoToolTipView: infoToolTipView,
+                leftView: leftView,
+                rightView: rightView,
+                informationState: informationState,
+                text: $textFieldText,
+                state: state
+            )
+            .padding()
+        }
     }
 }
 
@@ -189,18 +176,43 @@ struct TextFieldView: View {
     TextFieldView()
 }
 
-extension Warp.TextFieldState: CaseIterable {
-    public static var allCases: [Warp.TextFieldState] = [
-        .normal,
-        .active,
-        .disabled,
-        .error,
-        .readOnly
-    ]
+extension Warp.TextField.InformationState: CaseIterable {
+    public static var allCases: [Warp.TextField.InformationState] {
+        [
+            .none,
+            .error("Error message"),
+            .helper("Helper message")
+        ]
+    }
+
+    fileprivate var title: String {
+        switch self {
+            case .none:
+                return "None"
+
+            case let .error(error):
+                return error
+
+            case let .helper(helpText):
+                return helpText
+        }
+    }
 }
 
 extension Warp.TextFieldState {
     fileprivate var title: String {
-        String(describing: self).localizedCapitalized
+        switch self {
+            case .normal:
+                return "Normal"
+
+            case .active:
+                return "Active"
+
+            case .disabled:
+                return "Disabled"
+
+            case .readOnly:
+                return "Read only"
+        }
     }
 }
