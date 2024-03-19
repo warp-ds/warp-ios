@@ -165,7 +165,7 @@ struct TextFieldView: View {
                 rightView: rightView,
                 informationState: informationState,
                 text: $textFieldText,
-                state: state
+                state: $state
             )
             .padding()
         }

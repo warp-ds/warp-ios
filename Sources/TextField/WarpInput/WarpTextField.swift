@@ -14,7 +14,10 @@ extension Warp {
         private var text: Binding<String>
 
         /// Two-way binding TextField state.
-        @Binding private var state: TextFieldState
+        private var state: Binding<TextFieldState>
+        
+        /// State property that will act as a workaround for handling not bounded state situation.
+        @State private var __state: TextFieldState?
 
         /// Object responsible for providing needed colors.
         private let colorProvider: ColorProvider
@@ -44,7 +47,7 @@ extension Warp {
             )
 
             self.text = text
-            self._state = state
+            self.state = state
             self.colorProvider = colorProvider
         }
 
@@ -73,14 +76,9 @@ extension Warp {
             )
 
             self.text = text
-
-            var __state = state
-            self._state = Binding(
-                get: { __state },
-                set: { __state = $0 }
-            )
-
             self.colorProvider = colorProvider
+            __state = state
+            self.state = .constant(state)
         }
 
         public init(
@@ -91,11 +89,22 @@ extension Warp {
         ) {
             self.configuration = config
             self.text = text
-            self._state = state
+            self.state = state
             self.colorProvider = colorProvider
         }
 
         public var body: some View {
+            let state: Binding<Warp.TextFieldState> = {
+                if let _state = self.__state {
+                    return Binding(
+                        get: { _state },
+                        set: { self.__state = $0 }
+                    )
+                } else {
+                    return self.state
+                }
+            }()
+
             SwiftUI.TextField(
                 configuration.placeholder,
                 text: text
@@ -104,7 +113,7 @@ extension Warp {
                 .warp(
                     configuration: configuration,
                     text: text.wrappedValue,
-                    state: $state,
+                    state: state,
                     colorProvider: colorProvider
                 )
             )
