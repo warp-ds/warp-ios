@@ -21,7 +21,11 @@ extension Warp {
             ColorProvider(token: tokenProvider)
         }()
 
-        public static var warpTheme: Theme = .finn
+        public static var warpTheme: Theme = .finn {
+            didSet {
+                try! Warp.Typography.registerFonts()
+            }
+        }
     }
 
     public enum Theme {
