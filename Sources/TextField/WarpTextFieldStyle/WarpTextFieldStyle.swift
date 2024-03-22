@@ -51,10 +51,20 @@ extension Warp {
                     )
                     .focused($isFocused) { isFocused in
                         let updateState = {
+                            let informationState = state.informationState
+
                             if isFocused {
-                                state = .active
+                                if let informationState {
+                                    state = .active(informationState)
+                                } else {
+                                    state = .active(.none)
+                                }
                             } else {
-                                state = textFieldDefaultInactiveState
+                                if let informationState {
+                                    state = .normal(informationState)
+                                } else {
+                                    state = textFieldDefaultInactiveState
+                                }
                             }
                         }
 
@@ -72,7 +82,7 @@ extension Warp {
             .frame(minHeight: textFieldMinHeight, maxHeight: .infinity)
             .disabled(state.shouldBeDisabled)
             .onTapGesture {
-                // Not checking for stateful disable logic, since whole will be disabled.
+                // Not checking for stateful disable logic.
                 if !isFocused {
                     isFocused = true
                 }
@@ -120,9 +130,7 @@ extension Warp {
 
         private var helperTextView: some View {
             HelperInformationView(
-                state: state,
-                errorMessage: configuration.errorMessage,
-                helpMessage: configuration.helpMessage,
+                textFieldState: state,
                 colorProvider: colorProvider
             )
         }
@@ -140,8 +148,7 @@ extension SwiftUI.TextFieldStyle where Self == Warp.TextFieldStyle {
         infoToolTipView: AnyView? = nil,
         iconLeft: Image? = nil,
         iconRight: Image? = nil,
-        errorMessage: String? = nil,
-        helpMessage: String? = nil,
+        informationState: Warp.TextField.InformationState = .none,
         isAnimated: Bool = true,
         text: String,
         state: Binding<Warp.TextFieldState> = .constant(Warp.textFieldDefaultInactiveState),
@@ -154,8 +161,7 @@ extension SwiftUI.TextFieldStyle where Self == Warp.TextFieldStyle {
             infoToolTipView: infoToolTipView,
             iconLeft: iconLeft,
             iconRight: iconRight,
-            errorMessage: errorMessage,
-            helpMessage: helpMessage,
+            informationState: informationState,
             isAnimated: isAnimated
         )
 
@@ -209,24 +215,37 @@ extension Warp.TextFieldState {
         switch self {
             case .disabled:
                 return NSLocalizedString(
-                    "TextField.Disabled.Title",
+                    "Warp.TextField.Disabled.Title",
                     value: "Currently disabled",
                     comment: ""
                 )
 
-            case .error:
-                return NSLocalizedString(
-                    "TextField.Error.Title",
-                    value: "Has error",
-                    comment: ""
-                )
+            case .active(let state), .normal(let state):
+                if case .error = state {
+                    return NSLocalizedString(
+                        "Warp.TextField.Error.Title",
+                        value: "Has error",
+                        comment: ""
+                    )
+                }
+
+                return nil
 
             case .readOnly:
                 return NSLocalizedString(
-                    "TextField.ReadOnly.Title",
+                    "Warp.TextField.ReadOnly.Title",
                     value: "Read only",
                     comment: ""
                 )
+        }
+    }
+}
+
+extension Warp.TextFieldState {
+    fileprivate var informationState: Warp.TextField.InformationState? {
+        switch self {
+            case .normal(let state), .active(let state):
+                return state
 
             default:
                 return nil

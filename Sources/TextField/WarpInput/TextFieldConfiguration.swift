@@ -5,7 +5,7 @@ import struct SwiftUI.Text
 
 extension Warp {
     /// Configurations that will be applied to TextField.
-    public struct TextFieldConfiguration: Equatable {
+    public struct TextFieldConfiguration {
         /// TextField placeholder.
         public var placeholder: String
 
@@ -25,17 +25,10 @@ extension Warp {
         public var rightView: AnyView?
 
         /// Error message that will be shown when state changes to error.
-        public var errorMessage: String?
-
-        /// Helper message.
-        public var helpMessage: String?
+        public var informationState: Warp.TextField.InformationState
 
         /// Flag indicating if TextField changes should be animated.
         public var isAnimated: Bool
-
-        public static func == (lhs: TextFieldConfiguration, rhs: TextFieldConfiguration) -> Bool {
-            lhs.placeholder == rhs.placeholder
-        }
 
         public init() {
             placeholder = ""
@@ -44,8 +37,7 @@ extension Warp {
             infoToolTipView = nil
             leftView = nil
             rightView = nil
-            errorMessage = nil
-            helpMessage = nil
+            informationState = .none
             isAnimated = true
         }
         
@@ -56,8 +48,7 @@ extension Warp {
             infoToolTipView: AnyView? = nil,
             leftView: AnyView? = nil,
             rightView: AnyView? = nil,
-            errorMessage: String? = nil,
-            helpMessage: String? = nil,
+            informationState: Warp.TextField.InformationState = .none,
             isAnimated: Bool = true
         ) {
             self.placeholder = placeholder
@@ -66,8 +57,7 @@ extension Warp {
             self.infoToolTipView = infoToolTipView.flatMap(AnyView.init)
             self.leftView = leftView
             self.rightView = rightView
-            self.errorMessage = errorMessage
-            self.helpMessage = helpMessage
+            self.informationState = informationState
             self.isAnimated = isAnimated
         }
 
@@ -78,8 +68,7 @@ extension Warp {
             infoToolTipView: AnyView? = nil,
             iconLeft: Image?,
             iconRight: Image? = nil,
-            errorMessage: String? = nil,
-            helpMessage: String? = nil,
+            informationState: Warp.TextField.InformationState = .none,
             isAnimated: Bool = true
         ) {
             self.placeholder = placeholder
@@ -88,8 +77,7 @@ extension Warp {
             self.infoToolTipView = infoToolTipView
             self.leftView = iconLeft.flatMap(AnyView.init)
             self.rightView = iconRight.flatMap(AnyView.init)
-            self.errorMessage = errorMessage
-            self.helpMessage = helpMessage
+            self.informationState = informationState
             self.isAnimated = isAnimated
         }
 
@@ -102,8 +90,7 @@ extension Warp {
             rightPriceSymbol: String?,
             prefix: String? = nil,
             suffix: String? = nil,
-            errorMessage: String? = nil,
-            helpMessage: String? = nil,
+            informationState: Warp.TextField.InformationState = .none,
             isAnimated: Bool = true
         ) {
             self.placeholder = placeholder
@@ -112,8 +99,7 @@ extension Warp {
             self.infoToolTipView = infoToolTipView
             self.leftView = leftPriceSymbol.flatMap(SwiftUI.Text.init).flatMap(AnyView.init)
             self.rightView = rightPriceSymbol.flatMap(SwiftUI.Text.init).flatMap(AnyView.init)
-            self.errorMessage = errorMessage
-            self.helpMessage = helpMessage
+            self.informationState = informationState
             self.isAnimated = isAnimated
         }
         
@@ -125,8 +111,7 @@ extension Warp {
             infoToolTipView: nil,
             iconLeft: nil,
             iconRight: nil,
-            errorMessage: nil,
-            helpMessage: nil,
+            informationState: .none,
             isAnimated: true
         )
 
@@ -142,8 +127,7 @@ extension Warp {
             infoToolTipView: nil,
             iconLeft: Image(systemName: "magnifyingglass"),
             iconRight: nil,
-            errorMessage: nil,
-            helpMessage: nil,
+            informationState: .none,
             isAnimated: true
         )
 
@@ -154,8 +138,7 @@ extension Warp {
             additionalInformation: String? = nil,
             leftView: AnyView? = nil,
             rightView: AnyView? = nil,
-            errorMessage: String? = nil,
-            helpMessage: String? = nil
+            informationState: Warp.TextField.InformationState = .none
         ) -> TextFieldConfiguration {
             TextFieldConfiguration(
                 placeholder: placeholder,
@@ -164,8 +147,7 @@ extension Warp {
                 infoToolTipView: nil,
                 leftView: leftView,
                 rightView: rightView,
-                errorMessage: errorMessage,
-                helpMessage: helpMessage,
+                informationState: informationState,
                 isAnimated: true
             )
         }
@@ -177,8 +159,7 @@ extension Warp {
             additionalInformation: String? = nil,
             leftSymbol: String? = nil,
             rightSymbol: String? = nil,
-            errorMessage: String? = nil,
-            helpMessage: String? = nil
+            informationState: Warp.TextField.InformationState = .none
         ) -> TextFieldConfiguration {
             TextFieldConfiguration(
                 placeholder: placeholder,
@@ -187,8 +168,7 @@ extension Warp {
                 infoToolTipView: nil,
                 leftView: leftSymbol.flatMap(SwiftUI.Text.init).flatMap(AnyView.init),
                 rightView: rightSymbol.flatMap(SwiftUI.Text.init).flatMap(AnyView.init),
-                errorMessage: errorMessage,
-                helpMessage: helpMessage,
+                informationState: informationState,
                 isAnimated: true
             )
         }
