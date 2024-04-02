@@ -131,7 +131,7 @@ public struct ColorProvider {
         case .finn:
             return token.backgroundPrimary
         case .tori:
-            return ToriColors.watermelon600
+            return Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon500)
         }
     }
     var buttonPrimaryBackgroundHover: Color {
@@ -139,7 +139,7 @@ public struct ColorProvider {
         case .finn:
             return token.backgroundPrimaryHover
         case .tori:
-            return ToriColors.watermelon700
+            return Color.dynamicColor(defaultColor: ToriColors.watermelon700, darkModeColor: ToriColors.watermelon400)
         }
     }
     var buttonPrimaryBackgroundActive: Color {
@@ -147,7 +147,7 @@ public struct ColorProvider {
         case .finn:
             return token.backgroundPrimaryActive
         case .tori:
-            return ToriColors.watermelon800
+            return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon600)
         }
     }
     var buttonPrimaryBackgroundDisabled: Color { token.backgroundDisabled }
@@ -156,7 +156,7 @@ public struct ColorProvider {
         case .finn:
             return token.borderPrimary
         case .tori:
-            return ToriColors.watermelon600
+            return Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon500)
         }
     }
     var buttonPrimaryBorderHover: Color {
@@ -164,7 +164,7 @@ public struct ColorProvider {
         case .finn:
             return token.borderPrimaryHover
         case .tori:
-            return ToriColors.watermelon700
+            return Color.dynamicColor(defaultColor: ToriColors.watermelon700, darkModeColor: ToriColors.watermelon400)
         }
     }
     var buttonPrimaryBorderActive: Color {
@@ -172,7 +172,7 @@ public struct ColorProvider {
         case .finn:
             return token.borderPrimaryActive
         case .tori:
-            return ToriColors.watermelon800
+            return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon600)
         }
     }
     var buttonPrimaryBorderDisabled: Color { token.borderDisabled }
