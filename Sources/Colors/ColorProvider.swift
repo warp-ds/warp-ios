@@ -147,7 +147,7 @@ public struct ColorProvider {
         case .finn:
             return token.backgroundPrimaryActive
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon600)
+            return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon300)
         }
     }
     var buttonPrimaryBackgroundDisabled: Color { token.backgroundDisabled }
@@ -172,7 +172,7 @@ public struct ColorProvider {
         case .finn:
             return token.borderPrimaryActive
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon600)
+            return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon300)
         }
     }
     var buttonPrimaryBorderDisabled: Color { token.borderDisabled }
@@ -474,17 +474,17 @@ public struct ColorProvider {
     var pillSuggestionBackgroundHover: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray700)
+            return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray500)
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray700)
+            return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500)
         }
     }
     var pillSuggestionBackgroundActive: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.gray400, darkModeColor: FinnColors.gray600)
+            return FinnColors.gray400
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.gray400, darkModeColor: ToriColors.gray600)
+            return ToriColors.gray400
         }
     }
     var pillSuggestionIcon: Color { token.icon }
@@ -563,9 +563,9 @@ public struct ColorProvider {
     var switchTrackBackgroundHover: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray700)
+            return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray500)
         case .tori:
-            return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray700)
+            return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500)
         }
     }
     var switchTrackBackgroundSelected: Color { token.backgroundPrimary }
