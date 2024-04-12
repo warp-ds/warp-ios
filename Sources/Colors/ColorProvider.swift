@@ -430,7 +430,7 @@ public struct ColorProvider {
     var navbarIconSelected: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: token.iconSelected, darkModeColor: FinnColors.blue500)
+            return token.iconSelected
         case .tori:
             return token.iconSecondary
         }
@@ -438,7 +438,7 @@ public struct ColorProvider {
     var navbarBorderSelected: Color {
         switch Warp.Config.warpTheme {
         case .finn:
-            return Color.dynamicColor(defaultColor: token.borderSelected, darkModeColor: FinnColors.blue500)
+            return token.borderSelected
         case .tori:
             return token.borderSecondary
         }
