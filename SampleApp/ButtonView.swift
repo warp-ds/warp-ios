@@ -15,6 +15,8 @@ struct ButtonView: View {
     @State private var isButtonEnabled = true
 
     @State private var isButtonFullWidth = false
+    
+    @State private var isLoading = false
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -58,6 +60,10 @@ struct ButtonView: View {
             Divider()
             createToggle(binding: $isButtonFullWidth, text: ("Size to fit button", "Full width button"))
             Divider()
+            Warp.Button.createLoadingButton(type: .primary, title: "Hi", isAnimating: $isLoading)
+                .onAppear {
+                    isLoading = true
+                }
         }
         .navigationBarTitleDisplayMode(.inline)
         .padding(.horizontal, 20)
