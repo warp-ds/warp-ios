@@ -7,7 +7,7 @@ final class ColorFactorySmokeTests: XCTestCase {
 
     func testForegroundColor_Parameterized_ShouldBeEqual() throws {
         // INS
-        let colorProvider = Config.colorProvider
+        let colorProvider = Warp.Config.colorProvider
 
         let disabledTextColor = colorProvider.buttonDisabledText
 
@@ -122,7 +122,7 @@ final class ColorFactorySmokeTests: XCTestCase {
 
     func testBackgroundColor_Parameterized_ShouldBeEqual() throws {
         // INS
-        let colorProvider = Config.colorProvider
+        let colorProvider = Warp.Config.colorProvider
 
         let disabledBackgroundColor = colorProvider.buttonDisabledBackground
         let utilityDisabledBackgroundColor = colorProvider.buttonUtilityBackgroundDisabled
@@ -266,13 +266,13 @@ final class ColorFactorySmokeTests: XCTestCase {
                 type: .utilityOverlay,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonUtilityOverlayBackground
+                expectedColor: colorProvider.buttonUtilityBackground
             ),
             ButtonVariant(
                 type: .utilityOverlay,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonUtilityOverlayBackground
+                expectedColor: colorProvider.buttonUtilityBackground
             ),
             ButtonVariant(
                 type: .utilityOverlay,
@@ -297,7 +297,7 @@ final class ColorFactorySmokeTests: XCTestCase {
 
     func testBorderColor_Parameterized_ShouldBeEqual() throws {
         // INS
-        let colorProvider = Config.colorProvider
+        let colorProvider = Warp.Config.colorProvider
 
         let clearColor = Color.clear
 
@@ -448,7 +448,7 @@ final class ColorFactorySmokeTests: XCTestCase {
                 type: .utilityOverlay,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonUtilityOverlayBackground
+                expectedColor: colorProvider.buttonUtilityBackground
             ),
             ButtonVariant(
                 type: .utilityOverlay,
@@ -473,7 +473,7 @@ final class ColorFactorySmokeTests: XCTestCase {
 
     func testShadowColor_Parameterized_ShouldBeEqual() {
         // INS
-        let colorProvider = Config.colorProvider
+        let colorProvider = Warp.Config.colorProvider
 
         let clearColor = Color.clear
 

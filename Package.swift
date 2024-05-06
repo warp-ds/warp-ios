@@ -18,7 +18,11 @@ let package = Package(
     targets: [
         .target(
             name: "Warp",
-            path: "Sources"
+            path: "Sources",
+            resources: [
+                .process("Typography/Fonts"),
+                .process("Resources")
+            ]
         ),
         .testTarget(
             name: "tests",
