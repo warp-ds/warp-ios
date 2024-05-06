@@ -1,34 +1,36 @@
 import Foundation
 import SwiftUI
 
-/// <#Description#>
+/// Individual animated bar width.
 private let barWidth = 7.0
 
 struct PatternedButton: View {
-    /// <#Description#>
+    /// Button title.
     private let title: String
     
-    /// <#Description#>
+    /// Animation speed during play time.
     private let animationSpeed: Double
     
-    /// <#Description#>
+    /// Color that will be consumed to created animated bars colors.
     private let patternColor: Color
     
-    /// <#Description#>
+    /// Button action.
     private let action: () -> Void
     
-    /// <#Description#>
-    @State private var isAnimating: Bool = false
+    /// State of animation.
+    private var isAnimating: Binding<Bool>
 
     init(
         title: String, 
         color: Color = .gray,
         animationSpeed: Double = 1,
+        isAnimating: Binding<Bool> = .constant(true),
         action: @escaping () -> Void
     ) {
         self.title = title
-        self.animationSpeed = animationSpeed
         patternColor = color
+        self.animationSpeed = animationSpeed
+        self.isAnimating = isAnimating
         self.action = action
     }
 
@@ -45,9 +47,6 @@ struct PatternedButton: View {
             }
         )
         .clipped()
-        .onAppear {
-            isAnimating = true
-        }
     }
 
     private var patternedOpaqueView: some View {
@@ -55,22 +54,22 @@ struct PatternedButton: View {
             barWidth: barWidth,
             barColor: patternColor, 
             animationSpeed: animationSpeed,
-            isAnimating: $isAnimating
+            isAnimating: isAnimating
         )
     }
 }
 
 private struct PatternedOpaqueView: View {
-    /// <#Description#>
+    /// Animated bars individual width.
     private let barWidth: CGFloat
     
-    /// <#Description#>
+    /// Bar background color.
     private let barColor: Color
     
-    /// <#Description#>
+    /// Timing for animation.
     private let animationTiming: Double
 
-    /// <#Description#>
+    /// State of animation.
     private var isAnimating: Binding<Bool>
 
     init(barWidth: CGFloat, barColor: Color, animationSpeed: Double, isAnimating: Binding<Bool>) {
