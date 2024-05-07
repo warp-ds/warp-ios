@@ -125,11 +125,23 @@ private struct UIModifiers: ViewModifier {
         let overlayView = createOverlayView(isPressed: isPressed)
 
         return content
+            .background {
+                if isLoading.wrappedValue {
+                    patternedOpaqueView
+                }
+            }
             .padding(.vertical, metricsFactory.verticalPadding)
             .padding(.horizontal, metricsFactory.horizontalPadding)
             .background(backgroundColor)
             .overlay(overlayView)
             .cornerRadius(metricsFactory.cornerRadius)
+    }
+
+    private var patternedOpaqueView: some View {
+        PatternedOpaqueView(
+            barColors: (FinnColors.gray50, FinnColors.gray200),
+            isAnimating: isLoading
+        )
     }
 
     private func createOverlayView(isPressed: Bool) -> some View {
@@ -140,17 +152,6 @@ private struct UIModifiers: ViewModifier {
                 borderColor,
                 lineWidth: metricsFactory.borderWidth
             )
-            .overlay {
-                if isLoading.wrappedValue {
-                    patternedOpaqueView
-                }
-            }
-    }
 
-    private var patternedOpaqueView: some View {
-        PatternedOpaqueView(
-            barColors: (FinnColors.gray50, FinnColors.gray200),
-            isAnimating: isLoading
-        )
     }
 }
