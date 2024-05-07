@@ -27,6 +27,9 @@ extension Warp {
 
         /// Flag indicating whether this view should fill the parent view horizontally.
         private let fullWidth: Bool
+        
+        /// Flag indicating whether this view is loading.
+        private let isLoading: Binding<Bool>
 
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider
@@ -40,6 +43,7 @@ extension Warp {
             size: Warp.ButtonSize,
             isEnabled: Bool,
             fullWidth: Bool,
+            isLoading: Binding<Bool>,
             colorProvider: ColorProvider
         ) {
             self.title = title
@@ -50,6 +54,7 @@ extension Warp {
             self.size = size
             self.isEnabled = isEnabled
             self.fullWidth = fullWidth
+            self.isLoading = isLoading
             self.colorProvider = colorProvider
         }
 
@@ -57,17 +62,30 @@ extension Warp {
             SwiftUI.Button(
                 action: action,
                 label: {
-                    buttonView
+                    ZStack {
+                        if isLoading.wrappedValue {
+                            patternedOpaqueView
+                        }
+                        buttonView
+                    }
                 }
             )
-            .disabled(!isEnabled)
+            .disabled(!isEnabled || isLoading.wrappedValue)
             .buttonStyle(
                 .warp(
                     type: type,
                     size: size,
                     colorProvider: colorProvider,
-                    isEnabled: isEnabled
+                    isEnabled: isEnabled,
+                    isLoading: isLoading.wrappedValue
                 )
+            )
+        }
+        
+        private var patternedOpaqueView: some View {
+            PatternedOpaqueView(
+                barColors: (FinnColors.gray50, FinnColors.gray200),
+                isAnimating: isLoading
             )
         }
 
@@ -122,6 +140,7 @@ extension Warp.Button {
         size: Warp.ButtonSize,
         isEnabled: Bool,
         fullWidth: Bool,
+        isLoading: Binding<Bool>,
         colorProvider: ColorProvider
     ) {
         self.type = type
@@ -151,6 +170,7 @@ extension Warp.Button {
         self.size = size
         self.isEnabled = isEnabled
         self.fullWidth = fullWidth
+        self.isLoading = isLoading
         self.colorProvider = colorProvider
     }
 
@@ -163,6 +183,7 @@ extension Warp.Button {
         size: Warp.ButtonSize,
         isEnabled: Bool,
         fullWidth: Bool,
+        isLoading: Binding<Bool>,
         colorProvider: ColorProvider
     ) {
         self.type = type
@@ -184,6 +205,7 @@ extension Warp.Button {
         self.size = size
         self.isEnabled = isEnabled
         self.fullWidth = fullWidth
+        self.isLoading = isLoading
         self.colorProvider = colorProvider
     }
 }
@@ -199,6 +221,7 @@ extension Warp.Button {
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false,
+        isLoading: Binding<Bool> = .constant(false),
         colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> Warp.Button {
         switch buttonType {
@@ -211,6 +234,7 @@ extension Warp.Button {
                     size: size,
                     isEnabled: isEnabled,
                     fullWidth: fullWidth,
+                    isLoading: isLoading,
                     colorProvider: colorProvider
                 )
 
@@ -223,6 +247,7 @@ extension Warp.Button {
                     size: size,
                     isEnabled: isEnabled,
                     fullWidth: fullWidth,
+                    isLoading: isLoading,
                     colorProvider: colorProvider
                 )
 
@@ -235,6 +260,7 @@ extension Warp.Button {
                     size: size,
                     isEnabled: isEnabled,
                     fullWidth: fullWidth,
+                    isLoading: isLoading,
                     colorProvider: colorProvider
                 )
 
@@ -247,6 +273,7 @@ extension Warp.Button {
                     size: size,
                     isEnabled: isEnabled,
                     fullWidth: fullWidth,
+                    isLoading: isLoading,
                     colorProvider: colorProvider
                 )
 
@@ -259,6 +286,7 @@ extension Warp.Button {
                     size: size,
                     isEnabled: isEnabled,
                     fullWidth: fullWidth,
+                    isLoading: isLoading,
                     colorProvider: colorProvider
                 )
 
@@ -271,6 +299,7 @@ extension Warp.Button {
                     size: size,
                     isEnabled: isEnabled,
                     fullWidth: fullWidth,
+                    isLoading: isLoading,
                     colorProvider: colorProvider
                 )
 
@@ -283,6 +312,7 @@ extension Warp.Button {
                     size: size,
                     isEnabled: isEnabled,
                     fullWidth: fullWidth,
+                    isLoading: isLoading,
                     colorProvider: colorProvider
                 )
 
@@ -295,6 +325,7 @@ extension Warp.Button {
                     size: size,
                     isEnabled: isEnabled,
                     fullWidth: fullWidth,
+                    isLoading: isLoading,
                     colorProvider: colorProvider
                 )
         }

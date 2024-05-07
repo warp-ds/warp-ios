@@ -13,6 +13,7 @@ extension Warp.Button {
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false,
+        isLoading: Binding<Bool> = .constant(false),
         colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> Warp.Button {
         Warp.Button(
@@ -24,6 +25,7 @@ extension Warp.Button {
             size: size,
             isEnabled: isEnabled,
             fullWidth: fullWidth,
+            isLoading: isLoading,
             colorProvider: colorProvider
         )
     }

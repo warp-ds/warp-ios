@@ -16,18 +16,21 @@ public struct WarpButtonStyle: ButtonStyle {
         type: Warp.ButtonType,
         size: Warp.ButtonSize,
         colorProvider: ColorProvider,
-        isEnabled: Bool
+        isEnabled: Bool,
+        isLoading: Bool
     ) {
         colorFactory = Warp.Button.ColorFactory(
             for: type,
             consuming: colorProvider,
-            isEnabled: isEnabled
+            isEnabled: isEnabled,
+            isLoading: isLoading
         )
 
         metricsFactory = Warp.Button.UIMetricsFactory(
             type: type,
             size: size,
-            isEnabled: isEnabled
+            isEnabled: isEnabled,
+            isLoading: isLoading
         )
 
         typographyFactory = Warp.Button.TypographyFactory(for: type)
@@ -64,13 +67,15 @@ public extension ButtonStyle where Self == WarpButtonStyle {
         type: Warp.ButtonType,
         size: Warp.ButtonSize,
         colorProvider: ColorProvider,
-        isEnabled: Bool
+        isEnabled: Bool,
+        isLoading: Bool
     ) -> Self {
         return WarpButtonStyle(
             type: type,
             size: size,
             colorProvider: colorProvider,
-            isEnabled: isEnabled
+            isEnabled: isEnabled,
+            isLoading: isLoading
         )
     }
 }

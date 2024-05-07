@@ -14,11 +14,15 @@ extension Warp.Button {
         /// Button state.
         /// Flag describing is button enabled for interactions.
         private let isEnabled: Bool
+        
+        /// Flag describing is button is in loading state.
+        private let isLoading: Bool
 
-        init(for type: Warp.ButtonType, consuming colorProvider: ColorProvider, isEnabled: Bool) {
+        init(for type: Warp.ButtonType, consuming colorProvider: ColorProvider, isEnabled: Bool, isLoading: Bool) {
             self.type = type
             self.colorProvider = colorProvider
             self.isEnabled = isEnabled
+            self.isLoading = isLoading
         }
 
         // MARK: Foreground color
@@ -78,6 +82,10 @@ extension Warp.Button {
 
         /// Create foreground color based on button type for current state.
         func makeForegroundColor() -> Color {
+            if isLoading {
+                return colorProvider.buttonLoadingText
+            }
+
             if !isEnabled {
                 return disabledForegroundColor
             }
@@ -161,6 +169,10 @@ extension Warp.Button {
 
         /// Create background color based on button type for current state.
         func makeBackgroundColor(isPressed: Bool) -> Color {
+            if isLoading {
+                return .clear
+            }
+
             if !isEnabled {
                 return disabledBackgroundColor
             }
@@ -233,6 +245,10 @@ extension Warp.Button {
 
         /// Create border color based on button type for current state.
         func makeBorderColor(isPressed: Bool) -> Color {
+            if isLoading {
+                return .clear
+            }
+
             if !isEnabled {
                 return disabledBorderColor
             }
