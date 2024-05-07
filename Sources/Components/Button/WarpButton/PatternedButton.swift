@@ -17,10 +17,12 @@ struct PatternedOpaqueView: View {
     /// State of animation.
     private var isAnimating: Binding<Bool>
 
-    init(barWidth: CGFloat = 7.0,
-         barColors: (Color, Color),
-         animationSpeed: Double = 1,
-         isAnimating: Binding<Bool>) {
+    init(
+        barWidth: CGFloat = 7.0,
+        barColors: (Color, Color),
+        animationSpeed: Double = 1,
+        isAnimating: Binding<Bool>
+    ) {
         self.barWidth = barWidth
         self.barColors = barColors
         animationTiming = animationSpeed * 4

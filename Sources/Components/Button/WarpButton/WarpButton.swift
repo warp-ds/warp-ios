@@ -62,12 +62,7 @@ extension Warp {
             SwiftUI.Button(
                 action: action,
                 label: {
-                    ZStack {
-                        if isLoading.wrappedValue {
-                            patternedOpaqueView
-                        }
-                        buttonView
-                    }
+                    buttonView
                 }
             )
             .disabled(!isEnabled || isLoading.wrappedValue)
@@ -77,15 +72,8 @@ extension Warp {
                     size: size,
                     colorProvider: colorProvider,
                     isEnabled: isEnabled,
-                    isLoading: isLoading.wrappedValue
+                    isLoading: isLoading
                 )
-            )
-        }
-        
-        private var patternedOpaqueView: some View {
-            PatternedOpaqueView(
-                barColors: (FinnColors.gray50, FinnColors.gray200),
-                isAnimating: isLoading
             )
         }
 

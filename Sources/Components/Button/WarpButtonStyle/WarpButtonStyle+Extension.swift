@@ -12,28 +12,32 @@ public struct WarpButtonStyle: ButtonStyle {
     /// Object responsible for creating button title typography requirements based on `ButtonType`.
     private let typographyFactory: Warp.Button.TypographyFactory
 
+    private let isLoading: Binding<Bool>
+
     public init(
         type: Warp.ButtonType,
         size: Warp.ButtonSize,
         colorProvider: ColorProvider,
         isEnabled: Bool,
-        isLoading: Bool
+        isLoading: Binding<Bool>
     ) {
         colorFactory = Warp.Button.ColorFactory(
             for: type,
             consuming: colorProvider,
             isEnabled: isEnabled,
-            isLoading: isLoading
+            isLoading: isLoading.wrappedValue
         )
 
         metricsFactory = Warp.Button.UIMetricsFactory(
             type: type,
             size: size,
             isEnabled: isEnabled,
-            isLoading: isLoading
+            isLoading: isLoading.wrappedValue
         )
 
         typographyFactory = Warp.Button.TypographyFactory(for: type)
+
+        self.isLoading = isLoading
     }
 
     public func makeBody(configuration: Configuration) -> some View {
@@ -47,7 +51,8 @@ public struct WarpButtonStyle: ButtonStyle {
         let uiModifiers = UIModifiers(
             colorFactory: colorFactory,
             metricsFactory: metricsFactory,
-            isPressed: isPressed
+            isPressed: isPressed,
+            isLoading: isLoading
         )
 
         return configuration
@@ -68,7 +73,7 @@ public extension ButtonStyle where Self == WarpButtonStyle {
         size: Warp.ButtonSize,
         colorProvider: ColorProvider,
         isEnabled: Bool,
-        isLoading: Bool
+        isLoading: Binding<Bool>
     ) -> Self {
         return WarpButtonStyle(
             type: type,
@@ -110,6 +115,8 @@ private struct UIModifiers: ViewModifier {
 
     let isPressed: Bool
 
+    let isLoading: Binding<Bool>
+
     func body(content: Content) -> some View {
         let backgroundColor = colorFactory.makeBackgroundColor(
             isPressed: isPressed
@@ -133,5 +140,17 @@ private struct UIModifiers: ViewModifier {
                 borderColor,
                 lineWidth: metricsFactory.borderWidth
             )
+            .overlay {
+                if isLoading.wrappedValue {
+                    patternedOpaqueView
+                }
+            }
+    }
+
+    private var patternedOpaqueView: some View {
+        PatternedOpaqueView(
+            barColors: (FinnColors.gray50, FinnColors.gray200),
+            isAnimating: isLoading
+        )
     }
 }
