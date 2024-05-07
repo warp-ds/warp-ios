@@ -12,27 +12,27 @@ public struct WarpButtonStyle: ButtonStyle {
     /// Object responsible for creating button title typography requirements based on `ButtonType`.
     private let typographyFactory: Warp.Button.TypographyFactory
 
-    private let isLoading: Binding<Bool>
+    private let isLoading: Bool
 
     public init(
         type: Warp.ButtonType,
         size: Warp.ButtonSize,
         colorProvider: ColorProvider,
         isEnabled: Bool,
-        isLoading: Binding<Bool>
+        isLoading: Bool
     ) {
         colorFactory = Warp.Button.ColorFactory(
             for: type,
             consuming: colorProvider,
             isEnabled: isEnabled,
-            isLoading: isLoading.wrappedValue
+            isLoading: isLoading
         )
 
         metricsFactory = Warp.Button.UIMetricsFactory(
             type: type,
             size: size,
             isEnabled: isEnabled,
-            isLoading: isLoading.wrappedValue
+            isLoading: isLoading
         )
 
         typographyFactory = Warp.Button.TypographyFactory(for: type)
@@ -73,7 +73,7 @@ public extension ButtonStyle where Self == WarpButtonStyle {
         size: Warp.ButtonSize,
         colorProvider: ColorProvider,
         isEnabled: Bool,
-        isLoading: Binding<Bool>
+        isLoading: Bool
     ) -> Self {
         return WarpButtonStyle(
             type: type,
@@ -115,7 +115,7 @@ private struct UIModifiers: ViewModifier {
 
     let isPressed: Bool
 
-    let isLoading: Binding<Bool>
+    let isLoading: Bool
 
     func body(content: Content) -> some View {
         let backgroundColor = colorFactory.makeBackgroundColor(
@@ -126,7 +126,7 @@ private struct UIModifiers: ViewModifier {
 
         return content
             .background {
-                if isLoading.wrappedValue {
+                if isLoading {
                     patternedOpaqueView
                 }
             }
@@ -139,8 +139,7 @@ private struct UIModifiers: ViewModifier {
 
     private var patternedOpaqueView: some View {
         PatternedOpaqueView(
-            barColors: (FinnColors.gray50, FinnColors.gray200),
-            isAnimating: isLoading
+            barColors: (FinnColors.gray50, FinnColors.gray200)
         )
     }
 

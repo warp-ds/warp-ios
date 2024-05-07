@@ -29,7 +29,7 @@ extension Warp {
         private let fullWidth: Bool
         
         /// Flag indicating whether this view is loading.
-        private let isLoading: Binding<Bool>
+        private let isLoading: Bool
 
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider
@@ -43,7 +43,7 @@ extension Warp {
             size: Warp.ButtonSize,
             isEnabled: Bool,
             fullWidth: Bool,
-            isLoading: Binding<Bool>,
+            isLoading: Bool,
             colorProvider: ColorProvider
         ) {
             self.title = title
@@ -65,7 +65,7 @@ extension Warp {
                     buttonView
                 }
             )
-            .disabled(!isEnabled || isLoading.wrappedValue)
+            .disabled(!isEnabled || isLoading)
             .buttonStyle(
                 .warp(
                     type: type,
@@ -128,7 +128,7 @@ extension Warp.Button {
         size: Warp.ButtonSize,
         isEnabled: Bool,
         fullWidth: Bool,
-        isLoading: Binding<Bool>,
+        isLoading: Bool,
         colorProvider: ColorProvider
     ) {
         self.type = type
@@ -171,7 +171,7 @@ extension Warp.Button {
         size: Warp.ButtonSize,
         isEnabled: Bool,
         fullWidth: Bool,
-        isLoading: Binding<Bool>,
+        isLoading: Bool,
         colorProvider: ColorProvider
     ) {
         self.type = type
@@ -209,7 +209,7 @@ extension Warp.Button {
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false,
-        isLoading: Binding<Bool> = .constant(false),
+        isLoading: Bool = false,
         colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> Warp.Button {
         switch buttonType {

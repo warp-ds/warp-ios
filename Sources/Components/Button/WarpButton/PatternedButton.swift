@@ -15,18 +15,16 @@ struct PatternedOpaqueView: View {
     private let animationTiming: Double
 
     /// State of animation.
-    private var isAnimating: Binding<Bool>
+    @State private var isAnimating: Bool = false
 
     init(
         barWidth: CGFloat = 7.0,
         barColors: (Color, Color),
-        animationSpeed: Double = 1,
-        isAnimating: Binding<Bool>
+        animationSpeed: Double = 1
     ) {
         self.barWidth = barWidth
         self.barColors = barColors
         animationTiming = animationSpeed * 4
-        self.isAnimating = isAnimating
     }
 
     var body: some View {
@@ -46,17 +44,17 @@ struct PatternedOpaqueView: View {
                 y: geometry.size.height/3
             )
             .offset(
-                x: isAnimating.wrappedValue ? geometry.size.width/2 : 0
+                x: isAnimating ? geometry.size.width / 2 : 0
                 //                            y: isAnimating ? geometry.size.height/2 : 0
             )
             .rotationEffect(Angle(degrees: 45))
             .animation(
                 Animation.easeInOut(duration: animationTiming).repeatForever(),
-                value: isAnimating.wrappedValue
+                value: isAnimating
             )
         }
         .onAppear {
-            isAnimating.wrappedValue = true
+            isAnimating = true
         }
     }
 

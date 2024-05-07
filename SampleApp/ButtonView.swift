@@ -84,7 +84,7 @@ struct ButtonView: View {
             size: buttonSize,
             isEnabled: isButtonEnabled,
             fullWidth: isButtonFullWidth,
-            isLoading: $isButtonLoading
+            isLoading: isButtonLoading
         )
     }
 }
