@@ -29,7 +29,7 @@ struct PatternedOpaqueView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            let count = Int(geometry.size.width / 3)
+            let count = Int(geometry.size.width)
 
             HStack(spacing: 0) {
                 ForEach(0..<count, id: \.self) { index in
@@ -40,12 +40,11 @@ struct PatternedOpaqueView: View {
                 }
             }
             .offset(
-                x: -(geometry.size.width),
+                x: -(geometry.size.width)*2,
                 y: geometry.size.height/3
             )
             .offset(
                 x: isAnimating ? geometry.size.width / 2 : 0
-                //                            y: isAnimating ? geometry.size.height/2 : 0
             )
             .rotationEffect(Angle(degrees: 45))
             .animation(
@@ -63,7 +62,7 @@ struct PatternedOpaqueView: View {
             .fill(createBackground(for: index))
             .frame(
                 width: barWidth,
-                height: height,
+                height: height*3,
                 alignment: .center
             )
     }
