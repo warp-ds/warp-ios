@@ -12,17 +12,21 @@ extension Warp.Button {
         /// Button state.
         /// Flag describing is button enabled for interactions.
         private let isEnabled: Bool
+        
+        /// Flag describing is button is in loading state.
+        private let isLoading: Bool
 
-        init(type: Warp.ButtonType, size: Warp.ButtonSize, isEnabled: Bool) {
+        init(type: Warp.ButtonType, size: Warp.ButtonSize, isEnabled: Bool, isLoading: Bool) {
             self.type = type
             self.size = size
             self.isEnabled = isEnabled
+            self.isLoading = isLoading
         }
         
         /// Button shadow.
         /// It will be determined based on button current state alongside with button type.
         var shadow: Warp.Shadow? {
-            if type == .utilityOverlay, isEnabled {
+            if type == .utilityOverlay, isEnabled, !isLoading {
                 return .small
             }
             

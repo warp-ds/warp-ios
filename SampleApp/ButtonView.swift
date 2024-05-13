@@ -15,6 +15,8 @@ struct ButtonView: View {
     @State private var isButtonEnabled = true
 
     @State private var isButtonFullWidth = false
+    
+    @State private var isButtonLoading = false
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -58,6 +60,8 @@ struct ButtonView: View {
             Divider()
             createToggle(binding: $isButtonFullWidth, text: ("Size to fit button", "Full width button"))
             Divider()
+            createToggle(binding: $isButtonLoading, text: ("Loading button", "Loading button"))
+            Divider()
         }
         .navigationBarTitleDisplayMode(.inline)
         .padding(.horizontal, 20)
@@ -79,7 +83,8 @@ struct ButtonView: View {
             action: {},
             size: buttonSize,
             isEnabled: isButtonEnabled,
-            fullWidth: isButtonFullWidth
+            fullWidth: isButtonFullWidth,
+            isLoading: isButtonLoading
         )
     }
 }
