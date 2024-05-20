@@ -15,9 +15,11 @@ extension Warp {
         
         /// Pill text.
         private let text: String
+        /// Pill icon. If you provide onClose then the Pill will have a close button instead of this icon.
+        private let icon: Image?
         /// Triggered when Pill is tapped.
         private let onTap: () -> Void
-        /// Triggered when Pill is closed.
+        /// Triggered when Pill is closed. If provided a close button will replace any provided icon.
         private let onClose: (() -> Void)?
         /// The content description of the close icon. Used for accessibility purposes.
         private let iconContentDescription: String?
@@ -28,12 +30,14 @@ extension Warp {
 
         public init(
             text: String,
+            icon: Image? = nil,
             onTap: @escaping () -> Void = {},
             onClose: (() -> Void)? = nil,
             iconContentDescription: String? = nil,
             style: Warp.PillStyle = .filter
         ) {
             self.text = text
+            self.icon = icon
             self.onTap = onTap
             self.onClose = onClose
             self.iconContentDescription = iconContentDescription
@@ -54,8 +58,12 @@ extension Warp {
                             onClose()
                         } label: {
                             Image(systemName: "xmark")
+                                .foregroundStyle(textColor)
                         }
                         .accessibilityLabel(iconContentDescription ?? "Close")
+                    } else if let icon {
+                        icon
+                            .foregroundStyle(textColor)
                     }
                 }
                 .padding(.horizontal, 16)
@@ -103,9 +111,15 @@ extension Warp {
         
         return GroupBox(
             content: {
-                HStack {
-                    Warp.Pill(text: String(describing: style), style: style)
-                    Warp.Pill(text: String(describing: style), onClose: {}, style: style)
+                VStack {
+                    HStack {
+                        Warp.Pill(text: String(describing: style), style: style)
+                        Warp.Pill(text: String(describing: style), onClose: {}, style: style)
+                    }
+                    HStack {
+                        Warp.Pill(text: String(describing: style), icon: Image(systemName: "plus"), style: style)
+                        Warp.Pill(text: String(describing: style), icon: Image(systemName: "plus"), onClose: {}, style: style)
+                    }
                 }
             }, label: {
                 Text(capitalizedName)
