@@ -64,6 +64,7 @@ extension Warp {
                     } else if let icon {
                         icon
                             .foregroundStyle(textColor)
+                            .accessibilityLabel(iconContentDescription ?? "")
                     }
                 }
                 .padding(.horizontal, 16)
