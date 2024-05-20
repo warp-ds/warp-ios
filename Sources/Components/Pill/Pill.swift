@@ -21,7 +21,7 @@ extension Warp {
         private let onTap: () -> Void
         /// Triggered when Pill is closed. If provided a close button will replace any provided icon.
         private let onClose: (() -> Void)?
-        /// The content description of the close icon. Used for accessibility purposes.
+        /// The content description of the icon. Used for accessibility purposes.
         private let iconContentDescription: String?
         /// Pill style.
         private let style: Warp.PillStyle
