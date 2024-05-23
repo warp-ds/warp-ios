@@ -75,7 +75,7 @@ extension Warp {
     VStack {
         Warp.Spinner(size: .small)
         Warp.Spinner()
-        Warp.Spinner(size: .larger)
+        Warp.Spinner(size: .large)
         Warp.Spinner(size: .custom(50))
     }
 }
