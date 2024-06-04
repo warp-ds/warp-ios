@@ -17,9 +17,15 @@ struct PillView: View {
         
         return GroupBox(
             content: {
-                HStack {
-                    Warp.Pill(text: String(describing: style), style: style)
-                    Warp.Pill(text: String(describing: style), onClose: {}, style: style)
+                VStack {
+                    HStack {
+                        Warp.Pill(text: String(describing: style), style: style)
+                        Warp.Pill(text: String(describing: style), onClose: {}, style: style)
+                    }
+                    HStack {
+                        Warp.Pill(text: String(describing: style), icon: Image(systemName: "plus"), style: style)
+                        Warp.Pill(text: String(describing: style), icon: Image(systemName: "plus"), onClose: {}, style: style)
+                    }
                 }
             }, label: {
                 Text(capitalizedName)

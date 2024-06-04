@@ -2,10 +2,10 @@ import Foundation
 import SwiftUI
 
 extension Warp.Button {
-    private static let criticalTertiaryType: Warp.ButtonType = .criticalTertiary
+    private static let primaryType: Warp.ButtonType = .primary
 
-    /// Factory method for creating warp button with `CriticalTertiary` style.
-    static func createCriticalTertiary(
+    /// Factory method for creating warp button with `Primary` style.
+    static func createPrimary(
         title: String,
         leadingIcon: Image? = nil,
         trailingIcon: Image? = nil,
@@ -13,6 +13,7 @@ extension Warp.Button {
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false,
+        isLoading: Bool = false,
         colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> Warp.Button {
         Warp.Button(
@@ -20,21 +21,22 @@ extension Warp.Button {
             leadingIcon: leadingIcon,
             trailingIcon: trailingIcon,
             action: action,
-            type: criticalTertiaryType,
+            type: primaryType,
             size: size,
             isEnabled: isEnabled,
             fullWidth: fullWidth,
+            isLoading: isLoading,
             colorProvider: colorProvider
         )
     }
 }
 
-private struct CriticalTertiaryButtonPreview: PreviewProvider {
+private struct PrimaryButtonPreview: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 8) {
-            Warp.Button.createCriticalTertiary(title: "Button")
+            Warp.Button.createPrimary(title: "Button")
 
-            Warp.Button.createCriticalTertiary(title: "Disabled button", isEnabled: false)
+            Warp.Button.createPrimary(title: "Disabled button", isEnabled: false)
         }
     }
 }

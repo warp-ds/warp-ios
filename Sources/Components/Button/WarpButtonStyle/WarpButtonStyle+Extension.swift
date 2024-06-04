@@ -12,25 +12,32 @@ public struct WarpButtonStyle: ButtonStyle {
     /// Object responsible for creating button title typography requirements based on `ButtonType`.
     private let typographyFactory: Warp.Button.TypographyFactory
 
+    private let isLoading: Bool
+
     public init(
         type: Warp.ButtonType,
         size: Warp.ButtonSize,
         colorProvider: ColorProvider,
-        isEnabled: Bool
+        isEnabled: Bool,
+        isLoading: Bool
     ) {
         colorFactory = Warp.Button.ColorFactory(
             for: type,
             consuming: colorProvider,
-            isEnabled: isEnabled
+            isEnabled: isEnabled,
+            isLoading: isLoading
         )
 
         metricsFactory = Warp.Button.UIMetricsFactory(
             type: type,
             size: size,
-            isEnabled: isEnabled
+            isEnabled: isEnabled,
+            isLoading: isLoading
         )
 
         typographyFactory = Warp.Button.TypographyFactory(for: type)
+
+        self.isLoading = isLoading
     }
 
     public func makeBody(configuration: Configuration) -> some View {
@@ -44,7 +51,8 @@ public struct WarpButtonStyle: ButtonStyle {
         let uiModifiers = UIModifiers(
             colorFactory: colorFactory,
             metricsFactory: metricsFactory,
-            isPressed: isPressed
+            isPressed: isPressed,
+            isLoading: isLoading
         )
 
         return configuration
@@ -55,16 +63,6 @@ public struct WarpButtonStyle: ButtonStyle {
                 view.shadow(shadow)
             }
     }
-
-    private func createOverlayView(isPressed: Bool) -> some View {
-        let borderColor = colorFactory.makeBorderColor(isPressed: isPressed)
-
-        return RoundedRectangle(cornerRadius: metricsFactory.cornerRadius)
-            .stroke(
-                borderColor,
-                lineWidth: metricsFactory.borderWidth
-            )
-    }
 }
 
 /// Syntactic sugar to ease using warp button style.
@@ -74,13 +72,15 @@ public extension ButtonStyle where Self == WarpButtonStyle {
         type: Warp.ButtonType,
         size: Warp.ButtonSize,
         colorProvider: ColorProvider,
-        isEnabled: Bool
+        isEnabled: Bool,
+        isLoading: Bool
     ) -> Self {
         return WarpButtonStyle(
             type: type,
             size: size,
             colorProvider: colorProvider,
-            isEnabled: isEnabled
+            isEnabled: isEnabled,
+            isLoading: isLoading
         )
     }
 }
@@ -115,6 +115,8 @@ private struct UIModifiers: ViewModifier {
 
     let isPressed: Bool
 
+    let isLoading: Bool
+
     func body(content: Content) -> some View {
         let backgroundColor = colorFactory.makeBackgroundColor(
             isPressed: isPressed
@@ -123,11 +125,22 @@ private struct UIModifiers: ViewModifier {
         let overlayView = createOverlayView(isPressed: isPressed)
 
         return content
+            .background {
+                if isLoading {
+                    patternedOpaqueView
+                }
+            }
             .padding(.vertical, metricsFactory.verticalPadding)
             .padding(.horizontal, metricsFactory.horizontalPadding)
             .background(backgroundColor)
             .overlay(overlayView)
             .cornerRadius(metricsFactory.cornerRadius)
+    }
+
+    private var patternedOpaqueView: some View {
+        PatternedOpaqueView(
+            barColors: (FinnColors.gray50, FinnColors.gray200)
+        )
     }
 
     private func createOverlayView(isPressed: Bool) -> some View {
@@ -138,5 +151,6 @@ private struct UIModifiers: ViewModifier {
                 borderColor,
                 lineWidth: metricsFactory.borderWidth
             )
+
     }
 }
