@@ -4,54 +4,38 @@ import SwiftUI
 /// Helper view that will be shown at the bottom of TextField.
 struct HelperInformationView: View, Hashable {
     /// State of TextField.
-    let state: Warp.TextFieldState
+    let textFieldState: Warp.TextFieldState
 
-    /// Lazy error message that will be shown in case of state gets changed to `Warp.TextFieldState.error`.
-    let errorMessage: () -> String?
-
-    /// Helper message that will be shown at the bottom when state is not error..
-    let helpMessage: String?
-    
     /// Object responsible for providing colors.
     let colorProvider: ColorProvider
 
     static func == (lhs: HelperInformationView, rhs: HelperInformationView) -> Bool {
-        lhs.state == rhs.state
+        lhs.textFieldState == rhs.textFieldState
     }
 
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(state)
+        hasher.combine(textFieldState)
     }
 
     init(
-        state: Warp.TextFieldState,
-        errorMessage: @autoclosure @escaping () -> String?,
-        helpMessage: String?,
+        textFieldState: Warp.TextFieldState,
         colorProvider: ColorProvider
     ) {
-        self.state = state
-        self.errorMessage = errorMessage
-        self.helpMessage = helpMessage
+        self.textFieldState = textFieldState
         self.colorProvider = colorProvider
     }
 
     private var foregroundColor: Color {
-        if state == .error {
+        if textFieldState.hasError {
             return colorProvider.inputTextNegative
         }
 
         return FinnColors.gray700
     }
 
-    private var helperTextView: String? {
-        let stateText = state == .error ? errorMessage(): helpMessage
-
-        return stateText
-    }
-
     var body: some View {
-        if let helperTextView = helperTextView {
-            Text(helperTextView)
+        if let helperText = textFieldState.helperText {
+            Text(helperText)
                 .foregroundColor(foregroundColor)
                 .font(.caption)
                 .fontWeight(.thin)

@@ -3,7 +3,7 @@ import Combine
 
 extension Warp {
     /// Inactive state of TextField.
-    public static let textFieldDefaultInactiveState = TextFieldState.normal
+    public static let textFieldDefaultInactiveState = TextFieldState.normal(.none)
 
     /// A control that displays an editable text with `Warp` designed interface.
     public struct TextField: View {
@@ -14,7 +14,10 @@ extension Warp {
         private var text: Binding<String>
 
         /// Two-way binding TextField state.
-        @Binding private var state: TextFieldState
+        private var state: Binding<TextFieldState>
+        
+        /// State property that will act as a workaround for handling not bounded state situation.
+        @State private var __state: TextFieldState?
 
         /// Object responsible for providing needed colors.
         private let colorProvider: ColorProvider
@@ -26,8 +29,7 @@ extension Warp {
             infoToolTipView: AnyView? = nil,
             leftView: AnyView? = nil,
             rightView: AnyView? = nil,
-            errorMessage: String? = nil,
-            helpMessage: String? = nil,
+            informationState: Warp.TextField.InformationState = .none,
             isAnimated: Bool = true,
             text: Binding<String>,
             state: Binding<TextFieldState>,
@@ -40,13 +42,12 @@ extension Warp {
                 infoToolTipView: infoToolTipView,
                 leftView: leftView,
                 rightView: rightView,
-                errorMessage: errorMessage,
-                helpMessage: helpMessage,
+                informationState: informationState,
                 isAnimated: isAnimated
             )
 
             self.text = text
-            self._state = state
+            self.state = state
             self.colorProvider = colorProvider
         }
 
@@ -57,8 +58,7 @@ extension Warp {
             infoToolTipView: AnyView? = nil,
             leftView: AnyView? = nil,
             rightView: AnyView? = nil,
-            errorMessage: String? = nil,
-            helpMessage: String? = nil,
+            informationState: Warp.TextField.InformationState = .none,
             isAnimated: Bool = true,
             text: Binding<String>,
             state: TextFieldState = Warp.textFieldDefaultInactiveState,
@@ -71,20 +71,14 @@ extension Warp {
                 infoToolTipView: infoToolTipView,
                 leftView: leftView,
                 rightView: rightView,
-                errorMessage: errorMessage,
-                helpMessage: helpMessage,
+                informationState: informationState,
                 isAnimated: isAnimated
             )
 
             self.text = text
-
-            var __state = state
-            self._state = Binding(
-                get: { __state },
-                set: { __state = $0 }
-            )
-
             self.colorProvider = colorProvider
+            __state = state
+            self.state = .constant(state)
         }
 
         public init(
@@ -95,11 +89,22 @@ extension Warp {
         ) {
             self.configuration = config
             self.text = text
-            self._state = state
+            self.state = state
             self.colorProvider = colorProvider
         }
 
         public var body: some View {
+            let state: Binding<Warp.TextFieldState> = {
+                if let _state = self.__state {
+                    return Binding(
+                        get: { _state },
+                        set: { self.__state = $0 }
+                    )
+                } else {
+                    return self.state
+                }
+            }()
+
             SwiftUI.TextField(
                 configuration.placeholder,
                 text: text
@@ -108,7 +113,7 @@ extension Warp {
                 .warp(
                     configuration: configuration,
                     text: text.wrappedValue,
-                    state: $state,
+                    state: state,
                     colorProvider: colorProvider
                 )
             )
@@ -150,10 +155,10 @@ private struct WarpTextFieldPreview: PreviewProvider {
 
 extension Warp.TextFieldState {
     fileprivate static var allCases: [Warp.TextFieldState] = [
-        .normal,
-        .active,
+        .normal(.none),
+        .active(.none),
         .disabled,
-        .error,
+        .normal(.error("Error")),
         .readOnly
     ]
 }
