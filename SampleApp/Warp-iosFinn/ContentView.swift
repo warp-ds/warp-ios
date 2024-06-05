@@ -100,6 +100,11 @@ struct ContentView: View {
                             .padding()
                     }
                     Divider()
+                    NavigationLink(destination: SpinnerView()) {
+                        Text("SpinnerView")
+                            .padding()
+                    }
+                    Divider()
                     Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
                         .font(.caption2)
                 }
