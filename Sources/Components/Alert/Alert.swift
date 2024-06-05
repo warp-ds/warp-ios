@@ -90,11 +90,10 @@ extension Warp {
         }
 
         public var body: some View {
-            ZStack {
-                backgroundView
-
-                foregroundView
-            }
+            foregroundView
+                .background {
+                    backgroundView
+                }
             .cornerRadius(alertCornerRadius)
             .accessibilityElement(children: .combine)
             .modifier(
@@ -122,16 +121,16 @@ extension Warp {
         }
 
         private var foregroundView: some View {
-            HStack(spacing: 8) {
-                leftLineView
-                    .frame(width: 5)
-
+            HStack(alignment: .top, spacing: 8) {
                 toolTipIconView
 
                 informationView
-                    .padding(.vertical, 16)
-
-                Spacer()
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 20)
+            .overlay(alignment: .leading) {
+                leftLineView
+                    .frame(width: 4)
             }
         }
 
@@ -140,19 +139,11 @@ extension Warp {
         }
 
         private var toolTipIconView: some View {
-            VStack {
-                Spacer()
-                    .frame(height: 17)
-
-                Image(systemName: style.tooltipImageName)
-                    .renderingMode(.template)
-                    .frame(width: 16, height: 16)
-                    .foregroundColor(style.getLeftLineColor(from: colorProvider))
-                    .padding(.leading, 8)
-                    .accessibilityLabel(style.tooltipImageTitle)
-
-                Spacer()
-            }
+            Image(systemName: style.tooltipImageName)
+                .renderingMode(.template)
+                .frame(width: 16, height: 16)
+                .foregroundColor(style.getLeftLineColor(from: colorProvider))
+                .accessibilityLabel(style.tooltipImageTitle)
         }
 
         private var informationView: some View {
@@ -160,13 +151,13 @@ extension Warp {
                 titleView
 
                 subtitleView
+                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
 
-                linkView
-                    .padding(.vertical, 8)
+                VStack(spacing: 16) {
+                    linkView
 
-                buttonsView
-                    .padding(.top, 4)
-                    .padding(.bottom, 8)
+                    buttonsView
+                }
             }
         }
 
@@ -529,7 +520,7 @@ extension Warp.AlertStyle {
         Warp.Alert(
             style: style,
             title: "Title",
-            subtitle: "Use this variant to call extra attention to useful, contextual information.",
+            subtitle: "Due to regulatory requirements, we need to collect your social security number. Therefore, please verify your information again. We apologize for the inconvenience.",
             linkProvider: (title: "Link to more information", action: {}),
             primaryButtonProvider: (title: "Button", action: {}),
             secondaryButtonProvider: (title: "Button", action: {})

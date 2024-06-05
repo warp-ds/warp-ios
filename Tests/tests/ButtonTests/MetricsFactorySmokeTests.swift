@@ -4,6 +4,167 @@ import XCTest
 final class MetricsFactorySmokeTests: XCTestCase {
     private typealias UIMetricsFactory = Warp.Button.UIMetricsFactory
 
+    func testShadowRadius_Parameterized_ShouldBeEqual() throws {
+        let zeroShadowRadiusExpectation = 0.0
+
+        let mockButtonVariants: [ButtonVariant<CGFloat>] = [
+            // Primary
+            ButtonVariant(type: .primary, isEnabled: true, expectation: zeroShadowRadiusExpectation),
+            ButtonVariant(type: .primary, isEnabled: false, expectation: zeroShadowRadiusExpectation),
+
+            // Secondary
+            ButtonVariant(type: .secondary, isEnabled: true, expectation: zeroShadowRadiusExpectation),
+            ButtonVariant(type: .secondary, isEnabled: false, expectation: zeroShadowRadiusExpectation),
+
+            // Tertiary
+            ButtonVariant(type: .tertiary, isEnabled: true, expectation: zeroShadowRadiusExpectation),
+            ButtonVariant(type: .tertiary, isEnabled: false, expectation: zeroShadowRadiusExpectation),
+
+            // Critical
+            ButtonVariant(type: .critical, isEnabled: true, expectation: zeroShadowRadiusExpectation),
+            ButtonVariant(type: .critical, isEnabled: false, expectation: zeroShadowRadiusExpectation),
+
+            // Critical Tertiary
+            ButtonVariant(type: .criticalTertiary, isEnabled: true, expectation: zeroShadowRadiusExpectation),
+            ButtonVariant(type: .criticalTertiary, isEnabled: false, expectation: zeroShadowRadiusExpectation),
+
+            // Utility
+            ButtonVariant(type: .utility, isEnabled: true, expectation: zeroShadowRadiusExpectation),
+            ButtonVariant(type: .utility, isEnabled: false, expectation: zeroShadowRadiusExpectation),
+
+            // UtilityTertiary
+            ButtonVariant(type: .utilityTertiary, isEnabled: true, expectation: zeroShadowRadiusExpectation),
+            ButtonVariant(type: .utilityTertiary, isEnabled: false, expectation: zeroShadowRadiusExpectation),
+
+            // UtilityOverlay
+            ButtonVariant(type: .utilityOverlay, isEnabled: true, expectation: 2),
+            ButtonVariant(type: .utilityOverlay, isEnabled: false, expectation: zeroShadowRadiusExpectation),
+        ]
+
+        mockButtonVariants.forEach { variant in
+            let sut = UIMetricsFactory(
+                type: variant.type,
+                size: variant.size,
+                isEnabled: variant.isEnabled,
+                isLoading: false
+            )
+
+//            XCTAssertEqual(sut.shadowRadius, variant.expectation)
+        }
+    }
+
+    func testShadowVerticalOffset_Parameterized_ShouldBeEqual() {
+        let zeroShadowVerticalOffsetExpectation = 0.0
+
+        let mockButtonVariants: [ButtonVariant<CGFloat>] = [
+            // Primary
+            ButtonVariant(
+                type: .primary,
+                isEnabled: true,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+            ButtonVariant(
+                type: .primary,
+                isEnabled: false,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+
+            // Secondary
+            ButtonVariant(
+                type: .secondary,
+                isEnabled: true,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+            ButtonVariant(
+                type: .secondary,
+                isEnabled: false,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+
+            // Tertiary
+            ButtonVariant(
+                type: .tertiary,
+                isEnabled: true,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+            ButtonVariant(
+                type: .tertiary,
+                isEnabled: false,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+
+            // Critical
+            ButtonVariant(
+                type: .critical,
+                isEnabled: true,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+            ButtonVariant(
+                type: .critical,
+                isEnabled: false,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+
+            // Critical Tertiary
+            ButtonVariant(
+                type: .criticalTertiary,
+                isEnabled: true,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+            ButtonVariant(
+                type: .criticalTertiary,
+                isEnabled: false,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+
+            // Utility
+            ButtonVariant(
+                type: .utility,
+                isEnabled: true,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+            ButtonVariant(
+                type: .utility,
+                isEnabled: false,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+
+            // UtilityTertiary
+            ButtonVariant(
+                type: .utilityTertiary,
+                isEnabled: true,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+            ButtonVariant(
+                type: .utilityTertiary,
+                isEnabled: false,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+
+            // UtilityOverlay
+            ButtonVariant(
+                type: .utilityOverlay,
+                isEnabled: true,
+                expectation: 1
+            ),
+            ButtonVariant(
+                type: .utilityOverlay,
+                isEnabled: false,
+                expectation: zeroShadowVerticalOffsetExpectation
+            ),
+        ]
+
+//        mockButtonVariants.forEach { variant in
+//            let sut = UIMetricsFactory(
+//                type: variant.type,
+//                size: variant.size,
+//                isEnabled: variant.isEnabled,
+//                isLoading: false
+//            )
+//            XCTAssertEqual(sut.shadowVerticalOffset, variant.expectation)
+//        }
+    }
+
     func testBorderWidth_Parameterized_ShouldBeEqual() {
         let defaultBorderWidthExpectation = 4.0
 
