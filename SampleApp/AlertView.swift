@@ -14,7 +14,7 @@ struct AlertView: View {
 
     @State private var alertTitle = "Title"
 
-    @State private var alertSubtitle = "Due to regulatory requirements, we need to collect your social security number. Therefore, please verify your information again. We apologize for the inconvenience."
+    @State private var alertSubtitle = "Use this variant to call extra attention to useful, contextual information."
 
     @State private var hasLink = false
 

@@ -94,21 +94,21 @@ extension Warp {
                 .background {
                     backgroundView
                 }
-            .cornerRadius(alertCornerRadius)
-            .accessibilityElement(children: .combine)
-            .modifier(
-                AccessibilityTraitBuilder(
-                    primaryButtonProvider: primaryButtonProvider,
-                    secondaryButtonProvider: secondaryButtonProvider,
-                    linkProvider: linkProvider
+                .cornerRadius(alertCornerRadius)
+                .accessibilityElement(children: .combine)
+                .modifier(
+                    AccessibilityTraitBuilder(
+                        primaryButtonProvider: primaryButtonProvider,
+                        secondaryButtonProvider: secondaryButtonProvider,
+                        linkProvider: linkProvider
+                    )
                 )
-            )
-            .modifier(
-                AccessibilityButtonActionBuilder(
-                    primaryButtonProvider: primaryButtonProvider,
-                    secondaryButtonProvider: secondaryButtonProvider
+                .modifier(
+                    AccessibilityButtonActionBuilder(
+                        primaryButtonProvider: primaryButtonProvider,
+                        secondaryButtonProvider: secondaryButtonProvider
+                    )
                 )
-            )
         }
 
         private var backgroundView: some View {
@@ -151,7 +151,7 @@ extension Warp {
                 titleView
 
                 subtitleView
-                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    .fixedSize(horizontal: false, vertical: true)
 
                 VStack(spacing: 16) {
                     linkView
@@ -520,7 +520,7 @@ extension Warp.AlertStyle {
         Warp.Alert(
             style: style,
             title: "Title",
-            subtitle: "Due to regulatory requirements, we need to collect your social security number. Therefore, please verify your information again. We apologize for the inconvenience.",
+            subtitle: "Use this variant to call extra attention to useful, contextual information.",
             linkProvider: (title: "Link to more information", action: {}),
             primaryButtonProvider: (title: "Button", action: {}),
             secondaryButtonProvider: (title: "Button", action: {})
