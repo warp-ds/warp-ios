@@ -1,4 +1,4 @@
-extension Warp.Badge {
+@MainActor extension Warp.Badge {
     /// Warp badge styles, that has been designed for certain scenarios.
     public enum Variant: Equatable, CaseIterable {
         /// Used to convey general information that isn’t critical.

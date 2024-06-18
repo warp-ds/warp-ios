@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension Warp {
+@MainActor extension Warp {
     /**
         Enum describing  which edge the Toast view will appear from/disappear to
      */

@@ -1,11 +1,13 @@
 import SwiftUI
 import Combine
 
-extension Warp {
+@MainActor extension Warp {
     /// Inactive state of TextField.
+    @MainActor
     public static let textFieldDefaultInactiveState = TextFieldState.normal(.none)
 
     /// A control that displays an editable text with `Warp` designed interface.
+    @MainActor
     public struct TextField: View {
         /// TextField configurations.
         private let configuration: TextFieldConfiguration
@@ -153,7 +155,7 @@ private struct WarpTextFieldPreview: PreviewProvider {
     }
 }
 
-extension Warp.TextFieldState {
+@MainActor extension Warp.TextFieldState {
     fileprivate static var allCases: [Warp.TextFieldState] = [
         .normal(.none),
         .active(.none),
@@ -163,7 +165,7 @@ extension Warp.TextFieldState {
     ]
 }
 
-extension Warp.TextFieldState {
+@MainActor extension Warp.TextFieldState {
     fileprivate var title: String {
         String(describing: self).localizedCapitalized
     }

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-extension Warp {
+@MainActor extension Warp {
     private static let broadcastCornerRadius: Double = 8
 
     /**
@@ -16,6 +16,7 @@ extension Warp {
         - a `BroadcastEdge` (can be `.bottom` or `.top`)
         - a Binding to a boolean value allowing the `Broadcast` to dismiss
      */
+    @MainActor
     public struct Broadcast: View {
 
         /// Text that will be shown in broadcast

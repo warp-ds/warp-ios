@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension Warp.Callout {
+@MainActor extension Warp.Callout {
 
     struct CalloutShape: Shape {
         private struct Corner: Hashable {
@@ -406,7 +406,7 @@ extension Warp.Callout {
     }
 }
 
-extension Warp.Callout.CalloutShape: InsettableShape {
+@MainActor extension Warp.Callout.CalloutShape: InsettableShape {
     func inset(by amount: CGFloat) -> some InsettableShape {
         var calloutShape = self
         calloutShape.insetAmount += amount

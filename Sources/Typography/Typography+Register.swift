@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-extension Warp.Typography {
+@MainActor extension Warp.Typography {
     /// Register custom fonts.
     public static func registerFonts() throws {
         try Warp.Font.allCases.forEach {
@@ -40,7 +40,7 @@ extension Warp.Typography {
     }
 }
 
-extension Warp {
+@MainActor extension Warp {
     /// Faults than can occur during custom font registration phase.
     public enum FontRegistrationError: LocalizedError {
         case unableToFindFont(name: String)

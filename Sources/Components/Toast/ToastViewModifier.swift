@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension Warp {
+@MainActor extension Warp {
     public struct ToastViewModifier: ViewModifier {
         let style: Warp.ToastStyle
         let title: String

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-extension Warp.Button {
+@MainActor extension Warp.Button {
     /// Wrapper around image name for providing more context related to button icon.
     public struct Icon: ExpressibleByStringLiteral {
         /// Image name.

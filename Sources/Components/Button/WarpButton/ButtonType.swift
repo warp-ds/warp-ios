@@ -2,7 +2,7 @@ import Foundation
 import struct SwiftUI.Color
 import struct SwiftUI.Font
 
-extension Warp {
+@MainActor extension Warp {
     /// Warp button styles, that has been designed for certain scenarios.
     public enum ButtonType: Equatable {
         /// Primary button style as default `SwiftUI` button style.

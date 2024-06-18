@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension Warp {
+@MainActor extension Warp {
     public enum Shadow {
         case small, medium, large, xLarge
         

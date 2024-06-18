@@ -1,6 +1,6 @@
 import Foundation
 
-extension Warp {
+@MainActor extension Warp {
     public enum ToastStyle: Equatable, CaseIterable {
         /// Disruptive message describes a critical, fatal error that affects action. Example: Internal server error
         case error

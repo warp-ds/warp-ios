@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension Warp {
+@MainActor extension Warp {
     /// Warp representation of the style and appearance of visual text matter.
     public enum Typography {
         case display
@@ -20,7 +20,7 @@ extension Warp {
     }
 }
 
-extension Warp.Typography {
+@MainActor extension Warp.Typography {
     /// Bridge between `Warp` and `SwiftUI` font.
     /// Provides a font with size and font weight based on given typography.
     public var font: Font {
@@ -120,7 +120,7 @@ extension Warp.Typography {
     }
 }
 
-extension Warp.Typography {
+@MainActor extension Warp.Typography {
     private var isFinnApp: Bool {
         Warp.Config.warpTheme == .finn
     }

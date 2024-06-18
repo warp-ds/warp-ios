@@ -1,8 +1,10 @@
 import SwiftUI
 import Warp
 
+@MainActor
 private let allowedTextFieldStates: [Warp.TextFieldState] = [.normal(.none), .disabled, .readOnly]
 
+@MainActor
 struct TextFieldView: View {
     @State private var state = Warp.TextFieldState.normal(.none)
 
@@ -176,7 +178,7 @@ struct TextFieldView: View {
     TextFieldView()
 }
 
-extension Warp.TextField.InformationState: CaseIterable {
+@MainActor extension Warp.TextField.InformationState: CaseIterable {
     public static var allCases: [Warp.TextField.InformationState] {
         [
             .none,
@@ -199,7 +201,7 @@ extension Warp.TextField.InformationState: CaseIterable {
     }
 }
 
-extension Warp.TextFieldState {
+@MainActor extension Warp.TextFieldState {
     fileprivate var title: String {
         switch self {
             case .normal:

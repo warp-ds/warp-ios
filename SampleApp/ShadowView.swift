@@ -42,7 +42,7 @@ struct ShadowView: View {
     }
 }
 
-extension Warp.Shadow {
+@MainActor extension Warp.Shadow {
     fileprivate static var allCases: [Warp.Shadow] = [
         .small,
         .medium,

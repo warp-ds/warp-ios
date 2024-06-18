@@ -96,6 +96,7 @@ struct ToastView: View {
     }
 }
 
+@MainActor
 fileprivate extension Warp.ToastStyle {
     var description: String {
         switch self {
@@ -109,6 +110,7 @@ fileprivate extension Warp.ToastStyle {
     }
 }
 
+@MainActor
 fileprivate extension Warp.ToastEdge {
     var description: String {
         switch self {

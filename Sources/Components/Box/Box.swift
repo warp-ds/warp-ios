@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-extension Warp {
+@MainActor extension Warp {
     private static let boxCornerRadius = 8.0
 
     /// Asset name of the `Box` tooltip image.
@@ -320,7 +320,7 @@ private struct UnderlinedLinkModifier: ViewModifier {
     }
 }
 
-extension Warp.BoxStyle {
+@MainActor extension Warp.BoxStyle {
     fileprivate func getBackgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
             case .neutral:
@@ -358,7 +358,7 @@ extension Warp.BoxStyle {
     }
 }
 
-extension Warp.BoxStyle {
+@MainActor extension Warp.BoxStyle {
     fileprivate static var allCases: [Warp.BoxStyle] = [
         .neutral,
         .info,

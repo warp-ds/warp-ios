@@ -1,9 +1,10 @@
 import Foundation
 import struct SwiftUI.Color
 
-extension Warp.Button {
+@MainActor extension Warp.Button {
     /// Factory responsible for creating button, UI element color,
     /// based on button type and current state.
+    @MainActor
     struct ColorFactory {
         /// Button type.
         private let type: Warp.ButtonType

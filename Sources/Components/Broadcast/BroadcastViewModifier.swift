@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension Warp {
+@MainActor extension Warp {
     public struct BroadcastViewModifier: ViewModifier {
         let text: String
         let edge: BroadcastEdge

@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Warp
 
+@MainActor
 struct AlertView: View {
     @State private var style: Warp.AlertStyle = .info
 
@@ -166,7 +167,7 @@ struct AlertView: View {
     }
 }
 
-extension Warp.AlertStyle: CaseIterable {
+@MainActor extension Warp.AlertStyle: CaseIterable {
     public static var allCases: [Warp.AlertStyle] = [
         .info,
         .warning,

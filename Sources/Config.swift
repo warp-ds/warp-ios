@@ -1,22 +1,23 @@
-extension Warp {
+
+@MainActor extension Warp {
+    @MainActor
     public struct Config {
         public static var tokenProvider: TokenProvider = {
             switch warpTheme {
-                case .finn:
-                    return FinnTokenProvider()
-                case .tori:
-                    return ToriTokenProvider()
+            case .finn:
+                return FinnTokenProvider()
+            case .tori:
+                return ToriTokenProvider()
             }
         }()
         public static var uiTokenProvider: UITokenProvider = {
             switch warpTheme {
-                case .finn:
-                    return FinnUITokenProvider()
-                case .tori:
-                    return ToriUITokenProvider()
+            case .finn:
+                return FinnUITokenProvider()
+            case .tori:
+                return ToriUITokenProvider()
             }
         }()
-        
         public static var colorProvider: ColorProvider = {
             ColorProvider(token: tokenProvider)
         }()
@@ -28,6 +29,7 @@ extension Warp {
         }
     }
 
+    @MainActor
     public enum Theme {
         case finn, tori
     }

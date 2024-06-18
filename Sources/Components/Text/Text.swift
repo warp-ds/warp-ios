@@ -1,7 +1,8 @@
 import SwiftUI
 
-extension Warp {
+@MainActor extension Warp {
     /// Use badges to highlight status of an ad (Active/Inactive/Sold/Removed) or to mark paid placements (Sponsored/Ad/House of the week).
+    @MainActor
     public struct Text: View, Hashable {
         public static func == (lhs: Warp.Text, rhs: Warp.Text) -> Bool {
             lhs.text == rhs.text &&

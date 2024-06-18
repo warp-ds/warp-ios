@@ -1,6 +1,6 @@
 import Foundation
 
-extension Warp.Button {
+@MainActor extension Warp.Button {
     /// Factory responsible for resolving button internal element UI drawing needs.
     struct UIMetricsFactory {
         /// Button type.

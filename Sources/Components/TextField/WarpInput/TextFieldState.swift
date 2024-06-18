@@ -1,6 +1,6 @@
 import Foundation
 
-extension Warp {
+@MainActor extension Warp {
     /// States of TextField view.
     public enum TextFieldState: Equatable, Comparable, Hashable {
         /// None active TextField.
@@ -42,7 +42,7 @@ extension Warp {
     }
 }
 
-extension Warp.TextField {
+@MainActor extension Warp.TextField {
     public enum InformationState: Hashable, Equatable, Comparable {
         case none
 

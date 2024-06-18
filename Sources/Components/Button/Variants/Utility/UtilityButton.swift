@@ -1,10 +1,11 @@
 import Foundation
 import SwiftUI
 
-extension Warp.Button {
+@MainActor extension Warp.Button {
     private static let utilityType: Warp.ButtonType = .utility
 
     /// Factory method for creating warp button with `Utility` style.
+    @MainActor
     static func createUtility(
         title: String,
         leadingIcon: Image? = nil,

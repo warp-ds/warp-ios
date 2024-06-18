@@ -23,6 +23,7 @@ let package = Package(
                 .process("Typography/Fonts"),
                 .process("Resources")
             ]
+//            swiftSettings: [.enableExperimentalFeature("StrictConcurrency")]
         ),
         .testTarget(
             name: "tests",

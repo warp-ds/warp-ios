@@ -1,6 +1,6 @@
 import Foundation
 
-extension Warp {
+@MainActor extension Warp {
     public enum SpinnerSize: Hashable {        
         case small
         case `default`

@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension Warp {
+@MainActor extension Warp {
     /// A spinner is an animated spinning icon that informs users about the loading of content.
     public struct Spinner: View, Hashable {
         public static func == (lhs: Warp.Spinner, rhs: Warp.Spinner) -> Bool {

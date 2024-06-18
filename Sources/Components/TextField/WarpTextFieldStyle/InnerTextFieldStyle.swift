@@ -4,9 +4,10 @@ import SwiftUI
 /// Minimum height reserved for text field in order to keep it elegant.
 private let textFieldMinHeight = 28.0
 
-extension Warp {
+@MainActor extension Warp {
     /// Text field style that will be used internally.
     /// Responsible for configuring text field inside the borders.
+    @MainActor
     struct InnerTextFieldStyle: SwiftUI.TextFieldStyle {
         /// State of TextField.
         let state: Warp.TextFieldState
