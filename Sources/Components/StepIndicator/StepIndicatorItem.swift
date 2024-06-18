@@ -2,7 +2,13 @@ import Foundation
 import SwiftUI
 
 extension Warp {
-    public struct StepIndicatorItem {
+    public struct StepIndicatorItem: Identifiable, Equatable {
+        enum StepLocation {
+            case first(nextProgress: Warp.StepIndicatorItem.Progress?)
+            case middle(previousProgress: Warp.StepIndicatorItem.Progress, nextProgress: Warp.StepIndicatorItem.Progress)
+            case last(previousProgress: Warp.StepIndicatorItem.Progress)
+        }
+        
         public enum Progress {
             case notStarted
             case inProgress
@@ -27,6 +33,7 @@ extension Warp {
             }
         }
 
+        public let id = UUID()
         public let title: String
         public let description: String
         public let progress: Progress
@@ -40,5 +47,31 @@ extension Warp {
             self.description = description
             self.progress = progress
         }
+
+        static var mockNotStarted: Self {
+            .init(
+                title: "Not Started",
+                description: "Not Started - Descripion",
+                progress: .notStarted
+            )
+        }
+
+        static var mockInProgress: Self {
+            .init(
+                title: "In Progress",
+                description: "In Progress - Descripion",
+                progress: .inProgress
+            )
+        }
+
+        static var mockCompleted: Self {
+            .init(
+                title: "Completed",
+                description: "Completed - Descripion",
+                progress: .completed
+            )
+        }
     }
+
+    
 }
