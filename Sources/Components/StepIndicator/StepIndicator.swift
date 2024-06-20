@@ -14,7 +14,7 @@ extension Warp {
         fileprivate let orderedSteps: [OrderedStepIndicatorItem]
 
         public init(
-            layoutOrientation: LayoutOrientation,
+            layoutOrientation: LayoutOrientation = .vertical,
             steps: [StepIndicatorItem],
             colorProvider: ColorProvider = Config.colorProvider
         ) {
@@ -48,7 +48,7 @@ extension Warp {
 
         @ViewBuilder
         private var horizontalScrollView: some View {
-            ScrollView(.horizontal) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 0) {
                     ForEach(orderedSteps) { step in
                         HorizontalItemView(
