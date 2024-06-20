@@ -11,13 +11,16 @@ extension Warp.StepIndicator {
                     progress: step.progress,
                     stepLocation: stepLocation
                 )
+
                 Warp.StepIndicator.DescriptionView(
-                    title: step.title,
-                    description: step.description,
+                    step: step,
                     layoutOrientation: .vertical
                 )
+                .padding(.bottom, 16)
+
                 Spacer()
             }
+            .fixedSize(horizontal: false, vertical: true)
         }
     }
 }

@@ -1,8 +1,8 @@
 import SwiftUI
 
 extension Warp {
-    struct StepIndicator: View {
-        enum LayoutOrientation {
+    public struct StepIndicator: View {
+        public enum LayoutOrientation {
             case horizontal
             case vertical
         }
@@ -25,21 +25,33 @@ extension Warp {
             self.colorProvider = colorProvider
         }
 
-        var body: some View {
+        public var body: some View {
             switch layoutOrientation {
             case .horizontal:
-                HStack(spacing: 0) {
+                if #available(iOS 16.4, *) {
+                    horizontalScrollView
+                        .scrollBounceBehavior(.basedOnSize, axes: .horizontal)
+                } else {
+                    horizontalScrollView
+                }
+            case .vertical:
+                VStack(spacing: -1) {
                     ForEach(orderedSteps) { step in
-                        HorizontalItemView(
+                        VerticalItemView(
                             step: step.item,
                             stepLocation: step.location
                         )
                     }
                 }
-            case .vertical:
-                VStack(spacing: 0) {
+            }
+        }
+
+        @ViewBuilder
+        private var horizontalScrollView: some View {
+            ScrollView(.horizontal) {
+                HStack(spacing: 0) {
                     ForEach(orderedSteps) { step in
-                        VerticalItemView(
+                        HorizontalItemView(
                             step: step.item,
                             stepLocation: step.location
                         )
@@ -57,7 +69,6 @@ extension Warp {
         }
 
         init?(item: StepIndicatorItem, items: [StepIndicatorItem]) {
-
             guard !items.isEmpty else { return nil }
             // find index of item
             guard let itemIndex = items.firstIndex(where: { $0 == item}) else { return nil }
@@ -80,24 +91,17 @@ extension Warp {
                     // last item
                     if itemIndex == items.count - 1 {
                         if itemIndex > 0 {
-                            let previousProgres = items[itemIndex - 1].progress
-                            let computedPreviousProgress = switch previousProgres {
-                            case .notStarted:
-                                Warp.StepIndicatorItem.Progress.notStarted
-                            case .inProgress:
-                                Warp.StepIndicatorItem.Progress.notStarted
-                            case .completed:
-                                Warp.StepIndicatorItem.Progress.completed
-                            }
-                            self.location = .last(previousProgress: computedPreviousProgress)
+                            let previousProgress = items[itemIndex - 1].progress
+                           self.location = .last(previousProgress: previousProgress)
                         } else {
                             self.location = .first(nextProgress: nil)
                         }
                     } else {
                         // middle item
-                        if itemIndex > 0 && itemIndex <= items.count - 2 {
+                        let previousProgress = items[itemIndex - 1].progress
+                       if itemIndex > 0 && itemIndex <= items.count - 2 {
                             self.location = .middle(
-                                previousProgress: items[itemIndex - 1].progress,
+                                previousProgress: previousProgress,
                                 nextProgress: items[itemIndex + 1].progress
                             )
                         } else {

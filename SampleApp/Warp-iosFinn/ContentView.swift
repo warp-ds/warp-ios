@@ -20,91 +20,130 @@ struct ContentView: View {
                     Config.warpTheme = selectedTheme
                 }
                 #endif
-                VStack (alignment: .leading) {
+                LazyVStack (alignment: .leading) {
+                    Text("Brand Specific Items")
+                        .font(.title2)
                     Divider()
                     switch Warp.Config.warpTheme {
                     case .finn:
                         NavigationLink(destination: FinnColorsView()) {
-                            Text("BrandColors")
+                            Text("Colors")
                                 .padding()
                         }
                     case .tori:
                         NavigationLink(destination: ToriColorsView()) {
-                            Text("BrandColors")
+                            Text("Colors")
                                 .padding()
                         }
                     }
                     Divider()
                     NavigationLink(destination: BrandTokensView()) {
-                        Text("BrandTokens")
+                        Text("Tokens")
                             .padding()
                     }
                     Divider()
+
+                    NavigationLink(destination: TypographyView()) {
+                        Text("Typography")
+                            .padding()
+                    }
+
+                    Divider()
+
+                    Text("Warp Components")
+                        .font(.title2)
+
+                    Divider()
+
+                    NavigationLink(destination: AlertView()) {
+                        Text("Alert")
+                            .padding()
+                    }
+                    Divider()
+
+                    NavigationLink(destination: BadgeView()) {
+                        Text("Badge")
+                            .padding()
+                    }
+                    Divider()
+
+                    NavigationLink(destination: BoxView()) {
+                        Text("Box")
+                            .padding()
+                    }
+                    
+                    Divider()
+
+                    NavigationLink(destination: BroadcastView()) {
+                        Text("Broadcast")
+                            .padding()
+                    }
+
+                    Divider()
+
+                    NavigationLink(destination: ButtonView()) {
+                        Text("Button")
+                            .padding()
+                    }
+
+                    Divider()
+
+                    NavigationLink(destination: CalloutView()) {
+                        Text("Callout")
+                            .padding()
+                    }
+
+                    Divider()
+
+                    NavigationLink(destination: PillView()) {
+                        Text("Pill")
+                            .padding()
+                    }
+
+                    Divider()
+
                     NavigationLink(destination: ShadowView()) {
                         Text("ShadowView")
                             .padding()
                     }
+
                     Divider()
-                    NavigationLink(destination: TypographyView()) {
-                        Text("WarpTypography")
-                            .padding()
-                    }
-                    Divider()
-                    NavigationLink(destination: ButtonView()) {
-                        Text("WarpButton")
-                            .padding()
-                    }
-                    Divider()
-                    NavigationLink(destination: TextFieldView()) {
-                        Text("WarpTextField")
-                            .padding()
-                    }
-                    Divider()
-                    NavigationLink(destination: BadgeView()) {
-                        Text("WarpBadge")
-                            .padding()
-                    }
-                    Divider()
-                    NavigationLink(destination: PillView()) {
-                        Text("WarpPill")
-                            .padding()
-                    }
-                    Divider()
-                    NavigationLink(destination: AlertView()) {
-                        Text("WarpAlert")
-                            .padding()
-                    }
-                    Divider()
-                    NavigationLink(destination: BoxView()) {
-                        Text("WarpBox")
-                            .padding()
-                    }
-                    Divider()
-                    NavigationLink(destination: ToastView()) {
-                        Text("WarpToast")
-                            .padding()
-                    }
-                    Divider()
-                    NavigationLink(destination: TextView()) {
-                        Text("WarpText")
-                            .padding()
-                    }
-                    Divider()
-                    NavigationLink(destination: CalloutView()) {
-                        Text("WarpCallout")
-                            .padding()
-                    }
-                    Divider()
-                    NavigationLink(destination: BroadcastView()) {
-                        Text("WarpBroadcast")
-                            .padding()
-                    }
-                    Divider()
+
                     NavigationLink(destination: SpinnerView()) {
                         Text("SpinnerView")
                             .padding()
                     }
+
                     Divider()
+
+                    NavigationLink(destination: StepIndicatorView()) {
+                        Text("Step Indicator")
+                            .padding()
+                    }
+
+                    Divider()
+
+                    NavigationLink(destination: TextView()) {
+                        Text("Text")
+                            .padding()
+                    }
+
+                    Divider()
+
+                    NavigationLink(destination: TextFieldView()) {
+                        Text("TextField")
+                            .padding()
+                    }
+
+                    Divider()
+
+                    NavigationLink(destination: ToastView()) {
+                        Text("Toast")
+                            .padding()
+                    }
+
+                    Divider()
+
                     Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
                         .font(.caption2)
                 }

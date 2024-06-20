@@ -58,9 +58,15 @@ extension Warp.StepIndicator {
                     EmptyView()
                 }
             case .middle(let previousProgress, _):
-                line(for: previousProgress)
+                line(
+                    for: previousProgress,
+                    ownProgress: progress
+                )
             case .last(let previousProgress):
-                line(for: previousProgress)
+                line(
+                    for: previousProgress,
+                    ownProgress: progress
+                )
             }
         }
 
@@ -69,12 +75,18 @@ extension Warp.StepIndicator {
             switch stepLocation {
             case .first(let nextProgress):
                 if let nextProgress {
-                    line(for: nextProgress)
+                    line(
+                        for: nextProgress,
+                        ownProgress: progress
+                    )
                 } else {
                     EmptyView()
                 }
             case .middle(_, let nextProgress):
-                line(for: nextProgress)
+                line(
+                    for: nextProgress,
+                    ownProgress: progress
+                )
             case .last:
                 Rectangle()
                     .fill(.clear)
@@ -83,15 +95,21 @@ extension Warp.StepIndicator {
         }
 
         @ViewBuilder
-        private func line(for progress: Warp.StepIndicatorItem.Progress) -> some View {
-            switch progress {
+        private func line(
+            for previousProgress: Warp.StepIndicatorItem.Progress,
+            ownProgress: Warp.StepIndicatorItem.Progress
+        ) -> some View {
+            switch previousProgress {
             case .notStarted:
                 Rectangle()
-                    .strokeBorder(progress.borderColor(using: colorProvider))
+                    .fill(colorProvider.token.backgroundDisabled)
                     .frame(height: 1)
             case .inProgress, .completed:
+                let fillColor = ownProgress == .notStarted ?
+                    colorProvider.token.backgroundDisabled :
+                    colorProvider.token.backgroundPrimary
                 Rectangle()
-                    .fill(progress.fillColor(using: colorProvider))
+                    .fill(fillColor)
                     .frame(height: 1)
             }
         }

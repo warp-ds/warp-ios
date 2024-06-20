@@ -8,19 +8,19 @@ extension Warp.StepIndicator {
         var body: some View {
             VStack(alignment: .center, spacing: 8) {
                 Warp.StepIndicator.DescriptionView(
-                    title: step.title,
-                    description: step.description,
+                    step: step,
                     layoutOrientation: .horizontal
                 )
+                .padding(.horizontal, 8)
 
                 Warp.StepIndicator.HorizontalProgressView(
                     progress: step.progress,
                     stepLocation: stepLocation
                 )
             }
+            .fixedSize(horizontal: true, vertical: false)
         }
     }
-
 }
 
 #Preview("First Step") {
