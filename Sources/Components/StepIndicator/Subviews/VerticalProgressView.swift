@@ -52,28 +52,28 @@ extension Warp.StepIndicator {
             progressShape.insetAmount += amount
             return progressShape
         }
-
     }
+    
     struct VerticalProgressView: View {
         let colorProvider: ColorProvider
         let progress: Warp.StepIndicatorItem.Progress
-        let stepLocation: Warp.StepIndicatorItem.StepLocation
+        let stepPosition: Warp.StepIndicatorItem.Position
 
         init(
             colorProvider: ColorProvider = Warp.Config.colorProvider,
             progress: Warp.StepIndicatorItem.Progress,
-            stepLocation: Warp.StepIndicatorItem.StepLocation
+            stepPosition: Warp.StepIndicatorItem.Position
         ) {
             self.colorProvider = colorProvider
             self.progress = progress
-            self.stepLocation = stepLocation
+            self.stepPosition = stepPosition
         }
 
         var body: some View {
             Group {
                 VStack {
                     switch progress {
-                    case .notStarted:
+                    case .incomplete:
                         VerticalProgressShape(
                             pinWidth: 1,
                             hasLine: !isLastStep
@@ -82,7 +82,7 @@ extension Warp.StepIndicator {
                     case .inProgress:
                         VerticalProgressShape(hasLine: !isLastStep)
                             .fill(progress.fillColor(using: colorProvider))
-                    case .completed:
+                    case .complete:
                         VerticalProgressShape(hasLine: !isLastStep)
                             .fill(progress.fillColor(using: colorProvider))
                             .overlay(alignment: .top) {
@@ -99,9 +99,9 @@ extension Warp.StepIndicator {
         }
 
         var isLastStep: Bool {
-            switch stepLocation {
-            case .first:
-                false
+            switch stepPosition {
+            case .first(let nextStepProgress):
+                nextStepProgress == nil ? true: false
             case .middle:
                 false
             case .last:
@@ -114,18 +114,18 @@ extension Warp.StepIndicator {
 #Preview("Vertical Progress Views") {
     HStack {
         Warp.StepIndicator.VerticalProgressView(
-            progress: .notStarted,
-            stepLocation: .first(nextProgress: nil)
+            progress: .incomplete,
+            stepPosition: .first(nextProgress: nil)
         )
 
         Warp.StepIndicator.VerticalProgressView(
             progress: .inProgress,
-            stepLocation: .first(nextProgress: nil)
+            stepPosition: .first(nextProgress: nil)
         )
 
         Warp.StepIndicator.VerticalProgressView(
-            progress: .completed,
-            stepLocation: .first(nextProgress: nil)
+            progress: .complete,
+            stepPosition: .first(nextProgress: nil)
         )
     }
 }

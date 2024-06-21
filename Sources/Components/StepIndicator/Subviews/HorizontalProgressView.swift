@@ -4,16 +4,16 @@ extension Warp.StepIndicator {
     struct HorizontalProgressView: View {
         let colorProvider: ColorProvider
         let progress: Warp.StepIndicatorItem.Progress
-        let stepLocation: Warp.StepIndicatorItem.StepLocation
+        let stepPosition: Warp.StepIndicatorItem.Position
 
         init(
             colorProvider: ColorProvider = Warp.Config.colorProvider,
             progress: Warp.StepIndicatorItem.Progress,
-            stepLocation: Warp.StepIndicatorItem.StepLocation
+            stepPosition: Warp.StepIndicatorItem.Position
         ) {
             self.colorProvider = colorProvider
             self.progress = progress
-            self.stepLocation = stepLocation
+            self.stepPosition = stepPosition
         }
 
         var body: some View {
@@ -22,13 +22,13 @@ extension Warp.StepIndicator {
 
                 Group {
                     switch progress {
-                    case .notStarted:
+                    case .incomplete:
                         Circle()
                             .strokeBorder(progress.borderColor(using: colorProvider), lineWidth: 1)
                     case .inProgress:
                         Circle()
                             .fill(progress.fillColor(using: colorProvider))
-                    case .completed:
+                    case .complete:
                         Circle()
                             .fill(progress.fillColor(using: colorProvider))
                             .overlay(alignment: .leading) {
@@ -48,7 +48,7 @@ extension Warp.StepIndicator {
 
         @ViewBuilder
         private var leadingView: some View {
-            switch stepLocation {
+            switch stepPosition {
             case .first(let nextProgress):
                 if nextProgress != nil {
                     Rectangle()
@@ -72,7 +72,7 @@ extension Warp.StepIndicator {
 
         @ViewBuilder
         private var trailingView: some View {
-            switch stepLocation {
+            switch stepPosition {
             case .first(let nextProgress):
                 if let nextProgress {
                     line(
@@ -100,12 +100,12 @@ extension Warp.StepIndicator {
             ownProgress: Warp.StepIndicatorItem.Progress
         ) -> some View {
             switch previousProgress {
-            case .notStarted:
+            case .incomplete:
                 Rectangle()
                     .fill(colorProvider.token.backgroundDisabled)
                     .frame(height: 1)
-            case .inProgress, .completed:
-                let fillColor = ownProgress == .notStarted ?
+            case .inProgress, .complete:
+                let fillColor = ownProgress == .incomplete ?
                     colorProvider.token.backgroundDisabled :
                     colorProvider.token.backgroundPrimary
                 Rectangle()
@@ -119,23 +119,23 @@ extension Warp.StepIndicator {
 #Preview("First Step Horizontal Progress Views") {
     VStack {
         Warp.StepIndicator.HorizontalProgressView(
-            progress: .notStarted,
-            stepLocation: .first(nextProgress: nil)
+            progress: .incomplete,
+            stepPosition: .first(nextProgress: nil)
         )
 
         Warp.StepIndicator.HorizontalProgressView(
-            progress: .notStarted,
-            stepLocation: .first(nextProgress: .notStarted)
+            progress: .incomplete,
+            stepPosition: .first(nextProgress: .incomplete)
         )
 
         Warp.StepIndicator.HorizontalProgressView(
             progress: .inProgress,
-            stepLocation: .first(nextProgress: .inProgress)
+            stepPosition: .first(nextProgress: .inProgress)
         )
 
         Warp.StepIndicator.HorizontalProgressView(
-            progress: .completed,
-            stepLocation: .first(nextProgress: .completed)
+            progress: .complete,
+            stepPosition: .first(nextProgress: .complete)
         )
     }
     .padding(.horizontal, 2)
@@ -144,42 +144,42 @@ extension Warp.StepIndicator {
 #Preview("Middle Step Horizontal Progress Views") {
     VStack {
         Warp.StepIndicator.HorizontalProgressView(
-            progress: .notStarted,
-            stepLocation: .middle(
-                previousProgress: .notStarted,
-                nextProgress: .notStarted
+            progress: .incomplete,
+            stepPosition: .middle(
+                previousProgress: .incomplete,
+                nextProgress: .incomplete
             )
         )
 
         Warp.StepIndicator.HorizontalProgressView(
-            progress: .notStarted,
-            stepLocation: .middle(
-                previousProgress: .completed,
-                nextProgress: .notStarted
+            progress: .incomplete,
+            stepPosition: .middle(
+                previousProgress: .complete,
+                nextProgress: .incomplete
             )
         )
 
         Warp.StepIndicator.HorizontalProgressView(
             progress: .inProgress,
-            stepLocation: .middle(
-                previousProgress: .completed,
-                nextProgress: .notStarted
+            stepPosition: .middle(
+                previousProgress: .complete,
+                nextProgress: .incomplete
             )
         )
 
         Warp.StepIndicator.HorizontalProgressView(
-            progress: .completed,
-            stepLocation: .middle(
-                previousProgress: .completed,
-                nextProgress: .notStarted
+            progress: .complete,
+            stepPosition: .middle(
+                previousProgress: .complete,
+                nextProgress: .incomplete
             )
         )
 
         Warp.StepIndicator.HorizontalProgressView(
-            progress: .completed,
-            stepLocation: .middle(
-                previousProgress: .completed,
-                nextProgress: .completed
+            progress: .complete,
+            stepPosition: .middle(
+                previousProgress: .complete,
+                nextProgress: .complete
             )
         )
 
@@ -189,28 +189,28 @@ extension Warp.StepIndicator {
 #Preview("Last Step Horizontal Progress Views") {
     VStack {
         Warp.StepIndicator.HorizontalProgressView(
-            progress: .notStarted,
-            stepLocation: .last(previousProgress: .notStarted)
+            progress: .incomplete,
+            stepPosition: .last(previousProgress: .incomplete)
         )
 
         Warp.StepIndicator.HorizontalProgressView(
-            progress: .notStarted,
-            stepLocation: .last(previousProgress: .inProgress)
+            progress: .incomplete,
+            stepPosition: .last(previousProgress: .inProgress)
         )
 
         Warp.StepIndicator.HorizontalProgressView(
-            progress: .notStarted,
-            stepLocation: .last(previousProgress: .completed)
+            progress: .incomplete,
+            stepPosition: .last(previousProgress: .complete)
         )
 
         Warp.StepIndicator.HorizontalProgressView(
             progress: .inProgress,
-            stepLocation: .last(previousProgress: .completed)
+            stepPosition: .last(previousProgress: .complete)
         )
 
         Warp.StepIndicator.HorizontalProgressView(
-            progress: .completed,
-            stepLocation: .last(previousProgress: .completed)
+            progress: .complete,
+            stepPosition: .last(previousProgress: .complete)
         )
     }
 }

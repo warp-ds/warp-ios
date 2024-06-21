@@ -3,13 +3,13 @@ import SwiftUI
 extension Warp.StepIndicator {
     struct VerticalItemView: View {
         let step: Warp.StepIndicatorItem
-        let stepLocation: Warp.StepIndicatorItem.StepLocation
+        let stepPosition: Warp.StepIndicatorItem.Position
 
         var body: some View {
             HStack(alignment: .top, spacing: 8) {
                 Warp.StepIndicator.VerticalProgressView(
                     progress: step.progress,
-                    stepLocation: stepLocation
+                    stepPosition: stepPosition
                 )
 
                 Warp.StepIndicator.DescriptionView(
@@ -28,21 +28,21 @@ extension Warp.StepIndicator {
 #Preview("Not Started") {
     Warp.StepIndicator.VerticalItemView(
         step: .mockNotStarted,
-        stepLocation: .first(nextProgress: nil)
+        stepPosition: .first(nextProgress: nil)
     )
 }
 
 #Preview("In Progress") {
     Warp.StepIndicator.VerticalItemView(
         step: .mockInProgress,
-        stepLocation: .first(nextProgress: nil)
+        stepPosition: .first(nextProgress: nil)
     )
 }
 
 #Preview("Completed") {
     Warp.StepIndicator.VerticalItemView(
         step: .mockCompleted,
-        stepLocation: .first(nextProgress: nil)
+        stepPosition: .first(nextProgress: nil)
     )
 }
 
@@ -50,15 +50,15 @@ extension Warp.StepIndicator {
     VStack(spacing: -1) {
         Warp.StepIndicator.VerticalItemView(
             step: .mockCompleted,
-            stepLocation: .first(nextProgress: nil)
+            stepPosition: .first(nextProgress: nil)
         )
         Warp.StepIndicator.VerticalItemView(
             step: .mockInProgress,
-            stepLocation: .first(nextProgress: nil)
+            stepPosition: .first(nextProgress: nil)
         )
         Warp.StepIndicator.VerticalItemView(
             step: .mockNotStarted,
-            stepLocation: .first(nextProgress: nil)
+            stepPosition: .first(nextProgress: nil)
         )
     }
     .padding()

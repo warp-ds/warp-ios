@@ -3,7 +3,7 @@ import SwiftUI
 extension Warp.StepIndicator {
     struct HorizontalItemView: View {
         let step: Warp.StepIndicatorItem
-        let stepLocation: Warp.StepIndicatorItem.StepLocation
+        let stepPosition: Warp.StepIndicatorItem.Position
 
         var body: some View {
             VStack(alignment: .center, spacing: 8) {
@@ -15,7 +15,7 @@ extension Warp.StepIndicator {
 
                 Warp.StepIndicator.HorizontalProgressView(
                     progress: step.progress,
-                    stepLocation: stepLocation
+                    stepPosition: stepPosition
                 )
             }
             .fixedSize(horizontal: true, vertical: false)
@@ -27,37 +27,37 @@ extension Warp.StepIndicator {
     VStack {
         Warp.StepIndicator.HorizontalItemView(
             step: .mockNotStarted,
-            stepLocation: .first(nextProgress: nil)
+            stepPosition: .first(nextProgress: nil)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockNotStarted,
-            stepLocation: .first(nextProgress: .notStarted)
+            stepPosition: .first(nextProgress: .incomplete)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockInProgress,
-            stepLocation: .first(nextProgress: nil)
+            stepPosition: .first(nextProgress: nil)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockInProgress,
-            stepLocation: .first(nextProgress: .notStarted)
+            stepPosition: .first(nextProgress: .incomplete)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockInProgress,
-            stepLocation: .first(nextProgress: .inProgress)
+            stepPosition: .first(nextProgress: .inProgress)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockCompleted,
-            stepLocation: .first(nextProgress: nil)
+            stepPosition: .first(nextProgress: nil)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockCompleted,
-            stepLocation: .first(nextProgress: .inProgress)
+            stepPosition: .first(nextProgress: .inProgress)
         )
     }
 }
@@ -66,32 +66,32 @@ extension Warp.StepIndicator {
     VStack {
         Warp.StepIndicator.HorizontalItemView(
             step: .mockNotStarted,
-            stepLocation: .middle(
-                previousProgress: .notStarted,
-                nextProgress: .notStarted
+            stepPosition: .middle(
+                previousProgress: .incomplete,
+                nextProgress: .incomplete
             )
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockNotStarted,
-            stepLocation: .middle(
-                previousProgress: .completed,
-                nextProgress: .notStarted
+            stepPosition: .middle(
+                previousProgress: .complete,
+                nextProgress: .incomplete
             )
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockInProgress,
-            stepLocation: .middle(
-                previousProgress: .completed,
-                nextProgress: .notStarted
+            stepPosition: .middle(
+                previousProgress: .complete,
+                nextProgress: .incomplete
             )
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockInProgress,
-            stepLocation: .middle(
-                previousProgress: .completed,
+            stepPosition: .middle(
+                previousProgress: .complete,
                 nextProgress: .inProgress
             )
         )
@@ -99,16 +99,16 @@ extension Warp.StepIndicator {
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockCompleted,
-            stepLocation: .middle(
-                previousProgress: .completed,
-                nextProgress: .notStarted
+            stepPosition: .middle(
+                previousProgress: .complete,
+                nextProgress: .incomplete
             )
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockCompleted,
-            stepLocation: .middle(
-                previousProgress: .completed,
+            stepPosition: .middle(
+                previousProgress: .complete,
                 nextProgress: .inProgress
             )
         )
@@ -119,42 +119,42 @@ extension Warp.StepIndicator {
     VStack {
         Warp.StepIndicator.HorizontalItemView(
             step: .mockNotStarted,
-            stepLocation: .last(previousProgress: .notStarted)
+            stepPosition: .last(previousProgress: .incomplete)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockNotStarted,
-            stepLocation: .last(previousProgress: .inProgress)
+            stepPosition: .last(previousProgress: .inProgress)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockInProgress,
-            stepLocation: .last(previousProgress: .notStarted)
+            stepPosition: .last(previousProgress: .incomplete)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockInProgress,
-            stepLocation: .last(previousProgress: .inProgress)
+            stepPosition: .last(previousProgress: .inProgress)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockInProgress,
-            stepLocation: .last(previousProgress: .completed)
+            stepPosition: .last(previousProgress: .complete)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockCompleted,
-            stepLocation: .last(previousProgress: .notStarted)
+            stepPosition: .last(previousProgress: .incomplete)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockCompleted,
-            stepLocation: .last(previousProgress: .inProgress)
+            stepPosition: .last(previousProgress: .inProgress)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockCompleted,
-            stepLocation: .last(previousProgress: .completed)
+            stepPosition: .last(previousProgress: .complete)
         )
     }
 }
@@ -163,20 +163,20 @@ extension Warp.StepIndicator {
     HStack(spacing: 0) {
         Warp.StepIndicator.HorizontalItemView(
             step: .mockCompleted,
-            stepLocation: .first(nextProgress: .inProgress)
+            stepPosition: .first(nextProgress: .inProgress)
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockInProgress,
-            stepLocation: .middle(
-                previousProgress: .completed,
-                nextProgress: .notStarted
+            stepPosition: .middle(
+                previousProgress: .complete,
+                nextProgress: .incomplete
             )
         )
 
         Warp.StepIndicator.HorizontalItemView(
             step: .mockNotStarted,
-            stepLocation: .last(previousProgress: .notStarted)
+            stepPosition: .last(previousProgress: .incomplete)
         )
     }
 }

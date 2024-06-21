@@ -61,9 +61,9 @@ extension Warp.StepIndicator {
 
         private var textColor: Color {
             switch progress {
-            case .notStarted:
+            case .incomplete:
                 colorProvider.token.textSubtle
-            case .inProgress, .completed:
+            case .inProgress, .complete:
                 colorProvider.token.text
             }
         }
@@ -93,7 +93,7 @@ extension Warp.StepIndicator {
         title: "Step 1",
         description: "Step 1 - Description",
         layoutOrientation: .horizontal,
-        progress: .notStarted
+        progress: .incomplete
     )
 }
 
@@ -102,6 +102,6 @@ extension Warp.StepIndicator {
         title: "Step 1",
         description: "Step 1 - Description",
         layoutOrientation: .vertical,
-        progress: .notStarted
+        progress: .incomplete
     )
 }

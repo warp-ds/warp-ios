@@ -6,13 +6,13 @@ struct StepIndicatorView: View {
 
     @State var stepTitle: String = "Step Title"
     @State var stepDescription: String = "Step Description"
-    @State var stepProgress: Warp.StepIndicatorItem.Progress = .notStarted
+    @State var stepProgress: Warp.StepIndicatorItem.Progress = .incomplete
 
     @State var steps: [Warp.StepIndicatorItem] = [
         .init(
             title: "Step 1",
-            description: "progress = .completed",
-            progress: .completed
+            description: "progress = .complete",
+            progress: .complete
         ),
         .init(
             title: "Step 2",
@@ -21,8 +21,8 @@ struct StepIndicatorView: View {
         ),
         .init(
             title: "Step 3",
-            description: "progress = .notStarted",
-            progress: .notStarted
+            description: "progress = .incomplete",
+            progress: .incomplete
         )
     ]
 
@@ -47,9 +47,9 @@ struct StepIndicatorView: View {
                             selection: $stepProgress,
                             content: {
                                 ForEach(
-                                    [Warp.StepIndicatorItem.Progress.notStarted,
+                                    [Warp.StepIndicatorItem.Progress.incomplete,
                                     Warp.StepIndicatorItem.Progress.inProgress,
-                                     Warp.StepIndicatorItem.Progress.completed
+                                     Warp.StepIndicatorItem.Progress.complete
                                     ], id: \.self
                                 ) { progress in
                                     Text(progress.description)
@@ -127,12 +127,12 @@ fileprivate extension Warp.StepIndicator.LayoutOrientation {
 fileprivate extension Warp.StepIndicatorItem.Progress {
     var description: String {
         switch self {
-        case .notStarted:
-            "Not Started"
+        case .incomplete:
+            "Incomplete"
         case .inProgress:
             "In Progress"
-        case .completed:
-            "Completed"
+        case .complete:
+            "Complete"
         }
     }
 }
