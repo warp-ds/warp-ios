@@ -8,6 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		2E1ADF482C25612300DFEE06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E1ADF472C25612300DFEE06 /* GoogleService-Info.plist */; };
+		2E1ADF4E2C2561A700DFEE06 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
+		2E1ADF4F2C2561A700DFEE06 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B168112B750BED00DCDDE5 /* TextView.swift */; };
+		2E1ADF502C2561A700DFEE06 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E7D442B61239100869C58 /* BadgeView.swift */; };
+		2E1ADF522C2561A700DFEE06 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
+		2E1ADF532C2561A700DFEE06 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A8B2782B6D33B800122DBC /* CalloutView.swift */; };
+		2E1ADF542C2561A700DFEE06 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82635D062BFE1CA700F7FA6F /* SpinnerView.swift */; };
+		2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
+		2E1ADF562C2561A700DFEE06 /* BrandTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */; };
+		2E1ADF572C2561A700DFEE06 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82838CF02B62B35400E3C495 /* PillView.swift */; };
+		2E1ADF582C2561A700DFEE06 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
+		2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349D0E122B62D67A00AAB421 /* AlertView.swift */; };
+		2E1ADF5A2C2561A700DFEE06 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341B20E72B751BD30068FF43 /* BoxView.swift */; };
+		2E1ADF5B2C2561A700DFEE06 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
+		2E1ADF5C2C2561A700DFEE06 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */; };
+		2E1ADF5D2C2561A700DFEE06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B0A2A8CD0AA0023EB11 /* ContentView.swift */; };
+		2E1ADF5F2C2561A700DFEE06 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2E1ADF4B2C2561A700DFEE06 /* FirebaseAnalytics */; };
+		2E1ADF602C2561A700DFEE06 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 2E1ADF4A2C2561A700DFEE06 /* Warp */; };
+		2E1ADF622C2561A700DFEE06 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
+		2E1ADF632C2561A700DFEE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
+		2E1ADF642C2561A700DFEE06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82838CF52B6BED0000E3C495 /* GoogleService-Info.plist */; };
+		2E1ADF6F2C2561D200DFEE06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E1ADF692C2561D200DFEE06 /* Preview Assets.xcassets */; };
+		2E1ADF702C2561D200DFEE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E1ADF6B2C2561D200DFEE06 /* Assets.xcassets */; };
+		2E1ADF722C2561D200DFEE06 /* Warp_iosDBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1ADF6D2C2561D200DFEE06 /* Warp_iosDBA.swift */; };
 		341B20E82B751BD30068FF43 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341B20E72B751BD30068FF43 /* BoxView.swift */; };
 		341B20E92B751C250068FF43 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341B20E72B751BD30068FF43 /* BoxView.swift */; };
 		349586642B0EAD2D00A14570 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
@@ -53,6 +76,10 @@
 
 /* Begin PBXFileReference section */
 		2E1ADF472C25612300DFEE06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Warp-iosFinn/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2E1ADF682C2561A700DFEE06 /* DBA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E1ADF692C2561D200DFEE06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2E1ADF6B2C2561D200DFEE06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2E1ADF6D2C2561D200DFEE06 /* Warp_iosDBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warp_iosDBA.swift; sourceTree = "<group>"; };
 		341B20E72B751BD30068FF43 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
 		349586632B0EAD2D00A14570 /* TypographyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypographyView.swift; sourceTree = "<group>"; };
 		349D0E122B62D67A00AAB421 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -82,6 +109,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2E1ADF5E2C2561A700DFEE06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E1ADF5F2C2561A700DFEE06 /* FirebaseAnalytics in Frameworks */,
+				2E1ADF602C2561A700DFEE06 /* Warp in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		824977842A893F400013475C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,6 +139,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E1ADF6A2C2561D200DFEE06 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2E1ADF692C2561D200DFEE06 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2E1ADF6E2C2561D200DFEE06 /* Warp-iosDBA */ = {
+			isa = PBXGroup;
+			children = (
+				2E1ADF6A2C2561D200DFEE06 /* Preview Content */,
+				2E1ADF6B2C2561D200DFEE06 /* Assets.xcassets */,
+				2E1ADF6D2C2561D200DFEE06 /* Warp_iosDBA.swift */,
+			);
+			path = "Warp-iosDBA";
+			sourceTree = "<group>";
+		};
 		82355AF82A8CCBC90023EB11 /* Warp-iosTori */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +174,7 @@
 				8206620F2A8CC97C0088677D /* warp-ios */,
 				828547C92A8CCA3300401DA3 /* Warp-iosFinn */,
 				82355AF82A8CCBC90023EB11 /* Warp-iosTori */,
+				2E1ADF6E2C2561D200DFEE06 /* Warp-iosDBA */,
 				824977882A893F400013475C /* Products */,
 				827C4B8E2A89407F00660D82 /* Frameworks */,
 			);
@@ -130,6 +185,7 @@
 			children = (
 				824977872A893F400013475C /* Finn.app */,
 				827C4B952A89410800660D82 /* Tori.app */,
+				2E1ADF682C2561A700DFEE06 /* DBA.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,6 +227,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2E1ADF492C2561A700DFEE06 /* DBA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E1ADF652C2561A700DFEE06 /* Build configuration list for PBXNativeTarget "DBA" */;
+			buildPhases = (
+				2E1ADF4D2C2561A700DFEE06 /* Sources */,
+				2E1ADF5E2C2561A700DFEE06 /* Frameworks */,
+				2E1ADF612C2561A700DFEE06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DBA;
+			packageProductDependencies = (
+				2E1ADF4A2C2561A700DFEE06 /* Warp */,
+				2E1ADF4B2C2561A700DFEE06 /* FirebaseAnalytics */,
+			);
+			productName = "Wrap-iOS-Tori";
+			productReference = 2E1ADF682C2561A700DFEE06 /* DBA.app */;
+			productType = "com.apple.product-type.application";
+		};
 		824977862A893F400013475C /* Finn */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 824977AC2A893F430013475C /* Build configuration list for PBXNativeTarget "Finn" */;
@@ -251,11 +328,24 @@
 			targets = (
 				824977862A893F400013475C /* Finn */,
 				827C4B942A89410800660D82 /* Tori */,
+				2E1ADF492C2561A700DFEE06 /* DBA */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2E1ADF612C2561A700DFEE06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E1ADF6F2C2561D200DFEE06 /* Preview Assets.xcassets in Resources */,
+				2E1ADF622C2561A700DFEE06 /* Preview Content in Resources */,
+				2E1ADF632C2561A700DFEE06 /* Assets.xcassets in Resources */,
+				2E1ADF642C2561A700DFEE06 /* GoogleService-Info.plist in Resources */,
+				2E1ADF702C2561D200DFEE06 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		824977852A893F400013475C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -279,6 +369,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2E1ADF4D2C2561A700DFEE06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E1ADF4E2C2561A700DFEE06 /* TypographyView.swift in Sources */,
+				2E1ADF4F2C2561A700DFEE06 /* TextView.swift in Sources */,
+				2E1ADF722C2561D200DFEE06 /* Warp_iosDBA.swift in Sources */,
+				2E1ADF502C2561A700DFEE06 /* BadgeView.swift in Sources */,
+				2E1ADF522C2561A700DFEE06 /* BroadcastView.swift in Sources */,
+				2E1ADF532C2561A700DFEE06 /* CalloutView.swift in Sources */,
+				2E1ADF542C2561A700DFEE06 /* SpinnerView.swift in Sources */,
+				2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */,
+				2E1ADF562C2561A700DFEE06 /* BrandTokensView.swift in Sources */,
+				2E1ADF572C2561A700DFEE06 /* PillView.swift in Sources */,
+				2E1ADF582C2561A700DFEE06 /* ShadowView.swift in Sources */,
+				2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */,
+				2E1ADF5A2C2561A700DFEE06 /* BoxView.swift in Sources */,
+				2E1ADF5B2C2561A700DFEE06 /* ButtonView.swift in Sources */,
+				2E1ADF5C2C2561A700DFEE06 /* ToastView.swift in Sources */,
+				2E1ADF5D2C2561A700DFEE06 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		824977832A893F400013475C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -328,6 +441,80 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		2E1ADF662C2561A700DFEE06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
+				DEVELOPMENT_TEAM = J5FN75WZ65;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nmp.warp-ios.DBA";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2E1ADF672C2561A700DFEE06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Warp-iosTori/Preview Content\"";
+				DEVELOPMENT_TEAM = J5FN75WZ65;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nmp.warp-ios.DBA";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		824977AA2A893F430013475C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -602,6 +789,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2E1ADF652C2561A700DFEE06 /* Build configuration list for PBXNativeTarget "DBA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E1ADF662C2561A700DFEE06 /* Debug */,
+				2E1ADF672C2561A700DFEE06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		824977822A893F400013475C /* Build configuration list for PBXProject "Warp-iosSampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -632,6 +828,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2E1ADF4C2C2561A700DFEE06 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 10.20.0;
+			};
+		};
 		82838CF72B6BED4200E3C495 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -643,6 +847,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2E1ADF4A2C2561A700DFEE06 /* Warp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Warp;
+		};
+		2E1ADF4B2C2561A700DFEE06 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E1ADF4C2C2561A700DFEE06 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
 		34A278BF2AD5472E00EE6ED8 /* Warp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Warp;
