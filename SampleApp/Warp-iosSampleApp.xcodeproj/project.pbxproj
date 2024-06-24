@@ -27,7 +27,6 @@
 		2E1ADF602C2561A700DFEE06 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 2E1ADF4A2C2561A700DFEE06 /* Warp */; };
 		2E1ADF622C2561A700DFEE06 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
 		2E1ADF632C2561A700DFEE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
-		2E1ADF642C2561A700DFEE06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82838CF52B6BED0000E3C495 /* GoogleService-Info.plist */; };
 		2E1ADF6F2C2561D200DFEE06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E1ADF692C2561D200DFEE06 /* Preview Assets.xcassets */; };
 		2E1ADF702C2561D200DFEE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E1ADF6B2C2561D200DFEE06 /* Assets.xcassets */; };
 		2E1ADF722C2561D200DFEE06 /* Warp_iosDBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1ADF6D2C2561D200DFEE06 /* Warp_iosDBA.swift */; };
@@ -41,6 +40,7 @@
 		34A278C22AD5473C00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278C12AD5473C00EE6ED8 /* Warp */; };
 		8213D0AF2B9078D700FCA310 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
+		8226D5782C297BFE00928E59 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8226D5772C297BFE00928E59 /* GoogleService-Info.plist */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
 		82355B002A8CCBE70023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
 		82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */; };
@@ -85,6 +85,7 @@
 		349D0E122B62D67A00AAB421 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		8206620F2A8CC97C0088677D /* warp-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "warp-ios"; path = ..; sourceTree = "<group>"; };
 		8213D0AE2B9078D700FCA310 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		8226D5772C297BFE00928E59 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82355AFA2A8CCBE70023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82355AFC2A8CCBE70023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Warp_iosSampleApp.entitlements; path = "Warp-iosFinn/Warp_iosSampleApp.entitlements"; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 			children = (
 				2E1ADF6A2C2561D200DFEE06 /* Preview Content */,
 				2E1ADF6B2C2561D200DFEE06 /* Assets.xcassets */,
+				8226D5772C297BFE00928E59 /* GoogleService-Info.plist */,
 				2E1ADF6D2C2561D200DFEE06 /* Warp_iosDBA.swift */,
 			);
 			path = "Warp-iosDBA";
@@ -340,8 +342,8 @@
 			files = (
 				2E1ADF6F2C2561D200DFEE06 /* Preview Assets.xcassets in Resources */,
 				2E1ADF622C2561A700DFEE06 /* Preview Content in Resources */,
+				8226D5782C297BFE00928E59 /* GoogleService-Info.plist in Resources */,
 				2E1ADF632C2561A700DFEE06 /* Assets.xcassets in Resources */,
-				2E1ADF642C2561A700DFEE06 /* GoogleService-Info.plist in Resources */,
 				2E1ADF702C2561D200DFEE06 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
