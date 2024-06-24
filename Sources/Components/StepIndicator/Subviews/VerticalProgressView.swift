@@ -53,7 +53,7 @@ extension Warp.StepIndicator {
             return progressShape
         }
     }
-    
+
     struct VerticalProgressView: View {
         let colorProvider: ColorProvider
         let progress: Warp.StepIndicatorItem.Progress
@@ -70,32 +70,31 @@ extension Warp.StepIndicator {
         }
 
         var body: some View {
-            Group {
-                VStack {
-                    switch progress {
-                    case .incomplete:
-                        VerticalProgressShape(
-                            pinWidth: 1,
-                            hasLine: !isLastStep
-                        )
-                        .strokeBorder(progress.borderColor(using: colorProvider), lineWidth: 1)
-                    case .inProgress:
-                        VerticalProgressShape(hasLine: !isLastStep)
-                            .fill(progress.fillColor(using: colorProvider))
-                    case .complete:
-                        VerticalProgressShape(hasLine: !isLastStep)
-                            .fill(progress.fillColor(using: colorProvider))
-                            .overlay(alignment: .top) {
-                                Image("icon-stepindicator-completed", bundle: .module)
-                                    .renderingMode(.template)
-                                    .foregroundColor(colorProvider.token.iconInverted)
-                                    .frame(width: 16, height: 16)
-                                    .offset(y: 2)
-                            }
-                    }
+            VStack {
+                switch progress {
+                case .incomplete:
+                    VerticalProgressShape(
+                        pinWidth: 1,
+                        hasLine: !isLastStep
+                    )
+                    .strokeBorder(progress.borderColor(using: colorProvider), lineWidth: 1)
+                case .inProgress:
+                    VerticalProgressShape(hasLine: !isLastStep)
+                        .fill(progress.fillColor(using: colorProvider))
+                case .complete:
+                    VerticalProgressShape(hasLine: !isLastStep)
+                        .fill(progress.fillColor(using: colorProvider))
+                        .overlay(alignment: .top) {
+                            Image("icon-stepindicator-completed", bundle: .module)
+                                .renderingMode(.template)
+                                .foregroundColor(colorProvider.token.iconInverted)
+                                .frame(width: 16, height: 16)
+                                .offset(y: 2)
+                        }
                 }
             }
             .frame(width: 20)
+            .accessibilityLabel(progress.accessibilityLabel)
         }
 
         var isLastStep: Bool {

@@ -57,6 +57,7 @@ extension Warp.StepIndicator {
                     color: textColor
                 )
             }
+            .accessibilityElement(children: .combine)
         }
 
         private var textColor: Color {

@@ -48,7 +48,7 @@ struct StepIndicatorView: View {
                             content: {
                                 ForEach(
                                     [Warp.StepIndicatorItem.Progress.incomplete,
-                                    Warp.StepIndicatorItem.Progress.inProgress,
+                                     Warp.StepIndicatorItem.Progress.inProgress,
                                      Warp.StepIndicatorItem.Progress.complete
                                     ], id: \.self
                                 ) { progress in
@@ -87,12 +87,26 @@ struct StepIndicatorView: View {
                 }
             )
 
-            Warp.StepIndicator(
-                layoutOrientation: orientation,
-                steps: steps
-            )
+            if #available(iOS 16.0, *) {
+                ScrollView {
+                    Warp.StepIndicator(
+                        layoutOrientation: orientation,
+                        steps: steps
+                    )
 
-            Spacer()
+                    Spacer()
+                }
+                .scrollDisabled(orientation == .horizontal)
+            } else {
+                ScrollView {
+                    Warp.StepIndicator(
+                        layoutOrientation: orientation,
+                        steps: steps
+                    )
+
+                    Spacer()
+                }
+            }
         }
         .padding()
     }

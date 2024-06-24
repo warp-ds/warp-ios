@@ -29,5 +29,13 @@ public extension Warp.StepIndicatorItem {
                 colorProvider.token.borderPrimary
             }
         }
+
+        var accessibilityLabel: String {
+            switch self {
+            case .incomplete: "Incomplete"
+            case .inProgress: "In Progress"
+            case .complete: "Complete"
+            }
+        }
     }
 }

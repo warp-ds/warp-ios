@@ -29,7 +29,7 @@ extension Warp {
         /// Object responsible for providing colors in different environments and variants.
         let colorProvider: ColorProvider
 
-        fileprivate let orderedSteps: [OrderedStepIndicatorItem]
+        internal let orderedSteps: [OrderedStepIndicatorItem]
 
         public init(
             layoutOrientation: LayoutOrientation = .vertical,

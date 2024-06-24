@@ -44,6 +44,7 @@ extension Warp.StepIndicator {
 
                 trailingView
             }
+            .accessibilityLabel(progress.accessibilityLabel)
         }
 
         @ViewBuilder
