@@ -125,7 +125,10 @@ extension Warp {
                 toolTipIconView
 
                 informationView
+
+                Spacer()
             }
+            .frame(maxWidth: .infinity)
             .padding(.horizontal, 16)
             .padding(.vertical, 20)
             .overlay(alignment: .leading) {
@@ -144,6 +147,7 @@ extension Warp {
                 .frame(width: 16, height: 16)
                 .foregroundColor(style.getLeftLineColor(from: colorProvider))
                 .accessibilityLabel(style.tooltipImageTitle)
+                .offset(y: 2)
         }
 
         private var informationView: some View {
