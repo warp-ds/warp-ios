@@ -23,7 +23,11 @@ extension Warp {
 
         public static var warpTheme: Theme = .finn {
             didSet {
-                try! Warp.Typography.registerFonts()
+                do {
+                    try Warp.Typography.registerFonts()
+                } catch {
+                    // Catch the error later
+                }
             }
         }
     }
