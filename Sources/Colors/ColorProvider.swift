@@ -45,6 +45,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.gray100, darkModeColor: FinnColors.gray600)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray600)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.gray100, darkModeColor: DBAColors.gray600)
         }
     }
     var badgeInfoBackground: Color {
@@ -53,6 +55,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.aqua100, darkModeColor: FinnColors.aqua700)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue700)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.jeanblue100, darkModeColor: DBAColors.jeanblue700)
         }
     }
     var badgePositiveBackground: Color {
@@ -61,6 +65,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.green100, darkModeColor: FinnColors.green700)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.green100, darkModeColor: ToriColors.green700)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.green100, darkModeColor: DBAColors.green700)
         }
     }
     var badgeWarningBackground: Color {
@@ -69,6 +75,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.yellow100, darkModeColor: FinnColors.yellow700)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.yellow100, darkModeColor: ToriColors.yellow700)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.yellow100, darkModeColor: DBAColors.yellow700)
         }
     }
     var badgeNegativeBackground: Color {
@@ -77,6 +85,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.red100, darkModeColor: FinnColors.red700)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.red100, darkModeColor: ToriColors.red700)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.red100, darkModeColor: DBAColors.red700)
         }
     }
     var badgeDisabledBackground: Color { token.backgroundDisabled }
@@ -86,6 +96,8 @@ public struct ColorProvider {
             return FinnColors.black.opacity(0.7)
         case .tori:
             return ToriColors.black.opacity(0.7)
+        case .dba:
+            return DBAColors.black.opacity(0.7)
         }
     }
     var badgeNotificationBackground: Color { token.backgroundNotification }
@@ -95,6 +107,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.aqua200, darkModeColor: FinnColors.aqua600)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.blue200, darkModeColor: ToriColors.blue600)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.jeanblue200, darkModeColor: DBAColors.jeanblue600)
         }
     }
     
@@ -132,6 +146,8 @@ public struct ColorProvider {
             return token.backgroundPrimary
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon500)
+        case .dba:
+            return token.backgroundPrimary
         }
     }
     var buttonPrimaryBackgroundHover: Color {
@@ -140,6 +156,8 @@ public struct ColorProvider {
             return token.backgroundPrimaryHover
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon700, darkModeColor: ToriColors.watermelon400)
+        case .dba:
+            return token.backgroundPrimaryHover
         }
     }
     var buttonPrimaryBackgroundActive: Color {
@@ -148,6 +166,8 @@ public struct ColorProvider {
             return token.backgroundPrimaryActive
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon300)
+        case .dba:
+            return token.backgroundPrimaryActive
         }
     }
     var buttonPrimaryBackgroundDisabled: Color { token.backgroundDisabled }
@@ -157,6 +177,8 @@ public struct ColorProvider {
             return token.borderPrimary
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon500)
+        case .dba:
+            return token.borderPrimary
         }
     }
     var buttonPrimaryBorderHover: Color {
@@ -165,6 +187,8 @@ public struct ColorProvider {
             return token.borderPrimaryHover
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon700, darkModeColor: ToriColors.watermelon400)
+        case .dba:
+            return token.borderPrimaryHover
         }
     }
     var buttonPrimaryBorderActive: Color {
@@ -173,6 +197,8 @@ public struct ColorProvider {
             return token.borderPrimaryActive
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon300)
+        case .dba:
+            return token.borderPrimaryActive
         }
     }
     var buttonPrimaryBorderDisabled: Color { token.borderDisabled }
@@ -219,6 +245,8 @@ public struct ColorProvider {
             return FinnColors.blue300.opacity(0.3)
         case .tori:
             return ToriColors.blueberry300.opacity(0.3)
+        case .dba:
+            return DBAColors.jeanblue300.opacity(0.3)
         }
     }
     var buttonPillBackgroundActive: Color {
@@ -227,6 +255,8 @@ public struct ColorProvider {
             return FinnColors.blue400.opacity(0.3)
         case .tori:
             return ToriColors.blueberry400.opacity(0.3)
+        case .dba:
+            return DBAColors.jeanblue400.opacity(0.3)
         }
     }
     var buttonPillIcon: Color { token.icon }
@@ -269,6 +299,8 @@ public struct ColorProvider {
             return FinnColors.gray100
         case .tori:
             return ToriColors.gray100
+        case .dba:
+            return DBAColors.gray100
         }
     }
     var buttonGroupUtilityBackgroundSelected: Color {
@@ -277,6 +309,8 @@ public struct ColorProvider {
             return FinnColors.gray200
         case .tori:
             return ToriColors.gray200
+        case .dba:
+            return DBAColors.gray200
         }
     }
     var buttonGroupUtilityBorder: Color {
@@ -285,6 +319,8 @@ public struct ColorProvider {
             return FinnColors.gray300
         case .tori:
             return ToriColors.gray300
+        case .dba:
+            return DBAColors.gray300
         }
     }
     var buttonGroupUtilityBorderSelected: Color {
@@ -293,6 +329,8 @@ public struct ColorProvider {
             return FinnColors.gray700
         case .tori:
             return ToriColors.gray700
+        case .dba:
+            return DBAColors.gray700
         }
     }
     
@@ -304,6 +342,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.green100, darkModeColor: FinnColors.green800)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue800)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.green100, darkModeColor: DBAColors.green800)
         }
     }
     var calloutBorder: Color {
@@ -312,6 +352,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.green400, darkModeColor: FinnColors.green600)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.blue400, darkModeColor: ToriColors.blue600)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.green400, darkModeColor: DBAColors.green600)
         }
     }
     
@@ -433,6 +475,8 @@ public struct ColorProvider {
             return token.iconSelected
         case .tori:
             return token.iconSecondary
+        case .dba:
+            return token.iconSecondary
         }
     }
     var navbarBorderSelected: Color {
@@ -440,6 +484,8 @@ public struct ColorProvider {
         case .finn:
             return token.borderSelected
         case .tori:
+            return token.borderSecondary
+        case .dba:
             return token.borderSecondary
         }
     }
@@ -469,6 +515,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.gray200, darkModeColor: FinnColors.gray600)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.gray200, darkModeColor: DBAColors.gray600)
         }
     }
     var pillSuggestionBackgroundHover: Color {
@@ -477,6 +525,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray500)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.gray300, darkModeColor: DBAColors.gray500)
         }
     }
     var pillSuggestionBackgroundActive: Color {
@@ -485,6 +535,8 @@ public struct ColorProvider {
             return FinnColors.gray400
         case .tori:
             return ToriColors.gray400
+        case .dba:
+            return DBAColors.gray400
         }
     }
     var pillSuggestionIcon: Color { token.icon }
@@ -558,6 +610,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.gray200, darkModeColor: FinnColors.gray600)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.gray200, darkModeColor: DBAColors.gray600)
         }
     }
     var switchTrackBackgroundHover: Color {
@@ -566,6 +620,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray500)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500)
+        case .dba:
+            return Color.dynamicColor(defaultColor: DBAColors.gray300, darkModeColor: DBAColors.gray500)
         }
     }
     var switchTrackBackgroundSelected: Color { token.backgroundPrimary }
