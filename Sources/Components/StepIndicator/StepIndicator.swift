@@ -76,6 +76,7 @@ extension Warp {
                     }
                 }
             }
+            .padding(.bottom, 1)
         }
     }
 

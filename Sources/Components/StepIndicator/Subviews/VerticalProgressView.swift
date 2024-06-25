@@ -119,12 +119,12 @@ extension Warp.StepIndicator {
 
         Warp.StepIndicator.VerticalProgressView(
             progress: .inProgress,
-            stepPosition: .first(nextProgress: nil)
+            stepPosition: .first(nextProgress: .incomplete)
         )
 
         Warp.StepIndicator.VerticalProgressView(
             progress: .complete,
-            stepPosition: .first(nextProgress: nil)
+            stepPosition: .first(nextProgress: .incomplete)
         )
     }
 }

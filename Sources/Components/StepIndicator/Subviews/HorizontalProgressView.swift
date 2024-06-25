@@ -5,6 +5,7 @@ extension Warp.StepIndicator {
         let colorProvider: ColorProvider
         let progress: Warp.StepIndicatorItem.Progress
         let stepPosition: Warp.StepIndicatorItem.Position
+        let lineHeight: Double = 2
 
         init(
             colorProvider: ColorProvider = Warp.Config.colorProvider,
@@ -24,7 +25,10 @@ extension Warp.StepIndicator {
                     switch progress {
                     case .incomplete:
                         Circle()
-                            .strokeBorder(progress.borderColor(using: colorProvider), lineWidth: 1)
+                            .strokeBorder(
+                                progress.borderColor(using: colorProvider),
+                                lineWidth: lineHeight
+                            )
                     case .inProgress:
                         Circle()
                             .fill(progress.fillColor(using: colorProvider))
@@ -54,7 +58,7 @@ extension Warp.StepIndicator {
                 if nextProgress != nil {
                     Rectangle()
                         .fill(.clear)
-                        .frame(height: 1)
+                        .frame(height: lineHeight)
                 } else {
                     EmptyView()
                 }
@@ -91,7 +95,7 @@ extension Warp.StepIndicator {
             case .last:
                 Rectangle()
                     .fill(.clear)
-                    .frame(height: 1)
+                    .frame(height: lineHeight)
             }
         }
 
@@ -100,19 +104,18 @@ extension Warp.StepIndicator {
             for previousProgress: Warp.StepIndicatorItem.Progress,
             ownProgress: Warp.StepIndicatorItem.Progress
         ) -> some View {
-            switch previousProgress {
+            let fillColor = switch previousProgress {
+            case .incomplete where ownProgress == .incomplete:
+                colorProvider.token.backgroundDisabled
             case .incomplete:
-                Rectangle()
-                    .fill(colorProvider.token.backgroundDisabled)
-                    .frame(height: 1)
+                colorProvider.token.backgroundPrimary
             case .inProgress, .complete:
-                let fillColor = ownProgress == .incomplete ?
-                    colorProvider.token.backgroundDisabled :
-                    colorProvider.token.backgroundPrimary
-                Rectangle()
-                    .fill(fillColor)
-                    .frame(height: 1)
+                colorProvider.token.backgroundPrimary
             }
+
+            Rectangle()
+                .fill(fillColor)
+                .frame(height: lineHeight)
         }
     }
 }
