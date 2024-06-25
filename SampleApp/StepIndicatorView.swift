@@ -26,6 +26,10 @@ struct StepIndicatorView: View {
         )
     ]
 
+    @State var stepModel: Warp.StepIndicatorModel?
+    @State var toastIsPresented: Bool = false
+    @State var toastMessage: String?
+
     var body: some View {
         VStack(spacing: 32) {
             Picker("Orientation", selection: $orientation) {
@@ -87,28 +91,39 @@ struct StepIndicatorView: View {
                 }
             )
 
-            if #available(iOS 16.0, *) {
-                ScrollView {
-                    Warp.StepIndicator(
-                        layoutOrientation: orientation,
-                        steps: steps
-                    )
+            if let stepModel = stepModel {
+                if #available(iOS 16.0, *) {
+                    ScrollView {
+                        Warp.StepIndicator(
+                            layoutOrientation: orientation,
+                            stepModel: stepModel
+                        )
 
-                    Spacer()
-                }
-                .scrollDisabled(orientation == .horizontal)
-            } else {
-                ScrollView {
-                    Warp.StepIndicator(
-                        layoutOrientation: orientation,
-                        steps: steps
-                    )
+                        Spacer()
+                    }
+                    .scrollDisabled(orientation == .horizontal)
+                } else {
+                    ScrollView {
+                        Warp.StepIndicator(
+                            layoutOrientation: orientation,
+                            stepModel: stepModel
+                        )
 
-                    Spacer()
+                        Spacer()
+                    }
                 }
             }
         }
         .padding()
+        .onAppear {
+            stepsUpdated()
+        }
+        .warpToast(
+            style: .error,
+            title: toastMessage ?? "",
+            edge: .top,
+            isPresented: $toastIsPresented
+        )
     }
 
     private func pushStep() {
@@ -119,11 +134,26 @@ struct StepIndicatorView: View {
                 progress: stepProgress
             )
         )
+        stepsUpdated()
     }
 
     private func popStep() {
         guard !steps.isEmpty else { return }
         steps.removeLast()
+        stepsUpdated()
+    }
+
+    private func stepsUpdated() {
+        do {
+            let newStepModel = try Warp.StepIndicatorModel(from: steps)
+            stepModel = newStepModel
+            toastIsPresented = false
+            toastMessage = nil
+        } catch {
+            steps.removeLast()
+            toastIsPresented = true
+            toastMessage = error.localizedDescription
+        }
     }
 }
 

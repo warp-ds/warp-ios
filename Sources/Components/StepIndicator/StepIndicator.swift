@@ -33,12 +33,12 @@ extension Warp {
 
         public init(
             layoutOrientation: LayoutOrientation = .vertical,
-            steps: [StepIndicatorItem],
+            stepModel: Warp.StepIndicatorModel,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.layoutOrientation = layoutOrientation
-            self.orderedSteps = steps.compactMap { step in
-                OrderedStepIndicatorItem(item: step, items: steps)
+            self.orderedSteps = stepModel.steps.compactMap { step in
+                OrderedStepIndicatorItem(item: step, items: stepModel.steps)
             }
             self.colorProvider = colorProvider
         }
@@ -154,23 +154,35 @@ extension Warp {
 }
 
 #Preview("Horizontal") {
-    Warp.StepIndicator(
-        layoutOrientation: .horizontal,
-        steps: [
+    do {
+        let stepModel = try Warp.StepIndicatorModel(from: [
             .mockCompleted,
             .mockInProgress,
             .mockNotStarted
-        ]
-    )
+        ])
+
+        return Warp.StepIndicator(
+            layoutOrientation: .horizontal,
+            stepModel: stepModel
+        )
+    } catch {
+        return EmptyView()
+    }
 }
 
 #Preview("Vertical") {
-    Warp.StepIndicator(
-        layoutOrientation: .vertical,
-        steps: [
+    do {
+        let stepModel = try Warp.StepIndicatorModel(from: [
             .mockCompleted,
             .mockInProgress,
             .mockNotStarted
-        ]
-    )
+        ])
+
+        return Warp.StepIndicator(
+            layoutOrientation: .vertical,
+            stepModel: stepModel
+        )
+    } catch {
+        return EmptyView()
+    }
 }

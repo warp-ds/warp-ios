@@ -7,7 +7,7 @@ final class OrderedStepIndicatorItemTests: XCTestCase {
             .mockCompleted
         ]
 
-        let stepIndicator = Warp.StepIndicator(steps: steps)
+        let stepIndicator = Warp.StepIndicator(stepModel: stepModel(from: steps))
         XCTAssertTrue(stepIndicator.orderedSteps.count == 1)
         let firstStep = try XCTUnwrap(stepIndicator.orderedSteps.first)
         let firstStepPosition = firstStep.position
@@ -22,7 +22,7 @@ final class OrderedStepIndicatorItemTests: XCTestCase {
     func testCannotCreateWithEmptyItems() {
         let steps: [Warp.StepIndicatorItem] = []
 
-        let stepIndicator = Warp.StepIndicator(steps: steps)
+        let stepIndicator = Warp.StepIndicator(stepModel: stepModel(from: steps))
         XCTAssertTrue(stepIndicator.orderedSteps.isEmpty)
     }
 
@@ -32,7 +32,7 @@ final class OrderedStepIndicatorItemTests: XCTestCase {
             .mockInProgress
         ]
 
-        let stepIndicator = Warp.StepIndicator(steps: steps)
+        let stepIndicator = Warp.StepIndicator(stepModel: stepModel(from: steps))
         XCTAssertTrue(stepIndicator.orderedSteps.count == 2)
         let firstStep = try XCTUnwrap(stepIndicator.orderedSteps.first)
         let firstStepPosition = firstStep.position
@@ -51,7 +51,7 @@ final class OrderedStepIndicatorItemTests: XCTestCase {
             .mockNotStarted
         ]
 
-        let stepIndicator = Warp.StepIndicator(steps: steps)
+        let stepIndicator = Warp.StepIndicator(stepModel: stepModel(from: steps))
         XCTAssertTrue(stepIndicator.orderedSteps.count == 3)
         let middleStep = try XCTUnwrap(stepIndicator.orderedSteps[1])
         let middleStepPosition = middleStep.position
@@ -70,7 +70,7 @@ final class OrderedStepIndicatorItemTests: XCTestCase {
             .mockInProgress
         ]
 
-        let stepIndicator = Warp.StepIndicator(steps: steps)
+        let stepIndicator = Warp.StepIndicator(stepModel: stepModel(from: steps))
         XCTAssertTrue(stepIndicator.orderedSteps.count == 2)
         let lastStep = try XCTUnwrap(stepIndicator.orderedSteps.last)
         let lastStepPosition = lastStep.position
@@ -79,6 +79,15 @@ final class OrderedStepIndicatorItemTests: XCTestCase {
             XCTAssertEqual(previousProgress, steps[0].progress)
         default:
             XCTFail("Expected this to be the last step, but it was not")
+        }
+    }
+
+    private func stepModel(from steps: [Warp.StepIndicatorItem]) -> Warp.StepIndicatorModel {
+        do {
+            return try Warp.StepIndicatorModel(from: steps)
+        } catch {
+            XCTFail(error.localizedDescription)
+            return try! Warp.StepIndicatorModel(from: [])
         }
     }
 }
