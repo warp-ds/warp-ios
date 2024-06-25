@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003CB8E92C19B5D5008C42B1 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CB8E82C19B5D5008C42B1 /* ModalView.swift */; };
 		341B20E82B751BD30068FF43 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341B20E72B751BD30068FF43 /* BoxView.swift */; };
 		341B20E92B751C250068FF43 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341B20E72B751BD30068FF43 /* BoxView.swift */; };
 		349586642B0EAD2D00A14570 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		003CB8E82C19B5D5008C42B1 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		341B20E72B751BD30068FF43 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
 		349586632B0EAD2D00A14570 /* TypographyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypographyView.swift; sourceTree = "<group>"; };
 		349D0E122B62D67A00AAB421 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				82635D062BFE1CA700F7FA6F /* SpinnerView.swift */,
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
 				341B20E72B751BD30068FF43 /* BoxView.swift */,
+				003CB8E82C19B5D5008C42B1 /* ModalView.swift */,
 				349D0E122B62D67A00AAB421 /* AlertView.swift */,
 				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
 				82B168112B750BED00DCDDE5 /* TextView.swift */,
@@ -286,6 +289,7 @@
 				82C7E6F52B7B85E000760C08 /* BroadcastView.swift in Sources */,
 				82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */,
 				82B168122B750BED00DCDDE5 /* TextView.swift in Sources */,
+				003CB8E92C19B5D5008C42B1 /* ModalView.swift in Sources */,
 				828E7D452B61239100869C58 /* BadgeView.swift in Sources */,
 				82A2155C2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
 				B2A8B2792B6D33B800122DBC /* CalloutView.swift in Sources */,
