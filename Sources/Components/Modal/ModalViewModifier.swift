@@ -39,6 +39,9 @@ extension Warp {
         /// A Boolean value indicating whether the component should be dismissed when the user clicks outside of it.
         let dismissOnClickOutside: Bool
         
+        /// Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal.
+        let onDismiss: (() -> Void)?
+        
         /// Object responsible for providing colors in different environments and variants.
         private let colorProvider: ColorProvider
         /**
@@ -48,7 +51,8 @@ extension Warp {
          - Parameter primaryButton: An optional primary button constructor for defining the primary action. Defaults to `nil`.
          - Parameter secondaryButton: An optional secondary button constructor for defining a secondary action. Defaults to `nil`.
          - Parameter hasCloseButton: A Boolean value indicating whether a close button should be shown. Defaults to `false`.
-         - Parameter dismissOnClickOutside: A Boolean value indicating whether the component should be dismissed when the user clicks outside of it. Defaults to `true`.
+         - Parameter dismissOnClickOutside: A Boolean value indicating whether the component should be dismissed when the user clicks outside of it. Defaults to `true.
+         - Parameter onDismiss: Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal. Defaults to `nil`.
          - Parameter isPresented: A binding to a Boolean value that controls the visibility of the component.
          - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Config.colorProvider`.
          */
@@ -60,6 +64,7 @@ extension Warp {
             secondaryButton: ButtonConstructor? = nil,
             hasCloseButton: Bool = false,
             dismissOnClickOutside: Bool = true,
+            onDismiss: (() -> Void)? = nil,
             isPresented: Binding<Bool>,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
@@ -70,6 +75,7 @@ extension Warp {
             self.secondaryButtonProvider = secondaryButton
             self.hasCloseButton = hasCloseButton
             self.dismissOnClickOutside = dismissOnClickOutside
+            self.onDismiss = onDismiss
             self.colorProvider = colorProvider
             self._isPresented = isPresented
         }
@@ -95,7 +101,9 @@ extension Warp {
                     Color.black.opacity(0.4)
                         .onTapGesture {
                             guard dismissOnClickOutside else { return }
-                            isPresented = false
+                            isPresented.toggle()
+                            guard let onDismiss = onDismiss else { return }
+                            onDismiss()
                         }
                     Warp.Modal(
                         title: title,
@@ -104,6 +112,7 @@ extension Warp {
                         primaryButton: primaryButtonProvider,
                         secondaryButton: secondaryButtonProvider,
                         hasCloseButton: hasCloseButton,
+                        onDismiss: onDismiss,
                         isPresented: $isPresented,
                         colorProvider: colorProvider
                     )
@@ -137,6 +146,7 @@ public extension View {
         secondaryButton: Warp.ModalViewModifier.ButtonConstructor? = nil,
         closeButton: Bool = false,
         dismissOnClickOutside: Bool = true,
+        onDismiss: (() -> Void)? = nil,
         isPresented: Binding<Bool>,
         colorProvider: ColorProvider = Warp.Config.colorProvider
     ) -> some View {
@@ -149,6 +159,7 @@ public extension View {
                 secondaryButton: secondaryButton,
                 hasCloseButton: closeButton,
                 dismissOnClickOutside: dismissOnClickOutside,
+                onDismiss: onDismiss,
                 isPresented: isPresented,
                 colorProvider: colorProvider
             )

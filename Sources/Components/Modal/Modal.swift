@@ -33,6 +33,9 @@ extension Warp {
         /// Show/Hide close  image view.
         var hasCloseButton: Bool
         
+        /// Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal.
+        let onDismiss: (() -> Void)?
+
         /// Binding to present modal view.
         @Binding var isPresented: Bool
         
@@ -46,6 +49,7 @@ extension Warp {
          - Parameter primaryButton: An optional primary button constructor for defining the primary action. Defaults to `nil`.
          - Parameter secondaryButton: An optional secondary button constructor for defining a secondary action. Defaults to `nil`.
          - Parameter hasCloseButton: A Boolean value indicating whether a close button should be shown. Defaults to `false`.
+         - Parameter onDismiss: Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal. Defaults to `nil`.
          - Parameter isPresented: A binding to a Boolean value that controls the visibility of the component.
          - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Config.colorProvider`.
          */
@@ -56,6 +60,7 @@ extension Warp {
             primaryButton: ButtonConstructor? = nil,
             secondaryButton: ButtonConstructor? = nil,
             hasCloseButton: Bool = false,
+            onDismiss: (() -> Void)? = nil,
             isPresented: Binding<Bool>,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
@@ -65,6 +70,7 @@ extension Warp {
             self.primaryButtonProvider = primaryButton
             self.secondaryButtonProvider = secondaryButton
             self.hasCloseButton = hasCloseButton
+            self.onDismiss = onDismiss
             self._isPresented = isPresented
             self.colorProvider = colorProvider
         }
@@ -91,7 +97,9 @@ extension Warp {
             if hasCloseButton {
                 Image("icon-close", bundle: .module)
                     .onTapGesture {
-                        isPresented = false
+                        isPresented.toggle()
+                        guard let onDismiss = onDismiss else { return }
+                        onDismiss()
                     }
             }
         }
