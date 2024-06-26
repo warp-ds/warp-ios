@@ -106,6 +106,7 @@ extension Warp {
         
         private var bodyTextView: some View {
             Text(bodyText, style: .body)
+                .fixedSize(horizontal: false, vertical: true)
                 .accessibilityRemoveTraits(.isHeader)
         }
         
