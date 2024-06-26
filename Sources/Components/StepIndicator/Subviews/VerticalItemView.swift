@@ -50,15 +50,15 @@ extension Warp.StepIndicator {
     VStack(spacing: -1) {
         Warp.StepIndicator.VerticalItemView(
             step: .mockCompleted,
-            stepPosition: .first(nextProgress: nil)
+            stepPosition: .first(nextProgress: .inProgress)
         )
         Warp.StepIndicator.VerticalItemView(
             step: .mockInProgress,
-            stepPosition: .first(nextProgress: nil)
+            stepPosition: .middle(previousProgress: .complete, nextProgress: .incomplete)
         )
         Warp.StepIndicator.VerticalItemView(
             step: .mockNotStarted,
-            stepPosition: .first(nextProgress: nil)
+            stepPosition: .last(previousProgress: .inProgress)
         )
     }
     .padding()

@@ -63,14 +63,16 @@ extension Warp.StepIndicator {
                     EmptyView()
                 }
             case .middle(let previousProgress, _):
-                line(
+                LineBuilder.line(
                     for: previousProgress,
-                    ownProgress: progress
+                    ownProgress: progress,
+                    orientation: .horizontal
                 )
             case .last(let previousProgress):
-                line(
+                LineBuilder.line(
                     for: previousProgress,
-                    ownProgress: progress
+                    ownProgress: progress,
+                    orientation: .horizontal
                 )
             }
         }
@@ -80,42 +82,25 @@ extension Warp.StepIndicator {
             switch stepPosition {
             case .first(let nextProgress):
                 if let nextProgress {
-                    line(
+                    LineBuilder.line(
                         for: nextProgress,
-                        ownProgress: progress
+                        ownProgress: progress,
+                        orientation: .horizontal
                     )
                 } else {
                     EmptyView()
                 }
             case .middle(_, let nextProgress):
-                line(
+                LineBuilder.line(
                     for: nextProgress,
-                    ownProgress: progress
+                    ownProgress: progress,
+                    orientation: .horizontal
                 )
             case .last:
                 Rectangle()
                     .fill(.clear)
                     .frame(height: lineHeight)
             }
-        }
-
-        @ViewBuilder
-        private func line(
-            for previousProgress: Warp.StepIndicatorItem.Progress,
-            ownProgress: Warp.StepIndicatorItem.Progress
-        ) -> some View {
-            let fillColor = switch previousProgress {
-            case .incomplete where ownProgress == .incomplete:
-                colorProvider.token.backgroundDisabled
-            case .incomplete:
-                colorProvider.token.backgroundPrimary
-            case .inProgress, .complete:
-                colorProvider.token.backgroundPrimary
-            }
-
-            Rectangle()
-                .fill(fillColor)
-                .frame(height: lineHeight)
         }
     }
 }

@@ -1,64 +1,12 @@
 import SwiftUI
 
 extension Warp.StepIndicator {
-    struct VerticalProgressShape: Shape, InsettableShape {
-        let circleRadius: Double
-        let pinWidth: Double
-        let hasLine: Bool
-        var insetAmount: Double
-
-        init(
-            circleRadius: Double = 10,
-            pinWidth: Double = 2,
-            hasLine: Bool,
-            insetAmount: Double = 0.0
-        ) {
-            self.circleRadius = circleRadius
-            self.pinWidth = pinWidth
-            self.hasLine = hasLine
-            self.insetAmount = insetAmount
-        }
-
-        func path(in rect: CGRect) -> Path {
-            var path = Path()
-
-            // Circle
-            path.addArc(
-                center: .init(x: rect.midX, y: rect.minY + (circleRadius - insetAmount)),
-                radius: circleRadius - insetAmount,
-                startAngle: .degrees(0),
-                endAngle: .degrees(360),
-                clockwise: false
-            )
-
-            if hasLine {
-                let circleDiameter = circleRadius * 2
-                let stickHeight = rect.height - (circleDiameter)
-                let stickRect = CGRect(
-                    x: rect.midX - (pinWidth / 2),
-                    y: circleDiameter - 1,
-                    width: pinWidth,
-                    height: stickHeight
-                )
-
-                path.addRect(stickRect)
-            }
-
-            return path
-        }
-
-        func inset(by amount: CGFloat) -> some InsettableShape {
-            var progressShape = self
-            progressShape.insetAmount += amount
-            return progressShape
-        }
-    }
-
     struct VerticalProgressView: View {
         let colorProvider: ColorProvider
         let progress: Warp.StepIndicatorItem.Progress
         let stepPosition: Warp.StepIndicatorItem.Position
-
+        let lineWidth: Double = 2
+        
         init(
             colorProvider: ColorProvider = Warp.Config.colorProvider,
             progress: Warp.StepIndicatorItem.Progress,
@@ -68,43 +16,59 @@ extension Warp.StepIndicator {
             self.progress = progress
             self.stepPosition = stepPosition
         }
-
+        
         var body: some View {
-            VStack {
+            VStack(alignment: .center, spacing: 0) {
                 switch progress {
                 case .incomplete:
-                    VerticalProgressShape(
-                        pinWidth: 1,
-                        hasLine: !isLastStep
-                    )
-                    .strokeBorder(progress.borderColor(using: colorProvider), lineWidth: 1)
+                    Circle()
+                        .strokeBorder(
+                            progress.borderColor(using: colorProvider),
+                            lineWidth: lineWidth
+                        )
+                        .frame(width: 20, height: 20)
                 case .inProgress:
-                    VerticalProgressShape(hasLine: !isLastStep)
+                    Circle()
                         .fill(progress.fillColor(using: colorProvider))
                 case .complete:
-                    VerticalProgressShape(hasLine: !isLastStep)
+                    Circle()
                         .fill(progress.fillColor(using: colorProvider))
-                        .overlay(alignment: .top) {
+                        .overlay(alignment: .leading) {
                             Image("icon-stepindicator-completed", bundle: .module)
                                 .renderingMode(.template)
                                 .foregroundColor(colorProvider.token.iconInverted)
                                 .frame(width: 16, height: 16)
-                                .offset(y: 2)
+                                .offset(x: 2)
                         }
                 }
+                
+                lineView
             }
             .frame(width: 20)
             .accessibilityLabel(progress.accessibilityLabel)
         }
-
-        var isLastStep: Bool {
+        
+        @ViewBuilder
+        private var lineView: some View {
             switch stepPosition {
-            case .first(let nextStepProgress):
-                nextStepProgress == nil ? true: false
-            case .middle:
-                false
+            case .first(let nextProgress):
+                if let nextProgress {
+                    LineBuilder.line(
+                        for: nextProgress,
+                        ownProgress: progress,
+                        orientation: .vertical
+                    )
+                } else {
+                    Spacer()
+                }
+            case .middle(_, let nextProgress):
+                LineBuilder.line(
+                    for: nextProgress,
+                    ownProgress: progress,
+                    orientation: .vertical
+                )
             case .last:
-                true
+                Spacer()
             }
         }
     }
@@ -119,12 +83,40 @@ extension Warp.StepIndicator {
 
         Warp.StepIndicator.VerticalProgressView(
             progress: .inProgress,
+            stepPosition: .first(nextProgress: nil)
+        )
+
+        Warp.StepIndicator.VerticalProgressView(
+            progress: .complete,
+            stepPosition: .first(nextProgress: nil)
+        )
+
+        Warp.StepIndicator.VerticalProgressView(
+            progress: .inProgress,
             stepPosition: .first(nextProgress: .incomplete)
+        )
+
+        Warp.StepIndicator.VerticalProgressView(
+            progress: .inProgress,
+            stepPosition: .first(nextProgress: .inProgress)
+        )
+        Warp.StepIndicator.VerticalProgressView(
+            progress: .inProgress,
+            stepPosition: .first(nextProgress: .complete)
         )
 
         Warp.StepIndicator.VerticalProgressView(
             progress: .complete,
             stepPosition: .first(nextProgress: .incomplete)
+        )
+
+        Warp.StepIndicator.VerticalProgressView(
+            progress: .complete,
+            stepPosition: .first(nextProgress: .inProgress)
+        )
+        Warp.StepIndicator.VerticalProgressView(
+            progress: .complete,
+            stepPosition: .first(nextProgress: .complete)
         )
     }
 }
