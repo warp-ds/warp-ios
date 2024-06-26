@@ -109,7 +109,7 @@ struct ModalView: View {
                     GroupBox(
                         content: {
                             Toggle(isOn: $dismissOnClickOutside) {
-                                createToggleLabelView(hasValue: dismissOnClickOutside, tag: "Dismiss")
+                                createToggleLabelView(hasValue: dismissOnClickOutside, tag: "dismiss on click outside")
                             }
                             .defaultPadding()
                         }, label: {
@@ -142,7 +142,7 @@ struct ModalView: View {
             bodyText: bodyText,
             primaryButton: getPrimaryButtonProvider(),
             secondaryButton: getSecondaryButtonProvider(),
-            closeButton: hasCloseButton,
+            hasCloseButton: hasCloseButton,
             isPresented: .constant(true),
             colorProvider: Warp.Config.colorProvider
         )

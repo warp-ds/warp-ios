@@ -31,7 +31,7 @@ extension Warp {
         let secondaryButtonProvider: ButtonConstructor?
         
         /// Show/Hide close  image view.
-        var closeButton: Bool
+        var hasCloseButton: Bool
         
         /// Binding to present modal view.
         @Binding var isPresented: Bool
@@ -45,7 +45,7 @@ extension Warp {
          - Parameter bodyText: The main body text content of the component.
          - Parameter primaryButton: An optional primary button constructor for defining the primary action. Defaults to `nil`.
          - Parameter secondaryButton: An optional secondary button constructor for defining a secondary action. Defaults to `nil`.
-         - Parameter closeButton: A Boolean value indicating whether a close button should be shown. Defaults to `false`.
+         - Parameter hasCloseButton: A Boolean value indicating whether a close button should be shown. Defaults to `false`.
          - Parameter isPresented: A binding to a Boolean value that controls the visibility of the component.
          - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Config.colorProvider`.
          */
@@ -55,7 +55,7 @@ extension Warp {
             bodyText: String,
             primaryButton: ButtonConstructor? = nil,
             secondaryButton: ButtonConstructor? = nil,
-            closeButton: Bool = false,
+            hasCloseButton: Bool = false,
             isPresented: Binding<Bool>,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
@@ -64,7 +64,7 @@ extension Warp {
             self.bodyText = bodyText
             self.primaryButtonProvider = primaryButton
             self.secondaryButtonProvider = secondaryButton
-            self.closeButton = closeButton
+            self.hasCloseButton = hasCloseButton
             self._isPresented = isPresented
             self.colorProvider = colorProvider
         }
@@ -88,7 +88,7 @@ extension Warp {
         
         @ViewBuilder
         private var closeButtonView: some View {
-            if closeButton {
+            if hasCloseButton {
                 Image("icon-close", bundle: .module)
                     .onTapGesture {
                         isPresented = false
@@ -232,7 +232,7 @@ private struct ButtonsView: View, Hashable {
         title: "Modal Title",
         subtitle: "Subtitle",
         bodyText: "This is the body of the modal dialog.",
-        closeButton: true,
+        hasCloseButton: true,
         isPresented: .constant(true)
     )
 }

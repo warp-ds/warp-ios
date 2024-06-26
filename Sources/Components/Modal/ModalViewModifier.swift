@@ -34,7 +34,7 @@ extension Warp {
         let secondaryButtonProvider: ButtonConstructor?
         
         /// boolean show/hide close image view.
-        var closeButton: Bool
+        var hasCloseButton: Bool
         
         /// A Boolean value indicating whether the component should be dismissed when the user clicks outside of it.
         let dismissOnClickOutside: Bool
@@ -47,7 +47,7 @@ extension Warp {
          - Parameter bodyText: The main body text content of the component.
          - Parameter primaryButton: An optional primary button constructor for defining the primary action. Defaults to `nil`.
          - Parameter secondaryButton: An optional secondary button constructor for defining a secondary action. Defaults to `nil`.
-         - Parameter closeButton: A Boolean value indicating whether a close button should be shown. Defaults to `false`.
+         - Parameter hasCloseButton: A Boolean value indicating whether a close button should be shown. Defaults to `false`.
          - Parameter dismissOnClickOutside: A Boolean value indicating whether the component should be dismissed when the user clicks outside of it. Defaults to `true`.
          - Parameter isPresented: A binding to a Boolean value that controls the visibility of the component.
          - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Config.colorProvider`.
@@ -58,7 +58,7 @@ extension Warp {
             bodyText: String,
             primaryButton: ButtonConstructor? = nil,
             secondaryButton: ButtonConstructor? = nil,
-            closeButton: Bool = false,
+            hasCloseButton: Bool = false,
             dismissOnClickOutside: Bool = true,
             isPresented: Binding<Bool>,
             colorProvider: ColorProvider = Config.colorProvider
@@ -68,7 +68,7 @@ extension Warp {
             self.bodyText = bodyText
             self.primaryButtonProvider = primaryButton
             self.secondaryButtonProvider = secondaryButton
-            self.closeButton = closeButton
+            self.hasCloseButton = hasCloseButton
             self.dismissOnClickOutside = dismissOnClickOutside
             self.colorProvider = colorProvider
             self._isPresented = isPresented
@@ -103,7 +103,7 @@ extension Warp {
                         bodyText: bodyText,
                         primaryButton: primaryButtonProvider,
                         secondaryButton: secondaryButtonProvider,
-                        closeButton: closeButton,
+                        hasCloseButton: hasCloseButton,
                         isPresented: $isPresented,
                         colorProvider: colorProvider
                     )
@@ -147,7 +147,7 @@ public extension View {
                 bodyText: bodyText,
                 primaryButton: primaryButton,
                 secondaryButton: secondaryButton,
-                closeButton: closeButton,
+                hasCloseButton: closeButton,
                 dismissOnClickOutside: dismissOnClickOutside,
                 isPresented: isPresented,
                 colorProvider: colorProvider
