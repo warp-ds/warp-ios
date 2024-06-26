@@ -13,11 +13,11 @@ extension Warp.StepIndicator {
 
             let fillColor = switch otherProgress {
             case .incomplete:
-                colorProvider.token.backgroundDisabled
+                colorProvider.stepIndicatorTrackBackground
             case .inProgress where ownProgress == .incomplete, .complete where ownProgress == .incomplete:
-                colorProvider.token.backgroundDisabled
+                colorProvider.stepIndicatorTrackBackground 
             case .inProgress, .complete:
-                colorProvider.token.backgroundPrimary
+                colorProvider.stepIndicatorTrackBackgroundActive
             }
 
             switch orientation {

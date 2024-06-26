@@ -15,18 +15,18 @@ public extension Warp.StepIndicatorItem {
         func fillColor(using colorProvider: ColorProvider) -> SwiftUI.Color {
             switch self {
             case .incomplete: 
-                .clear
+                colorProvider.stepIndicatorHandleBackground
             case .inProgress, .complete:
-                colorProvider.token.backgroundPrimary
+                colorProvider.stepIndicatorHandleBackgroundActive
             }
         }
 
         func borderColor(using colorProvider: ColorProvider) -> SwiftUI.Color {
             switch self {
             case .incomplete:
-                colorProvider.token.border
+                colorProvider.stepIndicatorHandleBorder
             case .inProgress, .complete:
-                colorProvider.token.borderPrimary
+                colorProvider.stepIndicatorHandleBorderActive
             }
         }
 
