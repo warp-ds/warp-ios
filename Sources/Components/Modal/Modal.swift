@@ -98,8 +98,7 @@ extension Warp {
                 Image("icon-close", bundle: .module)
                     .onTapGesture {
                         isPresented.toggle()
-                        guard let onDismiss = onDismiss else { return }
-                        onDismiss()
+                        onDismiss?()
                     }
             }
         }

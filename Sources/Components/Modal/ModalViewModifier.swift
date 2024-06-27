@@ -102,8 +102,7 @@ extension Warp {
                         .onTapGesture {
                             guard dismissOnClickOutside else { return }
                             isPresented.toggle()
-                            guard let onDismiss = onDismiss else { return }
-                            onDismiss()
+                            onDismiss?()
                         }
                     Warp.Modal(
                         title: title,
