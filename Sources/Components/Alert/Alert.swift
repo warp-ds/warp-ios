@@ -171,13 +171,13 @@ extension Warp {
         }
 
         private var titleView: some View {
-            Text(title, style: .title4)
+            Warp.Text(title, style: .title4)
                 .foregroundColor(style.getTextColor(from: colorProvider))
                 .accessibilityAddTraits(.isHeader)
         }
 
         private var subtitleView: some View {
-            Text(subtitle, style: .body)
+            Warp.Text(subtitle, style: .body)
                 .foregroundColor(colorProvider.boxInfoText)
                 .accessibilityRemoveTraits(.isHeader)
         }
@@ -189,7 +189,7 @@ extension Warp {
                     action: linkProvider.action,
                     label: {
                         HStack {
-                            Text(
+                            Warp.Text(
                                 linkProvider.title,
                                 style: .caption,
                                 color: colorProvider.token.textLink
