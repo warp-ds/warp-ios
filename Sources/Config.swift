@@ -8,7 +8,7 @@ extension Warp {
     }
 
     public struct Config {
-        static var tokenProvider: TokenProvider = {
+        public static var tokenProvider: TokenProvider = {
             switch warpTheme {
             case .finn:
                 return FinnTokenProvider()
@@ -19,7 +19,7 @@ extension Warp {
             }
         }()
 
-        static var uiTokenProvider: UITokenProvider = {
+        public static var uiTokenProvider: UITokenProvider = {
             switch warpTheme {
             case .finn:
                 return FinnUITokenProvider()
