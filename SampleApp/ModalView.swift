@@ -30,7 +30,7 @@ struct ModalView: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    createModalView(basedOn: (hasPrimaryButton, hasSecondaryButton, hasCloseButton))
+                    createModalView()
                     VStack(alignment: .leading) {
                         Button(action: {
                             withAnimation {
@@ -133,9 +133,7 @@ struct ModalView: View {
             colorProvider: Warp.Config.colorProvider)
     }
 
-    private func createModalView(
-        basedOn state: (hasPrimaryButton: Bool, hasSecondaryButton: Bool, hasCloseButton: Bool)
-    ) -> some View {
+    private func createModalView() -> some View {
         return Warp.Modal(
             title: title,
             subtitle: subtitle,
