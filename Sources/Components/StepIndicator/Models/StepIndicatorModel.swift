@@ -2,9 +2,10 @@ import Foundation
 
 extension Warp {
     public enum StepIndicatorError: Error, LocalizedError {
-        case stepInProgressAfterIncompleteStep
         case completedStepAfterIncompletedStep
         case completedStepAfterInProgressStep
+        case stepInProgressAfterIncompleteStep
+        case stepInProgressAfterAnotherStepInProgress
 
         public var errorDescription: String? {
             switch self {
@@ -14,6 +15,8 @@ extension Warp {
                 "You cannot add a completed step after an incompleted step"
             case .stepInProgressAfterIncompleteStep:
                 "You cannot add a step in progress after an incompleted step"
+            case .stepInProgressAfterAnotherStepInProgress:
+                "You cannot add a step in progress after another step in progress"
             }
         }
     }
@@ -56,12 +59,17 @@ extension Warp {
                         mutableExistingItems.append(currentItem)
                         return mutableExistingItems
                     case .inProgress:
-                        // we do not accept completed steps after a step in progress
-                        if currentItem.progress == .complete {
-                            throw StepIndicatorError.completedStepAfterInProgressStep
-                        } else {
+                        switch currentItem.progress {
+                        case .incomplete:
+                            // all good
                             mutableExistingItems.append(currentItem)
                             return mutableExistingItems
+                        case .inProgress:
+                            // we do not accept another in progress after a step in progress
+                            throw StepIndicatorError.stepInProgressAfterAnotherStepInProgress
+                        case .complete:
+                            // we do not accept completed steps after a step in progress
+                            throw StepIndicatorError.completedStepAfterInProgressStep
                         }
                     case .incomplete:
                         switch currentItem.progress {

@@ -66,6 +66,18 @@ final class StepIndicatorModelTests: XCTestCase {
         }
     }
 
+    func testWillFailWithInProgressAfterAnotherInProgress() {
+        let steps: [Warp.StepIndicatorItem] = [
+            .mockCompleted,
+            .mockInProgress,
+            .mockInProgress
+        ]
+
+        XCTAssertThrowsError(try Warp.StepIndicatorModel(from: steps)) { error in
+            XCTAssertEqual(error as? Warp.StepIndicatorError, .stepInProgressAfterAnotherStepInProgress)
+        }
+    }
+
     func testWillFailWithCompleteAfterInProgress() {
         let steps: [Warp.StepIndicatorItem] = [
             .mockInProgress,
