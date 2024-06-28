@@ -98,7 +98,7 @@ extension Warp {
         func warpModalOverlay() -> some View {
             if isPresented {
                 ZStack {
-                    Color.black.opacity(0.4)
+                    Color.black.opacity(0.3)
                         .onTapGesture {
                             guard dismissOnClickOutside else { return }
                             isPresented.toggle()
