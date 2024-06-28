@@ -1,5 +1,6 @@
 extension Warp {
     public struct Config {
+        @available(*, deprecated, message: "Use Warp.Token")
         public static var tokenProvider: TokenProvider = {
             switch warpTheme {
             case .finn:
@@ -10,6 +11,8 @@ extension Warp {
                 return DBATokenProvider()
             }
         }()
+
+        @available(*, deprecated, message: "Use Warp.UIToken")
         public static var uiTokenProvider: UITokenProvider = {
             switch warpTheme {
             case .finn:
@@ -22,7 +25,7 @@ extension Warp {
         }()
         
         public static var colorProvider: ColorProvider = {
-            ColorProvider(token: tokenProvider)
+            ColorProvider(token: Warp.Token)
         }()
 
         public static var warpTheme: Theme = .finn {
