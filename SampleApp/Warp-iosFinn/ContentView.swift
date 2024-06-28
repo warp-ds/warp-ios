@@ -149,6 +149,12 @@ struct ContentView: View {
 
                     Divider()
 
+                    NavigationLink(destination: ModalView()) {
+                        Text("Modal")
+                            .padding()
+                    }
+                    Divider()
+
                     Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
                         .font(.caption2)
                 }

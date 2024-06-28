@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003CB8E92C19B5D5008C42B1 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CB8E82C19B5D5008C42B1 /* ModalView.swift */; };
+		00BC50DB2C2C050D002C4FF0 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CB8E82C19B5D5008C42B1 /* ModalView.swift */; };
+		00BC50DC2C2C0AD0002C4FF0 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CB8E82C19B5D5008C42B1 /* ModalView.swift */; };
 		2E1ADF482C25612300DFEE06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E1ADF472C25612300DFEE06 /* GoogleService-Info.plist */; };
 		2E1ADF4E2C2561A700DFEE06 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
 		2E1ADF4F2C2561A700DFEE06 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B168112B750BED00DCDDE5 /* TextView.swift */; };
@@ -77,6 +80,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		003CB8E82C19B5D5008C42B1 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		2E1ADF472C25612300DFEE06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Warp-iosFinn/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E1ADF682C2561A700DFEE06 /* DBA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E1ADF692C2561D200DFEE06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				82635D062BFE1CA700F7FA6F /* SpinnerView.swift */,
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
 				341B20E72B751BD30068FF43 /* BoxView.swift */,
+				003CB8E82C19B5D5008C42B1 /* ModalView.swift */,
 				349D0E122B62D67A00AAB421 /* AlertView.swift */,
 				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
 				B295AC392C22F93D004C77BB /* StepIndicatorView.swift */,
@@ -382,6 +387,7 @@
 				2E1ADF4E2C2561A700DFEE06 /* TypographyView.swift in Sources */,
 				2E1ADF4F2C2561A700DFEE06 /* TextView.swift in Sources */,
 				2E1ADF722C2561D200DFEE06 /* Warp_iosDBA.swift in Sources */,
+				00BC50DC2C2C0AD0002C4FF0 /* ModalView.swift in Sources */,
 				2E1ADF502C2561A700DFEE06 /* BadgeView.swift in Sources */,
 				2E1ADF522C2561A700DFEE06 /* BroadcastView.swift in Sources */,
 				2E1ADF532C2561A700DFEE06 /* CalloutView.swift in Sources */,
@@ -406,6 +412,7 @@
 				82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */,
 				B295AC3A2C22F93D004C77BB /* StepIndicatorView.swift in Sources */,
 				82B168122B750BED00DCDDE5 /* TextView.swift in Sources */,
+				003CB8E92C19B5D5008C42B1 /* ModalView.swift in Sources */,
 				828E7D452B61239100869C58 /* BadgeView.swift in Sources */,
 				82A2155C2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
 				B2A8B2792B6D33B800122DBC /* CalloutView.swift in Sources */,
@@ -430,6 +437,7 @@
 				82B168132B750BED00DCDDE5 /* TextView.swift in Sources */,
 				B295AC3B2C22F93D004C77BB /* StepIndicatorView.swift in Sources */,
 				828E7D462B61239100869C58 /* BadgeView.swift in Sources */,
+				00BC50DB2C2C050D002C4FF0 /* ModalView.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
 				82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */,
 				B2A8B27A2B6D33B800122DBC /* CalloutView.swift in Sources */,
