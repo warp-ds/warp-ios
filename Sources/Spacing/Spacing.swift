@@ -1,42 +1,42 @@
 import CoreFoundation
 
 extension Warp {
-    public enum Spacing: CGFloat {
+    public enum Spacing {
         /// Separation of 2 points.
-        case spacing25 = 2
+        public static let spacing25: CGFloat = 2
         /// Separation of 4 points.
-        case spacing50 = 4
+        public static let spacing50: CGFloat = 4
         /// Separation of 8 points.
-        case spacing100 = 8
+        public static let spacing100: CGFloat = 8
         /// Separation of 12 points.
-        case spacing150 = 12
+        public static let spacing150: CGFloat = 12
         /// Separation of 16 points.
-        case spacing200 = 16
+        public static let spacing200: CGFloat = 16
         /// Separation of 20 points.
-        case spacing250 = 20
+        public static let spacing250: CGFloat = 20
         /// Separation of 24 points.
-        case spacing300 = 24
+        public static let spacing300: CGFloat = 24
         /// Separation of 32 points.
-        case spacing400 = 32
+        public static let spacing400: CGFloat = 32
         /// Separation of 40 points.
-        case spacing500 = 40
+        public static let spacing500: CGFloat = 40
         /// Separation of 48 points.
-        case spacing600 = 48
+        public static let spacing600: CGFloat = 48
         /// Separation of 56 points.
-        case spacing700 = 56
+        public static let spacing700: CGFloat = 56
         /// Separation of 64 points.
-        case spacing800 = 64
+        public static let spacing800: CGFloat = 64
         /// Separation of 72 points.
-        case spacing900 = 72
+        public static let spacing900: CGFloat = 72
         /// Separation of 80 points.
-        case spacing1000 = 80
+        public static let spacing1000: CGFloat = 80
         /// Separation of 88 points.
-        case spacing1100 = 88
+        public static let spacing1100: CGFloat = 88
         /// Separation of 96 points.
-        case spacing1200 = 96
+        public static let spacing1200: CGFloat = 96
         /// Separation of 112 points.
-        case spacing1400 = 112
+        public static let spacing1400: CGFloat = 112
         /// Separation of 128 points.
-        case spacing1600 = 128
+        public static let spacing1600: CGFloat = 128
     }
 }
