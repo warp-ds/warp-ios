@@ -416,6 +416,7 @@ public struct ColorProvider {
     /// Expandable
     var expandableTitleText: Color { token.text }
     var expandableParagraphText: Color { token.text }
+    var expandableDefaultBackground: Color { token.background }
     var expandableBackground: Color { token.backgroundSubtle }
     var expandableBackgroundHover: Color { token.backgroundSubtleHover }
     var expandableIcon: Color { token.icon }

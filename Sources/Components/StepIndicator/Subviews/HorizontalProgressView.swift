@@ -63,13 +63,13 @@ extension Warp.StepIndicator {
                     EmptyView()
                 }
             case .middle(let previousProgress, _):
-                LineBuilder.line(
+                Warp.StepIndicator.LineBuilder.line(
                     for: previousProgress,
                     ownProgress: progress,
                     orientation: .horizontal
                 )
             case .last(let previousProgress):
-                LineBuilder.line(
+                Warp.StepIndicator.LineBuilder.line(
                     for: previousProgress,
                     ownProgress: progress,
                     orientation: .horizontal
@@ -82,7 +82,7 @@ extension Warp.StepIndicator {
             switch stepPosition {
             case .first(let nextProgress):
                 if let nextProgress {
-                    LineBuilder.line(
+                    Warp.StepIndicator.LineBuilder.line(
                         for: nextProgress,
                         ownProgress: progress,
                         orientation: .horizontal
@@ -91,7 +91,7 @@ extension Warp.StepIndicator {
                     EmptyView()
                 }
             case .middle(_, let nextProgress):
-                LineBuilder.line(
+                Warp.StepIndicator.LineBuilder.line(
                     for: nextProgress,
                     ownProgress: progress,
                     orientation: .horizontal
