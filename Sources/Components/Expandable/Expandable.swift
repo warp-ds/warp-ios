@@ -32,9 +32,6 @@ extension Warp {
         */
         @State private var isExpanded: Bool = false
 
-        private let fadeAnimationTime: Double = 0.1
-        private let expandAnimationTime: Double = 0.2
-
         let title: String
         let subtitle: String
         let style: Warp.ExpandableStyle
@@ -94,22 +91,12 @@ extension Warp {
             }
             .contentShape(Rectangle())
             .onTapGesture {
-                if isExpanded {
-                    if isAnimated {
-                        withAnimation(.easeInOut) {
-                            isExpanded = false
-                        }
-                    } else {
-                        isExpanded = false
+                if isAnimated {
+                    withAnimation(.easeInOut) {
+                        isExpanded.toggle()
                     }
                 } else {
-                    if isAnimated {
-                        withAnimation(.easeInOut) {
-                            isExpanded = true
-                        }
-                    } else {
-                        isExpanded = true
-                    }
+                    isExpanded.toggle()
                 }
             }
         }

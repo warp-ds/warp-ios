@@ -75,6 +75,7 @@
 		B238A26E2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
 		B238A26F2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
 		B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
+		B286EDFC2C33EACF00D25DCC /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
 		B2922A6E2B68E7F200A3E9F4 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */; };
 		B2922A6F2B68E7F200A3E9F4 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */; };
 		B295AC3A2C22F93D004C77BB /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
@@ -393,6 +394,7 @@
 				2E1ADF4E2C2561A700DFEE06 /* TypographyView.swift in Sources */,
 				2E1ADF4F2C2561A700DFEE06 /* TextView.swift in Sources */,
 				2E1ADF722C2561D200DFEE06 /* Warp_iosDBA.swift in Sources */,
+				B286EDFC2C33EACF00D25DCC /* StepIndicatorView.swift in Sources */,
 				00BC50DC2C2C0AD0002C4FF0 /* ModalView.swift in Sources */,
 				2E1ADF502C2561A700DFEE06 /* BadgeView.swift in Sources */,
 				2E1ADF522C2561A700DFEE06 /* BroadcastView.swift in Sources */,
