@@ -44,6 +44,7 @@
 		8213D0AF2B9078D700FCA310 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		8226D5782C297BFE00928E59 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8226D5772C297BFE00928E59 /* GoogleService-Info.plist */; };
+		822DDEBC2C33E81700015A0A /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
 		82355B002A8CCBE70023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
 		82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */; };
@@ -394,6 +395,7 @@
 				2E1ADF542C2561A700DFEE06 /* SpinnerView.swift in Sources */,
 				2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */,
 				2E1ADF562C2561A700DFEE06 /* BrandTokensView.swift in Sources */,
+				822DDEBC2C33E81700015A0A /* StepIndicatorView.swift in Sources */,
 				2E1ADF572C2561A700DFEE06 /* PillView.swift in Sources */,
 				2E1ADF582C2561A700DFEE06 /* ShadowView.swift in Sources */,
 				2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */,
