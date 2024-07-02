@@ -109,6 +109,7 @@ extension Warp {
     }
 }
 
+// We need this to allow us to create an `Expandable` from a simple String
 extension Warp.Expandable where Content == Warp.ExpandableStringWrapperView {
     public init(
         style: Warp.ExpandableStyle,
@@ -128,6 +129,10 @@ extension Warp.Expandable where Content == Warp.ExpandableStringWrapperView {
 }
 
 public extension Warp {
+    /*
+     This is a simple wrapper view to ensure that our `subtitle` String 
+     looks pretty
+     */
     struct ExpandableStringWrapperView: View {
         let subtitle: String
         let colorProvider: ColorProvider
@@ -149,9 +154,13 @@ public extension Warp {
     }
 }
 
-fileprivate struct NonHighlightedButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
+extension Warp.Expandable {
+    // This allows us to have a button for the alwaysVisible part that doesn't
+    // hightlight/flash when tapped
+    fileprivate struct NonHighlightedButtonStyle: ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+        }
     }
 }
 
