@@ -109,6 +109,7 @@ struct TextFieldView: View {
             }
             .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("TextField")
             .onChange(of: informationState) { newInformationState in
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 

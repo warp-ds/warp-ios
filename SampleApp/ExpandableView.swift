@@ -4,10 +4,12 @@ import Warp
 struct ExpandableView: View {
     @State var expandableStyle: Warp.ExpandableStyle = .default
     @State var isAnimated = true
+    @State var title: String = "Title"
+    @State var subTitle: String = "Subtitle"
 
     var body: some View {
-        VStack {
-            Warp.Text("Expandable Stype", style: .title2)
+        VStack(alignment: .leading) {
+            Warp.Text("Select an expandable style", style: .bodyStrong)
             Picker("Expandable Style", selection: $expandableStyle) {
                 ForEach([
                     Warp.ExpandableStyle.default,
@@ -20,20 +22,27 @@ struct ExpandableView: View {
             .pickerStyle(.segmented)
 
             Toggle(isOn: $isAnimated, label: {
-                Warp.Text("Animated", style: .body)
+                Warp.Text("Animated", style: .bodyStrong)
             })
 
+            VStack {
+                Warp.TextField(text: $title)
+                Warp.TextField(text: $subTitle)
+            }
+            .autocorrectionDisabled()
+            .frame(height: 100)
+
             Warp.Expandable(
-                title: "Title",
-                subtitle: "Subtitle, which is long so we need to span over more than one line",
+                title: title,
+                subtitle: subTitle,
                 style: expandableStyle,
                 isAnimated: isAnimated
             )
 
-            Warp.Text("How does it look with text underneath?", style: .body)
             Spacer()
         }
         .padding()
+        .navigationTitle("Expandable")
     }
 }
 
