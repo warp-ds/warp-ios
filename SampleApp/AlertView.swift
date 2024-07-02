@@ -95,6 +95,7 @@ struct AlertView: View {
                 )
             }
             .padding(.horizontal, 20)
+            .navigationTitle("Alert")
         }
     }
 

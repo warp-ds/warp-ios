@@ -89,6 +89,7 @@ struct ToastView: View {
             edge: toastEdge,
             isPresented: $toastIsPresented
         )
+        .navigationTitle("Toast")
     }
 
     private var toastStatus: String {

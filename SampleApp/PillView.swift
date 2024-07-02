@@ -8,6 +8,7 @@ struct PillView: View {
                 createView(for: style)
             }
             .padding(.horizontal)
+            .navigationTitle("Pill")
         }
     }
     

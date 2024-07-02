@@ -64,6 +64,7 @@ struct ButtonView: View {
             Divider()
         }
         .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Button")
         .padding(.horizontal, 20)
     }
     

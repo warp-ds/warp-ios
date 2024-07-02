@@ -119,6 +119,7 @@ struct ModalView: View {
                 }
                 .padding(.horizontal, 20)
             }
+            .navigationTitle("Modal")
         }
         
         .warpModal(
