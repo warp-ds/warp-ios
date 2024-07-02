@@ -31,7 +31,6 @@ extension Warp {
          Starting in a collapsed state gives the user a high-level overview of the available information.
         */
         @State private var isExpanded: Bool = false
-        @State private var opacity: Double = 0.0
 
         private let fadeAnimationTime: Double = 0.1
         private let expandAnimationTime: Double = 0.2
@@ -97,28 +96,19 @@ extension Warp {
             .onTapGesture {
                 if isExpanded {
                     if isAnimated {
-                        withAnimation(.easeIn(duration: fadeAnimationTime)) {
-                            opacity = 0
-                        }
-
-                        withAnimation(.easeOut(duration: expandAnimationTime).delay(fadeAnimationTime)) {
+                        withAnimation(.easeInOut) {
                             isExpanded = false
                         }
                     } else {
-                        opacity = 0
                         isExpanded = false
                     }
                 } else {
                     if isAnimated {
-                        withAnimation(.easeIn(duration: expandAnimationTime)){
+                        withAnimation(.easeInOut) {
                             isExpanded = true
-                        }
-                        withAnimation(.easeOut(duration: fadeAnimationTime).delay(expandAnimationTime)) {
-                            opacity = 1
                         }
                     } else {
                         isExpanded = true
-                        opacity = 1
                     }
                 }
             }
@@ -137,7 +127,6 @@ extension Warp {
                 }
             }
             .fixedSize(horizontal: false, vertical: true)
-            .opacity(opacity)
         }
     }
 }
