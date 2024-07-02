@@ -46,8 +46,9 @@ extension Warp {
             /* 
              run through all steps and ensure that there are
              - no inProgress steps after an incompleted step
-             - no incomplete steps after an incompleted step
-             - no completed steps after an in progress step
+             - no completed steps after an incompleted step
+             - no completed steps after an inProgress step
+             - one inProgress step at a time
              */
 
             try self.steps = steps.reduce([Warp.StepIndicatorItem]()) { (existingItems, currentItem) in
