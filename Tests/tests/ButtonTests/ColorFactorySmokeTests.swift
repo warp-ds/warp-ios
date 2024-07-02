@@ -113,7 +113,7 @@ final class ColorFactorySmokeTests: XCTestCase {
             let sut = ColorFactory(
                 for: variant.type,
                 consuming: colorProvider,
-                isEnabled: variant.isEnabled, 
+                isEnabled: variant.isEnabled,
                 isLoading: false
             )
 
