@@ -90,26 +90,25 @@ extension Warp {
         }
 
         public var body: some View {
-            ZStack {
-                backgroundView
-
-                foregroundView
-            }
-            .cornerRadius(alertCornerRadius)
-            .accessibilityElement(children: .combine)
-            .modifier(
-                AccessibilityTraitBuilder(
-                    primaryButtonProvider: primaryButtonProvider,
-                    secondaryButtonProvider: secondaryButtonProvider,
-                    linkProvider: linkProvider
+            foregroundView
+                .background {
+                    backgroundView
+                }
+                .cornerRadius(alertCornerRadius)
+                .accessibilityElement(children: .combine)
+                .modifier(
+                    AccessibilityTraitBuilder(
+                        primaryButtonProvider: primaryButtonProvider,
+                        secondaryButtonProvider: secondaryButtonProvider,
+                        linkProvider: linkProvider
+                    )
                 )
-            )
-            .modifier(
-                AccessibilityButtonActionBuilder(
-                    primaryButtonProvider: primaryButtonProvider,
-                    secondaryButtonProvider: secondaryButtonProvider
+                .modifier(
+                    AccessibilityButtonActionBuilder(
+                        primaryButtonProvider: primaryButtonProvider,
+                        secondaryButtonProvider: secondaryButtonProvider
+                    )
                 )
-            )
         }
 
         private var backgroundView: some View {
@@ -122,16 +121,19 @@ extension Warp {
         }
 
         private var foregroundView: some View {
-            HStack(spacing: 8) {
-                leftLineView
-                    .frame(width: 5)
-
+            HStack(alignment: .top, spacing: 8) {
                 toolTipIconView
 
                 informationView
-                    .padding(.vertical, 16)
 
                 Spacer()
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 20)
+            .overlay(alignment: .leading) {
+                leftLineView
+                    .frame(width: 4)
             }
         }
 
@@ -140,19 +142,12 @@ extension Warp {
         }
 
         private var toolTipIconView: some View {
-            VStack {
-                Spacer()
-                    .frame(height: 17)
-
-                Image(systemName: style.tooltipImageName)
-                    .renderingMode(.template)
-                    .frame(width: 16, height: 16)
-                    .foregroundColor(style.getLeftLineColor(from: colorProvider))
-                    .padding(.leading, 8)
-                    .accessibilityLabel(style.tooltipImageTitle)
-
-                Spacer()
-            }
+            Image(systemName: style.tooltipImageName)
+                .renderingMode(.template)
+                .frame(width: 16, height: 16)
+                .foregroundColor(style.getLeftLineColor(from: colorProvider))
+                .accessibilityLabel(style.tooltipImageTitle)
+                .offset(y: 2)
         }
 
         private var informationView: some View {
@@ -160,24 +155,24 @@ extension Warp {
                 titleView
 
                 subtitleView
+                    .fixedSize(horizontal: false, vertical: true)
 
-                linkView
-                    .padding(.vertical, 8)
+                VStack(spacing: 16) {
+                    linkView
 
-                buttonsView
-                    .padding(.top, 4)
-                    .padding(.bottom, 8)
+                    buttonsView
+                }
             }
         }
 
         private var titleView: some View {
-            Text(title, style: .title4)
+            Warp.Text(title, style: .title4)
                 .foregroundColor(style.getTextColor(from: colorProvider))
                 .accessibilityAddTraits(.isHeader)
         }
 
         private var subtitleView: some View {
-            Text(subtitle, style: .body)
+            Warp.Text(subtitle, style: .body)
                 .foregroundColor(colorProvider.boxInfoText)
                 .accessibilityRemoveTraits(.isHeader)
         }
@@ -189,7 +184,7 @@ extension Warp {
                     action: linkProvider.action,
                     label: {
                         HStack {
-                            Text(
+                            Warp.Text(
                                 linkProvider.title,
                                 style: .caption,
                                 color: colorProvider.token.textLink
