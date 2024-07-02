@@ -709,6 +709,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray100, darkModeColor: FinnUIColors.gray600)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray600)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.gray100, darkModeColor: DBAUIColors.gray600)
         }
     }
     var badgeInfoBackground: UIColor {
@@ -717,6 +719,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: FinnUIColors.aqua100, darkModeColor: FinnUIColors.aqua700)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue100, darkModeColor: ToriUIColors.blue700)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.jeanblue100, darkModeColor: DBAUIColors.jeanblue700)
         }
     }
     public var badgePositiveBackground: UIColor {
@@ -725,6 +729,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: FinnUIColors.green100, darkModeColor: FinnUIColors.green700)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.green100, darkModeColor: ToriUIColors.green700)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.green100, darkModeColor: DBAUIColors.green700)
         }
     }
     public var badgeWarningBackground: UIColor {
@@ -733,6 +739,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: FinnUIColors.yellow100, darkModeColor: FinnUIColors.yellow700)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.yellow100, darkModeColor: ToriUIColors.yellow700)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.yellow100, darkModeColor: DBAUIColors.yellow700)
         }
     }
     public var badgeNegativeBackground: UIColor {
@@ -741,6 +749,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: FinnUIColors.red100, darkModeColor: FinnUIColors.red700)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.red100, darkModeColor: ToriUIColors.red700)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.red100, darkModeColor: DBAUIColors.red700)
         }
     }
     public var badgeDisabledBackground: UIColor { token.backgroundDisabled }
@@ -750,6 +760,8 @@ public struct UIColorProvider {
             return FinnUIColors.black.withAlphaComponent(0.7)
         case .tori:
             return ToriUIColors.black.withAlphaComponent(0.7)
+        case .dba:
+            return DBAUIColors.black.withAlphaComponent(0.7)
         }
     }
     var badgeNotificationBackground: UIColor { token.backgroundNotification }
@@ -759,6 +771,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: FinnUIColors.aqua200, darkModeColor: FinnUIColors.aqua600)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue200, darkModeColor: ToriUIColors.blue600)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.jeanblue200, darkModeColor: DBAUIColors.jeanblue600)
         }
     }
     
@@ -795,7 +809,9 @@ public struct UIColorProvider {
         case .finn:
             return token.backgroundPrimary
         case .tori:
-            return ToriUIColors.watermelon600
+            return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon600, darkModeColor: ToriUIColors.watermelon500)
+        case .dba:
+            return token.backgroundPrimary
         }
     }
     var buttonPrimaryBackgroundHover: UIColor {
@@ -803,7 +819,9 @@ public struct UIColorProvider {
         case .finn:
             return token.backgroundPrimaryHover
         case .tori:
-            return ToriUIColors.watermelon700
+            return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon700, darkModeColor: ToriUIColors.watermelon400)
+        case .dba:
+            return token.backgroundPrimaryHover
         }
     }
     var buttonPrimaryBackgroundActive: UIColor {
@@ -811,7 +829,9 @@ public struct UIColorProvider {
         case .finn:
             return token.backgroundPrimaryActive
         case .tori:
-            return ToriUIColors.watermelon800
+            return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon800, darkModeColor: ToriUIColors.watermelon300)
+        case .dba:
+            return token.backgroundPrimaryActive
         }
     }
     var buttonPrimaryBackgroundDisabled: UIColor { token.backgroundDisabled }
@@ -820,7 +840,9 @@ public struct UIColorProvider {
         case .finn:
             return token.borderPrimary
         case .tori:
-            return ToriUIColors.watermelon600
+            return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon600, darkModeColor: ToriUIColors.watermelon500)
+        case .dba:
+            return token.borderPrimary
         }
     }
     var buttonPrimaryBorderHover: UIColor {
@@ -828,7 +850,9 @@ public struct UIColorProvider {
         case .finn:
             return token.borderPrimaryHover
         case .tori:
-            return ToriUIColors.watermelon700
+            return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon700, darkModeColor: ToriUIColors.watermelon400)
+        case .dba:
+            return token.borderPrimaryHover
         }
     }
     var buttonPrimaryBorderActive: UIColor {
@@ -836,7 +860,9 @@ public struct UIColorProvider {
         case .finn:
             return token.borderPrimaryActive
         case .tori:
-            return ToriUIColors.watermelon800
+            return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon800, darkModeColor: ToriUIColors.watermelon300)
+        case .dba:
+            return token.borderPrimaryActive
         }
     }
     var buttonPrimaryBorderDisabled: UIColor { token.borderDisabled }
@@ -883,6 +909,8 @@ public struct UIColorProvider {
             return FinnUIColors.blue300.withAlphaComponent(0.3)
         case .tori:
             return ToriUIColors.blueberry300.withAlphaComponent(0.3)
+        case .dba:
+            return DBAUIColors.jeanblue300.withAlphaComponent(0.3)
         }
     }
     var buttonPillBackgroundActive: UIColor {
@@ -891,6 +919,8 @@ public struct UIColorProvider {
             return FinnUIColors.blue400.withAlphaComponent(0.3)
         case .tori:
             return ToriUIColors.blueberry400.withAlphaComponent(0.3)
+        case .dba:
+            return DBAUIColors.jeanblue400.withAlphaComponent(0.3)
         }
     }
     var buttonPillIcon: UIColor { token.icon }
@@ -933,6 +963,8 @@ public struct UIColorProvider {
             return FinnUIColors.gray100
         case .tori:
             return ToriUIColors.gray100
+        case .dba:
+            return DBAUIColors.gray100
         }
     }
     var buttonGroupUtilityBackgroundSelected: UIColor {
@@ -941,6 +973,8 @@ public struct UIColorProvider {
             return FinnUIColors.gray200
         case .tori:
             return ToriUIColors.gray200
+        case .dba:
+            return DBAUIColors.gray200
         }
     }
     var buttonGroupUtilityBorder: UIColor {
@@ -949,6 +983,8 @@ public struct UIColorProvider {
             return FinnUIColors.gray300
         case .tori:
             return ToriUIColors.gray300
+        case .dba:
+            return DBAUIColors.gray300
         }
     }
     var buttonGroupUtilityBorderSelected: UIColor {
@@ -957,6 +993,8 @@ public struct UIColorProvider {
             return FinnUIColors.gray700
         case .tori:
             return ToriUIColors.gray700
+        case .dba:
+            return DBAUIColors.gray700
         }
     }
     
@@ -968,6 +1006,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: FinnUIColors.green100, darkModeColor: FinnUIColors.green800)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue100, darkModeColor: ToriUIColors.blue800)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.green100, darkModeColor: DBAUIColors.green800)
         }
     }
     var calloutBorder: UIColor {
@@ -976,6 +1016,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: FinnUIColors.green400, darkModeColor: FinnUIColors.green600)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue400, darkModeColor: ToriUIColors.blue600)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.green400, darkModeColor: DBAUIColors.green600)
         }
     }
     
@@ -1094,16 +1136,20 @@ public struct UIColorProvider {
     var navbarIconSelected: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
-            return UIColor.dynamicColor(defaultColor: token.iconSelected, darkModeColor: FinnUIColors.blue500)
+            return token.iconSelected
         case .tori:
+            return token.iconSecondary
+        case .dba:
             return token.iconSecondary
         }
     }
     var navbarBorderSelected: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
-            return UIColor.dynamicColor(defaultColor: token.borderSelected, darkModeColor: FinnUIColors.blue500)
+            return token.borderSelected
         case .tori:
+            return token.borderSecondary
+        case .dba:
             return token.borderSecondary
         }
     }
@@ -1133,22 +1179,28 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray200, darkModeColor: FinnUIColors.gray600)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.gray200, darkModeColor: DBAUIColors.gray600)
         }
     }
     var pillSuggestionBackgroundHover: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
-            return UIColor.dynamicColor(defaultColor: FinnUIColors.gray300, darkModeColor: FinnUIColors.gray700)
+            return UIColor.dynamicColor(defaultColor: FinnUIColors.gray300, darkModeColor: FinnUIColors.gray500)
         case .tori:
-            return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray700)
+            return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray500)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.gray300, darkModeColor: DBAUIColors.gray500)
         }
     }
     var pillSuggestionBackgroundActive: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
-            return UIColor.dynamicColor(defaultColor: FinnUIColors.gray400, darkModeColor: FinnUIColors.gray600)
+            return FinnUIColors.gray400
         case .tori:
-            return UIColor.dynamicColor(defaultColor: ToriUIColors.gray400, darkModeColor: ToriUIColors.gray600)
+            return ToriUIColors.gray400
+        case .dba:
+            return DBAUIColors.gray400
         }
     }
     var pillSuggestionIcon: UIColor { token.icon }
@@ -1222,14 +1274,18 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray200, darkModeColor: FinnUIColors.gray600)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.gray200, darkModeColor: DBAUIColors.gray600)
         }
     }
     var switchTrackBackgroundHover: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
-            return UIColor.dynamicColor(defaultColor: FinnUIColors.gray300, darkModeColor: FinnUIColors.gray700)
+            return UIColor.dynamicColor(defaultColor: FinnUIColors.gray300, darkModeColor: FinnUIColors.gray500)
         case .tori:
-            return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray700)
+            return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray500)
+        case .dba:
+            return UIColor.dynamicColor(defaultColor: DBAUIColors.gray300, darkModeColor: DBAUIColors.gray500)
         }
     }
     var switchTrackBackgroundSelected: UIColor { token.backgroundPrimary }
