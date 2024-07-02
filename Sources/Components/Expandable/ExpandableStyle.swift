@@ -14,7 +14,7 @@ extension Warp {
         func backgroundColor(using colorProvider: ColorProvider) -> Color {
             switch self {
             case .default:
-                colorProvider.expandableDefaultBackground
+                .clear
             case .box, .boxBleed:
                 colorProvider.expandableBackground
             }

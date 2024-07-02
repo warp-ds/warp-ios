@@ -33,9 +33,9 @@ struct ExpandableView: View {
             .frame(height: 100)
 
             Warp.Expandable(
+                style: expandableStyle,
                 title: title,
                 subtitle: subTitle,
-                style: expandableStyle,
                 isAnimated: isAnimated
             )
 

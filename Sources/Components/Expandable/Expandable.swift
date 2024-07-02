@@ -3,9 +3,9 @@ import SwiftUI
 extension Warp {
     /**
 
-    Expandable allows users to interact with expandable/collapsible sections of content. Also known as “accordion”
+     Expandable allows users to interact with expandable/collapsible sections of content. Also known as “accordion”
 
-    **When to use**
+     **When to use**
 
      Use the Expandable component when presenting content that can be optionally revealed to users.
      Consider it for long content that may overwhelm users if displayed all at once.
@@ -14,41 +14,45 @@ extension Warp {
 
      Provide the `Warp.Expandable` with:
 
-     - A title.
-     - A subtitle.
      - A `Warp.ExpandableStyle`, choose from:
-        - `default`: for a non bordered expandable.
-        - `box`: for a bordered expandable with rounded corners.
-        - `boxBleed`: for a bordered expandable with sharp corners.
+     - `default`: for a non bordered expandable.
+     - `box`: for a bordered expandable with rounded corners.
+     - `boxBleed`: for a bordered expandable with sharp corners.
+     - A `title`.
+     - Either:
+       - A `subtitle` String
+       - An `expandableView` `View`
      - A boolean `isAnimated` to determine if the expand/collapse transition is animated or not. **Optional** _default value is `true` if none is specified_.
      - A `ColorProvider`. **Optional:** _default is read from `Config.colorProvider` if none is specified_.
      */
-    public struct Expandable: View {
+    public struct Expandable<Content: View>: View {
         /**
-        **Collapsed by default**
+         **Collapsed by default**
 
          Expendables begins in the collapsed state with all content panels closed.
          Starting in a collapsed state gives the user a high-level overview of the available information.
-        */
+         */
         @State private var isExpanded: Bool = false
 
         let title: String
-        let subtitle: String
+
+        @ViewBuilder let expandableView: Content
+
         let style: Warp.ExpandableStyle
         let isAnimated: Bool
 
         let colorProvider: ColorProvider
 
         public init(
-            title: String,
-            subtitle: String,
             style: Warp.ExpandableStyle,
+            title: String,
+            @ViewBuilder expandableView: () -> Content,
             isAnimated: Bool = true,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
-            self.title = title
-            self.subtitle = subtitle
             self.style = style
+            self.title = title
+            self.expandableView = expandableView()
             self.isAnimated = isAnimated
             self.colorProvider = colorProvider
         }
@@ -68,29 +72,7 @@ extension Warp {
         }
 
         @ViewBuilder private var alwaysVisibleView: some View {
-            HStack {
-                Warp.Text(
-                    title,
-                    style: .bodyStrong,
-                    color: colorProvider.expandableTitleText
-                )
-
-                if style != .default {
-                    Spacer()
-                }
-
-                Image("icon-expandable-chevron", bundle: .module)
-                    .renderingMode(.template)
-                    .foregroundColor(colorProvider.expandableIcon)
-                    .frame(width: 16, height: 16)
-                    .rotationEffect(.degrees(isExpanded ? 180 : 0))
-
-                if style == .default {
-                    Spacer()
-                }
-            }
-            .contentShape(Rectangle())
-            .onTapGesture {
+            SwiftUI.Button(action: {
                 if isAnimated {
                     withAnimation(.easeInOut) {
                         isExpanded.toggle()
@@ -98,10 +80,59 @@ extension Warp {
                 } else {
                     isExpanded.toggle()
                 }
-            }
-        }
+            }, label: {
+                HStack {
+                    Warp.Text(
+                        title,
+                        style: .bodyStrong,
+                        color: colorProvider.expandableTitleText
+                    )
 
-        @ViewBuilder private var expandableView: some View {
+                    if style != .default {
+                        Spacer()
+                    }
+
+                    Image("icon-expandable-chevron", bundle: .module)
+                        .renderingMode(.template)
+                        .foregroundColor(colorProvider.expandableIcon)
+                        .frame(width: 16, height: 16)
+                        .rotationEffect(.degrees(isExpanded ? 180 : 0))
+
+                    if style == .default {
+                        Spacer()
+                    }
+                }
+                .contentShape(Rectangle())
+            })
+            .buttonStyle(NonHighlightedButtonStyle())
+        }
+    }
+}
+
+extension Warp.Expandable where Content == Warp.ExpandableStringWrapperView {
+    public init(
+        style: Warp.ExpandableStyle,
+        title: String,
+        subtitle: String,
+        isAnimated: Bool = true,
+        colorProvider: ColorProvider = Warp.Config.colorProvider
+    ) {
+        self.init(
+            style: style,
+            title: title,
+            expandableView: { Warp.ExpandableStringWrapperView(subtitle: subtitle, colorProvider: colorProvider) },
+            isAnimated: isAnimated,
+            colorProvider: colorProvider
+        )
+    }
+}
+
+public extension Warp {
+    struct ExpandableStringWrapperView: View {
+        let subtitle: String
+        let colorProvider: ColorProvider
+
+        public var body: some View {
             VStack(spacing: 0) {
                 HStack {
                     Warp.Text(
@@ -118,25 +149,44 @@ extension Warp {
     }
 }
 
+fileprivate struct NonHighlightedButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+    }
+}
+
 #Preview("Default") {
     Warp.Expandable(
+        style: .default,
         title: "Expandable box",
-        subtitle: "Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. ",
-        style: .default
+        subtitle: "Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. "
     )
 }
 
 #Preview("Box") {
     Warp.Expandable(
+        style: .box,
         title: "Expandable box",
-        subtitle: "Add your text here. ",
-        style: .box
+        subtitle: "Add your text here. "
     )
 }
+
 #Preview("Box Bleed") {
     Warp.Expandable(
+        style: .boxBleed,
         title: "Expandable box",
-        subtitle: "Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. ",
-        style: .boxBleed
+        subtitle: "Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. "
     )
 }
+
+#Preview("Own Content") {
+    Warp.Expandable(
+        style: .box,
+        title: "Can you see my custom view"
+    ) {
+        SwiftUI.Text("How does this look")
+            .font(.title)
+            .foregroundStyle(.red)
+    }
+}
+
