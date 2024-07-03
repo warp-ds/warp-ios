@@ -23,7 +23,7 @@ extension Warp {
         var cornerRadius: Double {
             switch self {
             case .default, .boxBleed: 0
-            case .box: 8
+            case .box: Warp.Border.borderRadius100
             }
         }
     }

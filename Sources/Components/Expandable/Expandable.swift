@@ -26,13 +26,7 @@ extension Warp {
      - A `ColorProvider`. **Optional:** _default is read from `Config.colorProvider` if none is specified_.
      */
     public struct Expandable<Content: View>: View {
-        /**
-         **Collapsed by default**
-
-         Expendables begins in the collapsed state with all content panels closed.
-         Starting in a collapsed state gives the user a high-level overview of the available information.
-         */
-        @State private var isExpanded: Bool = false
+        @State private var isExpanded: Bool
 
         let title: String
 
@@ -48,12 +42,14 @@ extension Warp {
             title: String,
             @ViewBuilder expandableView: () -> Content,
             isAnimated: Bool = true,
+            isExpanded: Bool = false,
             colorProvider: ColorProvider = Config.colorProvider
         ) {
             self.style = style
             self.title = title
             self.expandableView = expandableView()
             self.isAnimated = isAnimated
+            self.isExpanded = isExpanded
             self.colorProvider = colorProvider
         }
 
@@ -116,6 +112,7 @@ extension Warp.Expandable where Content == Warp.ExpandableStringWrapperView {
         title: String,
         subtitle: String,
         isAnimated: Bool = true,
+        isExpanded: Bool = false,
         colorProvider: ColorProvider = Warp.Config.colorProvider
     ) {
         self.init(
@@ -123,6 +120,7 @@ extension Warp.Expandable where Content == Warp.ExpandableStringWrapperView {
             title: title,
             expandableView: { Warp.ExpandableStringWrapperView(subtitle: subtitle, colorProvider: colorProvider) },
             isAnimated: isAnimated,
+            isExpanded: isExpanded,
             colorProvider: colorProvider
         )
     }
@@ -154,7 +152,7 @@ public extension Warp {
     }
 }
 
-extension Warp.Expandable {
+extension Warp {
     // This allows us to have a button for the alwaysVisible part that doesn't
     // hightlight/flash when tapped
     fileprivate struct NonHighlightedButtonStyle: ButtonStyle {
@@ -168,7 +166,16 @@ extension Warp.Expandable {
     Warp.Expandable(
         style: .default,
         title: "Expandable box",
-        subtitle: "Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. "
+        subtitle: "Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. Add your text here."
+    )
+}
+
+#Preview("Default -  Expanded") {
+    Warp.Expandable(
+        style: .default,
+        title: "Expandable box",
+        subtitle: "Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. Add your text here.",
+        isExpanded: true
     )
 }
 
@@ -184,7 +191,7 @@ extension Warp.Expandable {
     Warp.Expandable(
         style: .boxBleed,
         title: "Expandable box",
-        subtitle: "Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. "
+        subtitle: "Add your text here. Add your text here. Add your text here. Add your text here. Add your text here. Add your text here."
     )
 }
 
@@ -198,4 +205,3 @@ extension Warp.Expandable {
             .foregroundStyle(.red)
     }
 }
-
