@@ -72,6 +72,10 @@
 		82B168132B750BED00DCDDE5 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B168112B750BED00DCDDE5 /* TextView.swift */; };
 		82C7E6F52B7B85E000760C08 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
 		82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
+		B238A26E2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
+		B238A26F2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
+		B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
+		B286EDFC2C33EACF00D25DCC /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
 		B2922A6E2B68E7F200A3E9F4 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */; };
 		B2922A6F2B68E7F200A3E9F4 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */; };
 		B295AC3A2C22F93D004C77BB /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
@@ -112,6 +116,7 @@
 		82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		82B168112B750BED00DCDDE5 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		82C7E6F42B7B85E000760C08 /* BroadcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastView.swift; sourceTree = "<group>"; };
+		B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
 		B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		B295AC392C22F93D004C77BB /* StepIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepIndicatorView.swift; sourceTree = "<group>"; };
 		B2A8B2782B6D33B800122DBC /* CalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
@@ -227,6 +232,7 @@
 				349D0E122B62D67A00AAB421 /* AlertView.swift */,
 				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
 				B295AC392C22F93D004C77BB /* StepIndicatorView.swift */,
+				B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */,
 				82B168112B750BED00DCDDE5 /* TextView.swift */,
 				2E1ADF472C25612300DFEE06 /* GoogleService-Info.plist */,
 				82355B082A8CD0AA0023EB11 /* Assets.xcassets */,
@@ -388,6 +394,7 @@
 				2E1ADF4E2C2561A700DFEE06 /* TypographyView.swift in Sources */,
 				2E1ADF4F2C2561A700DFEE06 /* TextView.swift in Sources */,
 				2E1ADF722C2561D200DFEE06 /* Warp_iosDBA.swift in Sources */,
+				B286EDFC2C33EACF00D25DCC /* StepIndicatorView.swift in Sources */,
 				00BC50DC2C2C0AD0002C4FF0 /* ModalView.swift in Sources */,
 				2E1ADF502C2561A700DFEE06 /* BadgeView.swift in Sources */,
 				2E1ADF522C2561A700DFEE06 /* BroadcastView.swift in Sources */,
@@ -399,6 +406,7 @@
 				2E1ADF572C2561A700DFEE06 /* PillView.swift in Sources */,
 				2E1ADF582C2561A700DFEE06 /* ShadowView.swift in Sources */,
 				2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */,
+				B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
 				2E1ADF5A2C2561A700DFEE06 /* BoxView.swift in Sources */,
 				2E1ADF5B2C2561A700DFEE06 /* ButtonView.swift in Sources */,
 				2E1ADF5C2C2561A700DFEE06 /* ToastView.swift in Sources */,
@@ -415,6 +423,7 @@
 				B295AC3A2C22F93D004C77BB /* StepIndicatorView.swift in Sources */,
 				82B168122B750BED00DCDDE5 /* TextView.swift in Sources */,
 				003CB8E92C19B5D5008C42B1 /* ModalView.swift in Sources */,
+				B238A26E2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
 				828E7D452B61239100869C58 /* BadgeView.swift in Sources */,
 				82A2155C2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
 				B2A8B2792B6D33B800122DBC /* CalloutView.swift in Sources */,
@@ -440,6 +449,7 @@
 				B295AC3B2C22F93D004C77BB /* StepIndicatorView.swift in Sources */,
 				828E7D462B61239100869C58 /* BadgeView.swift in Sources */,
 				00BC50DB2C2C050D002C4FF0 /* ModalView.swift in Sources */,
+				B238A26F2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
 				82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */,
 				B2A8B27A2B6D33B800122DBC /* CalloutView.swift in Sources */,

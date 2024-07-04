@@ -38,6 +38,7 @@ struct ShadowView: View {
                 .padding()
             }
         }
+        .navigationTitle("Shadow")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

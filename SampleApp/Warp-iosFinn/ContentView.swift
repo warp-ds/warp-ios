@@ -100,6 +100,13 @@ struct ContentView: View {
 
                     Divider()
 
+                    NavigationLink(destination: ExpandableView()) {
+                        Text("Expandable")
+                            .padding()
+                    }
+
+                    Divider()
+
                     NavigationLink(destination: PillView()) {
                         Text("Pill")
                             .padding()
