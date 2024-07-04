@@ -8,6 +8,7 @@ struct BadgeView: View {
                 createView(for: variant)
             }
             .padding(.horizontal)
+            .navigationTitle("Badge")
         }
     }
 

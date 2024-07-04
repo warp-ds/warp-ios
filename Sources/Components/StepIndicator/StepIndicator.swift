@@ -10,11 +10,11 @@ extension Warp {
 
         **Usage**
 
-        You need to provide the `Warp.StepIndicator` with:
+        Provide the `Warp.StepIndicator` with:
 
-        - A `Warp.StepIndicator.LayoutOrientation`. **Optional:** _default is `.vertical` if none is specified_
-        - An array of `Warp.StepIndicatorItem`s
-        - A `ColorProvider`. **Optional:** _default is read from `Config.colorProvider` if none is specified_
+        - A `Warp.StepIndicator.LayoutOrientation`. **Optional:** _default is `.vertical` if none is specified_.
+        - An array of `Warp.StepIndicatorItem`s.
+        - A `ColorProvider`. **Optional:** _default is read from `Config.colorProvider` if none is specified_.
 
      */
     public struct StepIndicator: View {
@@ -26,7 +26,6 @@ extension Warp {
 
         let layoutOrientation: LayoutOrientation
 
-        /// Object responsible for providing colors in different environments and variants.
         let colorProvider: ColorProvider
 
         private let orderedSteps: [StepIndicatorModel.OrderedStepIndicatorItem]

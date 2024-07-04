@@ -110,6 +110,7 @@ struct BoxView: View {
                 )
             }
             .padding(.horizontal, 20)
+            .navigationTitle("Box")
         }
     }
 
