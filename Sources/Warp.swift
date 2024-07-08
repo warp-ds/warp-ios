@@ -23,4 +23,12 @@ public enum Warp {
             return DBAUITokenProvider()
         }
     }()
+    
+    public static var Color: ColorProvider = {
+        ColorProvider(token: Warp.Token)
+    }()
+    
+    public static var UIColor: UIColorProvider = {
+        UIColorProvider(token: Warp.UIToken)
+    }()
 }
