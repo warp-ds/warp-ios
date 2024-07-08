@@ -24,10 +24,12 @@ extension Warp {
             }
         }()
         
+        @available(*, deprecated, message: "Use Warp.Color")
         public static var colorProvider: ColorProvider = {
-            ColorProvider(token: Warp.Token)
+            ColorProvider(token: tokenProvider)
         }()
         
+        @available(*, deprecated, message: "Use Warp.UIColor")
         public static var uiColorProvider: UIColorProvider = {
             UIColorProvider(token: uiTokenProvider)
         }()
