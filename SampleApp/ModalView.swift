@@ -131,7 +131,7 @@ struct ModalView: View {
             closeButton: hasCloseButton,
             dismissOnClickOutside: dismissOnClickOutside,
             isPresented: $presentModal,
-            colorProvider: Warp.Config.colorProvider)
+            colorProvider: Warp.Color)
     }
 
     private func createModalView() -> some View {
@@ -143,7 +143,7 @@ struct ModalView: View {
             secondaryButton: getSecondaryButtonProvider(),
             hasCloseButton: hasCloseButton,
             isPresented: .constant(true),
-            colorProvider: Warp.Config.colorProvider
+            colorProvider: Warp.Color
         )
     }
 

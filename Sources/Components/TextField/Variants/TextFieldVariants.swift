@@ -7,7 +7,7 @@ extension Warp.TextField {
         text: Binding<String>,
         leftSymbol: String? = nil,
         rightSymbol: String? = nil,
-        colorProvider: ColorProvider = Warp.Config.colorProvider
+        colorProvider: ColorProvider = Warp.Color
     ) -> some View {
         let configuration: Warp.TextFieldConfiguration = .decimal(
             leftSymbol: leftSymbol,
@@ -27,7 +27,7 @@ extension Warp.TextField {
     /// TextField that will have common design for a search text field.
     public static func createSearchTextField(
         text: Binding<String>,
-        colorProvider: ColorProvider = Warp.Config.colorProvider
+        colorProvider: ColorProvider = Warp.Color
     ) -> some View {
         let configuration: Warp.TextFieldConfiguration = .searchTextField
         let constantState: Warp.TextFieldState = Warp.textFieldDefaultInactiveState
@@ -50,7 +50,7 @@ extension Warp.TextField {
         text: Binding<String>,
         state: Binding<Warp.TextFieldState>,
         isSecured: Binding<Bool>,
-        colorProvider: ColorProvider = Warp.Config.colorProvider
+        colorProvider: ColorProvider = Warp.Color
     ) -> some View {
         var configuration = configuration
 
@@ -114,7 +114,7 @@ extension Warp.TextField {
         configuration: Warp.TextFieldConfiguration,
         text: Binding<String>,
         state: Binding<Warp.TextFieldState>,
-        colorProvider: ColorProvider = Warp.Config.colorProvider
+        colorProvider: ColorProvider = Warp.Color
     ) -> Warp.TextField {
         var configuration = configuration
 

@@ -6,7 +6,7 @@ extension Warp.StepIndicator {
         static func line(
             for otherProgress: Warp.StepIndicatorItem.Progress,
             ownProgress: Warp.StepIndicatorItem.Progress,
-            colorProvider: ColorProvider = Warp.Config.colorProvider,
+            colorProvider: ColorProvider = Warp.Color,
             orientation: Warp.StepIndicator.LayoutOrientation,
             lineThickness: Double = 2
         ) -> some View {

@@ -8,7 +8,7 @@ extension Warp.StepIndicator {
         let lineWidth: Double = 2
         
         init(
-            colorProvider: ColorProvider = Warp.Config.colorProvider,
+            colorProvider: ColorProvider = Warp.Color,
             progress: Warp.StepIndicatorItem.Progress,
             stepPosition: Warp.StepIndicatorItem.Position
         ) {

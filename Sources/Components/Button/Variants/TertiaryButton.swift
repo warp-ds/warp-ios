@@ -14,7 +14,7 @@ extension Warp.Button {
         isEnabled: Bool = true,
         fullWidth: Bool = false,
         isLoading: Bool = false,
-        colorProvider: ColorProvider = Warp.Config.colorProvider
+        colorProvider: ColorProvider = Warp.Color
     ) -> Warp.Button {
         Warp.Button(
             title: title,

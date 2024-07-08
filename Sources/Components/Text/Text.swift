@@ -19,12 +19,12 @@ extension Warp {
         private let style: Warp.TextStyle
         /// Text color.
         private let color: Color
-        private let colorProvider: ColorProvider = Warp.Config.colorProvider
+        private let colorProvider: ColorProvider = Warp.Color
 
         public init(
             _ text: String,
             style: Warp.TextStyle,
-            color: Color = Warp.Config.colorProvider.token.text
+            color: Color = Warp.Color.token.text
         ) {
             self.text = text
             self.style = style

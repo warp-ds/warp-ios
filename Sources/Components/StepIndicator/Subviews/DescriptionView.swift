@@ -11,7 +11,7 @@ extension Warp.StepIndicator {
         init(
             step: Warp.StepIndicatorItem,
             layoutOrientation: LayoutOrientation,
-            colorProvider: ColorProvider = Warp.Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.init(
                 title: step.title,
@@ -27,7 +27,7 @@ extension Warp.StepIndicator {
             description: String,
             layoutOrientation: LayoutOrientation,
             progress: Warp.StepIndicatorItem.Progress,
-            colorProvider: ColorProvider = Warp.Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.title = title
             self.description = description

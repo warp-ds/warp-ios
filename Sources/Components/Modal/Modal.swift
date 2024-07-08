@@ -51,7 +51,7 @@ extension Warp {
          - Parameter hasCloseButton: A Boolean value indicating whether a close button should be shown. Defaults to `false`.
          - Parameter onDismiss: Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal. Defaults to `nil`.
          - Parameter isPresented: A binding to a Boolean value that controls the visibility of the component.
-         - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Config.colorProvider`.
+         - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Warp.Color`.
          */
         public init(
             title: String,
@@ -62,7 +62,7 @@ extension Warp {
             hasCloseButton: Bool = false,
             onDismiss: (() -> Void)? = nil,
             isPresented: Binding<Bool>,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.title = title
             self.subtitle = subtitle

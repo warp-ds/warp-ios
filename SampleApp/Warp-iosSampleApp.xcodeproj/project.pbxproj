@@ -29,7 +29,6 @@
 		2E1ADF5F2C2561A700DFEE06 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2E1ADF4B2C2561A700DFEE06 /* FirebaseAnalytics */; };
 		2E1ADF602C2561A700DFEE06 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 2E1ADF4A2C2561A700DFEE06 /* Warp */; };
 		2E1ADF622C2561A700DFEE06 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
-		2E1ADF632C2561A700DFEE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
 		2E1ADF6F2C2561D200DFEE06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E1ADF692C2561D200DFEE06 /* Preview Assets.xcassets */; };
 		2E1ADF702C2561D200DFEE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E1ADF6B2C2561D200DFEE06 /* Assets.xcassets */; };
 		2E1ADF722C2561D200DFEE06 /* Warp_iosDBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1ADF6D2C2561D200DFEE06 /* Warp_iosDBA.swift */; };
@@ -359,7 +358,6 @@
 				2E1ADF6F2C2561D200DFEE06 /* Preview Assets.xcassets in Resources */,
 				2E1ADF622C2561A700DFEE06 /* Preview Content in Resources */,
 				8226D5782C297BFE00928E59 /* GoogleService-Info.plist in Resources */,
-				2E1ADF632C2561A700DFEE06 /* Assets.xcassets in Resources */,
 				2E1ADF702C2561D200DFEE06 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +400,6 @@
 				2E1ADF542C2561A700DFEE06 /* SpinnerView.swift in Sources */,
 				2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */,
 				2E1ADF562C2561A700DFEE06 /* BrandTokensView.swift in Sources */,
-				822DDEBC2C33E81700015A0A /* StepIndicatorView.swift in Sources */,
 				2E1ADF572C2561A700DFEE06 /* PillView.swift in Sources */,
 				2E1ADF582C2561A700DFEE06 /* ShadowView.swift in Sources */,
 				2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */,

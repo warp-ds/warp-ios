@@ -152,7 +152,7 @@ struct AlertView: View {
             link: linkProvider,
             primaryButton: primaryButtonProvider,
             secondaryButton: secondaryButtonProvider,
-            colorProvider: Warp.Config.colorProvider
+            colorProvider: Warp.Color
         )
     }
 

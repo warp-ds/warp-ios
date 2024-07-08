@@ -54,7 +54,7 @@ extension Warp {
             type: CalloutType = .inline,
             title: String,
             arrowEdge: Edge = .top,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.size = size
             self.type = type

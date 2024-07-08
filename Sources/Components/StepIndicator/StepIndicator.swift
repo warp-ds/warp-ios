@@ -14,7 +14,7 @@ extension Warp {
 
         - A `Warp.StepIndicator.LayoutOrientation`. **Optional:** _default is `.vertical` if none is specified_.
         - An array of `Warp.StepIndicatorItem`s.
-        - A `ColorProvider`. **Optional:** _default is read from `Config.colorProvider` if none is specified_.
+        - A `ColorProvider`. **Optional:** _default is read from `Warp.Color` if none is specified_.
 
      */
     public struct StepIndicator: View {
@@ -33,7 +33,7 @@ extension Warp {
         public init(
             layoutOrientation: LayoutOrientation = .vertical,
             stepModel: Warp.StepIndicatorModel,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.layoutOrientation = layoutOrientation
             self.orderedSteps = stepModel.asOrderedSteps

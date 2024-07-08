@@ -6,7 +6,7 @@ private let allowedTextFieldStates: [Warp.TextFieldState] = [.normal(.none), .di
 struct TextFieldView: View {
     @State private var state = Warp.TextFieldState.normal(.none)
 
-    private let colorProvider = Warp.Config.colorProvider
+    private let colorProvider = Warp.Color
 
     @State private var textFieldText = ""
     

@@ -26,7 +26,7 @@ extension Warp {
         /// Pill style.
         private let style: Warp.PillStyle
         /// Object that will provide needed colors.
-        private let colorProvider: ColorProvider = Warp.Config.colorProvider
+        private let colorProvider: ColorProvider = Warp.Color
 
         public init(
             text: String,

@@ -63,7 +63,7 @@ extension Warp {
             subtitle: String,
             link: ButtonConstructor? = nil,
             button: ButtonConstructor? = nil,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.style = style
             self.title = title
@@ -81,7 +81,7 @@ extension Warp {
             subtitle: String,
             linkProvider: ButtonConstructor?,
             buttonProvider: ButtonConstructor?,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.style = style
             self.title = title

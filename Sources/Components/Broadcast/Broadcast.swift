@@ -40,7 +40,7 @@ extension Warp {
             text: String,
             broadcastEdge: Warp.BroadcastEdge,
             isPresented: Binding<Bool>,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.text = text
             self.broadcastEdge = broadcastEdge

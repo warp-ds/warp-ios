@@ -46,7 +46,7 @@ extension Warp {
             title: String,
             toastEdge: Warp.ToastEdge,
             isPresented: Binding<Bool>,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.style = style
             self.title = title

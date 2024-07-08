@@ -2,7 +2,7 @@ import Warp
 import SwiftUI
 
 struct ShadowView: View {
-    private let colorProvider: ColorProvider = Warp.Config.colorProvider
+    private let colorProvider: ColorProvider = Warp.Color
     @State private var shadow = Warp.Shadow.small
 
     var body: some View {

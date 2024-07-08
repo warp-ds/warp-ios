@@ -2,7 +2,7 @@ import SwiftUI
 import Warp
 
 struct BrandTokensView: View {
-    private let tokenProvider = Warp.Config.tokenProvider
+    private let tokenProvider = Warp.Token
 
     var body: some View {
         ScrollView(showsIndicators: false) {

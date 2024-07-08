@@ -23,7 +23,7 @@ extension Warp {
        - A `subtitle` String
        - An `expandableView` `View`
      - A boolean `isAnimated` to determine if the expand/collapse transition is animated or not. **Optional** _default value is `true` if none is specified_.
-     - A `ColorProvider`. **Optional:** _default is read from `Config.colorProvider` if none is specified_.
+     - A `ColorProvider`. **Optional:** _default is read from `Warp.Color` if none is specified_.
      */
     public struct Expandable<Content: View>: View {
         @State private var isExpanded: Bool
@@ -43,7 +43,7 @@ extension Warp {
             @ViewBuilder expandableView: () -> Content,
             isAnimated: Bool = true,
             isExpanded: Bool = false,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.style = style
             self.title = title
@@ -113,7 +113,7 @@ extension Warp.Expandable where Content == Warp.ExpandableStringWrapperView {
         subtitle: String,
         isAnimated: Bool = true,
         isExpanded: Bool = false,
-        colorProvider: ColorProvider = Warp.Config.colorProvider
+        colorProvider: ColorProvider = Warp.Color
     ) {
         self.init(
             style: style,

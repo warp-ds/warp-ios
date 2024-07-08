@@ -33,7 +33,7 @@ extension Warp {
             isAnimated: Bool = true,
             text: Binding<String>,
             state: Binding<TextFieldState>,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.configuration = TextFieldConfiguration(
                 placeholder: placeholder,
@@ -62,7 +62,7 @@ extension Warp {
             isAnimated: Bool = true,
             text: Binding<String>,
             state: TextFieldState = Warp.textFieldDefaultInactiveState,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.configuration = TextFieldConfiguration(
                 placeholder: placeholder,
@@ -85,7 +85,7 @@ extension Warp {
             config: TextFieldConfiguration,
             text: Binding<String>,
             state: Binding<TextFieldState>,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.configuration = config
             self.text = text
@@ -122,7 +122,7 @@ extension Warp {
 }
 
 private struct WarpTextFieldPreview: PreviewProvider {
-    private static let colorProvider = Warp.Config.colorProvider
+    private static let colorProvider = Warp.Color
 
     static var previews: some View {
         ScrollView(showsIndicators: false) {

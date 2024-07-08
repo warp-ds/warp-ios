@@ -54,7 +54,7 @@ extension Warp {
          - Parameter dismissOnClickOutside: A Boolean value indicating whether the component should be dismissed when the user clicks outside of it. Defaults to `true.
          - Parameter onDismiss: Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal. Defaults to `nil`.
          - Parameter isPresented: A binding to a Boolean value that controls the visibility of the component.
-         - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Config.colorProvider`.
+         - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Warp.Color`.
          */
         public init(
             title: String,
@@ -66,7 +66,7 @@ extension Warp {
             dismissOnClickOutside: Bool = true,
             onDismiss: (() -> Void)? = nil,
             isPresented: Binding<Bool>,
-            colorProvider: ColorProvider = Config.colorProvider
+            colorProvider: ColorProvider = Warp.Color
         ) {
             self.title = title
             self.subtitle = subtitle
@@ -98,7 +98,7 @@ extension Warp {
         func warpModalOverlay() -> some View {
             if isPresented {
                 ZStack {
-                    Color.black.opacity(0.3)
+                    SwiftUI.Color.black.opacity(0.3)
                         .onTapGesture {
                             guard dismissOnClickOutside else { return }
                             isPresented.toggle()
@@ -147,7 +147,7 @@ public extension View {
         dismissOnClickOutside: Bool = true,
         onDismiss: (() -> Void)? = nil,
         isPresented: Binding<Bool>,
-        colorProvider: ColorProvider = Warp.Config.colorProvider
+        colorProvider: ColorProvider = Warp.Color
     ) -> some View {
         self.modifier(
             Warp.ModalViewModifier(
