@@ -15,16 +15,8 @@ struct ShadowView: View {
                 }
                 ZStack(alignment: .top) {
                     colorProvider.token.surfaceSunken
-                    VStack {
-                        Warp.Text("surfaceSunken", style: .caption)
-                            .padding(.top)
-                        ZStack {
-                            ShadowUIView(shadow: $shadow)
-                            Warp.Text("UIKit", style: .caption)
-                        }
-                        .frame(width: 192, height: 192)
+                    Warp.Text("surfaceSunken", style: .caption)
                         .padding(.top)
-                    }
                 }
             }
             .ignoresSafeArea()
@@ -48,19 +40,6 @@ struct ShadowView: View {
         }
         .navigationTitle("Shadow")
         .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-struct ShadowUIView: UIViewRepresentable {
-    @Binding var shadow: Warp.Shadow
-
-    func makeUIView(context: Context) -> UIView {
-        let uiView = UIView()
-        return uiView
-    }
-
-    func updateUIView(_ uiView: UIView, context: Context) {
-        uiView.dropShadow(shadow)
     }
 }
 
