@@ -122,7 +122,7 @@ struct DBATokenProvider: TokenProvider {
     public var borderInfoSubtleActive: Color { Color.dynamicColor(defaultColor: DBAColors.jeanblue500, darkModeColor: DBAColors.jeanblue500) }
 
     /// Icon
-    public var icon: Color { Color.dynamicColor(defaultColor: DBAColors.gray800, darkModeColor: DBAColors.white) }
+    public var icon: Color { Color.dynamicColor(defaultColor: DBAColors.gray900, darkModeColor: DBAColors.white) }
     public var iconStatic: Color { Color.dynamicColor(defaultColor: DBAColors.gray800, darkModeColor: DBAColors.gray800) }
     public var iconHover: Color { Color.dynamicColor(defaultColor: DBAColors.jeanblue700, darkModeColor: DBAColors.jeanblue100) }
     public var iconActive: Color { Color.dynamicColor(defaultColor: DBAColors.jeanblue800, darkModeColor: DBAColors.jeanblue200) }
@@ -149,9 +149,9 @@ struct DBATokenProvider: TokenProvider {
     public var iconNotification: Color { Color.dynamicColor(defaultColor: DBAColors.white, darkModeColor: DBAColors.white) }
 
     /// Text
-    public var text: Color { Color.dynamicColor(defaultColor: DBAColors.gray800, darkModeColor: DBAColors.white) }
+    public var text: Color { Color.dynamicColor(defaultColor: DBAColors.gray900, darkModeColor: DBAColors.white) }
     public var textStatic: Color { Color.dynamicColor(defaultColor: DBAColors.gray800, darkModeColor: DBAColors.gray800) }
-    public var textSubtle: Color { Color.dynamicColor(defaultColor: DBAColors.gray500, darkModeColor: DBAColors.gray100) }
+    public var textSubtle: Color { Color.dynamicColor(defaultColor: DBAColors.gray600, darkModeColor: DBAColors.gray400) }
     public var textPlaceholder: Color { Color.dynamicColor(defaultColor: DBAColors.gray300, darkModeColor: DBAColors.gray500) }
     public var textInverted: Color { Color.dynamicColor(defaultColor: DBAColors.white, darkModeColor: DBAColors.gray900) }
     public var textInvertedStatic: Color { Color.dynamicColor(defaultColor: DBAColors.white, darkModeColor: DBAColors.white) }
@@ -284,7 +284,7 @@ struct DBAUITokenProvider: UITokenProvider {
     public var borderInfoSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.jeanblue500, darkModeColor: DBAUIColors.jeanblue500) }
 
     /// Icon
-    public var icon: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.gray800, darkModeColor: DBAUIColors.white) }
+    public var icon: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.gray900, darkModeColor: DBAUIColors.white) }
     public var iconStatic: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.gray800, darkModeColor: DBAUIColors.gray800) }
     public var iconHover: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.jeanblue700, darkModeColor: DBAUIColors.jeanblue100) }
     public var iconActive: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.jeanblue800, darkModeColor: DBAUIColors.jeanblue200) }
@@ -311,9 +311,9 @@ struct DBAUITokenProvider: UITokenProvider {
     public var iconNotification: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.white, darkModeColor: DBAUIColors.white) }
 
     /// Text
-    public var text: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.gray800, darkModeColor: DBAUIColors.white) }
+    public var text: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.gray900, darkModeColor: DBAUIColors.white) }
     public var textStatic: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.gray800, darkModeColor: DBAUIColors.gray800) }
-    public var textSubtle: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.gray500, darkModeColor: DBAUIColors.gray100) }
+    public var textSubtle: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.gray600, darkModeColor: DBAUIColors.gray400) }
     public var textPlaceholder: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.gray300, darkModeColor: DBAUIColors.gray500) }
     public var textInverted: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.white, darkModeColor: DBAUIColors.gray900) }
     public var textInvertedStatic: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.white, darkModeColor: DBAUIColors.white) }
