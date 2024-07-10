@@ -151,7 +151,7 @@ struct ToriTokenProvider: TokenProvider {
     /// Text
     public var text: Color { Color.dynamicColor(defaultColor: ToriColors.gray900, darkModeColor: ToriColors.white) }
     public var textStatic: Color { Color.dynamicColor(defaultColor: ToriColors.gray900, darkModeColor: ToriColors.gray900) }
-    public var textSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.gray500, darkModeColor: ToriColors.gray100) }
+    public var textSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.gray600, darkModeColor: ToriColors.gray400) }
     public var textPlaceholder: Color { Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500) }
     public var textInverted: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.gray900) }
     public var textInvertedStatic: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.white) }
@@ -313,7 +313,7 @@ struct ToriUITokenProvider: UITokenProvider {
     /// Text
     public var text: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray900, darkModeColor: ToriUIColors.white) }
     public var textStatic: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray900, darkModeColor: ToriUIColors.gray900) }
-    public var textSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray500, darkModeColor: ToriUIColors.gray100) }
+    public var textSubtle: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray600, darkModeColor: ToriUIColors.gray400) }
     public var textPlaceholder: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray500) }
     public var textInverted: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.white, darkModeColor: ToriUIColors.gray900) }
     public var textInvertedStatic: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.white, darkModeColor: ToriUIColors.white) }
