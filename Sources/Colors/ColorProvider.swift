@@ -335,7 +335,7 @@ public struct ColorProvider {
     
     /// Callout
     var calloutText: Color { token.text }
-    var calloutBackground: Color {
+    public var calloutBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.green100, darkModeColor: FinnColors.green800)
@@ -345,7 +345,7 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: DBAColors.green100, darkModeColor: DBAColors.green800)
         }
     }
-    var calloutBorder: Color {
+    public var calloutBorder: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.green400, darkModeColor: FinnColors.green600)
@@ -998,7 +998,7 @@ public struct UIColorProvider {
     
     /// Callout
     var calloutText: UIColor { token.text }
-    var calloutBackground: UIColor {
+    public var calloutBackground: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.green100, darkModeColor: FinnUIColors.green800)
@@ -1008,7 +1008,7 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: DBAUIColors.green100, darkModeColor: DBAUIColors.green800)
         }
     }
-    var calloutBorder: UIColor {
+    public var calloutBorder: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.green400, darkModeColor: FinnUIColors.green600)
