@@ -375,23 +375,6 @@ public extension Color {
             opacity: Double(a) / 255
         )
     }
-    
-    var toUIColor: UIColor {
-        return UIColor { traitCollection in
-            return UIColor(self).resolvedColor(with: traitCollection)
-        }
-    }
-    
-    /**
-     CGColor is a Core Graphics primitive, a plain C struct. It does not have UIColor’s new dynamic behavior in iOS 13, because it cannot. It is not an object like UIColor, but just a group of floating-point values.
-
-     Thus, when your app is launched, views that are customized using CGColor will look correct. However, if you change the appearance setting while the app is running, every CGColor instance will be “stuck” in the wrong appearance since CGColor cannot respond to trait collection changes.
-
-     To fix this, we need to extract this kind of code into a separate method and then call this method from traitCollectionDidChange() in our custom view or view controller objects.
-     */
-    var toCGColor: CGColor {
-        return self.toUIColor.cgColor
-    }
 }
 
 #if canImport(UIKit)
