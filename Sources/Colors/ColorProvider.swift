@@ -100,7 +100,6 @@ public struct ColorProvider {
             return DBAColors.black.opacity(0.7)
         }
     }
-    var badgeNotificationBackground: Color { token.backgroundNotification }
     public var badgeSponsoredBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
@@ -764,7 +763,6 @@ public struct UIColorProvider {
             return DBAUIColors.black.withAlphaComponent(0.7)
         }
     }
-    var badgeNotificationBackground: UIColor { token.backgroundNotification }
     public var badgeSponsoredBackground: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
