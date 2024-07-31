@@ -49,7 +49,7 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: DBAColors.gray100, darkModeColor: DBAColors.gray600)
         }
     }
-    var badgeInfoBackground: Color {
+    public var badgeInfoBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.aqua100, darkModeColor: FinnColors.aqua700)
@@ -712,7 +712,7 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: DBAUIColors.gray100, darkModeColor: DBAUIColors.gray600)
         }
     }
-    var badgeInfoBackground: UIColor {
+    public var badgeInfoBackground: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.aqua100, darkModeColor: FinnUIColors.aqua700)
