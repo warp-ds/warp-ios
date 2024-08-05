@@ -1,7 +1,5 @@
 import SwiftUI
-#if canImport(UIKit)
 import UIKit
-#endif
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=888578831
 public protocol TokenProvider {
@@ -377,7 +375,6 @@ public extension Color {
     }
 }
 
-#if canImport(UIKit)
 extension Color {
     static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
         return Color(
@@ -406,7 +403,6 @@ extension UIColor {
         }
     }
 }
-#endif
 
 #if canImport(AppKit)
 extension Color {

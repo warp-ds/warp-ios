@@ -7,7 +7,7 @@ final class ColorFactorySmokeTests: XCTestCase {
 
     func testForegroundColor_Parameterized_ShouldBeEqual() throws {
         // INS
-        let colorProvider = Warp.Warp.Color
+        let colorProvider = Warp.Color
 
         let disabledTextColor = colorProvider.buttonDisabledText
 
@@ -123,7 +123,7 @@ final class ColorFactorySmokeTests: XCTestCase {
 
     func testBackgroundColor_Parameterized_ShouldBeEqual() throws {
         // INS
-        let colorProvider = Warp.Warp.Color
+        let colorProvider = Warp.Color
 
         let disabledBackgroundColor = colorProvider.buttonDisabledBackground
         let utilityDisabledBackgroundColor = colorProvider.buttonUtilityBackgroundDisabled
@@ -299,7 +299,7 @@ final class ColorFactorySmokeTests: XCTestCase {
 
     func testBorderColor_Parameterized_ShouldBeEqual() throws {
         // INS
-        let colorProvider = Warp.Warp.Color
+        let colorProvider = Warp.Color
 
         let clearColor = Color.clear
 
