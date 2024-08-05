@@ -7,8 +7,8 @@ final class TypographyFactorySmokeTests: XCTestCase {
     private typealias TypographyFactory = Warp.Button.TypographyFactory
 
     func testFonts_Parameterized_ShouldBeEqual() throws {
-        let calloutFont = Font.callout
-        let captionFont = Font.caption
+        let calloutFont = Warp.Typography.title4.font
+        let captionFont = Warp.Typography.detailStrong.font
 
         let typesWithExpectations: [(type: Warp.ButtonType, expectedFont: Font)] = [
             (.primary, calloutFont),

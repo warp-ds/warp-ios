@@ -112,13 +112,13 @@ final class MetricsFactorySmokeTests: XCTestCase {
             // UtilityTertiary
             ButtonVariant(
                 type: .utilityTertiary,
-                expectation: defaultCornerRadiusExpectation
+                expectation: defaultCornerRadiusExpectation / 2
             ),
 
             // UtilityOverlay
             ButtonVariant(
                 type: .utilityOverlay,
-                expectation: defaultCornerRadiusExpectation
+                expectation: defaultCornerRadiusExpectation / 2
             ),
         ]
 
