@@ -139,7 +139,7 @@ public struct ColorProvider {
     /// Button
     var buttonPrimaryText: Color { token.textInverted }
     var buttonPrimaryTextDisabled: Color { token.textInverted }
-    var buttonPrimaryBackground: Color {
+    public var buttonPrimaryBackground: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return token.backgroundPrimary
@@ -159,7 +159,7 @@ public struct ColorProvider {
             return token.backgroundPrimaryHover
         }
     }
-    var buttonPrimaryBackgroundActive: Color {
+    public var buttonPrimaryBackgroundActive: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return token.backgroundPrimaryActive
