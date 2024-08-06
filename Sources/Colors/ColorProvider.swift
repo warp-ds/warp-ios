@@ -468,7 +468,7 @@ public struct ColorProvider {
     //    var shadowModal: Color { token.shadowModal }
     
     /// Nav Bar
-    var navbarIconSelected: Color {
+    public var navbarIconSelected: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return token.iconSelected
@@ -478,7 +478,7 @@ public struct ColorProvider {
             return token.iconSecondary
         }
     }
-    var navbarBorderSelected: Color {
+    public var navbarBorderSelected: Color {
         switch Warp.Config.warpTheme {
         case .finn:
             return token.borderSelected
@@ -1131,7 +1131,7 @@ public struct UIColorProvider {
     //    var shadowModal: UIColor { token.shadowModal }
     
     /// Nav Bar
-    var navbarIconSelected: UIColor {
+    public var navbarIconSelected: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
             return token.iconSelected
@@ -1141,7 +1141,7 @@ public struct UIColorProvider {
             return token.iconSecondary
         }
     }
-    var navbarBorderSelected: UIColor {
+    public var navbarBorderSelected: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
             return token.borderSelected
