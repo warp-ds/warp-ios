@@ -802,7 +802,7 @@ public struct UIColorProvider {
     /// Button
     var buttonPrimaryText: UIColor { token.textInverted }
     var buttonPrimaryTextDisabled: UIColor { token.textInverted }
-    var buttonPrimaryBackground: UIColor {
+    public var buttonPrimaryBackground: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
             return token.backgroundPrimary
@@ -822,7 +822,7 @@ public struct UIColorProvider {
             return token.backgroundPrimaryHover
         }
     }
-    var buttonPrimaryBackgroundActive: UIColor {
+    public var buttonPrimaryBackgroundActive: UIColor {
         switch Warp.Config.warpTheme {
         case .finn:
             return token.backgroundPrimaryActive
