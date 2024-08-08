@@ -43,7 +43,6 @@
 		8213D0AF2B9078D700FCA310 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		8226D5782C297BFE00928E59 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8226D5772C297BFE00928E59 /* GoogleService-Info.plist */; };
-		822DDEBC2C33E81700015A0A /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
 		82355B002A8CCBE70023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
 		82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */; };
@@ -67,6 +66,9 @@
 		82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
 		82A2155C2A8DF93B0062FB9E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
 		82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
+		82AE96112C64C2C000BF3920 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE96102C64C2C000BF3920 /* UIShadowView.swift */; };
+		82AE96122C64C2C000BF3920 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE96102C64C2C000BF3920 /* UIShadowView.swift */; };
+		82AE96132C64C2C000BF3920 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE96102C64C2C000BF3920 /* UIShadowView.swift */; };
 		82B168122B750BED00DCDDE5 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B168112B750BED00DCDDE5 /* TextView.swift */; };
 		82B168132B750BED00DCDDE5 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B168112B750BED00DCDDE5 /* TextView.swift */; };
 		82C7E6F52B7B85E000760C08 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
@@ -113,6 +115,7 @@
 		828E7D442B61239100869C58 /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		82A215582A8DF4DC0062FB9E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		82AE96102C64C2C000BF3920 /* UIShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShadowView.swift; sourceTree = "<group>"; };
 		82B168112B750BED00DCDDE5 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		82C7E6F42B7B85E000760C08 /* BroadcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastView.swift; sourceTree = "<group>"; };
 		B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 			children = (
 				B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */,
 				8213D0AE2B9078D700FCA310 /* ShadowView.swift */,
+				82AE96102C64C2C000BF3920 /* UIShadowView.swift */,
 				82C7E6F42B7B85E000760C08 /* BroadcastView.swift */,
 				B2A8B2782B6D33B800122DBC /* CalloutView.swift */,
 				349586632B0EAD2D00A14570 /* TypographyView.swift */,
@@ -397,6 +401,7 @@
 				2E1ADF502C2561A700DFEE06 /* BadgeView.swift in Sources */,
 				2E1ADF522C2561A700DFEE06 /* BroadcastView.swift in Sources */,
 				2E1ADF532C2561A700DFEE06 /* CalloutView.swift in Sources */,
+				82AE96122C64C2C000BF3920 /* UIShadowView.swift in Sources */,
 				2E1ADF542C2561A700DFEE06 /* SpinnerView.swift in Sources */,
 				2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */,
 				2E1ADF562C2561A700DFEE06 /* BrandTokensView.swift in Sources */,
@@ -423,6 +428,7 @@
 				B238A26E2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
 				828E7D452B61239100869C58 /* BadgeView.swift in Sources */,
 				82A2155C2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
+				82AE96112C64C2C000BF3920 /* UIShadowView.swift in Sources */,
 				B2A8B2792B6D33B800122DBC /* CalloutView.swift in Sources */,
 				82635D072BFE1CA700F7FA6F /* SpinnerView.swift in Sources */,
 				82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
@@ -449,6 +455,7 @@
 				B238A26F2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
 				82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */,
+				82AE96132C64C2C000BF3920 /* UIShadowView.swift in Sources */,
 				B2A8B27A2B6D33B800122DBC /* CalloutView.swift in Sources */,
 				82635D082BFE1CD800F7FA6F /* SpinnerView.swift in Sources */,
 				82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,

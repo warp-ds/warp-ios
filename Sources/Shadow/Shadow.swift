@@ -131,3 +131,59 @@ extension View {
         modifier(ShadowViewModifier(shadow: shadow))
     }
 }
+
+extension UIView {
+    public func dropShadow(_ shadow: Warp.Shadow) {
+        layer.masksToBounds = false
+        // Auto layout, variables, and unit scale are not yet supported
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: 192, height: 192)
+        let shadows = UIView()
+        shadows.frame = view.frame
+        shadows.clipsToBounds = false
+        view.addSubview(shadows)
+
+        let shadowPath0 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 8)
+        let layer0 = CALayer()
+        layer0.shadowPath = shadowPath0.cgPath
+        layer0.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
+        layer0.shadowOpacity = 1
+        layer0.shadowRadius = 1
+        layer0.shadowOffset = CGSize(width: 0, height: 1)
+        layer0.bounds = shadows.bounds
+        layer0.position = shadows.center
+        shadows.layer.addSublayer(layer0)
+
+        let shadowPath1 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 8)
+        let layer1 = CALayer()
+        layer1.shadowPath = shadowPath1.cgPath
+        layer1.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.12).cgColor
+        layer1.shadowOpacity = 1
+        layer1.shadowRadius = 6
+        layer1.shadowOffset = CGSize(width: 0, height: 1)
+        layer1.bounds = shadows.bounds
+        layer1.position = shadows.center
+        shadows.layer.addSublayer(layer1)
+
+        let shapes = UIView()
+        shapes.frame = view.frame
+        shapes.clipsToBounds = true
+        view.addSubview(shapes)
+
+        let layer2 = CALayer()
+        layer2.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        layer2.bounds = shapes.bounds
+        layer2.position = shapes.center
+        shapes.layer.addSublayer(layer2)
+
+        shapes.layer.cornerRadius = 8
+
+        let parent = self
+        parent.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+    }
+}
