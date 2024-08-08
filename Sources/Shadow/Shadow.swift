@@ -164,16 +164,11 @@ extension UIView {
         layer1.position = shadows.center
         layer.addSublayer(layer1)
 
-        let shapes = UIView()
-        shapes.frame = view.frame
-        shapes.clipsToBounds = true
-        view.addSubview(shapes)
-
         let layer2 = CALayer()
         layer2.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         layer2.cornerRadius = 8
-        layer2.bounds = shapes.bounds
-        layer2.position = shapes.center
+        layer2.bounds = shadows.bounds
+        layer2.position = shadows.center
         layer.addSublayer(layer2)
     }
 }
