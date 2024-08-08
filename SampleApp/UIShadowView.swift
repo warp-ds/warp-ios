@@ -19,6 +19,12 @@ class ShadowViewController: UIViewController {
         shadowView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         shadowView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         shadowView.dropShadow(.small)
+        
+        let label = Warp.Text("UIView with surfaceElevated100", style: .caption).uiView
+        shadowView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: shadowView.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: shadowView.centerYAnchor).isActive = true
     }
 }
 

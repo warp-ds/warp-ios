@@ -138,30 +138,30 @@ extension UIView {
         shadows.frame = CGRect(x: 0, y: 0, width: 192, height: 192)
 
         let shadowPath0 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 8)
-        let layer0 = CALayer()
-        layer0.shadowPath = shadowPath0.cgPath
-        layer0.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
-        layer0.shadowOpacity = 1
-        layer0.shadowRadius = 1
-        layer0.shadowOffset = CGSize(width: 0, height: 1)
+        let layer1 = CALayer()
+        layer1.shadowPath = shadowPath0.cgPath
+        layer1.shadowColor = UIColor.black.withAlphaComponent(shadow.opacity1).cgColor
+        layer1.shadowOpacity = 1
+        layer1.shadowRadius = shadow.radius1 * 2
+        layer1.shadowOffset = CGSize(width: shadow.x1, height: shadow.y1)
 
         let shadowPath1 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 8)
-        let layer1 = CALayer()
-        layer1.shadowPath = shadowPath1.cgPath
-        layer1.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.12).cgColor
-        layer1.shadowOpacity = 1
-        layer1.shadowRadius = 6
-        layer1.shadowOffset = CGSize(width: 0, height: 1)
-
         let layer2 = CALayer()
-        layer2.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        layer2.cornerRadius = 8
-        layer2.bounds = shadows.bounds
-        layer2.position = shadows.center
+        layer2.shadowPath = shadowPath1.cgPath
+        layer2.shadowColor = UIColor.black.withAlphaComponent(shadow.opacity2).cgColor
+        layer2.shadowOpacity = 1
+        layer2.shadowRadius = shadow.radius2 * 2
+        layer2.shadowOffset = CGSize(width: shadow.x2, height: shadow.y2)
+
+        let layer3 = CALayer()
+        layer3.backgroundColor = UIColor.white.cgColor
+        layer3.cornerRadius = 8
+        layer3.bounds = shadows.bounds
+        layer3.position = shadows.center
         
         layer.masksToBounds = false
-        layer.addSublayer(layer0)
         layer.addSublayer(layer1)
         layer.addSublayer(layer2)
+        layer.addSublayer(layer3)
     }
 }
