@@ -134,6 +134,11 @@ extension View {
 
 extension UIView {
     public func dropShadow(_ shadow: Warp.Shadow, width: CGFloat, height: CGFloat) {
+        layer.shadowColor = UIColor.black.withAlphaComponent(shadow.opacity1).cgColor
+        layer.shadowOpacity = 1
+        layer.shadowRadius = shadow.radius1 * 2
+        layer.shadowOffset = CGSize(width: shadow.x1, height: shadow.y1)
+        return
         let shadows = UIView()
         shadows.frame = CGRect(x: 0, y: 0, width: width, height: height)
 
