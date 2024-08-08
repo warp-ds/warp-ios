@@ -17,7 +17,7 @@ class ShadowViewController: UIViewController {
         shadowView.heightAnchor.constraint(equalToConstant: 192).isActive = true
         shadowView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         shadowView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        shadowView.dropShadow(.small)
+        shadowView.dropShadow(.small, width: 192, height: 192)
         
         let label = Warp.Text("UIView with surfaceElevated100", style: .caption).uiView
         shadowView.addSubview(label)
