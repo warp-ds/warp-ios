@@ -11,7 +11,6 @@ class ShadowViewController: UIViewController {
         view.backgroundColor = Warp.UIToken.surfaceSunken
         view.addSubview(shadowView)
         shadowView.layer.cornerRadius = 8
-        shadowView.clipsToBounds = true
         shadowView.backgroundColor = Warp.UIToken.surfaceElevated100
         shadowView.translatesAutoresizingMaskIntoConstraints = false
         shadowView.widthAnchor.constraint(equalToConstant: 192).isActive = true
