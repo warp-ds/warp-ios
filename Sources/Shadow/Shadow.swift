@@ -153,11 +153,25 @@ extension UIView {
         layer2.shadowRadius = shadow.radius2 * 2
         layer2.shadowOffset = CGSize(width: shadow.x2, height: shadow.y2)
 
+        guard let superview = superview else {
+            let layer3 = CALayer()
+            layer3.backgroundColor = UIColor.white.cgColor
+            layer3.cornerRadius = 8
+            layer3.bounds = shadows.bounds
+            layer3.position = shadows.center
+            
+            layer.masksToBounds = false
+            layer.addSublayer(layer1)
+            layer.addSublayer(layer2)
+            layer.addSublayer(layer3)
+            return
+        }
+        
         shadows.layer.masksToBounds = false
         shadows.layer.addSublayer(layer1)
         shadows.layer.addSublayer(layer2)
-
-        superview?.insertSubview(shadows, belowSubview: self)
+        
+        superview.insertSubview(shadows, belowSubview: self)
         shadows.translatesAutoresizingMaskIntoConstraints = false
         shadows.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         shadows.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
