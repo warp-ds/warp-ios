@@ -106,6 +106,12 @@ struct ContentView: View {
                     }
 
                     Divider()
+                    
+                    NavigationLink(destination: ModalView()) {
+                        Text("Modal")
+                            .padding()
+                    }
+                    Divider()
 
                     NavigationLink(destination: PillView()) {
                         Text("Pill")
@@ -115,28 +121,28 @@ struct ContentView: View {
                     Divider()
 
                     NavigationLink(destination: ShadowView()) {
-                        Text("ShadowView")
+                        Text("Shadow")
                             .padding()
                     }
                     
                     Divider()
                     
                     NavigationLink(destination: ShadowUIView()) {
-                        Text("ShadowUIView")
+                        Text("ShadowUI")
                             .padding()
                     }
 
                     Divider()
 
                     NavigationLink(destination: SpinnerView()) {
-                        Text("SpinnerView")
+                        Text("Spinner")
                             .padding()
                     }
 
                     Divider()
 
                     NavigationLink(destination: StepIndicatorView()) {
-                        Text("Step Indicator")
+                        Text("StepIndicator")
                             .padding()
                     }
 
@@ -161,12 +167,6 @@ struct ContentView: View {
                             .padding()
                     }
 
-                    Divider()
-
-                    NavigationLink(destination: ModalView()) {
-                        Text("Modal")
-                            .padding()
-                    }
                     Divider()
 
                     Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
