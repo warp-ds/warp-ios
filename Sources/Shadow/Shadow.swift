@@ -133,54 +133,40 @@ extension View {
 }
 
 extension UIView {
-    public func dropShadow(_ shadow: Warp.Shadow, width: CGFloat, height: CGFloat) {
-        layer.shadowColor = UIColor.black.withAlphaComponent(shadow.opacity1).cgColor
-        layer.shadowOpacity = 1
-        layer.shadowRadius = shadow.radius1 * 2
-        layer.shadowOffset = CGSize(width: shadow.x1, height: shadow.y1)
-        return
-        let shadows = UIView()
-        shadows.frame = CGRect(x: 0, y: 0, width: width, height: height)
+    public func dropShadow(_ shadow: Warp.Shadow) {
+        // Remove existing shadow layers to avoid stacking
+        layer.sublayers?.removeAll(where: { $0.name == "firstShadowLayer" || $0.name == "secondShadowLayer" })
 
-        let shadowPath0 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 8)
-        let layer1 = CALayer()
-        layer1.shadowPath = shadowPath0.cgPath
-        layer1.shadowColor = UIColor.black.withAlphaComponent(shadow.opacity1).cgColor
-        layer1.shadowOpacity = 1
-        layer1.shadowRadius = shadow.radius1 * 2
-        layer1.shadowOffset = CGSize(width: shadow.x1, height: shadow.y1)
+        // First shadow layer
+        let firstShadowLayer = CALayer()
+        firstShadowLayer.name = "firstShadowLayer"
+        firstShadowLayer.shadowColor = UIColor.black.withAlphaComponent(shadow.opacity1).cgColor
+        firstShadowLayer.shadowOffset = CGSize(width: shadow.x1, height: shadow.y1)
+        firstShadowLayer.shadowRadius = shadow.radius1 * 2
+        firstShadowLayer.shadowOpacity = 1
+        firstShadowLayer.frame = self.bounds
+        firstShadowLayer.backgroundColor = self.backgroundColor?.cgColor
 
-        let shadowPath1 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 8)
-        let layer2 = CALayer()
-        layer2.shadowPath = shadowPath1.cgPath
-        layer2.shadowColor = UIColor.black.withAlphaComponent(shadow.opacity2).cgColor
-        layer2.shadowOpacity = 1
-        layer2.shadowRadius = shadow.radius2 * 2
-        layer2.shadowOffset = CGSize(width: shadow.x2, height: shadow.y2)
+        // Second shadow layer
+        let secondShadowLayer = CALayer()
+        secondShadowLayer.shadowColor = UIColor.black.withAlphaComponent(shadow.opacity2).cgColor
+        secondShadowLayer.shadowOffset = CGSize(width: shadow.x2, height: shadow.y2)
+        secondShadowLayer.shadowRadius = shadow.radius2 * 2
+        secondShadowLayer.shadowOpacity = 1
+        secondShadowLayer.frame = self.bounds
+        secondShadowLayer.backgroundColor = self.backgroundColor?.cgColor
 
-        guard let superview = superview else {
-            let layer3 = CALayer()
-            layer3.backgroundColor = UIColor.white.cgColor
-            layer3.cornerRadius = 8
-            layer3.bounds = shadows.bounds
-            layer3.position = shadows.center
-            
-            layer.masksToBounds = false
-            layer.addSublayer(layer1)
-            layer.addSublayer(layer2)
-            layer.addSublayer(layer3)
-            return
+        // Add the shadow layers to the view's layer
+        self.layer.insertSublayer(firstShadowLayer, at: 0)
+        self.layer.insertSublayer(secondShadowLayer, at: 0)
+    }
+    
+    public func layoutShadowLayers() {
+        // Update shadow layers' frames
+        layer.sublayers?.forEach { sublayer in
+            if sublayer.name == "firstShadowLayer" || sublayer.name == "secondShadowLayer" {
+                sublayer.frame = self.bounds
+            }
         }
-        
-        shadows.layer.masksToBounds = false
-        shadows.layer.addSublayer(layer1)
-        shadows.layer.addSublayer(layer2)
-        
-        superview.insertSubview(shadows, belowSubview: self)
-        shadows.translatesAutoresizingMaskIntoConstraints = false
-        shadows.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        shadows.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        shadows.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        shadows.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 }
