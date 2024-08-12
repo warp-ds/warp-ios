@@ -375,7 +375,7 @@ public extension Color {
     }
 }
 
-public extension Color {
+extension Color {
     static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
         return Color(
             UIColor.dynamicColor(
@@ -386,7 +386,7 @@ public extension Color {
     }
 }
 
-public extension UIColor {
+extension UIColor {
     /// Convenience method to create dynamic colors for dark mode if the OS supports it (independant of FinniversKit
     /// settings)
     /// - Parameters:
