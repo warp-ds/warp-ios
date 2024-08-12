@@ -136,36 +136,58 @@ extension UIView {
     public func dropShadow(_ shadow: Warp.Shadow) {
         // Remove existing shadow layers to avoid stacking
         layer.sublayers?.removeAll(where: { $0.name == "firstShadowLayer" || $0.name == "secondShadowLayer" })
-
+        
         // First shadow layer
-        let firstShadowLayer = CALayer()
-        firstShadowLayer.name = "firstShadowLayer"
-        firstShadowLayer.shadowColor = UIColor.black.withAlphaComponent(shadow.opacity1).cgColor
-        firstShadowLayer.shadowOffset = CGSize(width: shadow.x1, height: shadow.y1)
-        firstShadowLayer.shadowRadius = shadow.radius1 * 2
-        firstShadowLayer.shadowOpacity = 1
-        firstShadowLayer.frame = self.bounds
-        firstShadowLayer.backgroundColor = self.backgroundColor?.cgColor
-
+        let firstShadowLayer = createShadowLayer(
+            name: "firstShadowLayer",
+            color: UIColor.black.withAlphaComponent(shadow.opacity1),
+            offset: CGSize(width: shadow.x1, height: shadow.y1),
+            radius: shadow.radius1 * 2,
+            opacity: 1
+        )
+        
         // Second shadow layer
-        let secondShadowLayer = CALayer()
-        secondShadowLayer.shadowColor = UIColor.black.withAlphaComponent(shadow.opacity2).cgColor
-        secondShadowLayer.shadowOffset = CGSize(width: shadow.x2, height: shadow.y2)
-        secondShadowLayer.shadowRadius = shadow.radius2 * 2
-        secondShadowLayer.shadowOpacity = 1
-        secondShadowLayer.frame = self.bounds
-        secondShadowLayer.backgroundColor = self.backgroundColor?.cgColor
-
+        let secondShadowLayer = createShadowLayer(
+            name: "secondShadowLayer",
+            color: UIColor.black.withAlphaComponent(shadow.opacity2),
+            offset: CGSize(width: shadow.x2, height: shadow.y2),
+            radius: shadow.radius2 * 2,
+            opacity: 1
+        )
+        
         // Add the shadow layers to the view's layer
         self.layer.insertSublayer(firstShadowLayer, at: 0)
         self.layer.insertSublayer(secondShadowLayer, at: 0)
+        
+        // Update the corner radius and shadow path
+        updateShadowLayersFrameAndCornerRadius()
+    }
+    
+    private func createShadowLayer(name: String, color: UIColor, offset: CGSize, radius: CGFloat, opacity: Float) -> CALayer {
+        let shadowLayer = CALayer()
+        shadowLayer.name = name
+        shadowLayer.shadowColor = color.cgColor
+        shadowLayer.shadowOffset = offset
+        shadowLayer.shadowRadius = radius
+        shadowLayer.shadowOpacity = opacity
+        shadowLayer.backgroundColor = self.backgroundColor?.cgColor
+        shadowLayer.cornerRadius = self.layer.cornerRadius
+        return shadowLayer
     }
     
     public func layoutShadowLayers() {
-        // Update shadow layers' frames
+        // Update shadow layers' frames and paths
+        updateShadowLayersFrameAndCornerRadius()
+    }
+    
+    private func updateShadowLayersFrameAndCornerRadius() {
+        let shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
+        
         layer.sublayers?.forEach { sublayer in
             if sublayer.name == "firstShadowLayer" || sublayer.name == "secondShadowLayer" {
                 sublayer.frame = self.bounds
+                sublayer.cornerRadius = self.layer.cornerRadius
+                sublayer.shadowPath = shadowPath
             }
         }
     }
