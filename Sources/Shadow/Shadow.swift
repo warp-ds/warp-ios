@@ -133,11 +133,19 @@ extension View {
 }
 
 extension UIView {
+    /// Adds double shadow layers to the view with specified shadow properties.
+    ///
+    /// This method creates and adds two shadow layers to the view, with properties specified by the `Warp.Shadow` parameter.
+    /// It removes any existing shadow layers before adding the new ones.
+    ///
+    /// - Parameter shadow: A `Warp.Shadow` object containing properties for the two shadows.
+    ///
+    /// - Note: To ensure the shadow layers update correctly with layout changes, call `layoutShadowLayers` in your view's `viewDidLayoutSubviews` method.
     public func dropShadow(_ shadow: Warp.Shadow) {
-        // Remove existing shadow layers to avoid stacking
+        // Remove existing shadow layers to avoid stacking multiple shadow layers
         layer.sublayers?.removeAll(where: { $0.name == "firstShadowLayer" || $0.name == "secondShadowLayer" })
         
-        // First shadow layer
+        // Create the first shadow layer
         let firstShadowLayer = createShadowLayer(
             name: "firstShadowLayer",
             color: UIColor.black.withAlphaComponent(shadow.opacity1),
@@ -146,7 +154,7 @@ extension UIView {
             opacity: 1
         )
         
-        // Second shadow layer
+        // Create the second shadow layer
         let secondShadowLayer = createShadowLayer(
             name: "secondShadowLayer",
             color: UIColor.black.withAlphaComponent(shadow.opacity2),
@@ -163,6 +171,15 @@ extension UIView {
         updateShadowLayersFrameAndCornerRadius()
     }
     
+    /// Creates a shadow layer with specified properties.
+    ///
+    /// - Parameters:
+    ///   - name: The name of the shadow layer.
+    ///   - color: The color of the shadow.
+    ///   - offset: The offset of the shadow.
+    ///   - radius: The blur radius of the shadow.
+    ///   - opacity: The opacity of the shadow.
+    /// - Returns: A configured `CALayer` instance for the shadow.
     private func createShadowLayer(name: String, color: UIColor, offset: CGSize, radius: CGFloat, opacity: Float) -> CALayer {
         let shadowLayer = CALayer()
         shadowLayer.name = name
@@ -175,14 +192,20 @@ extension UIView {
         return shadowLayer
     }
     
+    /// Updates the frames and paths of the shadow layers to match the view's bounds and corner radius.
+    ///
+    /// - Note: Call this method in your view's `viewDidLayoutSubviews` method to ensure the shadow layers update correctly with layout changes.
     public func layoutShadowLayers() {
         // Update shadow layers' frames and paths
         updateShadowLayersFrameAndCornerRadius()
     }
     
+    /// Updates the frames and paths of the shadow layers to match the view's bounds and corner radius.
     private func updateShadowLayersFrameAndCornerRadius() {
+        // Create a shadow path with the same corner radius as the view
         let shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
         
+        // Update each shadow layer's frame, corner radius, and shadow path
         layer.sublayers?.forEach { sublayer in
             if sublayer.name == "firstShadowLayer" || sublayer.name == "secondShadowLayer" {
                 sublayer.frame = self.bounds
