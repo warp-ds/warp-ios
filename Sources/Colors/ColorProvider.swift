@@ -660,7 +660,7 @@ public struct ColorProvider {
     
     /// Tooltip
     var tooltipText: Color { token.textInvertedStatic }
-    var tooltipBackgroundStatic: Color { Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300) }
+    public var tooltipBackgroundStatic: Color { Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300) }
     //    var shadowTooltip: Color { toek.shadow-m }
 }
 
@@ -1323,6 +1323,6 @@ public struct UIColorProvider {
     
     /// Tooltip
     var tooltipText: UIColor { token.textInvertedStatic }
-    var tooltipBackgroundStatic: UIColor { UIColor.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300) }
+    public var tooltipBackgroundStatic: UIColor { UIColor.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300) }
     //    var shadowTooltip: UIColor { toek.shadow-m }
 }
