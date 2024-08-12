@@ -1,115 +1,83 @@
 import SwiftUI
 
 extension Warp {
+    /// Defines shadow properties for different shadow sizes.
     public enum Shadow {
         case small, medium, large, xLarge
         
+        /// The opacity for the first shadow layer.
         fileprivate var opacity1: Double {
             switch self {
-            case .small:
-                return 0.16
-                
-            case .medium:
-                return 0.16
-                
-            case .large:
-                return 0.1
-                
-            case .xLarge:
-                return 0.2
+            case .small:  return 0.16
+            case .medium: return 0.16
+            case .large:  return 0.1
+            case .xLarge: return 0.2
             }
         }
         
+        /// The opacity for the second shadow layer.
         fileprivate var opacity2: Double {
             switch self {
-            case .small:
-                return 0.12
-                
-            case .medium:
-                return 0.1
-                
-            case .large:
-                return 0.2
-                
-            case .xLarge:
-                return 0.1
+            case .small:  return 0.12
+            case .medium: return 0.1
+            case .large:  return 0.2
+            case .xLarge: return 0.1
             }
         }
         
+        /// The blur radius for the first shadow layer.
         fileprivate var radius1: CGFloat {
             switch self {
-            case .small:
-                return 0.5
-                
-            case .medium:
-                return 4
-                
-            case .large:
-                return 10
-                
-            case .xLarge:
-                return 14
+            case .small:  return 0.5
+            case .medium: return 4
+            case .large:  return 10
+            case .xLarge: return 14
             }
         }
         
+        /// The blur radius for the second shadow layer.
         fileprivate var radius2: CGFloat {
             switch self {
-            case .small:
-                return 3
-                
-            case .medium:
-                return 3
-                
-            case .large:
-                return 6
-                
-            case .xLarge:
-                return 9
+            case .small:  return 3
+            case .medium: return 3
+            case .large:  return 6
+            case .xLarge: return 9
             }
         }
         
+        /// The horizontal offset for the first shadow layer.
         fileprivate var x1: CGFloat {
             0
         }
         
+        /// The horizontal offset for the second shadow layer.
         fileprivate var x2: CGFloat {
             0
         }
         
+        /// The vertical offset for the first shadow layer.
         fileprivate var y1: CGFloat {
             switch self {
-            case .small:
-                return 1
-                
-            case .medium:
-                return 3
-                
-            case .large:
-                return 10
-                
-            case .xLarge:
-                return 14
+            case .small: return 1
+            case .medium: return 3
+            case .large: return 10
+            case .xLarge: return 14
             }
         }
         
+        /// The vertical offset for the second shadow layer.
         fileprivate var y2: CGFloat {
             switch self {
-            case .small:
-                return 1
-                
-            case .medium:
-                return 3
-                
-            case .large:
-                return 6
-                
-            case .xLarge:
-                return 9
+            case .small:  return 1
+            case .medium: return 3
+            case .large:  return 6
+            case .xLarge: return 9
             }
         }
     }
 }
 
+/// A view modifier that applies double shadows to a view based on the specified `Warp.Shadow` properties.
 private struct ShadowViewModifier: ViewModifier {
     let shadow: Warp.Shadow
     
@@ -127,6 +95,10 @@ private struct ShadowViewModifier: ViewModifier {
 }
 
 extension View {
+    /// Applies double shadows to the view based on the specified `Warp.Shadow` properties.
+    ///
+    /// - Parameter shadow: A `Warp.Shadow` object containing properties for the two shadows.
+    /// - Returns: A view modified with the specified double shadows.
     public func shadow(_ shadow: Warp.Shadow) -> some View {
         modifier(ShadowViewModifier(shadow: shadow))
     }
