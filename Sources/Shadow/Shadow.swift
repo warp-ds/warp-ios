@@ -2,8 +2,17 @@ import SwiftUI
 
 extension Warp {
     /// Defines shadow properties for different shadow sizes.
-    public enum Shadow {
+    public enum Shadow: CaseIterable {
         case small, medium, large, xLarge
+        
+        public var name: String {
+            switch self {
+            case .small:  return "Small"
+            case .medium: return "Medium"
+            case .large:  return "Large"
+            case .xLarge: return "xLarge"
+            }
+        }
         
         /// The opacity for the first shadow layer.
         fileprivate var opacity1: Double {

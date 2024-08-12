@@ -43,31 +43,6 @@ struct ShadowView: View {
     }
 }
 
-extension Warp.Shadow {
-    fileprivate static var allCases: [Warp.Shadow] = [
-        .small,
-        .medium,
-        .large,
-        .xLarge
-    ]
-    
-    fileprivate var name: String {
-        switch self {
-            case .small:
-                return "Small"
-
-            case .medium:
-                return "Medium"
-
-            case .large:
-                return "Large"
-
-        case .xLarge:
-            return "xLarge"
-        }
-    }
-}
-
 #Preview {
     ShadowView()
 }

@@ -121,8 +121,8 @@ struct ContentView: View {
                     
                     Divider()
                     
-                    NavigationLink(destination: ShadowViewRepresentable()) {
-                        Text("UIShadowView")
+                    NavigationLink(destination: ShadowUIView()) {
+                        Text("ShadowUIView")
                             .padding()
                     }
 
