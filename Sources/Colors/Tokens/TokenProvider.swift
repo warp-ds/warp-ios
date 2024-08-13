@@ -376,7 +376,7 @@ public extension Color {
 }
 
 extension Color {
-    static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
+    public static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
         return Color(
             UIColor.dynamicColor(
                 defaultColor: UIColor(defaultColor),
@@ -392,7 +392,7 @@ extension UIColor {
     /// - Parameters:
     ///   - defaultColor: light mode version of the color
     ///   - darkModeColor: dark mode version of the color
-    class func dynamicColor(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
+    public class func dynamicColor(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
         UIColor { traitCollection -> UIColor in
             switch traitCollection.userInterfaceStyle {
             case .dark:
