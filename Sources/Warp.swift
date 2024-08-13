@@ -2,8 +2,22 @@ import Foundation
 
 /// Namespace.
 public enum Warp {
+    public enum Brand {
+        case finn, tori, dba
+    }
+    
+    public static var Theme: Brand = .finn {
+        didSet {
+            do {
+                try Warp.Typography.registerFonts()
+            } catch {
+                // Catch the error later
+            }
+        }
+    }
+
     public static var Token: TokenProvider = {
-        switch Config.warpTheme {
+        switch Theme {
         case .finn:
             return FinnTokenProvider()
         case .tori:
@@ -14,7 +28,7 @@ public enum Warp {
     }()
 
     public static var UIToken: UITokenProvider = {
-        switch Config.warpTheme {
+        switch Theme {
         case .finn:
             return FinnUITokenProvider()
         case .tori:

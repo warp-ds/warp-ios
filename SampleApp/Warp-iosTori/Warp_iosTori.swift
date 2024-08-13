@@ -6,7 +6,7 @@ import FirebaseCore
 struct Wrap_iosTori: App {
     
     init() {
-        Warp.Config.warpTheme = .tori
+        Warp.Theme = .tori
         FirebaseApp.configure()
     }
     

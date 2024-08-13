@@ -6,7 +6,7 @@ import FirebaseCore
 struct Wrap_iosDBA: App {
 
     init() {
-        Warp.Config.warpTheme = .dba
+        Warp.Theme = .dba
         FirebaseApp.configure()
     }
     

@@ -3,7 +3,7 @@ import Warp
 
 struct ContentView: View {
     @State private var isShowingButtonView = false
-    @State private var selectedTheme = Warp.Theme.finn
+    @State private var selectedTheme = Warp.Brand.finn
 
     var body: some View {
         NavigationView {
@@ -24,7 +24,7 @@ struct ContentView: View {
                     Text("Brand Specific Items")
                         .font(.title2)
                     Divider()
-                    switch Warp.Config.warpTheme {
+                    switch Warp.Theme {
                     case .finn:
                         NavigationLink(destination: FinnColorsView()) {
                             Text("Colors")

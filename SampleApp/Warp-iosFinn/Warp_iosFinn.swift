@@ -6,7 +6,7 @@ import FirebaseCore
 struct Wrap_iosFinn: App {
     
     init() {
-        Warp.Config.warpTheme = .finn
+        Warp.Theme = .finn
         FirebaseApp.configure()
     }
     

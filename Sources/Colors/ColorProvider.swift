@@ -40,7 +40,7 @@ public struct ColorProvider {
     var badgePriceText: Color { token.textInvertedStatic }
     var badgeNotificationText: Color { token.textNotification }
     public var badgeNeutralBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.gray100, darkModeColor: FinnColors.gray600)
         case .tori:
@@ -50,7 +50,7 @@ public struct ColorProvider {
         }
     }
     public var badgeInfoBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.aqua100, darkModeColor: FinnColors.aqua700)
         case .tori:
@@ -60,7 +60,7 @@ public struct ColorProvider {
         }
     }
     public var badgePositiveBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.green100, darkModeColor: FinnColors.green700)
         case .tori:
@@ -70,7 +70,7 @@ public struct ColorProvider {
         }
     }
     public var badgeWarningBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.yellow100, darkModeColor: FinnColors.yellow700)
         case .tori:
@@ -80,7 +80,7 @@ public struct ColorProvider {
         }
     }
     public var badgeNegativeBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.red100, darkModeColor: FinnColors.red700)
         case .tori:
@@ -91,7 +91,7 @@ public struct ColorProvider {
     }
     public var badgeDisabledBackground: Color { token.backgroundDisabled }
     var badgePriceBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.black.opacity(0.7)
         case .tori:
@@ -101,7 +101,7 @@ public struct ColorProvider {
         }
     }
     public var badgeSponsoredBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.aqua200, darkModeColor: FinnColors.aqua600)
         case .tori:
@@ -140,7 +140,7 @@ public struct ColorProvider {
     var buttonPrimaryText: Color { token.textInverted }
     var buttonPrimaryTextDisabled: Color { token.textInverted }
     public var buttonPrimaryBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimary
         case .tori:
@@ -150,7 +150,7 @@ public struct ColorProvider {
         }
     }
     var buttonPrimaryBackgroundHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimaryHover
         case .tori:
@@ -160,7 +160,7 @@ public struct ColorProvider {
         }
     }
     public var buttonPrimaryBackgroundActive: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimaryActive
         case .tori:
@@ -171,7 +171,7 @@ public struct ColorProvider {
     }
     var buttonPrimaryBackgroundDisabled: Color { token.backgroundDisabled }
     var buttonPrimaryBorder: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimary
         case .tori:
@@ -181,7 +181,7 @@ public struct ColorProvider {
         }
     }
     var buttonPrimaryBorderHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimaryHover
         case .tori:
@@ -191,7 +191,7 @@ public struct ColorProvider {
         }
     }
     var buttonPrimaryBorderActive: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimaryActive
         case .tori:
@@ -239,7 +239,7 @@ public struct ColorProvider {
     var buttonDisabledQuietBorder: Color { token.borderDisabled }
     var buttonPillBackground: Color { .clear }
     var buttonPillBackgroundHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.blue300.opacity(0.3)
         case .tori:
@@ -249,7 +249,7 @@ public struct ColorProvider {
         }
     }
     var buttonPillBackgroundActive: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.blue400.opacity(0.3)
         case .tori:
@@ -293,7 +293,7 @@ public struct ColorProvider {
     var buttonGroupBorder: Color { token.border }
     var buttonGroupBorderSelected: Color { token.borderPrimary }
     var buttonGroupUtilityBackgroundHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.gray100
         case .tori:
@@ -303,7 +303,7 @@ public struct ColorProvider {
         }
     }
     var buttonGroupUtilityBackgroundSelected: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.gray200
         case .tori:
@@ -313,7 +313,7 @@ public struct ColorProvider {
         }
     }
     var buttonGroupUtilityBorder: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.gray300
         case .tori:
@@ -323,7 +323,7 @@ public struct ColorProvider {
         }
     }
     var buttonGroupUtilityBorderSelected: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.gray700
         case .tori:
@@ -336,7 +336,7 @@ public struct ColorProvider {
     /// Callout
     var calloutText: Color { token.text }
     public var calloutBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.green100, darkModeColor: FinnColors.green800)
         case .tori:
@@ -346,7 +346,7 @@ public struct ColorProvider {
         }
     }
     public var calloutBorder: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.green400, darkModeColor: FinnColors.green600)
         case .tori:
@@ -469,7 +469,7 @@ public struct ColorProvider {
     
     /// Nav Bar
     public var navbarIconSelected: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.iconSelected
         case .tori:
@@ -479,7 +479,7 @@ public struct ColorProvider {
         }
     }
     public var navbarBorderSelected: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderSelected
         case .tori:
@@ -509,7 +509,7 @@ public struct ColorProvider {
     var pillFilterIcon: Color { token.iconInverted }
     var pillSuggestionText: Color { token.text }
     var pillSuggestionBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.gray200, darkModeColor: FinnColors.gray600)
         case .tori:
@@ -519,7 +519,7 @@ public struct ColorProvider {
         }
     }
     var pillSuggestionBackgroundHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray500)
         case .tori:
@@ -529,7 +529,7 @@ public struct ColorProvider {
         }
     }
     var pillSuggestionBackgroundActive: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.gray400
         case .tori:
@@ -604,7 +604,7 @@ public struct ColorProvider {
     
     /// Switch (Toggle)
     var switchTrackBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.gray200, darkModeColor: FinnColors.gray600)
         case .tori:
@@ -614,7 +614,7 @@ public struct ColorProvider {
         }
     }
     var switchTrackBackgroundHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray500)
         case .tori:
@@ -703,7 +703,7 @@ public struct UIColorProvider {
     var badgePriceText: UIColor { token.textInvertedStatic }
     var badgeNotificationText: UIColor { token.textNotification }
     public var badgeNeutralBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray100, darkModeColor: FinnUIColors.gray600)
         case .tori:
@@ -713,7 +713,7 @@ public struct UIColorProvider {
         }
     }
     public var badgeInfoBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.aqua100, darkModeColor: FinnUIColors.aqua700)
         case .tori:
@@ -723,7 +723,7 @@ public struct UIColorProvider {
         }
     }
     public var badgePositiveBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.green100, darkModeColor: FinnUIColors.green700)
         case .tori:
@@ -733,7 +733,7 @@ public struct UIColorProvider {
         }
     }
     public var badgeWarningBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.yellow100, darkModeColor: FinnUIColors.yellow700)
         case .tori:
@@ -743,7 +743,7 @@ public struct UIColorProvider {
         }
     }
     public var badgeNegativeBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.red100, darkModeColor: FinnUIColors.red700)
         case .tori:
@@ -754,7 +754,7 @@ public struct UIColorProvider {
     }
     public var badgeDisabledBackground: UIColor { token.backgroundDisabled }
     var badgePriceBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.black.withAlphaComponent(0.7)
         case .tori:
@@ -764,7 +764,7 @@ public struct UIColorProvider {
         }
     }
     public var badgeSponsoredBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.aqua200, darkModeColor: FinnUIColors.aqua600)
         case .tori:
@@ -803,7 +803,7 @@ public struct UIColorProvider {
     var buttonPrimaryText: UIColor { token.textInverted }
     var buttonPrimaryTextDisabled: UIColor { token.textInverted }
     public var buttonPrimaryBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimary
         case .tori:
@@ -813,7 +813,7 @@ public struct UIColorProvider {
         }
     }
     var buttonPrimaryBackgroundHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimaryHover
         case .tori:
@@ -823,7 +823,7 @@ public struct UIColorProvider {
         }
     }
     public var buttonPrimaryBackgroundActive: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimaryActive
         case .tori:
@@ -834,7 +834,7 @@ public struct UIColorProvider {
     }
     var buttonPrimaryBackgroundDisabled: UIColor { token.backgroundDisabled }
     var buttonPrimaryBorder: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimary
         case .tori:
@@ -844,7 +844,7 @@ public struct UIColorProvider {
         }
     }
     var buttonPrimaryBorderHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimaryHover
         case .tori:
@@ -854,7 +854,7 @@ public struct UIColorProvider {
         }
     }
     var buttonPrimaryBorderActive: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimaryActive
         case .tori:
@@ -902,7 +902,7 @@ public struct UIColorProvider {
     var buttonDisabledQuietBorder: UIColor { token.borderDisabled }
     var buttonPillBackground: UIColor { .clear }
     var buttonPillBackgroundHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.blue300.withAlphaComponent(0.3)
         case .tori:
@@ -912,7 +912,7 @@ public struct UIColorProvider {
         }
     }
     var buttonPillBackgroundActive: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.blue400.withAlphaComponent(0.3)
         case .tori:
@@ -956,7 +956,7 @@ public struct UIColorProvider {
     var buttonGroupBorder: UIColor { token.border }
     var buttonGroupBorderSelected: UIColor { token.borderPrimary }
     var buttonGroupUtilityBackgroundHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.gray100
         case .tori:
@@ -966,7 +966,7 @@ public struct UIColorProvider {
         }
     }
     var buttonGroupUtilityBackgroundSelected: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.gray200
         case .tori:
@@ -976,7 +976,7 @@ public struct UIColorProvider {
         }
     }
     var buttonGroupUtilityBorder: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.gray300
         case .tori:
@@ -986,7 +986,7 @@ public struct UIColorProvider {
         }
     }
     var buttonGroupUtilityBorderSelected: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.gray700
         case .tori:
@@ -999,7 +999,7 @@ public struct UIColorProvider {
     /// Callout
     var calloutText: UIColor { token.text }
     public var calloutBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.green100, darkModeColor: FinnUIColors.green800)
         case .tori:
@@ -1009,7 +1009,7 @@ public struct UIColorProvider {
         }
     }
     public var calloutBorder: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.green400, darkModeColor: FinnUIColors.green600)
         case .tori:
@@ -1132,7 +1132,7 @@ public struct UIColorProvider {
     
     /// Nav Bar
     public var navbarIconSelected: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.iconSelected
         case .tori:
@@ -1142,7 +1142,7 @@ public struct UIColorProvider {
         }
     }
     public var navbarBorderSelected: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderSelected
         case .tori:
@@ -1172,7 +1172,7 @@ public struct UIColorProvider {
     var pillFilterIcon: UIColor { token.iconInverted }
     var pillSuggestionText: UIColor { token.text }
     var pillSuggestionBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray200, darkModeColor: FinnUIColors.gray600)
         case .tori:
@@ -1182,7 +1182,7 @@ public struct UIColorProvider {
         }
     }
     var pillSuggestionBackgroundHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray300, darkModeColor: FinnUIColors.gray500)
         case .tori:
@@ -1192,7 +1192,7 @@ public struct UIColorProvider {
         }
     }
     var pillSuggestionBackgroundActive: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.gray400
         case .tori:
@@ -1267,7 +1267,7 @@ public struct UIColorProvider {
     
     /// Switch (Toggle)
     var switchTrackBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray200, darkModeColor: FinnUIColors.gray600)
         case .tori:
@@ -1277,7 +1277,7 @@ public struct UIColorProvider {
         }
     }
     var switchTrackBackgroundHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray300, darkModeColor: FinnUIColors.gray500)
         case .tori:
