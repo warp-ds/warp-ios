@@ -71,7 +71,7 @@ class UIShadowViewController: UIViewController {
     }
     
     private func applyShadow(type: Warp.Shadow) {
-        shadowView.dropShadow(type)
+        shadowView.addShadow(type)
     }
     
     override func viewDidLayoutSubviews() {

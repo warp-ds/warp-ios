@@ -100,7 +100,7 @@ extension Warp {
                     .onTapGesture {
                         type.onTapped?()
                     }
-                    .shadow(.large)
+                    .addShadow(.large)
             }
         }
 

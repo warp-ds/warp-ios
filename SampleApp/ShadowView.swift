@@ -27,7 +27,7 @@ struct ShadowView: View {
                 .frame(width: 192, height: 192)
                 .background(colorProvider.token.surfaceElevated200)
                 .cornerRadius(8)
-                .shadow(shadow)
+                .addShadow(shadow)
                 Spacer()
                 Picker("Pick your shadow", selection: $shadow.animation(.interpolatingSpring)) {
                     ForEach(Warp.Shadow.allCases, id: \.self) { shadow in

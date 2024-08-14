@@ -83,7 +83,7 @@ extension Warp {
             }
             .fixedSize(horizontal: false, vertical: true)
             .cornerRadius(modalCornerRadius)
-            .shadow(.small)
+            .addShadow(.small)
             .accessibilityElement(children: .combine)
             .padding()
         }
