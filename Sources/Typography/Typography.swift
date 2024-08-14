@@ -47,6 +47,33 @@ extension Warp.Typography {
                 return createLightRegularFont(for: fontSize, with: fontStyle)
         }
     }
+    
+    /// Bridge between `Warp` and `UIKit` font.
+    /// Provides a font with size and font weight based on given typography.
+    public var uiFont: UIFont {
+        let fontSize = fontSize
+        let fontStyle = fontStyle
+
+        switch self {
+            case .display,
+                 .title1,
+                 .title2,
+                 .title3,
+                 .title4,
+                 .title5,
+                 .title6,
+                 .bodyStrong,
+                 .captionStrong,
+                 .detailStrong:
+                return createMediumBoldUIFont(for: fontSize, with: fontStyle)
+
+            case .preamble,
+                 .body,
+                 .caption,
+                 .detail:
+                return createLightRegularUIFont(for: fontSize, with: fontStyle)
+        }
+    }
 
     private var fontSize: CGFloat {
         switch self {
@@ -132,6 +159,30 @@ extension Warp.Typography {
             relativeTo: fontStrategy.style
         )
     }
+    
+    private func createUIFont(from fontStrategy: FontStrategyInterface) -> UIFont {
+        let style: UIFont.TextStyle
+        let font = UIFont(name: fontStrategy.font.name, size: fontStrategy.size)
+        if let font = font {
+            return font
+        } else {
+            switch fontStrategy.style {
+            case .largeTitle:  style = .largeTitle
+            case .title:       style = .title1
+            case .title2:      style = .title2
+            case .title3:      style = .title3
+            case .headline:    style = .headline
+            case .subheadline: style = .subheadline
+            case .callout:     style = .callout
+            case .caption:     style = .caption1
+            case .caption2:    style = .caption2
+            case .footnote:    style = .footnote
+            case .body:        style = .body
+            @unknown default:  style = .body
+            }
+            return UIFont.preferredFont(forTextStyle: style)
+        }
+    }
 
     private func createMediumBoldFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
         if isFinnApp {
@@ -146,6 +197,22 @@ extension Warp.Typography {
             return createFont(from: FinnLightFont(size: size, style: fontStyle))
         } else {
             return createFont(from: ToriRegularFont(size: size, style: fontStyle))
+        }
+    }
+    
+    private func createMediumBoldUIFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> UIFont {
+        if isFinnApp {
+            return createUIFont(from: FinnMediumFont(size: size, style: fontStyle))
+        } else {
+            return createUIFont(from: ToriBoldFont(size: size, style: fontStyle))
+        }
+    }
+
+    private func createLightRegularUIFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> UIFont {
+        if isFinnApp {
+            return createUIFont(from: FinnLightFont(size: size, style: fontStyle))
+        } else {
+            return createUIFont(from: ToriRegularFont(size: size, style: fontStyle))
         }
     }
 }
