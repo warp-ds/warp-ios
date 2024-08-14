@@ -67,12 +67,13 @@
 		820A86132C6CEC30006D35A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 820A860D2C6CEC30006D35A0 /* Assets.xcassets */; };
 		820A86142C6CEC30006D35A0 /* Warp_iosBlocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820A860F2C6CEC30006D35A0 /* Warp_iosBlocket.swift */; };
 		820A86162C6CED11006D35A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 820A86152C6CED11006D35A0 /* GoogleService-Info.plist */; };
+		820A861E2C6CF04A006D35A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 820A86172C6CF04A006D35A0 /* Preview Assets.xcassets */; };
+		820A86202C6CF04A006D35A0 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820A861B2C6CF04A006D35A0 /* Warp_iosFinn.swift */; };
 		8213D0AF2B9078D700FCA310 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		8226D5782C297BFE00928E59 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8226D5772C297BFE00928E59 /* GoogleService-Info.plist */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
 		82355B002A8CCBE70023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
-		82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */; };
 		82355B0C2A8CD0AA0023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355B082A8CD0AA0023EB11 /* Assets.xcassets */; };
 		82355B0E2A8CD0AA0023EB11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B0A2A8CD0AA0023EB11 /* ContentView.swift */; };
 		82355B0F2A8CD0AA0023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355B0B2A8CD0AA0023EB11 /* Preview Content */; };
@@ -114,7 +115,7 @@
 
 /* Begin PBXFileReference section */
 		003CB8E82C19B5D5008C42B1 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
-		2E1ADF472C25612300DFEE06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Warp-iosFinn/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2E1ADF472C25612300DFEE06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E1ADF682C2561A700DFEE06 /* DBA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E1ADF692C2561D200DFEE06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2E1ADF6B2C2561D200DFEE06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,13 +129,14 @@
 		820A860D2C6CEC30006D35A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		820A860F2C6CEC30006D35A0 /* Warp_iosBlocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosBlocket.swift; sourceTree = "<group>"; };
 		820A86152C6CED11006D35A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		820A86172C6CF04A006D35A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		820A861B2C6CF04A006D35A0 /* Warp_iosFinn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosFinn.swift; sourceTree = "<group>"; };
 		8213D0AE2B9078D700FCA310 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		8226D5772C297BFE00928E59 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82355AFA2A8CCBE70023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82355AFC2A8CCBE70023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Warp_iosSampleApp.entitlements; path = "Warp-iosFinn/Warp_iosSampleApp.entitlements"; sourceTree = "<group>"; };
-		82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Warp_iosFinn.swift; path = "Warp-iosFinn/Warp_iosFinn.swift"; sourceTree = "<group>"; };
-		82355B082A8CD0AA0023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Warp-iosFinn/Assets.xcassets"; sourceTree = "<group>"; };
+		82355B082A8CD0AA0023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82355B0A2A8CD0AA0023EB11 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "Warp-iosFinn/ContentView.swift"; sourceTree = "<group>"; };
 		82355B0B2A8CD0AA0023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Preview Content"; path = "Warp-iosFinn/Preview Content"; sourceTree = "<group>"; };
 		82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosTori.swift; sourceTree = "<group>"; };
@@ -234,6 +236,25 @@
 			path = Blocket;
 			sourceTree = "<group>";
 		};
+		820A86182C6CF04A006D35A0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				820A86172C6CF04A006D35A0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		820A861C2C6CF04A006D35A0 /* Finn */ = {
+			isa = PBXGroup;
+			children = (
+				820A86182C6CF04A006D35A0 /* Preview Content */,
+				82355B082A8CD0AA0023EB11 /* Assets.xcassets */,
+				2E1ADF472C25612300DFEE06 /* GoogleService-Info.plist */,
+				820A861B2C6CF04A006D35A0 /* Warp_iosFinn.swift */,
+			);
+			path = Finn;
+			sourceTree = "<group>";
+		};
 		82355AF82A8CCBC90023EB11 /* Tori */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,7 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				8206620F2A8CC97C0088677D /* warp-ios */,
-				828547C92A8CCA3300401DA3 /* Finn */,
+				828547C92A8CCA3300401DA3 /* Common */,
+				820A861C2C6CF04A006D35A0 /* Finn */,
 				82355AF82A8CCBC90023EB11 /* Tori */,
 				2E1ADF6E2C2561D200DFEE06 /* DBA */,
 				820A86102C6CEC30006D35A0 /* Blocket */,
@@ -276,7 +298,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		828547C92A8CCA3300401DA3 /* Finn */ = {
+		828547C92A8CCA3300401DA3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */,
@@ -285,7 +307,6 @@
 				82C7E6F42B7B85E000760C08 /* BroadcastView.swift */,
 				B2A8B2782B6D33B800122DBC /* CalloutView.swift */,
 				349586632B0EAD2D00A14570 /* TypographyView.swift */,
-				82355B062A8CD0870023EB11 /* Warp_iosFinn.swift */,
 				82355B0A2A8CD0AA0023EB11 /* ContentView.swift */,
 				8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */,
 				828E7D442B61239100869C58 /* BadgeView.swift */,
@@ -299,12 +320,10 @@
 				B295AC392C22F93D004C77BB /* StepIndicatorView.swift */,
 				B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */,
 				82B168112B750BED00DCDDE5 /* TextView.swift */,
-				2E1ADF472C25612300DFEE06 /* GoogleService-Info.plist */,
-				82355B082A8CD0AA0023EB11 /* Assets.xcassets */,
 				82355B0B2A8CD0AA0023EB11 /* Preview Content */,
 				82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */,
 			);
-			name = Finn;
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +488,7 @@
 				82355B0F2A8CD0AA0023EB11 /* Preview Content in Resources */,
 				2E1ADF482C25612300DFEE06 /* GoogleService-Info.plist in Resources */,
 				82355B0C2A8CD0AA0023EB11 /* Assets.xcassets in Resources */,
+				820A861E2C6CF04A006D35A0 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +572,7 @@
 				828E7D452B61239100869C58 /* BadgeView.swift in Sources */,
 				82A2155C2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
 				82AE96112C64C2C000BF3920 /* UIShadowView.swift in Sources */,
+				820A86202C6CF04A006D35A0 /* Warp_iosFinn.swift in Sources */,
 				B2A8B2792B6D33B800122DBC /* CalloutView.swift in Sources */,
 				82635D072BFE1CA700F7FA6F /* SpinnerView.swift in Sources */,
 				82A215592A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
@@ -560,7 +581,6 @@
 				8213D0AF2B9078D700FCA310 /* ShadowView.swift in Sources */,
 				349D0E132B62D67A00AAB421 /* AlertView.swift in Sources */,
 				341B20E82B751BD30068FF43 /* BoxView.swift in Sources */,
-				82355B072A8CD0870023EB11 /* Warp_iosFinn.swift in Sources */,
 				B2922A6E2B68E7F200A3E9F4 /* ToastView.swift in Sources */,
 				349586642B0EAD2D00A14570 /* TypographyView.swift in Sources */,
 			);
