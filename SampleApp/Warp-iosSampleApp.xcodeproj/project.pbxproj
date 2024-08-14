@@ -135,10 +135,10 @@
 		8226D5772C297BFE00928E59 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82355AFA2A8CCBE70023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82355AFC2A8CCBE70023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
-		82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Warp_iosSampleApp.entitlements; path = "Warp-iosFinn/Warp_iosSampleApp.entitlements"; sourceTree = "<group>"; };
+		82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Warp_iosSampleApp.entitlements; sourceTree = "<group>"; };
 		82355B082A8CD0AA0023EB11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		82355B0A2A8CD0AA0023EB11 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "Warp-iosFinn/ContentView.swift"; sourceTree = "<group>"; };
-		82355B0B2A8CD0AA0023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Preview Content"; path = "Warp-iosFinn/Preview Content"; sourceTree = "<group>"; };
+		82355B0A2A8CD0AA0023EB11 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		82355B0B2A8CD0AA0023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosTori.swift; sourceTree = "<group>"; };
 		824977872A893F400013475C /* Finn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Finn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTokensView.swift; sourceTree = "<group>"; };
@@ -301,25 +301,25 @@
 		828547C92A8CCA3300401DA3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */,
-				8213D0AE2B9078D700FCA310 /* ShadowView.swift */,
-				82AE96102C64C2C000BF3920 /* UIShadowView.swift */,
-				82C7E6F42B7B85E000760C08 /* BroadcastView.swift */,
-				B2A8B2782B6D33B800122DBC /* CalloutView.swift */,
-				349586632B0EAD2D00A14570 /* TypographyView.swift */,
-				82355B0A2A8CD0AA0023EB11 /* ContentView.swift */,
-				8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */,
-				828E7D442B61239100869C58 /* BadgeView.swift */,
-				82838CF02B62B35400E3C495 /* PillView.swift */,
-				82635D062BFE1CA700F7FA6F /* SpinnerView.swift */,
-				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
-				341B20E72B751BD30068FF43 /* BoxView.swift */,
-				003CB8E82C19B5D5008C42B1 /* ModalView.swift */,
 				349D0E122B62D67A00AAB421 /* AlertView.swift */,
-				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
-				B295AC392C22F93D004C77BB /* StepIndicatorView.swift */,
+				828E7D442B61239100869C58 /* BadgeView.swift */,
+				341B20E72B751BD30068FF43 /* BoxView.swift */,
+				8251E8C92B4E8B7D00106720 /* BrandTokensView.swift */,
+				82C7E6F42B7B85E000760C08 /* BroadcastView.swift */,
+				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
+				B2A8B2782B6D33B800122DBC /* CalloutView.swift */,
+				82355B0A2A8CD0AA0023EB11 /* ContentView.swift */,
 				B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */,
+				003CB8E82C19B5D5008C42B1 /* ModalView.swift */,
+				82838CF02B62B35400E3C495 /* PillView.swift */,
+				8213D0AE2B9078D700FCA310 /* ShadowView.swift */,
+				82635D062BFE1CA700F7FA6F /* SpinnerView.swift */,
+				B295AC392C22F93D004C77BB /* StepIndicatorView.swift */,
+				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
 				82B168112B750BED00DCDDE5 /* TextView.swift */,
+				B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */,
+				349586632B0EAD2D00A14570 /* TypographyView.swift */,
+				82AE96102C64C2C000BF3920 /* UIShadowView.swift */,
 				82355B0B2A8CD0AA0023EB11 /* Preview Content */,
 				82355B052A8CD07C0023EB11 /* Warp_iosSampleApp.entitlements */,
 			);
