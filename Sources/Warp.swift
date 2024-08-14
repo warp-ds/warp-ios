@@ -4,7 +4,7 @@ import Foundation
 public enum Warp {
     /// Enumeration representing different brands supported by Warp.
     public enum Brand {
-        case finn, tori, dba
+        case finn, tori, dba, blocket
     }
     
     /// The current theme of the application. Setting this will also attempt to register the appropriate fonts.
@@ -30,6 +30,8 @@ public enum Warp {
             return ToriTokenProvider()
         case .dba:
             return DBATokenProvider()
+        case .blocket:
+            return BlocketTokenProvider()
         }
     }()
     
@@ -44,6 +46,8 @@ public enum Warp {
             return ToriUITokenProvider()
         case .dba:
             return DBAUITokenProvider()
+        case .blocket:
+            return BlocketUITokenProvider()
         }
     }()
     

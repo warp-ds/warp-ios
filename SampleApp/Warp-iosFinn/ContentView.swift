@@ -40,6 +40,11 @@ struct ContentView: View {
                             Text("BrandColors")
                                 .padding()
                         }
+                    case .blocket:
+                        NavigationLink(destination: BlocketColorsView()) {
+                            Text("BrandColors")
+                                .padding()
+                        }
                     }
                     Divider()
                     NavigationLink(destination: BrandTokensView()) {

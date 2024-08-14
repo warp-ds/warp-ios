@@ -47,6 +47,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray600)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.gray100, darkModeColor: DBAColors.gray600)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.gray100, darkModeColor: BlocketColors.gray600)
         }
     }
     public var badgeInfoBackground: Color {
@@ -57,6 +59,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue700)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.jeanblue100, darkModeColor: DBAColors.jeanblue700)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.blue100, darkModeColor: BlocketColors.blue700)
         }
     }
     public var badgePositiveBackground: Color {
@@ -67,6 +71,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.green100, darkModeColor: ToriColors.green700)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.green100, darkModeColor: DBAColors.green700)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.green100, darkModeColor: BlocketColors.green700)
         }
     }
     public var badgeWarningBackground: Color {
@@ -77,6 +83,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.yellow100, darkModeColor: ToriColors.yellow700)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.yellow100, darkModeColor: DBAColors.yellow700)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.yellow100, darkModeColor: BlocketColors.yellow700)
         }
     }
     public var badgeNegativeBackground: Color {
@@ -87,6 +95,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.red100, darkModeColor: ToriColors.red700)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.red100, darkModeColor: DBAColors.red700)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.red100, darkModeColor: BlocketColors.red700)
         }
     }
     public var badgeDisabledBackground: Color { token.backgroundDisabled }
@@ -98,6 +108,8 @@ public struct ColorProvider {
             return ToriColors.black.opacity(0.7)
         case .dba:
             return DBAColors.black.opacity(0.7)
+        case .blocket:
+            return BlocketColors.black.opacity(0.7)
         }
     }
     public var badgeSponsoredBackground: Color {
@@ -108,6 +120,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.blue200, darkModeColor: ToriColors.blue600)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.jeanblue200, darkModeColor: DBAColors.jeanblue600)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.blue200, darkModeColor: BlocketColors.blue600)
         }
     }
     
@@ -147,6 +161,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon500)
         case .dba:
             return token.backgroundPrimary
+        case .blocket:
+            return token.backgroundPrimary
         }
     }
     var buttonPrimaryBackgroundHover: Color {
@@ -157,6 +173,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.watermelon700, darkModeColor: ToriColors.watermelon400)
         case .dba:
             return token.backgroundPrimaryHover
+        case .blocket:
+            return token.backgroundPrimaryHover
         }
     }
     public var buttonPrimaryBackgroundActive: Color {
@@ -166,6 +184,8 @@ public struct ColorProvider {
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon300)
         case .dba:
+            return token.backgroundPrimaryActive
+        case .blocket:
             return token.backgroundPrimaryActive
         }
     }
@@ -178,6 +198,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon500)
         case .dba:
             return token.borderPrimary
+        case .blocket:
+            return token.borderPrimary
         }
     }
     var buttonPrimaryBorderHover: Color {
@@ -188,6 +210,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.watermelon700, darkModeColor: ToriColors.watermelon400)
         case .dba:
             return token.borderPrimaryHover
+        case .blocket:
+            return token.borderPrimaryHover
         }
     }
     var buttonPrimaryBorderActive: Color {
@@ -197,6 +221,8 @@ public struct ColorProvider {
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon300)
         case .dba:
+            return token.borderPrimaryActive
+        case .blocket:
             return token.borderPrimaryActive
         }
     }
@@ -246,6 +272,8 @@ public struct ColorProvider {
             return ToriColors.blueberry300.opacity(0.3)
         case .dba:
             return DBAColors.jeanblue300.opacity(0.3)
+        case .blocket:
+            return BlocketColors.blue300.opacity(0.3)
         }
     }
     var buttonPillBackgroundActive: Color {
@@ -256,6 +284,8 @@ public struct ColorProvider {
             return ToriColors.blueberry400.opacity(0.3)
         case .dba:
             return DBAColors.jeanblue400.opacity(0.3)
+        case .blocket:
+            return BlocketColors.blue400.opacity(0.3)
         }
     }
     var buttonPillIcon: Color { token.icon }
@@ -300,6 +330,8 @@ public struct ColorProvider {
             return ToriColors.gray100
         case .dba:
             return DBAColors.gray100
+        case .blocket:
+            return BlocketColors.gray100
         }
     }
     var buttonGroupUtilityBackgroundSelected: Color {
@@ -310,6 +342,8 @@ public struct ColorProvider {
             return ToriColors.gray200
         case .dba:
             return DBAColors.gray200
+        case .blocket:
+            return BlocketColors.gray200
         }
     }
     var buttonGroupUtilityBorder: Color {
@@ -320,6 +354,8 @@ public struct ColorProvider {
             return ToriColors.gray300
         case .dba:
             return DBAColors.gray300
+        case .blocket:
+            return BlocketColors.gray300
         }
     }
     var buttonGroupUtilityBorderSelected: Color {
@@ -330,6 +366,8 @@ public struct ColorProvider {
             return ToriColors.gray700
         case .dba:
             return DBAColors.gray700
+        case .blocket:
+            return BlocketColors.gray700
         }
     }
     
@@ -343,6 +381,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue800)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.green100, darkModeColor: DBAColors.green800)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.green100, darkModeColor: BlocketColors.green800)
         }
     }
     public var calloutBorder: Color {
@@ -353,6 +393,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.blue400, darkModeColor: ToriColors.blue600)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.green400, darkModeColor: DBAColors.green600)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.green400, darkModeColor: BlocketColors.green600)
         }
     }
     
@@ -476,6 +518,8 @@ public struct ColorProvider {
             return token.iconSecondary
         case .dba:
             return token.iconSecondary
+        case .blocket:
+            return token.iconSecondary
         }
     }
     public var navbarBorderSelected: Color {
@@ -485,6 +529,8 @@ public struct ColorProvider {
         case .tori:
             return token.borderSecondary
         case .dba:
+            return token.borderSecondary
+        case .blocket:
             return token.borderSecondary
         }
     }
@@ -516,6 +562,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.gray200, darkModeColor: DBAColors.gray600)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray600)
         }
     }
     var pillSuggestionBackgroundHover: Color {
@@ -526,6 +574,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.gray300, darkModeColor: DBAColors.gray500)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray500)
         }
     }
     var pillSuggestionBackgroundActive: Color {
@@ -535,6 +585,8 @@ public struct ColorProvider {
         case .tori:
             return ToriColors.gray400
         case .dba:
+            return DBAColors.gray400
+        case .blocket:
             return DBAColors.gray400
         }
     }
@@ -611,6 +663,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.gray200, darkModeColor: DBAColors.gray600)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray600)
         }
     }
     var switchTrackBackgroundHover: Color {
@@ -621,6 +675,8 @@ public struct ColorProvider {
             return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.gray300, darkModeColor: DBAColors.gray500)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray500)
         }
     }
     var switchTrackBackgroundSelected: Color { token.backgroundPrimary }
@@ -710,6 +766,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray600)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.gray100, darkModeColor: DBAUIColors.gray600)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray100, darkModeColor: BlocketUIColors.gray600)
         }
     }
     public var badgeInfoBackground: UIColor {
@@ -720,6 +778,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue100, darkModeColor: ToriUIColors.blue700)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.jeanblue100, darkModeColor: DBAUIColors.jeanblue700)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.blue100, darkModeColor: BlocketUIColors.blue700)
         }
     }
     public var badgePositiveBackground: UIColor {
@@ -730,6 +790,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.green100, darkModeColor: ToriUIColors.green700)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.green100, darkModeColor: DBAUIColors.green700)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.green100, darkModeColor: BlocketUIColors.green700)
         }
     }
     public var badgeWarningBackground: UIColor {
@@ -740,6 +802,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.yellow100, darkModeColor: ToriUIColors.yellow700)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.yellow100, darkModeColor: DBAUIColors.yellow700)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.yellow100, darkModeColor: BlocketUIColors.yellow700)
         }
     }
     public var badgeNegativeBackground: UIColor {
@@ -750,6 +814,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.red100, darkModeColor: ToriUIColors.red700)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.red100, darkModeColor: DBAUIColors.red700)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.red100, darkModeColor: BlocketUIColors.red700)
         }
     }
     public var badgeDisabledBackground: UIColor { token.backgroundDisabled }
@@ -761,6 +827,8 @@ public struct UIColorProvider {
             return ToriUIColors.black.withAlphaComponent(0.7)
         case .dba:
             return DBAUIColors.black.withAlphaComponent(0.7)
+        case .blocket:
+            return BlocketUIColors.black.withAlphaComponent(0.7)
         }
     }
     public var badgeSponsoredBackground: UIColor {
@@ -771,6 +839,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue200, darkModeColor: ToriUIColors.blue600)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.jeanblue200, darkModeColor: DBAUIColors.jeanblue600)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.blue200, darkModeColor: BlocketUIColors.blue600)
         }
     }
     
@@ -810,6 +880,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon600, darkModeColor: ToriUIColors.watermelon500)
         case .dba:
             return token.backgroundPrimary
+        case .blocket:
+            return token.backgroundPrimary
         }
     }
     var buttonPrimaryBackgroundHover: UIColor {
@@ -820,6 +892,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon700, darkModeColor: ToriUIColors.watermelon400)
         case .dba:
             return token.backgroundPrimaryHover
+        case .blocket:
+            return token.backgroundPrimaryHover
         }
     }
     public var buttonPrimaryBackgroundActive: UIColor {
@@ -829,6 +903,8 @@ public struct UIColorProvider {
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon800, darkModeColor: ToriUIColors.watermelon300)
         case .dba:
+            return token.backgroundPrimaryActive
+        case .blocket:
             return token.backgroundPrimaryActive
         }
     }
@@ -841,6 +917,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon600, darkModeColor: ToriUIColors.watermelon500)
         case .dba:
             return token.borderPrimary
+        case .blocket:
+            return token.borderPrimary
         }
     }
     var buttonPrimaryBorderHover: UIColor {
@@ -851,6 +929,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon700, darkModeColor: ToriUIColors.watermelon400)
         case .dba:
             return token.borderPrimaryHover
+        case .blocket:
+            return token.borderPrimaryHover
         }
     }
     var buttonPrimaryBorderActive: UIColor {
@@ -860,6 +940,8 @@ public struct UIColorProvider {
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon800, darkModeColor: ToriUIColors.watermelon300)
         case .dba:
+            return token.borderPrimaryActive
+        case .blocket:
             return token.borderPrimaryActive
         }
     }
@@ -909,6 +991,8 @@ public struct UIColorProvider {
             return ToriUIColors.blueberry300.withAlphaComponent(0.3)
         case .dba:
             return DBAUIColors.jeanblue300.withAlphaComponent(0.3)
+        case .blocket:
+            return BlocketUIColors.blue300.withAlphaComponent(0.3)
         }
     }
     var buttonPillBackgroundActive: UIColor {
@@ -919,6 +1003,8 @@ public struct UIColorProvider {
             return ToriUIColors.blueberry400.withAlphaComponent(0.3)
         case .dba:
             return DBAUIColors.jeanblue400.withAlphaComponent(0.3)
+        case .blocket:
+            return BlocketUIColors.blue400.withAlphaComponent(0.3)
         }
     }
     var buttonPillIcon: UIColor { token.icon }
@@ -963,6 +1049,8 @@ public struct UIColorProvider {
             return ToriUIColors.gray100
         case .dba:
             return DBAUIColors.gray100
+        case .blocket:
+            return BlocketUIColors.gray100
         }
     }
     var buttonGroupUtilityBackgroundSelected: UIColor {
@@ -973,6 +1061,8 @@ public struct UIColorProvider {
             return ToriUIColors.gray200
         case .dba:
             return DBAUIColors.gray200
+        case .blocket:
+            return BlocketUIColors.gray200
         }
     }
     var buttonGroupUtilityBorder: UIColor {
@@ -983,6 +1073,8 @@ public struct UIColorProvider {
             return ToriUIColors.gray300
         case .dba:
             return DBAUIColors.gray300
+        case .blocket:
+            return BlocketUIColors.gray300
         }
     }
     var buttonGroupUtilityBorderSelected: UIColor {
@@ -993,6 +1085,8 @@ public struct UIColorProvider {
             return ToriUIColors.gray700
         case .dba:
             return DBAUIColors.gray700
+        case .blocket:
+            return BlocketUIColors.gray700
         }
     }
     
@@ -1006,6 +1100,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue100, darkModeColor: ToriUIColors.blue800)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.green100, darkModeColor: DBAUIColors.green800)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.green100, darkModeColor: BlocketUIColors.green800)
         }
     }
     public var calloutBorder: UIColor {
@@ -1016,6 +1112,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue400, darkModeColor: ToriUIColors.blue600)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.green400, darkModeColor: DBAUIColors.green600)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.green400, darkModeColor: BlocketUIColors.green600)
         }
     }
     
@@ -1139,6 +1237,8 @@ public struct UIColorProvider {
             return token.iconSecondary
         case .dba:
             return token.iconSecondary
+        case .blocket:
+            return token.iconSecondary
         }
     }
     public var navbarBorderSelected: UIColor {
@@ -1148,6 +1248,8 @@ public struct UIColorProvider {
         case .tori:
             return token.borderSecondary
         case .dba:
+            return token.borderSecondary
+        case .blocket:
             return token.borderSecondary
         }
     }
@@ -1179,6 +1281,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.gray200, darkModeColor: DBAUIColors.gray600)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray600)
         }
     }
     var pillSuggestionBackgroundHover: UIColor {
@@ -1189,6 +1293,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray500)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.gray300, darkModeColor: DBAUIColors.gray500)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray500)
         }
     }
     var pillSuggestionBackgroundActive: UIColor {
@@ -1198,6 +1304,8 @@ public struct UIColorProvider {
         case .tori:
             return ToriUIColors.gray400
         case .dba:
+            return DBAUIColors.gray400
+        case .blocket:
             return DBAUIColors.gray400
         }
     }
@@ -1274,6 +1382,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.gray200, darkModeColor: DBAUIColors.gray600)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray600)
         }
     }
     var switchTrackBackgroundHover: UIColor {
@@ -1284,6 +1394,8 @@ public struct UIColorProvider {
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray500)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.gray300, darkModeColor: DBAUIColors.gray500)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray500)
         }
     }
     var switchTrackBackgroundSelected: UIColor { token.backgroundPrimary }
