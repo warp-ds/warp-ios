@@ -587,7 +587,7 @@ public struct ColorProvider {
         case .dba:
             return DBAColors.gray400
         case .blocket:
-            return DBAColors.gray400
+            return BlocketColors.gray400
         }
     }
     var pillSuggestionIcon: Color { token.icon }
@@ -1306,7 +1306,7 @@ public struct UIColorProvider {
         case .dba:
             return DBAUIColors.gray400
         case .blocket:
-            return DBAUIColors.gray400
+            return BlocketUIColors.gray400
         }
     }
     var pillSuggestionIcon: UIColor { token.icon }
