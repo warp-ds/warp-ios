@@ -118,6 +118,13 @@ struct ContentView: View {
                     }
                     Divider()
 
+                    NavigationLink(destination: ModalView()) {
+                        Text("Modal")
+                            .padding()
+                    }
+
+                    Divider()
+
                     NavigationLink(destination: PillView()) {
                         Text("Pill")
                             .padding()
@@ -169,6 +176,13 @@ struct ContentView: View {
 
                     NavigationLink(destination: ToastView()) {
                         Text("Toast")
+                            .padding()
+                    }
+
+                    Divider()
+
+                    NavigationLink(destination: TooltipView()) {
+                        Text("Tooltip")
                             .padding()
                     }
 

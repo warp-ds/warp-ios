@@ -83,6 +83,7 @@
 		820A86482C6D43C6006D35A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E1ADF472C25612300DFEE06 /* GoogleService-Info.plist */; };
 		820A86492C6D43CE006D35A0 /* Warp_iosFinn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820A861B2C6CF04A006D35A0 /* Warp_iosFinn.swift */; };
 		820A864A2C6D43FB006D35A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 820A86172C6CF04A006D35A0 /* Preview Assets.xcassets */; };
+		820A864B2C6DFAAE006D35A0 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BF22242C6A15F500DDF06E /* TooltipView.swift */; };
 		8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		8226D5782C297BFE00928E59 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8226D5772C297BFE00928E59 /* GoogleService-Info.plist */; };
 		82355AFE2A8CCBE70023EB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFA2A8CCBE70023EB11 /* Assets.xcassets */; };
@@ -100,6 +101,9 @@
 		82AE96122C64C2C000BF3920 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE96102C64C2C000BF3920 /* UIShadowView.swift */; };
 		82AE96132C64C2C000BF3920 /* UIShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE96102C64C2C000BF3920 /* UIShadowView.swift */; };
 		82B168132B750BED00DCDDE5 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B168112B750BED00DCDDE5 /* TextView.swift */; };
+		82BF22252C6A15F900DDF06E /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BF22242C6A15F500DDF06E /* TooltipView.swift */; };
+		82BF22262C6A15F900DDF06E /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BF22242C6A15F500DDF06E /* TooltipView.swift */; };
+		82BF22272C6A15F900DDF06E /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BF22242C6A15F500DDF06E /* TooltipView.swift */; };
 		82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
 		B238A26F2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
 		B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
@@ -147,6 +151,7 @@
 		82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		82AE96102C64C2C000BF3920 /* UIShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIShadowView.swift; sourceTree = "<group>"; };
 		82B168112B750BED00DCDDE5 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		82BF22242C6A15F500DDF06E /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		82C7E6F42B7B85E000760C08 /* BroadcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastView.swift; sourceTree = "<group>"; };
 		B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
 		B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -314,6 +319,7 @@
 				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
 				82B168112B750BED00DCDDE5 /* TextView.swift */,
 				B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */,
+				82BF22242C6A15F500DDF06E /* TooltipView.swift */,
 				349586632B0EAD2D00A14570 /* TypographyView.swift */,
 				82AE96102C64C2C000BF3920 /* UIShadowView.swift */,
 				82355B0B2A8CD0AA0023EB11 /* Preview Content */,
@@ -503,6 +509,7 @@
 				B286EDFC2C33EACF00D25DCC /* StepIndicatorView.swift in Sources */,
 				00BC50DC2C2C0AD0002C4FF0 /* ModalView.swift in Sources */,
 				2E1ADF502C2561A700DFEE06 /* BadgeView.swift in Sources */,
+				82BF22272C6A15F900DDF06E /* TooltipView.swift in Sources */,
 				2E1ADF522C2561A700DFEE06 /* BroadcastView.swift in Sources */,
 				2E1ADF532C2561A700DFEE06 /* CalloutView.swift in Sources */,
 				82AE96122C64C2C000BF3920 /* UIShadowView.swift in Sources */,
@@ -538,6 +545,7 @@
 				820A85F62C6CEB0C006D35A0 /* BrandTokensView.swift in Sources */,
 				820A85F72C6CEB0C006D35A0 /* PillView.swift in Sources */,
 				820A85F82C6CEB0C006D35A0 /* ShadowView.swift in Sources */,
+				820A864B2C6DFAAE006D35A0 /* TooltipView.swift in Sources */,
 				820A85F92C6CEB0C006D35A0 /* AlertView.swift in Sources */,
 				820A85FA2C6CEB0C006D35A0 /* ExpandableView.swift in Sources */,
 				820A85FB2C6CEB0C006D35A0 /* BoxView.swift in Sources */,
@@ -571,6 +579,7 @@
 				820A86382C6D4388006D35A0 /* ButtonView.swift in Sources */,
 				820A86392C6D4388006D35A0 /* ToastView.swift in Sources */,
 				820A863A2C6D4388006D35A0 /* ContentView.swift in Sources */,
+				82BF22262C6A15F900DDF06E /* TooltipView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +593,7 @@
 				828E7D462B61239100869C58 /* BadgeView.swift in Sources */,
 				00BC50DB2C2C050D002C4FF0 /* ModalView.swift in Sources */,
 				B238A26F2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
+				82BF22252C6A15F900DDF06E /* TooltipView.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
 				82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */,
 				82AE96132C64C2C000BF3920 /* UIShadowView.swift in Sources */,
