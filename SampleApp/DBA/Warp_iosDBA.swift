@@ -3,10 +3,10 @@ import Warp
 import FirebaseCore
 
 @main
-struct Wrap_iosTori: App {
-    
+struct Wrap_iosDBA: App {
+
     init() {
-        Warp.Config.warpTheme = .tori
+        Warp.Theme = .dba
         FirebaseApp.configure()
     }
     

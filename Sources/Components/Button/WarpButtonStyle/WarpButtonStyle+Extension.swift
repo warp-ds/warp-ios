@@ -60,7 +60,7 @@ public struct WarpButtonStyle: ButtonStyle {
             .modifier(typographyModifiers)
             .modifier(uiModifiers)
             .iflet(metricsFactory.shadow) { view, shadow in
-                view.shadow(shadow)
+                view.addShadow(shadow)
             }
     }
 }

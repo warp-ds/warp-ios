@@ -346,6 +346,22 @@ public extension UIColor {
             self.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         }
     }
+    
+    /// Returns hexadecimal representation of a color converted to the sRGB color space.
+    var hexString: String {
+        guard
+            let targetColorSpace = CGColorSpace(name: CGColorSpace.sRGB),
+            let cgColor = self.cgColor.converted(to: targetColorSpace, intent: .relativeColorimetric, options: nil)
+        else {
+            // Not possible to convert source color space to RGB
+            return "#000000"
+        }
+        let components = cgColor.components
+        let red = components?[0] ?? 0.0
+        let green = components?[1] ?? 0.0
+        let blue = components?[2] ?? 0.0
+        return String(format: "#%02x%02x%02x", (Int)(red * 255), (Int)(green * 255), (Int)(blue * 255))
+    }
 }
 
 public extension Color {
@@ -376,7 +392,7 @@ public extension Color {
 }
 
 extension Color {
-    static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
+    public static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
         return Color(
             UIColor.dynamicColor(
                 defaultColor: UIColor(defaultColor),
@@ -392,7 +408,7 @@ extension UIColor {
     /// - Parameters:
     ///   - defaultColor: light mode version of the color
     ///   - darkModeColor: dark mode version of the color
-    class func dynamicColor(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
+    public class func dynamicColor(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
         UIColor { traitCollection -> UIColor in
             switch traitCollection.userInterfaceStyle {
             case .dark:

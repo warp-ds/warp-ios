@@ -149,7 +149,7 @@ extension Warp.Typography {
 
 extension Warp.Typography {
     private var isFinnApp: Bool {
-        Warp.Config.warpTheme == .finn
+        Warp.Theme == .finn
     }
 
     private func createFont(from fontStrategy: FontStrategyInterface) -> Font {

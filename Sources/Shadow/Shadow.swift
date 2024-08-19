@@ -108,7 +108,7 @@ extension View {
     ///
     /// - Parameter shadow: A `Warp.Shadow` object containing properties for the two shadows.
     /// - Returns: A view modified with the specified double shadows.
-    public func shadow(_ shadow: Warp.Shadow) -> some View {
+    public func addShadow(_ shadow: Warp.Shadow) -> some View {
         modifier(ShadowViewModifier(shadow: shadow))
     }
 }
@@ -122,7 +122,7 @@ extension UIView {
     /// - Parameter shadow: A `Warp.Shadow` object containing properties for the two shadows.
     ///
     /// - Note: To ensure the shadow layers update correctly with layout changes, call `layoutShadowLayers` in your view's `viewDidLayoutSubviews` method.
-    public func dropShadow(_ shadow: Warp.Shadow) {
+    public func addShadow(_ shadow: Warp.Shadow) {
         // Remove existing shadow layers to avoid stacking multiple shadow layers
         layer.sublayers?.removeAll(where: { $0.name == "firstShadowLayer" || $0.name == "secondShadowLayer" })
         

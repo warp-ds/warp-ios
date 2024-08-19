@@ -40,74 +40,88 @@ public struct ColorProvider {
     var badgePriceText: Color { token.textInvertedStatic }
     var badgeNotificationText: Color { token.textNotification }
     public var badgeNeutralBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.gray100, darkModeColor: FinnColors.gray600)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray600)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.gray100, darkModeColor: DBAColors.gray600)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.gray100, darkModeColor: BlocketColors.gray600)
         }
     }
     public var badgeInfoBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.aqua100, darkModeColor: FinnColors.aqua700)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue700)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.jeanblue100, darkModeColor: DBAColors.jeanblue700)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.blue100, darkModeColor: BlocketColors.blue700)
         }
     }
     public var badgePositiveBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.green100, darkModeColor: FinnColors.green700)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.green100, darkModeColor: ToriColors.green700)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.green100, darkModeColor: DBAColors.green700)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.green100, darkModeColor: BlocketColors.green700)
         }
     }
     public var badgeWarningBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.yellow100, darkModeColor: FinnColors.yellow700)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.yellow100, darkModeColor: ToriColors.yellow700)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.yellow100, darkModeColor: DBAColors.yellow700)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.yellow100, darkModeColor: BlocketColors.yellow700)
         }
     }
     public var badgeNegativeBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.red100, darkModeColor: FinnColors.red700)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.red100, darkModeColor: ToriColors.red700)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.red100, darkModeColor: DBAColors.red700)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.red100, darkModeColor: BlocketColors.red700)
         }
     }
     public var badgeDisabledBackground: Color { token.backgroundDisabled }
     var badgePriceBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.black.opacity(0.7)
         case .tori:
             return ToriColors.black.opacity(0.7)
         case .dba:
             return DBAColors.black.opacity(0.7)
+        case .blocket:
+            return BlocketColors.black.opacity(0.7)
         }
     }
     public var badgeSponsoredBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.aqua200, darkModeColor: FinnColors.aqua600)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.blue200, darkModeColor: ToriColors.blue600)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.jeanblue200, darkModeColor: DBAColors.jeanblue600)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.blue200, darkModeColor: BlocketColors.blue600)
         }
     }
     
@@ -140,63 +154,75 @@ public struct ColorProvider {
     var buttonPrimaryText: Color { token.textInverted }
     var buttonPrimaryTextDisabled: Color { token.textInverted }
     public var buttonPrimaryBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimary
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon500)
         case .dba:
             return token.backgroundPrimary
+        case .blocket:
+            return token.backgroundPrimary
         }
     }
     var buttonPrimaryBackgroundHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimaryHover
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon700, darkModeColor: ToriColors.watermelon400)
         case .dba:
             return token.backgroundPrimaryHover
+        case .blocket:
+            return token.backgroundPrimaryHover
         }
     }
     public var buttonPrimaryBackgroundActive: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimaryActive
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon300)
         case .dba:
+            return token.backgroundPrimaryActive
+        case .blocket:
             return token.backgroundPrimaryActive
         }
     }
     var buttonPrimaryBackgroundDisabled: Color { token.backgroundDisabled }
     var buttonPrimaryBorder: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimary
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon500)
         case .dba:
             return token.borderPrimary
+        case .blocket:
+            return token.borderPrimary
         }
     }
     var buttonPrimaryBorderHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimaryHover
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon700, darkModeColor: ToriColors.watermelon400)
         case .dba:
             return token.borderPrimaryHover
+        case .blocket:
+            return token.borderPrimaryHover
         }
     }
     var buttonPrimaryBorderActive: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimaryActive
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon300)
         case .dba:
+            return token.borderPrimaryActive
+        case .blocket:
             return token.borderPrimaryActive
         }
     }
@@ -239,23 +265,27 @@ public struct ColorProvider {
     var buttonDisabledQuietBorder: Color { token.borderDisabled }
     var buttonPillBackground: Color { .clear }
     var buttonPillBackgroundHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.blue300.opacity(0.3)
         case .tori:
             return ToriColors.blueberry300.opacity(0.3)
         case .dba:
             return DBAColors.jeanblue300.opacity(0.3)
+        case .blocket:
+            return BlocketColors.blue300.opacity(0.3)
         }
     }
     var buttonPillBackgroundActive: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.blue400.opacity(0.3)
         case .tori:
             return ToriColors.blueberry400.opacity(0.3)
         case .dba:
             return DBAColors.jeanblue400.opacity(0.3)
+        case .blocket:
+            return BlocketColors.blue400.opacity(0.3)
         }
     }
     var buttonPillIcon: Color { token.icon }
@@ -293,66 +323,78 @@ public struct ColorProvider {
     var buttonGroupBorder: Color { token.border }
     var buttonGroupBorderSelected: Color { token.borderPrimary }
     var buttonGroupUtilityBackgroundHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.gray100
         case .tori:
             return ToriColors.gray100
         case .dba:
             return DBAColors.gray100
+        case .blocket:
+            return BlocketColors.gray100
         }
     }
     var buttonGroupUtilityBackgroundSelected: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.gray200
         case .tori:
             return ToriColors.gray200
         case .dba:
             return DBAColors.gray200
+        case .blocket:
+            return BlocketColors.gray200
         }
     }
     var buttonGroupUtilityBorder: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.gray300
         case .tori:
             return ToriColors.gray300
         case .dba:
             return DBAColors.gray300
+        case .blocket:
+            return BlocketColors.gray300
         }
     }
     var buttonGroupUtilityBorderSelected: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.gray700
         case .tori:
             return ToriColors.gray700
         case .dba:
             return DBAColors.gray700
+        case .blocket:
+            return BlocketColors.gray700
         }
     }
     
     /// Callout
     var calloutText: Color { token.text }
     public var calloutBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.green100, darkModeColor: FinnColors.green800)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue800)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.green100, darkModeColor: DBAColors.green800)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.green100, darkModeColor: BlocketColors.green800)
         }
     }
     public var calloutBorder: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.green400, darkModeColor: FinnColors.green600)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.blue400, darkModeColor: ToriColors.blue600)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.green400, darkModeColor: DBAColors.green600)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.green400, darkModeColor: BlocketColors.green600)
         }
     }
     
@@ -469,22 +511,26 @@ public struct ColorProvider {
     
     /// Nav Bar
     public var navbarIconSelected: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.iconSelected
         case .tori:
             return token.iconSecondary
         case .dba:
             return token.iconSecondary
+        case .blocket:
+            return token.iconSecondary
         }
     }
     public var navbarBorderSelected: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderSelected
         case .tori:
             return token.borderSecondary
         case .dba:
+            return token.borderSecondary
+        case .blocket:
             return token.borderSecondary
         }
     }
@@ -509,33 +555,39 @@ public struct ColorProvider {
     var pillFilterIcon: Color { token.iconInverted }
     var pillSuggestionText: Color { token.text }
     var pillSuggestionBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.gray200, darkModeColor: FinnColors.gray600)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.gray200, darkModeColor: DBAColors.gray600)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray600)
         }
     }
     var pillSuggestionBackgroundHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray500)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.gray300, darkModeColor: DBAColors.gray500)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray500)
         }
     }
     var pillSuggestionBackgroundActive: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnColors.gray400
         case .tori:
             return ToriColors.gray400
         case .dba:
             return DBAColors.gray400
+        case .blocket:
+            return BlocketColors.gray400
         }
     }
     var pillSuggestionIcon: Color { token.icon }
@@ -604,23 +656,27 @@ public struct ColorProvider {
     
     /// Switch (Toggle)
     var switchTrackBackground: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.gray200, darkModeColor: FinnColors.gray600)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.gray200, darkModeColor: DBAColors.gray600)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray600)
         }
     }
     var switchTrackBackgroundHover: Color {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray500)
         case .tori:
             return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500)
         case .dba:
             return Color.dynamicColor(defaultColor: DBAColors.gray300, darkModeColor: DBAColors.gray500)
+        case .blocket:
+            return Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray500)
         }
     }
     var switchTrackBackgroundSelected: Color { token.backgroundPrimary }
@@ -703,74 +759,88 @@ public struct UIColorProvider {
     var badgePriceText: UIColor { token.textInvertedStatic }
     var badgeNotificationText: UIColor { token.textNotification }
     public var badgeNeutralBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray100, darkModeColor: FinnUIColors.gray600)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray600)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.gray100, darkModeColor: DBAUIColors.gray600)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray100, darkModeColor: BlocketUIColors.gray600)
         }
     }
     public var badgeInfoBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.aqua100, darkModeColor: FinnUIColors.aqua700)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue100, darkModeColor: ToriUIColors.blue700)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.jeanblue100, darkModeColor: DBAUIColors.jeanblue700)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.blue100, darkModeColor: BlocketUIColors.blue700)
         }
     }
     public var badgePositiveBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.green100, darkModeColor: FinnUIColors.green700)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.green100, darkModeColor: ToriUIColors.green700)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.green100, darkModeColor: DBAUIColors.green700)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.green100, darkModeColor: BlocketUIColors.green700)
         }
     }
     public var badgeWarningBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.yellow100, darkModeColor: FinnUIColors.yellow700)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.yellow100, darkModeColor: ToriUIColors.yellow700)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.yellow100, darkModeColor: DBAUIColors.yellow700)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.yellow100, darkModeColor: BlocketUIColors.yellow700)
         }
     }
     public var badgeNegativeBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.red100, darkModeColor: FinnUIColors.red700)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.red100, darkModeColor: ToriUIColors.red700)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.red100, darkModeColor: DBAUIColors.red700)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.red100, darkModeColor: BlocketUIColors.red700)
         }
     }
     public var badgeDisabledBackground: UIColor { token.backgroundDisabled }
     var badgePriceBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.black.withAlphaComponent(0.7)
         case .tori:
             return ToriUIColors.black.withAlphaComponent(0.7)
         case .dba:
             return DBAUIColors.black.withAlphaComponent(0.7)
+        case .blocket:
+            return BlocketUIColors.black.withAlphaComponent(0.7)
         }
     }
     public var badgeSponsoredBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.aqua200, darkModeColor: FinnUIColors.aqua600)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue200, darkModeColor: ToriUIColors.blue600)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.jeanblue200, darkModeColor: DBAUIColors.jeanblue600)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.blue200, darkModeColor: BlocketUIColors.blue600)
         }
     }
     
@@ -803,63 +873,75 @@ public struct UIColorProvider {
     var buttonPrimaryText: UIColor { token.textInverted }
     var buttonPrimaryTextDisabled: UIColor { token.textInverted }
     public var buttonPrimaryBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimary
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon600, darkModeColor: ToriUIColors.watermelon500)
         case .dba:
             return token.backgroundPrimary
+        case .blocket:
+            return token.backgroundPrimary
         }
     }
     var buttonPrimaryBackgroundHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimaryHover
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon700, darkModeColor: ToriUIColors.watermelon400)
         case .dba:
             return token.backgroundPrimaryHover
+        case .blocket:
+            return token.backgroundPrimaryHover
         }
     }
     public var buttonPrimaryBackgroundActive: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.backgroundPrimaryActive
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon800, darkModeColor: ToriUIColors.watermelon300)
         case .dba:
+            return token.backgroundPrimaryActive
+        case .blocket:
             return token.backgroundPrimaryActive
         }
     }
     var buttonPrimaryBackgroundDisabled: UIColor { token.backgroundDisabled }
     var buttonPrimaryBorder: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimary
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon600, darkModeColor: ToriUIColors.watermelon500)
         case .dba:
             return token.borderPrimary
+        case .blocket:
+            return token.borderPrimary
         }
     }
     var buttonPrimaryBorderHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimaryHover
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon700, darkModeColor: ToriUIColors.watermelon400)
         case .dba:
             return token.borderPrimaryHover
+        case .blocket:
+            return token.borderPrimaryHover
         }
     }
     var buttonPrimaryBorderActive: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderPrimaryActive
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon800, darkModeColor: ToriUIColors.watermelon300)
         case .dba:
+            return token.borderPrimaryActive
+        case .blocket:
             return token.borderPrimaryActive
         }
     }
@@ -902,23 +984,27 @@ public struct UIColorProvider {
     var buttonDisabledQuietBorder: UIColor { token.borderDisabled }
     var buttonPillBackground: UIColor { .clear }
     var buttonPillBackgroundHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.blue300.withAlphaComponent(0.3)
         case .tori:
             return ToriUIColors.blueberry300.withAlphaComponent(0.3)
         case .dba:
             return DBAUIColors.jeanblue300.withAlphaComponent(0.3)
+        case .blocket:
+            return BlocketUIColors.blue300.withAlphaComponent(0.3)
         }
     }
     var buttonPillBackgroundActive: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.blue400.withAlphaComponent(0.3)
         case .tori:
             return ToriUIColors.blueberry400.withAlphaComponent(0.3)
         case .dba:
             return DBAUIColors.jeanblue400.withAlphaComponent(0.3)
+        case .blocket:
+            return BlocketUIColors.blue400.withAlphaComponent(0.3)
         }
     }
     var buttonPillIcon: UIColor { token.icon }
@@ -956,66 +1042,78 @@ public struct UIColorProvider {
     var buttonGroupBorder: UIColor { token.border }
     var buttonGroupBorderSelected: UIColor { token.borderPrimary }
     var buttonGroupUtilityBackgroundHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.gray100
         case .tori:
             return ToriUIColors.gray100
         case .dba:
             return DBAUIColors.gray100
+        case .blocket:
+            return BlocketUIColors.gray100
         }
     }
     var buttonGroupUtilityBackgroundSelected: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.gray200
         case .tori:
             return ToriUIColors.gray200
         case .dba:
             return DBAUIColors.gray200
+        case .blocket:
+            return BlocketUIColors.gray200
         }
     }
     var buttonGroupUtilityBorder: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.gray300
         case .tori:
             return ToriUIColors.gray300
         case .dba:
             return DBAUIColors.gray300
+        case .blocket:
+            return BlocketUIColors.gray300
         }
     }
     var buttonGroupUtilityBorderSelected: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.gray700
         case .tori:
             return ToriUIColors.gray700
         case .dba:
             return DBAUIColors.gray700
+        case .blocket:
+            return BlocketUIColors.gray700
         }
     }
     
     /// Callout
     var calloutText: UIColor { token.text }
     public var calloutBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.green100, darkModeColor: FinnUIColors.green800)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue100, darkModeColor: ToriUIColors.blue800)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.green100, darkModeColor: DBAUIColors.green800)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.green100, darkModeColor: BlocketUIColors.green800)
         }
     }
     public var calloutBorder: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.green400, darkModeColor: FinnUIColors.green600)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.blue400, darkModeColor: ToriUIColors.blue600)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.green400, darkModeColor: DBAUIColors.green600)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.green400, darkModeColor: BlocketUIColors.green600)
         }
     }
     
@@ -1132,22 +1230,26 @@ public struct UIColorProvider {
     
     /// Nav Bar
     public var navbarIconSelected: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.iconSelected
         case .tori:
             return token.iconSecondary
         case .dba:
             return token.iconSecondary
+        case .blocket:
+            return token.iconSecondary
         }
     }
     public var navbarBorderSelected: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return token.borderSelected
         case .tori:
             return token.borderSecondary
         case .dba:
+            return token.borderSecondary
+        case .blocket:
             return token.borderSecondary
         }
     }
@@ -1172,33 +1274,39 @@ public struct UIColorProvider {
     var pillFilterIcon: UIColor { token.iconInverted }
     var pillSuggestionText: UIColor { token.text }
     var pillSuggestionBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray200, darkModeColor: FinnUIColors.gray600)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.gray200, darkModeColor: DBAUIColors.gray600)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray600)
         }
     }
     var pillSuggestionBackgroundHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray300, darkModeColor: FinnUIColors.gray500)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray500)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.gray300, darkModeColor: DBAUIColors.gray500)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray500)
         }
     }
     var pillSuggestionBackgroundActive: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return FinnUIColors.gray400
         case .tori:
             return ToriUIColors.gray400
         case .dba:
             return DBAUIColors.gray400
+        case .blocket:
+            return BlocketUIColors.gray400
         }
     }
     var pillSuggestionIcon: UIColor { token.icon }
@@ -1267,23 +1375,27 @@ public struct UIColorProvider {
     
     /// Switch (Toggle)
     var switchTrackBackground: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray200, darkModeColor: FinnUIColors.gray600)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.gray200, darkModeColor: DBAUIColors.gray600)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray600)
         }
     }
     var switchTrackBackgroundHover: UIColor {
-        switch Warp.Config.warpTheme {
+        switch Warp.Theme {
         case .finn:
             return UIColor.dynamicColor(defaultColor: FinnUIColors.gray300, darkModeColor: FinnUIColors.gray500)
         case .tori:
             return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray500)
         case .dba:
             return UIColor.dynamicColor(defaultColor: DBAUIColors.gray300, darkModeColor: DBAUIColors.gray500)
+        case .blocket:
+            return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray500)
         }
     }
     var switchTrackBackgroundSelected: UIColor { token.backgroundPrimary }

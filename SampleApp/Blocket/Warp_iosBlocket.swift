@@ -3,10 +3,10 @@ import Warp
 import FirebaseCore
 
 @main
-struct Wrap_iosDBA: App {
+struct Wrap_iosBlocket: App {
 
     init() {
-        Warp.Config.warpTheme = .dba
+        Warp.Theme = .blocket
         FirebaseApp.configure()
     }
     

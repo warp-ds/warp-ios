@@ -45,7 +45,7 @@ extension Warp {
                 .background(
                     sharedBackground
                 )
-                .shadow(.medium)
+                .addShadow(.medium)
         }
         
         private var contentView: some View {
