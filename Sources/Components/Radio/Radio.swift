@@ -82,12 +82,12 @@ extension Warp {
         var body: some View {
             HStack(spacing: Spacing.spacing100) {
                 Circle()
-                    .strokeBorder(borderColor(), lineWidth: isSelected ? 6 : 1)
-                    .background(Circle().fill(fillColor()))
+                    .strokeBorder(borderColor, lineWidth: isSelected ? 6 : 1)
+                    .background(Circle().fill(fillColor))
                     .frame(width: 20, height: 20)
                 SwiftUI.Text(label)
                     .font(Typography.body.font)
-                    .foregroundColor(textColor())
+                    .foregroundColor(textColor)
                 Spacer()
             }
             .onTapGesture {
@@ -97,24 +97,24 @@ extension Warp {
             }
         }
         
-        private func borderColor() -> Color {
+        private var borderColor: Color {
             switch (state, isSelected) {
             case (.default, true):
                 return colorProvider.radioBorderSelected
+            case (.default, false):
+                return colorProvider.radioBorder
             case (.error, true):
+                return colorProvider.radioNegativeBorder
+            case (.error, false):
                 return colorProvider.radioNegativeBorder
             case (.disabled, true):
                 return colorProvider.radioBorderDisabled
-            case (.default, false):
-                return colorProvider.radioBorder
-            case (.error, false):
-                return colorProvider.radioNegativeBorder
             case (.disabled, false):
                 return colorProvider.radioBorderDisabled
             }
         }
         
-        private func fillColor() -> Color {
+        private var fillColor: Color {
             if state == .disabled {
                 colorProvider.radioBackgroundDisabled
             } else {
@@ -122,7 +122,7 @@ extension Warp {
             }
         }
         
-        private func textColor() -> Color {
+        private var textColor: Color {
             switch state {
             case .default:
                 return colorProvider.token.text
