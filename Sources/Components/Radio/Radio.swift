@@ -41,7 +41,7 @@ extension Warp {
         }
         
         public var body: some View {
-            VStack(alignment: .leading, spacing: Warp.Spacing.spacing200) {
+            VStack(alignment: .leading, spacing: Spacing.spacing200) {
                 ForEach(options) { option in
                     RadioButton(isSelected: selectedOption == option,
                                 label: label(option),
@@ -53,8 +53,7 @@ extension Warp {
                     .disabled(state == .disabled)
                 }
             }
-            .padding(Warp.Spacing.spacing200)
-            .background(colorProvider.radioBackground)
+            .padding(Spacing.spacing200)
         }
     }
     
@@ -81,15 +80,11 @@ extension Warp {
         private let colorProvider: ColorProvider = Warp.Color
         
         var body: some View {
-            HStack {
-                ZStack {
-                    Circle()
-                        .fill(borderColor())
-                        .frame(width: 20, height: 20)
-                    Circle()
-                        .fill(fillColor())
-                        .frame(width: isSelected ? 8 : 18, height: isSelected ? 8 : 18)
-                }
+            HStack(spacing: Spacing.spacing100) {
+                Circle()
+                    .strokeBorder(borderColor(), lineWidth: isSelected ? 6 : 1)
+                    .background(Circle().fill(fillColor()))
+                    .frame(width: 20, height: 20)
                 SwiftUI.Text(label)
                     .font(Typography.body.font)
                     .foregroundColor(textColor())
@@ -123,7 +118,7 @@ extension Warp {
             if state == .disabled {
                 colorProvider.radioBackgroundDisabled
             } else {
-                colorProvider.radioBackground
+                .clear
             }
         }
         
