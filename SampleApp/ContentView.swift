@@ -129,6 +129,13 @@ struct ContentView: View {
                         Text("Pill")
                             .padding()
                     }
+                    
+                    Divider()
+
+                    NavigationLink(destination: RadioView()) {
+                        Text("Radio")
+                            .padding()
+                    }
 
                     Divider()
 
