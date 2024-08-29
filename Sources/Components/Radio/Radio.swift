@@ -11,6 +11,8 @@ extension Warp {
     ///   - options: An array of options that conform to `Identifiable` and `Hashable`.
     ///   - label: A closure that provides a label for each option.
     ///   - state: The state of the radio button group (default, error, disabled).
+    ///   - extraContent: A view that will be displayed beside or below the label.
+    ///   - contentLayout: Defines whether the label and extra content are arranged horizontally or vertically.
     public struct Radio<Option: Identifiable & Hashable>: View {
         /// A binding to the currently selected option.
         @Binding var selectedOption: Option
@@ -20,6 +22,10 @@ extension Warp {
         var label: (Option) -> String
         /// The state of the radio button group (default, error, disabled).
         var state: RadioButtonState
+        /// An optional view that will be displayed beside or below the label.
+        var extraContent: ((Option) -> AnyView)?
+        /// Defines whether the label and extra content are arranged horizontally or vertically.
+        var contentLayout: Axis.Set
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
 
@@ -30,14 +36,20 @@ extension Warp {
         ///   - options: An array of options that conform to `Identifiable` and `Hashable`.
         ///   - label: A closure that provides a label for each option.
         ///   - state: The state of the radio button group (default, error, disabled).
+        ///   - extraContent: A view that will be displayed beside or below the label.
+        ///   - contentLayout: Defines whether the label and extra content are arranged horizontally or vertically.
         public init(selectedOption: Binding<Option>,
                     options: [Option],
                     label: @escaping (Option) -> String,
-                    state: RadioButtonState = .default) {
+                    state: RadioButtonState = .default,
+                    extraContent: ((Option) -> AnyView)? = nil,
+                    contentLayout: Axis.Set = .horizontal) {
             self._selectedOption = selectedOption
             self.options = options
             self.label = label
             self.state = state
+            self.extraContent = extraContent
+            self.contentLayout = contentLayout
         }
         
         public var body: some View {
@@ -45,7 +57,9 @@ extension Warp {
                 ForEach(options) { option in
                     RadioButton(isSelected: selectedOption == option,
                                 label: label(option),
-                                state: state) {
+                                state: state,
+                                extraContent: extraContent?(option),
+                                contentLayout: contentLayout) {
                         if state != .disabled {
                             selectedOption = option
                         }
@@ -66,6 +80,8 @@ extension Warp {
     ///   - isSelected: A Boolean value indicating whether the radio button is selected.
     ///   - label: The text label for the radio button.
     ///   - state: The state of the radio button (default, error, disabled).
+    ///   - extraContent: A view that will be displayed beside or below the label.
+    ///   - contentLayout: Defines whether the label and extra content are arranged horizontally or vertically.
     ///   - action: A closure that is executed when the radio button is tapped.
     struct RadioButton: View {
         /// A Boolean value indicating whether the radio button is selected.
@@ -74,6 +90,10 @@ extension Warp {
         var label: String
         /// The state of the radio button (default, error, disabled).
         var state: RadioButtonState
+        /// An optional view that will be displayed beside or below the label.
+        var extraContent: AnyView?
+        /// Defines whether the label and extra content are arranged horizontally or vertically.
+        var contentLayout: Axis.Set
         /// A closure that is executed when the radio button is tapped.
         var action: () -> Void
         /// Object that will provide needed colors.
@@ -85,14 +105,38 @@ extension Warp {
                     .strokeBorder(borderColor, lineWidth: isSelected ? 6 : 1)
                     .background(Circle().fill(fillColor))
                     .frame(width: 20, height: 20)
-                SwiftUI.Text(label)
-                    .font(Typography.body.font)
-                    .foregroundColor(textColor)
+                
+                contentStack
+                
                 Spacer()
             }
             .onTapGesture {
                 if state != .disabled {
                     action()
+                }
+            }
+        }
+        
+        @ViewBuilder
+        private var contentStack: some View {
+            switch contentLayout {
+            case .vertical:
+                VStack(alignment: .leading, spacing: Spacing.spacing100) {
+                    SwiftUI.Text(label)
+                        .font(Typography.body.font)
+                        .foregroundColor(textColor)
+                    if let extraContent = extraContent {
+                        extraContent
+                    }
+                }
+            case .horizontal, _:
+                HStack(spacing: Spacing.spacing100) {
+                    SwiftUI.Text(label)
+                        .font(Typography.body.font)
+                        .foregroundColor(textColor)
+                    if let extraContent = extraContent {
+                        extraContent
+                    }
                 }
             }
         }
@@ -116,9 +160,9 @@ extension Warp {
         
         private var fillColor: Color {
             if state == .disabled {
-                colorProvider.radioBackgroundDisabled
+                return colorProvider.radioBackgroundDisabled
             } else {
-                colorProvider.radioBackground
+                return colorProvider.radioBackground
             }
         }
         
