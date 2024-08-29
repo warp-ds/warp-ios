@@ -100,7 +100,7 @@ extension Warp {
         private let colorProvider: ColorProvider = Warp.Color
         
         var body: some View {
-            HStack(spacing: Spacing.spacing100) {
+            HStack(alignment: .top, spacing: Spacing.spacing100) {
                 Circle()
                     .strokeBorder(borderColor, lineWidth: isSelected ? 6 : 1)
                     .background(Circle().fill(fillColor))
