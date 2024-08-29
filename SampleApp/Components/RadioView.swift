@@ -16,7 +16,7 @@ enum LayoutDirection: String, Hashable, CaseIterable {
 }
 
 struct RadioView: View {
-    @State private var selectedOption = ExampleOption(name: "Option 2", extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary)), indentationLevel: 1)
+    @State private var selectedOption = ExampleOption(name: "Option 2")
     @State private var state: Warp.RadioButtonState = .default
     @State private var title: String = "Title"
     @State private var helpText: String = "Help text"
@@ -93,15 +93,15 @@ struct RadioView: View {
 struct ExampleOption: RadioOption {
     var id: String { name }
     let name: String
-    let extraContent: AnyView? // Optional extra content for this option.
-    let indentationLevel: Int // Indentation level for this option.
+    var extraContent: AnyView? = nil // Optional extra content for this option.
+    var indentationLevel: Int = 0 // Indentation level for this option.
     
     static func ==(lhs: ExampleOption, rhs: ExampleOption) -> Bool {
-        return lhs.name == rhs.name
+        return lhs.id == rhs.id
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(name)
+        hasher.combine(id)
     }
 }
 
