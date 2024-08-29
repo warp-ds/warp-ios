@@ -233,6 +233,8 @@ public struct FinnColorsView: View {
                                     FinnColors.gray950])
             }
             .padding(.horizontal)
+            .navigationTitle("Colors")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 

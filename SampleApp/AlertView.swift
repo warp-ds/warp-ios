@@ -23,7 +23,7 @@ struct AlertView: View {
     @State private var hasSecondaryButton = false
 
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack {
                 createAlertView(basedOn: (hasLink, hasPrimaryButton, hasSecondaryButton))
                     .padding(.top)
@@ -96,6 +96,7 @@ struct AlertView: View {
             }
             .padding(.horizontal, 20)
             .navigationTitle("Alert")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 

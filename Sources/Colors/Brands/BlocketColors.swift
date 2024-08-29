@@ -233,6 +233,8 @@ public struct BlocketColorsView: View {
                                     BlocketColors.gray950,])
             }
             .padding(.horizontal)
+            .navigationTitle("Colors")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 

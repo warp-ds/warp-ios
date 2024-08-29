@@ -11,7 +11,6 @@ extension Warp {
     ///   - label: The text label for the radio button.
     ///   - state: The state of the radio button (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
-    ///   - contentLayout: Defines whether the label and extra content are arranged horizontally or vertically.
     ///   - action: A closure that is executed when the radio button is tapped.
     public struct Radio: View {
         /// A Boolean value indicating whether the radio button is selected.
@@ -22,8 +21,6 @@ extension Warp {
         var state: RadioButtonState
         /// An optional view that will be displayed beside or below the label.
         var extraContent: AnyView?
-        /// Defines whether the label and extra content are arranged horizontally or vertically.
-        var contentLayout: Axis.Set
         /// A closure that is executed when the radio button is tapped.
         var action: () -> Void
         /// Object that will provide needed colors.
@@ -49,24 +46,12 @@ extension Warp {
         
         @ViewBuilder
         private var contentStack: some View {
-            switch contentLayout {
-            case .vertical:
-                VStack(alignment: .leading, spacing: Spacing.spacing100) {
-                    SwiftUI.Text(label)
-                        .font(Typography.body.font)
-                        .foregroundColor(textColor)
-                    if let extraContent = extraContent {
-                        extraContent
-                    }
-                }
-            case .horizontal, _:
-                HStack(spacing: Spacing.spacing100) {
-                    SwiftUI.Text(label)
-                        .font(Typography.body.font)
-                        .foregroundColor(textColor)
-                    if let extraContent = extraContent {
-                        extraContent
-                    }
+            HStack(alignment: .top, spacing: Spacing.spacing100) {
+                SwiftUI.Text(label)
+                    .font(Typography.body.font)
+                    .foregroundColor(textColor)
+                if let extraContent = extraContent {
+                    extraContent
                 }
             }
         }

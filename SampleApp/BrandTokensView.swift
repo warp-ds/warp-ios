@@ -301,6 +301,8 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.textNotification])
             }
             .padding(.horizontal)
+            .navigationTitle("Token")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 

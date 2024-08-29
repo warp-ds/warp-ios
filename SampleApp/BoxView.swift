@@ -22,7 +22,7 @@ struct BoxView: View {
     @State private var hasButton = false
 
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack {
                 createBoxView(basedOn: (hasLink, hasButton))
                     .padding(.top)
@@ -111,6 +111,7 @@ struct BoxView: View {
             }
             .padding(.horizontal, 20)
             .navigationTitle("Box")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 

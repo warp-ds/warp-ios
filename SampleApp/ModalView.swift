@@ -27,101 +27,99 @@ struct ModalView: View {
     @State private var presentModal = false
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    createModalView()
-                    VStack(alignment: .leading) {
-                        Button(action: {
-                            withAnimation {
-                                presentModal = true
-                            }
-                            
-                        }, label: {
-                            Text("Tap me to show the Modal")
-                                .frame(maxWidth: .infinity)
-                        })
-                        .buttonStyle(.borderedProminent)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    
-                    GroupBox(
-                        content: {
-                            Warp.TextField(text: $title)
-                                .defaultPadding()
-                        }, label: {
-                            Text("Title")
+        ScrollView(showsIndicators: false) {
+            VStack {
+                createModalView()
+                VStack(alignment: .leading) {
+                    Button(action: {
+                        withAnimation {
+                            presentModal = true
                         }
-                    )
-                    
-                    GroupBox(
-                        content: {
-                            Warp.TextField(text: $subtitle)
-                                .defaultPadding()
-                        }, label: {
-                            Text("Subtitle")
-                        }
-                    )
-                    
-                    GroupBox(
-                        content: {
-                            Warp.TextField(text: $bodyText)
-                                .defaultPadding()
-                        }, label: {
-                            Text("Body Text")
-                        }
-                    )
-                    
-                    GroupBox(
-                        content: {
-                            Toggle(isOn: $hasPrimaryButton.defaultAnimation()) {
-                                createToggleLabelView(hasValue: hasPrimaryButton, tag: "primary button")
-                            }
-                            .defaultPadding()
-                        }, label: {
-                            Text("Primary button")
-                        }
-                    )
-                    
-                    GroupBox(
-                        content: {
-                            Toggle(isOn: $hasSecondaryButton) {
-                                createToggleLabelView(hasValue: hasSecondaryButton, tag: "secondary button")
-                            }
-                            .defaultPadding()
-                        }, label: {
-                            Text("Secondary button")
-                        }
-                    )
-                    
-                    GroupBox(
-                        content: {
-                            Toggle(isOn: $hasCloseButton) {
-                                createToggleLabelView(hasValue: hasCloseButton, tag: "close button")
-                            }
-                            .defaultPadding()
-                        }, label: {
-                            Text("Close button")
-                        }
-                    )
-                    
-                    GroupBox(
-                        content: {
-                            Toggle(isOn: $dismissOnClickOutside) {
-                                createToggleLabelView(hasValue: dismissOnClickOutside, tag: "dismiss on click outside")
-                            }
-                            .defaultPadding()
-                        }, label: {
-                            Text("Dismiss on click outside")
-                        }
-                    )
+                        
+                    }, label: {
+                        Text("Tap me to show the Modal")
+                            .frame(maxWidth: .infinity)
+                    })
+                    .buttonStyle(.borderedProminent)
                 }
-                .padding(.horizontal, 20)
+                .frame(maxWidth: .infinity)
+                .padding()
+                
+                GroupBox(
+                    content: {
+                        Warp.TextField(text: $title)
+                            .defaultPadding()
+                    }, label: {
+                        Text("Title")
+                    }
+                )
+                
+                GroupBox(
+                    content: {
+                        Warp.TextField(text: $subtitle)
+                            .defaultPadding()
+                    }, label: {
+                        Text("Subtitle")
+                    }
+                )
+                
+                GroupBox(
+                    content: {
+                        Warp.TextField(text: $bodyText)
+                            .defaultPadding()
+                    }, label: {
+                        Text("Body Text")
+                    }
+                )
+                
+                GroupBox(
+                    content: {
+                        Toggle(isOn: $hasPrimaryButton.defaultAnimation()) {
+                            createToggleLabelView(hasValue: hasPrimaryButton, tag: "primary button")
+                        }
+                        .defaultPadding()
+                    }, label: {
+                        Text("Primary button")
+                    }
+                )
+                
+                GroupBox(
+                    content: {
+                        Toggle(isOn: $hasSecondaryButton) {
+                            createToggleLabelView(hasValue: hasSecondaryButton, tag: "secondary button")
+                        }
+                        .defaultPadding()
+                    }, label: {
+                        Text("Secondary button")
+                    }
+                )
+                
+                GroupBox(
+                    content: {
+                        Toggle(isOn: $hasCloseButton) {
+                            createToggleLabelView(hasValue: hasCloseButton, tag: "close button")
+                        }
+                        .defaultPadding()
+                    }, label: {
+                        Text("Close button")
+                    }
+                )
+                
+                GroupBox(
+                    content: {
+                        Toggle(isOn: $dismissOnClickOutside) {
+                            createToggleLabelView(hasValue: dismissOnClickOutside, tag: "dismiss on click outside")
+                        }
+                        .defaultPadding()
+                    }, label: {
+                        Text("Dismiss on click outside")
+                    }
+                )
             }
-            .navigationTitle("Modal")
+            .padding(.horizontal, 20)
         }
-        
+        .navigationTitle("Modal")
+        .navigationBarTitleDisplayMode(.inline)
         .warpModal(
             title: title,
             subtitle: subtitle,

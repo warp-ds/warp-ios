@@ -9,6 +9,7 @@ struct BadgeView: View {
             }
             .padding(.horizontal)
             .navigationTitle("Badge")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 

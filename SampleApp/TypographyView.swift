@@ -11,6 +11,8 @@ struct TypographyView: View {
             }
             .padding(.horizontal)
         }
+        .navigationTitle("Typography")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     @ViewBuilder

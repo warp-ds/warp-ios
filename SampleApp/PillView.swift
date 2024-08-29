@@ -9,6 +9,7 @@ struct PillView: View {
             }
             .padding(.horizontal)
             .navigationTitle("Pill")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     

@@ -26,6 +26,7 @@ struct CalloutView: View {
         }
         .padding()
         .navigationTitle("Callout")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private var inlineViews: some View {

@@ -267,6 +267,8 @@ public struct ToriColorsView: View {
                                     ToriColors.gray950,])
             }
             .padding(.horizontal)
+            .navigationTitle("Colors")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 
