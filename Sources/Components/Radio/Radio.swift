@@ -118,7 +118,7 @@ extension Warp {
             if state == .disabled {
                 colorProvider.radioBackgroundDisabled
             } else {
-                .clear
+                colorProvider.radioBackground
             }
         }
         

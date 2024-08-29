@@ -17,6 +17,7 @@ struct RadioView: View {
                        options: options,
                        label: { $0.name },
                        state: state)
+            .background(Warp.Token.surfaceElevated200)
             
             Picker("Pick your shadow", selection: $state.animation(.interpolatingSpring)) {
                 ForEach(Warp.RadioButtonState.allCases, id: \.self) { state in
