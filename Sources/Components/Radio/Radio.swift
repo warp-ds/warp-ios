@@ -77,13 +77,9 @@ extension Warp {
                 return colorProvider.radioBorderSelected
             case (.default, false):
                 return colorProvider.radioBorder
-            case (.error, true):
+            case (.error, _):
                 return colorProvider.radioNegativeBorder
-            case (.error, false):
-                return colorProvider.radioNegativeBorder
-            case (.disabled, true):
-                return colorProvider.radioBorderDisabled
-            case (.disabled, false):
+            case (.disabled, _):
                 return colorProvider.radioBorderDisabled
             }
         }
