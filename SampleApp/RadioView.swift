@@ -4,7 +4,7 @@ import SwiftUI
 enum LayoutDirection: String, Hashable, CaseIterable {
     case vertical
     case horizontal
-
+    
     var axis: Axis.Set {
         switch self {
         case .vertical:

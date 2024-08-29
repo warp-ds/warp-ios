@@ -95,7 +95,7 @@ extension Warp {
                               extraContent: extraContent?(option)) {
                             selectedOption = option
                         }
-                        .disabled(state == .disabled)
+                              .disabled(state == .disabled)
                     }
                 }
             case .horizontal, _:
@@ -108,7 +108,7 @@ extension Warp {
                                   extraContent: extraContent?(option)) {
                                 selectedOption = option
                             }
-                            .disabled(state == .disabled)
+                                  .disabled(state == .disabled)
                         }
                     }
                 }
