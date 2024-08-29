@@ -23,17 +23,17 @@ struct RadioView: View {
             }
             .pickerStyle(.segmented)
             .padding(.bottom, 20)
-
+            
             // First Radio without extraContent
-            Warp.Radio(
+            Warp.RadioGroup(
                 selectedOption: $selectedOption1,
                 options: options,
                 label: { $0.name },
                 state: state
             )
-
+            
             // Second Radio with extraContent, arranged horizontally
-            Warp.Radio(
+            Warp.RadioGroup(
                 selectedOption: $selectedOption2,
                 options: options,
                 label: { $0.name },
@@ -41,9 +41,9 @@ struct RadioView: View {
                 extraContent: { $0.extraContent ?? AnyView(EmptyView()) },
                 contentLayout: .horizontal
             )
-
+            
             // Third Radio with extraContent, arranged vertically
-            Warp.Radio(
+            Warp.RadioGroup(
                 selectedOption: $selectedOption3,
                 options: options,
                 label: { $0.name },
@@ -61,11 +61,11 @@ struct ExampleOption: Identifiable, Hashable {
     var id: String { name }
     let name: String
     let extraContent: AnyView? // Optional extra content for this option.
-
+    
     static func ==(lhs: ExampleOption, rhs: ExampleOption) -> Bool {
         return lhs.name == rhs.name
     }
-
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(name)
     }

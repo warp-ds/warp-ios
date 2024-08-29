@@ -13,7 +13,7 @@ extension Warp {
     ///   - state: The state of the radio button group (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - contentLayout: Defines whether the label and extra content are arranged horizontally or vertically.
-    public struct Radio<Option: Identifiable & Hashable>: View {
+    public struct RadioGroup<Option: Identifiable & Hashable>: View {
         /// A binding to the currently selected option.
         @Binding var selectedOption: Option
         /// An array of options that conform to `Identifiable` and `Hashable`.
@@ -28,7 +28,7 @@ extension Warp {
         var contentLayout: Axis.Set
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
-
+        
         /// Initializes a new `Radio`.
         ///
         /// - Parameters:
@@ -55,16 +55,14 @@ extension Warp {
         public var body: some View {
             VStack(alignment: .leading, spacing: Spacing.spacing200) {
                 ForEach(options) { option in
-                    RadioButton(isSelected: selectedOption == option,
-                                label: label(option),
-                                state: state,
-                                extraContent: extraContent?(option),
-                                contentLayout: contentLayout) {
-                        if state != .disabled {
-                            selectedOption = option
-                        }
+                    Radio(isSelected: selectedOption == option,
+                          label: label(option),
+                          state: state,
+                          extraContent: extraContent?(option),
+                          contentLayout: contentLayout) {
+                        selectedOption = option
                     }
-                    .disabled(state == .disabled)
+                          .disabled(state == .disabled)
                 }
             }
             .padding(Spacing.spacing200)
@@ -83,7 +81,7 @@ extension Warp {
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - contentLayout: Defines whether the label and extra content are arranged horizontally or vertically.
     ///   - action: A closure that is executed when the radio button is tapped.
-    struct RadioButton: View {
+    public struct Radio: View {
         /// A Boolean value indicating whether the radio button is selected.
         var isSelected: Bool
         /// The text label for the radio button.
@@ -99,7 +97,7 @@ extension Warp {
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
-        var body: some View {
+        public var body: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
                 Circle()
                     .strokeBorder(borderColor, lineWidth: isSelected ? 6 : 1)
