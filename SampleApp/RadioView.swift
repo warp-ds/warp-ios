@@ -16,18 +16,18 @@ enum LayoutDirection: String, Hashable, CaseIterable {
 }
 
 struct RadioView: View {
-    @State private var selectedOption1 = ExampleOption(name: "Option 1", extraContent: nil)
-    @State private var selectedOption2 = ExampleOption(name: "Option 2", extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary)))
-    @State private var selectedOption3 = ExampleOption(name: "Option 3", extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(Warp.Token.textSubtle)))
+    @State private var selectedOption = ExampleOption(name: "Option 2", extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary)), indentationLevel: 1)
     @State private var state: Warp.RadioButtonState = .default
     @State private var title: String = "Title"
     @State private var helpText: String = "Help text"
     @State private var layoutDirection: LayoutDirection = .vertical
+    @State private var isIndentationEnabled: Bool = false
+    @State private var refreshID = UUID()  // This is used to force a re-render
     
     let options = [
-        ExampleOption(name: "Option 1", extraContent: nil),
-        ExampleOption(name: "Option 2", extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary))),
-        ExampleOption(name: "Option 3", extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(Warp.Token.textSubtle)))
+        ExampleOption(name: "Option 1", extraContent: nil, indentationLevel: 0),
+        ExampleOption(name: "Option 2", extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary)), indentationLevel: 1),
+        ExampleOption(name: "Option 3", extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(Warp.Token.textSubtle)), indentationLevel: 2)
     ]
     
     var body: some View {
@@ -60,40 +60,27 @@ struct RadioView: View {
                 .pickerStyle(.segmented)
                 .padding(.bottom, 20)
                 
-                // First RadioGroup with dynamic alignment
-                Warp.RadioGroup(
-                    title: title,
-                    helpText: helpText,
-                    selectedOption: $selectedOption1,
-                    options: options,
-                    label: { $0.name },
-                    state: state,
-                    axis: layoutDirection.axis
-                )
+                // Switch for enabling/disabling indentations
+                Toggle("Enable Indentations", isOn: $isIndentationEnabled)
+                    .padding(.horizontal)
+                    .padding(.bottom, 20)
+                    .onChange(of: isIndentationEnabled) { _ in
+                        refreshID = UUID()  // Force re-render
+                    }
                 
-                // Second RadioGroup with dynamic alignment
                 Warp.RadioGroup(
                     title: title,
                     helpText: helpText,
-                    selectedOption: $selectedOption2,
-                    options: options,
+                    selectedOption: $selectedOption,
+                    options: options.map { option in
+                        ExampleOption(name: option.name, extraContent: option.extraContent, indentationLevel: isIndentationEnabled ? option.indentationLevel : 0)
+                    },
                     label: { $0.name },
                     state: state,
                     extraContent: { $0.extraContent ?? AnyView(EmptyView()) },
                     axis: layoutDirection.axis
                 )
-                
-                // Third RadioGroup with dynamic alignment
-                Warp.RadioGroup(
-                    title: title,
-                    helpText: helpText,
-                    selectedOption: $selectedOption3,
-                    options: options,
-                    label: { $0.name },
-                    state: state,
-                    extraContent: { $0.extraContent ?? AnyView(EmptyView()) },
-                    axis: layoutDirection.axis
-                )
+                .id(refreshID)  // Force re-render on change
             }
             .padding()
         }
@@ -103,10 +90,11 @@ struct RadioView: View {
     }
 }
 
-struct ExampleOption: Identifiable, Hashable {
+struct ExampleOption: RadioOption {
     var id: String { name }
     let name: String
     let extraContent: AnyView? // Optional extra content for this option.
+    let indentationLevel: Int // Indentation level for this option.
     
     static func ==(lhs: ExampleOption, rhs: ExampleOption) -> Bool {
         return lhs.name == rhs.name

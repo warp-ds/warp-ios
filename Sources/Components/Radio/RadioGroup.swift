@@ -11,19 +11,19 @@ extension Warp {
     ///   - title: An optional title for the radio group.
     ///   - helpText: An optional help text displayed below the title or the radio buttons.
     ///   - selectedOption: A binding to the currently selected option.
-    ///   - options: An array of options that conform to `Identifiable` and `Hashable`.
+    ///   - options: An array of options that conform to `RadioOption`.
     ///   - label: A closure that provides a label for each option.
     ///   - state: The state of the radio button group (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
-    public struct RadioGroup<Option: Identifiable & Hashable>: View {
+    public struct RadioGroup<Option: RadioOption>: View {
         /// An optional title for the radio group.
         var title: String?
         /// An optional help text displayed below the title or the radio buttons.
         var helpText: String?
         /// A binding to the currently selected option.
         @Binding var selectedOption: Option
-        /// An array of options that conform to `Identifiable` and `Hashable`.
+        /// An array of options that conform to `RadioOption`.
         var options: [Option]
         /// A closure that provides a label for each option.
         var label: (Option) -> String
@@ -42,7 +42,7 @@ extension Warp {
         ///   - title: An optional title for the radio group.
         ///   - helpText: An optional help text displayed below the title or the radio buttons.
         ///   - selectedOption: A binding to the currently selected option.
-        ///   - options: An array of options that conform to `Identifiable` and `Hashable`.
+        ///   - options: An array of options that conform to `RadioOption`.
         ///   - label: A closure that provides a label for each option.
         ///   - state: The state of the radio button group (default, error, disabled).
         ///   - extraContent: A view that will be displayed beside or below the label.
@@ -92,7 +92,8 @@ extension Warp {
                         Radio(isSelected: selectedOption == option,
                               label: label(option),
                               state: state,
-                              extraContent: extraContent?(option)) {
+                              extraContent: extraContent?(option),
+                              indentationLevel: option.indentationLevel) {
                             selectedOption = option
                         }
                               .disabled(state == .disabled)
