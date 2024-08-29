@@ -94,9 +94,7 @@ extension Warp {
         
         private var textColor: Color {
             switch state {
-            case .default:
-                return colorProvider.token.text
-            case .error:
+            case .default, .error:
                 return colorProvider.token.text
             case .disabled:
                 return colorProvider.token.textDisabled
