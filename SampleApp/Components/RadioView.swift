@@ -16,7 +16,7 @@ enum LayoutDirection: String, Hashable, CaseIterable {
 }
 
 struct RadioView: View {
-    @State private var selectedOption = ExampleOption(name: "Option 2")
+    @State private var selectedOption = ExampleOption(title: "Option 2")
     @State private var state: Warp.RadioButtonState = .default
     @State private var title: String = "Title"
     @State private var helpText: String = "Help text"
@@ -24,9 +24,9 @@ struct RadioView: View {
     @State private var isIndentationEnabled: Bool = false
     
     let options = [
-        ExampleOption(name: "Option 1", extraContent: nil, indentationLevel: 0),
-        ExampleOption(name: "Option 2", extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary)), indentationLevel: 1),
-        ExampleOption(name: "Option 3", extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(Warp.Token.textSubtle)), indentationLevel: 2)
+        ExampleOption(title: "Option 1", extraContent: nil, indentationLevel: 0),
+        ExampleOption(title: "Option 2", extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary)), indentationLevel: 1),
+        ExampleOption(title: "Option 3", extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(Warp.Token.textSubtle)), indentationLevel: 2)
     ]
     
     var body: some View {
@@ -69,9 +69,9 @@ struct RadioView: View {
                     helpText: helpText,
                     selectedOption: $selectedOption,
                     options: options.map { option in
-                        ExampleOption(name: option.name, extraContent: option.extraContent, indentationLevel: isIndentationEnabled ? option.indentationLevel : 0)
+                        ExampleOption(title: option.title, extraContent: option.extraContent, indentationLevel: isIndentationEnabled ? option.indentationLevel : 0)
                     },
-                    label: { $0.name },
+                    label: { $0.title },
                     state: state,
                     extraContent: { $0.extraContent ?? AnyView(EmptyView()) },
                     axis: layoutDirection.axis
@@ -87,8 +87,8 @@ struct RadioView: View {
 }
 
 struct ExampleOption: RadioOption {
-    var id: String { name }
-    let name: String
+    var id: String { title }
+    let title: String
     var extraContent: AnyView? = nil // Optional extra content for this option.
     var indentationLevel: Int? = 0 // Indentation level for this option.
     
