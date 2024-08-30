@@ -92,8 +92,7 @@ extension Warp {
                         Radio(isSelected: selectedOption == option,
                               label: label(option),
                               state: state,
-                              extraContent: extraContent?(option),
-                              indentationLevel: option.indentationLevel) {
+                              extraContent: extraContent?(option)) {
                             selectedOption = option
                         }
                               .disabled(state == .disabled)

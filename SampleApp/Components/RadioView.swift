@@ -60,9 +60,9 @@ struct RadioView: View {
                 .padding(.bottom, 20)
                 
                 // Switch for enabling/disabling indentations
-                Toggle("Enable Indentations", isOn: $isIndentationEnabled)
-                    .padding(.horizontal)
-                    .padding(.bottom, 20)
+//                Toggle("Enable Indentations", isOn: $isIndentationEnabled)
+//                    .padding(.horizontal)
+//                    .padding(.bottom, 20)
                 
                 Warp.RadioGroup(
                     title: title,
