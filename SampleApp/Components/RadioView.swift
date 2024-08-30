@@ -94,7 +94,7 @@ struct ExampleOption: RadioOption {
     var id: String { name }
     let name: String
     var extraContent: AnyView? = nil // Optional extra content for this option.
-    var indentationLevel: Int = 0 // Indentation level for this option.
+    var indentationLevel: Int? = 0 // Indentation level for this option.
     
     static func ==(lhs: ExampleOption, rhs: ExampleOption) -> Bool {
         return lhs.id == rhs.id

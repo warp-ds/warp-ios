@@ -23,7 +23,7 @@ extension Warp {
         /// An optional view that will be displayed beside or below the label.
         var extraContent: AnyView?
         /// The level of indentation for the radio button. Each level adds 24 points of indentation.
-        var indentationLevel: Int = 0
+        var indentationLevel: Int? = 0
         /// A closure that is executed when the radio button is tapped.
         var action: () -> Void
         /// Object that will provide needed colors.
@@ -32,7 +32,7 @@ extension Warp {
         public var body: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
                 Spacer()
-                    .frame(width: CGFloat(indentationLevel) * Spacing.spacing300)
+                    .frame(width: CGFloat(indentationLevel ?? 0) * Spacing.spacing300)
                 Circle()
                     .strokeBorder(borderColor, lineWidth: isSelected ? 6 : 1)
                     .background(Circle().fill(fillColor))
