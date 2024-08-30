@@ -22,7 +22,6 @@ struct RadioView: View {
     @State private var helpText: String = "Help text"
     @State private var layoutDirection: LayoutDirection = .vertical
     @State private var isIndentationEnabled: Bool = false
-    @State private var refreshID = UUID()  // This is used to force a re-render
     
     let options = [
         ExampleOption(name: "Option 1", extraContent: nil, indentationLevel: 0),
@@ -64,9 +63,6 @@ struct RadioView: View {
                 Toggle("Enable Indentations", isOn: $isIndentationEnabled)
                     .padding(.horizontal)
                     .padding(.bottom, 20)
-                    .onChange(of: isIndentationEnabled) { _ in
-                        refreshID = UUID()  // Force re-render
-                    }
                 
                 Warp.RadioGroup(
                     title: title,
@@ -80,7 +76,7 @@ struct RadioView: View {
                     extraContent: { $0.extraContent ?? AnyView(EmptyView()) },
                     axis: layoutDirection.axis
                 )
-                .id(refreshID)  // Force re-render on change
+                .id(isIndentationEnabled)  // Force re-render on change
             }
             .padding()
         }
