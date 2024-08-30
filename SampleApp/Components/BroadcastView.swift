@@ -65,6 +65,7 @@ struct BroadcastView: View {
         }
         .padding()
         .navigationTitle("Broadcast")
+        .navigationBarTitleDisplayMode(.inline)
         .warpBroadcast(
             text: "Here's a broadcast located at the \(broadcastEdge.description) edge",
             edge: broadcastEdge,

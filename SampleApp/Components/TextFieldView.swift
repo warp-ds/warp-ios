@@ -125,6 +125,8 @@ struct TextFieldView: View {
                 }
             }
         }
+        .navigationTitle("TextField")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private func createToggle(binding: Binding<Bool>, text: (true: String, false: String)) -> some View {

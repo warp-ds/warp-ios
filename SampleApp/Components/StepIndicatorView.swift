@@ -125,6 +125,7 @@ struct StepIndicatorView: View {
             isPresented: $toastIsPresented
         )
         .navigationTitle("Step Indicator")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private func pushStep() {

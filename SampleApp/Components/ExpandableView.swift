@@ -43,6 +43,7 @@ struct ExpandableView: View {
         }
         .padding()
         .navigationTitle("Expandable")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

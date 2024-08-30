@@ -233,6 +233,8 @@ public struct DBAColorsView: View {
                                     DBAColors.gray950])
             }
             .padding(.horizontal)
+            .navigationTitle("Colors")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 

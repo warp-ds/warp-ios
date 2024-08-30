@@ -13,6 +13,8 @@ struct TextView: View {
             }
             .padding()
         }
+        .navigationTitle("Text")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func createView(for style: Warp.TextStyle) -> some View {

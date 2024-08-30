@@ -10,6 +10,7 @@ struct SpinnerView: View {
             Warp.Spinner(size: .custom(50))
         }
         .navigationTitle("Spinner")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

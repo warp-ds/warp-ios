@@ -30,7 +30,7 @@ class UIShadowViewController: UIViewController {
         
         navigationItem.title = "ShadowUIView"
         navigationController?.navigationBar.prefersLargeTitles = false
-        view.backgroundColor = Warp.UIToken.surfaceSunken
+        view.backgroundColor = Warp.UIToken.surfaceElevated100
         
         // Add the segmented control to the view
         view.addSubview(segmentedControl)
