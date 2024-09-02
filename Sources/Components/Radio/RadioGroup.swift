@@ -16,6 +16,7 @@ extension Warp {
     ///   - state: The state of the radio button group (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
+    ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
     public struct RadioGroup<Option: RadioOption>: View {
         /// An optional title for the radio group.
         var title: String?
@@ -33,6 +34,8 @@ extension Warp {
         var extraContent: ((Option) -> AnyView)?
         /// Determines whether the list of radio buttons is aligned vertically or horizontally.
         var axis: Axis.Set
+        /// A closure that will be triggered when an option is selected, providing the old and new selection.
+        var onSelection: ((Option, Option) -> Void)?
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
@@ -47,6 +50,7 @@ extension Warp {
         ///   - state: The state of the radio button group (default, error, disabled).
         ///   - extraContent: A view that will be displayed beside or below the label.
         ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
+        ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
         public init(title: String? = nil,
                     helpText: String? = nil,
                     selectedOption: Binding<Option>,
@@ -54,7 +58,8 @@ extension Warp {
                     label: @escaping (Option) -> String,
                     state: RadioButtonState = .default,
                     extraContent: ((Option) -> AnyView)? = nil,
-                    axis: Axis.Set = .vertical) {
+                    axis: Axis.Set = .vertical,
+                    onSelection: ((Option, Option) -> Void)? = nil) {
             self.title = title
             self.helpText = helpText
             self._selectedOption = selectedOption
@@ -63,6 +68,7 @@ extension Warp {
             self.state = state
             self.extraContent = extraContent
             self.axis = axis
+            self.onSelection = onSelection
         }
         
         public var body: some View {
@@ -93,7 +99,9 @@ extension Warp {
                               label: label(option),
                               state: state,
                               extraContent: extraContent?(option)) {
+                            let oldSelection = selectedOption
                             selectedOption = option
+                            onSelection?(oldSelection, option)
                         }
                               .disabled(state == .disabled)
                     }
@@ -106,7 +114,9 @@ extension Warp {
                                   label: label(option),
                                   state: state,
                                   extraContent: extraContent?(option)) {
+                                let oldSelection = selectedOption
                                 selectedOption = option
+                                onSelection?(oldSelection, option)
                             }
                                   .disabled(state == .disabled)
                         }

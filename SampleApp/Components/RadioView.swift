@@ -74,7 +74,10 @@ struct RadioView: View {
                     label: { $0.title },
                     state: state,
                     extraContent: { $0.extraContent ?? AnyView(EmptyView()) },
-                    axis: layoutDirection.axis
+                    axis: layoutDirection.axis,
+                    onSelection: { oldSelection, newSelection in
+                        print("Changed from \(oldSelection.title) to \(newSelection.title)")
+                    }
                 )
                 .id(isIndentationEnabled)  // Force re-render on change
             }
