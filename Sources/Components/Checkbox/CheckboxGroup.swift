@@ -94,45 +94,38 @@ extension Warp {
             switch axis {
             case .vertical:
                 VStack(alignment: .leading, spacing: Spacing.spacing200) {
-                    ForEach(options) { option in
+                    ForEach($options) { $option in
                         Checkbox(label: label(option),
                                  initialState: option.state,
                                  style: style,
                                  extraContent: extraContent?(option),
                                  indentationLevel: option.indentationLevel,
-                                 stateTransition: stateTransition)
+                                 stateTransition: stateTransition) {
+                            let updatedOption = option.updatedState(option.state)
+                            option = updatedOption
+                            onSelection?(updatedOption, options)
+                        }
                               .disabled(style == .disabled)
-                              .onChange(of: option.state) { newState in
-                                  let updatedOption = option.updatedState(newState)
-                                  updateOption(updatedOption)
-                              }
                     }
                 }
             case .horizontal, _:
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: Spacing.spacing200) {
-                        ForEach(options) { option in
+                        ForEach($options) { $option in
                             Checkbox(label: label(option),
                                      initialState: option.state,
                                      style: style,
                                      extraContent: extraContent?(option),
                                      indentationLevel: option.indentationLevel,
-                                     stateTransition: stateTransition)
+                                     stateTransition: stateTransition) {
+                                let updatedOption = option.updatedState(option.state)
+                                option = updatedOption
+                                onSelection?(updatedOption, options)
+                            }
                                   .disabled(style == .disabled)
-                                  .onChange(of: option.state) { newState in
-                                      let updatedOption = option.updatedState(newState)
-                                      updateOption(updatedOption)
-                                  }
                         }
                     }
                 }
-            }
-        }
-        
-        private func updateOption(_ updatedOption: Option) {
-            if let index = options.firstIndex(where: { $0.id == updatedOption.id }) {
-                options[index] = updatedOption
-                onSelection?(updatedOption, options)
             }
         }
     }
