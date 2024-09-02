@@ -3,7 +3,7 @@ import SwiftUI
 extension Warp {
     /// A single checkbox view used within `CheckboxGroup`.
     ///
-    /// Displays a selectable square with a label. The checkbox can be in one of three states:
+    /// Displays a selectable icon with a label. The checkbox can be in one of three states:
     /// not selected, selected, or partially selected, and it can have different styles.
     ///
     /// - Parameters:
@@ -50,10 +50,37 @@ extension Warp {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
                 Spacer()
                     .frame(width: CGFloat(indentationLevel) * Spacing.spacing300)
-                Rectangle()
-                    .strokeBorder(borderColor, lineWidth: 1)
-                    .background(Rectangle().fill(fillColor))
-                    .frame(width: 20, height: 20)
+                
+                ZStack {
+                    Rectangle()
+                        .fill(backgroundColor)
+                        .frame(width: 20, height: 20)
+                        .cornerRadius(4)
+                    
+                    if state == .selected {
+                        Image(systemName: "checkmark")
+                            .resizable()
+                            .foregroundColor(colorProvider.checkboxBackground)
+                            .frame(width: 12, height: 12)
+                    } else if state == .partiallySelected {
+                        Image(systemName: "minus")
+                            .resizable()
+                            .foregroundColor(colorProvider.checkboxBackground)
+                            .frame(width: 12, height: 2)
+                    }
+                    
+                    if state == .notSelected {
+                        Rectangle()
+                            .foregroundColor(borderColor)
+                            .cornerRadius(4)
+                            .frame(width: 20, height: 20)
+                        
+                        Rectangle()
+                            .foregroundColor(backgroundColor)
+                            .cornerRadius(4)
+                            .frame(width: 19, height: 19)
+                    }
+                }
                 
                 contentStack
                 
@@ -81,7 +108,7 @@ extension Warp {
         private var borderColor: Color {
             switch style {
             case .default:
-                return state == .selected || state == .partiallySelected ? colorProvider.checkboxBorderSelected : colorProvider.checkboxBorder
+                return colorProvider.checkboxBorder
             case .error:
                 return colorProvider.checkboxNegativeBorder
             case .disabled:
@@ -89,14 +116,26 @@ extension Warp {
             }
         }
         
-        private var fillColor: Color {
-            switch state {
-            case .selected:
+        private var backgroundColor: Color {
+            switch (state, style) {
+            case (.selected, .default):
                 return colorProvider.checkboxBackgroundSelected
-            case .notSelected:
+            case (.selected, .error):
+                return colorProvider.checkboxNegativeBackgroundSelected
+            case (.selected, .disabled):
+                return colorProvider.checkboxBackgroundSelectedDisabled
+            case (.partiallySelected, .default):
+                return colorProvider.checkboxBackgroundSelected
+            case (.partiallySelected, .error):
+                return colorProvider.checkboxNegativeBackgroundSelected
+            case (.partiallySelected, .disabled):
+                return colorProvider.checkboxBackgroundSelectedDisabled
+            case (.notSelected, .default):
                 return colorProvider.checkboxBackground
-            case .partiallySelected:
-                return colorProvider.checkboxBackgroundSelectedHover
+            case (.notSelected, .error):
+                return colorProvider.checkboxBackground
+            case (.notSelected, .disabled):
+                return colorProvider.checkboxBackgroundDisabled
             }
         }
         
