@@ -81,6 +81,16 @@ struct CheckboxView: View {
                     onSelection: { latestSelection, selectedOptions in
                         print("Selected: \(latestSelection.title)")
                         print("Currently selected options: \(selectedOptions.map { $0.title })")
+                    },
+                    stateTransition: { currentState in
+                        switch currentState {
+                        case .notSelected:
+                            return .partiallySelected
+                        case .partiallySelected:
+                            return .selected
+                        case .selected:
+                            return .notSelected
+                        }
                     }
                 )
                 .id(isIndentationEnabled)  // Force re-render on change
@@ -96,8 +106,12 @@ private struct ExampleOption: CheckboxOption {
     var id: String { title }
     let title: String
     var state: Warp.CheckboxState
-    var extraContent: AnyView? = nil // Optional extra content for this option.
-    var indentationLevel: Int // Indentation level for this option.
+    var extraContent: AnyView? = nil
+    var indentationLevel: Int
+    
+    func updatedState(_ newState: Warp.CheckboxState) -> Self {
+        return ExampleOption(title: title, state: newState, extraContent: extraContent, indentationLevel: indentationLevel)
+    }
     
     static func ==(lhs: ExampleOption, rhs: ExampleOption) -> Bool {
         return lhs.id == rhs.id

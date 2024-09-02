@@ -7,7 +7,6 @@ extension Warp {
     /// not selected, selected, or partially selected, and it can have different styles.
     ///
     /// - Parameters:
-    ///   - isSelected: A Boolean value indicating whether the checkbox is selected.
     ///   - label: The text label for the checkbox.
     ///   - state: The state of the checkbox (notSelected, selected, partiallySelected).
     ///   - style: The style of the checkbox (default, error, disabled).
@@ -15,8 +14,6 @@ extension Warp {
     ///   - indentationLevel: The level of indentation for the checkbox. Each level adds 24 points of indentation.
     ///   - action: A closure that is executed when the checkbox is tapped.
     public struct Checkbox: View {
-        /// A Boolean value indicating whether the checkbox is selected.
-        var isSelected: Bool
         /// The text label for the checkbox.
         var label: String
         /// The state of the checkbox (notSelected, selected, partiallySelected).
@@ -35,20 +32,17 @@ extension Warp {
         /// Initializes a new `Checkbox`.
         ///
         /// - Parameters:
-        ///   - isSelected: A Boolean value indicating whether the checkbox is selected.
         ///   - label: The text label for the checkbox.
         ///   - state: The state of the checkbox (notSelected, selected, partiallySelected).
         ///   - style: The style of the checkbox (default, error, disabled).
         ///   - extraContent: An optional view that will be displayed beside or below the label.
         ///   - action: A closure that is executed when the checkbox is tapped.
-        public init(isSelected: Bool,
-                    label: String,
+        public init(label: String,
                     state: CheckboxState = .notSelected,
                     style: CheckboxStyle = .default,
                     extraContent: AnyView? = nil,
                     indentationLevel: Int = 0,
                     action: @escaping () -> Void) {
-            self.isSelected = isSelected
             self.label = label
             self.state = state
             self.style = style
@@ -62,7 +56,7 @@ extension Warp {
                 Spacer()
                     .frame(width: CGFloat(indentationLevel) * Spacing.spacing300)
                 Rectangle()
-                    .strokeBorder(borderColor, lineWidth: isSelected ? 6 : 1)
+                    .strokeBorder(borderColor, lineWidth: 1)
                     .background(Rectangle().fill(fillColor))
                     .frame(width: 20, height: 20)
                 
@@ -107,7 +101,7 @@ extension Warp {
             case .notSelected:
                 return colorProvider.checkboxBackground
             case .partiallySelected:
-                return colorProvider.checkboxBackgroundSelected
+                return colorProvider.checkboxBackgroundSelectedHover
             }
         }
         
