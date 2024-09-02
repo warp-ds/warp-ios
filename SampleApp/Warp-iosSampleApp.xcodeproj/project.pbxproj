@@ -109,6 +109,10 @@
 		82BF22262C6A15F900DDF06E /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BF22242C6A15F500DDF06E /* TooltipView.swift */; };
 		82BF22272C6A15F900DDF06E /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BF22242C6A15F500DDF06E /* TooltipView.swift */; };
 		82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
+		82E098832C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
+		82E098842C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
+		82E098852C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
+		82E098862C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
 		B238A26F2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
 		B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
 		B286EDFC2C33EACF00D25DCC /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
@@ -158,6 +162,7 @@
 		82B168112B750BED00DCDDE5 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		82BF22242C6A15F500DDF06E /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		82C7E6F42B7B85E000760C08 /* BroadcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastView.swift; sourceTree = "<group>"; };
+		82E098822C85AEFE00033535 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
 		B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		B295AC392C22F93D004C77BB /* StepIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepIndicatorView.swift; sourceTree = "<group>"; };
@@ -334,6 +339,7 @@
 				82C7E6F42B7B85E000760C08 /* BroadcastView.swift */,
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
 				B2A8B2782B6D33B800122DBC /* CalloutView.swift */,
+				82E098822C85AEFE00033535 /* CheckboxView.swift */,
 				B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */,
 				003CB8E82C19B5D5008C42B1 /* ModalView.swift */,
 				82838CF02B62B35400E3C495 /* PillView.swift */,
@@ -538,6 +544,7 @@
 				82AE96122C64C2C000BF3920 /* ShadowUIView.swift in Sources */,
 				2E1ADF542C2561A700DFEE06 /* SpinnerView.swift in Sources */,
 				2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */,
+				82E098852C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				2E1ADF562C2561A700DFEE06 /* BrandTokensView.swift in Sources */,
 				2E1ADF572C2561A700DFEE06 /* PillView.swift in Sources */,
 				2E1ADF582C2561A700DFEE06 /* ShadowView.swift in Sources */,
@@ -567,6 +574,7 @@
 				820A85F42C6CEB0C006D35A0 /* SpinnerView.swift in Sources */,
 				820A85F52C6CEB0C006D35A0 /* TextFieldView.swift in Sources */,
 				820A85F62C6CEB0C006D35A0 /* BrandTokensView.swift in Sources */,
+				82E098862C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				820A85F72C6CEB0C006D35A0 /* PillView.swift in Sources */,
 				820A85F82C6CEB0C006D35A0 /* ShadowView.swift in Sources */,
 				820A864B2C6DFAAE006D35A0 /* TooltipView.swift in Sources */,
@@ -596,6 +604,7 @@
 				820A86312C6D4388006D35A0 /* SpinnerView.swift in Sources */,
 				820A86322C6D4388006D35A0 /* TextFieldView.swift in Sources */,
 				820A86332C6D4388006D35A0 /* BrandTokensView.swift in Sources */,
+				82E098842C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				820A86342C6D4388006D35A0 /* PillView.swift in Sources */,
 				820A86492C6D43CE006D35A0 /* Warp_iosFinn.swift in Sources */,
 				820A86352C6D4388006D35A0 /* ShadowView.swift in Sources */,
@@ -625,6 +634,7 @@
 				82AE96132C64C2C000BF3920 /* ShadowUIView.swift in Sources */,
 				B2A8B27A2B6D33B800122DBC /* CalloutView.swift in Sources */,
 				82635D082BFE1CD800F7FA6F /* SpinnerView.swift in Sources */,
+				82E098832C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
 				8251E8CB2B4E8B7D00106720 /* BrandTokensView.swift in Sources */,
 				82838CF22B62B35400E3C495 /* PillView.swift in Sources */,

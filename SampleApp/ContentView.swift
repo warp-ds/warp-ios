@@ -104,6 +104,13 @@ struct ContentView: View {
                     }
 
                     Divider()
+                    
+                    NavigationLink(destination: CheckboxView()) {
+                        Text("Checkbox")
+                            .padding()
+                    }
+
+                    Divider()
 
                     NavigationLink(destination: ExpandableView()) {
                         Text("Expandable")

@@ -13,7 +13,7 @@ extension Warp {
     ///   - selectedOption: A binding to the currently selected option.
     ///   - options: An array of options that conform to `RadioOption`.
     ///   - label: A closure that provides a label for each option.
-    ///   - state: The state of the radio button group (default, error, disabled).
+    ///   - style: The style of the radio button group (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
     ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
@@ -28,8 +28,8 @@ extension Warp {
         var options: [Option]
         /// A closure that provides a label for each option.
         var label: (Option) -> String
-        /// The state of the radio button group (default, error, disabled).
-        var state: RadioButtonState
+        /// The style the radio group can have (default, error, disabled).
+        var style: RadioStyle
         /// An optional view that will be displayed beside or below the label.
         var extraContent: ((Option) -> AnyView)?
         /// Determines whether the list of radio buttons is aligned vertically or horizontally.
@@ -47,7 +47,7 @@ extension Warp {
         ///   - selectedOption: A binding to the currently selected option.
         ///   - options: An array of options that conform to `RadioOption`.
         ///   - label: A closure that provides a label for each option.
-        ///   - state: The state of the radio button group (default, error, disabled).
+        ///   - style: The style the radio group can have (default, error, disabled).
         ///   - extraContent: A view that will be displayed beside or below the label.
         ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
         ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
@@ -56,7 +56,7 @@ extension Warp {
                     selectedOption: Binding<Option>,
                     options: [Option],
                     label: @escaping (Option) -> String,
-                    state: RadioButtonState = .default,
+                    style: RadioStyle = .default,
                     extraContent: ((Option) -> AnyView)? = nil,
                     axis: Axis.Set = .vertical,
                     onSelection: ((Option, Option) -> Void)? = nil) {
@@ -65,7 +65,7 @@ extension Warp {
             self._selectedOption = selectedOption
             self.options = options
             self.label = label
-            self.state = state
+            self.style = style
             self.extraContent = extraContent
             self.axis = axis
             self.onSelection = onSelection
@@ -97,13 +97,13 @@ extension Warp {
                     ForEach(options) { option in
                         Radio(isSelected: selectedOption == option,
                               label: label(option),
-                              state: state,
+                              style: style,
                               extraContent: extraContent?(option)) {
                             let oldSelection = selectedOption
                             selectedOption = option
                             onSelection?(oldSelection, option)
                         }
-                              .disabled(state == .disabled)
+                              .disabled(style == .disabled)
                     }
                 }
             case .horizontal, _:
@@ -112,13 +112,13 @@ extension Warp {
                         ForEach(options) { option in
                             Radio(isSelected: selectedOption == option,
                                   label: label(option),
-                                  state: state,
+                                  style: style,
                                   extraContent: extraContent?(option)) {
                                 let oldSelection = selectedOption
                                 selectedOption = option
                                 onSelection?(oldSelection, option)
                             }
-                                  .disabled(state == .disabled)
+                                  .disabled(style == .disabled)
                         }
                     }
                 }
