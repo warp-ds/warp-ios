@@ -10,23 +10,19 @@ extension Warp {
     /// - Parameters:
     ///   - title: An optional title for the checkbox group.
     ///   - helpText: An optional help text displayed below the title or the checkboxes.
-    ///   - selectedOptions: A binding to the currently selected options.
     ///   - options: An array of options that conform to `CheckboxOption`.
     ///   - label: A closure that provides a label for each option.
     ///   - style: The style of the checkbox group (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - axis: Determines whether the list of checkboxes is aligned vertically or horizontally.
-    ///   - onSelection: A closure that will be triggered when an option is selected, providing the latest selected option and the list of selected options.
-    ///   - stateTransition: A closure that determines how the checkbox state should transition. Defaults to toggling between selected and notSelected.
+    ///   - onSelection: A closure that will be triggered when an option is selected, providing the latest selected option and the updated list of options.
     public struct CheckboxGroup<Option: CheckboxOption>: View {
         /// An optional title for the checkbox group.
         var title: String?
         /// An optional help text displayed below the title or the checkboxes.
         var helpText: String?
-        /// A binding to the currently selected options.
-        @Binding var selectedOptions: [Option]
-        /// An array of options that conform to `CheckboxOption`.
-        var options: [Option]
+        /// The array of options that conform to `CheckboxOption`.
+        @Binding var options: [Option]
         /// A closure that provides a label for each option.
         var label: (Option) -> String
         /// The style of the checkbox group (default, error, disabled).
@@ -35,10 +31,8 @@ extension Warp {
         var extraContent: ((Option) -> AnyView)?
         /// Determines whether the list of checkboxes is aligned vertically or horizontally.
         var axis: Axis.Set
-        /// A closure that will be triggered when an option is selected, providing the latest selected option and the list of selected options.
+        /// A closure that will be triggered when an option is selected, providing the latest selected option and the updated list of options.
         var onSelection: ((Option, [Option]) -> Void)?
-        /// A closure that determines how the checkbox state should transition. Defaults to toggling between selected and notSelected.
-        var stateTransition: ((CheckboxState) -> CheckboxState)?
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
@@ -47,34 +41,28 @@ extension Warp {
         /// - Parameters:
         ///   - title: An optional title for the checkbox group.
         ///   - helpText: An optional help text displayed below the title or the checkboxes.
-        ///   - selectedOptions: A binding to the currently selected options.
         ///   - options: An array of options that conform to `CheckboxOption`.
         ///   - label: A closure that provides a label for each option.
         ///   - style: The style of the checkbox group (default, error, disabled).
         ///   - extraContent: A view that will be displayed beside or below the label.
         ///   - axis: Determines whether the list of checkboxes is aligned vertically or horizontally.
-        ///   - onSelection: A closure that will be triggered when an option is selected, providing the latest selected option and the list of selected options.
-        ///   - stateTransition: A closure that determines how the checkbox state should transition. Defaults to toggling between selected and notSelected.
+        ///   - onSelection: A closure that will be triggered when an option is selected, providing the latest selected option and the updated list of options.
         public init(title: String? = nil,
                     helpText: String? = nil,
-                    selectedOptions: Binding<[Option]>,
-                    options: [Option],
+                    options: Binding<[Option]>,
                     label: @escaping (Option) -> String,
                     style: CheckboxStyle = .default,
                     extraContent: ((Option) -> AnyView)? = nil,
                     axis: Axis.Set = .vertical,
-                    onSelection: ((Option, [Option]) -> Void)? = nil,
-                    stateTransition: ((CheckboxState) -> CheckboxState)? = nil) {
+                    onSelection: ((Option, [Option]) -> Void)? = nil) {
             self.title = title
             self.helpText = helpText
-            self._selectedOptions = selectedOptions
-            self.options = options
+            self._options = options
             self.label = label
             self.style = style
             self.extraContent = extraContent
             self.axis = axis
             self.onSelection = onSelection
-            self.stateTransition = stateTransition
         }
         
         public var body: some View {
@@ -102,20 +90,15 @@ extension Warp {
                 VStack(alignment: .leading, spacing: Spacing.spacing200) {
                     ForEach(options) { option in
                         Checkbox(label: label(option),
-                                 state: selectedOptions.first(where: { $0.id == option.id })?.state ?? option.state,
+                                 initialState: option.state,
                                  style: style,
                                  extraContent: extraContent?(option),
-                                 indentationLevel: option.indentationLevel) {
-                            let newState = stateTransition?(option.state) ?? defaultStateTransition(option.state)
-                            let updatedOption = option.updatedState(newState)
-                            if let index = selectedOptions.firstIndex(of: option) {
-                                selectedOptions[index] = updatedOption
-                            } else {
-                                selectedOptions.append(updatedOption)
-                            }
-                            onSelection?(updatedOption, selectedOptions)
-                        }
+                                 indentationLevel: option.indentationLevel)
                               .disabled(style == .disabled)
+                              .onChange(of: option.state) { newState in
+                                  let updatedOption = option.updatedState(newState)
+                                  updateOption(updatedOption)
+                              }
                     }
                 }
             case .horizontal, _:
@@ -123,28 +106,26 @@ extension Warp {
                     HStack(alignment: .top, spacing: Spacing.spacing200) {
                         ForEach(options) { option in
                             Checkbox(label: label(option),
-                                     state: selectedOptions.first(where: { $0.id == option.id })?.state ?? option.state,
+                                     initialState: option.state,
                                      style: style,
                                      extraContent: extraContent?(option),
-                                     indentationLevel: option.indentationLevel) {
-                                let newState = stateTransition?(option.state) ?? defaultStateTransition(option.state)
-                                let updatedOption = option.updatedState(newState)
-                                if let index = selectedOptions.firstIndex(of: option) {
-                                    selectedOptions[index] = updatedOption
-                                } else {
-                                    selectedOptions.append(updatedOption)
-                                }
-                                onSelection?(updatedOption, selectedOptions)
-                            }
+                                     indentationLevel: option.indentationLevel)
                                   .disabled(style == .disabled)
+                                  .onChange(of: option.state) { newState in
+                                      let updatedOption = option.updatedState(newState)
+                                      updateOption(updatedOption)
+                                  }
                         }
                     }
                 }
             }
         }
         
-        private func defaultStateTransition(_ currentState: CheckboxState) -> CheckboxState {
-            return currentState == .notSelected ? .selected : .notSelected
+        private func updateOption(_ updatedOption: Option) {
+            if let index = options.firstIndex(where: { $0.id == updatedOption.id }) {
+                options[index] = updatedOption
+                onSelection?(updatedOption, options)
+            }
         }
     }
 }

@@ -8,24 +8,21 @@ extension Warp {
     ///
     /// - Parameters:
     ///   - label: The text label for the checkbox.
-    ///   - state: The state of the checkbox (notSelected, selected, partiallySelected).
+    ///   - initialState: The initial state of the checkbox (notSelected, selected, partiallySelected).
     ///   - style: The style of the checkbox (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - indentationLevel: The level of indentation for the checkbox. Each level adds 24 points of indentation.
-    ///   - action: A closure that is executed when the checkbox is tapped.
     public struct Checkbox: View {
         /// The text label for the checkbox.
         var label: String
         /// The state of the checkbox (notSelected, selected, partiallySelected).
-        var state: CheckboxState
+        @State private var state: CheckboxState
         /// The style of the checkbox (default, error, disabled).
         var style: CheckboxStyle
         /// An optional view that will be displayed beside or below the label.
         var extraContent: AnyView?
         /// The level of indentation for the checkbox. Each level adds 24 points of indentation.
         var indentationLevel: Int = 0
-        /// A closure that is executed when the checkbox is tapped.
-        var action: () -> Void
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
@@ -33,22 +30,20 @@ extension Warp {
         ///
         /// - Parameters:
         ///   - label: The text label for the checkbox.
-        ///   - state: The state of the checkbox (notSelected, selected, partiallySelected).
+        ///   - initialState: The initial state of the checkbox (notSelected, selected, partiallySelected).
         ///   - style: The style of the checkbox (default, error, disabled).
         ///   - extraContent: An optional view that will be displayed beside or below the label.
-        ///   - action: A closure that is executed when the checkbox is tapped.
+        ///   - indentationLevel: The level of indentation for the checkbox. Each level adds 24 points of indentation.
         public init(label: String,
-                    state: CheckboxState = .notSelected,
+                    initialState: CheckboxState = .notSelected,
                     style: CheckboxStyle = .default,
                     extraContent: AnyView? = nil,
-                    indentationLevel: Int = 0,
-                    action: @escaping () -> Void) {
+                    indentationLevel: Int = 0) {
             self.label = label
-            self.state = state
+            self._state = State(initialValue: initialState)
             self.style = style
             self.extraContent = extraContent
             self.indentationLevel = indentationLevel
-            self.action = action
         }
         
         public var body: some View {
@@ -66,7 +61,7 @@ extension Warp {
             }
             .onTapGesture {
                 if style != .disabled {
-                    action()
+                    toggleState()
                 }
             }
         }
@@ -111,6 +106,17 @@ extension Warp {
                 return colorProvider.token.text
             case .disabled:
                 return colorProvider.token.textDisabled
+            }
+        }
+        
+        private func toggleState() {
+            switch state {
+            case .notSelected:
+                state = .partiallySelected
+            case .partiallySelected:
+                state = .selected
+            case .selected:
+                state = .notSelected
             }
         }
     }
