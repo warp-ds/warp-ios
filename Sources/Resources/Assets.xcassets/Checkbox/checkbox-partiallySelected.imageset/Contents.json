@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "checkbox-disabled-notSelected.svg",
+      "filename" : "checkbox-partiallySelected.svg",
       "idiom" : "universal"
     }
   ],

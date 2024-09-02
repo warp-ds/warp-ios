@@ -63,36 +63,12 @@ extension Warp {
                 Spacer()
                     .frame(width: CGFloat(indentationLevel) * Spacing.spacing300)
                 
-                ZStack {
-                    Rectangle()
-                        .fill(backgroundColor)
-                        .frame(width: 20, height: 20)
-                        .cornerRadius(4)
-                    
-                    if state == .selected {
-                        Image(systemName: "checkmark")
-                            .resizable()
-                            .foregroundColor(colorProvider.checkboxBackground)
-                            .frame(width: 12, height: 12)
-                    } else if state == .partiallySelected {
-                        Image(systemName: "minus")
-                            .resizable()
-                            .foregroundColor(colorProvider.checkboxBackground)
-                            .frame(width: 12, height: 2)
-                    }
-                    
-                    if state == .notSelected {
-                        Rectangle()
-                            .foregroundColor(borderColor)
-                            .cornerRadius(4)
-                            .frame(width: 20, height: 20)
-                        
-                        Rectangle()
-                            .foregroundColor(backgroundColor)
-                            .cornerRadius(4)
-                            .frame(width: 19, height: 19)
-                    }
-                }
+                Image(iconName, bundle: .module)
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(tintColor)
+                    .frame(width: 20, height: 20)
+                    .background(backgroundColor.cornerRadius(4))
                 
                 contentStack
                 
@@ -117,18 +93,11 @@ extension Warp {
             }
         }
         
-        private var borderColor: Color {
-            switch style {
-            case .default:
-                return colorProvider.checkboxBorder
-            case .error:
-                return colorProvider.checkboxNegativeBorder
-            case .disabled:
-                return colorProvider.checkboxBorderDisabled
-            }
+        private var iconName: String {
+            return "checkbox-\(state.rawValue)"
         }
         
-        private var backgroundColor: Color {
+        private var tintColor: Color {
             switch (state, style) {
             case (.selected, .default):
                 return colorProvider.checkboxBackgroundSelected
@@ -143,10 +112,30 @@ extension Warp {
             case (.partiallySelected, .disabled):
                 return colorProvider.checkboxBackgroundSelectedDisabled
             case (.notSelected, .default):
-                return colorProvider.checkboxBackground
+                return colorProvider.checkboxBorder
             case (.notSelected, .error):
-                return colorProvider.checkboxBackground
+                return colorProvider.checkboxNegativeBorder
             case (.notSelected, .disabled):
+                return colorProvider.checkboxBorderDisabled
+            }
+        }
+        
+        private var borderColor: Color {
+            switch style {
+            case .default:
+                return colorProvider.checkboxBorder
+            case .error:
+                return colorProvider.checkboxNegativeBorder
+            case .disabled:
+                return colorProvider.checkboxBorderDisabled
+            }
+        }
+        
+        private var backgroundColor: Color {
+            switch style {
+            case .default, .error:
+                return colorProvider.checkboxBackground
+            case .disabled:
                 return colorProvider.checkboxBackgroundDisabled
             }
         }
