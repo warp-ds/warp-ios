@@ -29,6 +29,7 @@ struct CheckboxView: View {
     @State private var helpText: String = "Help text"
     @State private var layoutDirection: LayoutDirection = .vertical
     @State private var isIndentationEnabled: Bool = false
+    @State private var enableStateTransition: Bool = true
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -37,6 +38,7 @@ struct CheckboxView: View {
                 stylePicker
                 layoutDirectionPicker
                 indentationToggle
+                stateTransitionToggle
                 checkboxGroup
             }
             .padding()
@@ -83,6 +85,12 @@ struct CheckboxView: View {
             .padding(.bottom, 20)
     }
 
+    private var stateTransitionToggle: some View {
+        Toggle("Override State Transition", isOn: $enableStateTransition)
+            .padding(.horizontal)
+            .padding(.bottom, 20)
+    }
+
     private var checkboxGroup: some View {
         Warp.CheckboxGroup(
             title: title,
@@ -106,7 +114,17 @@ struct CheckboxView: View {
             onSelection: { latestSelection, selectedOptions in
                 print("Selected: \(latestSelection.title)")
                 print("Currently selected options: \(selectedOptions.map { $0.title })")
-            }
+            },
+            stateTransition: enableStateTransition ? { currentState in
+                switch currentState {
+                case .notSelected:
+                    return .partiallySelected
+                case .partiallySelected:
+                    return .selected
+                case .selected:
+                    return .notSelected
+                }
+            } : nil
         )
         .id(isIndentationEnabled)  // Force re-render on change
     }

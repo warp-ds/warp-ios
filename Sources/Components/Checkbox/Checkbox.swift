@@ -12,6 +12,7 @@ extension Warp {
     ///   - style: The style of the checkbox (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - indentationLevel: The level of indentation for the checkbox. Each level adds 24 points of indentation.
+    ///   - stateTransition: A closure that determines how the checkbox state should transition. Defaults to toggling between selected and notSelected.
     public struct Checkbox: View {
         /// The text label for the checkbox.
         var label: String
@@ -23,6 +24,8 @@ extension Warp {
         var extraContent: AnyView?
         /// The level of indentation for the checkbox. Each level adds 24 points of indentation.
         var indentationLevel: Int = 0
+        /// A closure that determines how the checkbox state should transition.
+        var stateTransition: ((CheckboxState) -> CheckboxState)?
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
@@ -34,16 +37,19 @@ extension Warp {
         ///   - style: The style of the checkbox (default, error, disabled).
         ///   - extraContent: An optional view that will be displayed beside or below the label.
         ///   - indentationLevel: The level of indentation for the checkbox. Each level adds 24 points of indentation.
+        ///   - stateTransition: A closure that determines how the checkbox state should transition. Defaults to toggling between selected and notSelected.
         public init(label: String,
                     initialState: CheckboxState = .notSelected,
                     style: CheckboxStyle = .default,
                     extraContent: AnyView? = nil,
-                    indentationLevel: Int = 0) {
+                    indentationLevel: Int = 0,
+                    stateTransition: ((CheckboxState) -> CheckboxState)? = nil) {
             self.label = label
             self._state = State(initialValue: initialState)
             self.style = style
             self.extraContent = extraContent
             self.indentationLevel = indentationLevel
+            self.stateTransition = stateTransition
         }
         
         public var body: some View {
@@ -149,14 +155,11 @@ extension Warp {
         }
         
         private func toggleState() {
-            switch state {
-            case .notSelected:
-                state = .partiallySelected
-            case .partiallySelected:
-                state = .selected
-            case .selected:
-                state = .notSelected
-            }
+            state = stateTransition?(state) ?? defaultStateTransition(state)
+        }
+        
+        private func defaultStateTransition(_ currentState: CheckboxState) -> CheckboxState {
+            return currentState == .notSelected ? .selected : .notSelected
         }
     }
 }
