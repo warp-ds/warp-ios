@@ -83,7 +83,6 @@ struct RadioView: View {
             }
             .padding()
         }
-        .background(Warp.Token.surfaceElevated200)
         .navigationTitle("Radio")
         .navigationBarTitleDisplayMode(.inline)
     }

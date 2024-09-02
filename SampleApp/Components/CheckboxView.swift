@@ -87,7 +87,6 @@ struct CheckboxView: View {
             }
             .padding()
         }
-        .background(Warp.Token.surfaceElevated200)
         .navigationTitle("Checkboxes")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -110,7 +109,5 @@ private struct ExampleOption: CheckboxOption {
 }
 
 #Preview {
-    NavigationView {
-        CheckboxView()
-    }
+    CheckboxView()
 }
