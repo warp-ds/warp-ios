@@ -94,34 +94,36 @@ extension Warp {
             switch axis {
             case .vertical:
                 VStack(alignment: .leading, spacing: Spacing.spacing200) {
-                    ForEach($options) { $option in
+                    ForEach($options.indices, id: \.self) { index in
+                        let option = options[index]
                         Checkbox(label: label(option),
                                  initialState: option.state,
                                  style: style,
                                  extraContent: extraContent?(option),
                                  indentationLevel: option.indentationLevel,
-                                 stateTransition: stateTransition) {
-                            let updatedOption = option.updatedState(option.state)
-                            option = updatedOption
-                            onSelection?(updatedOption, options)
-                        }
+                                 stateTransition: stateTransition,
+                                 onStateChange: { newState in
+                            options[index] = option.updatedState(newState)
+                                     onSelection?(options[index], options)
+                                 })
                               .disabled(style == .disabled)
                     }
                 }
             case .horizontal, _:
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: Spacing.spacing200) {
-                        ForEach($options) { $option in
+                        ForEach($options.indices, id: \.self) { index in
+                            let option = options[index]
                             Checkbox(label: label(option),
                                      initialState: option.state,
                                      style: style,
                                      extraContent: extraContent?(option),
                                      indentationLevel: option.indentationLevel,
-                                     stateTransition: stateTransition) {
-                                let updatedOption = option.updatedState(option.state)
-                                option = updatedOption
-                                onSelection?(updatedOption, options)
-                            }
+                                     stateTransition: stateTransition,
+                                     onStateChange: { newState in
+                                         options[index] = option.updatedState(newState)
+                                         onSelection?(options[index], options)
+                                     })
                                   .disabled(style == .disabled)
                         }
                     }

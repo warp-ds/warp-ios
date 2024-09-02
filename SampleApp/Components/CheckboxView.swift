@@ -111,9 +111,9 @@ struct CheckboxView: View {
             style: style,
             extraContent: { $0.extraContent ?? AnyView(EmptyView()) },
             axis: layoutDirection.axis,
-            onSelection: { latestSelection, selectedOptions in
+            onSelection: { latestSelection, options in
                 print("Selected: \(latestSelection.title)")
-                print("Currently selected options: \(selectedOptions.filter {$0.state != .notSelected }.map { "\($0.title) is \($0.state)ed" })")
+                print("Currently selected options: \(options.map { "\($0.title) is \($0.state)ed" })")
             },
             stateTransition: enableStateTransition ? { currentState in
                 switch currentState {
