@@ -197,6 +197,9 @@ extension Warp.Typography {
         case .dba:
             return createUIFont(from: DbaBoldFont(size: size, style: fontStyle))
         case .blocket:
+            if self == .display {
+                return createUIFont(from: BlocketDisplayFont(size: size, style: fontStyle))
+            }
             return createUIFont(from: BlocketBoldFont(size: size, style: fontStyle))
         }
     }
