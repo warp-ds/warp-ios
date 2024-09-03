@@ -4,7 +4,7 @@ import UIKit
 extension Warp.Typography {
     /// Register custom fonts.
     public static func registerFonts() throws {
-        try Warp.Font.allCases.forEach {
+        try Warp.Font.fontForTheme.forEach {
             try registerFont(fontName: $0.fileName)
         }
     }
