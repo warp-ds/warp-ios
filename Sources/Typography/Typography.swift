@@ -39,7 +39,6 @@ extension Warp.Typography {
                  .captionStrong,
                  .detailStrong:
                 return createMediumBoldFont(for: fontSize, with: fontStyle)
-
             case .preamble,
                  .body,
                  .caption,
@@ -66,7 +65,6 @@ extension Warp.Typography {
                  .captionStrong,
                  .detailStrong:
                 return createMediumBoldUIFont(for: fontSize, with: fontStyle)
-
             case .preamble,
                  .body,
                  .caption,
@@ -79,34 +77,24 @@ extension Warp.Typography {
         switch self {
             case .display:
                 return 48.0
-
             case .title1:
                 return 34.0
-
             case .title2:
                 return 28.0
-
             case .title3:
                 return 22.0
-
             case .title4:
                 return 16.0
-
             case .title5:
                 return 14.0
-
             case .title6:
                 return 12.0
-
             case .preamble:
                 return 20.0
-
             case .body, .bodyStrong:
                 return 16.0
-
             case .caption, .captionStrong:
                 return 14.0
-
             case .detail, .detailStrong:
                 return 12.0
         }
@@ -116,31 +104,22 @@ extension Warp.Typography {
         switch self {
             case .display, .title1:
                 return .largeTitle
-
             case .title2:
                 return .title
-
             case .title3:
                 return .title2
-
             case .title4:
                 return .callout
-
             case .title5:
                 return .footnote
-
             case .title6:
                 return .caption
-
             case .preamble:
                 return .title3
-
             case .body, .bodyStrong:
                 return .callout
-
             case .caption, .captionStrong:
                 return .footnote
-
             case .detail, .detailStrong:
                 return .caption
         }
@@ -148,10 +127,6 @@ extension Warp.Typography {
 }
 
 extension Warp.Typography {
-    private var isFinnApp: Bool {
-        Warp.Theme == .finn
-    }
-
     private func createFont(from fontStrategy: FontStrategyInterface) -> Font {
         return .custom(
             fontStrategy.font.name,
@@ -185,34 +160,57 @@ extension Warp.Typography {
     }
 
     private func createMediumBoldFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
-        if isFinnApp {
+        switch Warp.Theme {
+        case .finn:
             return createFont(from: FinnMediumFont(size: size, style: fontStyle))
-        } else {
+        case .tori:
             return createFont(from: ToriBoldFont(size: size, style: fontStyle))
+        case .dba:
+            return createFont(from: DbaBoldFont(size: size, style: fontStyle))
+        case .blocket:
+            if self == .display {
+                return createFont(from: BlocketDisplayFont(size: size, style: fontStyle))
+            }
+            return createFont(from: BlocketBoldFont(size: size, style: fontStyle))
         }
     }
 
     private func createLightRegularFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
-        if isFinnApp {
+        switch Warp.Theme {
+        case .finn:
             return createFont(from: FinnLightFont(size: size, style: fontStyle))
-        } else {
+        case .tori:
             return createFont(from: ToriRegularFont(size: size, style: fontStyle))
+        case .dba:
+            return createFont(from: DbaRegularFont(size: size, style: fontStyle))
+        case .blocket:
+            return createFont(from: BlocketRegularFont(size: size, style: fontStyle))
         }
     }
     
     private func createMediumBoldUIFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> UIFont {
-        if isFinnApp {
+        switch Warp.Theme {
+        case .finn:
             return createUIFont(from: FinnMediumFont(size: size, style: fontStyle))
-        } else {
+        case .tori:
             return createUIFont(from: ToriBoldFont(size: size, style: fontStyle))
+        case .dba:
+            return createUIFont(from: DbaBoldFont(size: size, style: fontStyle))
+        case .blocket:
+            return createUIFont(from: BlocketBoldFont(size: size, style: fontStyle))
         }
     }
 
     private func createLightRegularUIFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> UIFont {
-        if isFinnApp {
+        switch Warp.Theme {
+        case .finn:
             return createUIFont(from: FinnLightFont(size: size, style: fontStyle))
-        } else {
+        case .tori:
             return createUIFont(from: ToriRegularFont(size: size, style: fontStyle))
+        case .dba:
+            return createUIFont(from: DbaRegularFont(size: size, style: fontStyle))
+        case .blocket:
+            return createUIFont(from: BlocketRegularFont(size: size, style: fontStyle))
         }
     }
 }
