@@ -18,9 +18,6 @@ extension Warp.Radio {
         /// The level of indentation for the radio button. Each level adds 24 points of indentation.
         private let indentationLevel: Int? // Maybe remove later if we decide it has no use
 
-        /// A closure that is executed when the radio button is tapped.
-        private let action: () -> Void
-
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
 
@@ -28,14 +25,12 @@ extension Warp.Radio {
             label: String,
             hasError: Bool,
             extraContent: AnyView?,
-            indentationLevel: Int?,
-            action: @escaping () -> Void
+            indentationLevel: Int?
         ) {
             self.label = label
             self.hasError = hasError
             self.extraContent = extraContent
             self.indentationLevel = indentationLevel
-            self.action = action
         }
 
         var body: some View {
@@ -49,11 +44,6 @@ extension Warp.Radio {
                     .frame(width: 20, height: 20)
 
                 contentStack
-            }
-            .onTapGesture {
-                if isEnabled {
-                    action()
-                }
             }
         }
 

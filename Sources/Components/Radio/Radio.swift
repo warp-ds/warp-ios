@@ -46,8 +46,7 @@ extension Warp {
                     label: label,
                     hasError: hasError,
                     extraContent: extraContent,
-                    indentationLevel: 0,
-                    action: action
+                    indentationLevel: 0
                 )
             )
 
