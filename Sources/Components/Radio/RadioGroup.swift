@@ -34,7 +34,7 @@ extension Warp {
         private let label: (Option) -> String
 
         /// The style the radio group can have (default, error, disabled).
-        private let style: RadioStyle
+        private let hasError: Bool
 
         /// An optional view that will be displayed beside or below the label.
         private let extraContent: ((Option) -> AnyView)?
@@ -69,7 +69,7 @@ extension Warp {
             selectedOption: Binding<Option>,
             options: [Option],
             label: @escaping (Option) -> String,
-            style: RadioStyle = .default,
+            hasError: Bool = false,
             extraContent: ((Option) -> AnyView)? = nil,
             axis: Axis.Set = .vertical,
             onSelection: ((Option, Option) -> Void)? = nil,
@@ -80,7 +80,7 @@ extension Warp {
             self._selectedOption = selectedOption
             self.options = options
             self.label = label
-            self.style = style
+            self.hasError = hasError
             self.extraContent = extraContent
             self.axis = axis
             self.onSelection = onSelection
@@ -126,10 +126,9 @@ extension Warp {
                             .toggleStyle(
                                 ToggleRadioStyle(
                                     extraContent: extraContent?(option),
-                                    hasError: style == .error
+                                    hasError: hasError
                                 )
                             )
-                            .disabled(style == .disabled)
                     }
                 }
 
@@ -144,10 +143,9 @@ extension Warp {
                                 .toggleStyle(
                                     ToggleRadioStyle(
                                         extraContent: extraContent?(option),
-                                        hasError: style == .error
+                                        hasError: hasError
                                     )
                                 )
-                                .disabled(style == .disabled)
                         }
                     }
                 }

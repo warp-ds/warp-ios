@@ -15,6 +15,15 @@ private enum LayoutDirection: String, Hashable, CaseIterable {
     }
 }
 
+extension Warp {
+    /// Represents the different styles a radio can have.
+    public enum RadioStyle: String, CaseIterable {
+        case `default`
+        case error
+        case disabled
+    }
+}
+
 struct RadioView: View {
     @State private var selectedOption = ExampleOption(title: "Option 2")
     @State private var style: Warp.RadioStyle = .default
@@ -72,13 +81,14 @@ struct RadioView: View {
                         ExampleOption(title: option.title, extraContent: option.extraContent, indentationLevel: isIndentationEnabled ? option.indentationLevel : 0)
                     },
                     label: { $0.title },
-                    style: style,
+                    hasError: style == .error,
                     extraContent: { $0.extraContent ?? AnyView(EmptyView()) },
                     axis: layoutDirection.axis,
                     onSelection: { oldSelection, newSelection in
                         print("Changed from \(oldSelection.title) to \(newSelection.title)")
                     }
                 )
+                .disabled(style == .disabled)
                 .id(isIndentationEnabled)  // Force re-render on change
             }
             .padding()
