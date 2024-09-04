@@ -70,7 +70,11 @@ struct RadioView: View {
                     helpText: helpText,
                     selectedOption: $selectedOption,
                     options: options.map { option in
-                        ExampleOption(title: option.title, extraContent: option.extraContent, indentationLevel: isIndentationEnabled ? option.indentationLevel : 0)
+                        ExampleOption(
+                            title: option.title,
+                            extraContent: option.extraContent,
+                            indentationLevel: isIndentationEnabled ? option.indentationLevel : 0
+                        )
                     },
                     style: style,
                     axis: layoutDirection.axis,
