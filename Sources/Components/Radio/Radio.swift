@@ -14,21 +14,18 @@ extension Warp {
     ///   - indentationLevel: The level of indentation for the radio button. Each level adds 24 points of indentation.
     ///   - action: A closure that is executed when the radio button is tapped.
     public struct Radio: View {
+        /// Style that will be consumed to create the radio view.
+        @Environment(\.radioStyle) var style
+
         /// A Boolean value indicating whether the radio button is selected.
-        var isSelected: Bool
-        /// The text label for the radio button.
-        var label: String
-        /// The style the radio button can have (default, error, disabled).
-        var style: RadioStyle
-        /// An optional view that will be displayed beside or below the label.
-        var extraContent: AnyView?
-        /// The level of indentation for the radio button. Each level adds 24 points of indentation.
-        private var indentationLevel: Int? = 0 // Maybe remove later if we decide it has no use
-        /// A closure that is executed when the radio button is tapped.
-        var action: () -> Void
-        /// Object that will provide needed colors.
-        private let colorProvider: ColorProvider = Warp.Color
-        
+        private let isSelected: Bool
+
+        /// View that will be shown when it's in selected state.
+        private let selectedLabel: AnyView
+
+        /// View that will be shown when it's in deselected state.
+        private let deselectedLabel: AnyView
+
         /// Initializes a new `Radio`.
         ///
         /// - Parameters:
@@ -37,78 +34,78 @@ extension Warp {
         ///   - style: The style the radio button can have (default, error, disabled).
         ///   - extraContent: An optional view that will be displayed beside or below the label.
         ///   - action: A closure that is executed when the radio button is tapped.
-        public init(isSelected: Bool,
-                    label: String,
-                    style: RadioStyle = .default,
-                    extraContent: AnyView? = nil,
-                    action: @escaping () -> Void) {
+        public init(
+            isSelected: Bool,
+            label: String,
+            style: RadioStyle,
+            extraContent: AnyView? = nil,
+            action: @escaping () -> Void
+        ) {
+            selectedLabel = AnyView(
+                DefaultSelectedLabel(
+                    label: label,
+                    style: style,
+                    extraContent: extraContent,
+                    indentationLevel: 0,
+                    action: action
+                )
+            )
+
+            deselectedLabel = AnyView(
+                DefaultDeselectedLabel(
+                    label: label,
+                    style: style,
+                    action: action
+                )
+            )
+
             self.isSelected = isSelected
-            self.label = label
-            self.style = style
-            self.extraContent = extraContent
-            self.action = action
         }
-        
+
+        public init(
+            @ViewBuilder selectedLabel: @escaping () -> some View,
+            @ViewBuilder deselectedLabel: @escaping () -> some View,
+            isSelected: Bool
+        ) {
+            self.selectedLabel = AnyView(selectedLabel())
+            self.deselectedLabel = AnyView(deselectedLabel())
+            self.isSelected = isSelected
+        }
+
         public var body: some View {
-            HStack(alignment: .top, spacing: Spacing.spacing100) {
-                Spacer()
-                    .frame(width: CGFloat(indentationLevel ?? 0) * Spacing.spacing300)
-                Circle()
-                    .strokeBorder(borderColor, lineWidth: isSelected ? 6 : 1)
-                    .background(Circle().fill(fillColor))
-                    .frame(width: 20, height: 20)
-                    .animation(.interpolatingSpring)
-                
-                contentStack
-                
-                Spacer()
-            }
-            .onTapGesture {
-                if style != .disabled {
-                    action()
-                }
-            }
+            style
+                .makeBody(
+                    configuration: RadioStyleConfiguration(
+                        selectedLabel: RadioStyleConfiguration.Label {
+                            selectedLabel
+                        },
+                        deselectedLabel: RadioStyleConfiguration.Label {
+                            deselectedLabel
+                        },
+                        isSelected: isSelected
+                    )
+                )
+                .modifier(AccessibilityTraitModifier(isSelected: isSelected))
         }
-        
-        @ViewBuilder
-        private var contentStack: some View {
-            HStack(alignment: .top, spacing: Spacing.spacing100) {
-                SwiftUI.Text(label)
-                    .font(Typography.body.font)
-                    .foregroundColor(textColor)
-                if let extraContent = extraContent {
-                    extraContent
-                }
-            }
-        }
-        
-        private var borderColor: Color {
-            switch (style, isSelected) {
-            case (.default, true):
-                return colorProvider.radioBorderSelected
-            case (.default, false):
-                return colorProvider.radioBorder
-            case (.error, _):
-                return colorProvider.radioNegativeBorder
-            case (.disabled, _):
-                return colorProvider.radioBorderDisabled
-            }
-        }
-        
-        private var fillColor: Color {
-            if style == .disabled {
-                return colorProvider.radioBackgroundDisabled
+    }
+}
+
+private struct AccessibilityTraitModifier: ViewModifier {
+    let isSelected: Bool
+
+    func body(content: Content) -> some View {
+        if #available(iOS 17.0, *) {
+            content
+                .accessibilityAddTraits(.isToggle)
+        } else {
+            if isSelected {
+                content
+                    .accessibilityAddTraits(.isButton)
+                    .accessibilityAddTraits(.isSelected)
             } else {
-                return colorProvider.radioBackground
-            }
-        }
-        
-        private var textColor: Color {
-            switch style {
-            case .default, .error:
-                return colorProvider.token.text
-            case .disabled:
-                return colorProvider.token.textDisabled
+                content
+                    .accessibilityAddTraits(.isButton)
+                    .accessibilityRemoveTraits(.isSelected)
             }
         }
     }
