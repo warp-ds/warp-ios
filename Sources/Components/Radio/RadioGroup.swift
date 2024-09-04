@@ -3,9 +3,12 @@ import SwiftUI
 extension Warp {
     /// Radio buttons allow users to select one option from a set.
     ///
-    /// `RadioGroup` is a customizable component that allows users
+    /// `RadioGroup` is a customisable component that allows users
     /// to create a list of radio buttons where only one can be selected at any given time.
     /// The radio buttons can be aligned either vertically or horizontally.
+    ///
+    /// - Warning:
+    /// Accessibility group should be handled by the consumer, based on the consumer language.
     ///
     /// - Parameters:
     ///   - title: An optional title for the radio group.
@@ -107,6 +110,10 @@ extension Warp {
 
                 Spacer()
             }
+            .accessibilityInputLabels(options.map(\.title))
+            .accessibilityElement(children: .combine)
+            .accessibilityAddTraits(.allowsDirectInteraction)
+            .accessibilityAddTraits(.updatesFrequently)
         }
         
         // TODO: Use ``ViewThatFits`` in future.
