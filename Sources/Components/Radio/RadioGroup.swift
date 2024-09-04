@@ -32,16 +32,19 @@ extension Warp {
 
         /// A closure that provides a label for each option.
         private let label: (Option) -> String
-        /// The style the radio group can have (default, error, disabled).
-        private let style: RadioStyle
+
+        /// A Boolean flag indicating should view should error state.
+        private let hasError: Bool
 
         /// An optional view that will be displayed beside or below the label.
         private let extraContent: ((Option) -> AnyView)?
 
         /// Determines whether the list of radio buttons is aligned vertically or horizontally.
         var axis: Axis
+
         /// A closure that will be triggered when an option is selected, providing the old and new selection.
         var onSelection: ((Option, Option) -> Void)?
+
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
@@ -63,7 +66,7 @@ extension Warp {
             selectedOption: Binding<Option>,
             options: [Option],
             label: @escaping (Option) -> String,
-            style: RadioStyle = .default,
+            hasError: Bool = false,
             extraContent: ((Option) -> AnyView)? = nil,
             axis: Axis = .vertical,
             onSelection: ((Option, Option) -> Void)? = nil
@@ -73,7 +76,7 @@ extension Warp {
             self._selectedOption = selectedOption
             self.options = options
             self.label = label
-            self.style = style
+            self.hasError = hasError
             self.extraContent = extraContent
             self.axis = axis
             self.onSelection = onSelection
@@ -110,13 +113,12 @@ extension Warp {
                         Radio(
                             isSelected: selectedOption == option,
                             label: label(option),
-                            style: style,
+                            hasError: hasError,
                             extraContent: extraContent?(option),
                             action: {
                                 selectedOption = option
                             }
                         )
-                        .disabled(style == .disabled)
                     }
                 }
 
@@ -127,13 +129,12 @@ extension Warp {
                             Radio(
                                 isSelected: selectedOption == option,
                                 label: label(option),
-                                style: style,
+                                hasError: hasError,
                                 extraContent: extraContent?(option),
                                 action: {
                                     selectedOption = option
                                 }
                             )
-                            .disabled(style == .disabled)
                         }
                     }
                 }

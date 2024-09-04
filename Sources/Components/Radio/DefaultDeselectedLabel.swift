@@ -6,8 +6,11 @@ extension Warp.Radio {
         /// The text label for the radio button.
         private let label: String
 
-        /// The state of the radio button (default, error, disabled).
-        private let style: Warp.RadioStyle
+        /// Flag indicating that label should show error state.
+        private let hasError: Bool
+
+        /// A Boolean value that indicates whether the view associated with this environment allows user interaction.
+        @Environment(\.isEnabled) private var isEnabled
 
         /// An optional view that will be displayed beside or below the label.
         private let extraContent: AnyView?
@@ -23,13 +26,13 @@ extension Warp.Radio {
 
         init(
             label: String,
-            style: Warp.RadioStyle,
-            extraContent: AnyView? = nil,
-            indentationLevel: Int? = 0,
+            hasError: Bool,
+            extraContent: AnyView?,
+            indentationLevel: Int?,
             action: @escaping () -> Void
         ) {
             self.label = label
-            self.style = style
+            self.hasError = hasError
             self.extraContent = extraContent
             self.indentationLevel = indentationLevel
             self.action = action
@@ -48,7 +51,7 @@ extension Warp.Radio {
                 contentStack
             }
             .onTapGesture {
-                if style != .disabled {
+                if isEnabled {
                     action()
                 }
             }
@@ -65,34 +68,32 @@ extension Warp.Radio {
         }
 
         private var borderColor: Color {
-            switch style {
-                case .default:
+            switch (isEnabled, hasError) {
+                case (true, false):
                     return colorProvider.radioBorder
 
-                case .error:
+                case (true, true):
                     return colorProvider.radioNegativeBorder
 
-                case .disabled:
+                case (false, _):
                     return colorProvider.radioBorderDisabled
             }
         }
 
         private var fillColor: Color {
-            if style == .disabled {
+            if !isEnabled {
                 return colorProvider.radioBackgroundDisabled
-            } else {
-                return colorProvider.radioBackground
             }
+
+            return colorProvider.radioBackground
         }
 
         private var textColor: Color {
-            switch style {
-                case .default, .error:
-                    return colorProvider.token.text
-
-                case .disabled:
-                    return colorProvider.token.textDisabled
+            if !isEnabled {
+                return colorProvider.token.textDisabled
             }
+
+            return colorProvider.token.text
         }
     }
 }

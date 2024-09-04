@@ -37,14 +37,14 @@ extension Warp {
         public init(
             isSelected: Bool,
             label: String,
-            style: RadioStyle,
+            hasError: Bool,
             extraContent: AnyView? = nil,
             action: @escaping () -> Void
         ) {
             selectedLabel = AnyView(
                 DefaultSelectedLabel(
                     label: label,
-                    style: style,
+                    hasError: hasError,
                     extraContent: extraContent,
                     indentationLevel: 0,
                     action: action
@@ -54,7 +54,9 @@ extension Warp {
             deselectedLabel = AnyView(
                 DefaultDeselectedLabel(
                     label: label,
-                    style: style,
+                    hasError: hasError,
+                    extraContent: extraContent,
+                    indentationLevel: 0,
                     action: action
                 )
             )
