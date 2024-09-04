@@ -19,17 +19,27 @@ extension Warp {
     ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
     public struct RadioGroup<Option: RadioOption>: View {
         /// An optional title for the radio group.
-        var title: String?
+        private let title: String?
+
         /// An optional help text displayed below the title or the radio buttons.
-        var helpText: String?
+        private let helpText: String?
+
         /// A binding to the currently selected option.
-        @Binding var selectedOption: Option
+        @Binding private var selectedOption: Option
+
         /// An array of options that conform to `RadioOption`.
-        var options: [Option]
+        private let options: [Option]
+
+        /// A closure that provides a label for each option.
+        private let label: (Option) -> String
         /// The style the radio group can have (default, error, disabled).
-        var style: RadioStyle
+        private let style: RadioStyle
+
+        /// An optional view that will be displayed beside or below the label.
+        private let extraContent: ((Option) -> AnyView)?
+
         /// Determines whether the list of radio buttons is aligned vertically or horizontally.
-        var axis: Axis.Set
+        var axis: Axis
         /// A closure that will be triggered when an option is selected, providing the old and new selection.
         var onSelection: ((Option, Option) -> Void)?
         /// Object that will provide needed colors.
@@ -42,45 +52,53 @@ extension Warp {
         ///   - helpText: An optional help text displayed below the title or the radio buttons.
         ///   - selectedOption: A binding to the currently selected option.
         ///   - options: An array of options that conform to `RadioOption`.
+        ///   - label: A closure that provides a label for each option.
         ///   - style: The style the radio group can have (default, error, disabled).
+        ///   - extraContent: A view that will be displayed beside or below the label.
         ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
         ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
-        public init(title: String? = nil,
-                    helpText: String? = nil,
-                    selectedOption: Binding<Option>,
-                    options: [Option],
-                    style: RadioStyle = .default,
-                    axis: Axis.Set = .vertical,
-                    onSelection: ((Option, Option) -> Void)? = nil) {
+        public init(
+            title: String? = nil,
+            helpText: String? = nil,
+            selectedOption: Binding<Option>,
+            options: [Option],
+            label: @escaping (Option) -> String,
+            style: RadioStyle = .default,
+            extraContent: ((Option) -> AnyView)? = nil,
+            axis: Axis = .vertical,
+            onSelection: ((Option, Option) -> Void)? = nil
+        ) {
             self.title = title
             self.helpText = helpText
             self._selectedOption = selectedOption
             self.options = options
+            self.label = label
             self.style = style
+            self.extraContent = extraContent
             self.axis = axis
             self.onSelection = onSelection
         }
         
         public var body: some View {
-            VStack(alignment: .leading, spacing: Spacing.spacing200) {
-                if let title = title, !title.isEmpty {
-                    SwiftUI.Text(title)
-                        .font(Typography.title5.font)
-                        .foregroundColor(colorProvider.token.text)
+            HStack {
+                VStack(alignment: .leading, spacing: Spacing.spacing200) {
+                    if let title = title, !title.isEmpty {
+                        SwiftUI.Text(title)
+                            .font(Typography.title5.font)
+                            .foregroundColor(colorProvider.token.text)
+                    }
+
+                    groupView
+
+                    if let helpText = helpText, !helpText.isEmpty {
+                        SwiftUI.Text(helpText)
+                            .font(Typography.detail.font)
+                            .foregroundColor(colorProvider.token.textSubtle)
+                    }
                 }
-                
-                groupView
-                
-                if let helpText = helpText, !helpText.isEmpty {
-                    SwiftUI.Text(helpText)
-                        .font(Typography.detail.font)
-                        .foregroundColor(helpTextColor)
-                }
+
+                Spacer()
             }
-        }
-        
-        private var helpTextColor: Color {
-            style == .error ? colorProvider.token.textNegative : colorProvider.token.textSubtle
         }
         
         @ViewBuilder
@@ -89,30 +107,33 @@ extension Warp {
             case .vertical:
                 VStack(alignment: .leading, spacing: Spacing.spacing200) {
                     ForEach(options) { option in
-                        Radio(isSelected: selectedOption == option,
-                              label: option.title,
-                              style: style,
-                              extraContent: option.extraContent) {
-                            let oldSelection = selectedOption
-                            selectedOption = option
-                            onSelection?(oldSelection, option)
-                        }
-                              .disabled(style == .disabled)
+                        Radio(
+                            isSelected: selectedOption == option,
+                            label: label(option),
+                            style: style,
+                            extraContent: extraContent?(option),
+                            action: {
+                                selectedOption = option
+                            }
+                        )
+                        .disabled(style == .disabled)
                     }
                 }
-            case .horizontal, _:
+
+            case .horizontal:
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: Spacing.spacing200) {
                         ForEach(options) { option in
-                            Radio(isSelected: selectedOption == option,
-                                  label: option.title,
-                                  style: style,
-                                  extraContent: option.extraContent) {
-                                let oldSelection = selectedOption
-                                selectedOption = option
-                                onSelection?(oldSelection, option)
-                            }
-                                  .disabled(style == .disabled)
+                            Radio(
+                                isSelected: selectedOption == option,
+                                label: label(option),
+                                style: style,
+                                extraContent: extraContent?(option),
+                                action: {
+                                    selectedOption = option
+                                }
+                            )
+                            .disabled(style == .disabled)
                         }
                     }
                 }
