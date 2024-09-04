@@ -25,7 +25,7 @@ extension Warp {
         private let helpText: String?
 
         /// A binding to the currently selected option.
-        @Binding private var selectedOption: Option
+        @Binding private var selectedOption: Option?
 
         /// An array of options that conform to `RadioOption`.
         private let options: [Option]
@@ -66,7 +66,7 @@ extension Warp {
         public init(
             title: String? = nil,
             helpText: String? = nil,
-            selectedOption: Binding<Option>,
+            selectedOption: Binding<Option?>,
             options: [Option],
             label: @escaping (Option) -> String,
             hasError: Bool = false,
@@ -109,6 +109,7 @@ extension Warp {
             }
         }
         
+        // TODO: Use ``ViewThatFits`` in future.
         @ViewBuilder
         private var groupView: some View {
             switch axis {
