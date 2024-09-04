@@ -84,6 +84,7 @@ extension Warp {
                         isSelected: isSelected
                     )
                 )
+                .accessibilityElement(children: .combine)
                 .modifier(AccessibilityTraitModifier(isSelected: isSelected))
         }
     }
