@@ -26,7 +26,7 @@ struct RadioView: View {
     let options = [
         ExampleOption(title: "Option 1", extraContent: nil, indentationLevel: 0),
         ExampleOption(title: "Option 2", extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary)), indentationLevel: 1),
-        ExampleOption(title: "Option 3", extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(Warp.Token.textSubtle)), indentationLevel: 2)
+        ExampleOption(title: "Option 3", extraContent: AnyView(Text("Extra Info").font(from: .body).foregroundColor(Warp.Token.textSubtle)), indentationLevel: 2)
     ]
     
     var body: some View {
