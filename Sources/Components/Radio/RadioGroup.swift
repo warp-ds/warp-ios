@@ -40,10 +40,13 @@ extension Warp {
         private let extraContent: ((Option) -> AnyView)?
 
         /// Determines whether the list of radio buttons is aligned vertically or horizontally.
-        var axis: Axis
+        private let axis: Axis
 
         /// A closure that will be triggered when an option is selected, providing the old and new selection.
-        var onSelection: ((Option, Option) -> Void)?
+        private let onSelection: ((Option, Option) -> Void)?
+        
+        /// An animation witch will be fired for each selection action.
+        private let changeSelectionAnimation: Animation
 
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
@@ -69,7 +72,8 @@ extension Warp {
             hasError: Bool = false,
             extraContent: ((Option) -> AnyView)? = nil,
             axis: Axis = .vertical,
-            onSelection: ((Option, Option) -> Void)? = nil
+            onSelection: ((Option, Option) -> Void)? = nil,
+            changeSelectionAnimation: Animation = .default
         ) {
             self.title = title
             self.helpText = helpText
@@ -80,6 +84,7 @@ extension Warp {
             self.extraContent = extraContent
             self.axis = axis
             self.onSelection = onSelection
+            self.changeSelectionAnimation = changeSelectionAnimation
         }
         
         public var body: some View {
@@ -116,7 +121,7 @@ extension Warp {
                             hasError: hasError,
                             extraContent: extraContent?(option)
                         ).onTapGesture {
-                            selectedOption = option
+                            selectOption(option: option)
                         }
                     }
                 }
@@ -131,11 +136,17 @@ extension Warp {
                                 hasError: hasError,
                                 extraContent: extraContent?(option)
                             ).onTapGesture {
-                                selectedOption = option
+                                selectOption(option: option)
                             }
                         }
                     }
                 }
+            }
+        }
+
+        private func selectOption(option: Option) {
+            withAnimation(.smooth) {
+                selectedOption = option
             }
         }
     }
