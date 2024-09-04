@@ -114,11 +114,10 @@ extension Warp {
                             isSelected: selectedOption == option,
                             label: label(option),
                             hasError: hasError,
-                            extraContent: extraContent?(option),
-                            action: {
-                                selectedOption = option
-                            }
-                        )
+                            extraContent: extraContent?(option)
+                        ).onTapGesture {
+                            selectedOption = option
+                        }
                     }
                 }
 
@@ -130,11 +129,10 @@ extension Warp {
                                 isSelected: selectedOption == option,
                                 label: label(option),
                                 hasError: hasError,
-                                extraContent: extraContent?(option),
-                                action: {
-                                    selectedOption = option
-                                }
-                            )
+                                extraContent: extraContent?(option)
+                            ).onTapGesture {
+                                selectedOption = option
+                            }
                         }
                     }
                 }

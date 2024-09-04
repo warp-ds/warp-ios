@@ -38,8 +38,7 @@ extension Warp {
             isSelected: Bool,
             label: String,
             hasError: Bool,
-            extraContent: AnyView? = nil,
-            action: @escaping () -> Void
+            extraContent: AnyView? = nil
         ) {
             selectedLabel = AnyView(
                 DefaultSelectedLabel(
