@@ -38,7 +38,7 @@ struct CheckboxView: View {
                 stylePicker
                 layoutDirectionPicker
                 indentationToggle
-                stateTransitionToggle
+//                stateTransitionToggle
                 checkboxGroup
             }
             .padding()
@@ -70,7 +70,7 @@ struct CheckboxView: View {
     }
 
     private var layoutDirectionPicker: some View {
-        Picker("Pick layout direction", selection: $layoutDirection) {
+        Picker("Pick layout direction", selection: $layoutDirection.animation(.interpolatingSpring())) {
             ForEach(LayoutDirection.allCases, id: \.self) { direction in
                 Text(direction.rawValue.capitalized)
             }
@@ -80,7 +80,7 @@ struct CheckboxView: View {
     }
 
     private var indentationToggle: some View {
-        Toggle("Enable Indentations", isOn: $isIndentationEnabled)
+        Toggle("Enable Indentations", isOn: $isIndentationEnabled.animation(.interpolatingSpring()))
             .padding(.horizontal)
             .padding(.bottom, 20)
     }

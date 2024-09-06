@@ -69,6 +69,7 @@ extension Warp {
                     .foregroundColor(tintColor)
                     .frame(width: 20, height: 20)
                     .background(backgroundColor.cornerRadius(4))
+                    .animation(.interpolatingSpring())
                 
                 contentStack
                 

@@ -57,6 +57,7 @@ extension Warp {
                     .strokeBorder(borderColor, lineWidth: isSelected ? 6 : 1)
                     .background(Circle().fill(fillColor))
                     .frame(width: 20, height: 20)
+                    .animation(.interpolatingSpring)
                 
                 contentStack
                 
