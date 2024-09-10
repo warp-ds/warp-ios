@@ -51,7 +51,7 @@ struct RadioView: View {
                 .padding(.bottom, 20)
                 
                 // Picker for selecting the layout direction
-                Picker("Pick layout direction", selection: $layoutDirection) {
+                Picker("Pick layout direction", selection: $layoutDirection.animation(.interpolatingSpring())) {
                     ForEach(LayoutDirection.allCases, id: \.self) { direction in
                         Text(direction.rawValue.capitalized)
                     }

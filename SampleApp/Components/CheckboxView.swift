@@ -38,7 +38,7 @@ struct CheckboxView: View {
                 stylePicker
                 layoutDirectionPicker
                 indentationToggle
-//                stateTransitionToggle
+                stateTransitionToggle
                 checkboxGroup
             }
             .padding()
