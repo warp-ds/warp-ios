@@ -17,6 +17,10 @@ extension Warp {
         case captionStrong
         case detail
         case detailStrong
+        
+        public func boldUIFont(for fontSize: CGFloat) -> UIFont {
+            return createMediumBoldUIFont(for: fontSize, with: fontStyle)
+        }
     }
 }
 
