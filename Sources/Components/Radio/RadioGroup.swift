@@ -84,9 +84,13 @@ extension Warp {
                 if let helpText = helpText, !helpText.isEmpty {
                     SwiftUI.Text(helpText)
                         .font(Typography.detail.font)
-                        .foregroundColor(colorProvider.token.textSubtle)
+                        .foregroundColor(helpTextColor)
                 }
             }
+        }
+        
+        private var helpTextColor: Color {
+            style == .error ? colorProvider.token.textNegative : colorProvider.token.textSubtle
         }
         
         @ViewBuilder
