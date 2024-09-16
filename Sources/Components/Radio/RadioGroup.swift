@@ -26,12 +26,8 @@ extension Warp {
         @Binding var selectedOption: Option
         /// An array of options that conform to `RadioOption`.
         var options: [Option]
-        /// A closure that provides a label for each option.
-        var label: (Option) -> String
         /// The style the radio group can have (default, error, disabled).
         var style: RadioStyle
-        /// An optional view that will be displayed beside or below the label.
-        var extraContent: ((Option) -> AnyView)?
         /// Determines whether the list of radio buttons is aligned vertically or horizontally.
         var axis: Axis.Set
         /// A closure that will be triggered when an option is selected, providing the old and new selection.
@@ -46,27 +42,21 @@ extension Warp {
         ///   - helpText: An optional help text displayed below the title or the radio buttons.
         ///   - selectedOption: A binding to the currently selected option.
         ///   - options: An array of options that conform to `RadioOption`.
-        ///   - label: A closure that provides a label for each option.
         ///   - style: The style the radio group can have (default, error, disabled).
-        ///   - extraContent: A view that will be displayed beside or below the label.
         ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
         ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
         public init(title: String? = nil,
                     helpText: String? = nil,
                     selectedOption: Binding<Option>,
                     options: [Option],
-                    label: @escaping (Option) -> String,
                     style: RadioStyle = .default,
-                    extraContent: ((Option) -> AnyView)? = nil,
                     axis: Axis.Set = .vertical,
                     onSelection: ((Option, Option) -> Void)? = nil) {
             self.title = title
             self.helpText = helpText
             self._selectedOption = selectedOption
             self.options = options
-            self.label = label
             self.style = style
-            self.extraContent = extraContent
             self.axis = axis
             self.onSelection = onSelection
         }
@@ -100,9 +90,9 @@ extension Warp {
                 VStack(alignment: .leading, spacing: Spacing.spacing200) {
                     ForEach(options) { option in
                         Radio(isSelected: selectedOption == option,
-                              label: label(option),
+                              label: option.title,
                               style: style,
-                              extraContent: extraContent?(option)) {
+                              extraContent: option.extraContent) {
                             let oldSelection = selectedOption
                             selectedOption = option
                             onSelection?(oldSelection, option)
@@ -115,9 +105,9 @@ extension Warp {
                     HStack(alignment: .top, spacing: Spacing.spacing200) {
                         ForEach(options) { option in
                             Radio(isSelected: selectedOption == option,
-                                  label: label(option),
+                                  label: option.title,
                                   style: style,
-                                  extraContent: extraContent?(option)) {
+                                  extraContent: option.extraContent) {
                                 let oldSelection = selectedOption
                                 selectedOption = option
                                 onSelection?(oldSelection, option)

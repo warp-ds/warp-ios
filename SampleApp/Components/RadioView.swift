@@ -72,9 +72,7 @@ struct RadioView: View {
                     options: options.map { option in
                         ExampleOption(title: option.title, extraContent: option.extraContent, indentationLevel: isIndentationEnabled ? option.indentationLevel : 0)
                     },
-                    label: { $0.title },
                     style: style,
-                    extraContent: { $0.extraContent ?? AnyView(EmptyView()) },
                     axis: layoutDirection.axis,
                     onSelection: { oldSelection, newSelection in
                         style = .default
