@@ -39,6 +39,12 @@ extension Warp {
     }
 }
 
+public extension Warp.Text {
+    func foregroungColor(_ color: Color) -> Self {
+        return Warp.Text(self.text, style: self.style, color: color)
+    }
+}
+
 #Preview {
     return ScrollView(showsIndicators: false) {
         ForEach(Warp.TextStyle.allCases, id: \.self) { variant in
