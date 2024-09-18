@@ -39,6 +39,11 @@ extension Warp {
     }
 }
 
+extension Warp.Text {
+    public func foregroundColor(_ color: Color) -> Self {
+        return Warp.Text(text, style: style, color: color)
+    }
+}
 #Preview {
     return ScrollView(showsIndicators: false) {
         ForEach(Warp.TextStyle.allCases, id: \.self) { variant in
