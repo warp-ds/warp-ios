@@ -15,14 +15,22 @@ private enum LayoutDirection: String, Hashable, CaseIterable {
     }
 }
 
+extension Warp {
+    /// Represents the different styles a radio can have.
+    public enum RadioStyle: String, CaseIterable {
+        case `default`
+        case error
+        case disabled
+    }
+}
+
 struct RadioView: View {
-    @State private var selectedOption = ExampleOption(title: "Option 4")
+    @State private var selectedOption = ExampleOption(title: "Option 2")
     @State private var style: Warp.RadioStyle = .default
     @State private var title: String = "Title"
     @State private var helpText: String = "Help text"
     @State private var layoutDirection: LayoutDirection = .vertical
     @State private var isIndentationEnabled: Bool = false
-    @State private var showAlert: Bool = false
     
     private let options = [
         ExampleOption(title: "Option 1", extraContent: nil, indentationLevel: 0),
@@ -52,7 +60,7 @@ struct RadioView: View {
                 .padding(.bottom, 20)
                 
                 // Picker for selecting the layout direction
-                Picker("Pick layout direction", selection: $layoutDirection.animation(.interpolatingSpring())) {
+                Picker("Pick layout direction", selection: $layoutDirection) {
                     ForEach(LayoutDirection.allCases, id: \.self) { direction in
                         Text(direction.rawValue.capitalized)
                     }
@@ -72,30 +80,18 @@ struct RadioView: View {
                     options: options.map { option in
                         ExampleOption(title: option.title, extraContent: option.extraContent, indentationLevel: isIndentationEnabled ? option.indentationLevel : 0)
                     },
-                    style: style,
+                    label: { $0.title },
+                    hasError: style == .error,
+                    extraContent: { $0.extraContent ?? AnyView(EmptyView()) },
                     axis: layoutDirection.axis,
                     onSelection: { oldSelection, newSelection in
-                        style = .default
                         print("Changed from \(oldSelection.title) to \(newSelection.title)")
                     }
                 )
+                .disabled(style == .disabled)
                 .id(isIndentationEnabled)  // Force re-render on change
             }
             .padding()
-            
-            Button {
-                if options.contains(selectedOption) {
-                    style = .default
-                    showAlert = true
-                } else {
-                    style = .error
-                }
-            } label: {
-                Text("Go next")
-            }
-        }
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text("Thank you for your selection!"))
         }
         .navigationTitle("Radio")
         .navigationBarTitleDisplayMode(.inline)
