@@ -247,6 +247,24 @@ extension Warp {
             UIImage(named: assetName, in: .module, compatibleWith: nil) ?? UIImage() // Load the image from the asset catalog
         }
         
+        /// Returns a resized `UIImage` with the given width and height.
+        ///
+        /// - Parameters:
+        ///   - width: The desired width for the image.
+        ///   - height: The desired height for the image.
+        /// - Returns: A resized `UIImage` if resizing was successful, otherwise `nil`.
+        public func resizedImage(width: CGFloat, height: CGFloat) -> UIImage {
+            let originalImage = uiImage
+            
+            let targetSize = CGSize(width: width, height: height)
+            UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
+            originalImage.draw(in: CGRect(origin: .zero, size: targetSize))
+            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            return resizedImage ?? UIImage()
+        }
+        
         /// Maps the icon case to the corresponding asset name in the asset catalog.
         ///
         /// - Returns: The name of the asset in the asset catalog as `String`.
