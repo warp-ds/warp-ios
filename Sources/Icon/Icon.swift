@@ -243,8 +243,8 @@ extension Warp {
         /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog.
         ///
         /// - Returns: A `UIImage` object corresponding to the icon.
-        public var uiImage: UIImage? {
-            UIImage(named: assetName, in: .module, compatibleWith: nil) // Load the image from the asset catalog
+        public var uiImage: UIImage {
+            UIImage(named: assetName, in: .module, compatibleWith: nil) ?? UIImage() // Load the image from the asset catalog
         }
         
         /// Maps the icon case to the corresponding asset name in the asset catalog.
