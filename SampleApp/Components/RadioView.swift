@@ -1,20 +1,6 @@
 import Warp
 import SwiftUI
 
-private enum LayoutDirection: String, Hashable, CaseIterable {
-    case vertical
-    case horizontal
-    
-    var axis: Axis.Set {
-        switch self {
-        case .vertical:
-            return .vertical
-        case .horizontal:
-            return .horizontal
-        }
-    }
-}
-
 struct RadioView: View {
     @State private var selectedOption = ExampleOption(title: "Option 4")
     @State private var style: Warp.RadioStyle = .default
@@ -70,7 +56,11 @@ struct RadioView: View {
                     helpText: helpText,
                     selectedOption: $selectedOption,
                     options: options.map { option in
-                        ExampleOption(title: option.title, extraContent: option.extraContent, indentationLevel: isIndentationEnabled ? option.indentationLevel : 0)
+                        ExampleOption(
+                            title: option.title,
+                            extraContent: option.extraContent,
+                            indentationLevel: isIndentationEnabled ? option.indentationLevel : 0
+                        )
                     },
                     style: style,
                     axis: layoutDirection.axis,
