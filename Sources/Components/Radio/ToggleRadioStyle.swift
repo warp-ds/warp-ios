@@ -16,7 +16,7 @@ extension Warp {
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
 
-        init(extraContent: AnyView?, hasError: Bool = false, indentationLevel: Int? = 0) {
+        init(extraContent: AnyView? = nil, hasError: Bool = false, indentationLevel: Int? = 0) {
             self.extraContent = extraContent
             self.indentationLevel = indentationLevel
             self.hasError = hasError
