@@ -25,8 +25,10 @@ extension Warp {
 
         public var body: some View {
             icon.image
+                .renderingMode(.template)
                 .resizable()
                 .frame(width: size.value, height: size.value)
+                .foregroundColor(color)
         }
     }
 }
