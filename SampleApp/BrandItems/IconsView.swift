@@ -9,7 +9,7 @@ struct IconsView: View {
             HStack {
                 icon
                     .frame(width: 24, height: 24) // Set the size of the icon
-                    .foregroundColor(Warp.Token.icon)
+                    .foregroundColor(Warp.Token.icon) // Apply default color to the icon
                 Warp.Text(icon.rawValue, style: .body) // Display the name of the icon
                     .padding(.leading, Warp.Spacing.spacing100)
             }
