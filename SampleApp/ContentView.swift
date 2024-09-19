@@ -119,6 +119,12 @@ struct ContentView: View {
 
                     Divider()
                     
+                    NavigationLink(destination: IconView()) {
+                        Text("Icon")
+                            .padding()
+                    }
+                    Divider()
+                    
                     NavigationLink(destination: ModalView()) {
                         Text("Modal")
                             .padding()
