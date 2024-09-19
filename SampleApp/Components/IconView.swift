@@ -2,7 +2,7 @@ import SwiftUI
 import Warp
 
 struct IconView: View {
-    @State private var selectedIcon: Warp.Icon = .ActiveAds // Default selected icon
+    @State private var selectedIcon: Warp.Icon = .activeAds // Default selected icon
     @State private var selectedSize: Warp.IconSize = .default // Default size
     @State private var selectedColor: Color = Warp.Color.token.icon // Default color
     

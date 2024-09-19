@@ -7,9 +7,7 @@ struct IconsView: View {
     var body: some View {
         List(icons, id: \.self) { icon in
             HStack {
-                icon.image
-                    .renderingMode(.template)
-                    .resizable()
+                icon
                     .frame(width: 24, height: 24) // Set the size of the icon
                     .foregroundColor(Warp.Token.icon)
                 Warp.Text(icon.rawValue, style: .body) // Display the name of the icon
