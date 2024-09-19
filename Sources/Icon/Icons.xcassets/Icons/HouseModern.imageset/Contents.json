@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "HouseModern.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
