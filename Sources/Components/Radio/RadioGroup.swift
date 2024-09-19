@@ -36,9 +36,6 @@ extension Warp {
         /// The style the radio group can have (default, error, disabled).
         private let hasError: Bool
 
-        /// An optional view that will be displayed beside or below the label.
-        private let extraContent: ((Option) -> AnyView)?
-
         /// Determines whether the list of radio buttons is aligned vertically or horizontally.
         private let axis: Axis.Set
 
@@ -70,7 +67,6 @@ extension Warp {
             options: [Option],
             label: @escaping (Option) -> String,
             hasError: Bool = false,
-            extraContent: ((Option) -> AnyView)? = nil,
             axis: Axis.Set = .vertical,
             onSelection: ((Option, Option) -> Void)? = nil,
             changeSelectionAnimation: Animation = .default
@@ -81,7 +77,6 @@ extension Warp {
             self.options = options
             self.label = label
             self.hasError = hasError
-            self.extraContent = extraContent
             self.axis = axis
             self.onSelection = onSelection
             self.changeSelectionAnimation = changeSelectionAnimation
@@ -124,10 +119,7 @@ extension Warp {
                                 selectOption(option: option)
                             }
                             .toggleStyle(
-                                ToggleRadioStyle(
-                                    extraContent: extraContent?(option),
-                                    hasError: hasError
-                                )
+                                ToggleRadioStyle(hasError: hasError)
                             )
                     }
                 }
@@ -141,10 +133,7 @@ extension Warp {
                                     selectOption(option: option)
                                 }
                                 .toggleStyle(
-                                    ToggleRadioStyle(
-                                        extraContent: extraContent?(option),
-                                        hasError: hasError
-                                    )
+                                    ToggleRadioStyle(hasError: hasError)
                                 )
                         }
                     }
