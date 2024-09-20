@@ -255,19 +255,19 @@ extension Warp {
         /// Returns a resized `UIImage` with the given width and height.
         ///
         /// - Parameters:
-        ///   - width: The desired width for the image.
-        ///   - height: The desired height for the image.
+        ///   - targetSize: The desired size for the image.
         /// - Returns: A resized `UIImage` if resizing was successful, otherwise `nil`.
-        public func resizedImage(width: CGFloat, height: CGFloat) -> UIImage {
-            let originalImage = uiImage
-            
-            let targetSize = CGSize(width: width, height: height)
+        public func resizeImage(to targetSize: CGSize) -> UIImage {
             UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
-            originalImage.draw(in: CGRect(origin: .zero, size: targetSize))
+            uiImage.draw(in: CGRect(origin: .zero, size: targetSize))
             let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             
-            return resizedImage ?? UIImage()
+            guard let resizedImage = resizedImage else {
+                // Handle the error (e.g., log it) if image resizing fails
+                return UIImage()
+            }
+            return resizedImage
         }
         
         /// Maps the icon case to the corresponding asset name in the asset catalog.
