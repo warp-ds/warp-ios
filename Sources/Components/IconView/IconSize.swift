@@ -5,9 +5,7 @@ extension Warp {
     ///
     /// `IconSize` defines three standard sizes: `small` (16x16), `default` (24x24), `large` (32x32),
     /// and a `custom` size that can be specified by the user.
-    public enum IconSize: CaseIterable, Hashable {
-        public static var allCases = [Warp.IconSize.small, .default, .large]
-        
+    public enum IconSize: Hashable {        
         case small
         case `default`
         case large

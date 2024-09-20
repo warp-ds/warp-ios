@@ -244,7 +244,12 @@ extension Warp {
         ///
         /// - Returns: A `UIImage` object corresponding to the icon.
         public var uiImage: UIImage {
-            UIImage(named: assetName, in: .module, compatibleWith: nil) ?? UIImage() // Load the image from the asset catalog
+            // Load the image from the asset catalog
+            guard let image = UIImage(named: assetName, in: .module, compatibleWith: nil) else {
+                // Handle the error (e.g., log it) if image loading fails
+                return UIImage()
+            }
+            return image
         }
         
         /// Returns a resized `UIImage` with the given width and height.
