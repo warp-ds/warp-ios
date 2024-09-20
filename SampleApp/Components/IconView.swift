@@ -4,11 +4,11 @@ import Warp
 struct IconView: View {
     @State private var selectedIcon: Warp.Icon = .activeAds // Default selected icon
     @State private var selectedSize: Warp.IconSize = .default // Default size
-    @State private var customSize: String = "150" // Default custom size as a string
+    @State private var customSize: CGFloat = 50 // Default custom size for the slider
     @State private var selectedColor: Color = Warp.Color.token.icon // Default color
     
     private let icons = Warp.Icon.allCases // Get all icons
-    private let sizes = Warp.IconSize.allCases + [.custom(150)] // Add custom size option
+    private let sizes = Warp.IconSize.allCases // Add custom size option
 
     var body: some View {
         VStack(spacing: 20) {
@@ -24,27 +24,24 @@ struct IconView: View {
             // Segmented control to select icon size
             Picker("Select size", selection: $selectedSize) {
                 ForEach(sizes, id: \.self) { size in
-                    Text(size.displayName) // Display name based on size type
+                    Text(size.displayName) // Display the predefined size names
                 }
+                // Add an option for custom size
+                Text("Custom").tag(Warp.IconSize.custom(customSize)) // Placeholder custom size (updated dynamically)
             }
             .pickerStyle(SegmentedPickerStyle()) // Segmented control style
             .padding()
             
-            // If a custom size is selected, show a text field to input the custom size
+            // If a custom size is selected, show a slider to adjust the custom size
             if case .custom = selectedSize {
-                HStack {
-                    Text("Custom Size:")
-                        .padding(.trailing)
-                    Warp.TextField(placeholder: "Enter size", text: $customSize)
-                        .keyboardType(.numberPad)
-                        .frame(height: 48)
+                VStack {
+                    Text("Custom Size: \(Int(customSize))pt")
+                    Slider(value: $customSize, in: 1...200, step: 1) // Slider to adjust the custom size
+                        .padding()
                         .onChange(of: customSize) { newValue in
-                            if let size = Int(newValue) {
-                                selectedSize = .custom(CGFloat(size))
-                            }
+                            selectedSize = .custom(newValue)
                         }
                 }
-                .padding()
             }
             
             // Color picker to choose icon color
