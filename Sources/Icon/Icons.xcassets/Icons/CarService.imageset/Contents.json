@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "CarService.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

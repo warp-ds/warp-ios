@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Propeller.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -47,6 +47,13 @@ struct ContentView: View {
                         }
                     }
                     Divider()
+
+                    NavigationLink(destination: IconsView()) {
+                        Text("Icons")
+                            .padding()
+                    }
+                    Divider()
+                    
                     NavigationLink(destination: BrandTokensView()) {
                         Text("Tokens")
                             .padding()
@@ -110,6 +117,12 @@ struct ContentView: View {
                             .padding()
                     }
 
+                    Divider()
+                    
+                    NavigationLink(destination: IconView()) {
+                        Text("Icon")
+                            .padding()
+                    }
                     Divider()
                     
                     NavigationLink(destination: ModalView()) {
