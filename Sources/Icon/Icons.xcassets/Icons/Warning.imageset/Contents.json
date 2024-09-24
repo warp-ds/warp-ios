@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Warning.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

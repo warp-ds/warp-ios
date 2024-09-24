@@ -2,7 +2,7 @@ import SwiftUI
 
 extension Warp {
     /// Warp representation of the style and appearance of visual text matter.
-    public enum Typography {
+    public enum Typography: CaseIterable {
         case display
         case title1
         case title2
@@ -17,6 +17,11 @@ extension Warp {
         case captionStrong
         case detail
         case detailStrong
+        
+        public func boldUIFont(for fontSize: CGFloat?) -> UIFont {
+            let fontStyle = Warp.Typography.allCases.first { $0.fontSize == fontSize }?.fontStyle
+            return createMediumBoldUIFont(for: fontSize ?? self.fontSize, with: fontStyle ?? self.fontStyle)
+        }
     }
 }
 
