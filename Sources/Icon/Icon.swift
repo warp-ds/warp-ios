@@ -252,11 +252,11 @@ extension Warp {
             return image
         }
         
-        /// Returns a resized `UIImage` with the given width and height.
+        /// Returns a resized `UIImage` with the given size.
         ///
         /// - Parameters:
         ///   - targetSize: The desired size for the image.
-        /// - Returns: A resized `UIImage` if resizing was successful, otherwise `nil`.
+        /// - Returns: A resized `UIImage` if resizing was successful, otherwise empty `UIImage`.
         public func resizeImage(to targetSize: CGSize) -> UIImage {
             UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
             uiImage.draw(in: CGRect(origin: .zero, size: targetSize))

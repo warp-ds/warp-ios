@@ -3,11 +3,11 @@ import SwiftUI
 extension Warp {
     /// A view that renders an icon with the specified size and color.
     ///
-    /// `IconView` displays an icon in a specified size (`small`, `default`, or `large`) and color. The icon is rendered from the asset catalog.
+    /// `IconView` displays an icon in a specified size (`small`, `default`,  `large`, or `custom`) and color. The icon is rendered from the asset catalog.
     public struct IconView: View {
         /// The `Warp.Icon` to display.
         private let icon: Warp.Icon
-        /// The size of the icon (small, default, large). Default is `.default`.
+        /// The size of the icon (small, default, large, or custom). Default is `.default`.
         private let size: Warp.IconSize
         /// The color of the icon. Defaults to `Warp.Color.token.icon`.
         private let color: Color
@@ -17,7 +17,7 @@ extension Warp {
         ///
         /// - Parameters:
         ///   - icon: The `Warp.Icon` to display.
-        ///   - size: The size of the icon (small, default, large). Default is `.default`.
+        ///   - size: The size of the icon (small, default, large, or custom). Default is `.default`.
         ///   - color: The color of the icon. Defaults to `Warp.Color.token.icon`.
         public init(_ icon: Warp.Icon,
                     size: Warp.IconSize = .default,

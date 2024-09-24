@@ -37,7 +37,7 @@ extension Warp {
             case .large:
                 return "Large"
             case .custom(_):
-                return "Custom" // Display custom size in points
+                return "Custom"
             }
         }
     }
