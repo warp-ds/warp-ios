@@ -2,8 +2,7 @@ import Foundation
 
 extension Warp {
     /// Preferred style of alert that will be consumed in order to create a theme for alert.
-    @MainActor
-    public enum AlertStyle: Equatable {
+    public enum AlertStyle: Equatable, Sendable {
         /// Display messages to provide user with general information.
         case info
 

@@ -1,6 +1,7 @@
 import SwiftUI
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=888578831
+@MainActor
 struct FinnTokenProvider: TokenProvider {
     /// Surface
     public var surfaceSunken: Color { Color.dynamicColor(defaultColor: FinnColors.gray50, darkModeColor: FinnColors.gray950) }
@@ -163,6 +164,7 @@ struct FinnTokenProvider: TokenProvider {
     public var textNotification: Color { Color.dynamicColor(defaultColor: FinnColors.white, darkModeColor: FinnColors.white) }
 }
 
+@MainActor
 struct FinnUITokenProvider: UITokenProvider {
     /// Surface
     public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.gray50, darkModeColor: FinnUIColors.gray950) }

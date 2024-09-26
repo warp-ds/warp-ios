@@ -2,7 +2,7 @@ import Foundation
 @preconcurrency import SwiftUI
 
 /// Minimum height reserved for text field in order to keep it elegant.
-@MainActor private let textFieldMinHeight = 28.0
+private let textFieldMinHeight = 28.0
 
 extension Warp {
     /// Text field style that will be used internally.

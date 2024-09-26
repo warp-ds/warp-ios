@@ -383,7 +383,7 @@ private struct UnderlinedLinkModifier: ViewModifier {
     }
 }
 
-extension Warp.AlertStyle {
+@MainActor extension Warp.AlertStyle {
     fileprivate func getBackgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
             case .info:
@@ -498,7 +498,7 @@ extension Warp.AlertStyle {
 }
 
 extension Warp.AlertStyle {
-    fileprivate static var allCases: [Warp.AlertStyle] = [
+    fileprivate static let allCases: [Warp.AlertStyle] = [
         .info,
         .warning,
         .critical,

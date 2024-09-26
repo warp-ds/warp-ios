@@ -3,11 +3,9 @@ import Combine
 
 extension Warp {
     /// Inactive state of TextField.
-    @MainActor
     public static let textFieldDefaultInactiveState = TextFieldState.normal(.none)
 
     /// A control that displays an editable text with `Warp` designed interface.
-    @MainActor
     public struct TextField: View {
         /// TextField configurations.
         private let configuration: TextFieldConfiguration

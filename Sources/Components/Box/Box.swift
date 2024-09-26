@@ -320,7 +320,7 @@ private struct UnderlinedLinkModifier: ViewModifier {
     }
 }
 
-extension Warp.BoxStyle {
+@MainActor extension Warp.BoxStyle {
     fileprivate func getBackgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
             case .neutral:
@@ -359,7 +359,7 @@ extension Warp.BoxStyle {
 }
 
 extension Warp.BoxStyle {
-    fileprivate static var allCases: [Warp.BoxStyle] = [
+    fileprivate static let allCases: [Warp.BoxStyle] = [
         .neutral,
         .info,
         .bordered

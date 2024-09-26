@@ -3,9 +3,9 @@ import SwiftUI
 extension Warp {
     public enum CalloutType {
         case inline
-        case popover(onTapped: () -> Void)
+        case popover(onTapped: @Sendable () -> Void)
 
-        var onTapped: (() -> Void)? {
+        var onTapped: (@Sendable () -> Void)? {
             switch self {
             case .inline:
                 return nil
