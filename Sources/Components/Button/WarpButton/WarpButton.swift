@@ -211,7 +211,7 @@ import SwiftUI
         isEnabled: Bool = true,
         fullWidth: Bool = false,
         isLoading: Bool = false,
-        colorProvider: ColorProvider = Warp.Config.colorProvider
+        colorProvider: ColorProvider = Warp.Color
     ) -> Warp.Button {
         switch buttonType {
             case .primary:

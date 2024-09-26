@@ -7,31 +7,25 @@ import struct SwiftUI.Text
     @MainActor
     struct TypographyFactory {
         private let type: Warp.ButtonType
-
-        init(for type: Warp.ButtonType) {
+        private let size: Warp.ButtonSize
+        
+        init(for type: Warp.ButtonType,
+             size: Warp.ButtonSize) {
             self.type = type
+            self.size = size
         }
-
+        
         /// Font associate with button type.
         var font: Font {
             let font: Font
-
-            if type.isUtilityRelatedButton {
+            
+            if type.isUtilityRelatedButton || size == .small {
                 font = Warp.Typography.detailStrong.font
             } else {
                 font = Warp.Typography.title4.font
             }
 
             return font
-        }
-
-        /// Font weight associate with button type.
-        var fontWeight: Font.Weight {
-            if type.isUtilityRelatedButton {
-                return .regular
-            }
-
-            return .medium
         }
 
         /// Button label line limit.

@@ -20,12 +20,12 @@ import SwiftUI
         private let style: Warp.TextStyle
         /// Text color.
         private let color: Color
-        private let colorProvider: ColorProvider = Warp.Config.colorProvider
+        private let colorProvider: ColorProvider = Warp.Color
 
         public init(
             _ text: String,
             style: Warp.TextStyle,
-            color: Color = Warp.Config.colorProvider.token.text
+            color: Color = Warp.Color.token.text
         ) {
             self.text = text
             self.style = style
@@ -37,6 +37,12 @@ import SwiftUI
                 .font(from: style.asTypography)
                 .foregroundColor(color)
         }
+    }
+}
+
+extension Warp.Text {
+    public func foregroundColor(_ color: Color) -> Self {
+        return Warp.Text(text, style: style, color: color)
     }
 }
 

@@ -35,7 +35,7 @@ public struct WarpButtonStyle: ButtonStyle {
             isLoading: isLoading
         )
 
-        typographyFactory = Warp.Button.TypographyFactory(for: type)
+        typographyFactory = Warp.Button.TypographyFactory(for: type, size: size)
 
         self.isLoading = isLoading
     }
@@ -60,7 +60,7 @@ public struct WarpButtonStyle: ButtonStyle {
             .modifier(typographyModifiers)
             .modifier(uiModifiers)
             .iflet(metricsFactory.shadow) { view, shadow in
-                view.shadow(shadow)
+                view.addShadow(shadow)
             }
     }
 }
@@ -95,9 +95,8 @@ private struct TypographyModifiers: ViewModifier {
 
         let font = {
             let font = typographyFactory.font
-            let weight = typographyFactory.fontWeight
 
-            return font.weight(weight)
+            return font
         }()
 
         return content

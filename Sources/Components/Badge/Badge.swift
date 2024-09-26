@@ -22,7 +22,7 @@ import SwiftUI
         /// Badge corner variant.
         private let position: Warp.Badge.Position
         /// Object that will provide needed colors.
-        private let colorProvider: ColorProvider = Warp.Config.colorProvider
+        private let colorProvider: ColorProvider = Warp.Color
 
         public init(
             text: String,

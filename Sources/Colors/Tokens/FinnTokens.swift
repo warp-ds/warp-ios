@@ -151,7 +151,7 @@ struct FinnTokenProvider: TokenProvider {
     /// Text
     public var text: Color { Color.dynamicColor(defaultColor: FinnColors.gray700, darkModeColor: FinnColors.white) }
     public var textStatic: Color { Color.dynamicColor(defaultColor: FinnColors.gray700, darkModeColor: FinnColors.gray700) }
-    public var textSubtle: Color { Color.dynamicColor(defaultColor: FinnColors.gray500, darkModeColor: FinnColors.gray100) }
+    public var textSubtle: Color { Color.dynamicColor(defaultColor: FinnColors.gray600, darkModeColor: FinnColors.gray400) }
     public var textPlaceholder: Color { Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray500) }
     public var textInverted: Color { Color.dynamicColor(defaultColor: FinnColors.white, darkModeColor: FinnColors.gray900) }
     public var textInvertedStatic: Color { Color.dynamicColor(defaultColor: FinnColors.white, darkModeColor: FinnColors.white) }
@@ -313,7 +313,7 @@ struct FinnUITokenProvider: UITokenProvider {
     /// Text
     public var text: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.gray700, darkModeColor: FinnUIColors.white) }
     public var textStatic: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.gray700, darkModeColor: FinnUIColors.gray700) }
-    public var textSubtle: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.gray500, darkModeColor: FinnUIColors.gray100) }
+    public var textSubtle: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.gray600, darkModeColor: FinnUIColors.gray400) }
     public var textPlaceholder: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.gray300, darkModeColor: FinnUIColors.gray500) }
     public var textInverted: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.white, darkModeColor: FinnUIColors.gray900) }
     public var textInvertedStatic: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.white, darkModeColor: FinnUIColors.white) }

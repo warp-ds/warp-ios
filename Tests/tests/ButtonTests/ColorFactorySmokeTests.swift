@@ -7,7 +7,7 @@ final class ColorFactorySmokeTests: XCTestCase {
 
     func testForegroundColor_Parameterized_ShouldBeEqual() throws {
         // INS
-        let colorProvider = Warp.Config.colorProvider
+        let colorProvider = Warp.Color
 
         let disabledTextColor = colorProvider.buttonDisabledText
 
@@ -113,7 +113,8 @@ final class ColorFactorySmokeTests: XCTestCase {
             let sut = ColorFactory(
                 for: variant.type,
                 consuming: colorProvider,
-                isEnabled: variant.isEnabled
+                isEnabled: variant.isEnabled,
+                isLoading: false
             )
 
             XCTAssertEqual(sut.makeForegroundColor(), variant.expectedColor)
@@ -122,7 +123,7 @@ final class ColorFactorySmokeTests: XCTestCase {
 
     func testBackgroundColor_Parameterized_ShouldBeEqual() throws {
         // INS
-        let colorProvider = Warp.Config.colorProvider
+        let colorProvider = Warp.Color
 
         let disabledBackgroundColor = colorProvider.buttonDisabledBackground
         let utilityDisabledBackgroundColor = colorProvider.buttonUtilityBackgroundDisabled
@@ -285,7 +286,8 @@ final class ColorFactorySmokeTests: XCTestCase {
             let sut = ColorFactory(
                 for: variant.type,
                 consuming: colorProvider,
-                isEnabled: variant.isEnabled
+                isEnabled: variant.isEnabled,
+                isLoading: false
             )
 
             XCTAssertEqual(
@@ -297,7 +299,7 @@ final class ColorFactorySmokeTests: XCTestCase {
 
     func testBorderColor_Parameterized_ShouldBeEqual() throws {
         // INS
-        let colorProvider = Warp.Config.colorProvider
+        let colorProvider = Warp.Color
 
         let clearColor = Color.clear
 
@@ -461,81 +463,12 @@ final class ColorFactorySmokeTests: XCTestCase {
             let sut = ColorFactory(
                 for: variant.type,
                 consuming: colorProvider,
-                isEnabled: variant.isEnabled
+                isEnabled: variant.isEnabled,
+                isLoading: false
             )
 
             XCTAssertEqual(
                 sut.makeBorderColor(isPressed: variant.isPressed),
-                variant.expectedColor
-            )
-        }
-    }
-
-    func testShadowColor_Parameterized_ShouldBeEqual() {
-        // INS
-        let colorProvider = Warp.Config.colorProvider
-
-        let clearColor = Color.clear
-
-        let mockButtonVariants: [ButtonVariant] = [
-            // Primary
-            ButtonVariant(
-                type: .primary,
-                expectedColor: clearColor
-            ),
-
-            // Secondary
-            ButtonVariant(
-                type: .secondary,
-                expectedColor: clearColor
-            ),
-
-            // Tertiary
-            ButtonVariant(
-                type: .tertiary,
-                expectedColor: clearColor
-            ),
-
-            // Critical
-            ButtonVariant(
-                type: .critical,
-                expectedColor: clearColor
-            ),
-
-            // CriticalTertiary
-            ButtonVariant(
-                type: .criticalTertiary,
-                expectedColor: clearColor
-            ),
-
-            // Utility
-            ButtonVariant(
-                type: .utility,
-                expectedColor: clearColor
-            ),
-
-            // UtilityTertiary
-            ButtonVariant(
-                type: .utilityTertiary,
-                expectedColor: clearColor
-            ),
-
-            // UtilityOverlay
-            ButtonVariant(
-                type: .utilityOverlay,
-                expectedColor: FinnColors.gray700.opacity(0.5)
-            ),
-        ]
-
-        mockButtonVariants.forEach { variant in
-            let sut = ColorFactory(
-                for: variant.type,
-                consuming: colorProvider,
-                isEnabled: variant.isEnabled
-            )
-
-            XCTAssertEqual(
-                sut.makeShadowColor(),
                 variant.expectedColor
             )
         }

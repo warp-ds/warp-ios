@@ -22,7 +22,7 @@ import SwiftUI
         /// Line width of the spinner
         private let lineWidth: CGFloat
         /// Object that will provide needed colors.
-        private let colorProvider: ColorProvider = Warp.Config.colorProvider
+        private let colorProvider: ColorProvider = Warp.Color
         
         public init(size: SpinnerSize = .default,
                     duration: CGFloat = 1,
