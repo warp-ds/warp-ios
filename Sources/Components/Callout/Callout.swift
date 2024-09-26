@@ -74,7 +74,7 @@ extension Warp {
         private var contentView: some View {
             HStack {
                 Text(title, style: size.textStyle)
-                    .foregroundStyle(colorProvider.calloutText)
+                    .foregroundColor(colorProvider.calloutText)
 
                 switch type {
                 case .inline:
@@ -109,7 +109,7 @@ extension Warp {
                     .onTapGesture {
                         type.onTapped?()
                     }
-                    .addShadow(.large)
+                    .addShadow(.medium)
             }
         }
 
