@@ -79,13 +79,17 @@ extension Warp {
                 switch type {
                 case .inline:
                     EmptyView()
-                case .popover:
-                    Image("icon-close", bundle: .module)
-                        .accessibilityAddTraits(.isButton) // Make it behave like a button for VoiceOver
-                        .accessibilityAction {
-                            // VoiceOver double-tap handling
-                            type.onTapped?()
-                        }
+                case .popover(let onTapped):
+                    if let onTapped = onTapped {
+                        Image("icon-close", bundle: .module)
+                            .accessibilityAddTraits(.isButton) // Make it behave like a button for VoiceOver
+                            .accessibilityAction {
+                                // VoiceOver double-tap handling
+                                onTapped()
+                            }
+                    } else {
+                        EmptyView()
+                    }
                 }
             }
             .padding(.horizontal, 12)
