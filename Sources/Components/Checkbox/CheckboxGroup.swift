@@ -52,57 +52,51 @@ extension Warp {
             self.axis = axis
             self.onSelection = onSelection
         }
-        
+
         public var body: some View {
             VStack(alignment: .leading, spacing: Spacing.spacing200) {
                 if let title = title, !title.isEmpty {
-                    SwiftUI.Text(title)
-                        .font(Typography.title5.font)
+                    Text(title, style: .title5)
                         .foregroundColor(colorProvider.token.text)
                 }
-                
+
                 groupView
-                
+
                 if let helpText = helpText, !helpText.isEmpty {
-                    SwiftUI.Text(helpText)
-                        .font(Typography.detail.font)
+                    Text(helpText, style: .detail)
                         .foregroundColor(colorProvider.token.textSubtle)
                 }
             }
         }
-        
+
         @ViewBuilder
         private var groupView: some View {
             switch axis {
             case .vertical:
                 VStack(alignment: .leading, spacing: Spacing.spacing200) {
-                    ForEach(options) { option in
-                        Checkbox(isSelected: option.isSelected.wrappedValue,
-                                 label: option.title,
+                    ForEach(options.indices, id: \.self) { index in
+                        Checkbox(isSelected: options[index].isSelected,  // Pass Binding<Bool>
+                                 label: options[index].title,
                                  style: style,
-                                 extraContent: option.extraContent) {
-                            option.isSelected.wrappedValue.toggle()
-                            if let onSelection = onSelection {
-                                onSelection(option, options)
-                            }
+                                 extraContent: options[index].extraContent) {
+                            options[index].isSelected.wrappedValue.toggle()
+                            onSelection?(options[index], options)
                         }
-                                 .disabled(style == .disabled)
+                        .disabled(style == .disabled)
                     }
                 }
             case .horizontal, _:
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: Spacing.spacing200) {
-                        ForEach(options) { option in
-                            Checkbox(isSelected: option.isSelected.wrappedValue,
-                                     label: option.title,
+                        ForEach(options.indices, id: \.self) { index in
+                            Checkbox(isSelected: options[index].isSelected,  // Pass Binding<Bool>
+                                     label: options[index].title,
                                      style: style,
-                                     extraContent: option.extraContent) {
-                                option.isSelected.wrappedValue.toggle()
-                                if let onSelection = onSelection {
-                                    onSelection(option, options)
-                                }
+                                     extraContent: options[index].extraContent) {
+                                options[index].isSelected.wrappedValue.toggle()
+                                onSelection?(options[index], options)
                             }
-                                     .disabled(style == .disabled)
+                            .disabled(style == .disabled)
                         }
                     }
                 }

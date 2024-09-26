@@ -68,8 +68,7 @@ extension Warp {
         @ViewBuilder
         private var contentStack: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
-                SwiftUI.Text(label)
-                    .font(from: .body)
+                Text(label, style: .body)
                     .foregroundColor(textColor)
                 if let extraContent = extraContent {
                     extraContent

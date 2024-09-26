@@ -7,14 +7,14 @@ extension Warp {
     /// not selected, selected, or partially selected, and it can have different styles.
     ///
     /// - Parameters:
-    ///   - isSelected: A Boolean value indicating whether the checkbox button is selected.
+    ///   - isSelected: A `Binding` value indicating whether the checkbox button is selected.
     ///   - label: The text label for the checkbox.
-    ///   - style: The style of the checkbox (default, error, disabled).
+    ///   - style: The style the checkbox can have (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - action: A closure that is executed when the checkbox button is tapped.
     public struct Checkbox: View {
-        /// A Boolean value indicating whether the checkbox button is selected.
-        var isSelected: Bool
+        /// A `Binding` value indicating whether the checkbox button is selected.
+        @Binding var isSelected: Bool
         /// The text label for the checkbox.
         var label: String
         /// The style the checkbox can have (default, error, disabled).
@@ -29,17 +29,17 @@ extension Warp {
         /// Initializes a new `Checkbox`.
         ///
         /// - Parameters:
-        ///   - isSelected: A Boolean value indicating whether the checkbox button is selected.
+        ///   - isSelected: A `Binding` value indicating whether the checkbox button is selected.
         ///   - label: The text label for the checkbox.
         ///   - style: The style the checkbox can have (default, error, disabled).
         ///   - extraContent: An optional view that will be displayed beside the label.
         ///   - action: A closure that is executed when the checkbox is tapped.
-        public init(isSelected: Bool,
+        public init(isSelected: Binding<Bool>,
                     label: String,
                     style: CheckboxStyle = .default,
                     extraContent: AnyView? = nil,
                     action: @escaping () -> Void) {
-            self.isSelected = isSelected
+            self._isSelected = isSelected
             self.label = label
             self.style = style
             self.extraContent = extraContent
@@ -70,8 +70,7 @@ extension Warp {
         @ViewBuilder
         private var contentStack: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
-                SwiftUI.Text(label)
-                    .font(Typography.body.font)
+                Text(label, style: .body)
                     .foregroundColor(textColor)
                 if let extraContent = extraContent {
                     extraContent
@@ -96,17 +95,6 @@ extension Warp {
             case (false, .error):
                 return colorProvider.checkboxNegativeBorder
             case (false, .disabled):
-                return colorProvider.checkboxBorderDisabled
-            }
-        }
-        
-        private var borderColor: Color {
-            switch style {
-            case .default:
-                return colorProvider.checkboxBorder
-            case .error:
-                return colorProvider.checkboxNegativeBorder
-            case .disabled:
                 return colorProvider.checkboxBorderDisabled
             }
         }

@@ -62,16 +62,14 @@ extension Warp {
         public var body: some View {
             VStack(alignment: .leading, spacing: Spacing.spacing200) {
                 if let title = title, !title.isEmpty {
-                    SwiftUI.Text(title)
-                        .font(from: .title5)
+                    Text(title, style: .title5)
                         .foregroundColor(colorProvider.token.text)
                 }
                 
                 groupView
                 
                 if let helpText = helpText, !helpText.isEmpty {
-                    SwiftUI.Text(helpText)
-                        .font(from: .detail)
+                    Text(helpText, style: .detail)
                         .foregroundColor(helpTextColor)
                 }
             }
