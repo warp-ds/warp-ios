@@ -182,13 +182,12 @@ struct TextFieldView: View {
 }
 
 extension Warp.TextField.InformationState: CaseIterable {
-    public static var allCases: [Warp.TextField.InformationState] {
+    public static let allCases: [Warp.TextField.InformationState] = 
         [
             .none,
             .error("Error message"),
             .helper("Helper message")
         ]
-    }
 
     fileprivate var title: String {
         switch self {

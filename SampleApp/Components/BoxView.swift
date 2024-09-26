@@ -159,7 +159,7 @@ struct BoxView: View {
 }
 
 extension Warp.BoxStyle: CaseIterable {
-    public static var allCases: [Warp.BoxStyle] = [
+    public static let allCases: [Warp.BoxStyle] = [
         .neutral,
         .info,
         .bordered
