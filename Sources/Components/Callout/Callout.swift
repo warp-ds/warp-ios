@@ -81,6 +81,11 @@ extension Warp {
                     EmptyView()
                 case .popover:
                     Image("icon-close", bundle: .module)
+                        .accessibilityAddTraits(.isButton) // Make it behave like a button for VoiceOver
+                        .accessibilityAction {
+                            // VoiceOver double-tap handling
+                            type.onTapped?()
+                        }
                 }
             }
             .padding(.horizontal, 12)
