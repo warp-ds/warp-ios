@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-@MainActor extension Warp.Button {
+extension Warp.Button {
     private static let tertiaryType: Warp.ButtonType = .tertiary
 
     /// Factory method for creating warp button with `Tertiary` style.
@@ -9,7 +9,7 @@ import SwiftUI
         title: String,
         leadingIcon: Image? = nil,
         trailingIcon: Image? = nil,
-        action: @escaping () -> Void = {},
+        action: @escaping @Sendable () -> Void = {},
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false,

@@ -26,11 +26,11 @@ extension Warp {
         /// An array of options that conform to `RadioOption`.
         var options: [Option]
         /// A closure that provides a label for each option.
-        var label: (Option) -> String
+        var label: @Sendable (Option) -> String
         /// The state of the radio button group (default, error, disabled).
         var state: RadioButtonState
         /// An optional view that will be displayed beside or below the label.
-        var extraContent: ((Option) -> AnyView)?
+        var extraContent: (@Sendable (Option) -> AnyView)?
         /// Determines whether the list of radio buttons is aligned vertically or horizontally.
         var axis: Axis.Set
         /// Object that will provide needed colors.
@@ -51,9 +51,9 @@ extension Warp {
                     helpText: String? = nil,
                     selectedOption: Binding<Option>,
                     options: [Option],
-                    label: @escaping (Option) -> String,
+                    label: @escaping @Sendable (Option) -> String,
                     state: RadioButtonState = .default,
-                    extraContent: ((Option) -> AnyView)? = nil,
+                    extraContent: (@Sendable (Option) -> AnyView)? = nil,
                     axis: Axis.Set = .vertical) {
             self.title = title
             self.helpText = helpText
@@ -82,7 +82,7 @@ extension Warp {
                 }
             }
         }
-        
+
         @ViewBuilder
         private var groupView: some View {
             switch axis {

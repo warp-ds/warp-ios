@@ -1,4 +1,4 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -22,7 +22,7 @@ let package = Package(
                 .process("Typography/Fonts"),
                 .process("Resources")
             ]
-//            swiftSettings: [.enableExperimentalFeature("StrictConcurrency")]
+//            swiftSettings: [.swiftLanguageMode(.v5)]
         ),
         .testTarget(
             name: "tests",

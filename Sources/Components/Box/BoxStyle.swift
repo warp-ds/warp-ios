@@ -2,6 +2,7 @@ import Foundation
 
 @MainActor extension Warp {
     /// Style for `Box` view.
+    @MainActor
     public enum BoxStyle: Equatable {
         /// Used to group information that separates itself from other elements in a page layout.
         /// Use this box to show generic information that isn’t necessarily directly related to the main focus content on your page.

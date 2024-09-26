@@ -1,6 +1,7 @@
 import Foundation
 
 /// Warp namespace containing the design system's themes, tokens, and color providers.
+@MainActor
 public enum Warp {
     /// Enumeration representing different brands supported by Warp.
     public enum Brand {

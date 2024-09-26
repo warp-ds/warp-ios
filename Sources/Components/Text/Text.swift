@@ -2,14 +2,13 @@ import SwiftUI
 
 @MainActor extension Warp {
     /// Use badges to highlight status of an ad (Active/Inactive/Sold/Removed) or to mark paid placements (Sponsored/Ad/House of the week).
-    @MainActor
     public struct Text: View, Hashable {
-        public static func == (lhs: Warp.Text, rhs: Warp.Text) -> Bool {
+        public nonisolated static func == (lhs: Warp.Text, rhs: Warp.Text) -> Bool {
             lhs.text == rhs.text &&
             lhs.style == rhs.style
         }
         
-        public func hash(into hasher: inout Hasher) {
+        public nonisolated func hash(into hasher: inout Hasher) {
             hasher.combine(text)
             hasher.combine(style)
         }
@@ -57,7 +56,7 @@ extension Warp.Text {
         }
         .padding()
     }
-        
+    @MainActor
     func createView(for style: Warp.TextStyle) -> some View {
         Warp.Text(String(describing: style).capitalized, style: style)
     }

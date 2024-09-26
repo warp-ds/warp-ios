@@ -15,7 +15,7 @@ import SwiftUI
         private let trailingIcon: Image?
 
         /// Button action.
-        private let action: () -> Void
+        private let action: @Sendable () -> Void
 
         /// Button type.
         private let type: Warp.ButtonType
@@ -39,7 +39,7 @@ import SwiftUI
             title: String,
             leadingIcon: Image?,
             trailingIcon: Image?,
-            action: @escaping () -> Void,
+            action: @escaping @Sendable () -> Void,
             type: Warp.ButtonType,
             size: Warp.ButtonSize,
             isEnabled: Bool,
@@ -125,7 +125,7 @@ import SwiftUI
         title: String,
         leadingImage: Warp.Button.Icon?,
         trailingImage: Warp.Button.Icon?,
-        action: @escaping () -> Void,
+        action: @escaping @Sendable () -> Void,
         size: Warp.ButtonSize,
         isEnabled: Bool,
         fullWidth: Bool,
@@ -168,7 +168,7 @@ import SwiftUI
         title: String,
         leadingImageSystemName: String?,
         trailingImageSystemName: String?,
-        action: @escaping () -> Void,
+        action: @escaping @Sendable () -> Void,
         size: Warp.ButtonSize,
         isEnabled: Bool,
         fullWidth: Bool,
@@ -206,7 +206,7 @@ import SwiftUI
         title: String,
         leadingIcon: Image? = nil,
         trailingIcon: Image? = nil,
-        action: @escaping () -> Void,
+        action: @escaping @Sendable () -> Void,
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false,

@@ -15,8 +15,8 @@ import SwiftUI
         /// Text that will be shown after title in the middle of the alert.
         let subtitle: String
 
-        public typealias ButtonConstructor = (title: String, action: () -> Void)
-        
+        public typealias ButtonConstructor = (title: String, action: @Sendable () -> Void)
+
         /// Tuple that will provide a title and an action for creating a link view below subtitle.
         /// Passing `nil` will skip adding link view.
         let linkProvider: ButtonConstructor?
@@ -32,7 +32,7 @@ import SwiftUI
         /// Object responsible for providing colors in different environments and variants.
         let colorProvider: ColorProvider
 
-        public static func == (lhs: Alert, rhs: Alert) -> Bool {
+        public nonisolated static func == (lhs: Alert, rhs: Alert) -> Bool {
             let styleComparison = lhs.style == rhs.style
             lazy var titleComparison = lhs.title == rhs.title
             lazy var subtitleComparison = lhs.subtitle == rhs.subtitle
@@ -48,7 +48,7 @@ import SwiftUI
             secondaryButtonProviderComparison
         }
 
-        public func hash(into hasher: inout Hasher) {
+        public nonisolated func hash(into hasher: inout Hasher) {
             hasher.combine(style)
             hasher.combine(title)
         }
@@ -217,7 +217,7 @@ private struct ButtonsView: View, Hashable {
 
     let colorProvider: ColorProvider
 
-    static func == (lhs: ButtonsView, rhs: ButtonsView) -> Bool {
+    nonisolated static func == (lhs: ButtonsView, rhs: ButtonsView) -> Bool {
         let primaryComparison: Bool
 
         switch (lhs.primaryButtonProvider, rhs.primaryButtonProvider) {
@@ -253,7 +253,7 @@ private struct ButtonsView: View, Hashable {
         return primaryComparison && secondaryComparison
     }
 
-    func hash(into hasher: inout Hasher) {
+    nonisolated func hash(into hasher: inout Hasher) {
         if let primaryButtonProvider {
             hasher.combine(primaryButtonProvider.title)
         }

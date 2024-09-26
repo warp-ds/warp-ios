@@ -10,7 +10,7 @@ import SwiftUI
         title: String,
         leadingIcon: Image? = nil,
         trailingIcon: Image? = nil,
-        action: @escaping () -> Void = {},
+        action: @escaping @Sendable () -> Void = {},
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false,

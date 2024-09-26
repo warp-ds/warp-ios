@@ -2,6 +2,7 @@ import Foundation
 
 @MainActor extension Warp {
     /// Fonts in `Warp`.
+    @MainActor
     enum Font: CaseIterable {
         case finnLight
         case finnMedium

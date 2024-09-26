@@ -3,13 +3,13 @@ import SwiftUI
 @MainActor extension Warp {
     /// Use badges to highlight status of an ad (Active/Inactive/Sold/Removed) or to mark paid placements (Sponsored/Ad/House of the week).
     public struct Badge: View, Hashable {
-        public static func == (lhs: Warp.Badge, rhs: Warp.Badge) -> Bool {
+        public nonisolated static func == (lhs: Warp.Badge, rhs: Warp.Badge) -> Bool {
             lhs.text == rhs.text &&
             lhs.variant == rhs.variant &&
             lhs.position == rhs.position
         }
         
-        public func hash(into hasher: inout Hasher) {
+        public nonisolated func hash(into hasher: inout Hasher) {
             hasher.combine(text)
             hasher.combine(variant)
             hasher.combine(position)
@@ -101,7 +101,7 @@ import SwiftUI
         }
         .padding(.horizontal)
     }
-    
+    @MainActor
     func createView(for variant: Warp.Badge.Variant) -> some View {
         let name = String(describing: variant)
         let capitalizedName = name.capitalized
@@ -118,7 +118,7 @@ import SwiftUI
             }
         )
     }
-    
+    @MainActor
     func createView(for variant: Warp.Badge.Variant, position: Warp.Badge.Position) -> some View {
         HStack {
             Text(String(describing: position))

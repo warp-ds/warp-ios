@@ -21,7 +21,7 @@ import SwiftUI
         /// Text that will be shown after title in the middle of the box.
         let subtitle: String
 
-        public typealias ButtonConstructor = (title: String, action: () -> Void)
+        public typealias ButtonConstructor = (title: String, action: @Sendable () -> Void)
 
         /// Tuple that will provide a title and an action for creating a link view below subtitle.
         /// Passing `nil` will skip adding link view.
@@ -34,7 +34,7 @@ import SwiftUI
         /// Object responsible for providing colors in different environments and variants.
         let colorProvider: ColorProvider
 
-        public static func == (lhs: Box, rhs: Box) -> Bool {
+        nonisolated public static func == (lhs: Box, rhs: Box) -> Bool {
             let styleComparison = lhs.style == rhs.style
             lazy var titleComparison = lhs.title == rhs.title
             lazy var iconComparison = lhs.shouldShowToolTipImage == rhs.shouldShowToolTipImage
@@ -50,7 +50,7 @@ import SwiftUI
             buttonProviderComparison
         }
 
-        public func hash(into hasher: inout Hasher) {
+        nonisolated public func hash(into hasher: inout Hasher) {
             hasher.combine(style)
             hasher.combine(title)
             hasher.combine(subtitle)
@@ -264,11 +264,11 @@ private struct ButtonView: View, Hashable {
 
     let colorProvider: ColorProvider
 
-    static func == (lhs: ButtonView, rhs: ButtonView) -> Bool {
+    nonisolated static func == (lhs: ButtonView, rhs: ButtonView) -> Bool {
         lhs.buttonProvider.title == rhs.buttonProvider.title
     }
 
-    func hash(into hasher: inout Hasher) {
+    nonisolated func hash(into hasher: inout Hasher) {
         hasher.combine(buttonProvider.title)
     }
 

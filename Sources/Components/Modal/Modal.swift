@@ -20,8 +20,8 @@ extension Warp {
         /// Text that will be shown as main content of the modal.
         var bodyText: String
         
-        public typealias ButtonConstructor = (title: String, action: () -> Void)
-        
+        public typealias ButtonConstructor = (title: String, action: @Sendable () -> Void)
+
         /// Tuple that will provide a title and an action for creating a primary button view.
         /// Passing `nil` will skip adding primary button view.
         let primaryButtonProvider: ButtonConstructor?
@@ -154,7 +154,7 @@ private struct ButtonsView: View, Hashable {
     
     let colorProvider: ColorProvider
     
-    static func == (lhs: ButtonsView, rhs: ButtonsView) -> Bool {
+    nonisolated static func == (lhs: ButtonsView, rhs: ButtonsView) -> Bool {
         let primaryComparison: Bool
         
         switch (lhs.primaryButtonProvider, rhs.primaryButtonProvider) {
@@ -190,7 +190,7 @@ private struct ButtonsView: View, Hashable {
         return primaryComparison && secondaryComparison
     }
     
-    func hash(into hasher: inout Hasher) {
+    nonisolated func hash(into hasher: inout Hasher) {
         if let primaryButtonProvider {
             hasher.combine(primaryButtonProvider.title)
         }

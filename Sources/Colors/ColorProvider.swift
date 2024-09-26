@@ -721,6 +721,7 @@ public struct ColorProvider {
     //    var shadowTooltip: Color { toek.shadow-m }
 }
 
+@MainActor
 public struct UIColorProvider {
     public let token: UITokenProvider
     
