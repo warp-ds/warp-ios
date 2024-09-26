@@ -1,6 +1,7 @@
 import XCTest
 @testable import Warp
 
+@MainActor
 final class StepIndicatorModelTests: XCTestCase {
     func testCanCreateCorrect() {
         let steps: [Warp.StepIndicatorItem] = [
