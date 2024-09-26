@@ -12,9 +12,7 @@ extension Warp {
     ///   - helpText: An optional help text displayed below the title or the radio buttons.
     ///   - selectedOption: A binding to the currently selected option.
     ///   - options: An array of options that conform to `RadioOption`.
-    ///   - label: A closure that provides a label for each option.
     ///   - style: The style of the radio button group (default, error, disabled).
-    ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
     ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
     public struct RadioGroup<Option: RadioOption>: View {

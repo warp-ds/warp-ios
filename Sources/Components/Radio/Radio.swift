@@ -11,7 +11,6 @@ extension Warp {
     ///   - label: The text label for the radio button.
     ///   - style: The style of the radio button (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
-    ///   - indentationLevel: The level of indentation for the radio button. Each level adds 24 points of indentation.
     ///   - action: A closure that is executed when the radio button is tapped.
     public struct Radio: View {
         /// A Boolean value indicating whether the radio button is selected.
@@ -20,10 +19,8 @@ extension Warp {
         var label: String
         /// The style the radio button can have (default, error, disabled).
         var style: RadioStyle
-        /// An optional view that will be displayed beside or below the label.
+        /// An optional view that will be displayed beside the label.
         var extraContent: AnyView?
-        /// The level of indentation for the radio button. Each level adds 24 points of indentation.
-        private var indentationLevel: Int? = 0 // Maybe remove later if we decide it has no use
         /// A closure that is executed when the radio button is tapped.
         var action: () -> Void
         /// Object that will provide needed colors.
@@ -51,8 +48,6 @@ extension Warp {
         
         public var body: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
-                Spacer()
-                    .frame(width: CGFloat(indentationLevel ?? 0) * Spacing.spacing300)
                 Circle()
                     .strokeBorder(borderColor, lineWidth: isSelected ? 6 : 1)
                     .background(Circle().fill(fillColor))

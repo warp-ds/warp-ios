@@ -7,62 +7,47 @@ extension Warp {
     /// not selected, selected, or partially selected, and it can have different styles.
     ///
     /// - Parameters:
+    ///   - isSelected: A Boolean value indicating whether the checkbox button is selected.
     ///   - label: The text label for the checkbox.
-    ///   - initialState: The initial state of the checkbox (notSelected, selected, partiallySelected).
     ///   - style: The style of the checkbox (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
-    ///   - indentationLevel: The level of indentation for the checkbox. Each level adds 24 points of indentation.
-    ///   - stateTransition: A closure that determines how the checkbox state should transition. Defaults to toggling between selected and notSelected.
-    ///   - onStateChange: A closure that returns the `newState` whenever the checkbox state changes.
+    ///   - action: A closure that is executed when the checkbox button is tapped.
     public struct Checkbox: View {
+        /// A Boolean value indicating whether the checkbox button is selected.
+        var isSelected: Bool
         /// The text label for the checkbox.
         var label: String
-        /// The state of the checkbox (notSelected, selected, partiallySelected).
-        @State private var state: CheckboxState
-        /// The style of the checkbox (default, error, disabled).
+        /// The style the checkbox can have (default, error, disabled).
         var style: CheckboxStyle
-        /// An optional view that will be displayed beside or below the label.
+        /// An optional view that will be displayed beside the label.
         var extraContent: AnyView?
-        /// The level of indentation for the checkbox. Each level adds 24 points of indentation.
-        var indentationLevel: Int = 0
-        /// A closure that determines how the checkbox state should transition. Defaults to toggling between selected and notSelected.
-        var stateTransition: ((CheckboxState) -> CheckboxState)?
-        /// A closure that returns the `newState` whenever the checkbox state changes.
-        var onStateChange: ((CheckboxState) -> Void)?
+        /// A closure that is executed when the checkbox is tapped.
+        var action: () -> Void
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
         /// Initializes a new `Checkbox`.
         ///
         /// - Parameters:
+        ///   - isSelected: A Boolean value indicating whether the checkbox button is selected.
         ///   - label: The text label for the checkbox.
-        ///   - initialState: The initial state of the checkbox (notSelected, selected, partiallySelected).
-        ///   - style: The style of the checkbox (default, error, disabled).
-        ///   - extraContent: An optional view that will be displayed beside or below the label.
-        ///   - indentationLevel: The level of indentation for the checkbox. Each level adds 24 points of indentation.
-        ///   - stateTransition: A closure that determines how the checkbox state should transition. Defaults to toggling between selected and notSelected.
-        ///   - onStateChange: A closure that returns the `newState` whenever the checkbox state changes.
-        public init(label: String,
-                    initialState: CheckboxState = .notSelected,
+        ///   - style: The style the checkbox can have (default, error, disabled).
+        ///   - extraContent: An optional view that will be displayed beside the label.
+        ///   - action: A closure that is executed when the checkbox is tapped.
+        public init(isSelected: Bool,
+                    label: String,
                     style: CheckboxStyle = .default,
                     extraContent: AnyView? = nil,
-                    indentationLevel: Int = 0,
-                    stateTransition: ((CheckboxState) -> CheckboxState)? = nil,
-                    onStateChange: ((CheckboxState) -> Void)? = nil) {
+                    action: @escaping () -> Void) {
+            self.isSelected = isSelected
             self.label = label
-            self._state = State(initialValue: initialState)
             self.style = style
             self.extraContent = extraContent
-            self.indentationLevel = indentationLevel
-            self.stateTransition = stateTransition
-            self.onStateChange = onStateChange
+            self.action = action
         }
         
         public var body: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
-                Spacer()
-                    .frame(width: CGFloat(indentationLevel) * Spacing.spacing300)
-                
                 Image(iconName, bundle: .module)
                     .resizable()
                     .renderingMode(.template)
@@ -77,7 +62,7 @@ extension Warp {
             }
             .onTapGesture {
                 if style != .disabled {
-                    toggleState()
+                    action()
                 }
             }
         }
@@ -95,28 +80,22 @@ extension Warp {
         }
         
         private var iconName: String {
-            return "checkbox-\(state.rawValue)"
+            isSelected ? "checkbox-selected" : "checkbox-notSelected"
         }
         
         private var tintColor: Color {
-            switch (state, style) {
-            case (.selected, .default):
+            switch (isSelected, style) {
+            case (true, .default):
                 return colorProvider.checkboxBackgroundSelected
-            case (.selected, .error):
+            case (true, .error):
                 return colorProvider.checkboxNegativeBackgroundSelected
-            case (.selected, .disabled):
+            case (true, .disabled):
                 return colorProvider.checkboxBackgroundSelectedDisabled
-            case (.partiallySelected, .default):
-                return colorProvider.checkboxBackgroundSelected
-            case (.partiallySelected, .error):
-                return colorProvider.checkboxNegativeBackgroundSelected
-            case (.partiallySelected, .disabled):
-                return colorProvider.checkboxBackgroundSelectedDisabled
-            case (.notSelected, .default):
+            case (false, .default):
                 return colorProvider.checkboxBorder
-            case (.notSelected, .error):
+            case (false, .error):
                 return colorProvider.checkboxNegativeBorder
-            case (.notSelected, .disabled):
+            case (false, .disabled):
                 return colorProvider.checkboxBorderDisabled
             }
         }
@@ -148,16 +127,6 @@ extension Warp {
             case .disabled:
                 return colorProvider.token.textDisabled
             }
-        }
-        
-        private func toggleState() {
-            let newState = stateTransition?(state) ?? defaultStateTransition(state)
-            state = newState
-            onStateChange?(newState)
-        }
-        
-        private func defaultStateTransition(_ currentState: CheckboxState) -> CheckboxState {
-            return currentState == .notSelected ? .selected : .notSelected
         }
     }
 }

@@ -17,19 +17,14 @@ private enum LayoutDirection: String, Hashable, CaseIterable {
 
 struct CheckboxView: View {
     @State private var options: [ExampleOption] = [
-        ExampleOption(title: "Option 1", state: .notSelected, extraContent: nil, indentationLevel: 0),
-        ExampleOption(title: "Option 2", state: .selected, extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary)), indentationLevel: 1),
-        ExampleOption(title: "Option 3", state: .partiallySelected, extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(Warp.Token.textSubtle)), indentationLevel: 2),
-        ExampleOption(title: "Option 4", state: .notSelected, extraContent: nil, indentationLevel: 2),
-        ExampleOption(title: "Option 5", state: .selected, extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary)), indentationLevel: 1),
-        ExampleOption(title: "Option 6", state: .partiallySelected, extraContent: nil, indentationLevel: 0)
+        ExampleOption(title: "Option 1", isSelected: false, extraContent: nil),
+        ExampleOption(title: "Option 2", isSelected: true, extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary))),
+        ExampleOption(title: "Option 3", isSelected: false, extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(Warp.Token.textSubtle)))
     ]
     @State private var style: Warp.CheckboxStyle = .default
     @State private var title: String = "Title"
     @State private var helpText: String = "Help text"
     @State private var layoutDirection: LayoutDirection = .vertical
-    @State private var isIndentationEnabled: Bool = false
-    @State private var enableStateTransition: Bool = true
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -37,8 +32,6 @@ struct CheckboxView: View {
                 titleAndHelpTextFields
                 stylePicker
                 layoutDirectionPicker
-                indentationToggle
-                stateTransitionToggle
                 checkboxGroup
             }
             .padding()
@@ -79,67 +72,33 @@ struct CheckboxView: View {
         .padding(.bottom, 20)
     }
 
-    private var indentationToggle: some View {
-        Toggle("Enable Indentations", isOn: $isIndentationEnabled.animation(.interpolatingSpring()))
-            .padding(.horizontal)
-            .padding(.bottom, 20)
-    }
-
-    private var stateTransitionToggle: some View {
-        Toggle("Override State Transition", isOn: $enableStateTransition)
-            .padding(.horizontal)
-            .padding(.bottom, 20)
-    }
-
     private var checkboxGroup: some View {
         Warp.CheckboxGroup(
             title: title,
             helpText: helpText,
             options: Binding(
                 get: {
-                    options.map { option in
-                        var updatedOption = option
-                        updatedOption.indentationLevel = isIndentationEnabled ? option.indentationLevel : 0
-                        return updatedOption
-                    }
+                    options
                 },
                 set: { newOptions in
                     options = newOptions
                 }
             ),
-            label: { $0.title },
             style: style,
-            extraContent: { $0.extraContent ?? AnyView(EmptyView()) },
             axis: layoutDirection.axis,
             onSelection: { latestSelection, options in
                 print("Selected: \(latestSelection.title)")
-                print("Currently selected options: \(options.map { "\($0.title) is \($0.state)ed" })")
-            },
-            stateTransition: enableStateTransition ? { currentState in
-                switch currentState {
-                case .notSelected:
-                    return .partiallySelected
-                case .partiallySelected:
-                    return .selected
-                case .selected:
-                    return .notSelected
-                }
-            } : nil
+                print("Currently selected options: \(options.map { "\($0.title) is \($0.isSelected ? "selected" : "not selected")" })")
+            }
         )
-        .id(isIndentationEnabled)  // Force re-render on change
     }
 }
 
 private struct ExampleOption: CheckboxOption {
     var id: String { title }
     let title: String
-    var state: Warp.CheckboxState
+    var isSelected: Bool
     var extraContent: AnyView? = nil
-    var indentationLevel: Int
-    
-    func updatedState(_ newState: Warp.CheckboxState) -> Self {
-        return ExampleOption(title: title, state: newState, extraContent: extraContent, indentationLevel: indentationLevel)
-    }
     
     static func ==(lhs: ExampleOption, rhs: ExampleOption) -> Bool {
         return lhs.id == rhs.id

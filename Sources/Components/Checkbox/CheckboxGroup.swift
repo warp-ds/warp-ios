@@ -11,12 +11,9 @@ extension Warp {
     ///   - title: An optional title for the checkbox group.
     ///   - helpText: An optional help text displayed below the title or the checkboxes.
     ///   - options: An array of options that conform to `CheckboxOption`.
-    ///   - label: A closure that provides a label for each option.
     ///   - style: The style of the checkbox group (default, error, disabled).
-    ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - axis: Determines whether the list of checkboxes is aligned vertically or horizontally.
     ///   - onSelection: A closure that will be triggered when an option is selected, providing the latest selected option and the updated list of options.
-    ///   - stateTransition: A closure that determines how the checkbox state should transition. Defaults to toggling between selected and notSelected.
     public struct CheckboxGroup<Option: CheckboxOption>: View {
         /// An optional title for the checkbox group.
         var title: String?
@@ -24,18 +21,12 @@ extension Warp {
         var helpText: String?
         /// The array of options that conform to `CheckboxOption`.
         @Binding var options: [Option]
-        /// A closure that provides a label for each option.
-        var label: (Option) -> String
         /// The style of the checkbox group (default, error, disabled).
         var style: CheckboxStyle
-        /// An optional view that will be displayed beside or below the label.
-        var extraContent: ((Option) -> AnyView)?
         /// Determines whether the list of checkboxes is aligned vertically or horizontally.
         var axis: Axis.Set
         /// A closure that will be triggered when an option is selected, providing the latest selected option and the updated list of options.
         var onSelection: ((Option, [Option]) -> Void)?
-        /// A closure that determines how the checkbox state should transition.
-        var stateTransition: ((CheckboxState) -> CheckboxState)?
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
@@ -45,30 +36,21 @@ extension Warp {
         ///   - title: An optional title for the checkbox group.
         ///   - helpText: An optional help text displayed below the title or the checkboxes.
         ///   - options: An array of options that conform to `CheckboxOption`.
-        ///   - label: A closure that provides a label for each option.
         ///   - style: The style of the checkbox group (default, error, disabled).
-        ///   - extraContent: A view that will be displayed beside or below the label.
         ///   - axis: Determines whether the list of checkboxes is aligned vertically or horizontally.
         ///   - onSelection: A closure that will be triggered when an option is selected, providing the latest selected option and the updated list of options.
-        ///   - stateTransition: A closure that determines how the checkbox state should transition. Defaults to toggling between selected and notSelected.
         public init(title: String? = nil,
                     helpText: String? = nil,
                     options: Binding<[Option]>,
-                    label: @escaping (Option) -> String,
                     style: CheckboxStyle = .default,
-                    extraContent: ((Option) -> AnyView)? = nil,
                     axis: Axis.Set = .vertical,
-                    onSelection: ((Option, [Option]) -> Void)? = nil,
-                    stateTransition: ((CheckboxState) -> CheckboxState)? = nil) {
+                    onSelection: ((Option, [Option]) -> Void)? = nil) {
             self.title = title
             self.helpText = helpText
             self._options = options
-            self.label = label
             self.style = style
-            self.extraContent = extraContent
             self.axis = axis
             self.onSelection = onSelection
-            self.stateTransition = stateTransition
         }
         
         public var body: some View {
@@ -94,37 +76,27 @@ extension Warp {
             switch axis {
             case .vertical:
                 VStack(alignment: .leading, spacing: Spacing.spacing200) {
-                    ForEach($options.indices, id: \.self) { index in
-                        let option = options[index]
-                        Checkbox(label: label(option),
-                                 initialState: option.state,
+                    ForEach(options) { option in
+                        Checkbox(isSelected: option.isSelected,
+                                 label: option.title,
                                  style: style,
-                                 extraContent: extraContent?(option),
-                                 indentationLevel: option.indentationLevel,
-                                 stateTransition: stateTransition,
-                                 onStateChange: { newState in
-                            options[index] = option.updatedState(newState)
-                                     onSelection?(options[index], options)
-                                 })
-                              .disabled(style == .disabled)
+                                 extraContent: option.extraContent) {
+//                            option.isSelected.toggle()
+                        }
+                                 .disabled(style == .disabled)
                     }
                 }
             case .horizontal, _:
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: Spacing.spacing200) {
-                        ForEach($options.indices, id: \.self) { index in
-                            let option = options[index]
-                            Checkbox(label: label(option),
-                                     initialState: option.state,
+                        ForEach(options) { option in
+                            Checkbox(isSelected: option.isSelected,
+                                     label: option.title,
                                      style: style,
-                                     extraContent: extraContent?(option),
-                                     indentationLevel: option.indentationLevel,
-                                     stateTransition: stateTransition,
-                                     onStateChange: { newState in
-                                         options[index] = option.updatedState(newState)
-                                         onSelection?(options[index], options)
-                                     })
-                                  .disabled(style == .disabled)
+                                     extraContent: option.extraContent) {
+//                                option.isSelected.toggle()
+                            }
+                                     .disabled(style == .disabled)
                         }
                     }
                 }
