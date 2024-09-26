@@ -16,11 +16,12 @@ private enum LayoutDirection: String, Hashable, CaseIterable {
 }
 
 struct CheckboxView: View {
-    @State private var options: [ExampleOption] = [
-        ExampleOption(title: "Option 1", isSelected: false, extraContent: nil),
-        ExampleOption(title: "Option 2", isSelected: true, extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary))),
-        ExampleOption(title: "Option 3", isSelected: false, extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(Warp.Token.textSubtle)))
-    ]
+    @State private var isSelectedOption1: Bool = false
+    @State private var isSelectedOption2: Bool = true
+    @State private var isSelectedOption3: Bool = false
+    
+    @State private var options: [ExampleOption] = []
+    
     @State private var style: Warp.CheckboxStyle = .default
     @State private var title: String = "Title"
     @State private var helpText: String = "Help text"
@@ -35,6 +36,9 @@ struct CheckboxView: View {
                 checkboxGroup
             }
             .padding()
+        }
+        .onAppear {
+            setupOptions()
         }
         .navigationTitle("Checkboxes")
         .navigationBarTitleDisplayMode(.inline)
@@ -88,16 +92,25 @@ struct CheckboxView: View {
             axis: layoutDirection.axis,
             onSelection: { latestSelection, options in
                 print("Selected: \(latestSelection.title)")
-                print("Currently selected options: \(options.map { "\($0.title) is \($0.isSelected ? "selected" : "not selected")" })")
+                print("Currently selected options: \(options.map { "\($0.title) is \($0.isSelected.wrappedValue ? "selected" : "not selected")" })")
             }
         )
+    }
+    
+    private func setupOptions() {
+        // Initialize options with `Binding<Bool>` for `isSelected`
+        options = [
+            ExampleOption(title: "Option 1", isSelected: $isSelectedOption1),
+            ExampleOption(title: "Option 2", isSelected: $isSelectedOption2, extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary))),
+            ExampleOption(title: "Option 3", isSelected: $isSelectedOption3, extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(Warp.Token.textSubtle)))
+        ]
     }
 }
 
 private struct ExampleOption: CheckboxOption {
     var id: String { title }
     let title: String
-    var isSelected: Bool
+    var isSelected: Binding<Bool>
     var extraContent: AnyView? = nil
     
     static func ==(lhs: ExampleOption, rhs: ExampleOption) -> Bool {

@@ -77,11 +77,14 @@ extension Warp {
             case .vertical:
                 VStack(alignment: .leading, spacing: Spacing.spacing200) {
                     ForEach(options) { option in
-                        Checkbox(isSelected: option.isSelected,
+                        Checkbox(isSelected: option.isSelected.wrappedValue,
                                  label: option.title,
                                  style: style,
                                  extraContent: option.extraContent) {
-//                            option.isSelected.toggle()
+                            option.isSelected.wrappedValue.toggle()
+                            if let onSelection = onSelection {
+                                onSelection(option, options)
+                            }
                         }
                                  .disabled(style == .disabled)
                     }
@@ -90,11 +93,14 @@ extension Warp {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: Spacing.spacing200) {
                         ForEach(options) { option in
-                            Checkbox(isSelected: option.isSelected,
+                            Checkbox(isSelected: option.isSelected.wrappedValue,
                                      label: option.title,
                                      style: style,
                                      extraContent: option.extraContent) {
-//                                option.isSelected.toggle()
+                                option.isSelected.wrappedValue.toggle()
+                                if let onSelection = onSelection {
+                                    onSelection(option, options)
+                                }
                             }
                                      .disabled(style == .disabled)
                         }

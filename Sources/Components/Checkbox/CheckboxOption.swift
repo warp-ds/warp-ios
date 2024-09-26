@@ -2,6 +2,6 @@ import SwiftUI
 
 public protocol CheckboxOption: Identifiable, Hashable {
     var title: String { get }
-    var isSelected: Bool { get set }
+    var isSelected: Binding<Bool> { get }
     var extraContent: AnyView? { get }    
 }
