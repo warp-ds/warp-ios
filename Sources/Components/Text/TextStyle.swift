@@ -1,6 +1,6 @@
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     /// Warp representation of the style and appearance of visual text matter.
     @MainActor
     public enum TextStyle: Equatable, CaseIterable {

@@ -2,7 +2,7 @@ import Foundation
 import struct SwiftUI.Font
 import struct SwiftUI.Text
 
-@MainActor extension Warp.Button {
+extension Warp.Button {
     /// Factory responsible for resolving button label's typography needs.
     @MainActor
     struct TypographyFactory {

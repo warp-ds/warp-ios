@@ -1,6 +1,6 @@
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     public enum CalloutSize {
         case small
         case `default`

@@ -1,6 +1,6 @@
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     /// Used to visually label objects on a page for quick recognition. They allow users to filter a list or label information.
     public struct Pill: View, Hashable {
         public nonisolated static func == (lhs: Warp.Pill, rhs: Warp.Pill) -> Bool {

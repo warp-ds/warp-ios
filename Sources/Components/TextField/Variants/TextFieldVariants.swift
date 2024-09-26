@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-@MainActor extension Warp.TextField {
+extension Warp.TextField {
     /// TextField that will resolve common needs to work with decimals.
     public static func createDecimalTextField(
         text: Binding<String>,

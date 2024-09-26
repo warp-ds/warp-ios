@@ -1,6 +1,6 @@
 import Foundation
 
-@MainActor extension Warp {
+extension Warp {
     /// Warp button sizes.
     public enum ButtonSize: Equatable, Comparable {
         case big

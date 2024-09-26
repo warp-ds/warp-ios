@@ -1,6 +1,6 @@
 import Foundation
 
-@MainActor extension Warp {
+extension Warp {
     /// Style for `Box` view.
     @MainActor
     public enum BoxStyle: Equatable {

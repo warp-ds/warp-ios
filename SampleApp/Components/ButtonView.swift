@@ -90,7 +90,7 @@ struct ButtonView: View {
     }
 }
 
-@MainActor extension Warp.ButtonType: CaseIterable {
+extension Warp.ButtonType: CaseIterable {
     public static var allCases: [Warp.ButtonType] = [
         .primary,
         .secondary,
@@ -109,7 +109,7 @@ struct ButtonView: View {
     }
 }
 
-@MainActor extension Warp.ButtonSize: CaseIterable {
+extension Warp.ButtonSize: CaseIterable {
     public static var allCases: [Warp.ButtonSize] = [
         .big,
         .small

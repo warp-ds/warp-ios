@@ -4,7 +4,7 @@ import SwiftUI
 /// Minimum height reserved for TextField in order to keep it elegant.
 private let textFieldMinHeight = 34.0
 
-@MainActor extension Warp {
+extension Warp {
     /// Style that is responsible to transform TextField into warp design system TextField.
     @MainActor
     public struct TextFieldStyle: @preconcurrency SwiftUI.TextFieldStyle {
@@ -204,7 +204,7 @@ extension View {
     }
 }
 
-@MainActor extension Warp.TextFieldState {
+extension Warp.TextFieldState {
     /// Flag indicating TextField should be disabled based on current state.
     fileprivate var shouldBeDisabled: Bool {
         let isDisabled = self == .disabled
@@ -243,7 +243,7 @@ extension View {
     }
 }
 
-@MainActor extension Warp.TextFieldState {
+extension Warp.TextFieldState {
     fileprivate var informationState: Warp.TextField.InformationState? {
         switch self {
             case .normal(let state), .active(let state):

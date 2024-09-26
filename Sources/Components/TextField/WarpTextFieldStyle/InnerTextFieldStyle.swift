@@ -4,7 +4,7 @@ import Foundation
 /// Minimum height reserved for text field in order to keep it elegant.
 @MainActor private let textFieldMinHeight = 28.0
 
-@MainActor extension Warp {
+extension Warp {
     /// Text field style that will be used internally.
     /// Responsible for configuring text field inside the borders.
     @MainActor

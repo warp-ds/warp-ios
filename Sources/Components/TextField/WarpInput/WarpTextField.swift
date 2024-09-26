@@ -1,7 +1,7 @@
 import SwiftUI
 import Combine
 
-@MainActor extension Warp {
+extension Warp {
     /// Inactive state of TextField.
     @MainActor
     public static let textFieldDefaultInactiveState = TextFieldState.normal(.none)
@@ -155,7 +155,7 @@ private struct WarpTextFieldPreview: PreviewProvider {
     }
 }
 
-@MainActor extension Warp.TextFieldState {
+extension Warp.TextFieldState {
     fileprivate static var allCases: [Warp.TextFieldState] = [
         .normal(.none),
         .active(.none),
@@ -165,7 +165,7 @@ private struct WarpTextFieldPreview: PreviewProvider {
     ]
 }
 
-@MainActor extension Warp.TextFieldState {
+extension Warp.TextFieldState {
     fileprivate var title: String {
         String(describing: self).localizedCapitalized
     }

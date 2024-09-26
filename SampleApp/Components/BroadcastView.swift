@@ -78,7 +78,7 @@ struct BroadcastView: View {
     }
 }
 
-fileprivate @MainActor extension Warp.BroadcastEdge {
+fileprivate extension Warp.BroadcastEdge {
     var description: String {
         switch self {
         case .top:

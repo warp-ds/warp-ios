@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     /**
      Callouts are snippets of information, drawing attention to important content.
 

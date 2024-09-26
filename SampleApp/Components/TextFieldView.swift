@@ -181,7 +181,7 @@ struct TextFieldView: View {
     TextFieldView()
 }
 
-@MainActor extension Warp.TextField.InformationState: CaseIterable {
+extension Warp.TextField.InformationState: CaseIterable {
     public static var allCases: [Warp.TextField.InformationState] {
         [
             .none,
@@ -204,7 +204,7 @@ struct TextFieldView: View {
     }
 }
 
-@MainActor extension Warp.TextFieldState {
+extension Warp.TextFieldState {
     fileprivate var title: String {
         switch self {
             case .normal:

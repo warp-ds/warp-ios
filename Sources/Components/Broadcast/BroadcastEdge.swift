@@ -1,6 +1,6 @@
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     /**
         Enum describing  which edge the Broadcast view will appear from/disappear to
      */

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     private static let alertCornerRadius = 4.0
 
     /// View that show high-signal messages meant to be noticed and prompting users to take action.
@@ -383,7 +383,7 @@ private struct UnderlinedLinkModifier: ViewModifier {
     }
 }
 
-@MainActor extension Warp.AlertStyle {
+extension Warp.AlertStyle {
     fileprivate func getBackgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
             case .info:
@@ -497,7 +497,7 @@ private struct UnderlinedLinkModifier: ViewModifier {
     }
 }
 
-@MainActor extension Warp.AlertStyle {
+extension Warp.AlertStyle {
     fileprivate static var allCases: [Warp.AlertStyle] = [
         .info,
         .warning,

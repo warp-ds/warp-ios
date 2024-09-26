@@ -1,6 +1,6 @@
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     /// Warp representation of the style and appearance of visual text matter.
     @MainActor
     public enum Typography: CaseIterable {
@@ -26,7 +26,7 @@ import SwiftUI
     }
 }
 
-@MainActor extension Warp.Typography {
+extension Warp.Typography {
     /// Bridge between `Warp` and `SwiftUI` font.
     /// Provides a font with size and font weight based on given typography.
     public var font: Font {

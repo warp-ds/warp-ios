@@ -1,6 +1,6 @@
 import SwiftUI
 
-@MainActor extension Warp.Pill {
+extension Warp.Pill {
     /// Factory responsible for creating pill, UI element color,
     /// based on pill style and current state.
     @MainActor

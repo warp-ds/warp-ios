@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     private static let broadcastCornerRadius: Double = 8
 
     /**

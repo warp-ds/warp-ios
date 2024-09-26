@@ -1,9 +1,8 @@
 import Foundation
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     /// A control that initiates an action with `Warp` designed label.
-    @MainActor
     public struct Button: View {
         /// Button title.
         private let title: String
@@ -119,7 +118,7 @@ import SwiftUI
 }
 
 /// Helper constructors introduced to extend image capabilities.
-@MainActor extension Warp.Button {
+extension Warp.Button {
     public init(
         type: Warp.ButtonType,
         title: String,
@@ -199,7 +198,7 @@ import SwiftUI
     }
 }
 
-@MainActor extension Warp.Button {
+extension Warp.Button {
     /// Factory method.
     public static func create(
         for buttonType: Warp.ButtonType,
@@ -321,8 +320,8 @@ import SwiftUI
     }
 }
 
-@MainActor extension Warp.ButtonType {
-    fileprivate static var allCases: [Warp.ButtonType] = [
+extension Warp.ButtonType {
+    fileprivate static let allCases: [Warp.ButtonType] = [
         .primary,
         .secondary,
         .tertiary,

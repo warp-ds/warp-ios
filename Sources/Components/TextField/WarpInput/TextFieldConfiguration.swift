@@ -3,7 +3,7 @@ import struct SwiftUI.AnyView
 import struct SwiftUI.Image
 import struct SwiftUI.Text
 
-@MainActor extension Warp {
+extension Warp {
     /// Configurations that will be applied to TextField.
     @MainActor
     public struct TextFieldConfiguration {

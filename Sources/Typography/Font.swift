@@ -1,6 +1,6 @@
 import Foundation
 
-@MainActor extension Warp {
+extension Warp {
     /// Fonts in `Warp`.
     @MainActor
     enum Font: CaseIterable {

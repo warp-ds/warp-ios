@@ -1,6 +1,6 @@
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     public enum CalloutType {
         case inline
         case popover(onTapped: () -> Void)

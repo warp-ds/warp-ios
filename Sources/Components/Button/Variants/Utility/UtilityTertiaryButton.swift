@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-@MainActor extension Warp.Button {
+extension Warp.Button {
     private static let utilityTertiaryType: Warp.ButtonType = .utilityTertiary
 
     /// Factory method for creating warp button with `UtilityTertiary` style.

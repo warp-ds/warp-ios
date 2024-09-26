@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     private static let toastCornerRadius: Double = 8
 
     /**
@@ -91,7 +91,8 @@ import SwiftUI
     }
 }
 
-@MainActor extension Warp.ToastStyle {
+@MainActor
+extension Warp.ToastStyle {
     fileprivate func backgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
         case .error:

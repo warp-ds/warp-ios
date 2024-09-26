@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-@MainActor extension Warp {
+extension Warp {
     /// The style the Pill component has
     @MainActor
     public enum PillStyle: Equatable, CaseIterable {

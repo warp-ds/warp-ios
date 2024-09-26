@@ -158,7 +158,7 @@ struct BoxView: View {
     }
 }
 
-@MainActor extension Warp.BoxStyle: CaseIterable {
+extension Warp.BoxStyle: CaseIterable {
     public static var allCases: [Warp.BoxStyle] = [
         .neutral,
         .info,
