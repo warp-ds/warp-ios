@@ -2,6 +2,7 @@ import Foundation
 
 extension Warp {
     /// States of TextField view.
+    @preconcurrency @MainActor
     public enum TextFieldState: Equatable, Comparable, Hashable {
         /// None active TextField.
         case normal(Warp.TextField.InformationState)
@@ -43,6 +44,7 @@ extension Warp {
 }
 
 extension Warp.TextField {
+    @preconcurrency @MainActor
     public enum InformationState: Hashable, Equatable, Comparable {
         case none
 

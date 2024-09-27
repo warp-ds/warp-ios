@@ -1,6 +1,7 @@
 import SwiftUI
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=1588196525
+@preconcurrency @MainActor
 public struct ColorProvider {
     public let token: TokenProvider
     
@@ -720,6 +721,7 @@ public struct ColorProvider {
     //    var shadowTooltip: Color { toek.shadow-m }
 }
 
+@preconcurrency @MainActor
 public struct UIColorProvider {
     public let token: UITokenProvider
     

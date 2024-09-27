@@ -4,6 +4,7 @@ import struct SwiftUI.Text
 
 extension Warp.Button {
     /// Factory responsible for resolving button label's typography needs.
+    @preconcurrency @MainActor
     struct TypographyFactory {
         private let type: Warp.ButtonType
         private let size: Warp.ButtonSize

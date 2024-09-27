@@ -14,7 +14,7 @@ extension Warp {
         private let trailingIcon: Image?
 
         /// Button action.
-        private let action: () -> Void
+        private let action: @MainActor @Sendable () -> Void
 
         /// Button type.
         private let type: Warp.ButtonType
@@ -38,7 +38,7 @@ extension Warp {
             title: String,
             leadingIcon: Image?,
             trailingIcon: Image?,
-            action: @escaping () -> Void,
+            action: @escaping @MainActor @Sendable () -> Void,
             type: Warp.ButtonType,
             size: Warp.ButtonSize,
             isEnabled: Bool,
@@ -124,7 +124,7 @@ extension Warp.Button {
         title: String,
         leadingImage: Warp.Button.Icon?,
         trailingImage: Warp.Button.Icon?,
-        action: @escaping () -> Void,
+        action: @escaping @MainActor @Sendable () -> Void,
         size: Warp.ButtonSize,
         isEnabled: Bool,
         fullWidth: Bool,
@@ -167,7 +167,7 @@ extension Warp.Button {
         title: String,
         leadingImageSystemName: String?,
         trailingImageSystemName: String?,
-        action: @escaping () -> Void,
+        action: @escaping @MainActor @Sendable () -> Void,
         size: Warp.ButtonSize,
         isEnabled: Bool,
         fullWidth: Bool,
@@ -205,7 +205,7 @@ extension Warp.Button {
         title: String,
         leadingIcon: Image? = nil,
         trailingIcon: Image? = nil,
-        action: @escaping () -> Void,
+        action: @escaping @MainActor @Sendable () -> Void,
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false,
@@ -321,7 +321,7 @@ extension Warp.Button {
 }
 
 extension Warp.ButtonType {
-    fileprivate static var allCases: [Warp.ButtonType] = [
+    fileprivate static let allCases: [Warp.ButtonType] = [
         .primary,
         .secondary,
         .tertiary,

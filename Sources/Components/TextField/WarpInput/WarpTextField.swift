@@ -154,7 +154,7 @@ private struct WarpTextFieldPreview: PreviewProvider {
 }
 
 extension Warp.TextFieldState {
-    fileprivate static var allCases: [Warp.TextFieldState] = [
+    fileprivate static let allCases: [Warp.TextFieldState] = [
         .normal(.none),
         .active(.none),
         .disabled,

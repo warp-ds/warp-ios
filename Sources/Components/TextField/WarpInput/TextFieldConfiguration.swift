@@ -5,6 +5,7 @@ import struct SwiftUI.Text
 
 extension Warp {
     /// Configurations that will be applied to TextField.
+    @preconcurrency @MainActor
     public struct TextFieldConfiguration {
         /// TextField placeholder.
         public var placeholder: String

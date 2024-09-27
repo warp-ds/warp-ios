@@ -25,7 +25,7 @@ struct TypographyView: View {
 }
 
 extension Warp.Typography {
-    fileprivate static var allCases: [(typography: Warp.Typography, name: String)] = [
+    fileprivate static let allCases: [(typography: Warp.Typography, name: String)] = [
         (.display, "Display"),
         (.title1, "Title 1"),
         (.title2, "Title 2"),
