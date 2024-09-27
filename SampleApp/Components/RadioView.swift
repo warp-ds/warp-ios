@@ -88,7 +88,7 @@ struct RadioView: View {
             }
         }
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Thank you for your selection!"))
+            Alert(title: Text("Thank you for selecting \(selectedOption.title)"))
         }
         .navigationTitle("Radio")
         .navigationBarTitleDisplayMode(.inline)
