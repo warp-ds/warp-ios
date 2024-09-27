@@ -20,7 +20,7 @@ extension Warp {
         /// Text that will be shown as main content of the modal.
         var bodyText: String
         
-        public typealias ButtonConstructor = (title: String, action: @Sendable () -> Void)
+        public typealias ButtonConstructor = (title: String, action: @MainActor @Sendable () -> Void)
 
         /// Tuple that will provide a title and an action for creating a primary button view.
         /// Passing `nil` will skip adding primary button view.

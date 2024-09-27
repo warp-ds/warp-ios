@@ -98,7 +98,7 @@ struct ToastView: View {
     }
 }
 
-@preconcurrency @MainActor
+@MainActor
 fileprivate extension Warp.ToastStyle {
     var description: String {
         switch self {
@@ -112,7 +112,7 @@ fileprivate extension Warp.ToastStyle {
     }
 }
 
-@preconcurrency @MainActor
+@MainActor
 fileprivate extension Warp.ToastEdge {
     var description: String {
         switch self {

@@ -21,7 +21,7 @@ extension Warp {
         /// Binding to a boolean value that allows the modal to control dismissal
         @Binding var isPresented: Bool
         
-        public typealias ButtonConstructor = (title: String, action: @Sendable () -> Void)
+        public typealias ButtonConstructor = (title: String, action: @MainActor @Sendable () -> Void)
 
         /// Tuple that will provide a title and an action for creating a primary button view.
         /// Passing `nil` will skip adding primary button view.

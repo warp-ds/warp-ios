@@ -18,9 +18,9 @@ extension Warp {
         /// Pill icon. If you provide onClose then the Pill will have a close button instead of this icon.
         private let icon: Image?
         /// Triggered when Pill is tapped.
-        private let onTap: @Sendable () -> Void
+        private let onTap: @MainActor @Sendable () -> Void
         /// Triggered when Pill is closed. If provided a close button will replace any provided icon.
-        private let onClose: (@Sendable () -> Void)?
+        private let onClose: (@MainActor @Sendable () -> Void)?
         /// The content description of the icon. Used for accessibility purposes.
         private let iconContentDescription: String?
         /// Pill style.
@@ -31,7 +31,7 @@ extension Warp {
         public init(
             text: String,
             icon: Image? = nil,
-            onTap: @escaping @Sendable () -> Void = {},
+            onTap: @escaping @MainActor @Sendable () -> Void = {},
             onClose: (@Sendable () -> Void)? = nil,
             iconContentDescription: String? = nil,
             style: Warp.PillStyle = .filter

@@ -25,7 +25,7 @@ extension Warp {
         /// The level of indentation for the radio button. Each level adds 24 points of indentation.
         private var indentationLevel: Int? = 0 // Maybe remove later if we decide it has no use
         /// A closure that is executed when the radio button is tapped.
-        var action: @MainActor @Sendable () -> Void
+        @preconcurrency var action: @MainActor @Sendable () -> Void
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
