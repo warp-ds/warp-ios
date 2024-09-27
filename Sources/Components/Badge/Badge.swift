@@ -101,7 +101,7 @@ extension Warp {
         }
         .padding(.horizontal)
     }
-    @MainActor
+    @preconcurrency @MainActor
     func createView(for variant: Warp.Badge.Variant) -> some View {
         let name = String(describing: variant)
         let capitalizedName = name.capitalized
@@ -118,7 +118,7 @@ extension Warp {
             }
         )
     }
-    @MainActor
+    @preconcurrency @MainActor
     func createView(for variant: Warp.Badge.Variant, position: Warp.Badge.Position) -> some View {
         HStack {
             Text(String(describing: position))

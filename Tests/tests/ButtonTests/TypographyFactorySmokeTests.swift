@@ -3,7 +3,7 @@ import struct SwiftUI.Font
 import struct SwiftUI.Text
 @testable import Warp
 
-@MainActor
+@preconcurrency @MainActor
 final class TypographyFactorySmokeTests: XCTestCase {
     private typealias TypographyFactory = Warp.Button.TypographyFactory
 

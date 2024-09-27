@@ -56,7 +56,7 @@ extension Warp.Text {
         }
         .padding()
     }
-    @MainActor
+    @preconcurrency @MainActor
     func createView(for style: Warp.TextStyle) -> some View {
         Warp.Text(String(describing: style).capitalized, style: style)
     }

@@ -11,7 +11,7 @@ extension Warp {
         /// Expandable component with a boxed layout. Square corners
         case boxBleed
 
-        @MainActor
+        @preconcurrency @MainActor
         func backgroundColor(using colorProvider: ColorProvider) -> Color {
             switch self {
             case .default:

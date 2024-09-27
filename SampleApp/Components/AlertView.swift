@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Warp
 
-@MainActor
+@preconcurrency @MainActor
 struct AlertView: View {
     @State private var style: Warp.AlertStyle = .info
 

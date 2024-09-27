@@ -7,7 +7,7 @@ private let textFieldMinHeight = 28.0
 extension Warp {
     /// Text field style that will be used internally.
     /// Responsible for configuring text field inside the borders.
-    @MainActor
+    @preconcurrency @MainActor
     struct InnerTextFieldStyle: @preconcurrency SwiftUI.TextFieldStyle {
         /// State of TextField.
         let state: Warp.TextFieldState
@@ -122,7 +122,7 @@ extension Warp {
 
 extension SwiftUI.TextFieldStyle where Self == Warp.InnerTextFieldStyle {
     /// A text field style with ability to add arbitrary view in left or right side.
-    @MainActor
+    @preconcurrency @MainActor
     static func innerStyle(
         state: Warp.TextFieldState,
         leftView: AnyView? = nil,

@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 /// Information tool tip view that will be shown on the top of TextField.
-@MainActor
+@preconcurrency @MainActor
 struct ToolTipView: View {
     /// Tool tip title.
     let title: String?

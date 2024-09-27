@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Warp.StepIndicator {
-    @MainActor
+    @preconcurrency @MainActor
     struct LineBuilder {
         @ViewBuilder
         static func line(
