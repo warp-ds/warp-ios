@@ -1,7 +1,6 @@
 import XCTest
 @testable import Warp
 
-@preconcurrency @MainActor
 final class MetricsFactorySmokeTests: XCTestCase {
     private typealias UIMetricsFactory = Warp.Button.UIMetricsFactory
 

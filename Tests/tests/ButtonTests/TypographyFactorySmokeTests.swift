@@ -3,7 +3,6 @@ import struct SwiftUI.Font
 import struct SwiftUI.Text
 @testable import Warp
 
-@preconcurrency @MainActor
 final class TypographyFactorySmokeTests: XCTestCase {
     private typealias TypographyFactory = Warp.Button.TypographyFactory
 
@@ -24,11 +23,11 @@ final class TypographyFactorySmokeTests: XCTestCase {
             (.utilityOverlay, captionFont)
         ]
 
-//        typesWithExpectations.forEach { typeWithExpectation in
-//            let sut = TypographyFactory(for: typeWithExpectation.type)
-//
-//            XCTAssertEqual(sut.font, typeWithExpectation.expectedFont)
-//        }
+        typesWithExpectations.forEach { typeWithExpectation in
+            let sut = TypographyFactory(for: typeWithExpectation.type)
+
+            XCTAssertEqual(sut.font, typeWithExpectation.expectedFont)
+        }
     }
 
     func testFontWeight_Parameterized_ShouldBeEqual() throws {
@@ -48,11 +47,11 @@ final class TypographyFactorySmokeTests: XCTestCase {
             (.utilityOverlay, regularFontWeight)
         ]
 
-//        typesWithExpectations.forEach { typeWithExpectation in
-//            let sut = TypographyFactory(for: typeWithExpectation.type)
-//
-//            XCTAssertEqual(sut.fontWeight, typeWithExpectation.expectedFontWeight)
-//        }
+        typesWithExpectations.forEach { typeWithExpectation in
+            let sut = TypographyFactory(for: typeWithExpectation.type)
+
+            XCTAssertEqual(sut.fontWeight, typeWithExpectation.expectedFontWeight)
+        }
     }
 
     func testLineLimit_Parameterized_ShouldBeEqual() {
@@ -71,11 +70,11 @@ final class TypographyFactorySmokeTests: XCTestCase {
             (.utilityOverlay, onlyOneLineLimit)
         ]
 
-//        typesWithExpectations.forEach { typeWithExpectation in
-//            let sut = TypographyFactory(for: typeWithExpectation.type)
-//
-//            XCTAssertEqual(sut.lineLimit, typeWithExpectation.expectedLineLimit)
-//        }
+        typesWithExpectations.forEach { typeWithExpectation in
+            let sut = TypographyFactory(for: typeWithExpectation.type)
+
+            XCTAssertEqual(sut.lineLimit, typeWithExpectation.expectedLineLimit)
+        }
     }
 
     func testTruncationMode_Parameterized_ShouldBeEqual() {
@@ -94,10 +93,10 @@ final class TypographyFactorySmokeTests: XCTestCase {
             (.utilityOverlay, middleTruncationMode)
         ]
 
-//        typesWithExpectations.forEach { typeWithExpectation in
-//            let sut = TypographyFactory(for: typeWithExpectation.type)
-//
-//            XCTAssertEqual(sut.truncationMode, typeWithExpectation.expectedTruncationMode)
-//        }
+        typesWithExpectations.forEach { typeWithExpectation in
+            let sut = TypographyFactory(for: typeWithExpectation.type)
+
+            XCTAssertEqual(sut.truncationMode, typeWithExpectation.expectedTruncationMode)
+        }
     }
 }

@@ -22,7 +22,6 @@ let package = Package(
                 .process("Typography/Fonts"),
                 .process("Resources")
             ]
-        //    swiftSettings: [.swiftLanguageMode(.v5)]
         ),
         .testTarget(
             name: "tests",
