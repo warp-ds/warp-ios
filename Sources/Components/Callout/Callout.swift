@@ -74,13 +74,22 @@ extension Warp {
         private var contentView: some View {
             HStack {
                 Text(title, style: size.textStyle)
-                    .foregroundStyle(colorProvider.calloutText)
+                    .foregroundColor(colorProvider.calloutText)
 
                 switch type {
                 case .inline:
                     EmptyView()
-                case .popover:
-                    Image("icon-close", bundle: .module)
+                case .popover(let onTapped):
+                    if let onTapped = onTapped {
+                        Image("icon-close", bundle: .module)
+                            .accessibilityAddTraits(.isButton) // Make it behave like a button for VoiceOver
+                            .accessibilityAction {
+                                // VoiceOver double-tap handling
+                                onTapped()
+                            }
+                    } else {
+                        EmptyView()
+                    }
                 }
             }
             .padding(.horizontal, 12)
@@ -100,7 +109,7 @@ extension Warp {
                     .onTapGesture {
                         type.onTapped?()
                     }
-                    .addShadow(.large)
+                    .addShadow(.medium)
             }
         }
 
