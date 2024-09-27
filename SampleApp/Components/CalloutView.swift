@@ -175,15 +175,16 @@ struct CalloutView: View {
 
                 Divider()
             }
-
             if isVisibleValue.wrappedValue {
                 Warp.Callout(
                     size: showDefault ? .default : .small,
-                    type: .popover(onTapped: dismissable ? {
-                        withAnimation {
-                            isVisibleValue.wrappedValue = false
+                    type: .popover(onTapped: {
+                        if dismissable {
+                            withAnimation {
+                                isVisibleValue.wrappedValue = false
+                            }
                         }
-                    } : nil ),
+                    }),
                     title: calloutTitle,
                     arrowEdge: calloutEdge
                 )
@@ -213,11 +214,13 @@ struct CalloutView: View {
             if isVisibleValue.wrappedValue {
                 Warp.Callout(
                     size: showDefault ? .default : .small,
-                    type: .popover(onTapped: dismissable ? {
-                        withAnimation {
-                            isVisibleValue.wrappedValue = false
+                    type: .popover(onTapped: {
+                        if dismissable {
+                            withAnimation {
+                                isVisibleValue.wrappedValue = false
+                            }
                         }
-                    } : nil ),
+                    }),
                     title: calloutTitle,
                     arrowEdge: calloutEdge
                 )
