@@ -23,11 +23,7 @@ struct RadioView: View {
     @State private var layoutDirection: LayoutDirection = .vertical
     @State private var showAlert: Bool = false
     
-    private let options = [
-        ExampleOption(title: "Option 1", extraContent: nil),
-        ExampleOption(title: "Option 2", extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary))),
-        ExampleOption(title: "Option 3", extraContent: AnyView(Text("Extra Info").font(from: .body).foregroundColor(Warp.Token.textSubtle)))
-    ]
+    @State private var options = [ExampleOption]()
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -63,9 +59,7 @@ struct RadioView: View {
                     title: title,
                     helpText: helpText,
                     selectedOption: $selectedOption,
-                    options: options.map { option in
-                        ExampleOption(title: option.title, extraContent: option.extraContent)
-                    },
+                    options: options,
                     style: style,
                     axis: layoutDirection.axis,
                     onSelection: { oldSelection, newSelection in
@@ -90,8 +84,22 @@ struct RadioView: View {
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Thank you for selecting \(selectedOption.title)"))
         }
+        .onAppear {
+            populateOptions()
+        }
+        .onChange(of: style) { _ in
+            populateOptions()
+        }
         .navigationTitle("Radio")
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private func populateOptions() {
+        options = [
+            ExampleOption(title: "Option 1", extraContent: nil),
+            ExampleOption(title: "Option 2", extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary))),
+            ExampleOption(title: style == .disabled ? "Option disabled" : "Option 3", extraContent: AnyView(Text("Extra Info").font(from: .body).foregroundColor(style == .disabled ? Warp.Token.textDisabled : Warp.Token.textSubtle)))
+        ]
     }
 }
 

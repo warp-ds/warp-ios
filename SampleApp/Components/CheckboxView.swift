@@ -38,7 +38,10 @@ struct CheckboxView: View {
             .padding()
         }
         .onAppear {
-            setupOptions()
+            populateOptions()
+        }
+        .onChange(of: style) { _ in
+            populateOptions()
         }
         .navigationTitle("Checkboxes")
         .navigationBarTitleDisplayMode(.inline)
@@ -97,12 +100,12 @@ struct CheckboxView: View {
         )
     }
     
-    private func setupOptions() {
+    private func populateOptions() {
         // Initialize options with `Binding<Bool>` for `isSelected`
         options = [
             ExampleOption(title: "Option 1", isSelected: $isSelectedOption1),
             ExampleOption(title: "Option 2", isSelected: $isSelectedOption2, extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary))),
-            ExampleOption(title: "Option 3", isSelected: $isSelectedOption3, extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(Warp.Token.textSubtle)))
+            ExampleOption(title: style == .disabled ? "Option disabled" : "Option 3", isSelected: $isSelectedOption3, extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(style == .disabled ? Warp.Token.textDisabled : Warp.Token.textSubtle)))
         ]
     }
 }
