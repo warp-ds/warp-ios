@@ -3,7 +3,7 @@ import SwiftUI
 extension Warp {
     public enum CalloutType {
         case inline
-        case popover(onTapped: () -> Void)
+        case popover(onTapped: (() -> Void)?)
 
         var onTapped: (() -> Void)? {
             switch self {
