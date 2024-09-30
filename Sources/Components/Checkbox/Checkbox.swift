@@ -12,6 +12,9 @@ extension Warp {
     ///   - style: The style the checkbox can have (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - action: A closure that is executed when the checkbox button is tapped.
+#if swift(<6.0)
+    @preconcurrency @MainActor
+#endif
     public struct Checkbox: View {
         /// A `Binding` value indicating whether the checkbox button is selected.
         @Binding var isSelected: Bool

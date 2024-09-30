@@ -3,10 +3,13 @@ import SwiftUI
 
 extension Warp {
     /// A control that initiates an action with `Warp` designed label.
+#if swift(<6.0)
+    @preconcurrency @MainActor
+#endif
     public struct Button: View {
         /// Button title.
         private let title: String
-
+        
         /// Leading icon for button.
         private let leadingIcon: Image?
         

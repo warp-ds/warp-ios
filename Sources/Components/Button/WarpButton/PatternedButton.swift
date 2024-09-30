@@ -4,6 +4,9 @@ import SwiftUI
 /// Individual animated bar width.
 private let barWidth = 7.0
 
+#if swift(<5.10)
+@preconcurrency @MainActor
+#endif
 struct PatternedOpaqueView: View {
     /// Animated bars individual width.
     private let barWidth: CGFloat

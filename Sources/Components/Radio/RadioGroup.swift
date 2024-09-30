@@ -15,6 +15,9 @@ extension Warp {
     ///   - style: The style of the radio button group (default, error, disabled).
     ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
     ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
+#if swift(<6.0)
+    @preconcurrency @MainActor
+#endif
     public struct RadioGroup<Option: RadioOption>: View {
         /// An optional title for the radio group.
         var title: String?

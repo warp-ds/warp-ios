@@ -8,6 +8,9 @@
 import SwiftUI
 import Warp
 
+#if swift(<6.0)
+@preconcurrency @MainActor
+#endif
 struct BoxView: View {
     @State private var style: Warp.BoxStyle = .info
 

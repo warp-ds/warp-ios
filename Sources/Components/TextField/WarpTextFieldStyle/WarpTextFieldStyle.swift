@@ -4,10 +4,16 @@ import SwiftUI
 /// Minimum height reserved for TextField in order to keep it elegant.
 private let textFieldMinHeight = 34.0
 
+#if swift(<6.0)
+extension Warp.TextFieldStyle: SwiftUI.TextFieldStyle {}
+#else
+extension Warp.TextFieldStyle: @preconcurrency SwiftUI.TextFieldStyle {}
+#endif
+
 extension Warp {
     /// Style that is responsible to transform TextField into warp design system TextField.
     @preconcurrency @MainActor
-    public struct TextFieldStyle: @preconcurrency SwiftUI.TextFieldStyle {
+    public struct TextFieldStyle{
         /// TextField configurations.
         private let configuration: TextFieldConfiguration
 

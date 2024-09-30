@@ -1,6 +1,9 @@
 import SwiftUI
 import Warp
 
+#if swift(<6.0)
+@preconcurrency @MainActor
+#endif
 struct BadgeView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {

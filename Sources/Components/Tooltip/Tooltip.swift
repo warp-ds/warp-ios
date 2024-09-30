@@ -13,6 +13,9 @@ extension Warp {
      - a `title`
      - an `arrowEdge` where you want the Tooltip to appear from
      */
+#if swift(<6.0)
+    @preconcurrency @MainActor
+#endif
     public struct Tooltip: View {
         /// Title to present in the tooltip view
         private var title: String
