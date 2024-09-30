@@ -9,21 +9,18 @@ extension Warp {
     /// - Parameters:
     ///   - isSelected: A Boolean value indicating whether the radio button is selected.
     ///   - label: The text label for the radio button.
-    ///   - state: The state of the radio button (default, error, disabled).
+    ///   - style: The style of the radio button (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
-    ///   - indentationLevel: The level of indentation for the radio button. Each level adds 24 points of indentation.
     ///   - action: A closure that is executed when the radio button is tapped.
     public struct Radio: View {
         /// A Boolean value indicating whether the radio button is selected.
         var isSelected: Bool
         /// The text label for the radio button.
         var label: String
-        /// The state of the radio button (default, error, disabled).
-        var state: RadioButtonState
-        /// An optional view that will be displayed beside or below the label.
+        /// The style the radio button can have (default, error, disabled).
+        var style: RadioStyle
+        /// An optional view that will be displayed beside the label.
         var extraContent: AnyView?
-        /// The level of indentation for the radio button. Each level adds 24 points of indentation.
-        private var indentationLevel: Int? = 0 // Maybe remove later if we decide it has no use
         /// A closure that is executed when the radio button is tapped.
         @preconcurrency var action: @MainActor @Sendable () -> Void
         /// Object that will provide needed colors.
@@ -34,36 +31,35 @@ extension Warp {
         /// - Parameters:
         ///   - isSelected: A Boolean value indicating whether the radio button is selected.
         ///   - label: The text label for the radio button.
-        ///   - state: he state of the radio button (default, error, disabled).
+        ///   - style: The style the radio button can have (default, error, disabled).
         ///   - extraContent: An optional view that will be displayed beside or below the label.
         ///   - action: A closure that is executed when the radio button is tapped.
         public init(isSelected: Bool,
                     label: String,
-                    state: RadioButtonState = .default,
+                    style: RadioStyle = .default,
                     extraContent: AnyView? = nil,
                     action: @escaping @MainActor @Sendable () -> Void) {
             self.isSelected = isSelected
             self.label = label
-            self.state = state
+            self.style = style
             self.extraContent = extraContent
             self.action = action
         }
         
         public var body: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
-                Spacer()
-                    .frame(width: CGFloat(indentationLevel ?? 0) * Spacing.spacing300)
                 Circle()
                     .strokeBorder(borderColor, lineWidth: isSelected ? 6 : 1)
                     .background(Circle().fill(fillColor))
                     .frame(width: 20, height: 20)
+                    .animation(.interpolatingSpring)
                 
                 contentStack
                 
                 Spacer()
             }
             .onTapGesture {
-                if state != .disabled {
+                if style != .disabled {
                     action()
                 }
             }
@@ -82,7 +78,7 @@ extension Warp {
         }
         
         private var borderColor: Color {
-            switch (state, isSelected) {
+            switch (style, isSelected) {
             case (.default, true):
                 return colorProvider.radioBorderSelected
             case (.default, false):
@@ -95,7 +91,7 @@ extension Warp {
         }
         
         private var fillColor: Color {
-            if state == .disabled {
+            if style == .disabled {
                 return colorProvider.radioBackgroundDisabled
             } else {
                 return colorProvider.radioBackground
@@ -103,7 +99,7 @@ extension Warp {
         }
         
         private var textColor: Color {
-            switch state {
+            switch style {
             case .default, .error:
                 return colorProvider.token.text
             case .disabled:
