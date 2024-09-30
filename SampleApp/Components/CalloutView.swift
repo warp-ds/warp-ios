@@ -176,19 +176,27 @@ struct CalloutView: View {
                 Divider()
             }
             if isVisibleValue.wrappedValue {
-                Warp.Callout(
-                    size: showDefault ? .default : .small,
-                    type: .popover(onTapped: {
-                        if dismissable {
+                if dismissable {
+                    Warp.Callout(
+                        size: showDefault ? .default : .small,
+                        type: .popover(onTapped: {
                             withAnimation {
                                 isVisibleValue.wrappedValue = false
                             }
-                        }
-                    }),
-                    title: calloutTitle,
-                    arrowEdge: calloutEdge
-                )
-                .offset(y: yOffset)
+                        }),
+                        title: calloutTitle,
+                        arrowEdge: calloutEdge
+                    )
+                    .offset(y: yOffset)
+                } else {
+                    Warp.Callout(
+                        size: showDefault ? .default : .small,
+                        type: .popover(onTapped: nil),
+                        title: calloutTitle,
+                        arrowEdge: calloutEdge
+                    )
+                    .offset(y: yOffset)
+                }
             }
         }
     }
@@ -212,19 +220,27 @@ struct CalloutView: View {
             }
 
             if isVisibleValue.wrappedValue {
-                Warp.Callout(
-                    size: showDefault ? .default : .small,
-                    type: .popover(onTapped: {
-                        if dismissable {
+                if dismissable {
+                    Warp.Callout(
+                        size: showDefault ? .default : .small,
+                        type: .popover(onTapped: {
                             withAnimation {
                                 isVisibleValue.wrappedValue = false
                             }
-                        }
-                    }),
-                    title: calloutTitle,
-                    arrowEdge: calloutEdge
-                )
-                .offset(x: xOffset)
+                        }),
+                        title: calloutTitle,
+                        arrowEdge: calloutEdge
+                    )
+                    .offset(x: xOffset)
+                } else {
+                    Warp.Callout(
+                        size: showDefault ? .default : .small,
+                        type: .popover(onTapped: nil),
+                        title: calloutTitle,
+                        arrowEdge: calloutEdge
+                    )
+                    .offset(x: xOffset)
+                }
             }
         }
     }
