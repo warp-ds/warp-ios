@@ -12,10 +12,9 @@ extension Warp {
     ///   - helpText: An optional help text displayed below the title or the radio buttons.
     ///   - selectedOption: A binding to the currently selected option.
     ///   - options: An array of options that conform to `RadioOption`.
-    ///   - label: A closure that provides a label for each option.
-    ///   - state: The state of the radio button group (default, error, disabled).
-    ///   - extraContent: A view that will be displayed beside or below the label.
+    ///   - style: The style of the radio button group (default, error, disabled).
     ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
+    ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
 #if swift(<6.0)
     @preconcurrency @MainActor
 #endif
@@ -28,14 +27,12 @@ extension Warp {
         @Binding var selectedOption: Option
         /// An array of options that conform to `RadioOption`.
         var options: [Option]
-        /// A closure that provides a label for each option.
-        var label: @Sendable (Option) -> String
-        /// The state of the radio button group (default, error, disabled).
-        var state: RadioButtonState
-        /// An optional view that will be displayed beside or below the label.
-        var extraContent: (@Sendable (Option) -> AnyView)?
+        /// The style the radio group can have (default, error, disabled).
+        var style: RadioStyle
         /// Determines whether the list of radio buttons is aligned vertically or horizontally.
         var axis: Axis.Set
+        /// A closure that will be triggered when an option is selected, providing the old and new selection.
+        var onSelection: ((Option, Option) -> Void)?
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
@@ -46,26 +43,23 @@ extension Warp {
         ///   - helpText: An optional help text displayed below the title or the radio buttons.
         ///   - selectedOption: A binding to the currently selected option.
         ///   - options: An array of options that conform to `RadioOption`.
-        ///   - label: A closure that provides a label for each option.
-        ///   - state: The state of the radio button group (default, error, disabled).
-        ///   - extraContent: A view that will be displayed beside or below the label.
+        ///   - style: The style the radio group can have (default, error, disabled).
         ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
+        ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
         public init(title: String? = nil,
                     helpText: String? = nil,
                     selectedOption: Binding<Option>,
                     options: [Option],
-                    label: @escaping @Sendable (Option) -> String,
-                    state: RadioButtonState = .default,
-                    extraContent: (@Sendable (Option) -> AnyView)? = nil,
-                    axis: Axis.Set = .vertical) {
+                    style: RadioStyle = .default,
+                    axis: Axis.Set = .vertical,
+                    onSelection: ((Option, Option) -> Void)? = nil) {
             self.title = title
             self.helpText = helpText
             self._selectedOption = selectedOption
             self.options = options
-            self.label = label
-            self.state = state
-            self.extraContent = extraContent
+            self.style = style
             self.axis = axis
+            self.onSelection = onSelection
         }
         
         public var body: some View {
@@ -81,11 +75,15 @@ extension Warp {
                 if let helpText = helpText, !helpText.isEmpty {
                     SwiftUI.Text(helpText)
                         .font(from: .detail)
-                        .foregroundColor(colorProvider.token.textSubtle)
+                        .foregroundColor(helpTextColor)
                 }
             }
         }
-
+        
+        private var helpTextColor: Color {
+            style == .error ? colorProvider.token.textNegative : colorProvider.token.textSubtle
+        }
+        
         @ViewBuilder
         private var groupView: some View {
             switch axis {
@@ -93,12 +91,14 @@ extension Warp {
                 VStack(alignment: .leading, spacing: Spacing.spacing200) {
                     ForEach(options) { option in
                         Radio(isSelected: selectedOption == option,
-                              label: label(option),
-                              state: state,
-                              extraContent: extraContent?(option)) {
+                              label: option.title,
+                              style: style,
+                              extraContent: option.extraContent) {
+                            let oldSelection = selectedOption
                             selectedOption = option
+                            onSelection?(oldSelection, option)
                         }
-                              .disabled(state == .disabled)
+                              .disabled(style == .disabled)
                     }
                 }
             case .horizontal, _:
@@ -106,12 +106,14 @@ extension Warp {
                     HStack(alignment: .top, spacing: Spacing.spacing200) {
                         ForEach(options) { option in
                             Radio(isSelected: selectedOption == option,
-                                  label: label(option),
-                                  state: state,
-                                  extraContent: extraContent?(option)) {
+                                  label: option.title,
+                                  style: style,
+                                  extraContent: option.extraContent) {
+                                let oldSelection = selectedOption
                                 selectedOption = option
+                                onSelection?(oldSelection, option)
                             }
-                                  .disabled(state == .disabled)
+                                  .disabled(style == .disabled)
                         }
                     }
                 }
