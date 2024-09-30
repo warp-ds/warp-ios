@@ -9,11 +9,11 @@ struct HelperInformationView: View, Hashable {
     /// Object responsible for providing colors.
     let colorProvider: ColorProvider
 
-    static func == (lhs: HelperInformationView, rhs: HelperInformationView) -> Bool {
+    nonisolated static func == (lhs: HelperInformationView, rhs: HelperInformationView) -> Bool {
         lhs.textFieldState == rhs.textFieldState
     }
 
-    public func hash(into hasher: inout Hasher) {
+    public nonisolated func hash(into hasher: inout Hasher) {
         hasher.combine(textFieldState)
     }
 

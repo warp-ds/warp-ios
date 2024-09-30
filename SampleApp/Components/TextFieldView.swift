@@ -1,8 +1,10 @@
 import SwiftUI
 import Warp
 
+@preconcurrency @MainActor
 private let allowedTextFieldStates: [Warp.TextFieldState] = [.normal(.none), .disabled, .readOnly]
 
+@preconcurrency @MainActor
 struct TextFieldView: View {
     @State private var state = Warp.TextFieldState.normal(.none)
 
@@ -180,13 +182,12 @@ struct TextFieldView: View {
 }
 
 extension Warp.TextField.InformationState: CaseIterable {
-    public static var allCases: [Warp.TextField.InformationState] {
+    public static let allCases: [Warp.TextField.InformationState] = 
         [
             .none,
             .error("Error message"),
             .helper("Helper message")
         ]
-    }
 
     fileprivate var title: String {
         switch self {

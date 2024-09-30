@@ -91,6 +91,7 @@ extension Warp {
     }
 }
 
+@MainActor
 extension Warp.ToastStyle {
     fileprivate func backgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {

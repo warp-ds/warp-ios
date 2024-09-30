@@ -3,6 +3,7 @@ import Warp
 
 struct CalloutView: View {
     @State var showDefault = true
+    @State var dismissable = true
     @State var topPopoverVisible = true
     @State var bottomPopoverVisible = true
     @State var leadingPopoverVisible = true
@@ -105,8 +106,10 @@ struct CalloutView: View {
 
     private var popoverViews: some View {
         VStack(alignment: .leading) {
-            Text("Popover - dismissable")
+            Text("Popover")
                 .font(.title2)
+            Toggle("Switch to \(dismissable ? "not dismissable" : "dismissable") popover callout", isOn: $dismissable)
+                .toggleStyle(.button)
 
             Button(action: {
                 topPopoverVisible = true
@@ -172,13 +175,14 @@ struct CalloutView: View {
 
                 Divider()
             }
-
             if isVisibleValue.wrappedValue {
                 Warp.Callout(
                     size: showDefault ? .default : .small,
                     type: .popover(onTapped: {
-                        withAnimation {
-                            isVisibleValue.wrappedValue = false
+                        if dismissable {
+                            withAnimation {
+                                isVisibleValue.wrappedValue = false
+                            }
                         }
                     }),
                     title: calloutTitle,
@@ -211,8 +215,10 @@ struct CalloutView: View {
                 Warp.Callout(
                     size: showDefault ? .default : .small,
                     type: .popover(onTapped: {
-                        withAnimation {
-                            isVisibleValue.wrappedValue = false
+                        if dismissable {
+                            withAnimation {
+                                isVisibleValue.wrappedValue = false
+                            }
                         }
                     }),
                     title: calloutTitle,

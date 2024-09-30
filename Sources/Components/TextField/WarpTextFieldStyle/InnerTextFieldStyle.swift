@@ -1,5 +1,5 @@
 import Foundation
-import SwiftUI
+@preconcurrency import SwiftUI
 
 /// Minimum height reserved for text field in order to keep it elegant.
 private let textFieldMinHeight = 28.0
@@ -7,16 +7,17 @@ private let textFieldMinHeight = 28.0
 extension Warp {
     /// Text field style that will be used internally.
     /// Responsible for configuring text field inside the borders.
-    struct InnerTextFieldStyle: SwiftUI.TextFieldStyle {
+    @preconcurrency @MainActor
+    struct InnerTextFieldStyle: @preconcurrency SwiftUI.TextFieldStyle {
         /// State of TextField.
         let state: Warp.TextFieldState
-        
+
         /// View that can be added as a helper in left side of the text field.
         let leftView: AnyView?
-        
+
         /// View that can be added as a helper in right side of the text field.
         let rightView: AnyView?
-        
+
         /// Object responsible for providing needed colors.
         let colorProvider: ColorProvider
 
@@ -28,25 +29,25 @@ extension Warp {
             lazy var errorColor = colorProvider.inputBorderNegative
 
             switch state {
-                case let .normal(state):
-                    if state.isError {
-                        return errorColor
-                    }
+            case let .normal(state):
+                if state.isError {
+                    return errorColor
+                }
 
-                    return colorProvider.inputBorder
+                return colorProvider.inputBorder
 
-                case let .active(state):
-                    if state.isError {
-                        return errorColor
-                    }
+            case let .active(state):
+                if state.isError {
+                    return errorColor
+                }
 
-                    return colorProvider.inputBorderActive
+                return colorProvider.inputBorderActive
 
-                case .disabled:
-                    return colorProvider.inputBorderDisabled
+            case .disabled:
+                return colorProvider.inputBorderDisabled
 
-                case .readOnly:
-                    return colorProvider.inputBorder
+            case .readOnly:
+                return colorProvider.inputBorder
             }
         }
 
@@ -60,21 +61,21 @@ extension Warp {
 
         private var textFieldBorderWidth: CGFloat {
             switch state {
-                case .normal:
+            case .normal:
+                return 2
+
+            case let .active(state):
+                if state.isError {
                     return 2
+                }
 
-                case let .active(state):
-                    if state.isError {
-                        return 2
-                    }
+                return 4
 
-                    return 4
+            case .disabled:
+                return 2
 
-                case .disabled:
-                    return 2
-
-                case .readOnly:
-                    return 0
+            case .readOnly:
+                return 0
             }
         }
 
@@ -121,6 +122,7 @@ extension Warp {
 
 extension SwiftUI.TextFieldStyle where Self == Warp.InnerTextFieldStyle {
     /// A text field style with ability to add arbitrary view in left or right side.
+    @preconcurrency @MainActor
     static func innerStyle(
         state: Warp.TextFieldState,
         leftView: AnyView? = nil,

@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Warp {
-    public enum ExpandableStyle {
+    public enum ExpandableStyle: Sendable {
         /// Basic expandable component.
         case `default`
 
@@ -11,6 +11,7 @@ extension Warp {
         /// Expandable component with a boxed layout. Square corners
         case boxBleed
 
+        @preconcurrency @MainActor
         func backgroundColor(using colorProvider: ColorProvider) -> Color {
             switch self {
             case .default:
