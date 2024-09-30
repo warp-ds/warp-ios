@@ -1,6 +1,9 @@
 import SwiftUI
 import Warp
 
+#if swift(<6.0)
+@preconcurrency @MainActor
+#endif
 struct ButtonView: View {
     @State private var type: Warp.ButtonType = .primary
 

@@ -13,6 +13,9 @@ extension Warp {
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - indentationLevel: The level of indentation for the radio button. Each level adds 24 points of indentation.
     ///   - action: A closure that is executed when the radio button is tapped.
+#if swift(<6.0)
+    @preconcurrency @MainActor
+#endif
     public struct Radio: View {
         /// A Boolean value indicating whether the radio button is selected.
         var isSelected: Bool

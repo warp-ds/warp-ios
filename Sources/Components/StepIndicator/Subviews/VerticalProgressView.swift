@@ -1,6 +1,9 @@
 import SwiftUI
 
 extension Warp.StepIndicator {
+#if swift(<6.0)
+    @preconcurrency @MainActor
+#endif
     struct VerticalProgressView: View {
         let colorProvider: ColorProvider
         let progress: Warp.StepIndicatorItem.Progress

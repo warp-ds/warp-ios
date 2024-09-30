@@ -1,10 +1,13 @@
 import SwiftUI
 
 extension Warp.StepIndicator {
+#if swift(<6.0)
+    @preconcurrency @MainActor
+#endif
     struct VerticalItemView: View {
         let step: Warp.StepIndicatorItem
         let stepPosition: Warp.StepIndicatorItem.Position
-
+        
         var body: some View {
             HStack(alignment: .top, spacing: 8) {
                 Warp.StepIndicator.VerticalProgressView(

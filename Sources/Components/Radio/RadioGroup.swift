@@ -16,6 +16,9 @@ extension Warp {
     ///   - state: The state of the radio button group (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
+#if swift(<6.0)
+    @preconcurrency @MainActor
+#endif
     public struct RadioGroup<Option: RadioOption>: View {
         /// An optional title for the radio group.
         var title: String?

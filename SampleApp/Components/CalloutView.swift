@@ -1,6 +1,9 @@
 import SwiftUI
 import Warp
 
+#if swift(<6.0)
+@preconcurrency @MainActor
+#endif
 struct CalloutView: View {
     @State var showDefault = true
     @State var dismissable = true

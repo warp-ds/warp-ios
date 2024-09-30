@@ -8,6 +8,9 @@ extension Warp {
     private static let toolTipImageName = "icon_box-info"
 
     /// Box is a layout component to display information in addition to the main content of a page.
+#if swift(<6.0)
+    @preconcurrency @MainActor
+#endif
     public struct Box: View, Hashable {
         /// Preferred style of box.
         let style: BoxStyle

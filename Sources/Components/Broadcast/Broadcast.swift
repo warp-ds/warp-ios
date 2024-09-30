@@ -16,11 +16,14 @@ extension Warp {
         - a `BroadcastEdge` (can be `.bottom` or `.top`)
         - a Binding to a boolean value allowing the `Broadcast` to dismiss
      */
+#if swift(<6.0)
+    @preconcurrency @MainActor
+#endif
     public struct Broadcast: View {
-
+        
         /// Text that will be shown in broadcast
         let text: String
-
+        
         /// Edge from where the broadcast is presented
         let broadcastEdge: Warp.BroadcastEdge
 
