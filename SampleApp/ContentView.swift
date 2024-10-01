@@ -36,7 +36,7 @@ struct ContentView: View {
                                 .padding()
                         }
                     case .dba:
-                        NavigationLink(destination: DBAColorsView()) {
+                        NavigationLink(destination: DbaColorsView()) {
                             Text("BrandColors")
                                 .padding()
                         }
