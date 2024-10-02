@@ -5,21 +5,18 @@ extension Warp {
     private static let alertCornerRadius = 4.0
 
     /// View that show high-signal messages meant to be noticed and prompting users to take action.
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Alert: View, Hashable {
         /// Preferred style of alert.
         let style: AlertStyle
-
+        
         /// Text that will be shown at the top of alert.
         let title: String
         
         /// Text that will be shown after title in the middle of the alert.
         let subtitle: String
 
-        public typealias ButtonConstructor = (title: String, action: @MainActor @Sendable () -> Void)
-
+        public typealias ButtonConstructor = (title: String, action: () -> Void)
+        
         /// Tuple that will provide a title and an action for creating a link view below subtitle.
         /// Passing `nil` will skip adding link view.
         let linkProvider: ButtonConstructor?
@@ -35,7 +32,7 @@ extension Warp {
         /// Object responsible for providing colors in different environments and variants.
         let colorProvider: ColorProvider
 
-        public nonisolated static func == (lhs: Alert, rhs: Alert) -> Bool {
+        public static func == (lhs: Alert, rhs: Alert) -> Bool {
             let styleComparison = lhs.style == rhs.style
             lazy var titleComparison = lhs.title == rhs.title
             lazy var subtitleComparison = lhs.subtitle == rhs.subtitle
@@ -51,7 +48,7 @@ extension Warp {
             secondaryButtonProviderComparison
         }
 
-        public nonisolated func hash(into hasher: inout Hasher) {
+        public func hash(into hasher: inout Hasher) {
             hasher.combine(style)
             hasher.combine(title)
         }
@@ -213,9 +210,6 @@ extension Warp {
     }
 }
 
-#if swift(<5.10)
-@preconcurrency @MainActor
-#endif
 private struct ButtonsView: View, Hashable {
     let primaryButtonProvider: Warp.Alert.ButtonConstructor?
 
@@ -223,7 +217,7 @@ private struct ButtonsView: View, Hashable {
 
     let colorProvider: ColorProvider
 
-    nonisolated static func == (lhs: ButtonsView, rhs: ButtonsView) -> Bool {
+    static func == (lhs: ButtonsView, rhs: ButtonsView) -> Bool {
         let primaryComparison: Bool
 
         switch (lhs.primaryButtonProvider, rhs.primaryButtonProvider) {
@@ -259,7 +253,7 @@ private struct ButtonsView: View, Hashable {
         return primaryComparison && secondaryComparison
     }
 
-    nonisolated func hash(into hasher: inout Hasher) {
+    func hash(into hasher: inout Hasher) {
         if let primaryButtonProvider {
             hasher.combine(primaryButtonProvider.title)
         }
@@ -389,7 +383,7 @@ private struct UnderlinedLinkModifier: ViewModifier {
     }
 }
 
-@MainActor extension Warp.AlertStyle {
+extension Warp.AlertStyle {
     fileprivate func getBackgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
             case .info:
@@ -504,7 +498,7 @@ private struct UnderlinedLinkModifier: ViewModifier {
 }
 
 extension Warp.AlertStyle {
-    fileprivate static let allCases: [Warp.AlertStyle] = [
+    fileprivate static var allCases: [Warp.AlertStyle] = [
         .info,
         .warning,
         .critical,

@@ -16,9 +16,6 @@ extension Warp {
      - an `arrowEdge` where you want the Callout to appear from
      - a `cornerRadius`, if you don't provide this, the default value is 8px
      */
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Callout: View {
         /// Size of callout
         private let size: CalloutSize

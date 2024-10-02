@@ -1,7 +1,6 @@
 import SwiftUI
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=888578831
-@preconcurrency @MainActor
 struct DBATokenProvider: TokenProvider {
     /// Surface
     public var surfaceSunken: Color { Color.dynamicColor(defaultColor: DBAColors.gray50, darkModeColor: DBAColors.gray950) }
@@ -164,7 +163,6 @@ struct DBATokenProvider: TokenProvider {
     public var textNotification: Color { Color.dynamicColor(defaultColor: DBAColors.white, darkModeColor: DBAColors.white) }
 }
 
-@preconcurrency @MainActor
 struct DBAUITokenProvider: UITokenProvider {
     /// Surface
     public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: DBAUIColors.gray50, darkModeColor: DBAUIColors.gray950) }
