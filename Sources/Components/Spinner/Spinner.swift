@@ -3,11 +3,11 @@ import SwiftUI
 extension Warp {
     /// A spinner is an animated spinning icon that informs users about the loading of content.
     public struct Spinner: View, Hashable {
-        public nonisolated static func == (lhs: Warp.Spinner, rhs: Warp.Spinner) -> Bool {
+        public static func == (lhs: Warp.Spinner, rhs: Warp.Spinner) -> Bool {
             lhs.size.value == rhs.size.value
         }
         
-        public nonisolated func hash(into hasher: inout Hasher) {
+        public func hash(into hasher: inout Hasher) {
             hasher.combine(size.value)
         }
         

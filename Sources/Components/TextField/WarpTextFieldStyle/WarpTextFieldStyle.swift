@@ -6,8 +6,7 @@ private let textFieldMinHeight = 34.0
 
 extension Warp {
     /// Style that is responsible to transform TextField into warp design system TextField.
-    @preconcurrency @MainActor
-    public struct TextFieldStyle: @preconcurrency SwiftUI.TextFieldStyle {
+    public struct TextFieldStyle: SwiftUI.TextFieldStyle {
         /// TextField configurations.
         private let configuration: TextFieldConfiguration
 
@@ -139,7 +138,6 @@ extension Warp {
 }
 
 // Variants + syntactic sugar.
-@MainActor
 extension SwiftUI.TextFieldStyle where Self == Warp.TextFieldStyle {
     /// Style that is responsible for transforming TextField to warp designed TextField.
     /// TextField will be wrapped inside borders with additional arbitrary views.

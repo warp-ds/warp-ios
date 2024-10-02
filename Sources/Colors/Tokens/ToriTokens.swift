@@ -1,7 +1,6 @@
 import SwiftUI
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=888578831
-@preconcurrency @MainActor
 struct ToriTokenProvider: TokenProvider {
     /// Surface
     public var surfaceSunken: Color { Color.dynamicColor(defaultColor: ToriColors.gray50, darkModeColor: ToriColors.gray950) }
@@ -164,7 +163,6 @@ struct ToriTokenProvider: TokenProvider {
     public var textNotification: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.white) }
 }
 
-@preconcurrency @MainActor
 struct ToriUITokenProvider: UITokenProvider {
     /// Surface
     public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray50, darkModeColor: ToriUIColors.gray950) }

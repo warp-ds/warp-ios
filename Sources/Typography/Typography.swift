@@ -2,7 +2,6 @@ import SwiftUI
 
 extension Warp {
     /// Warp representation of the style and appearance of visual text matter.
-    @preconcurrency @MainActor
     public enum Typography: CaseIterable {
         case display
         case title1

@@ -59,7 +59,7 @@ struct IconView: View {
 }
 
 extension Warp.IconSize {
-    fileprivate static let allCases = [Warp.IconSize.small, .default, .large]
+    fileprivate static var allCases = [Warp.IconSize.small, .default, .large]
 }
 
 struct IconViewSample_Previews: PreviewProvider {

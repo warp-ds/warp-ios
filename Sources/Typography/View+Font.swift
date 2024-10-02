@@ -1,7 +1,6 @@
 import Foundation
 import SwiftUI
 
-@MainActor
 public extension Text {
     /// Sets the font of the text in this view using the specified typography.
     ///

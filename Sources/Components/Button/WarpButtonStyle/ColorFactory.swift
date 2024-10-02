@@ -4,7 +4,6 @@ import struct SwiftUI.Color
 extension Warp.Button {
     /// Factory responsible for creating button, UI element color,
     /// based on button type and current state.
-    @preconcurrency @MainActor
     struct ColorFactory {
         /// Button type.
         private let type: Warp.ButtonType

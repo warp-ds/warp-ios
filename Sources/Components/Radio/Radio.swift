@@ -22,7 +22,7 @@ extension Warp {
         /// An optional view that will be displayed beside the label.
         var extraContent: AnyView?
         /// A closure that is executed when the radio button is tapped.
-        @preconcurrency var action: @MainActor @Sendable () -> Void
+        var action: () -> Void
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
@@ -38,7 +38,7 @@ extension Warp {
                     label: String,
                     style: RadioStyle = .default,
                     extraContent: AnyView? = nil,
-                    action: @escaping @MainActor @Sendable () -> Void) {
+                    action: @escaping () -> Void) {
             self.isSelected = isSelected
             self.label = label
             self.style = style
