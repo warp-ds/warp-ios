@@ -2,9 +2,6 @@ import SwiftUI
 
 extension Warp {
     /// A spinner is an animated spinning icon that informs users about the loading of content.
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Spinner: View, Hashable {
         public nonisolated static func == (lhs: Warp.Spinner, rhs: Warp.Spinner) -> Bool {
             lhs.size.value == rhs.size.value

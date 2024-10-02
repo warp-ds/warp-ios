@@ -10,9 +10,6 @@ extension Warp {
     private static let modalCornerRadius: CGFloat = 12
     
     /// Modal is a component to display dioalog.
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Modal: View {
         /// Text that will be shown as modal's heading.
         var title: String

@@ -2,9 +2,6 @@ import Foundation
 import SwiftUI
 
 /// Helper view that will be shown at the bottom of TextField.
-#if swift(<5.10)
-@preconcurrency @MainActor
-#endif
 struct HelperInformationView: View, Hashable {
     /// State of TextField.
     let textFieldState: Warp.TextFieldState

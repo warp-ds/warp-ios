@@ -17,9 +17,6 @@ extension Warp {
         - a `ToastEdge` (can be `.bottom` or `.top`)
         - a Binding to a boolean value allowing the `Toast` to dismiss
      */
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Toast: View {
 
         /// Preferred style of toast

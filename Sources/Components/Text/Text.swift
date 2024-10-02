@@ -2,9 +2,6 @@ import SwiftUI
 
 extension Warp {
     /// Use badges to highlight status of an ad (Active/Inactive/Sold/Removed) or to mark paid placements (Sponsored/Ad/House of the week).
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Text: View, Hashable {
         public nonisolated static func == (lhs: Warp.Text, rhs: Warp.Text) -> Bool {
             lhs.text == rhs.text &&
