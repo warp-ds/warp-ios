@@ -187,7 +187,7 @@ extension Warp.TextField.InformationState: CaseIterable {
             .helper("Helper message")
         ]
     }
-    
+
     fileprivate var title: String {
         switch self {
             case .none:

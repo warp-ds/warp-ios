@@ -28,25 +28,25 @@ extension Warp {
             lazy var errorColor = colorProvider.inputBorderNegative
 
             switch state {
-            case let .normal(state):
-                if state.isError {
-                    return errorColor
-                }
+                case let .normal(state):
+                    if state.isError {
+                        return errorColor
+                    }
 
-                return colorProvider.inputBorder
+                    return colorProvider.inputBorder
 
-            case let .active(state):
-                if state.isError {
-                    return errorColor
-                }
+                case let .active(state):
+                    if state.isError {
+                        return errorColor
+                    }
 
-                return colorProvider.inputBorderActive
+                    return colorProvider.inputBorderActive
 
-            case .disabled:
-                return colorProvider.inputBorderDisabled
+                case .disabled:
+                    return colorProvider.inputBorderDisabled
 
-            case .readOnly:
-                return colorProvider.inputBorder
+                case .readOnly:
+                    return colorProvider.inputBorder
             }
         }
 
@@ -60,21 +60,21 @@ extension Warp {
 
         private var textFieldBorderWidth: CGFloat {
             switch state {
-            case .normal:
-                return 2
-
-            case let .active(state):
-                if state.isError {
+                case .normal:
                     return 2
-                }
 
-                return 4
+                case let .active(state):
+                    if state.isError {
+                        return 2
+                    }
 
-            case .disabled:
-                return 2
+                    return 4
 
-            case .readOnly:
-                return 0
+                case .disabled:
+                    return 2
+
+                case .readOnly:
+                    return 0
             }
         }
 
