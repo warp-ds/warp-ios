@@ -38,7 +38,6 @@ public struct ColorProvider {
     var badgeNegativeText: Color { token.text }
     var badgeDisabledText: Color { token.text }
     var badgePriceText: Color { token.textInvertedStatic }
-    var badgeNotificationText: Color { token.textNotification }
     public var badgeNeutralBackground: Color {
         switch Warp.Theme {
         case .finn:
@@ -757,7 +756,6 @@ public struct UIColorProvider {
     var badgeNegativeText: UIColor { token.text }
     var badgeDisabledText: UIColor { token.text }
     var badgePriceText: UIColor { token.textInvertedStatic }
-    var badgeNotificationText: UIColor { token.textNotification }
     public var badgeNeutralBackground: UIColor {
         switch Warp.Theme {
         case .finn:

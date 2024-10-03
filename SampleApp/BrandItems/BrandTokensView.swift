@@ -297,8 +297,6 @@ struct BrandTokensView: View {
                            colors: [tokenProvider.textNegative])
                 createView(for: "textPositive",
                            colors: [tokenProvider.textPositive])
-                createView(for: "textNotification",
-                           colors: [tokenProvider.textNotification])
             }
             .padding(.horizontal)
             .navigationTitle("Token")
