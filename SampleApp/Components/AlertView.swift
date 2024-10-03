@@ -169,7 +169,7 @@ struct AlertView: View {
 }
 
 extension Warp.AlertStyle: CaseIterable {
-    public static let allCases: [Warp.AlertStyle] = [
+    public static var allCases: [Warp.AlertStyle] = [
         .info,
         .warning,
         .critical,

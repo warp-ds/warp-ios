@@ -15,7 +15,7 @@ extension Warp {
         /// Text that will be shown after title in the middle of the alert.
         let subtitle: String
 
-        public typealias ButtonConstructor = (title: String, action: @MainActor @Sendable () -> Void)
+        public typealias ButtonConstructor = (title: String, action: () -> Void)
 
         /// Tuple that will provide a title and an action for creating a link view below subtitle.
         /// Passing `nil` will skip adding link view.
