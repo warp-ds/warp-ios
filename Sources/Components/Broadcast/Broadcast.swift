@@ -17,10 +17,10 @@ extension Warp {
         - a Binding to a boolean value allowing the `Broadcast` to dismiss
      */
     public struct Broadcast: View {
-        
+
         /// Text that will be shown in broadcast
         let text: String
-        
+
         /// Edge from where the broadcast is presented
         let broadcastEdge: Warp.BroadcastEdge
 

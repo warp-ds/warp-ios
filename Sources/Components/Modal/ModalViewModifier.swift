@@ -22,7 +22,7 @@ extension Warp {
         @Binding var isPresented: Bool
         
         public typealias ButtonConstructor = (title: String, action: () -> Void)
-
+        
         /// Tuple that will provide a title and an action for creating a primary button view.
         /// Passing `nil` will skip adding primary button view.
         let primaryButtonProvider: ButtonConstructor?

@@ -4,7 +4,7 @@ import struct SwiftUI.Font
 
 extension Warp {
     /// Warp button styles, that has been designed for certain scenarios.
-    public enum ButtonType: Equatable, Sendable {
+    public enum ButtonType: Equatable {
         /// Primary button style as default `SwiftUI` button style.
         case primary
 

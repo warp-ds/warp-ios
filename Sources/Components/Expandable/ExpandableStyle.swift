@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Warp {
-    public enum ExpandableStyle: Sendable {
+    public enum ExpandableStyle {
         /// Basic expandable component.
         case `default`
 
