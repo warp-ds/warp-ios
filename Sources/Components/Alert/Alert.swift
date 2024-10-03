@@ -5,9 +5,6 @@ extension Warp {
     private static let alertCornerRadius = 4.0
 
     /// View that show high-signal messages meant to be noticed and prompting users to take action.
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Alert: View, Hashable {
         /// Preferred style of alert.
         let style: AlertStyle
@@ -213,9 +210,6 @@ extension Warp {
     }
 }
 
-#if swift(<5.10)
-@preconcurrency @MainActor
-#endif
 private struct ButtonsView: View, Hashable {
     let primaryButtonProvider: Warp.Alert.ButtonConstructor?
 

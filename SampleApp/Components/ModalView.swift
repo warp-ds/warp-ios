@@ -9,9 +9,6 @@ import Foundation
 import SwiftUI
 import Warp
 
-#if swift(<6.0)
-@preconcurrency @MainActor
-#endif
 struct ModalView: View {
     @State private var title = "Title"
 

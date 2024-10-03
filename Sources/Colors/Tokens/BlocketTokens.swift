@@ -1,7 +1,6 @@
 import SwiftUI
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=888578831
-@preconcurrency @MainActor
 struct BlocketTokenProvider: TokenProvider {
     /// Surface
     public var surfaceSunken: Color { Color.dynamicColor(defaultColor: BlocketColors.gray50, darkModeColor: BlocketColors.gray950) }
@@ -164,7 +163,6 @@ struct BlocketTokenProvider: TokenProvider {
     public var textNotification: Color { Color.dynamicColor(defaultColor: BlocketColors.white, darkModeColor: BlocketColors.white) }
 }
 
-@preconcurrency @MainActor
 struct BlocketUITokenProvider: UITokenProvider {
     /// Surface
     public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray50, darkModeColor: BlocketUIColors.gray950) }

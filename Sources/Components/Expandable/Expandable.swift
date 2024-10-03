@@ -25,9 +25,6 @@ extension Warp {
      - A boolean `isAnimated` to determine if the expand/collapse transition is animated or not. **Optional** _default value is `true` if none is specified_.
      - A `ColorProvider`. **Optional:** _default is read from `Warp.Color` if none is specified_.
      */
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Expandable<Content: View>: View {
         @State private var isExpanded: Bool
 

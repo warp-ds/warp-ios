@@ -105,7 +105,7 @@ extension Warp {
         }
         .padding(.horizontal)
     }
-    @preconcurrency @MainActor
+
     func createView(for style: Warp.PillStyle) -> some View {
         let name = String(describing: style)
         let capitalizedName = name.capitalized

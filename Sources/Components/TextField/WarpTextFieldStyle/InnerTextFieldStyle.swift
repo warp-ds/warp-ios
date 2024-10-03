@@ -1,19 +1,14 @@
 import Foundation
-@preconcurrency import SwiftUI
+import SwiftUI
 
 /// Minimum height reserved for text field in order to keep it elegant.
 private let textFieldMinHeight = 28.0
 
-#if swift(<6.0)
 extension Warp.InnerTextFieldStyle: SwiftUI.TextFieldStyle {}
-#else
-extension Warp.InnerTextFieldStyle: @preconcurrency SwiftUI.TextFieldStyle {}
-#endif
 
 extension Warp {
     /// Text field style that will be used internally.
     /// Responsible for configuring text field inside the borders.
-    @preconcurrency @MainActor
     struct InnerTextFieldStyle {
         /// State of TextField.
         let state: Warp.TextFieldState
@@ -128,7 +123,6 @@ extension Warp {
 
 extension SwiftUI.TextFieldStyle where Self == Warp.InnerTextFieldStyle {
     /// A text field style with ability to add arbitrary view in left or right side.
-    @preconcurrency @MainActor
     static func innerStyle(
         state: Warp.TextFieldState,
         leftView: AnyView? = nil,

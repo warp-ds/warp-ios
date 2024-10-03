@@ -12,9 +12,6 @@ extension Warp {
     ///   - style: The style of the radio button (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - action: A closure that is executed when the radio button is tapped.
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Radio: View {
         /// A Boolean value indicating whether the radio button is selected.
         var isSelected: Bool
@@ -25,7 +22,7 @@ extension Warp {
         /// An optional view that will be displayed beside the label.
         var extraContent: AnyView?
         /// A closure that is executed when the radio button is tapped.
-        @preconcurrency var action: @MainActor @Sendable () -> Void
+        var action: @MainActor @Sendable () -> Void
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         

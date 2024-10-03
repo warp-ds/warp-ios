@@ -1,6 +1,5 @@
 import SwiftUI
 
-@preconcurrency @MainActor
 struct FinnTokenProvider: TokenProvider {
     public var surfaceSunken: Color { Color.dynamicColor(defaultColor: FinnColors.gray50, darkModeColor: FinnColors.gray950) }
     public var surfaceElevated100: Color { Color.dynamicColor(defaultColor: FinnColors.white, darkModeColor: FinnColors.gray850) }
@@ -137,7 +136,6 @@ struct FinnTokenProvider: TokenProvider {
     public var textNotification: Color { Color.dynamicColor(defaultColor: FinnColors.white, darkModeColor: FinnColors.white) }
 }
 
-@preconcurrency @MainActor
 struct FinnUITokenProvider: UITokenProvider {
     public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.gray50, darkModeColor: FinnUIColors.gray950) }
     public var surfaceElevated100: UIColor { UIColor.dynamicColor(defaultColor: FinnUIColors.white, darkModeColor: FinnUIColors.gray850) }

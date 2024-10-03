@@ -1,10 +1,8 @@
 import SwiftUI
 import Warp
 
-@preconcurrency @MainActor
 private let allowedTextFieldStates: [Warp.TextFieldState] = [.normal(.none), .disabled, .readOnly]
 
-@preconcurrency @MainActor
 struct TextFieldView: View {
     @State private var state = Warp.TextFieldState.normal(.none)
 
