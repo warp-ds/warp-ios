@@ -1,7 +1,7 @@
 import Foundation
 
 extension Warp {
-    public enum SpinnerSize: Hashable {       
+    public enum SpinnerSize: Hashable {        
         case small
         case `default`
         case large
