@@ -12,7 +12,7 @@ struct BlocketTokenProvider: TokenProvider {
     public var textLink: Color { Color.dynamicColor(defaultColor: BlocketColors.blue600, darkModeColor: BlocketColors.blue400) }
     public var textDisabled: Color { Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray500) }
     public var textNegative: Color { Color.dynamicColor(defaultColor: BlocketColors.coral600, darkModeColor: BlocketColors.coral400) }
-    public var textPositive: Color { Color.dynamicColor(defaultColor: BlocketColors.green600, darkModeColor: BlocketColors.green500) }
+    public var textPositive: Color { Color.dynamicColor(defaultColor: BlocketColors.green700, darkModeColor: BlocketColors.green400) }
     public var surface: Color { Color.dynamicColor(defaultColor: BlocketColors.white, darkModeColor: BlocketColors.gray900) }
     public var surfaceHover: Color { Color.dynamicColor(defaultColor: BlocketColors.gray100, darkModeColor: BlocketColors.gray850) }
     public var surfaceActive: Color { Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray800) }
@@ -47,7 +47,7 @@ struct BlocketTokenProvider: TokenProvider {
     public var backgroundSecondary: Color { Color.dynamicColor(defaultColor: BlocketColors.red600, darkModeColor: BlocketColors.red500) }
     public var backgroundSecondaryHover: Color { Color.dynamicColor(defaultColor: BlocketColors.red700, darkModeColor: BlocketColors.red400) }
     public var backgroundSecondaryActive: Color { Color.dynamicColor(defaultColor: BlocketColors.red800, darkModeColor: BlocketColors.red300) }
-    public var backgroundPositive: Color { Color.dynamicColor(defaultColor: BlocketColors.green600, darkModeColor: BlocketColors.green500) }
+    public var backgroundPositive: Color { Color.dynamicColor(defaultColor: BlocketColors.green700, darkModeColor: BlocketColors.green400) }
     public var backgroundPositiveHover: Color { Color.dynamicColor(defaultColor: BlocketColors.green700, darkModeColor: BlocketColors.green400) }
     public var backgroundPositiveActive: Color { Color.dynamicColor(defaultColor: BlocketColors.green800, darkModeColor: BlocketColors.green300) }
     public var backgroundPositiveSubtle: Color { Color.dynamicColor(defaultColor: BlocketColors.green50, darkModeColor: BlocketColors.green900) }
@@ -90,7 +90,7 @@ struct BlocketTokenProvider: TokenProvider {
     public var borderSecondary: Color { Color.dynamicColor(defaultColor: BlocketColors.red600, darkModeColor: BlocketColors.red500) }
     public var borderSecondaryHover: Color { Color.dynamicColor(defaultColor: BlocketColors.red700, darkModeColor: BlocketColors.red400) }
     public var borderSecondaryActive: Color { Color.dynamicColor(defaultColor: BlocketColors.red800, darkModeColor: BlocketColors.red300) }
-    public var borderPositive: Color { Color.dynamicColor(defaultColor: BlocketColors.green600, darkModeColor: BlocketColors.green500) }
+    public var borderPositive: Color { Color.dynamicColor(defaultColor: BlocketColors.green700, darkModeColor: BlocketColors.green400) }
     public var borderPositiveHover: Color { Color.dynamicColor(defaultColor: BlocketColors.green700, darkModeColor: BlocketColors.green400) }
     public var borderPositiveActive: Color { Color.dynamicColor(defaultColor: BlocketColors.green800, darkModeColor: BlocketColors.green300) }
     public var borderPositiveSubtle: Color { Color.dynamicColor(defaultColor: BlocketColors.green300, darkModeColor: BlocketColors.green700) }
@@ -134,7 +134,7 @@ struct BlocketTokenProvider: TokenProvider {
     public var iconSecondary: Color { Color.dynamicColor(defaultColor: BlocketColors.red600, darkModeColor: BlocketColors.red500) }
     public var iconSecondaryHover: Color { Color.dynamicColor(defaultColor: BlocketColors.red700, darkModeColor: BlocketColors.red400) }
     public var iconSecondaryActive: Color { Color.dynamicColor(defaultColor: BlocketColors.red800, darkModeColor: BlocketColors.red300) }
-    public var iconPositive: Color { Color.dynamicColor(defaultColor: BlocketColors.green600, darkModeColor: BlocketColors.green500) }
+    public var iconPositive: Color { Color.dynamicColor(defaultColor: BlocketColors.green700, darkModeColor: BlocketColors.green400) }
     public var iconNegative: Color { Color.dynamicColor(defaultColor: BlocketColors.coral600, darkModeColor: BlocketColors.coral400) }
     public var iconWarning: Color { Color.dynamicColor(defaultColor: BlocketColors.yellow600, darkModeColor: BlocketColors.yellow500) }
     public var iconInfo: Color { Color.dynamicColor(defaultColor: BlocketColors.blue600, darkModeColor: BlocketColors.blue500) }
@@ -152,7 +152,7 @@ struct BlocketUITokenProvider: UITokenProvider {
     public var textLink: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.blue600, darkModeColor: BlocketUIColors.blue400) }
     public var textDisabled: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray500) }
     public var textNegative: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.coral600, darkModeColor: BlocketUIColors.coral400) }
-    public var textPositive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green600, darkModeColor: BlocketUIColors.green500) }
+    public var textPositive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green700, darkModeColor: BlocketUIColors.green400) }
     public var surface: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.white, darkModeColor: BlocketUIColors.gray900) }
     public var surfaceHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray100, darkModeColor: BlocketUIColors.gray850) }
     public var surfaceActive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray800) }
@@ -187,7 +187,7 @@ struct BlocketUITokenProvider: UITokenProvider {
     public var backgroundSecondary: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.red600, darkModeColor: BlocketUIColors.red500) }
     public var backgroundSecondaryHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.red700, darkModeColor: BlocketUIColors.red400) }
     public var backgroundSecondaryActive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.red800, darkModeColor: BlocketUIColors.red300) }
-    public var backgroundPositive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green600, darkModeColor: BlocketUIColors.green500) }
+    public var backgroundPositive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green700, darkModeColor: BlocketUIColors.green400) }
     public var backgroundPositiveHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green700, darkModeColor: BlocketUIColors.green400) }
     public var backgroundPositiveActive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green800, darkModeColor: BlocketUIColors.green300) }
     public var backgroundPositiveSubtle: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green50, darkModeColor: BlocketUIColors.green900) }
@@ -230,7 +230,7 @@ struct BlocketUITokenProvider: UITokenProvider {
     public var borderSecondary: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.red600, darkModeColor: BlocketUIColors.red500) }
     public var borderSecondaryHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.red700, darkModeColor: BlocketUIColors.red400) }
     public var borderSecondaryActive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.red800, darkModeColor: BlocketUIColors.red300) }
-    public var borderPositive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green600, darkModeColor: BlocketUIColors.green500) }
+    public var borderPositive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green700, darkModeColor: BlocketUIColors.green400) }
     public var borderPositiveHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green700, darkModeColor: BlocketUIColors.green400) }
     public var borderPositiveActive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green800, darkModeColor: BlocketUIColors.green300) }
     public var borderPositiveSubtle: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green300, darkModeColor: BlocketUIColors.green700) }
@@ -274,7 +274,7 @@ struct BlocketUITokenProvider: UITokenProvider {
     public var iconSecondary: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.red600, darkModeColor: BlocketUIColors.red500) }
     public var iconSecondaryHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.red700, darkModeColor: BlocketUIColors.red400) }
     public var iconSecondaryActive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.red800, darkModeColor: BlocketUIColors.red300) }
-    public var iconPositive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green600, darkModeColor: BlocketUIColors.green500) }
+    public var iconPositive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.green700, darkModeColor: BlocketUIColors.green400) }
     public var iconNegative: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.coral600, darkModeColor: BlocketUIColors.coral400) }
     public var iconWarning: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.yellow600, darkModeColor: BlocketUIColors.yellow500) }
     public var iconInfo: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.blue600, darkModeColor: BlocketUIColors.blue500) }
