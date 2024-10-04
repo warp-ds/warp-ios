@@ -29,7 +29,7 @@ public enum Warp {
         case .tori:
             return ToriTokenProvider()
         case .dba:
-            return DBATokenProvider()
+            return DbaTokenProvider()
         case .blocket:
             return BlocketTokenProvider()
         }
@@ -45,7 +45,7 @@ public enum Warp {
         case .tori:
             return ToriUITokenProvider()
         case .dba:
-            return DBAUITokenProvider()
+            return DbaUITokenProvider()
         case .blocket:
             return BlocketUITokenProvider()
         }
