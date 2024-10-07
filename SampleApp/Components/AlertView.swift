@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import Warp
 
-@preconcurrency @MainActor
 struct AlertView: View {
     @State private var style: Warp.AlertStyle = .info
 
@@ -170,7 +169,7 @@ struct AlertView: View {
 }
 
 extension Warp.AlertStyle: CaseIterable {
-    public static let allCases: [Warp.AlertStyle] = [
+    public static var allCases: [Warp.AlertStyle] = [
         .info,
         .warning,
         .critical,

@@ -2,7 +2,7 @@ import SwiftUI
 
 extension Warp {
     /// Warp representation of the style and appearance of visual text matter.
-    public enum TextStyle: Equatable, CaseIterable, Sendable {
+    public enum TextStyle: Equatable, CaseIterable {
         case display
         case title1
         case title2

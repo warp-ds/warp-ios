@@ -17,9 +17,6 @@ extension Warp {
         - A `ColorProvider`. **Optional:** _default is read from `Warp.Color` if none is specified_.
 
      */
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct StepIndicator: View {
         /// Orientation of the Step Indicator
         public enum LayoutOrientation {

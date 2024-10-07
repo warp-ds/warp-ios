@@ -8,9 +8,6 @@
 import SwiftUI
 import Warp
 
-#if swift(<6.0)
-@preconcurrency @MainActor
-#endif
 struct BoxView: View {
     @State private var style: Warp.BoxStyle = .info
 
@@ -162,7 +159,7 @@ struct BoxView: View {
 }
 
 extension Warp.BoxStyle: CaseIterable {
-    public static let allCases: [Warp.BoxStyle] = [
+    public static var allCases: [Warp.BoxStyle] = [
         .neutral,
         .info,
         .bordered

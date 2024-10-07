@@ -76,7 +76,7 @@ struct BlocketColors {
     static let black = Color(hex: "#000000")
 }
 
-struct BlocketUIColors: Sendable {
+struct BlocketUIColors {
     /// Blocket color palette
     static let yellow50  = UIColor(hex: "#fcf5e3")
     static let yellow100 = UIColor(hex: "#fff1c8")

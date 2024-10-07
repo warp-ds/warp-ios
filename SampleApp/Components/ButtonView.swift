@@ -1,9 +1,6 @@
 import SwiftUI
 import Warp
 
-#if swift(<6.0)
-@preconcurrency @MainActor
-#endif
 struct ButtonView: View {
     @State private var type: Warp.ButtonType = .primary
 
@@ -94,7 +91,7 @@ struct ButtonView: View {
 }
 
 extension Warp.ButtonType: CaseIterable {
-    public static let allCases: [Warp.ButtonType] = [
+    public static var allCases: [Warp.ButtonType] = [
         .primary,
         .secondary,
         .tertiary,
@@ -113,7 +110,7 @@ extension Warp.ButtonType: CaseIterable {
 }
 
 extension Warp.ButtonSize: CaseIterable {
-    public static let allCases: [Warp.ButtonSize] = [
+    public static var allCases: [Warp.ButtonSize] = [
         .big,
         .small
     ]

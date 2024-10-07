@@ -2,7 +2,6 @@ import SwiftUI
 import UIKit
 
 /// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=888578831
-@preconcurrency @MainActor
 public protocol TokenProvider {
     /// Surface
     var surfaceSunken: Color { get }
@@ -165,7 +164,6 @@ public protocol TokenProvider {
     var textNotification: Color { get }
 }
 
-@preconcurrency @MainActor
 public protocol UITokenProvider {
     /// Surface
     var surfaceSunken: UIColor { get }

@@ -8,9 +8,6 @@ extension Warp {
     private static let toolTipImageName = "icon_box-info"
 
     /// Box is a layout component to display information in addition to the main content of a page.
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Box: View, Hashable {
         /// Preferred style of box.
         let style: BoxStyle
@@ -24,7 +21,7 @@ extension Warp {
         /// Text that will be shown after title in the middle of the box.
         let subtitle: String
 
-        public typealias ButtonConstructor = (title: String, action: @MainActor @Sendable () -> Void)
+        public typealias ButtonConstructor = (title: String, action: () -> Void)
 
         /// Tuple that will provide a title and an action for creating a link view below subtitle.
         /// Passing `nil` will skip adding link view.
@@ -37,7 +34,7 @@ extension Warp {
         /// Object responsible for providing colors in different environments and variants.
         let colorProvider: ColorProvider
 
-        nonisolated public static func == (lhs: Box, rhs: Box) -> Bool {
+        public static func == (lhs: Box, rhs: Box) -> Bool {
             let styleComparison = lhs.style == rhs.style
             lazy var titleComparison = lhs.title == rhs.title
             lazy var iconComparison = lhs.shouldShowToolTipImage == rhs.shouldShowToolTipImage
@@ -53,7 +50,7 @@ extension Warp {
             buttonProviderComparison
         }
 
-        nonisolated public func hash(into hasher: inout Hasher) {
+        public func hash(into hasher: inout Hasher) {
             hasher.combine(style)
             hasher.combine(title)
             hasher.combine(subtitle)
@@ -267,11 +264,11 @@ private struct ButtonView: View, Hashable {
 
     let colorProvider: ColorProvider
 
-    nonisolated static func == (lhs: ButtonView, rhs: ButtonView) -> Bool {
+    static func == (lhs: ButtonView, rhs: ButtonView) -> Bool {
         lhs.buttonProvider.title == rhs.buttonProvider.title
     }
 
-    nonisolated func hash(into hasher: inout Hasher) {
+    func hash(into hasher: inout Hasher) {
         hasher.combine(buttonProvider.title)
     }
 
@@ -323,7 +320,7 @@ private struct UnderlinedLinkModifier: ViewModifier {
     }
 }
 
-@MainActor extension Warp.BoxStyle {
+extension Warp.BoxStyle {
     fileprivate func getBackgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
             case .neutral:
@@ -362,7 +359,7 @@ private struct UnderlinedLinkModifier: ViewModifier {
 }
 
 extension Warp.BoxStyle {
-    fileprivate static let allCases: [Warp.BoxStyle] = [
+    fileprivate static var allCases: [Warp.BoxStyle] = [
         .neutral,
         .info,
         .bordered

@@ -9,14 +9,11 @@ import Foundation
 import SwiftUI
 import Warp
 
-#if swift(<6.0)
-@preconcurrency @MainActor
-#endif
 struct ModalView: View {
     @State private var title = "Title"
 
     @State private var subtitle = "Subtitle"
-
+    
     @State private var bodyText = "Content information for your modal goes here. This is the mobile web variant that has the look and feel of a bottom sheet, which means that it must be pinned to the bottom of the page."
 
     @State private var hasPrimaryButton = true

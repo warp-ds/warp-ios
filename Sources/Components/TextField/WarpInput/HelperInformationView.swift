@@ -2,9 +2,6 @@ import Foundation
 import SwiftUI
 
 /// Helper view that will be shown at the bottom of TextField.
-#if swift(<5.10)
-@preconcurrency @MainActor
-#endif
 struct HelperInformationView: View, Hashable {
     /// State of TextField.
     let textFieldState: Warp.TextFieldState
@@ -12,11 +9,11 @@ struct HelperInformationView: View, Hashable {
     /// Object responsible for providing colors.
     let colorProvider: ColorProvider
 
-    nonisolated static func == (lhs: HelperInformationView, rhs: HelperInformationView) -> Bool {
+    static func == (lhs: HelperInformationView, rhs: HelperInformationView) -> Bool {
         lhs.textFieldState == rhs.textFieldState
     }
 
-    public nonisolated func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(textFieldState)
     }
 

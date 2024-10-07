@@ -9,12 +9,12 @@ extension Warp.Button {
         title: String,
         leadingIcon: Image? = nil,
         trailingIcon: Image? = nil,
-        action: @escaping @MainActor @Sendable () -> Void = {},
+        action: @escaping () -> Void = {},
         size: Warp.ButtonSize = .big,
         isEnabled: Bool = true,
         fullWidth: Bool = false,
         isLoading: Bool = false,
-        colorProvider: ColorProvider = Warp.Color) -> Warp.Button {
+        colorProvider: ColorProvider = Warp.Color    ) -> Warp.Button {
         Warp.Button(
             title: title,
             leadingIcon: leadingIcon,

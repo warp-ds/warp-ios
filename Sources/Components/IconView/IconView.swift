@@ -4,9 +4,6 @@ extension Warp {
     /// A view that renders an icon with the specified size and color.
     ///
     /// `IconView` displays an icon in a specified size (`small`, `default`,  `large`, or `custom`) and color. The icon is rendered from the asset catalog.
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct IconView: View {
         /// The `Warp.Icon` to display.
         private let icon: Warp.Icon

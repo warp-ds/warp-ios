@@ -1,7 +1,6 @@
 import XCTest
 @testable import Warp
 
-@preconcurrency @MainActor
 final class OrderedStepIndicatorItemTests: XCTestCase {
     func testCanCreateSingleItem() throws {
         let steps: [Warp.StepIndicatorItem] = [

@@ -1,9 +1,6 @@
 import SwiftUI
 
 extension Warp.StepIndicator {
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     struct DescriptionView: View {
         let title: String
         let description: String

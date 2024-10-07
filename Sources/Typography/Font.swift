@@ -2,7 +2,6 @@ import Foundation
 
 extension Warp {
     /// Fonts in `Warp`.
-    @preconcurrency @MainActor
     enum Font: CaseIterable {
         case finnLight
         case finnMedium

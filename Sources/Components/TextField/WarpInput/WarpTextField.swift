@@ -6,9 +6,6 @@ extension Warp {
     public static let textFieldDefaultInactiveState = TextFieldState.normal(.none)
 
     /// A control that displays an editable text with `Warp` designed interface.
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct TextField: View {
         /// TextField configurations.
         private let configuration: TextFieldConfiguration
@@ -157,7 +154,7 @@ private struct WarpTextFieldPreview: PreviewProvider {
 }
 
 extension Warp.TextFieldState {
-    fileprivate static let allCases: [Warp.TextFieldState] = [
+    fileprivate static var allCases: [Warp.TextFieldState] = [
         .normal(.none),
         .active(.none),
         .disabled,

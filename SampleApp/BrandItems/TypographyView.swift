@@ -1,9 +1,6 @@
 import SwiftUI
 import Warp
 
-#if swift(<6.0)
-@preconcurrency @MainActor
-#endif
 struct TypographyView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -28,7 +25,7 @@ struct TypographyView: View {
 }
 
 extension Warp.Typography {
-    fileprivate static let allCases: [(typography: Warp.Typography, name: String)] = [
+    fileprivate static var allCases: [(typography: Warp.Typography, name: String)] = [
         (.display, "Display"),
         (.title1, "Title 1"),
         (.title2, "Title 2"),

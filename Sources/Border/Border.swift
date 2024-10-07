@@ -1,7 +1,7 @@
 import CoreFoundation
 
 extension Warp {
-    public enum Border: Sendable {
+    public enum Border {
         /// Border radius of 2 points.
         public static let borderRadius25: CGFloat = 2
         /// Border radius of 4 points.

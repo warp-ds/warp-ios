@@ -2,7 +2,6 @@ import Foundation
 import SwiftUI
 
 public extension Warp.StepIndicatorItem {
-    @preconcurrency @MainActor
     enum Progress {
         /// The state of the component when the task or process has not yet been completed.
         case incomplete

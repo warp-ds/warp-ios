@@ -10,9 +10,6 @@ extension Warp {
     private static let modalCornerRadius: CGFloat = 12
     
     /// Modal is a component to display dioalog.
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Modal: View {
         /// Text that will be shown as modal's heading.
         var title: String
@@ -23,8 +20,8 @@ extension Warp {
         /// Text that will be shown as main content of the modal.
         var bodyText: String
         
-        public typealias ButtonConstructor = (title: String, action: @MainActor @Sendable () -> Void)
-
+        public typealias ButtonConstructor = (title: String, action: () -> Void)
+        
         /// Tuple that will provide a title and an action for creating a primary button view.
         /// Passing `nil` will skip adding primary button view.
         let primaryButtonProvider: ButtonConstructor?
@@ -157,7 +154,7 @@ private struct ButtonsView: View, Hashable {
     
     let colorProvider: ColorProvider
     
-    nonisolated static func == (lhs: ButtonsView, rhs: ButtonsView) -> Bool {
+    static func == (lhs: ButtonsView, rhs: ButtonsView) -> Bool {
         let primaryComparison: Bool
         
         switch (lhs.primaryButtonProvider, rhs.primaryButtonProvider) {
@@ -193,7 +190,7 @@ private struct ButtonsView: View, Hashable {
         return primaryComparison && secondaryComparison
     }
     
-    nonisolated func hash(into hasher: inout Hasher) {
+    func hash(into hasher: inout Hasher) {
         if let primaryButtonProvider {
             hasher.combine(primaryButtonProvider.title)
         }
