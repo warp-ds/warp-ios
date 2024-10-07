@@ -8,18 +8,21 @@ extension Warp {
     public struct Slider: View {
         /// Constants to create the view
         private let cornerRadius: CGFloat = 4
-        private let trackColor = Warp.Color.sliderTrackBackground// Custom color for the track
+        private let trackColor = Warp.Color.sliderTrackBackground // Custom color for the track
         private let filledTrackColor = Warp.Color.sliderTrackBackgroundActive // Custom color for the filled track
         private let thumbColor = Warp.Color.sliderHandleBackground // Custom color for the thumb
         
         @Binding var value: Double // Binding value to update the slider value
         let range: ClosedRange<Double> // Defines the range for the slider
-  
+        let step: Double // Step value for the slider
+        let precision: Int // Number of decimal places for rounding the value
         let onEditingChanged: ((Double) -> Void)? // Completion handler to return the value when handle is dropped
         
-        public init(value: Binding<Double>, range: ClosedRange<Double> = 0...1, trackColor: Color = .gray, filledTrackColor: Color = .blue, thumbColor: Color = .blue, onEditingChanged: ((Double) -> Void)? = nil) {
+        public init(value: Binding<Double>, range: ClosedRange<Double> = 0...1, step: Double = 1.0, precision: Int = 2, trackColor: Color = .gray, filledTrackColor: Color = .blue, thumbColor: Color = .blue, onEditingChanged: ((Double) -> Void)? = nil) {
             self._value = value
             self.range = range
+            self.step = step
+            self.precision = precision
             self.onEditingChanged = onEditingChanged
         }
         
@@ -81,17 +84,24 @@ extension Warp {
         private func updateValue(dragValue: DragGesture.Value, width: CGFloat) {
             let dragPercentage = min(max(0, dragValue.location.x / width), 1)
             let newValue = range.lowerBound + dragPercentage * (range.upperBound - range.lowerBound)
-            value = newValue
+            let steppedValue = (newValue / step).rounded() * step
+            value = roundToPrecision(steppedValue)
+        }
+        
+        // Rounds the value to the specified number of decimal places
+        private func roundToPrecision(_ value: Double) -> Double {
+            let factor = pow(10.0, Double(precision))
+            return (value * factor).rounded() / factor
         }
     }
 }
 
 /// A wrapper view for preview that manages the @State property and prints the value when the seeker is dropped
 private struct SliderPreviewWrapper: View {
-    @State private var sliderValue = 0.5 // State management for the slider
+    @State private var sliderValue = 15.0 // State management for the slider
 
     var body: some View {
-        Warp.Slider(value: $sliderValue, range: 0...100, onEditingChanged: { newValue in
+        Warp.Slider(value: $sliderValue, range: 0...100, step: 0.5, precision: 2, onEditingChanged: { newValue in
             print("Slider dropped at value: \(newValue)") // Example of handling the final value
         })
         .padding()
