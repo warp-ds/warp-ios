@@ -10,9 +10,6 @@ extension Warp {
     ///   - range: The minimum and maximum values for the slider, defined as a `ClosedRange<Double>`. Defaults to `0...1`.
     ///   - step: The increment by which the slider value should change. Defaults to `1.0`.
     ///   - precision: The number of decimal places to round the slider value to. Defaults to `2`.
-    ///   - trackColor: The color of the unfilled track (background line). Defaults to `.gray`.
-    ///   - filledTrackColor: The color of the filled track (progress line). Defaults to `.blue`.
-    ///   - thumbColor: The color of the slider thumb (handle). Defaults to `.blue`.
     ///   - onEditingChanged: A closure that is called when the slider's thumb is released, passing the final value as an argument.
 
 #if swift(<6.0)
@@ -21,9 +18,9 @@ extension Warp {
     public struct Slider: View {
         /// Constants to create the view
         private let cornerRadius: CGFloat = 4
-        private let trackColor = Warp.Color.sliderTrackBackground // Custom color for the track
-        private let filledTrackColor = Warp.Color.sliderTrackBackgroundActive // Custom color for the filled track
-        private let thumbColor = Warp.Color.sliderHandleBackground // Custom color for the thumb
+        private let trackColor = Warp.Color.sliderTrackBackground // Color for the track
+        private let filledTrackColor = Warp.Color.sliderTrackBackgroundActive // Color for the filled track
+        private let thumbColor = Warp.Color.sliderHandleBackground // Color for the thumb
         
         @Binding var value: Double // Binding value to update the slider value
         let range: ClosedRange<Double> // Defines the range for the slider
@@ -31,7 +28,7 @@ extension Warp {
         let precision: Int // Number of decimal places for rounding the value
         let onEditingChanged: ((Double) -> Void)? // Completion handler to return the value when handle is dropped
         
-        public init(value: Binding<Double>, range: ClosedRange<Double> = 0...1, step: Double = 1.0, precision: Int = 2, trackColor: Color = .gray, filledTrackColor: Color = .blue, thumbColor: Color = .blue, onEditingChanged: ((Double) -> Void)? = nil) {
+        public init(value: Binding<Double>, range: ClosedRange<Double> = 0...1, step: Double = 1.0, precision: Int = 2, onEditingChanged: ((Double) -> Void)? = nil) {
             self._value = value
             self.range = range
             self.step = step
