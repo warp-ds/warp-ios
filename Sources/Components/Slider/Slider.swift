@@ -85,3 +85,19 @@ extension Warp {
         }
     }
 }
+
+/// A wrapper view for preview that manages the @State property and prints the value when the seeker is dropped
+private struct SliderPreviewWrapper: View {
+    @State private var sliderValue = 0.5 // State management for the slider
+
+    var body: some View {
+        Warp.Slider(value: $sliderValue, range: 0...100, onEditingChanged: { newValue in
+            print("Slider dropped at value: \(newValue)") // Example of handling the final value
+        })
+        .padding()
+    }
+}
+
+#Preview {
+    SliderPreviewWrapper() // Using the wrapper view in preview
+}
