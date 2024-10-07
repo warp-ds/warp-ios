@@ -16,7 +16,7 @@ extension Warp {
     @preconcurrency @MainActor
 #endif
     public struct Slider: View {
-        /// Constants to create the view
+        // Constants to create the view
         private let cornerRadius: CGFloat = 4
         private let trackColor = Warp.Color.sliderTrackBackground // Color for the track
         private let filledTrackColor = Warp.Color.sliderTrackBackgroundActive // Color for the filled track
@@ -29,6 +29,13 @@ extension Warp {
         let onEditingChanged: ((Double) -> Void)? // Completion handler to return the value when handle is dropped
         
         public init(value: Binding<Double>, range: ClosedRange<Double> = 0...1, step: Double = 1.0, precision: Int = 2, onEditingChanged: ((Double) -> Void)? = nil) {
+            
+            // Critical checks
+            precondition(step > 0, "Step must be greater than zero.")
+            precondition(range.lowerBound <= range.upperBound, "Invalid range: lowerBound must be less than or equal to upperBound.")
+            precondition(step <= (range.upperBound - range.lowerBound), "Step must be less than or equal to the range span.")
+            precondition(value.wrappedValue >= range.lowerBound && value.wrappedValue <= range.upperBound, "Initial value must be within the specified range.")
+            
             self._value = value
             self.range = range
             self.step = step
