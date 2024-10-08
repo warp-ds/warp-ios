@@ -100,25 +100,28 @@ extension Warp {
             return steps
         }
 
-        // Calculates the progress of the slider within the range [0, 1]
+        /// Calculates the progress of the slider within the range [0, 1]
         private func progress() -> Double {
-            let steps = generateSteps()
-            if let index = steps.firstIndex(where: { $0 >= value }) {
-                return Double(index) / Double(steps.count - 1)
+            let rangeSpan = range.upperBound - range.lowerBound
+            if rangeSpan == 0 {
+                return 0
+            } else {
+                let progress = (value - range.lowerBound) / rangeSpan
+                return min(max(progress, 0), 1)
             }
-            return 0
         }
 
-        // Updates slider value based on thumb drag
+        /// Updates the slider value based on thumb drag
         private func updateValue(dragValue: DragGesture.Value, width: CGFloat) {
             let dragPercentage = min(max(0, dragValue.location.x / width), 1) // Clamp between 0 and 1
 
+            let rangeSpan = range.upperBound - range.lowerBound
+            let rawValue = range.lowerBound + dragPercentage * rangeSpan
+
+            // Snap rawValue to the nearest step
             let steps = generateSteps()
-            let totalSteps = steps.count - 1
-            let position = dragPercentage * Double(totalSteps)
-            let stepIndex = min(max(0, Int(position)), totalSteps)
-            let newValue = steps[stepIndex]
-            value = newValue
+            let closestStepValue = steps.min(by: { abs($0 - rawValue) < abs($1 - rawValue) }) ?? range.lowerBound
+            value = closestStepValue
         }
     }
 }
