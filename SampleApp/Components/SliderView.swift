@@ -5,8 +5,9 @@ struct SliderView: View {
     @State var sliderValue = 0.0 // Current slider value
     @State var minValue = "0.0" // Minimum value input by user
     @State var maxValue = "100.0" // Maximum value input by user
-    @State var precision = "2" // Precision input by user
     @State var stepValue = "1.0" // Step value input by user
+    
+    @State var precision = "2"
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -17,9 +18,7 @@ struct SliderView: View {
                         Warp.Slider(
                             value: $sliderValue,
                             range: (Double(minValue) ?? 0.0)...(Double(maxValue) ?? 100.0),
-                            step: Double(stepValue) ?? 1.0,
-                            precision: Int(precision) ?? 2
-                        )
+                            step: Double(stepValue) ?? 1.0)
                         .padding()
 
                         HStack {
@@ -85,9 +84,9 @@ struct SliderView: View {
     }
     
     // Helper function to dismiss the keyboard
-     private func dismissKeyboard() {
-         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-     }
+    private func dismissKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }
 
 #Preview {
