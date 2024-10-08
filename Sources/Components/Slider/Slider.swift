@@ -3,13 +3,12 @@ import SwiftUI
 extension Warp {
     /// A customizable slider component to adjust values within a given range.
     ///
-    /// The slider allows for setting the value with a defined step interval and rounds the displayed value to a specified precision.
+    /// The slider allows for setting the value with a defined step interval.
     ///
     /// - Parameters:
     ///   - value: A `Binding` value representing the current slider value.
     ///   - range: The minimum and maximum values for the slider, defined as a `ClosedRange<Double>`.
     ///   - step: The increment by which the slider value should change. Defaults to `1.0`.
-    ///   - precision: The number of decimal places to round the slider value to. Defaults to `2`.
     ///   - onEditingChanged: A closure that is called when the slider's thumb is released, passing the final value as an argument.
 
 #if swift(<6.0)
@@ -25,14 +24,12 @@ extension Warp {
         @Binding var value: Double // Binding value to update the slider value
         let range: ClosedRange<Double> // Defines the range for the slider
         let step: Double // Step value for the slider
-        let precision: Int // Number of decimal places for rounding the value
         let onEditingChanged: ((Double) -> Void)? // Completion handler to return the value when handle is dropped
 
-        public init(value: Binding<Double>, range: ClosedRange<Double>, step: Double = 1.0, precision: Int = 2, onEditingChanged: ((Double) -> Void)? = nil) {
+        public init(value: Binding<Double>, range: ClosedRange<Double>, step: Double = 1.0, onEditingChanged: ((Double) -> Void)? = nil) {
             self._value = value
             self.range = range
             self.step = step
-            self.precision = precision
             self.onEditingChanged = onEditingChanged
         }
 
@@ -121,13 +118,7 @@ extension Warp {
             let position = dragPercentage * Double(totalSteps)
             let stepIndex = min(max(0, Int(position)), totalSteps)
             let newValue = steps[stepIndex]
-            value = roundToPrecision(newValue)
-        }
-        
-        // Rounds value to specified decimal precision
-        private func roundToPrecision(_ value: Double) -> Double {
-            let factor = pow(10.0, Double(precision))
-            return (value * factor).rounded() / factor
+            value = newValue
         }
     }
 }
@@ -137,7 +128,7 @@ private struct SliderPreviewWrapper: View {
     @State private var sliderValue = 15.0
 
     var body: some View {
-        Warp.Slider(value: $sliderValue, range: 0...100, step: 0.5, precision: 2, onEditingChanged: { newValue in
+        Warp.Slider(value: $sliderValue, range: 0...100, step: 0.5, onEditingChanged: { newValue in
             print("Slider dropped at value: \(newValue)")
         })
         .padding()
