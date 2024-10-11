@@ -172,6 +172,13 @@ struct ContentView: View {
                     }
 
                     Divider()
+                    
+                    NavigationLink(destination: SliderView()) {
+                        Text("Slider")
+                            .padding()
+                    }
+
+                    Divider()
 
                     NavigationLink(destination: SpinnerView()) {
                         Text("Spinner")

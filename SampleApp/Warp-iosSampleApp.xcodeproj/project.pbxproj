@@ -33,6 +33,10 @@
 		349586652B0F727600A14570 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
 		349D0E142B62D67E00AAB421 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349D0E122B62D67A00AAB421 /* AlertView.swift */; };
 		34A278C22AD5473C00EE6ED8 /* Warp in Frameworks */ = {isa = PBXBuildFile; productRef = 34A278C12AD5473C00EE6ED8 /* Warp */; };
+		506939E02CB52EF000AA631F /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506939DF2CB52EF000AA631F /* SliderView.swift */; };
+		506939E12CB52EF000AA631F /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506939DF2CB52EF000AA631F /* SliderView.swift */; };
+		506939E22CB52EF000AA631F /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506939DF2CB52EF000AA631F /* SliderView.swift */; };
+		506939E32CB52EF000AA631F /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506939DF2CB52EF000AA631F /* SliderView.swift */; };
 		820A85EB2C6CEB0C006D35A0 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
 		820A85EC2C6CEB0C006D35A0 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B168112B750BED00DCDDE5 /* TextView.swift */; };
 		820A85EE2C6CEB0C006D35A0 /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
@@ -139,6 +143,7 @@
 		341B20E72B751BD30068FF43 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
 		349586632B0EAD2D00A14570 /* TypographyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypographyView.swift; sourceTree = "<group>"; };
 		349D0E122B62D67A00AAB421 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		506939DF2CB52EF000AA631F /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		8206620F2A8CC97C0088677D /* warp-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "warp-ios"; path = ..; sourceTree = "<group>"; };
 		820A860A2C6CEB0C006D35A0 /* Blocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		820A860B2C6CEC30006D35A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -359,6 +364,7 @@
 				8213D0AE2B9078D700FCA310 /* ShadowView.swift */,
 				82AE96102C64C2C000BF3920 /* ShadowUIView.swift */,
 				82635D062BFE1CA700F7FA6F /* SpinnerView.swift */,
+				506939DF2CB52EF000AA631F /* SliderView.swift */,
 				B295AC392C22F93D004C77BB /* StepIndicatorView.swift */,
 				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
 				82B168112B750BED00DCDDE5 /* TextView.swift */,
@@ -544,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82A9A00F2C7EF7A20053A961 /* RadioView.swift in Sources */,
+				506939E32CB52EF000AA631F /* SliderView.swift in Sources */,
 				2E1ADF4E2C2561A700DFEE06 /* TypographyView.swift in Sources */,
 				2E1ADF4F2C2561A700DFEE06 /* TextView.swift in Sources */,
 				2E1ADF722C2561D200DFEE06 /* Warp_iosDBA.swift in Sources */,
@@ -576,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82A9A00D2C7EF7A20053A961 /* RadioView.swift in Sources */,
+				506939E12CB52EF000AA631F /* SliderView.swift in Sources */,
 				820A85EB2C6CEB0C006D35A0 /* TypographyView.swift in Sources */,
 				820A85EC2C6CEB0C006D35A0 /* TextView.swift in Sources */,
 				820A86142C6CEC30006D35A0 /* Warp_iosBlocket.swift in Sources */,
@@ -608,6 +616,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82A9A0102C7EF7A20053A961 /* RadioView.swift in Sources */,
+				506939E02CB52EF000AA631F /* SliderView.swift in Sources */,
 				820A86272C6D4388006D35A0 /* TypographyView.swift in Sources */,
 				820A86282C6D4388006D35A0 /* TextView.swift in Sources */,
 				820A86292C6D4388006D35A0 /* StepIndicatorView.swift in Sources */,
@@ -640,6 +649,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82A9A00E2C7EF7A20053A961 /* RadioView.swift in Sources */,
+				506939E22CB52EF000AA631F /* SliderView.swift in Sources */,
 				349586652B0F727600A14570 /* TypographyView.swift in Sources */,
 				82B168132B750BED00DCDDE5 /* TextView.swift in Sources */,
 				B295AC3B2C22F93D004C77BB /* StepIndicatorView.swift in Sources */,
