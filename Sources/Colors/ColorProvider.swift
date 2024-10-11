@@ -1,9 +1,9 @@
 import SwiftUI
 
-// Generated on Fri, 11 Oct 2024 12:22:59 GMT by https://github.com/warp-ds/tokens
+// Generated on Fri, 11 Oct 2024 12:34:08 GMT by https://github.com/warp-ds/tokens
 public struct ColorProvider {
     public let token: TokenProvider
-
+    
     public var badgeNeutralBackground: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray100, darkModeColor: BlocketColors.gray600)
@@ -13,7 +13,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray600)
         }
     }
-
+    
     public var badgePositiveBackground: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.green100, darkModeColor: BlocketColors.green700)
@@ -23,7 +23,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.green100, darkModeColor: ToriColors.green700)
         }
     }
-
+    
     public var badgeInfoBackground: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.blue100, darkModeColor: BlocketColors.blue700)
@@ -33,7 +33,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue700)
         }
     }
-
+    
     public var badgeWarningBackground: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.yellow100, darkModeColor: BlocketColors.yellow700)
@@ -43,7 +43,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.yellow100, darkModeColor: ToriColors.yellow700)
         }
     }
-
+    
     public var badgeNegativeBackground: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.coral100, darkModeColor: BlocketColors.coral700)
@@ -53,7 +53,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.red100, darkModeColor: ToriColors.red700)
         }
     }
-
+    
     public var badgeSponsoredBackground: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.blue200, darkModeColor: BlocketColors.blue600)
@@ -63,7 +63,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.blue200, darkModeColor: ToriColors.blue600)
         }
     }
-
+    
     public var badgePriceBackground: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.black, darkModeColor: BlocketColors.black)
@@ -73,7 +73,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.black, darkModeColor: ToriColors.black)
         }
     }
-
+    
     public var buttonPrimaryBackground: Color {
         switch Warp.Theme {
         case .blocket: return token.backgroundPrimary
@@ -83,7 +83,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon500)
         }
     }
-
+    
     public var buttonPrimaryBackgroundHover: Color {
         switch Warp.Theme {
         case .blocket: return token.backgroundPrimaryHover
@@ -93,7 +93,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.watermelon700, darkModeColor: ToriColors.watermelon400)
         }
     }
-
+    
     public var buttonPrimaryBackgroundActive: Color {
         switch Warp.Theme {
         case .blocket: return token.backgroundPrimaryActive
@@ -103,7 +103,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.watermelon800, darkModeColor: ToriColors.watermelon300)
         }
     }
-
+    
     public var buttonPillBackgroundHover: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.blue300, darkModeColor: BlocketColors.blue300)
@@ -113,7 +113,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.blueberry300, darkModeColor: ToriColors.blueberry300)
         }
     }
-
+    
     public var buttonPillBackgroundActive: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.blue400, darkModeColor: BlocketColors.blue400)
@@ -123,7 +123,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.blueberry400, darkModeColor: ToriColors.blueberry400)
         }
     }
-
+    
     public var calloutBackground: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.green100, darkModeColor: BlocketColors.green800)
@@ -133,7 +133,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue800)
         }
     }
-
+    
     public var calloutBorder: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.green400, darkModeColor: BlocketColors.green600)
@@ -143,7 +143,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.blue400, darkModeColor: ToriColors.blue600)
         }
     }
-
+    
     public var navbarIconSelected: Color {
         switch Warp.Theme {
         case .blocket: return token.iconSecondary
@@ -153,7 +153,7 @@ public struct ColorProvider {
         case .tori: return token.iconSecondary
         }
     }
-
+    
     public var navbarBorderSelected: Color {
         switch Warp.Theme {
         case .blocket: return token.borderSecondary
@@ -163,7 +163,7 @@ public struct ColorProvider {
         case .tori: return token.borderSecondary
         }
     }
-
+    
     public var pageIndicatorBackground: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray300)
@@ -173,7 +173,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray300)
         }
     }
-
+    
     public var pageIndicatorBackgroundHover: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray400, darkModeColor: BlocketColors.gray200)
@@ -183,7 +183,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray400, darkModeColor: ToriColors.gray200)
         }
     }
-
+    
     public var pillSuggestionBackground: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray600)
@@ -193,7 +193,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
         }
     }
-
+    
     public var pillSuggestionBackgroundHover: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray500)
@@ -203,7 +203,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500)
         }
     }
-
+    
     public var pillSuggestionBackgroundActive: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray400, darkModeColor: BlocketColors.gray400)
@@ -213,7 +213,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray400, darkModeColor: ToriColors.gray400)
         }
     }
-
+    
     public var switchTrackBackground: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray600)
@@ -223,7 +223,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
         }
     }
-
+    
     public var switchTrackBackgroundHover: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray500)
@@ -233,7 +233,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500)
         }
     }
-
+    
     public var switchBackgroundTrackDisabled: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray600)
@@ -243,7 +243,7 @@ public struct ColorProvider {
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
         }
     }
-
+    
     public var tooltipBackgroundStatic: Color {
         switch Warp.Theme {
         case .blocket: return token.backgroundInverted
@@ -257,7 +257,7 @@ public struct ColorProvider {
 
 public struct UIColorProvider {
     public let token: UITokenProvider
-
+    
     public var badgeNeutralBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray100, darkModeColor: BlocketUIColors.gray600)
@@ -267,7 +267,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray600)
         }
     }
-
+    
     public var badgePositiveBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.green100, darkModeColor: BlocketUIColors.green700)
@@ -277,7 +277,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.green100, darkModeColor: ToriUIColors.green700)
         }
     }
-
+    
     public var badgeInfoBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.blue100, darkModeColor: BlocketUIColors.blue700)
@@ -287,7 +287,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.blue100, darkModeColor: ToriUIColors.blue700)
         }
     }
-
+    
     public var badgeWarningBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.yellow100, darkModeColor: BlocketUIColors.yellow700)
@@ -297,7 +297,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.yellow100, darkModeColor: ToriUIColors.yellow700)
         }
     }
-
+    
     public var badgeNegativeBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.coral100, darkModeColor: BlocketUIColors.coral700)
@@ -307,7 +307,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.red100, darkModeColor: ToriUIColors.red700)
         }
     }
-
+    
     public var badgeSponsoredBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.blue200, darkModeColor: BlocketUIColors.blue600)
@@ -317,7 +317,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.blue200, darkModeColor: ToriUIColors.blue600)
         }
     }
-
+    
     public var badgePriceBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.black, darkModeColor: BlocketUIColors.black)
@@ -327,7 +327,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.black, darkModeColor: ToriUIColors.black)
         }
     }
-
+    
     public var buttonPrimaryBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return token.backgroundPrimary
@@ -337,7 +337,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon600, darkModeColor: ToriUIColors.watermelon500)
         }
     }
-
+    
     public var buttonPrimaryBackgroundHover: UIColor {
         switch Warp.Theme {
         case .blocket: return token.backgroundPrimaryHover
@@ -347,7 +347,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon700, darkModeColor: ToriUIColors.watermelon400)
         }
     }
-
+    
     public var buttonPrimaryBackgroundActive: UIColor {
         switch Warp.Theme {
         case .blocket: return token.backgroundPrimaryActive
@@ -357,7 +357,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon800, darkModeColor: ToriUIColors.watermelon300)
         }
     }
-
+    
     public var buttonPillBackgroundHover: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.blue300, darkModeColor: BlocketUIColors.blue300)
@@ -367,7 +367,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry300, darkModeColor: ToriUIColors.blueberry300)
         }
     }
-
+    
     public var buttonPillBackgroundActive: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.blue400, darkModeColor: BlocketUIColors.blue400)
@@ -377,7 +377,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry400, darkModeColor: ToriUIColors.blueberry400)
         }
     }
-
+    
     public var calloutBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.green100, darkModeColor: BlocketUIColors.green800)
@@ -387,7 +387,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.blue100, darkModeColor: ToriUIColors.blue800)
         }
     }
-
+    
     public var calloutBorder: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.green400, darkModeColor: BlocketUIColors.green600)
@@ -397,7 +397,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.blue400, darkModeColor: ToriUIColors.blue600)
         }
     }
-
+    
     public var navbarIconSelected: UIColor {
         switch Warp.Theme {
         case .blocket: return token.iconSecondary
@@ -407,7 +407,7 @@ public struct UIColorProvider {
         case .tori: return token.iconSecondary
         }
     }
-
+    
     public var navbarBorderSelected: UIColor {
         switch Warp.Theme {
         case .blocket: return token.borderSecondary
@@ -417,7 +417,7 @@ public struct UIColorProvider {
         case .tori: return token.borderSecondary
         }
     }
-
+    
     public var pageIndicatorBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray300)
@@ -427,7 +427,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray300)
         }
     }
-
+    
     public var pageIndicatorBackgroundHover: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray400, darkModeColor: BlocketUIColors.gray200)
@@ -437,7 +437,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray400, darkModeColor: ToriUIColors.gray200)
         }
     }
-
+    
     public var pillSuggestionBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray600)
@@ -447,7 +447,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600)
         }
     }
-
+    
     public var pillSuggestionBackgroundHover: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray500)
@@ -457,7 +457,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray500)
         }
     }
-
+    
     public var pillSuggestionBackgroundActive: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray400, darkModeColor: BlocketUIColors.gray400)
@@ -467,7 +467,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray400, darkModeColor: ToriUIColors.gray400)
         }
     }
-
+    
     public var switchTrackBackground: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray600)
@@ -477,7 +477,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600)
         }
     }
-
+    
     public var switchTrackBackgroundHover: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray500)
@@ -487,7 +487,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray500)
         }
     }
-
+    
     public var switchBackgroundTrackDisabled: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray600)
@@ -497,7 +497,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600)
         }
     }
-
+    
     public var tooltipBackgroundStatic: UIColor {
         switch Warp.Theme {
         case .blocket: return token.backgroundInverted
