@@ -1,10 +1,14 @@
 import SwiftUI
 
 extension Warp {
-    /// Defines shadow properties for different shadow sizes.
+    /// Defines shadow properties for different shadow sizes used in the Warp design system.
+    ///
+    /// Each shadow size consists of two shadow layers, each with its own opacity, blur radius, and offset. These shadows
+    /// provide visual depth to UI components.
     public enum Shadow: CaseIterable {
         case small, medium, large, xLarge
         
+        /// The name of the shadow size for reference.
         public var name: String {
             switch self {
             case .small:  return "Small"
@@ -13,6 +17,8 @@ extension Warp {
             case .xLarge: return "xLarge"
             }
         }
+        
+        // MARK: - Shadow Properties
         
         /// The opacity for the first shadow layer.
         fileprivate var opacity1: Double {

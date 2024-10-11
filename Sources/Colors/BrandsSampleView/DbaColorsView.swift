@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct DbaColorsView: View {
     public init() {}
-
+    
     public var body: some View {
         ScrollView(showsIndicators: false) {
             VStack (alignment: .leading) {
@@ -17,7 +17,7 @@ public struct DbaColorsView: View {
                                     DbaColors.jeanblue700,
                                     DbaColors.jeanblue800,
                                     DbaColors.jeanblue900])
-
+                
                 createView(for: "Phthaloblue",
                            colors: [DbaColors.phthaloblue50,
                                     DbaColors.phthaloblue100,
@@ -29,7 +29,7 @@ public struct DbaColorsView: View {
                                     DbaColors.phthaloblue700,
                                     DbaColors.phthaloblue800,
                                     DbaColors.phthaloblue900])
-
+                
                 createView(for: "Green",
                            colors: [DbaColors.green50,
                                     DbaColors.green100,
@@ -41,7 +41,7 @@ public struct DbaColorsView: View {
                                     DbaColors.green700,
                                     DbaColors.green800,
                                     DbaColors.green900])
-
+                
                 createView(for: "Yellow",
                            colors: [DbaColors.yellow50,
                                     DbaColors.yellow100,
@@ -53,7 +53,7 @@ public struct DbaColorsView: View {
                                     DbaColors.yellow700,
                                     DbaColors.yellow800,
                                     DbaColors.yellow900])
-
+                
                 createView(for: "Red",
                            colors: [DbaColors.red50,
                                     DbaColors.red100,
@@ -65,7 +65,7 @@ public struct DbaColorsView: View {
                                     DbaColors.red700,
                                     DbaColors.red800,
                                     DbaColors.red900])
-
+                
                 createView(for: "Gray",
                            colors: [DbaColors.transparent,
                                     DbaColors.white,
@@ -89,7 +89,7 @@ public struct DbaColorsView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-
+    
     private func createView(for colorGroup: String, colors: [Color]) -> some View {
         return GroupBox(
             content: {

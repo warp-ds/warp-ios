@@ -3,7 +3,8 @@ import SwiftUI
 extension Warp {
     /// Icon set used across Warp components, loaded from the asset catalog in the framework.
     ///
-    /// Provides both SwiftUI `Image` and UIKit `UIImage` representations for each icon.
+    /// This enum defines all available icons in the Warp design system. It provides both SwiftUI `Image` and UIKit `UIImage` representations,
+    /// allowing for easy usage in different UI contexts.
     public enum Icon: String, CaseIterable, View {
         case activeAds
         case ads
@@ -234,6 +235,8 @@ extension Warp {
         case youtube
         
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
+        ///
+        /// - Returns: A resizable `SwiftUI.Image` instance representing the icon, with a template rendering mode.
         public var body: some View {
             SwiftUI.Image(assetName, bundle: .module) // Load the image from the asset catalog
                 .renderingMode(.template) // Ensure template rendering mode for vector images
@@ -256,7 +259,7 @@ extension Warp {
         ///
         /// - Parameters:
         ///   - targetSize: The desired size for the image.
-        /// - Returns: A resized `UIImage` if resizing was successful, otherwise empty `UIImage`.
+        /// - Returns: A resized `UIImage` if resizing was successful, otherwise an empty `UIImage`.
         public func resizeImage(to targetSize: CGSize) -> UIImage {
             UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
             uiImage.draw(in: CGRect(origin: .zero, size: targetSize))
@@ -272,6 +275,7 @@ extension Warp {
         
         /// Maps the icon case to the corresponding asset name in the asset catalog.
         ///
+        /// This converts the enum case name (in camelCase) to the format used by asset names in the asset catalog.
         /// - Returns: The name of the asset in the asset catalog as `String`.
         private var assetName: String {
             return rawValue.prefix(1).capitalized + rawValue.dropFirst() // CapitalizedCamelCase asset name

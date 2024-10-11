@@ -1,10 +1,15 @@
 import SwiftUI
 
 extension View {
-    /// Closure given view if conditional.
+    /// Conditionally applies a view modifier based on a boolean value.
+    ///
+    /// If the condition is `true`, the specified closure is applied to the view.
+    /// Otherwise, the original view is returned unchanged.
+    ///
     /// - Parameters:
-    ///   - conditional: Boolean condition.
-    ///   - content: Closure to run on view.
+    ///   - conditional: A boolean value that determines whether to apply the closure.
+    ///   - content: A closure that takes the original view and returns a modified view.
+    /// - Returns: Either the modified view (if the condition is true) or the original view (if the condition is false).
     @ViewBuilder func `if`<Content: View>(
         _ conditional: Bool,
         @ViewBuilder _ content: (Self) -> Content
@@ -16,11 +21,16 @@ extension View {
         }
     }
     
-    /// Closure given view if conditional.
+    /// Conditionally applies one of two view modifiers based on a boolean value.
+    ///
+    /// If the condition is `true`, the `truthy` closure is applied to the view.
+    /// If the condition is `false`, the `falsy` closure is applied to the view.
+    ///
     /// - Parameters:
-    ///   - conditional: Boolean condition.
-    ///   - truthy: Closure to run on view if true.
-    ///   - falsy: Closure to run on view if false.
+    ///   - conditional: A boolean value that determines which closure to apply.
+    ///   - truthy: A closure that takes the original view and returns a modified view if the condition is `true`.
+    ///   - falsy: A closure that takes the original view and returns a modified view if the condition is `false`.
+    /// - Returns: Either the `truthy` modified view or the `falsy` modified view.
     @ViewBuilder func `if`<Truthy: View, Falsy: View>(
         _ conditional: Bool = true,
         @ViewBuilder _ truthy: (Self) -> Truthy,
@@ -33,10 +43,15 @@ extension View {
         }
     }
     
-    /// Closure given view and unwrapped optional value if optional is set.
+    /// Conditionally applies a view modifier when an optional value is non-nil.
+    ///
+    /// If the optional contains a value, the closure is applied to the view, passing the unwrapped value.
+    /// Otherwise, the original view is returned unchanged.
+    ///
     /// - Parameters:
-    ///   - conditional: Optional value.
-    ///   - content: Closure to run on view with unwrapped optional.
+    ///   - conditional: An optional value to check.
+    ///   - content: A closure that takes the original view and the unwrapped value, returning a modified view.
+    /// - Returns: Either the modified view (if the optional is non-nil) or the original view (if the optional is nil).
     @ViewBuilder func iflet<Content: View, T>(
         _ conditional: Optional<T>,
         @ViewBuilder _ content: (Self, _ value: T) -> Content

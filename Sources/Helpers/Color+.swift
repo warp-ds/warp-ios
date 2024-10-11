@@ -26,7 +26,7 @@ public extension UIColor {
                 r = (hexInt >> 16) & 0xFF
                 g = (hexInt >> 8) & 0xFF
                 b = hexInt & 0xFF
-                a = 0xFF // Default alpha to 1 (fully opaque)
+                a = 0xFF // Default alpha to fully opaque
             case 8: // RGBA (32-bit)
                 r = (hexInt >> 24) & 0xFF
                 g = (hexInt >> 16) & 0xFF
@@ -52,16 +52,18 @@ public extension UIColor {
         }
     }
     
-    
-    /// Returns hexadecimal representation of a color converted to the sRGB color space.
+    /// Returns the hexadecimal representation of the color in the sRGB color space.
+    ///
+    /// - Returns: A string in the format `#RRGGBB`.
     var hexString: String {
         guard
             let targetColorSpace = CGColorSpace(name: CGColorSpace.sRGB),
             let cgColor = self.cgColor.converted(to: targetColorSpace, intent: .relativeColorimetric, options: nil)
         else {
-            // Not possible to convert source color space to RGB
+            // Unable to convert source color space to sRGB
             return "#000000"
         }
+        
         let components = cgColor.components
         let red = components?[0] ?? 0.0
         let green = components?[1] ?? 0.0
@@ -89,11 +91,11 @@ public extension Color {
         
         let a, r, g, b: UInt64
         
-        // Switch on the length of the hex string to determine the color format
+        // Determine color format based on string length
         switch hex.count {
-        case 3: // RGB (12-bit, shorthand: #RGB)
+        case 3: // RGB (12-bit shorthand: #RGB)
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit, standard: #RRGGBB)
+        case 6: // RGB (24-bit standard: #RRGGBB)
             (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
         case 8: // RGBA (32-bit: #RRGGBBAA)
             (r, g, b, a) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
@@ -101,7 +103,7 @@ public extension Color {
             (a, r, g, b) = (1, 1, 1, 0)
         }
         
-        // Initialize the color using sRGB color space
+        // Initialize the color using the sRGB color space
         self.init(
             .sRGB,
             red: Double(r) / 255,
@@ -113,6 +115,12 @@ public extension Color {
 }
 
 extension Color {
+    /// Creates a dynamic SwiftUI color that adapts to light and dark mode settings.
+    ///
+    /// - Parameters:
+    ///   - defaultColor: The color to use in light mode.
+    ///   - darkModeColor: The color to use in dark mode.
+    /// - Returns: A `Color` object that adapts to the current user interface style.
     public static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
         return Color(
             UIColor.dynamicColor(
@@ -124,13 +132,14 @@ extension Color {
 }
 
 extension UIColor {
-    /// Convenience method to create dynamic colors for dark mode if the OS supports it (independant of FinniversKit
-    /// settings)
+    /// Creates a dynamic `UIColor` that adapts to light and dark mode settings.
+    ///
     /// - Parameters:
-    ///   - defaultColor: light mode version of the color
-    ///   - darkModeColor: dark mode version of the color
-    public class func dynamicColor(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
-        UIColor { traitCollection -> UIColor in
+    ///   - defaultColor: The color to use in light mode.
+    ///   - darkModeColor: The color to use in dark mode.
+    /// - Returns: A `UIColor` object that adapts to the current user interface style.
+    public static func dynamicColor(defaultColor: UIColor, darkModeColor: UIColor) -> UIColor {
+        return UIColor { traitCollection -> UIColor in
             switch traitCollection.userInterfaceStyle {
             case .dark:
                 return darkModeColor
@@ -143,15 +152,17 @@ extension UIColor {
 
 #if canImport(AppKit)
 extension Color {
-    // Poor implementation, rework it when `macOS` needed support.
+    /// A macOS-specific implementation of dynamic color switching based on the appearance settings.
+    ///
+    /// This implementation will need to be reworked for better macOS support.
     static func dynamicColor(defaultColor: Color, darkModeColor: Color) -> Color {
         if isInDarkMode {
             return darkModeColor
         }
-        
         return defaultColor
     }
     
+    /// Checks whether the system is currently in dark mode.
     private static var isInDarkMode: Bool {
         NSApplication
             .shared
