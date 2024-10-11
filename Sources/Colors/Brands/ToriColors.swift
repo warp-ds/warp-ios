@@ -1,294 +1,160 @@
 import SwiftUI
 
-/// Source: https://docs.google.com/spreadsheets/d/1Q-Tr_dwJVfxgh3527IFjXQKqtnPPM42QeIr-M6q-zu8/edit#gid=1864511726
+// Generated on Fri, 11 Oct 2024 10:37:57 GMT by https://github.com/warp-ds/tokens
 struct ToriColors {
-    /// Tori color palette
-    static let watermelon50  = Color(hex: "#FFF3F2")
-    static let watermelon100 = Color(hex: "#FFE6E4")
-    static let watermelon200 = Color(hex: "#FECBC7")
-    static let watermelon300 = Color(hex: "#FEB0AC")
-    static let watermelon400 = Color(hex: "#FD948F")
-    static let watermelon500 = Color(hex: "#F95157")
-    static let watermelon600 = Color(hex: "#D43D4F")
-    static let watermelon700 = Color(hex: "#982C38")
-    static let watermelon800 = Color(hex: "#5B1920")
-    static let watermelon900 = Color(hex: "#29080C")
-    
-    static let blueberry50  = Color(hex: "#F7F9FD")
-    static let blueberry100 = Color(hex: "#D7E0F4")
-    static let blueberry200 = Color(hex: "#B4C9EC")
-    static let blueberry300 = Color(hex: "#91B2E4")
-    static let blueberry400 = Color(hex: "#6E9BDC")
-    static let blueberry500 = Color(hex: "#4D88DB")
-    static let blueberry600 = Color(hex: "#296DCC")
-    static let blueberry700 = Color(hex: "#1D4E92")
-    static let blueberry800 = Color(hex: "#122F58")
-    static let blueberry900 = Color(hex: "#06101E")
-    
-    static let blue50  = Color(hex: "#ECF7FE")
-    static let blue100 = Color(hex: "#C7E7FB")
-    static let blue200 = Color(hex: "#A2D5F5")
-    static let blue300 = Color(hex: "#7DC3EF")
-    static let blue400 = Color(hex: "#58B1E9")
-    static let blue500 = Color(hex: "#339FE3")
-    static let blue600 = Color(hex: "#0E8DDD")
-    static let blue700 = Color(hex: "#0A659F")
-    static let blue800 = Color(hex: "#063D61")
-    static let blue900 = Color(hex: "#021622")
-    
-    static let green50  = Color(hex: "#F3FCF9")
-    static let green100 = Color(hex: "#CEE8DC")
-    static let green200 = Color(hex: "#AAD6C4")
-    static let green300 = Color(hex: "#86C4AC")
-    static let green400 = Color(hex: "#62B294")
-    static let green500 = Color(hex: "#3EA07C")
-    static let green600 = Color(hex: "#1A8F64")
-    static let green700 = Color(hex: "#136647")
-    static let green800 = Color(hex: "#0C3E2A")
-    static let green900 = Color(hex: "#072719")
-    
-    static let yellow50  = Color(hex: "#FEF7F1")
-    static let yellow100 = Color(hex: "#FDE8D5")
-    static let yellow200 = Color(hex: "#FBD6B4")
-    static let yellow300 = Color(hex: "#F9C493")
-    static let yellow400 = Color(hex: "#F7B272")
-    static let yellow500 = Color(hex: "#F5A051")
-    static let yellow600 = Color(hex: "#F38E30")
-    static let yellow700 = Color(hex: "#AD6421")
-    static let yellow800 = Color(hex: "#673A12")
-    static let yellow900 = Color(hex: "#221102")
-    
-    static let red50  = Color(hex: "#FEF6F7")
-    static let red100 = Color(hex: "#EDCED1")
-    static let red200 = Color(hex: "#DBA7AD")
-    static let red300 = Color(hex: "#C98089")
-    static let red400 = Color(hex: "#B75965")
-    static let red500 = Color(hex: "#A53241")
-    static let red600 = Color(hex: "#930B1D")
-    static let red700 = Color(hex: "#7D1024")
-    static let red800 = Color(hex: "#520B18")
-    static let red900 = Color(hex: "#27070D")
-    
-    static let gray50  = Color(hex: "#F6F6F6")
-    static let gray100 = Color(hex: "#F0F0F2")
-    static let gray200 = Color(hex: "#DEDEE3")
-    static let gray300 = Color(hex: "#CACAD1")
-    static let gray400 = Color(hex: "#AFAFB8")
-    static let gray500 = Color(hex: "#84848F")
-    static let gray600 = Color(hex: "#5C5C66")
-    static let gray700 = Color(hex: "#47474F")
-    static let gray750 = Color(hex: "#333338")
-    static let gray800 = Color(hex: "#2B2B30")
-    static let gray850 = Color(hex: "#26262B")
-    static let gray900 = Color(hex: "#1B1B1F")
-    static let gray950 = Color(hex: "#121212")
-    
+    static let blueberry50 = Color(hex: "#f7f9fd")
+    static let blueberry100 = Color(hex: "#d7e0f4")
+    static let blueberry200 = Color(hex: "#b4c9ec")
+    static let blueberry300 = Color(hex: "#91b2e4")
+    static let blueberry400 = Color(hex: "#6e9bdc")
+    static let blueberry500 = Color(hex: "#4d88db")
+    static let blueberry600 = Color(hex: "#296dcc")
+    static let blueberry700 = Color(hex: "#1d4e92")
+    static let blueberry800 = Color(hex: "#122f58")
+    static let blueberry900 = Color(hex: "#06101e")
     static let white = Color(hex: "#ffffff")
     static let black = Color(hex: "#000000")
+    static let watermelon50 = Color(hex: "#fff3f2")
+    static let watermelon100 = Color(hex: "#ffe6e4")
+    static let watermelon200 = Color(hex: "#fecbc7")
+    static let watermelon300 = Color(hex: "#feb0ac")
+    static let watermelon400 = Color(hex: "#fd948f")
+    static let watermelon500 = Color(hex: "#f95157")
+    static let watermelon600 = Color(hex: "#d43d4f")
+    static let watermelon700 = Color(hex: "#982c38")
+    static let watermelon800 = Color(hex: "#5b1920")
+    static let watermelon900 = Color(hex: "#29080c")
+    static let blue50 = Color(hex: "#ecf7fe")
+    static let blue100 = Color(hex: "#c7e7fb")
+    static let blue200 = Color(hex: "#a2d5f5")
+    static let blue300 = Color(hex: "#7dc3ef")
+    static let blue400 = Color(hex: "#58b1e9")
+    static let blue500 = Color(hex: "#339fe3")
+    static let blue600 = Color(hex: "#0e8ddd")
+    static let blue700 = Color(hex: "#0a659f")
+    static let blue800 = Color(hex: "#063d61")
+    static let blue900 = Color(hex: "#021622")
+    static let green50 = Color(hex: "#f3fcf9")
+    static let green100 = Color(hex: "#cee8dc")
+    static let green200 = Color(hex: "#aad6c4")
+    static let green300 = Color(hex: "#86c4ac")
+    static let green400 = Color(hex: "#62b294")
+    static let green500 = Color(hex: "#3ea07c")
+    static let green600 = Color(hex: "#1a8f64")
+    static let green700 = Color(hex: "#136647")
+    static let green800 = Color(hex: "#0c3e2a")
+    static let green900 = Color(hex: "#072719")
+    static let yellow50 = Color(hex: "#fef7f1")
+    static let yellow100 = Color(hex: "#fde8d5")
+    static let yellow200 = Color(hex: "#fbd6b4")
+    static let yellow300 = Color(hex: "#f9c493")
+    static let yellow400 = Color(hex: "#f7b272")
+    static let yellow500 = Color(hex: "#f5a051")
+    static let yellow600 = Color(hex: "#f38e30")
+    static let yellow700 = Color(hex: "#ad6421")
+    static let yellow800 = Color(hex: "#673a12")
+    static let yellow900 = Color(hex: "#221102")
+    static let red50 = Color(hex: "#fef6f7")
+    static let red100 = Color(hex: "#edced1")
+    static let red200 = Color(hex: "#dba7ad")
+    static let red300 = Color(hex: "#c98089")
+    static let red400 = Color(hex: "#b75965")
+    static let red500 = Color(hex: "#a53241")
+    static let red600 = Color(hex: "#930b1d")
+    static let red700 = Color(hex: "#7d1024")
+    static let red800 = Color(hex: "#520b18")
+    static let red900 = Color(hex: "#27070d")
+    static let gray50 = Color(hex: "#f6f6f6")
+    static let gray100 = Color(hex: "#f0f0f2")
+    static let gray200 = Color(hex: "#dedee3")
+    static let gray300 = Color(hex: "#cacad1")
+    static let gray400 = Color(hex: "#afafb8")
+    static let gray500 = Color(hex: "#84848f")
+    static let gray600 = Color(hex: "#5c5c66")
+    static let gray700 = Color(hex: "#47474f")
+    static let gray750 = Color(hex: "#333338")
+    static let gray800 = Color(hex: "#2b2b30")
+    static let gray850 = Color(hex: "#26262b")
+    static let gray900 = Color(hex: "#1b1b1f")
+    static let gray950 = Color(hex: "#121212")
+    static let transparent = Color(hex: "#ffffff00")
 }
 
 struct ToriUIColors {
-    /// Tori color palette
-    static let watermelon50  = UIColor(hex: "#FFF3F2")
-    static let watermelon100 = UIColor(hex: "#FFE6E4")
-    static let watermelon200 = UIColor(hex: "#FECBC7")
-    static let watermelon300 = UIColor(hex: "#FEB0AC")
-    static let watermelon400 = UIColor(hex: "#FD948F")
-    static let watermelon500 = UIColor(hex: "#F95157")
-    static let watermelon600 = UIColor(hex: "#D43D4F")
-    static let watermelon700 = UIColor(hex: "#982C38")
-    static let watermelon800 = UIColor(hex: "#5B1920")
-    static let watermelon900 = UIColor(hex: "#29080C")
-    
-    static let blueberry50  = UIColor(hex: "#F7F9FD")
-    static let blueberry100 = UIColor(hex: "#D7E0F4")
-    static let blueberry200 = UIColor(hex: "#B4C9EC")
-    static let blueberry300 = UIColor(hex: "#91B2E4")
-    static let blueberry400 = UIColor(hex: "#6E9BDC")
-    static let blueberry500 = UIColor(hex: "#4D88DB")
-    static let blueberry600 = UIColor(hex: "#296DCC")
-    static let blueberry700 = UIColor(hex: "#1D4E92")
-    static let blueberry800 = UIColor(hex: "#122F58")
-    static let blueberry900 = UIColor(hex: "#06101E")
-    
-    static let blue50  = UIColor(hex: "#ECF7FE")
-    static let blue100 = UIColor(hex: "#C7E7FB")
-    static let blue200 = UIColor(hex: "#A2D5F5")
-    static let blue300 = UIColor(hex: "#7DC3EF")
-    static let blue400 = UIColor(hex: "#58B1E9")
-    static let blue500 = UIColor(hex: "#339FE3")
-    static let blue600 = UIColor(hex: "#0E8DDD")
-    static let blue700 = UIColor(hex: "#0A659F")
-    static let blue800 = UIColor(hex: "#063D61")
-    static let blue900 = UIColor(hex: "#021622")
-    
-    static let green50  = UIColor(hex: "#F3FCF9")
-    static let green100 = UIColor(hex: "#CEE8DC")
-    static let green200 = UIColor(hex: "#AAD6C4")
-    static let green300 = UIColor(hex: "#86C4AC")
-    static let green400 = UIColor(hex: "#62B294")
-    static let green500 = UIColor(hex: "#3EA07C")
-    static let green600 = UIColor(hex: "#1A8F64")
-    static let green700 = UIColor(hex: "#136647")
-    static let green800 = UIColor(hex: "#0C3E2A")
-    static let green900 = UIColor(hex: "#072719")
-    
-    static let yellow50  = UIColor(hex: "#FEF7F1")
-    static let yellow100 = UIColor(hex: "#FDE8D5")
-    static let yellow200 = UIColor(hex: "#FBD6B4")
-    static let yellow300 = UIColor(hex: "#F9C493")
-    static let yellow400 = UIColor(hex: "#F7B272")
-    static let yellow500 = UIColor(hex: "#F5A051")
-    static let yellow600 = UIColor(hex: "#F38E30")
-    static let yellow700 = UIColor(hex: "#AD6421")
-    static let yellow800 = UIColor(hex: "#673A12")
-    static let yellow900 = UIColor(hex: "#221102")
-    
-    static let red50  = UIColor(hex: "#FEF6F7")
-    static let red100 = UIColor(hex: "#EDCED1")
-    static let red200 = UIColor(hex: "#DBA7AD")
-    static let red300 = UIColor(hex: "#C98089")
-    static let red400 = UIColor(hex: "#B75965")
-    static let red500 = UIColor(hex: "#A53241")
-    static let red600 = UIColor(hex: "#930B1D")
-    static let red700 = UIColor(hex: "#7D1024")
-    static let red800 = UIColor(hex: "#520B18")
-    static let red900 = UIColor(hex: "#27070D")
-    
-    static let gray50  = UIColor(hex: "#F6F6F6")
-    static let gray100 = UIColor(hex: "#F0F0F2")
-    static let gray200 = UIColor(hex: "#DEDEE3")
-    static let gray300 = UIColor(hex: "#CACAD1")
-    static let gray400 = UIColor(hex: "#AFAFB8")
-    static let gray500 = UIColor(hex: "#84848F")
-    static let gray600 = UIColor(hex: "#5C5C66")
-    static let gray700 = UIColor(hex: "#47474F")
-    static let gray750 = UIColor(hex: "#333338")
-    static let gray800 = UIColor(hex: "#2B2B30")
-    static let gray850 = UIColor(hex: "#26262B")
-    static let gray900 = UIColor(hex: "#1B1B1F")
-    static let gray950 = UIColor(hex: "#121212")
-    
+    static let blueberry50 = UIColor(hex: "#f7f9fd")
+    static let blueberry100 = UIColor(hex: "#d7e0f4")
+    static let blueberry200 = UIColor(hex: "#b4c9ec")
+    static let blueberry300 = UIColor(hex: "#91b2e4")
+    static let blueberry400 = UIColor(hex: "#6e9bdc")
+    static let blueberry500 = UIColor(hex: "#4d88db")
+    static let blueberry600 = UIColor(hex: "#296dcc")
+    static let blueberry700 = UIColor(hex: "#1d4e92")
+    static let blueberry800 = UIColor(hex: "#122f58")
+    static let blueberry900 = UIColor(hex: "#06101e")
     static let white = UIColor(hex: "#ffffff")
     static let black = UIColor(hex: "#000000")
-}
-
-public struct ToriColorsView: View {
-    public init() {}
-
-    public var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack (alignment: .leading) {
-                createView(for: "Watermelon",
-                           colors: [ToriColors.watermelon50,
-                                    ToriColors.watermelon100,
-                                    ToriColors.watermelon200,
-                                    ToriColors.watermelon300,
-                                    ToriColors.watermelon400,
-                                    ToriColors.watermelon500,
-                                    ToriColors.watermelon600,
-                                    ToriColors.watermelon700,
-                                    ToriColors.watermelon800,
-                                    ToriColors.watermelon900])
-                
-                createView(for: "Blueberry",
-                           colors: [ToriColors.blueberry50,
-                                    ToriColors.blueberry100,
-                                    ToriColors.blueberry200,
-                                    ToriColors.blueberry300,
-                                    ToriColors.blueberry400,
-                                    ToriColors.blueberry500,
-                                    ToriColors.blueberry600,
-                                    ToriColors.blueberry700,
-                                    ToriColors.blueberry800,
-                                    ToriColors.blueberry900])
-                
-                createView(for: "Blue",
-                           colors: [ToriColors.blue50,
-                                    ToriColors.blue100,
-                                    ToriColors.blue200,
-                                    ToriColors.blue300,
-                                    ToriColors.blue400,
-                                    ToriColors.blue500,
-                                    ToriColors.blue600,
-                                    ToriColors.blue700,
-                                    ToriColors.blue800,
-                                    ToriColors.blue900])
-                
-                createView(for: "Green",
-                           colors: [ToriColors.green50,
-                                    ToriColors.green100,
-                                    ToriColors.green200,
-                                    ToriColors.green300,
-                                    ToriColors.green400,
-                                    ToriColors.green500,
-                                    ToriColors.green600,
-                                    ToriColors.green700,
-                                    ToriColors.green800,
-                                    ToriColors.green900])
-                
-                createView(for: "Yellow",
-                           colors: [ToriColors.yellow50,
-                                    ToriColors.yellow100,
-                                    ToriColors.yellow200,
-                                    ToriColors.yellow300,
-                                    ToriColors.yellow400,
-                                    ToriColors.yellow500,
-                                    ToriColors.yellow600,
-                                    ToriColors.yellow700,
-                                    ToriColors.yellow800,
-                                    ToriColors.yellow900])
-                
-                createView(for: "Red",
-                           colors: [ToriColors.red50,
-                                    ToriColors.red100,
-                                    ToriColors.red200,
-                                    ToriColors.red300,
-                                    ToriColors.red400,
-                                    ToriColors.red500,
-                                    ToriColors.red600,
-                                    ToriColors.red700,
-                                    ToriColors.red800,
-                                    ToriColors.red900])
-                
-                createView(for: "Gray",
-                           colors: [ToriColors.gray50,
-                                    ToriColors.gray100,
-                                    ToriColors.gray200,
-                                    ToriColors.gray300,
-                                    ToriColors.gray400,
-                                    ToriColors.gray500,
-                                    ToriColors.gray600,
-                                    ToriColors.gray700,
-                                    ToriColors.gray750,
-                                    ToriColors.gray800,
-                                    ToriColors.gray850,
-                                    ToriColors.gray900,
-                                    ToriColors.gray950,])
-            }
-            .padding(.horizontal)
-            .navigationTitle("Colors")
-            .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-
-    private func createView(for colorGroup: String, colors: [Color]) -> some View {
-        return GroupBox(
-            content: {
-                HStack(spacing: 1) {
-                    ForEach(colors, id: \.self) { color in
-                        Rectangle()
-                            .aspectRatio(1.0, contentMode: .fit)
-                            .foregroundColor(color)
-                    }
-                }
-            }, label: {
-                Text(colorGroup)
-            }
-        )
-    }
-}
-
-#Preview {
-    ToriColorsView()
+    static let watermelon50 = UIColor(hex: "#fff3f2")
+    static let watermelon100 = UIColor(hex: "#ffe6e4")
+    static let watermelon200 = UIColor(hex: "#fecbc7")
+    static let watermelon300 = UIColor(hex: "#feb0ac")
+    static let watermelon400 = UIColor(hex: "#fd948f")
+    static let watermelon500 = UIColor(hex: "#f95157")
+    static let watermelon600 = UIColor(hex: "#d43d4f")
+    static let watermelon700 = UIColor(hex: "#982c38")
+    static let watermelon800 = UIColor(hex: "#5b1920")
+    static let watermelon900 = UIColor(hex: "#29080c")
+    static let blue50 = UIColor(hex: "#ecf7fe")
+    static let blue100 = UIColor(hex: "#c7e7fb")
+    static let blue200 = UIColor(hex: "#a2d5f5")
+    static let blue300 = UIColor(hex: "#7dc3ef")
+    static let blue400 = UIColor(hex: "#58b1e9")
+    static let blue500 = UIColor(hex: "#339fe3")
+    static let blue600 = UIColor(hex: "#0e8ddd")
+    static let blue700 = UIColor(hex: "#0a659f")
+    static let blue800 = UIColor(hex: "#063d61")
+    static let blue900 = UIColor(hex: "#021622")
+    static let green50 = UIColor(hex: "#f3fcf9")
+    static let green100 = UIColor(hex: "#cee8dc")
+    static let green200 = UIColor(hex: "#aad6c4")
+    static let green300 = UIColor(hex: "#86c4ac")
+    static let green400 = UIColor(hex: "#62b294")
+    static let green500 = UIColor(hex: "#3ea07c")
+    static let green600 = UIColor(hex: "#1a8f64")
+    static let green700 = UIColor(hex: "#136647")
+    static let green800 = UIColor(hex: "#0c3e2a")
+    static let green900 = UIColor(hex: "#072719")
+    static let yellow50 = UIColor(hex: "#fef7f1")
+    static let yellow100 = UIColor(hex: "#fde8d5")
+    static let yellow200 = UIColor(hex: "#fbd6b4")
+    static let yellow300 = UIColor(hex: "#f9c493")
+    static let yellow400 = UIColor(hex: "#f7b272")
+    static let yellow500 = UIColor(hex: "#f5a051")
+    static let yellow600 = UIColor(hex: "#f38e30")
+    static let yellow700 = UIColor(hex: "#ad6421")
+    static let yellow800 = UIColor(hex: "#673a12")
+    static let yellow900 = UIColor(hex: "#221102")
+    static let red50 = UIColor(hex: "#fef6f7")
+    static let red100 = UIColor(hex: "#edced1")
+    static let red200 = UIColor(hex: "#dba7ad")
+    static let red300 = UIColor(hex: "#c98089")
+    static let red400 = UIColor(hex: "#b75965")
+    static let red500 = UIColor(hex: "#a53241")
+    static let red600 = UIColor(hex: "#930b1d")
+    static let red700 = UIColor(hex: "#7d1024")
+    static let red800 = UIColor(hex: "#520b18")
+    static let red900 = UIColor(hex: "#27070d")
+    static let gray50 = UIColor(hex: "#f6f6f6")
+    static let gray100 = UIColor(hex: "#f0f0f2")
+    static let gray200 = UIColor(hex: "#dedee3")
+    static let gray300 = UIColor(hex: "#cacad1")
+    static let gray400 = UIColor(hex: "#afafb8")
+    static let gray500 = UIColor(hex: "#84848f")
+    static let gray600 = UIColor(hex: "#5c5c66")
+    static let gray700 = UIColor(hex: "#47474f")
+    static let gray750 = UIColor(hex: "#333338")
+    static let gray800 = UIColor(hex: "#2b2b30")
+    static let gray850 = UIColor(hex: "#26262b")
+    static let gray900 = UIColor(hex: "#1b1b1f")
+    static let gray950 = UIColor(hex: "#121212")
+    static let transparent = UIColor(hex: "#ffffff00")
 }

@@ -36,13 +36,13 @@ struct ContentView: View {
                                 .padding()
                         }
                     case .dba:
-                        NavigationLink(destination: DBAColorsView()) {
-                            Text("BrandColors")
+                        NavigationLink(destination: DbaColorsView()) {
+                            Text("Colors")
                                 .padding()
                         }
                     case .blocket:
                         NavigationLink(destination: BlocketColorsView()) {
-                            Text("BrandColors")
+                            Text("Colors")
                                 .padding()
                         }
                     }
