@@ -45,6 +45,11 @@ struct ContentView: View {
                             Text("Colors")
                                 .padding()
                         }
+                    case .oikotie:
+                        NavigationLink(destination: OikotieColorsView()) {
+                            Text("Colors")
+                                .padding()
+                        }
                     }
                     Divider()
 

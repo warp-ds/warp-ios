@@ -127,6 +127,8 @@ extension Warp {
                 [.dbaAltBold, .dbaAltLight, .dbaAltThin, .dbaBlack, .dbaBold, .dbaExtraBold, .dbaThin, .dbaRegular]
             case .blocket:
                 [.blocketDisplay, .blocketBold, .blocketMedium, .blocketRegular]
+            case .oikotie:
+                []
             }
         }
     }

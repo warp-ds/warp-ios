@@ -177,6 +177,8 @@ extension Warp.Typography {
                 return createFont(from: BlocketDisplayFont(size: size, style: fontStyle))
             }
             return createFont(from: BlocketBoldFont(size: size, style: fontStyle))
+        case .oikotie:
+            return Font.system(size: size).bold()
         }
     }
 
@@ -190,6 +192,8 @@ extension Warp.Typography {
             return createFont(from: DbaRegularFont(size: size, style: fontStyle))
         case .blocket:
             return createFont(from: BlocketRegularFont(size: size, style: fontStyle))
+        case .oikotie:
+            return Font.system(size: size)
         }
     }
     
@@ -206,6 +210,8 @@ extension Warp.Typography {
                 return createUIFont(from: BlocketDisplayFont(size: size, style: fontStyle))
             }
             return createUIFont(from: BlocketBoldFont(size: size, style: fontStyle))
+        case .oikotie:
+            return UIFont.systemFont(ofSize: size, weight: .bold)
         }
     }
 
@@ -219,6 +225,8 @@ extension Warp.Typography {
             return createUIFont(from: DbaRegularFont(size: size, style: fontStyle))
         case .blocket:
             return createUIFont(from: BlocketRegularFont(size: size, style: fontStyle))
+        case .oikotie:
+            return UIFont.systemFont(ofSize: size, weight: .regular)
         }
     }
 }
