@@ -11,12 +11,9 @@ extension Warp {
     ///   - step: The increment by which the slider value should change. Defaults to `1.0`.
     ///   - onEditingChanged: A closure that is called when the slider's thumb is released, passing the final value as an argument.
 
-#if swift(<6.0)
-    @preconcurrency @MainActor
-#endif
     public struct Slider: View {
         // Constants for styling
-        private let cornerRadius: CGFloat = 4
+        private let cornerRadius = Warp.Border.borderRadius50
         private let trackColor = Warp.Color.sliderTrackBackground
         private let filledTrackColor = Warp.Color.sliderTrackBackgroundActive
         private let thumbColor = Warp.Color.sliderHandleBackground
