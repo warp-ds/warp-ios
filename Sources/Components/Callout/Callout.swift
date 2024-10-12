@@ -74,7 +74,7 @@ extension Warp {
         private var contentView: some View {
             HStack {
                 Text(title, style: size.textStyle)
-                    .foregroundColor(colorProvider.calloutText)
+                    .foregroundColor(colorProvider.token.text)
 
                 switch type {
                 case .inline:

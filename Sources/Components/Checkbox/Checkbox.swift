@@ -86,26 +86,26 @@ extension Warp {
         private var tintColor: Color {
             switch (isSelected, style) {
             case (true, .default):
-                return colorProvider.checkboxBackgroundSelected
+                return colorProvider.token.backgroundPrimary
             case (true, .error):
-                return colorProvider.checkboxNegativeBackgroundSelected
+                return colorProvider.token.backgroundNegative
             case (true, .disabled):
-                return colorProvider.checkboxBackgroundSelectedDisabled
+                return colorProvider.token.backgroundDisabled
             case (false, .default):
-                return colorProvider.checkboxBorder
+                return colorProvider.token.border
             case (false, .error):
-                return colorProvider.checkboxNegativeBorder
+                return colorProvider.token.borderNegative
             case (false, .disabled):
-                return colorProvider.checkboxBorderDisabled
+                return colorProvider.token.borderDisabled
             }
         }
         
         private var backgroundColor: Color {
             switch style {
             case .default, .error:
-                return colorProvider.checkboxBackground
+                return colorProvider.token.background
             case .disabled:
-                return colorProvider.checkboxBackgroundDisabled
+                return colorProvider.token.backgroundDisabledSubtle
             }
         }
         

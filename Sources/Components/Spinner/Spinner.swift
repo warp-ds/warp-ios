@@ -36,7 +36,7 @@ extension Warp {
             ZStack {
                 Circle()
                     .stroke(lineWidth: lineWidth)
-                    .fill(colorProvider.spinnerBorder)
+                    .fill(colorProvider.token.borderPrimarySubtle)
                     .frame(width: size.value, height: size.value)
                 
                 Circle()
@@ -44,7 +44,7 @@ extension Warp {
                     .stroke(lineWidth: lineWidth)
                     .rotationEffect(.degrees(isCircleRotating ? 0 : 360))
                     .frame(width: size.value, height: size.value)
-                    .foregroundColor(colorProvider.spinnerBorderTop)
+                    .foregroundColor(colorProvider.token.borderPrimary)
                     .onAppear() {
                         DispatchQueue.main.async {
                             withAnimation(Animation

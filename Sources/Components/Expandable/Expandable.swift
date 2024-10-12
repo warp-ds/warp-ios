@@ -81,7 +81,7 @@ extension Warp {
                     Warp.Text(
                         title,
                         style: .bodyStrong,
-                        color: colorProvider.expandableTitleText
+                        color: colorProvider.token.text
                     )
 
                     if style != .default {
@@ -90,7 +90,7 @@ extension Warp {
 
                     Image("icon-expandable-chevron", bundle: .module)
                         .renderingMode(.template)
-                        .foregroundColor(colorProvider.expandableIcon)
+                        .foregroundColor(colorProvider.token.icon)
                         .frame(width: 16, height: 16)
                         .rotationEffect(.degrees(isExpanded ? 180 : 0))
 
@@ -141,7 +141,7 @@ public extension Warp {
                     Warp.Text(
                         subtitle,
                         style: .body,
-                        color: colorProvider.expandableParagraphText
+                        color: colorProvider.token.text
                     )
 
                     Spacer()

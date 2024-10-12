@@ -20,9 +20,9 @@ extension Warp.Pill {
         private var normalForegroundColor: Color {
             switch style {
             case .filter:
-                return colorProvider.pillFilterText
+                return colorProvider.token.textInverted
             case .suggestion:
-                return colorProvider.pillSuggestionText
+                return colorProvider.token.text
             }
         }
 
@@ -36,7 +36,7 @@ extension Warp.Pill {
         private var normalBackgroundColor: Color {
             switch style {
             case .filter:
-                return colorProvider.pillFilterBackground
+                return colorProvider.token.backgroundPrimary
             case .suggestion:
                 return colorProvider.pillSuggestionBackground
             }
@@ -45,7 +45,7 @@ extension Warp.Pill {
         private var pressedBackgroundColor: Color {
             switch style {
             case .filter:
-                return colorProvider.pillFilterBackgroundActive
+                return colorProvider.token.backgroundPrimaryActive
             case .suggestion:
                 return colorProvider.pillSuggestionBackgroundActive
             }

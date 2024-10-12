@@ -118,7 +118,7 @@ extension Warp {
         }
         
         private var backgroundView: some View {
-            colorProvider.cardBackground
+            colorProvider.token.surfaceElevated200
         }
         
         private var foregroundView: some View {

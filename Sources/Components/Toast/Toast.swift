@@ -95,44 +95,37 @@ extension Warp.ToastStyle {
     fileprivate func backgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
         case .error:
-            colorProvider.toastNegativeBackground
+            colorProvider.token.backgroundNegativeSubtle
         case .success:
-            colorProvider.toastPositiveBackground
+            colorProvider.token.backgroundPositiveSubtle
         case .warning:
-            colorProvider.toastWarningBackground
+            colorProvider.token.backgroundWarningSubtle
         }
     }
 
     fileprivate func subtleBorderColor(from colorProvider: ColorProvider) -> Color {
         switch self {
         case .error:
-            colorProvider.toastNegativeSubtleBorder
+            colorProvider.token.borderNegativeSubtle
         case .success:
-            colorProvider.toastPositiveSubtleBorder
+            colorProvider.token.borderPositiveSubtle
         case .warning:
-            colorProvider.toastWarningSubtleBorder
+            colorProvider.token.borderWarningSubtle
         }
     }
 
     fileprivate func textColor(from colorProvider: ColorProvider) -> Color {
-        switch self {
-        case .error:
-            colorProvider.toastNegativeText
-        case .success:
-            colorProvider.toastPositiveText
-        case .warning:
-            colorProvider.toastWarningText
-        }
+        colorProvider.token.text
     }
 
     fileprivate func iconColor(from colorProvider: ColorProvider) -> Color {
         switch self {
         case .error:
-            colorProvider.toastNegativeIcon
+            colorProvider.token.iconNegative
         case .success:
-            colorProvider.toastPositiveIcon
+            colorProvider.token.iconPositive
         case .warning:
-            colorProvider.toastWarningIcon
+            colorProvider.token.iconWarning
         }
     }
 

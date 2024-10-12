@@ -53,13 +53,13 @@ extension Warp {
                 .overlay(
                     ZStack(alignment: .leading) {
                         RoundedRectangle(cornerRadius: broadcastCornerRadius)
-                            .stroke(colorProvider.broadcastBorderSubtle, lineWidth: 4)
-                        colorProvider.broadcastBorder
+                            .stroke(colorProvider.token.borderWarningSubtle, lineWidth: 4)
+                        colorProvider.token.borderWarning
                             .frame(width: 6)
                     }
                 )
                 .frame(maxWidth: .infinity)
-                .background(colorProvider.broadcastBackground)
+                .background(colorProvider.token.backgroundWarningSubtle)
                 .cornerRadius(broadcastCornerRadius)
                 .transition(.move(edge: broadcastEdge.asEdge).combined(with: .opacity))
                 .onTapGesture {
@@ -85,21 +85,19 @@ extension Warp {
         private var warningImageView: some View {
             Image(systemName: "exclamationmark.triangle.fill")
                 .renderingMode(.template)
-                .foregroundColor(colorProvider.broadcastIcon)
+                .foregroundColor(colorProvider.token.iconWarning)
         }
         
         private var textView: some View {
             Text(text, style: .body)
                 .padding(.leading, 8)
-                .foregroundStyle(colorProvider.broadcastText)
+                .foregroundStyle(colorProvider.token.text)
         }
         
         private var closeView: some View {
             Image("icon-close", bundle: .module)
-        }
-        
-        private var leftLineView: some View {
-            return colorProvider.broadcastBorder
+                .renderingMode(.template)
+                .foregroundColor(colorProvider.token.icon)
         }
     }
 }

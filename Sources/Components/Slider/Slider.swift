@@ -14,9 +14,9 @@ extension Warp {
     public struct Slider: View {
         // Constants for styling
         private let cornerRadius = Warp.Border.borderRadius50
-        private let trackColor = Warp.Color.sliderTrackBackground
-        private let filledTrackColor = Warp.Color.sliderTrackBackgroundActive
-        private let thumbColor = Warp.Color.sliderHandleBackground
+        private let trackColor = Warp.Token.backgroundDisabledSubtle
+        private let filledTrackColor = Warp.Token.backgroundPrimary
+        private let thumbColor = Warp.Token.backgroundPrimary
 
         @Binding var value: Double // Binding value to update the slider value
         let range: ClosedRange<Double> // Defines the range for the slider
