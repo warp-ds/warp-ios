@@ -3,7 +3,7 @@ import Warp
 
 struct LabelView: View {
     
-    @State private var showToolTipImage = true
+    @State private var showTooltipImage = true
     @State private var title = "Title"
     @State private var additionalInformation = "Optional"
     
@@ -15,7 +15,7 @@ struct LabelView: View {
                     Warp.Label(
                         title: title,
                         additionalInformation: additionalInformation,
-                        showToolTipImage: showToolTipImage,
+                        showTooltipImage: showTooltipImage,
                         tooltipContent: createTooltipView
                     )
                     Spacer()
@@ -49,7 +49,7 @@ struct LabelView: View {
                         Text("Show tooltip")
                             .padding(.leading)
                         Spacer()
-                        Toggle(isOn: $showToolTipImage.animation(.bouncy)) {}
+                        Toggle(isOn: $showTooltipImage.animation(.bouncy)) {}
                             .padding()
                     }
                 }
