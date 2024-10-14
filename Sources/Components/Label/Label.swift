@@ -69,7 +69,7 @@ extension Warp {
         // MARK: - Body
 
         public var body: some View {
-            HStack {
+            HStack(spacing: 4) {
                 titleView
                 optionalLabelView
                 toolTipView
