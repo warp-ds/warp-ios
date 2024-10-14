@@ -2,6 +2,26 @@ import Foundation
 import SwiftUI
 
 extension Warp {
+    /// A customizable label component used to display a title, optional additional information, and an info tooltip.
+    ///
+    /// The `Warp.Label` component displays a main title with optional additional information. It can also show an info icon which, when tapped, presents custom tooltip content provided by the user.
+    ///
+    /// **Usage:**
+    ///
+    /// ```swift
+    /// Warp.Label(
+    ///     title: "Label Title",
+    ///     additionalInformation: "Optional Info",
+    ///     showToolTipImage: true,
+    ///     tooltipContent: AnyView(Warp.Tooltip(title: "Tooltip text"))
+    /// )
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - title: The main title text to display.
+    ///   - additionalInformation: Optional text to display after the title.
+    ///   - showToolTipImage: Indicates whether to show the tooltip icon.
+    ///   - tooltipContent: An optional view to display when the tooltip icon is tapped.
     public struct Label: View {
 
         // MARK: - Properties
@@ -25,6 +45,15 @@ extension Warp {
         let tooltipContent: AnyView?
 
         
+        // MARK: - Initialization
+
+        /// Creates a new `Label` instance.
+        ///
+        /// - Parameters:
+        ///   - title: The main title text to display.
+        ///   - additionalInformation: Optional text to display after the title.
+        ///   - showToolTipImage: Indicates whether to show the tooltip icon.
+        ///   - tooltipContent: An optional view to display when the tooltip icon is tapped.
         public init(
             title: String,
             additionalInformation: String? = nil,
@@ -37,6 +66,7 @@ extension Warp {
             self.tooltipContent = tooltipContent
         }
 
+        // MARK: - Body
 
         public var body: some View {
             HStack {
@@ -46,6 +76,7 @@ extension Warp {
             }
         }
 
+        // MARK: - Subviews
 
         /// View displaying the main title text.
         @ViewBuilder
