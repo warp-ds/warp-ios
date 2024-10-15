@@ -126,6 +126,13 @@ struct ContentView: View {
 
                     Divider()
                     
+                    NavigationLink(destination: HelpTextView()) {
+                        Text("HelpText")
+                            .padding()
+                    }
+
+                    Divider()
+                    
                     NavigationLink(destination: IconView()) {
                         Text("Icon")
                             .padding()
