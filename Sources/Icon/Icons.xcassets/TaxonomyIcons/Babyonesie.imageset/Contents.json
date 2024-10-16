@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Babyonesie.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
