@@ -7,7 +7,7 @@ extension View {
     ///   - radius: The radius to apply to the specified corners.
     ///   - corners: The corners to which the radius should be applied (e.g., `.topLeft`, `.bottomRight`).
     /// - Returns: A view with the specified corners rounded.
-    public func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         ModifiedContent(content: self, modifier: CornerRadiusStyle(radius: radius, corners: corners))
     }
     
