@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct ToriColorsView: View {
     public init() {}
-
+    
     public var body: some View {
         ScrollView(showsIndicators: false) {
             VStack (alignment: .leading) {
@@ -101,7 +101,7 @@ public struct ToriColorsView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-
+    
     private func createView(for colorGroup: String, colors: [Color]) -> some View {
         return GroupBox(
             content: {

@@ -50,7 +50,7 @@ extension Warp {
         
         private var contentView: some View {
             HStack {
-                Text(title, style: .caption, color: colorProvider.tooltipText)
+                Text(title, style: .caption, color: colorProvider.token.textInvertedStatic)
             }
             .padding(.horizontal, horizontalPadding)
             .padding(.vertical, verticalPadding)

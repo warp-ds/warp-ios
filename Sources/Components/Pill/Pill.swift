@@ -81,9 +81,9 @@ extension Warp {
         private var textColor: Color {
             switch style {
             case .filter:
-                return colorProvider.pillFilterText
+                return colorProvider.token.textInverted
             case .suggestion:
-                return colorProvider.pillSuggestionText
+                return colorProvider.token.text
             }
         }
         

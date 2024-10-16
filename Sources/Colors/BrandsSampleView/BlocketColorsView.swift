@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct BlocketColorsView: View {
     public init() {}
-
+    
     public var body: some View {
         ScrollView(showsIndicators: false) {
             VStack (alignment: .leading) {
@@ -89,7 +89,7 @@ public struct BlocketColorsView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-
+    
     private func createView(for colorGroup: String, colors: [Color]) -> some View {
         return GroupBox(
             content: {

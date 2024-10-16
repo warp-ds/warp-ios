@@ -30,7 +30,7 @@ struct ToolTipView: View {
         if let title = title {
             Text(title)
                 .font(.footnote)
-                .foregroundColor(colorProvider.inputTextFilled)
+                .foregroundColor(colorProvider.token.text)
         }
     }
 
@@ -40,7 +40,7 @@ struct ToolTipView: View {
             Text(additionalInformation)
                 .font(.caption)
                 .fontWeight(.thin)
-                .foregroundColor(FinnColors.gray500)
+                .foregroundColor(colorProvider.token.textSubtle)
         }
     }
 
@@ -48,7 +48,7 @@ struct ToolTipView: View {
     private var toolTipView: some View {
         if let infoToolTipView = infoToolTipView {
             infoToolTipView
-                .foregroundColor(FinnColors.gray300)
+                .foregroundColor(colorProvider.token.iconSubtle)
                 .textFieldAdditionalView()
         }
     }

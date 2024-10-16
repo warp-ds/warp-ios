@@ -25,7 +25,7 @@ extension Warp {
         }
 
         private var borderColor: Color {
-            lazy var errorColor = colorProvider.inputBorderNegative
+            lazy var errorColor = colorProvider.token.borderNegative
 
             switch state {
                 case let .normal(state):
@@ -33,29 +33,29 @@ extension Warp {
                         return errorColor
                     }
 
-                    return colorProvider.inputBorder
+                    return colorProvider.token.border
 
                 case let .active(state):
                     if state.isError {
                         return errorColor
                     }
 
-                    return colorProvider.inputBorderActive
+                    return colorProvider.token.borderFocus
 
                 case .disabled:
-                    return colorProvider.inputBorderDisabled
+                    return colorProvider.token.borderDisabled
 
                 case .readOnly:
-                    return colorProvider.inputBorder
+                    return colorProvider.token.border
             }
         }
 
         private var backgroundColor: Color {
             if state == .disabled {
-                return colorProvider.inputBackgroundDisabled
+                return colorProvider.token.backgroundDisabledSubtle
             }
 
-            return colorProvider.inputBackground
+            return colorProvider.token.background
         }
 
         private var textFieldBorderWidth: CGFloat {
@@ -83,7 +83,7 @@ extension Warp {
         }
 
         private var additionalViewForegroundColor: Color {
-            FinnColors.gray500
+            colorProvider.token.icon
         }
 
         public func _body(configuration: SwiftUI.TextField<Self._Label>) -> some View {

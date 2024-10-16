@@ -177,14 +177,14 @@ extension Warp {
         private var titleView: some View {
             if let title, !title.isEmpty {
                 Text(title, style: .title3)
-                    .foregroundColor(style.getTextColor(from: colorProvider))
+                    .foregroundColor(colorProvider.token.text)
                     .accessibilityAddTraits(.isHeader)
             }
         }
 
         private var subtitleView: some View {
             Text(subtitle, style: .body)
-                .foregroundColor(colorProvider.boxInfoText)
+                .foregroundColor(colorProvider.token.text)
                 .accessibilityRemoveTraits(.isHeader)
         }
 
@@ -324,36 +324,23 @@ extension Warp.BoxStyle {
     fileprivate func getBackgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
             case .neutral:
-                return colorProvider.boxNeutralBackground
+                return colorProvider.token.backgroundSubtle
 
             case .info:
-                return colorProvider.boxInfoBackground
+                return colorProvider.token.backgroundInfoSubtle
 
             case .bordered:
-                return colorProvider.boxBorderedBackground
+                return colorProvider.token.background
         }
     }
 
     fileprivate func getBorderColor(from colorProvider: ColorProvider) -> Color {
         switch self {
             case .bordered:
-                return colorProvider.boxBorderedBorder
+                return colorProvider.token.border
 
             default:
-                return .clear
-        }
-    }
-
-    fileprivate func getTextColor(from colorProvider: ColorProvider) -> Color {
-        switch self {
-            case .neutral:
-                return colorProvider.boxNeutralText
-
-            case .info:
-                return colorProvider.boxInfoText
-
-            case .bordered:
-                return colorProvider.boxBorderedText
+            return colorProvider.token.backgroundTransparent0
         }
     }
 }
