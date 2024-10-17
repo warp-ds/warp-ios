@@ -152,8 +152,7 @@ struct AlertView: View {
             subtitle: subtitle,
             link: linkProvider,
             primaryButton: primaryButtonProvider,
-            secondaryButton: secondaryButtonProvider,
-            colorProvider: Warp.Color
+            secondaryButton: secondaryButtonProvider
         )
     }
 
@@ -168,14 +167,7 @@ struct AlertView: View {
     }
 }
 
-extension Warp.AlertStyle: CaseIterable {
-    public static var allCases: [Warp.AlertStyle] = [
-        .info,
-        .warning,
-        .critical,
-        .success
-    ]
-
+extension Warp.AlertStyle {
     fileprivate var styleName: String {
         switch self {
             case .info:

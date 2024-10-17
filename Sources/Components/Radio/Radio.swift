@@ -80,21 +80,21 @@ extension Warp {
         private var borderColor: Color {
             switch (style, isSelected) {
             case (.default, true):
-                return colorProvider.radioBorderSelected
+                return colorProvider.token.borderSelected
             case (.default, false):
-                return colorProvider.radioBorder
+                return colorProvider.token.border
             case (.error, _):
-                return colorProvider.radioNegativeBorder
+                return colorProvider.token.borderNegative
             case (.disabled, _):
-                return colorProvider.radioBorderDisabled
+                return colorProvider.token.borderDisabled
             }
         }
         
         private var fillColor: Color {
             if style == .disabled {
-                return colorProvider.radioBackgroundDisabled
+                return colorProvider.token.backgroundDisabledSubtle
             } else {
-                return colorProvider.radioBackground
+                return colorProvider.token.background
             }
         }
         

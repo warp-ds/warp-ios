@@ -27,10 +27,10 @@ struct HelperInformationView: View, Hashable {
 
     private var foregroundColor: Color {
         if textFieldState.hasError {
-            return colorProvider.inputTextNegative
+            return colorProvider.token.textNegative
         }
 
-        return FinnColors.gray700
+        return colorProvider.token.text
     }
 
     var body: some View {

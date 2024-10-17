@@ -45,11 +45,22 @@ struct ContentView: View {
                             Text("Colors")
                                 .padding()
                         }
+                    case .oikotie:
+                        NavigationLink(destination: OikotieColorsView()) {
+                            Text("Colors")
+                                .padding()
+                        }
                     }
                     Divider()
 
                     NavigationLink(destination: IconsView()) {
                         Text("Icons")
+                            .padding()
+                    }
+                    Divider()
+                    
+                    NavigationLink(destination: TaxonomyIconsView()) {
+                        Text("Taxonomy Icons")
                             .padding()
                     }
                     Divider()
