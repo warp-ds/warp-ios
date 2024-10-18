@@ -3,7 +3,7 @@ import SwiftUI
 extension Warp {
     /// A text area component used for capturing multi-line text input.
     ///
-    /// The `Warp.TextArea` component allows for longer text inputs compared to a standard text field. It supports multiple styles: `.default`, `.disabled`, `.error`, and `.readOnly`. You can also provide an optional label and help text to display alongside the text area.
+    /// The `Warp.TextArea` component allows for longer text inputs compared to a standard text field. It supports multiple styles: `.default`, `.disabled`, `.error`, and `.readOnly`. You can also provide an optional label and help text to display alongside the text area, as well as specify the minimum height.
     ///
     /// **Usage:**
     /// ```swift
@@ -12,7 +12,8 @@ extension Warp {
     ///     text: .constant(""),
     ///     placeholder: "Enter your text here...",
     ///     style: .default,
-    ///     helpText: Warp.HelpText(text: "This is a required field.", style: .default)
+    ///     helpText: Warp.HelpText(text: "This is a required field.", style: .default),
+    ///     minHeight: 120
     /// )
     /// ```
     ///
@@ -22,6 +23,7 @@ extension Warp {
     ///   - placeholder: Text to display when the text area is empty.
     ///   - style: The style of the text area. Options are `.default`, `.disabled`, `.error`, and `.readOnly`.
     ///   - helpText: Optional `Warp.HelpText` to display below the text area.
+    ///   - minHeight: Optional minimum height for the text area. Defaults to `88`.
     public struct TextArea: View {
         
         // MARK: - Properties
@@ -51,7 +53,7 @@ extension Warp {
         private let helpText: Warp.HelpText?
         
         /// The minimum height of the text area.
-        private let minHeight: CGFloat?
+        private let minHeight: CGFloat
         
         // MARK: - Initialization
 
@@ -63,13 +65,14 @@ extension Warp {
         ///   - placeholder: Text to display when the text area is empty.
         ///   - style: The style of the text area. Defaults to `.default`.
         ///   - helpText: Optional `Warp.HelpText` to display below the text area.
+        ///   - minHeight: Optional minimum height for the text area. Defaults to `88`.
         public init(
             label: Warp.Label? = nil,
             text: Binding<String>,
             placeholder: String,
             style: Warp.TextAreaStyle = .default,
             helpText: Warp.HelpText? = nil,
-            minHeight: CGFloat? = 88
+            minHeight: CGFloat = 88
         ) {
             self.label = label
             self._text = text
@@ -107,7 +110,7 @@ extension Warp {
                         style: .body,
                         color: colorProvider.token.textPlaceholder
                     )
-                    .padding(.horizontal, horizontalPaddingValue)
+                    .padding(.horizontal, horizontalPadding)
                     .padding(.vertical, Warp.Spacing.spacing150)
                 }
                 TextEditor(text: $text)
@@ -116,7 +119,7 @@ extension Warp {
                     .font(from: Warp.Typography.body)
                     .clearTextEditorBackground()
                     .focused($isFocused)
-                    .padding(.horizontal, horizontalPaddingValue)
+                    .padding(.horizontal, horizontalPadding)
                     .padding(.vertical, Warp.Spacing.spacing150)
             }
             .frame(minHeight: self.minHeight)
@@ -153,7 +156,7 @@ extension Warp {
         }
 
         /// Calculates the horizontal padding based on the style.
-        private var horizontalPaddingValue: CGFloat {
+        private var horizontalPadding: CGFloat {
             switch style {
             case .readOnly where !text.isEmpty:
                 return -Warp.Spacing.spacing50
