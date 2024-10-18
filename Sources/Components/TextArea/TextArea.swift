@@ -143,7 +143,7 @@ extension Warp {
             }
         }
         
-        /// Determines the text color based on the style.
+        /// Determines the text color based on the style and focus state.
         private var textColor: Color {
             switch style {
             case .default, .readOnly:
@@ -151,7 +151,7 @@ extension Warp {
             case .disabled:
                 return colorProvider.token.textDisabled
             case .error:
-                return colorProvider.token.textNegative
+                return isFocused ? colorProvider.token.text : colorProvider.token.textNegative
             }
         }
 
