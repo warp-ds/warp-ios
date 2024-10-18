@@ -124,7 +124,7 @@ extension Warp {
             }
             .frame(minHeight: self.minHeight)
             .modifier(BorderModifier(isFocused: isFocused, style: style, cornerRadius: cornerRadius, colorProvider: colorProvider, borderColor: borderColor))
-            .background(style == .disabled ? colorProvider.token.backgroundSubtle : .clear)
+            .background(style == .disabled ? colorProvider.token.backgroundSubtle : colorProvider.token.background)
         }
         
         // MARK: - Computed Properties
