@@ -370,7 +370,6 @@
 		82FF12F82C80FC1200CC2110 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				507344112CC0F0DB00928836 /* TextAreaView.swift */,
 				349D0E122B62D67A00AAB421 /* AlertView.swift */,
 				828E7D442B61239100869C58 /* BadgeView.swift */,
 				341B20E72B751BD30068FF43 /* BoxView.swift */,
@@ -390,6 +389,7 @@
 				82635D062BFE1CA700F7FA6F /* SpinnerView.swift */,
 				506939DF2CB52EF000AA631F /* SliderView.swift */,
 				B295AC392C22F93D004C77BB /* StepIndicatorView.swift */,
+				507344112CC0F0DB00928836 /* TextAreaView.swift */,
 				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
 				82B168112B750BED00DCDDE5 /* TextView.swift */,
 				B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */,
