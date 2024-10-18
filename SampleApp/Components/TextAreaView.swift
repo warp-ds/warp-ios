@@ -66,7 +66,7 @@ struct TextAreaView: View {
                     VStack(alignment: .leading) {
                         Text("TextArea Style")
                         Picker("Style", selection: $textAreaStyle) {
-                            ForEach(Warp.TextAreaStyle.allCases, id: \..self) { style in
+                            ForEach(Warp.TextAreaStyle.allCases, id: \.self) { style in
                                 Text(style.rawValue.capitalized)
                             }
                         }
@@ -85,7 +85,7 @@ struct TextAreaView: View {
                     VStack(alignment: .leading) {
                         Text("Help Text Style")
                         Picker("Help Style", selection: $helpTextStyle) {
-                            ForEach(Warp.HelpTextStyle.allCases, id: \..self) { style in
+                            ForEach(Warp.HelpTextStyle.allCases, id: \.self) { style in
                                 Text(style.rawValue.capitalized)
                             }
                         }
