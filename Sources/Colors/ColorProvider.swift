@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Fri, 11 Oct 2024 12:34:08 GMT by https://github.com/warp-ds/tokens
+// Generated on Fri, 18 Oct 2024 09:36:50 GMT by https://github.com/warp-ds/tokens
 public struct ColorProvider {
     public let token: TokenProvider
     
@@ -66,11 +66,11 @@ public struct ColorProvider {
     
     public var badgePriceBackground: Color {
         switch Warp.Theme {
-        case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.black, darkModeColor: BlocketColors.black)
-        case .dba: return Color.dynamicColor(defaultColor: DbaColors.black, darkModeColor: DbaColors.black)
-        case .finn: return Color.dynamicColor(defaultColor: FinnColors.black, darkModeColor: FinnColors.black)
-        case .oikotie: return Color.dynamicColor(defaultColor: OikotieColors.black, darkModeColor: OikotieColors.black)
-        case .tori: return Color.dynamicColor(defaultColor: ToriColors.black, darkModeColor: ToriColors.black)
+        case .blocket: return BlocketColors.black
+        case .dba: return DbaColors.black
+        case .finn: return FinnColors.black
+        case .oikotie: return OikotieColors.black
+        case .tori: return ToriColors.black
         }
     }
     
@@ -106,21 +106,21 @@ public struct ColorProvider {
     
     public var buttonPillBackgroundHover: Color {
         switch Warp.Theme {
-        case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.blue300, darkModeColor: BlocketColors.blue300)
-        case .dba: return Color.dynamicColor(defaultColor: DbaColors.jeanblue300, darkModeColor: DbaColors.jeanblue300)
-        case .finn: return Color.dynamicColor(defaultColor: FinnColors.blue300, darkModeColor: FinnColors.blue300)
-        case .oikotie: return Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray300)
-        case .tori: return Color.dynamicColor(defaultColor: ToriColors.blueberry300, darkModeColor: ToriColors.blueberry300)
+        case .blocket: return BlocketColors.blue300
+        case .dba: return DbaColors.jeanblue300
+        case .finn: return FinnColors.blue300
+        case .oikotie: return OikotieColors.gray300
+        case .tori: return ToriColors.blueberry300
         }
     }
     
     public var buttonPillBackgroundActive: Color {
         switch Warp.Theme {
-        case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.blue400, darkModeColor: BlocketColors.blue400)
-        case .dba: return Color.dynamicColor(defaultColor: DbaColors.jeanblue400, darkModeColor: DbaColors.jeanblue400)
-        case .finn: return Color.dynamicColor(defaultColor: FinnColors.blue400, darkModeColor: FinnColors.blue400)
-        case .oikotie: return Color.dynamicColor(defaultColor: OikotieColors.gray400, darkModeColor: OikotieColors.gray400)
-        case .tori: return Color.dynamicColor(defaultColor: ToriColors.blueberry400, darkModeColor: ToriColors.blueberry400)
+        case .blocket: return BlocketColors.blue400
+        case .dba: return DbaColors.jeanblue400
+        case .finn: return FinnColors.blue400
+        case .oikotie: return OikotieColors.gray400
+        case .tori: return ToriColors.blueberry400
         }
     }
     
@@ -166,11 +166,11 @@ public struct ColorProvider {
     
     public var pageIndicatorBackground: Color {
         switch Warp.Theme {
-        case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray300)
-        case .dba: return Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray300)
-        case .finn: return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray300)
-        case .oikotie: return Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray300)
-        case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray300)
+        case .blocket: return BlocketColors.gray300
+        case .dba: return DbaColors.gray300
+        case .finn: return FinnColors.gray300
+        case .oikotie: return OikotieColors.gray300
+        case .tori: return ToriColors.gray300
         }
     }
     
@@ -206,11 +206,11 @@ public struct ColorProvider {
     
     public var pillSuggestionBackgroundActive: Color {
         switch Warp.Theme {
-        case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray400, darkModeColor: BlocketColors.gray400)
-        case .dba: return Color.dynamicColor(defaultColor: DbaColors.gray400, darkModeColor: DbaColors.gray400)
-        case .finn: return Color.dynamicColor(defaultColor: FinnColors.gray400, darkModeColor: FinnColors.gray400)
-        case .oikotie: return Color.dynamicColor(defaultColor: OikotieColors.gray400, darkModeColor: OikotieColors.gray400)
-        case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray400, darkModeColor: ToriColors.gray400)
+        case .blocket: return BlocketColors.gray400
+        case .dba: return DbaColors.gray400
+        case .finn: return FinnColors.gray400
+        case .oikotie: return OikotieColors.gray400
+        case .tori: return ToriColors.gray400
         }
     }
     
@@ -246,11 +246,11 @@ public struct ColorProvider {
     
     public var tooltipBackgroundStatic: Color {
         switch Warp.Theme {
-        case .blocket: return token.backgroundInverted
-        case .dba: return token.backgroundInverted
-        case .finn: return token.backgroundInverted
-        case .oikotie: return token.backgroundInverted
-        case .tori: return token.backgroundInverted
+        case .blocket: return Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
+        case .dba: return Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
+        case .finn: return Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
+        case .oikotie: return Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
+        case .tori: return Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
         }
     }
 }
@@ -320,11 +320,11 @@ public struct UIColorProvider {
     
     public var badgePriceBackground: UIColor {
         switch Warp.Theme {
-        case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.black, darkModeColor: BlocketUIColors.black)
-        case .dba: return UIColor.dynamicColor(defaultColor: DbaUIColors.black, darkModeColor: DbaUIColors.black)
-        case .finn: return UIColor.dynamicColor(defaultColor: FinnUIColors.black, darkModeColor: FinnUIColors.black)
-        case .oikotie: return UIColor.dynamicColor(defaultColor: OikotieUIColors.black, darkModeColor: OikotieUIColors.black)
-        case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.black, darkModeColor: ToriUIColors.black)
+        case .blocket: return BlocketUIColors.black
+        case .dba: return DbaUIColors.black
+        case .finn: return FinnUIColors.black
+        case .oikotie: return OikotieUIColors.black
+        case .tori: return ToriUIColors.black
         }
     }
     
@@ -360,21 +360,21 @@ public struct UIColorProvider {
     
     public var buttonPillBackgroundHover: UIColor {
         switch Warp.Theme {
-        case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.blue300, darkModeColor: BlocketUIColors.blue300)
-        case .dba: return UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue300, darkModeColor: DbaUIColors.jeanblue300)
-        case .finn: return UIColor.dynamicColor(defaultColor: FinnUIColors.blue300, darkModeColor: FinnUIColors.blue300)
-        case .oikotie: return UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray300)
-        case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry300, darkModeColor: ToriUIColors.blueberry300)
+        case .blocket: return BlocketUIColors.blue300
+        case .dba: return DbaUIColors.jeanblue300
+        case .finn: return FinnUIColors.blue300
+        case .oikotie: return OikotieUIColors.gray300
+        case .tori: return ToriUIColors.blueberry300
         }
     }
     
     public var buttonPillBackgroundActive: UIColor {
         switch Warp.Theme {
-        case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.blue400, darkModeColor: BlocketUIColors.blue400)
-        case .dba: return UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue400, darkModeColor: DbaUIColors.jeanblue400)
-        case .finn: return UIColor.dynamicColor(defaultColor: FinnUIColors.blue400, darkModeColor: FinnUIColors.blue400)
-        case .oikotie: return UIColor.dynamicColor(defaultColor: OikotieUIColors.gray400, darkModeColor: OikotieUIColors.gray400)
-        case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry400, darkModeColor: ToriUIColors.blueberry400)
+        case .blocket: return BlocketUIColors.blue400
+        case .dba: return DbaUIColors.jeanblue400
+        case .finn: return FinnUIColors.blue400
+        case .oikotie: return OikotieUIColors.gray400
+        case .tori: return ToriUIColors.blueberry400
         }
     }
     
@@ -420,11 +420,11 @@ public struct UIColorProvider {
     
     public var pageIndicatorBackground: UIColor {
         switch Warp.Theme {
-        case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray300)
-        case .dba: return UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray300)
-        case .finn: return UIColor.dynamicColor(defaultColor: FinnUIColors.gray300, darkModeColor: FinnUIColors.gray300)
-        case .oikotie: return UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray300)
-        case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray300)
+        case .blocket: return BlocketUIColors.gray300
+        case .dba: return DbaUIColors.gray300
+        case .finn: return FinnUIColors.gray300
+        case .oikotie: return OikotieUIColors.gray300
+        case .tori: return ToriUIColors.gray300
         }
     }
     
@@ -460,11 +460,11 @@ public struct UIColorProvider {
     
     public var pillSuggestionBackgroundActive: UIColor {
         switch Warp.Theme {
-        case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray400, darkModeColor: BlocketUIColors.gray400)
-        case .dba: return UIColor.dynamicColor(defaultColor: DbaUIColors.gray400, darkModeColor: DbaUIColors.gray400)
-        case .finn: return UIColor.dynamicColor(defaultColor: FinnUIColors.gray400, darkModeColor: FinnUIColors.gray400)
-        case .oikotie: return UIColor.dynamicColor(defaultColor: OikotieUIColors.gray400, darkModeColor: OikotieUIColors.gray400)
-        case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray400, darkModeColor: ToriUIColors.gray400)
+        case .blocket: return BlocketUIColors.gray400
+        case .dba: return DbaUIColors.gray400
+        case .finn: return FinnUIColors.gray400
+        case .oikotie: return OikotieUIColors.gray400
+        case .tori: return ToriUIColors.gray400
         }
     }
     
@@ -500,11 +500,11 @@ public struct UIColorProvider {
     
     public var tooltipBackgroundStatic: UIColor {
         switch Warp.Theme {
-        case .blocket: return token.backgroundInverted
-        case .dba: return token.backgroundInverted
-        case .finn: return token.backgroundInverted
-        case .oikotie: return token.backgroundInverted
-        case .tori: return token.backgroundInverted
+        case .blocket: return UIColor.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
+        case .dba: return UIColor.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
+        case .finn: return UIColor.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
+        case .oikotie: return UIColor.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
+        case .tori: return UIColor.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
         }
     }
 }
