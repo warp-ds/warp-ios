@@ -37,6 +37,10 @@
 		506939E12CB52EF000AA631F /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506939DF2CB52EF000AA631F /* SliderView.swift */; };
 		506939E22CB52EF000AA631F /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506939DF2CB52EF000AA631F /* SliderView.swift */; };
 		506939E32CB52EF000AA631F /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506939DF2CB52EF000AA631F /* SliderView.swift */; };
+		507344122CC0F0DF00928836 /* TextAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507344112CC0F0DB00928836 /* TextAreaView.swift */; };
+		507344132CC0F0DF00928836 /* TextAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507344112CC0F0DB00928836 /* TextAreaView.swift */; };
+		507344142CC0F0DF00928836 /* TextAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507344112CC0F0DB00928836 /* TextAreaView.swift */; };
+		507344152CC0F0DF00928836 /* TextAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507344112CC0F0DB00928836 /* TextAreaView.swift */; };
 		50F58AD72CBD52BA0006804C /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58AD62CBD52BA0006804C /* LabelView.swift */; };
 		50F58AD82CBD52BA0006804C /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58AD62CBD52BA0006804C /* LabelView.swift */; };
 		50F58AD92CBD52BA0006804C /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58AD62CBD52BA0006804C /* LabelView.swift */; };
@@ -156,6 +160,7 @@
 		349586632B0EAD2D00A14570 /* TypographyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypographyView.swift; sourceTree = "<group>"; };
 		349D0E122B62D67A00AAB421 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		506939DF2CB52EF000AA631F /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		507344112CC0F0DB00928836 /* TextAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAreaView.swift; sourceTree = "<group>"; };
 		50F58AD62CBD52BA0006804C /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		50F58ADB2CBE6A4B0006804C /* HelpTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTextView.swift; sourceTree = "<group>"; };
 		8206620F2A8CC97C0088677D /* warp-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "warp-ios"; path = ..; sourceTree = "<group>"; };
@@ -384,6 +389,7 @@
 				82635D062BFE1CA700F7FA6F /* SpinnerView.swift */,
 				506939DF2CB52EF000AA631F /* SliderView.swift */,
 				B295AC392C22F93D004C77BB /* StepIndicatorView.swift */,
+				507344112CC0F0DB00928836 /* TextAreaView.swift */,
 				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
 				82B168112B750BED00DCDDE5 /* TextView.swift */,
 				B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */,
@@ -581,6 +587,7 @@
 				2E1ADF532C2561A700DFEE06 /* CalloutView.swift in Sources */,
 				82AE96122C64C2C000BF3920 /* ShadowUIView.swift in Sources */,
 				2E1ADF542C2561A700DFEE06 /* SpinnerView.swift in Sources */,
+				507344152CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */,
 				50F58ADD2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098852C85AEFF00033535 /* CheckboxView.swift in Sources */,
@@ -617,6 +624,7 @@
 				820A85F32C6CEB0C006D35A0 /* ShadowUIView.swift in Sources */,
 				820A85F42C6CEB0C006D35A0 /* SpinnerView.swift in Sources */,
 				820A85F52C6CEB0C006D35A0 /* TextFieldView.swift in Sources */,
+				507344132CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				820A85F62C6CEB0C006D35A0 /* BrandTokensView.swift in Sources */,
 				50F58ADF2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098862C85AEFF00033535 /* CheckboxView.swift in Sources */,
@@ -653,6 +661,7 @@
 				820A86302C6D4388006D35A0 /* CalloutView.swift in Sources */,
 				820A86312C6D4388006D35A0 /* SpinnerView.swift in Sources */,
 				820A86322C6D4388006D35A0 /* TextFieldView.swift in Sources */,
+				507344122CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				820A86332C6D4388006D35A0 /* BrandTokensView.swift in Sources */,
 				50F58ADE2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098842C85AEFF00033535 /* CheckboxView.swift in Sources */,
@@ -689,6 +698,7 @@
 				82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */,
 				82AE96132C64C2C000BF3920 /* ShadowUIView.swift in Sources */,
 				B2A8B27A2B6D33B800122DBC /* CalloutView.swift in Sources */,
+				507344142CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82635D082BFE1CD800F7FA6F /* SpinnerView.swift in Sources */,
 				50F58ADC2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098832C85AEFF00033535 /* CheckboxView.swift in Sources */,

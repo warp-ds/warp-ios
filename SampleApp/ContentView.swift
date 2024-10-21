@@ -225,6 +225,13 @@ struct ContentView: View {
 
                     Divider()
 
+                    NavigationLink(destination: TextAreaView()) {
+                        Text("TextArea")
+                            .padding()
+                    }
+
+                    Divider()
+                    
                     NavigationLink(destination: TextFieldView()) {
                         Text("TextField")
                             .padding()
