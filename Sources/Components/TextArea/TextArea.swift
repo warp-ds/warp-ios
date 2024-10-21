@@ -124,11 +124,25 @@ extension Warp {
             }
             .frame(minHeight: self.minHeight)
             .modifier(BorderModifier(isFocused: isFocused, style: style, cornerRadius: cornerRadius, colorProvider: colorProvider, borderColor: borderColor))
-            .background(style == .disabled ? colorProvider.token.backgroundSubtle : colorProvider.token.background)
+            .background(backgroundColor)
         }
         
         // MARK: - Computed Properties
 
+        /// Determines the background color based on the selected style.
+        private var backgroundColor: Color {
+            switch style {
+            case .default:
+                return colorProvider.token.background
+            case .disabled:
+                return colorProvider.token.backgroundDisabledSubtle
+            case .error:
+                return colorProvider.token.background
+            case .readOnly:
+                return colorProvider.token.backgroundTransparent0
+            }
+        }
+        
         /// Determines the border color based on the selected style.
         private var borderColor: Color {
             switch style {
