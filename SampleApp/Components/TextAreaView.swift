@@ -35,6 +35,9 @@ struct TextAreaView: View {
                 Text("Text Area")
             })
             .padding(.bottom)
+            .onTapGesture {
+                dismissKeyboard() // Dismiss keyboard when tapping outside
+            }
             
             // Controls to modify TextArea's label, help text, and style
             GroupBox(content: {
@@ -101,9 +104,6 @@ struct TextAreaView: View {
         .padding(.horizontal)
         .navigationTitle("Text Area")
         .navigationBarTitleDisplayMode(.inline)
-        .onTapGesture {
-            dismissKeyboard() // Dismiss keyboard when tapping outside
-        }
     }
     
     // Tooltip view creation

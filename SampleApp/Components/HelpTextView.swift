@@ -50,14 +50,6 @@ struct HelpTextView: View {
         .padding(.horizontal)
         .navigationTitle("Help Text")
         .navigationBarTitleDisplayMode(.inline)
-        .onTapGesture {
-            dismissKeyboard() // Dismiss keyboard when tapping outside
-        }
-    }
-    
-    // Helper function to dismiss the keyboard
-    private func dismissKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

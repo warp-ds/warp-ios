@@ -46,11 +46,11 @@ extension Warp {
         // MARK: - Body
 
         public var body: some View {
-            Text(
-                text,
-                style: .detail,
-                color: textColor
+            SwiftUI.Text(
+                text
             )
+            .font(from: .detail)
+            .foregroundColor(textColor)
         }
 
         // MARK: - Computed Properties
