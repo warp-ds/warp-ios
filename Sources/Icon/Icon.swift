@@ -195,6 +195,7 @@ extension Warp {
         case smileySad
         case sorting
         case spa
+        case sparkles
         case speedometer
         case stairs
         case starCheck
@@ -216,7 +217,10 @@ extension Warp {
         case theater
         case threeSixty
         case townHouse
-        case tV
+        case trendDown
+        case trendFlat
+        case trendUp
+        case tv
         case twitter
         case up
         case upload
