@@ -65,6 +65,12 @@ struct ContentView: View {
                     }
                     Divider()
                     
+                    NavigationLink(destination: BrandIconsView()) {
+                        Text("Brand Icons")
+                            .padding()
+                    }
+                    Divider()
+                    
                     NavigationLink(destination: BrandTokensView()) {
                         Text("Tokens")
                             .padding()
