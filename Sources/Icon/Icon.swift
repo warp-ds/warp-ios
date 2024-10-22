@@ -78,6 +78,7 @@ extension Warp {
         case dislike
         case door
         case dots
+        case dotsVertical
         case doubleBed
         case download
         case drawer
