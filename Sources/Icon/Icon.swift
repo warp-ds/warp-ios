@@ -78,6 +78,7 @@ extension Warp {
         case dislike
         case door
         case dots
+        case dotsVertical
         case doubleBed
         case download
         case drawer
@@ -195,6 +196,7 @@ extension Warp {
         case smileySad
         case sorting
         case spa
+        case sparkles
         case speedometer
         case stairs
         case starCheck
@@ -216,7 +218,10 @@ extension Warp {
         case theater
         case threeSixty
         case townHouse
-        case tV
+        case trendDown
+        case trendFlat
+        case trendUp
+        case tv
         case twitter
         case up
         case upload
@@ -331,6 +336,64 @@ extension Warp {
         public var body: some View {
             SwiftUI.Image(assetName, bundle: .module) // Load the image from the asset catalog
                 .renderingMode(.template) // Ensure template rendering mode for vector images
+                .resizable()
+        }
+        
+        /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog.
+        ///
+        /// - Returns: A `UIImage` object corresponding to the icon.
+        public var uiImage: UIImage {
+            // Load the image from the asset catalog
+            guard let image = UIImage(named: assetName, in: .module, compatibleWith: nil) else {
+                // Handle the error (e.g., log it) if image loading fails
+                return UIImage()
+            }
+            return image
+        }
+        
+        /// Returns a resized `UIImage` with the given size.
+        ///
+        /// - Parameters:
+        ///   - targetSize: The desired size for the image.
+        /// - Returns: A resized `UIImage` if resizing was successful, otherwise empty `UIImage`.
+        public func resizeImage(to targetSize: CGSize) -> UIImage {
+            UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
+            uiImage.draw(in: CGRect(origin: .zero, size: targetSize))
+            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            guard let resizedImage = resizedImage else {
+                // Handle the error (e.g., log it) if image resizing fails
+                return UIImage()
+            }
+            return resizedImage
+        }
+        
+        /// Maps the icon case to the corresponding asset name in the asset catalog.
+        ///
+        /// - Returns: The name of the asset in the asset catalog as `String`.
+        private var assetName: String {
+            return rawValue.prefix(1).capitalized + rawValue.dropFirst() // CapitalizedCamelCase asset name
+        }
+    }
+}
+
+extension Warp {
+    /// Icon set used for brands, loaded from the asset catalog in the framework.
+    ///
+    /// Provides both SwiftUI `Image` and UIKit `UIImage` representations for each icon.
+    public enum BrandIcon: String, CaseIterable, View {
+        case autovex
+        case honk
+        case mittAnbud
+        case nettbil
+        case oikotie
+        case remppatori
+        
+        /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
+        public var body: some View {
+            SwiftUI.Image(assetName, bundle: .module) // Load the image from the asset catalog
+                .renderingMode(.original) // Ensure original rendering mode for vector images
                 .resizable()
         }
         
