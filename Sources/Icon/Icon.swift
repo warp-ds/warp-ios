@@ -246,6 +246,7 @@ extension Warp {
             SwiftUI.Image(assetName, bundle: .module) // Load the image from the asset catalog
                 .renderingMode(.template) // Ensure template rendering mode for vector images
                 .resizable()
+                .accessibilityLabel(localization)
         }
         
         /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog.
@@ -284,6 +285,13 @@ extension Warp {
         /// - Returns: The name of the asset in the asset catalog as `String`.
         private var assetName: String {
             return rawValue.prefix(1).capitalized + rawValue.dropFirst() // CapitalizedCamelCase asset name
+        }
+        
+        private var localization: String {
+            switch self {
+            case .activeAds: return LocalizedString.activeAds.localized
+            default: return rawValue
+            }
         }
     }
 }

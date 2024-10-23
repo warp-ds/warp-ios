@@ -31,6 +31,7 @@ public enum Warp {
             do {
                 // Attempt to register the fonts for the new theme
                 try Warp.Typography.registerFonts()
+                LanguageManager.shared.setLanguage()
             } catch {
                 // Handle the error (e.g., log it) if font registration fails
             }
