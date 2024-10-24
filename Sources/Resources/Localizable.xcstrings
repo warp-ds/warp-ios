@@ -1,37 +1,14 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Active Ads" : {
+    "icon.title.activeAds" : {
+      "comment" : "A11y title for active ads icon",
       "extractionState" : "manual",
       "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Active Ads in Danish!"
-          }
-        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Active Ads in English"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Active Ads in Finnish!"
-          }
-        },
-        "nb" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Active Ads in Norwegian!"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Active Ads in Swedish!"
+            "value" : "Sheet with image and headline with highlighted checkmark"
           }
         }
       }

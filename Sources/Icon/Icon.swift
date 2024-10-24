@@ -289,7 +289,7 @@ extension Warp {
         
         private var localization: String {
             switch self {
-            case .activeAds: return Warp.Strings.activeAds.localized
+            case .activeAds: return Warp.Strings.iconActiveAds.localized
             default: return rawValue
             }
         }

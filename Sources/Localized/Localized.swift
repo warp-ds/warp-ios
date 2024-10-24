@@ -2,7 +2,7 @@ import Foundation
 
 extension Warp {
     enum Strings: String {
-        case activeAds = "Active Ads"
+        case iconActiveAds = "icon.title.activeAds"
         
         var localized: String {
             self.rawValue.localized
