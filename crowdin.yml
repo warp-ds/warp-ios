@@ -6,9 +6,9 @@ preserve_hierarchy: true
 files:
   [
     {
-      "source": "/Resources/Localizable.xcstrings",
+      "source": "/warp-ios/Resources/en.lproj/Localizable.xcstrings",
       "dest": "/warp-ios/%original_path%/%original_file_name%",
-      "translation": "/Resources/Localizable.xcstrings",
+      "translation": "/warp-ios/Resources/%two_letters_code%.lproj/Localizable.xcstrings",
       "type": "macosx",
     }
   ]
