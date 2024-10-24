@@ -6,8 +6,8 @@ preserve_hierarchy: true
 files:
   [
     {
-      "source": "/warp-ios/Sources/Resources/Localizable.xcstrings",
-      "translation": "/warp-ios/Sources/Resources/Localizable.xcstrings",
+      "source": "/**/Localizable.xcstrings",
+      "translation": "/**/Localizable.xcstrings",
       "multilingual": true
     }
   ]
