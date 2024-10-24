@@ -1,92 +1,21 @@
 name: Crowdin Synchronisation
 
-permissions:
-  contents: write
-  pull-requests: write
-
 on:
-  workflow_dispatch:
-    inputs:
-      upload_translations:
-        type: boolean
-        description: "Enable uploading of translations"
-        default: false
-      download_sources:
-        type: boolean
-        description: "Enable downloading of source files (uploading of source files will then be disabled for the run)"
-        default: false
-  # The pull request review comment event allows us to push notifications
-  # to our translators in Crowdin when we add comments on language related
-  # resource files
-  pull_request_review_comment:
   push:
-    branches:
-      - main
-    paths:
-      - "**.po"
-      - "crowdin.yml"
+    branches: [next]
   schedule:
+    # We need a schedule to detect translations from Crowdin. Every 2nd hour from 8-17
+    # on weekdays is a proposed starting point. You may change the minute counter to
+    # avoid crashing with other workflows.
     - cron: "0 8-17/2 * * 1-5" # At minute 0 past every 2nd hour from 8 through 17 on every day-of-week from Monday through Friday (https://crontab.guru/#0_8-17/2_*_*_1-5)
+  # Run a GitHub Action on demand, without having to push to next or wait for a scheduled run
+  workflow_dispatch:
+  # Forward comments in .po files from Crowdin PRs to the translator in Crowdin
+  pull_request_review_comment:
 
 jobs:
-  verify-and-sync:
-    name: Verify and synchronise
-    uses: finn/crowdin-integration/.github/workflows/crowdin-verify-and-sync.yml@v1
+  synchronize-with-crowdin:
+    uses: warp-ds/reusable-workflows/.github/workflows/crowdin-sync.yml@main
     secrets: inherit
     with:
-      upload_translations: ${{ inputs.upload_translations || false }}
-      download_sources: ${{ inputs.download_sources || false }}
-      # If you want to be notified about failures in the sync please
-      # invite the Crowdin Notifications app to your channel and specify the channel
-      # name using the variable below.
-      # slack_channel: '#finn-framsie-alerts'
-      # ------------------------------
-      # Switch this to true if you want to enable post-processing of files.
-      # This will remove Crowdin headers from PO files and avoid
-      # newlines at the end of files.
-      # enable_file_processing: true
-      # ------------------------------
-      # Whether or not to skip untranslated files in the sync. Setting this to false
-      # would result in partially translated files being pulled down. These files
-      # would likely have a mixture of the target language and english.
-      # skip_untranslated_files: false
-      # ------------------------------
-      # This input sets the branch on which the synchronisation is run. It will
-      # default to the branch from which the workflow was started. This input can be
-      # adjusted if you'd like to set up a multi-branch Crowdin sync job or simply
-      # use another branch as the base for all your changes.
-      # sync_branch: next
-
-  # If you want to perform steps after the sync, like for instance:
-  #   - Run `lingui compile` with the latest translation files
-  #   - Run automated tests
-  #   - Update test snapshots
-  # see the example steps below
-  #
-  # lingui-compile:
-  #   name: Run Lingui compile, commit results
-  #   runs-on: [self-hosted, ubuntu-latest-no-docker, developer-foundations]
-  #   needs: verify-and-sync
-  #   if: needs.verify-and-sync.outputs.pull_request_created == 'true' || needs.verify-and-sync.outputs.pull_request_exists == 'true'
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         ref: l10n_crowdin_${{ github.ref_name }}
-  #
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 20
-  #
-  #     - name: Install dependencies
-  #       run: npm install
-  #
-  #     - name: Compile
-  #       run: npm run lingui:compile
-  #
-  #     - name: Commit and push updated Lingui files
-  #       run: |
-  #         git config --global user.name "NMP Web Platform"
-  #         git config --global user.email "nmp-team-web-platform@schibsted.com"
-  #         git diff --quiet || (git commit -a -m "chore: ran lingui compile" && git push)
-  #       shell: bash
+      pull_request_reviewers: "mohsen-schibsted"
