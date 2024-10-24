@@ -7,8 +7,8 @@ skip_untranslated_files: false
 files:
   [
     {
-      "source": "/**/Localizable.xcstrings",
-      "translation": "/**/Localizable.xcstrings",
+      "source": "Sources/Resources/Localizable.xcstrings",
+      "translation": "Sources/Resources/Localizable.xcstrings",
       "multilingual": true
     }
   ]
