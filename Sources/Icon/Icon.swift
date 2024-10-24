@@ -261,24 +261,6 @@ extension Warp {
             return image
         }
         
-        /// Returns a resized `UIImage` with the given size.
-        ///
-        /// - Parameters:
-        ///   - targetSize: The desired size for the image.
-        /// - Returns: A resized `UIImage` if resizing was successful, otherwise an empty `UIImage`.
-        public func resizeImage(to targetSize: CGSize) -> UIImage {
-            UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
-            uiImage.draw(in: CGRect(origin: .zero, size: targetSize))
-            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            
-            guard let resizedImage = resizedImage else {
-                // Handle the error (e.g., log it) if image resizing fails
-                return UIImage()
-            }
-            return resizedImage
-        }
-        
         /// Maps the icon case to the corresponding asset name in the asset catalog.
         ///
         /// This converts the enum case name (in camelCase) to the format used by asset names in the asset catalog.
@@ -359,24 +341,6 @@ extension Warp {
             return image
         }
         
-        /// Returns a resized `UIImage` with the given size.
-        ///
-        /// - Parameters:
-        ///   - targetSize: The desired size for the image.
-        /// - Returns: A resized `UIImage` if resizing was successful, otherwise empty `UIImage`.
-        public func resizeImage(to targetSize: CGSize) -> UIImage {
-            UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
-            uiImage.draw(in: CGRect(origin: .zero, size: targetSize))
-            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            
-            guard let resizedImage = resizedImage else {
-                // Handle the error (e.g., log it) if image resizing fails
-                return UIImage()
-            }
-            return resizedImage
-        }
-        
         /// Maps the icon case to the corresponding asset name in the asset catalog.
         ///
         /// - Returns: The name of the asset in the asset catalog as `String`.
@@ -415,24 +379,6 @@ extension Warp {
                 return UIImage()
             }
             return image
-        }
-        
-        /// Returns a resized `UIImage` with the given size.
-        ///
-        /// - Parameters:
-        ///   - targetSize: The desired size for the image.
-        /// - Returns: A resized `UIImage` if resizing was successful, otherwise empty `UIImage`.
-        public func resizeImage(to targetSize: CGSize) -> UIImage {
-            UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
-            uiImage.draw(in: CGRect(origin: .zero, size: targetSize))
-            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            
-            guard let resizedImage = resizedImage else {
-                // Handle the error (e.g., log it) if image resizing fails
-                return UIImage()
-            }
-            return resizedImage
         }
         
         /// Maps the icon case to the corresponding asset name in the asset catalog.
