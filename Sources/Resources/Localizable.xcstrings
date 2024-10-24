@@ -1,0 +1,18 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "icon.title.activeAds" : {
+      "comment" : "A11y title for active ads icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sheet with image and headline with highlighted checkmark"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
