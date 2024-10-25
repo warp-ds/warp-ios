@@ -258,7 +258,7 @@ extension Warp {
                 // Handle the error (e.g., log it) if image loading fails
                 return UIImage()
             }
-            return image
+            return image.withRenderingMode(.alwaysTemplate)
         }
         
         /// Maps the icon case to the corresponding asset name in the asset catalog.
@@ -338,7 +338,7 @@ extension Warp {
                 // Handle the error (e.g., log it) if image loading fails
                 return UIImage()
             }
-            return image
+            return image.withRenderingMode(.alwaysTemplate)
         }
         
         /// Maps the icon case to the corresponding asset name in the asset catalog.
@@ -378,7 +378,7 @@ extension Warp {
                 // Handle the error (e.g., log it) if image loading fails
                 return UIImage()
             }
-            return image
+            return image.withRenderingMode(.alwaysOriginal)
         }
         
         /// Maps the icon case to the corresponding asset name in the asset catalog.
