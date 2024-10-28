@@ -21,6 +21,7 @@ extension Warp {
                     RoundedRectangle(cornerRadius: 100)
                         .fill(backgroundColor)
                         .frame(width: 44, height: 24)
+                        .animation(.easeInOut, value: configuration.isOn)
                     Circle()
                         .fill(circleColor)
                         .frame(width: 16, height: 16)
