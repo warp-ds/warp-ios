@@ -1,5 +1,4 @@
 import Foundation
-import FirebaseAnalytics
 
 /// The `Warp` namespace containing the design system's themes, tokens, and color providers.
 public enum Warp {
@@ -34,10 +33,7 @@ public enum Warp {
                 try Warp.Typography.registerFonts()
                 LanguageManager.shared.setLanguage()
             } catch {
-                Analytics.logEvent("warning_event", parameters: [
-                    "message": "Fonts could not be registered with error: \(error)",
-                    "log_level": "warning"
-                ])
+                // Handle the error (e.g., log it) if font registration fails
             }
         }
     }
