@@ -216,9 +216,16 @@ struct ContentView: View {
                     }
 
                     Divider()
-
+                    
                     NavigationLink(destination: StepIndicatorView()) {
                         Text("StepIndicator")
+                            .padding()
+                    }
+
+                    Divider()
+                    
+                    NavigationLink(destination: SwitchView()) {
+                        Text("Switch")
                             .padding()
                     }
 
