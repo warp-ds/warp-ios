@@ -1,5 +1,6 @@
 import Foundation
-import FirebaseAnalytics
+import FirebaseCore
+import FirebaseCrashlytics
 
 /// The `Warp` namespace containing the design system's themes, tokens, and color providers.
 public enum Warp {
@@ -30,14 +31,11 @@ public enum Warp {
     public static var Theme: Brand = .finn {
         didSet {
             do {
-                // Attempt to register the fonts for the new theme
+                FirebaseApp.configure()
                 try Warp.Typography.registerFonts()
                 LanguageManager.shared.setLanguage()
             } catch {
-                Analytics.logEvent("warning_event", parameters: [
-                    "message": "Fonts could not be registered with error: \(error)",
-                    "log_level": "warning"
-                ])
+                Crashlytics.crashlytics().log("Fonts could not be registered with error: \(error.localizedDescription)")
             }
         }
     }

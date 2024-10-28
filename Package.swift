@@ -14,9 +14,15 @@ let package = Package(
             targets: ["Warp"]
         ),
     ],
+    dependencies: [
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.20.0"),
+    ],
     targets: [
         .target(
             name: "Warp",
+            dependencies: [
+                .product(name: "FirebaseCrashlytics", package: "firebase-ios-sdk"),
+            ],
             path: "Sources",
             resources: [
                 .process("Typography/Fonts"),
