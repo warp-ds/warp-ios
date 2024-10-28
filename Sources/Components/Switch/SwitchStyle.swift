@@ -42,7 +42,7 @@ extension Warp {
             case .default:
                 return isOn ? colorProvider.token.backgroundPrimary : colorProvider.token.backgroundSubtle
             case .disabled:
-                return colorProvider.token.backgroundDisabledSubtle
+                return colorProvider.switchTrackBackground
             }
         }
         
