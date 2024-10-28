@@ -30,19 +30,9 @@ extension Warp.Typography {
             throw Warp.FontRegistrationError.unableToFindFont(name: fontName)
         }
         
-        // Attempt to load font data from the URL
-        guard let fontDataProvider = CGDataProvider(url: fontURL as CFURL) else {
-            throw Warp.FontRegistrationError.unableToGetDataProvider(url: fontURL)
-        }
-        
-        // Attempt to create a CGFont object from the data provider
-        guard let font = CGFont(fontDataProvider) else {
-            throw Warp.FontRegistrationError.unableToGetFont
-        }
-        
         // Attempt to register the font with Core Text
         var error: Unmanaged<CFError>?
-        let isSuccessful = CTFontManagerRegisterGraphicsFont(font, &error)
+        let isSuccessful = CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, &error)
         
         // If registration fails, throw an error
         if !isSuccessful {
