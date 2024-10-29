@@ -50,7 +50,7 @@ extension Warp {
             HStack(spacing: Warp.Spacing.spacing100) {
                 ForEach(0..<pageCount, id: \.self) { index in
                     Circle()
-                        .fill(index == selectedPage ? colorProvider.token.iconSelected : colorProvider.token.backgroundDisabledSubtle)
+                        .fill(indicatorColor(for: index))
                         .frame(width: 10, height: 10)
                         .onTapGesture {
                             withAnimation {
@@ -60,6 +60,13 @@ extension Warp {
                 }
             }
             .padding(.vertical, Warp.Spacing.spacing100)
+        }
+        
+        // MARK: - Computed Properties
+        
+        /// Determines the color for the indicator based on the current index.
+        private func indicatorColor(for index: Int) -> Color {
+            return index == selectedPage ? colorProvider.token.iconSelected : colorProvider.token.backgroundDisabledSubtle
         }
     }
 }
