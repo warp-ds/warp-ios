@@ -48,7 +48,7 @@ extension Warp {
         
         public var body: some View {
             HStack(spacing: Warp.Spacing.spacing100) {
-                ForEach(0..<pageCount, id: \..self) { index in
+                ForEach(0..<pageCount, id: \.self) { index in
                     Circle()
                         .fill(index == selectedPage ? colorProvider.token.iconSelected : colorProvider.token.backgroundDisabledSubtle)
                         .frame(width: 10, height: 10)
