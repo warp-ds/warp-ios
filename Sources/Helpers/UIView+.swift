@@ -1,6 +1,6 @@
 import UIKit
 
-extension UIView {
+public extension UIView {
     /// Applies a card-like background to the view with customizable color and corner radius.
     ///
     /// This method sets the background color, applies a corner radius, and adds a small shadow effect
@@ -10,7 +10,7 @@ extension UIView {
     /// - Parameters:
     ///   - color: The background color for the card. Defaults to `Warp.UIToken.surfaceElevated200`.
     ///   - cornerRadius: The radius for the rounded corners. Defaults to `Warp.Spacing.spacing200`.
-    func withCardBackground(
+    func addCardBackground(
         _ color: UIColor = Warp.UIToken.surfaceElevated200,
         cornerRadius: CGFloat = Warp.Spacing.spacing200
     ) {
@@ -29,7 +29,7 @@ extension UIView {
     /// - Parameters:
     ///   - color: The background color for the bottom sheet. Defaults to `Warp.UIToken.surfaceElevated100`.
     ///   - cornerRadius: The radius for the rounded top corners. Defaults to `Warp.Spacing.spacing200`.
-    func withBottomSheetBackground(
+    func addBottomSheetBackground(
         _ color: UIColor =  Warp.UIToken.surfaceElevated100,
         cornerRadius: CGFloat = Warp.Spacing.spacing200
     ) {
