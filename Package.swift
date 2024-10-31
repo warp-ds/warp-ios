@@ -18,7 +18,7 @@ let package = Package(
         .target(
             name: "Warp",
             path: "Sources",
-            exclude: ["SampleApp"],
+            exclude: ["../SampleApp"],
             resources: [
                 .process("Typography/Fonts"),
                 .process("Resources")
