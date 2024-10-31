@@ -17,6 +17,7 @@ extension Warp {
         case arrowRight
         case arrowUp
         case attachment
+        case awardMedal
         case automatic
         case backWheelDrive
         case bag
