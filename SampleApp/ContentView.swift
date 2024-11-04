@@ -174,6 +174,13 @@ struct ContentView: View {
                     }
 
                     Divider()
+                    
+                    NavigationLink(destination: PageIndicatorView()) {
+                        Text("PageIndicator")
+                            .padding()
+                    }
+                    
+                    Divider()
 
                     NavigationLink(destination: PillView()) {
                         Text("Pill")
