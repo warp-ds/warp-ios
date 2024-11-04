@@ -40,9 +40,9 @@ extension Warp {
         private var backgroundColor: Color {
             switch state {
             case .default:
-                return isOn ? colorProvider.token.backgroundPrimary : colorProvider.token.backgroundSubtle
+                return isOn ? colorProvider.token.backgroundPrimary : colorProvider.switchTrackBackground
             case .disabled:
-                return colorProvider.switchTrackBackground
+                return colorProvider.token.backgroundDisabledSubtle
             }
         }
         
