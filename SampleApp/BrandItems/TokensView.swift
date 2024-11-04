@@ -1,7 +1,7 @@
 import SwiftUI
 import Warp
 
-struct BrandTokensView: View {
+struct TokensView: View {
     private let tokenProvider = Warp.Token
 
     var body: some View {
@@ -322,5 +322,5 @@ struct BrandTokensView: View {
 }
 
 #Preview {
-    BrandTokensView()
+    TokensView()
 }
