@@ -23,7 +23,7 @@ struct PageIndicatorView: View {
                     Spacer()
                     Button(action: decrementPageCount) {
                         Image(systemName: "minus.circle")
-                            .foregroundColor(.blue)
+                            .foregroundColor(Warp.Token.iconPrimary)
                     }
                     .padding(.trailing)
                     
@@ -35,7 +35,7 @@ struct PageIndicatorView: View {
                     
                     Button(action: incrementPageCount) {
                         Image(systemName: "plus.circle")
-                            .foregroundColor(.blue)
+                            .foregroundColor(Warp.Token.iconPrimary)
                     }
                     .padding(.leading)
                 }

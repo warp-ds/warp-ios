@@ -38,9 +38,9 @@ extension Warp {
         ///   - selectedPage: Binding to an integer representing the currently selected page.
         public init(
             pageCount: Int,
-            selectedPage: Binding<Int>
+            selectedPage: Binding<Int> = .constant(0)
         ) {
-            self.pageCount = pageCount
+            self.pageCount = pageCount > 1 ? pageCount : 2
             self._selectedPage = selectedPage
         }
         
@@ -52,6 +52,7 @@ extension Warp {
                     Circle()
                         .fill(indicatorColor(for: index))
                         .frame(width: 10, height: 10)
+                        .animation(.easeInOut, value: selectedPage)
                         .onTapGesture {
                             withAnimation {
                                 selectedPage = index
