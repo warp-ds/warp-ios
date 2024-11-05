@@ -33,13 +33,9 @@ extension Warp {
                     SwiftUI.Text(title)
                         .font(from: .bodyStrong)
                         .foregroundColor(isSelected ? colorProvider.token.textLink : colorProvider.token.textSubtle)
+                        .lineLimit(1)
                 }
                 .padding(.horizontal, Warp.Spacing.spacing200)
-
-                Rectangle()
-                    .fill(colorProvider.token.border)
-                    .frame(height: 1)
-                    .padding(.top, 4)
             }
         }
     }
@@ -48,7 +44,7 @@ extension Warp {
 #Preview {
     Warp.Tabs(tabs: [
         Warp.TabItem(title: "Tab 1", icon: .listSort),
-        Warp.TabItem(title: "Tab 2", icon: .listSort),
+        Warp.TabItem(title: "Longer Tab Title", icon: .listSort),
         Warp.TabItem(title: "Tab 3", icon: .listSort),
         Warp.TabItem(title: "Tab 4", icon: .listSort)
     ])

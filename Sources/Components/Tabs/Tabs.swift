@@ -9,13 +9,13 @@ extension Warp {
         public let tabs: [TabItem]
         @State private var selectedIndex: Int = 0
         private let colorProvider: ColorProvider = Warp.Color
-
+        
         /// Initializes the Tabs view.
         /// - Parameter tabs: An array of `TabItem` objects to display as tabs.
         public init(tabs: [TabItem]) {
             self.tabs = tabs
         }
-
+        
         public var body: some View {
             VStack(spacing: 0) {
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -35,10 +35,14 @@ extension Warp {
                         }
                     }
                     
+                    Rectangle()
+                        .fill(colorProvider.token.border)
+                        .frame(height: 1)
+                    
                     // Moving underline with GeometryReader
                     GeometryReader { geometry in
                         let tabWidth = geometry.size.width / CGFloat(tabs.count)
-
+                        
                         Rectangle()
                             .fill(colorProvider.token.borderSelected)
                             .frame(width: tabWidth, height: 3)
@@ -60,7 +64,7 @@ extension Warp {
 #Preview {
     Warp.Tabs(tabs: [
         Warp.TabItem(title: "Tab 1", icon: .listSort),
-        Warp.TabItem(title: "Tab 2", icon: .listSort),
+        Warp.TabItem(title: "Longer Tab Title", icon: .listSort),
         Warp.TabItem(title: "Tab 3", icon: .listSort),
         Warp.TabItem(title: "Tab 4", icon: .listSort)
     ])

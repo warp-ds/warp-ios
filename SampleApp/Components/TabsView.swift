@@ -5,7 +5,7 @@ struct TabsView: View {
     @State private var hasIcons = true
     private let tabItems: [Warp.TabItem] = [
         Warp.TabItem(title: "Tab 1", icon: .listSort),
-        Warp.TabItem(title: "Tab 2", icon: .listSort),
+        Warp.TabItem(title: "Longer Tab Title", icon: .listSort),
         Warp.TabItem(title: "Tab 3", icon: .listSort),
         Warp.TabItem(title: "Tab 4", icon: .listSort)
     ]
