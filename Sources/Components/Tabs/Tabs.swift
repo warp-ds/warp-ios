@@ -1,11 +1,17 @@
 import SwiftUI
 
 extension Warp {
+    /// A customizable tab view component with selectable tabs.
+    /// - Parameters:
+    ///   - tabs: An array of `TabItem` objects, each containing a title and an optional icon.
+    ///   - selectedIndex: The index of the currently selected tab.
     public struct Tabs: View {
         public let tabs: [TabItem]
         @State private var selectedIndex: Int = 0
         private let colorProvider: ColorProvider = Warp.Color
 
+        /// Initializes the Tabs view.
+        /// - Parameter tabs: An array of `TabItem` objects to display as tabs.
         public init(tabs: [TabItem]) {
             self.tabs = tabs
         }
@@ -35,4 +41,13 @@ extension Warp {
             )
         }
     }
+}
+
+#Preview {
+    Warp.Tabs(tabs: [
+        Warp.TabItem(title: "Tab 1", icon: .listSort),
+        Warp.TabItem(title: "Tab 2", icon: .listSort),
+        Warp.TabItem(title: "Tab 3", icon: .listSort),
+        Warp.TabItem(title: "Tab 4", icon: .listSort)
+    ])
 }

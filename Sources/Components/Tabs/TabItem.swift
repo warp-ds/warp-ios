@@ -1,24 +1,27 @@
 import SwiftUI
 
 extension Warp {
-    // Define a TabItem model to represent each tab with a title and an optional icon
+    /// A model representing an individual tab item with a title and an optional icon.
     public struct TabItem {
         public let title: String
         public let icon: Warp.Icon?
         
-        public init(title: String,
-                    icon: Warp.Icon? = nil) {
+        /// Initializes a TabItem.
+        /// - Parameters:
+        ///   - title: The title of the tab.
+        ///   - icon: An optional icon to display alongside the title.
+        public init(title: String, icon: Warp.Icon? = nil) {
             self.title = title
             self.icon = icon
         }
     }
     
-    // Define the TabViewItem to represent each tab's UI
+    /// A view for an individual tab item, including title and optional icon.
     public struct TabItemView: View {
         let title: String
         let icon: Warp.Icon?
         let isSelected: Bool
-        let colorProvider: ColorProvider = Warp.Color
+        private let colorProvider: ColorProvider = Warp.Color
 
         public var body: some View {
             VStack {
@@ -33,7 +36,7 @@ extension Warp {
                 }
                 .padding(0)
 
-                // Indicator line
+                // Indicator line for selected tab
                 Rectangle()
                     .fill(isSelected ? colorProvider.token.borderSelected : colorProvider.token.border)
                     .frame(height: isSelected ? 3 : 1)
@@ -41,4 +44,13 @@ extension Warp {
             }
         }
     }
+}
+
+#Preview {
+    Warp.Tabs(tabs: [
+        Warp.TabItem(title: "Tab 1", icon: .listSort),
+        Warp.TabItem(title: "Tab 2", icon: .listSort),
+        Warp.TabItem(title: "Tab 3", icon: .listSort),
+        Warp.TabItem(title: "Tab 4", icon: .listSort)
+    ])
 }
