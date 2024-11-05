@@ -34,12 +34,11 @@ extension Warp {
                         .font(from: .bodyStrong)
                         .foregroundColor(isSelected ? colorProvider.token.textLink : colorProvider.token.textSubtle)
                 }
-                .padding(0)
+                .padding(.horizontal, Warp.Spacing.spacing200)
 
-                // Indicator line for selected tab
                 Rectangle()
-                    .fill(isSelected ? colorProvider.token.borderSelected : colorProvider.token.border)
-                    .frame(height: isSelected ? 3 : 1)
+                    .fill(colorProvider.token.border)
+                    .frame(height: 1)
                     .padding(.top, 4)
             }
         }

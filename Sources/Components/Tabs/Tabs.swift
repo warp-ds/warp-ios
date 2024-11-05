@@ -17,23 +17,37 @@ extension Warp {
         }
 
         public var body: some View {
-            HStack(alignment: .center, spacing: 0) {
-                ForEach(tabs.indices, id: \.self) { index in
-                    let tab = tabs[index]
-                    TabItemView(
-                        title: tab.title,
-                        icon: tab.icon,
-                        isSelected: index == selectedIndex
-                    )
-                    .onTapGesture {
-                        withAnimation {
-                            selectedIndex = index
+            VStack(spacing: 0) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(alignment: .center, spacing: 0) {
+                        ForEach(tabs.indices, id: \.self) { index in
+                            let tab = tabs[index]
+                            TabItemView(
+                                title: tab.title,
+                                icon: tab.icon,
+                                isSelected: index == selectedIndex
+                            )
+                            .onTapGesture {
+                                withAnimation(.easeInOut(duration: 0.3)) {
+                                    selectedIndex = index
+                                }
+                            }
                         }
                     }
+                    
+                    // Moving underline with GeometryReader
+                    GeometryReader { geometry in
+                        let tabWidth = geometry.size.width / CGFloat(tabs.count)
+
+                        Rectangle()
+                            .fill(colorProvider.token.borderSelected)
+                            .frame(width: tabWidth, height: 3)
+                            .offset(x: tabWidth * CGFloat(selectedIndex), y: -Warp.Spacing.spacing100 - 3)
+                            .animation(.easeInOut(duration: 0.3), value: selectedIndex)
+                    }
+                    .frame(height: 3)
                 }
             }
-            .padding(.horizontal, Warp.Spacing.spacing100)
-            .padding(.vertical, Warp.Spacing.spacing100)
             .background(
                 Rectangle()
                     .fill(colorProvider.token.backgroundTransparent0)
