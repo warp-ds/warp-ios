@@ -13,12 +13,10 @@ struct TabsView: View {
     var body: some View {
         VStack {
             Warp.Tabs(tabs: tabItems.map { hasIcons ? $0 : .init(title: $0.title) })
-            .padding()
             
-            // Controls to modify Switch's state
-            GroupBox(content: {
+            // Controls to toggle icon visibility in tabs
+            GroupBox {
                 VStack(alignment: .leading) {
-                    // Toggle Tabs Icon
                     HStack {
                         Text("Show Icon")
                         Spacer()
@@ -26,9 +24,9 @@ struct TabsView: View {
                     }
                     .padding(.top, 20)
                 }
-            }, label: {
+            } label: {
                 Text("Modify Tabs Icon")
-            })
+            }
         }
         .padding(.horizontal)
         .navigationTitle("Tabs")
@@ -37,5 +35,5 @@ struct TabsView: View {
 }
 
 #Preview {
-    SwitchView()
+    TabsView()
 }
