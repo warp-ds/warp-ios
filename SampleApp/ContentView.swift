@@ -67,6 +67,7 @@ struct ContentView: View {
                     row("Spinner", destination: SpinnerView())
                     row("StepIndicator", destination: StepIndicatorView())
                     row("Switch", destination: SwitchView())
+                    row("Tabs", destination: TabsView())
                     row("Text", destination: TextView())
                     row("TextArea", destination: TextAreaView())
                     row("TextField", destination: TextFieldView())
