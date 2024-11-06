@@ -22,34 +22,29 @@ extension Warp {
                     HStack(alignment: .center, spacing: 0) {
                         ForEach(tabs.indices, id: \.self) { index in
                             let tab = tabs[index]
-                            TabItemView(
-                                title: tab.title,
-                                icon: tab.icon,
-                                isSelected: index == selectedIndex
-                            )
-                            .onTapGesture {
-                                withAnimation(.easeInOut(duration: 0.3)) {
-                                    selectedIndex = index
+                            VStack(spacing: 8) {
+                                // Display tab content
+                                TabItemView(
+                                    title: tab.title,
+                                    icon: tab.icon,
+                                    isSelected: index == selectedIndex
+                                )
+                                .onTapGesture {
+                                    withAnimation(.easeInOut(duration: 0.3)) {
+                                        selectedIndex = index
+                                    }
                                 }
+                                
+                                // Draw underline based on selection
+                                Rectangle()
+                                    .fill(index == selectedIndex ? colorProvider.token.borderSelected : colorProvider.token.border)
+                                    .frame(height: index == selectedIndex ? 3 : 1)
+                                    .offset(y: index == selectedIndex ? -1.5 : 0)
+                                    .animation(.easeInOut(duration: 0.3), value: selectedIndex)
                             }
                         }
                     }
-                    
-                    Rectangle()
-                        .fill(colorProvider.token.border)
-                        .frame(height: 1)
-                    
-                    // Moving underline with GeometryReader
-                    GeometryReader { geometry in
-                        let tabWidth = geometry.size.width / CGFloat(tabs.count)
-                        
-                        Rectangle()
-                            .fill(colorProvider.token.borderSelected)
-                            .frame(width: tabWidth, height: 3)
-                            .offset(x: tabWidth * CGFloat(selectedIndex), y: -Warp.Spacing.spacing100 - 3)
-                            .animation(.easeInOut(duration: 0.3), value: selectedIndex)
-                    }
-                    .frame(height: 3)
+                    .padding(.horizontal, Warp.Spacing.spacing100)
                 }
             }
             .background(

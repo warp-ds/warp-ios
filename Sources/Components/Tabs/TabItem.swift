@@ -22,7 +22,7 @@ extension Warp {
         let icon: Warp.Icon?
         let isSelected: Bool
         private let colorProvider: ColorProvider = Warp.Color
-
+        
         public var body: some View {
             VStack {
                 HStack(alignment: .center, spacing: Warp.Spacing.spacing100) {
