@@ -18,40 +18,43 @@ extension Warp {
         
         public var body: some View {
             VStack(spacing: 0) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .center, spacing: 0) {
-                        ForEach(tabs.indices, id: \.self) { index in
-                            let tab = tabs[index]
-                            VStack(spacing: 8) {
-                                // Display tab content
-                                TabItemView(
-                                    title: tab.title,
-                                    icon: tab.icon,
-                                    isSelected: index == selectedIndex
-                                )
-                                .onTapGesture {
-                                    withAnimation(.easeInOut(duration: 0.3)) {
-                                        selectedIndex = index
+                ScrollViewReader { scrollProxy in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(alignment: .center, spacing: 0) {
+                            ForEach(tabs.indices, id: \.self) { index in
+                                let tab = tabs[index]
+                                VStack(spacing: 8) {
+                                    // Display tab content
+                                    TabItemView(
+                                        title: tab.title,
+                                        icon: tab.icon,
+                                        isSelected: index == selectedIndex
+                                    )
+                                    .onTapGesture {
+                                        withAnimation(.easeInOut(duration: 0.3)) {
+                                            selectedIndex = index
+                                            scrollProxy.scrollTo(index, anchor: .center)
+                                        }
                                     }
+                                    
+                                    // Draw underline based on selection
+                                    Rectangle()
+                                        .fill(index == selectedIndex ? colorProvider.token.borderSelected : colorProvider.token.border)
+                                        .frame(height: index == selectedIndex ? 3 : 1)
+                                        .offset(y: index == selectedIndex ? -1.5 : 0)
+                                        .animation(.easeInOut(duration: 0.3), value: selectedIndex)
                                 }
-                                
-                                // Draw underline based on selection
-                                Rectangle()
-                                    .fill(index == selectedIndex ? colorProvider.token.borderSelected : colorProvider.token.border)
-                                    .frame(height: index == selectedIndex ? 3 : 1)
-                                    .offset(y: index == selectedIndex ? -1.5 : 0)
-                                    .animation(.easeInOut(duration: 0.3), value: selectedIndex)
                             }
                         }
+                        .padding(.horizontal, Warp.Spacing.spacing100)
                     }
-                    .padding(.horizontal, Warp.Spacing.spacing100)
                 }
+                .background(
+                    Rectangle()
+                        .fill(colorProvider.token.backgroundTransparent0)
+                        .frame(height: 34)
+                )
             }
-            .background(
-                Rectangle()
-                    .fill(colorProvider.token.backgroundTransparent0)
-                    .frame(height: 34)
-            )
         }
     }
 }
