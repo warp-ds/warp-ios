@@ -244,10 +244,17 @@ extension Warp {
         ///
         /// - Returns: A resizable `SwiftUI.Image` instance representing the icon, with a template rendering mode.
         public var body: some View {
+            image
+                .accessibilityLabel(localization)
+        }
+
+        /// Returns a SwiftUI `Image` for the corresponding icon, loaded from the asset catalog.
+        ///
+        /// - Returns: A resizable `SwiftUI.Image` instance representing the icon, with a template rendering mode.
+        public var image: Image {
             SwiftUI.Image(assetName, bundle: .module) // Load the image from the asset catalog
                 .renderingMode(.template) // Ensure template rendering mode for vector images
                 .resizable()
-                .accessibilityLabel(localization)
         }
         
         /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog.
