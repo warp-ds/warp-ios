@@ -235,6 +235,7 @@ extension Warp {
         case wallet
         case warning
         case warranty
+        case waterPitcher
         case wheelchair
         case wifi
         case woods
