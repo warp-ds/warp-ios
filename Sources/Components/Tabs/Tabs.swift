@@ -36,6 +36,7 @@ extension Warp {
                                             scrollProxy.scrollTo(index, anchor: .center)
                                         }
                                     }
+                                    .offset(y: index == selectedIndex ? 1 : 0)
                                     
                                     // Draw underline based on selection
                                     Rectangle()
