@@ -12,4 +12,10 @@ extension UIImage {
         }
         return resizedImage
     }
+    
+    /// Loads an image from the Warp bundle.
+    /// - Parameter icon: The icon from `Warp.TaxonomyIcon`.
+    public static func warpIcon(named name: String) -> UIImage? {
+        return UIImage(named: name, in: .module, compatibleWith: nil)
+    }
 }
