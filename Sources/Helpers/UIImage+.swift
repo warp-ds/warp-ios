@@ -12,4 +12,10 @@ extension UIImage {
         }
         return resizedImage
     }
+    
+    /// Loads an image from the Warp bundle.
+    /// - Parameter named: The rawValue of the icon from `Warp Assets`.
+    public static func warpIcon(named name: String) -> UIImage? {
+        return UIImage(named: name, in: .module, compatibleWith: nil)
+    }
 }

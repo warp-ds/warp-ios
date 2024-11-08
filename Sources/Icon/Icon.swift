@@ -235,6 +235,7 @@ extension Warp {
         case wallet
         case warning
         case warranty
+        case waterPitcher
         case wheelchair
         case wifi
         case woods
@@ -292,37 +293,37 @@ extension Warp {
     /// Provides both SwiftUI `Image` and UIKit `UIImage` representations for each icon.
     public enum TaxonomyIcon: String, CaseIterable, View {
         case airplane
-        case airplaneHotel
-        case babyonesie
+        case airplaneHotel = "airplane-hotel"
+        case babyonesie = "baby-onesie"
         case bulldozer
         case cabin
         case camping
-        case carFront
-        case carPart
-        case carRent
-        case carSubscription
+        case carFront = "car-front"
+        case carPart = "car-part"
+        case carRent = "car-rent"
+        case carSubscription = "car-subscription"
         case cart
         case chainsaw
         case chair
         case dating
         case economy
         case football
-        case geometricShapes
-        case guitarBat
+        case geometricShapes = "geometric-shapes"
+        case guitarBat = "guitar-bat"
         case hotel
-        case iceSkater
+        case iceSkater = "ice-skater"
         case job
         case minivan
         case motorcycle
-        case paintRoller
+        case paintRoller = "paint-roller"
         case paw
-        case phoneBadgeCheck
-        case realEstate
+        case phoneBadgeCheck = "phone-badge-check"
+        case realEstate = "real-estate"
         case sailboat
         case shirt
-        case smartPhone
+        case smartPhone = "smart-phone"
         case sofa
-        case storeFront
+        case storeFront = "store-front"
         case stroller
         case sweater
         case tools
@@ -332,7 +333,7 @@ extension Warp {
         
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         public var body: some View {
-            SwiftUI.Image(assetName, bundle: .module) // Load the image from the asset catalog
+            SwiftUI.Image(rawValue, bundle: .module) // Load the image from the asset catalog
                 .renderingMode(.template) // Ensure template rendering mode for vector images
                 .resizable()
         }
@@ -342,18 +343,11 @@ extension Warp {
         /// - Returns: A `UIImage` object corresponding to the icon.
         public var uiImage: UIImage {
             // Load the image from the asset catalog
-            guard let image = UIImage(named: assetName, in: .module, compatibleWith: nil) else {
+            guard let image = UIImage(named: rawValue, in: .module, compatibleWith: nil) else {
                 // Handle the error (e.g., log it) if image loading fails
                 return UIImage()
             }
             return image.withRenderingMode(.alwaysTemplate)
-        }
-        
-        /// Maps the icon case to the corresponding asset name in the asset catalog.
-        ///
-        /// - Returns: The name of the asset in the asset catalog as `String`.
-        private var assetName: String {
-            return rawValue.prefix(1).capitalized + rawValue.dropFirst() // CapitalizedCamelCase asset name
         }
     }
 }
@@ -365,14 +359,14 @@ extension Warp {
     public enum BrandIcon: String, CaseIterable, View {
         case autovex
         case honk
-        case mittAnbud
+        case mittAnbud = "mitt-anbud"
         case nettbil
         case oikotie
         case remppatori
         
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         public var body: some View {
-            SwiftUI.Image(assetName, bundle: .module) // Load the image from the asset catalog
+            SwiftUI.Image(rawValue, bundle: .module) // Load the image from the asset catalog
                 .renderingMode(.original) // Ensure original rendering mode for vector images
                 .resizable()
         }
@@ -382,18 +376,11 @@ extension Warp {
         /// - Returns: A `UIImage` object corresponding to the icon.
         public var uiImage: UIImage {
             // Load the image from the asset catalog
-            guard let image = UIImage(named: assetName, in: .module, compatibleWith: nil) else {
+            guard let image = UIImage(named: rawValue, in: .module, compatibleWith: nil) else {
                 // Handle the error (e.g., log it) if image loading fails
                 return UIImage()
             }
             return image.withRenderingMode(.alwaysOriginal)
-        }
-        
-        /// Maps the icon case to the corresponding asset name in the asset catalog.
-        ///
-        /// - Returns: The name of the asset in the asset catalog as `String`.
-        private var assetName: String {
-            return rawValue.prefix(1).capitalized + rawValue.dropFirst() // CapitalizedCamelCase asset name
         }
     }
 }
