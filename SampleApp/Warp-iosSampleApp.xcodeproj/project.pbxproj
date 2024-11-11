@@ -134,6 +134,10 @@
 		828E7D462B61239100869C58 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E7D442B61239100869C58 /* BadgeView.swift */; };
 		82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
 		82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
+		82A73D212CDA574F00C983AF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A73D202CDA574A00C983AF /* TabsView.swift */; };
+		82A73D222CDA574F00C983AF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A73D202CDA574A00C983AF /* TabsView.swift */; };
+		82A73D232CDA574F00C983AF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A73D202CDA574A00C983AF /* TabsView.swift */; };
+		82A73D242CDA574F00C983AF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A73D202CDA574A00C983AF /* TabsView.swift */; };
 		82A9A00D2C7EF7A20053A961 /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9A00C2C7EF79C0053A961 /* RadioView.swift */; };
 		82A9A00E2C7EF7A20053A961 /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9A00C2C7EF79C0053A961 /* RadioView.swift */; };
 		82A9A00F2C7EF7A20053A961 /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9A00C2C7EF79C0053A961 /* RadioView.swift */; };
@@ -206,6 +210,7 @@
 		828E7D442B61239100869C58 /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		82A215582A8DF4DC0062FB9E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		82A73D202CDA574A00C983AF /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		82A9A00C2C7EF79C0053A961 /* RadioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioView.swift; sourceTree = "<group>"; };
 		82AE96102C64C2C000BF3920 /* ShadowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowUIView.swift; sourceTree = "<group>"; };
 		82B168112B750BED00DCDDE5 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -407,6 +412,7 @@
 				82635D062BFE1CA700F7FA6F /* SpinnerView.swift */,
 				B295AC392C22F93D004C77BB /* StepIndicatorView.swift */,
 				508AB0992CCFCCAF00C03CC5 /* SwitchView.swift */,
+				82A73D202CDA574A00C983AF /* TabsView.swift */,
 				82B168112B750BED00DCDDE5 /* TextView.swift */,
 				507344112CC0F0DB00928836 /* TextAreaView.swift */,
 				82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */,
@@ -595,6 +601,7 @@
 				506939E32CB52EF000AA631F /* SliderView.swift in Sources */,
 				2E1ADF4E2C2561A700DFEE06 /* TypographyView.swift in Sources */,
 				2E1ADF4F2C2561A700DFEE06 /* TextView.swift in Sources */,
+				82A73D242CDA574F00C983AF /* TabsView.swift in Sources */,
 				2E1ADF722C2561D200DFEE06 /* Warp_iosDBA.swift in Sources */,
 				825516D32CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				B286EDFC2C33EACF00D25DCC /* StepIndicatorView.swift in Sources */,
@@ -635,6 +642,7 @@
 				506939E12CB52EF000AA631F /* SliderView.swift in Sources */,
 				820A85EB2C6CEB0C006D35A0 /* TypographyView.swift in Sources */,
 				820A85EC2C6CEB0C006D35A0 /* TextView.swift in Sources */,
+				82A73D222CDA574F00C983AF /* TabsView.swift in Sources */,
 				820A86142C6CEC30006D35A0 /* Warp_iosBlocket.swift in Sources */,
 				825516D12CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				820A85EE2C6CEB0C006D35A0 /* StepIndicatorView.swift in Sources */,
@@ -675,6 +683,7 @@
 				506939E02CB52EF000AA631F /* SliderView.swift in Sources */,
 				820A86272C6D4388006D35A0 /* TypographyView.swift in Sources */,
 				820A86282C6D4388006D35A0 /* TextView.swift in Sources */,
+				82A73D212CDA574F00C983AF /* TabsView.swift in Sources */,
 				820A86292C6D4388006D35A0 /* StepIndicatorView.swift in Sources */,
 				825516D22CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				820A862A2C6D4388006D35A0 /* BadgeView.swift in Sources */,
@@ -715,6 +724,7 @@
 				506939E22CB52EF000AA631F /* SliderView.swift in Sources */,
 				349586652B0F727600A14570 /* TypographyView.swift in Sources */,
 				82B168132B750BED00DCDDE5 /* TextView.swift in Sources */,
+				82A73D232CDA574F00C983AF /* TabsView.swift in Sources */,
 				B295AC3B2C22F93D004C77BB /* StepIndicatorView.swift in Sources */,
 				825516D42CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				828E7D462B61239100869C58 /* BadgeView.swift in Sources */,
