@@ -17,7 +17,9 @@ extension Warp {
         private let trackColor = Warp.Token.backgroundDisabledSubtle
         private let filledTrackColor = Warp.Token.backgroundPrimary
         private let thumbColor = Warp.Token.backgroundPrimary
+        private let thumbActiveColor = Warp.Token.backgroundPrimaryActive
 
+        @State private var isActive: Bool = false
         @Binding var value: Double // Binding value to update the slider value
         let range: ClosedRange<Double> // Defines the range for the slider
         let step: Double // Step value for the slider
@@ -43,12 +45,16 @@ extension Warp {
                         .frame(width: 24, height: 24)
                         .offset(x: thumbOffset(width: geometry.size.width) - 10) // Center thumb
                         .gesture(
-                            DragGesture()
+                            DragGesture(minimumDistance: 0)
                                 .onChanged { dragValue in
                                     updateValue(dragValue: dragValue, width: geometry.size.width) // Update value while dragging
+                                    if !isActive {
+                                        isActive = true
+                                    }
                                 }
                                 .onEnded { _ in
                                     onEditingChanged?(value) // Notify when dragging ends
+                                    isActive = false
                                 }
                         )
                 }
@@ -72,7 +78,7 @@ extension Warp {
         // Square thumb (slider handle)
         private func thumbView(width: CGFloat) -> some View {
             Rectangle()
-                .fill(thumbColor)
+                .fill(isActive ? thumbActiveColor : thumbColor)
                 .cornerRadius(cornerRadius)
                 .addShadow(.small)
         }
