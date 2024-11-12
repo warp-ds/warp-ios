@@ -23,6 +23,7 @@ extension Warp {
                         .background(backgroundColor(for: buttons[index].isSelected))
                         .cornerRadius(Warp.Border.borderRadius100, corners: corners(for: index))
                         .overlay(
+                            // Add a conditional border on the right side only
                             Rectangle()
                                 .fill(colorProvider.token.border)
                                 .frame(width: index < buttons.count - 1 ? 1 : 0) // Only add the divider if it's not the last button
