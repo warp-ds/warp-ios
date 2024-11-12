@@ -22,6 +22,14 @@ extension Warp {
                         .padding(.horizontal, Warp.Spacing.spacing150)
                         .background(backgroundColor(for: buttons[index].isSelected))
                         .cornerRadius(Warp.Border.borderRadius100, corners: corners(for: index))
+                        .overlay(
+                            Rectangle()
+                                .fill(colorProvider.token.border)
+                                .frame(width: index < buttons.count - 1 ? 1 : 0) // Only add the divider if it's not the last button
+                                .frame(maxHeight: .infinity)
+                                .offset(x: 0.5), // Small offset to position the line correctly
+                            alignment: .trailing
+                        )
                         .onTapGesture {
                             buttons[index].isSelected.toggle()
                             onSelectionChange?(buttons)
