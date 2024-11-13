@@ -2,18 +2,25 @@ import SwiftUI
 
 extension Warp {
     /// A customizable tab view component with selectable tabs.
+    /// This view allows users to navigate between multiple tabs, each represented by a title and an optional icon.
+    /// The selected tab is highlighted, with an underline that changes color based on the selection state.
+    ///
     /// - Parameters:
-    ///   - tabs: An array of `TabItem` objects, each containing a title and an optional icon.
-    ///   - selectedIndex: The index of the currently selected tab.
+    ///   - tabs: An array of `TabItem` objects, each containing a title and an optional icon to display in the tab.
+    ///   - selectedIndex: A binding to the index of the currently selected tab.
     public struct Tabs: View {
         public let tabs: [TabItem]
-        @State private var selectedIndex: Int = 0
+        @Binding private var selectedIndex: Int
         private let colorProvider: ColorProvider = Warp.Color
         
-        /// Initializes the Tabs view.
-        /// - Parameter tabs: An array of `TabItem` objects to display as tabs.
-        public init(tabs: [TabItem]) {
+        /// Initializes the Tabs view with an array of tabs and a binding for the selected index.
+        ///
+        /// - Parameters:
+        ///   - tabs: An array of `TabItem` objects to display as selectable tabs.
+        ///   - selectedIndex: A binding to the index of the currently selected tab. Updates to this binding will be observed by the view, triggering animations and layout changes.
+        public init(tabs: [TabItem], selectedIndex: Binding<Int>) {
             self.tabs = tabs
+            self._selectedIndex = selectedIndex
         }
         
         public var body: some View {
@@ -66,5 +73,5 @@ extension Warp {
         Warp.TabItem(title: "Longer Tab Title", icon: .listSort),
         Warp.TabItem(title: "Tab 3", icon: .listSort),
         Warp.TabItem(title: "Tab 4", icon: .listSort)
-    ])
+    ], selectedIndex: .constant(0))
 }
