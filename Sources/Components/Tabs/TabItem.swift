@@ -47,5 +47,5 @@ extension Warp {
         Warp.TabItem(title: "Longer Tab Title", icon: .listSort),
         Warp.TabItem(title: "Tab 3", icon: .listSort),
         Warp.TabItem(title: "Tab 4", icon: .listSort)
-    ])
+    ], selectedIndex: .constant(0))
 }
