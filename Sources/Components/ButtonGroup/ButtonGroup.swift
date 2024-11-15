@@ -1,14 +1,32 @@
 import SwiftUI
 
 extension Warp {
+    /// A customizable button group component that can function as a segmented controller or a multi-select button group.
+    ///
+    /// - Parameters:
+    ///   - buttons: An array of tuples, each containing a title and a selection state (`Bool`) for each button.
+    ///   - singleSelect: A boolean value indicating if only one button can be selected at a time (`true` for single-select mode, `false` for multi-select mode).
+    ///   - onSelectionChange: An optional closure that is called whenever the selection state of the buttons changes.
+    ///
+    /// `ButtonGroup` provides two modes:
+    /// - **Single-select mode** (`singleSelect = true`): Behaves like a segmented controller, where selecting one button deselects all others.
+    /// - **Multi-select mode** (`singleSelect = false`): Allows multiple buttons to be selected independently.
     public struct ButtonGroup: View {
         @Binding public var buttons: [(title: String, isSelected: Bool)]
         public let onSelectionChange: (([(String, Bool)]) -> Void)?
+        public let singleSelect: Bool
         /// Object responsible for providing colors in different environments and variants.
         private let colorProvider: ColorProvider = Warp.Color
         
-        public init(buttons: Binding<[(title: String, isSelected: Bool)]>, onSelectionChange: (([(String, Bool)]) -> Void)? = nil) {
+        /// Initializes the ButtonGroup view with an array of buttons, selection mode, and a selection change handler.
+        ///
+        /// - Parameters:
+        ///   - buttons: A binding to an array of tuples representing each button's title and selection state.
+        ///   - singleSelect: Specifies the selection behavior. If `true`, only one button can be selected at a time. If `false`, multiple buttons can be selected.
+        ///   - onSelectionChange: An optional closure that receives the updated button array whenever the selection changes.
+        public init(buttons: Binding<[(title: String, isSelected: Bool)]>, singleSelect: Bool = false, onSelectionChange: (([(String, Bool)]) -> Void)? = nil) {
             self._buttons = buttons
+            self.singleSelect = singleSelect
             self.onSelectionChange = onSelectionChange
         }
         
@@ -26,17 +44,16 @@ extension Warp {
                             // Add a conditional border on the right side only
                             Rectangle()
                                 .fill(colorProvider.token.border)
-                                .frame(width: index < buttons.count - 1 ? 1 : 0) // Only add the divider if it's not the last button
+                                .frame(width: index < buttons.count - 1 ? 1 : 0)
                                 .frame(maxHeight: .infinity)
-                                .offset(x: 0.5), // Small offset to position the line correctly
+                                .offset(x: 0.5),
                             alignment: .trailing
                             // Custom rounded corner shape with conditional border color
 //                            RoundedCornerShape(corners: corners(for: index), radius: Warp.Border.borderRadius100)
 //                                .stroke(buttons[index].isSelected ? colorProvider.token.borderSelected : colorProvider.token.border, lineWidth: 1)
                         )
                         .onTapGesture {
-                            buttons[index].isSelected.toggle()
-                            onSelectionChange?(buttons)
+                            toggleSelection(at: index)
                         }
 //                    if index < buttons.count - 1 {
 //                        Rectangle()
@@ -50,6 +67,21 @@ extension Warp {
                 RoundedRectangle(cornerRadius: Warp.Border.borderRadius100)
                     .stroke(colorProvider.token.border, lineWidth: 1)
             )
+        }
+        
+        /// Updates the selection state of the button at a specific index.
+        ///
+        /// - Parameter index: The index of the button being tapped.
+        ///
+        /// If `singleSelect` is `true`, it deselects all other buttons and selects only the tapped button.
+        /// Otherwise, it toggles the selection state of the tapped button, allowing multiple selections.
+        private func toggleSelection(at index: Int) {
+            if singleSelect {
+                buttons.indices.forEach { buttons[$0].isSelected = ($0 == index) }
+            } else {
+                buttons[index].isSelected.toggle()
+            }
+            onSelectionChange?(buttons)
         }
         
         private func textColor(for isSelected: Bool) -> Color {
@@ -82,7 +114,7 @@ extension Warp {
             ]
         }, set: { _ in
             
-        })) { updatedButtons in
+        }), singleSelect: true) { updatedButtons in
             print("Updated button states:", updatedButtons)
         }
         .padding()

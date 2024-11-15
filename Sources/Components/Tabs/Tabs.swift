@@ -51,9 +51,17 @@ extension Warp {
                     }
                 }
                 .background(
-                    Rectangle()
-                        .fill(colorProvider.token.backgroundTransparent0)
-                        .frame(height: 34)
+                    VStack(spacing: 0) {
+                        Rectangle()
+                            .fill(colorProvider.token.backgroundTransparent0)
+                            .frame(height: 34)
+                        // Draw underline
+                        Rectangle()
+                            .fill(colorProvider.token.border)
+                            .frame(height: 1.5)
+                            .offset(y: -3.5)
+                            .padding(.horizontal, Warp.Spacing.spacing100)
+                    }
                 )
             }
         }
