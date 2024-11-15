@@ -15,7 +15,7 @@ import SwiftUI
 /// - Parameters:
 ///   - corners: The specific corners to round, specified as a `UIRectCorner` option set (e.g., `.topLeft`, `.bottomRight`).
 ///   - radius: The corner radius to apply to the specified corners.
-struct RoundedCornerShape: Shape {
+public struct RoundedCornerShape: Shape {
     /// The corners of the rectangle to apply the rounding to.
     var corners: UIRectCorner
     
@@ -26,7 +26,7 @@ struct RoundedCornerShape: Shape {
     ///
     /// - Parameter rect: The rectangle in which to apply the rounded corners.
     /// - Returns: A `Path` object defining the shape with the specified rounded corners.
-    func path(in rect: CGRect) -> Path {
+    public func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
     }
