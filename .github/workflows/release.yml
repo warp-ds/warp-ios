@@ -1,0 +1,60 @@
+name: Release Warp-iOS
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Type of release'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+      confirm_branch:
+        description: 'Are you sure you want to release from a branch other than main?'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  pre_check:
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.branch_check.outputs.proceed }}
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Check if branch is main
+        id: branch_check
+        run: |
+          CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          if [ "$CURRENT_BRANCH" != "main" ]; then
+            if [ "${{ github.event.inputs.confirm_branch }}" != 'true' ]; then
+              echo "You are attempting to release from the '$CURRENT_BRANCH' branch instead of 'main'."
+              echo "Please confirm by setting 'confirm_branch' to 'true' when running the workflow."
+              exit 1
+            fi
+          fi
+        outputs:
+          proceed: true
+
+  bump_version:
+    runs-on: ubuntu-latest
+    needs: pre_check
+    if: needs.pre_check.outputs.proceed == 'true'
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Increment version
+        run: |
+          npm install -g standard-version
+          standard-version --release-as ${{ github.event.inputs.release_type }}
