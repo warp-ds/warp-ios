@@ -53,6 +53,11 @@ jobs:
         with:
           node-version: '16'
 
+      - name: Configure Git User
+        run: |
+          git config --global user.email "your-email@example.com"
+          git config --global user.name "Your Name"
+
       - name: Increment version
         run: |
           npm install -g standard-version
