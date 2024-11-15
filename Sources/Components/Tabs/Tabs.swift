@@ -47,7 +47,6 @@ extension Warp {
                                 }
                             }
                         }
-                        .padding(.horizontal, Warp.Spacing.spacing100)
                     }
                 }
                 .background(
@@ -60,7 +59,6 @@ extension Warp {
                             .fill(colorProvider.token.border)
                             .frame(height: 1)
                             .offset(y: -3.5)
-                            .padding(.horizontal, Warp.Spacing.spacing100)
                     }
                 )
             }
