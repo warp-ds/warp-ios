@@ -51,6 +51,7 @@ struct ContentView: View {
                     row("Box", destination: BoxView())
                     row("Broadcast", destination: BroadcastView())
                     row("Button", destination: ButtonView())
+                    row("ButtonGroup", destination: ButtonGroupView())
                     row("Callout", destination: CalloutView())
                     row("Checkbox", destination: CheckboxView())
                     row("Expandable", destination: ExpandableView())
