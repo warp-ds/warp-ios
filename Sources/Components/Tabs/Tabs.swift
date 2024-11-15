@@ -36,12 +36,12 @@ extension Warp {
                                             scrollProxy.scrollTo(index, anchor: .center)
                                         }
                                     }
-                                    .offset(y: index == selectedIndex ? 1 : 0)
+                                    .offset(y: index == selectedIndex ? 1.5 : 0)
                                     
                                     // Draw underline based on selection
                                     Rectangle()
                                         .fill(index == selectedIndex ? colorProvider.token.borderSelected : colorProvider.token.border)
-                                        .frame(height: index == selectedIndex ? 3 : 1)
+                                        .frame(height: index == selectedIndex ? 3 : 0)
                                         .offset(y: index == selectedIndex ? -1.5 : 0)
                                         .animation(.easeInOut(duration: 0.3), value: selectedIndex)
                                 }
@@ -58,7 +58,7 @@ extension Warp {
                         // Draw underline
                         Rectangle()
                             .fill(colorProvider.token.border)
-                            .frame(height: 1.5)
+                            .frame(height: 1)
                             .offset(y: -3.5)
                             .padding(.horizontal, Warp.Spacing.spacing100)
                     }

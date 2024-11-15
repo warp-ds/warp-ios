@@ -48,18 +48,10 @@ extension Warp {
                                 .frame(maxHeight: .infinity)
                                 .offset(x: 0.5),
                             alignment: .trailing
-                            // Custom rounded corner shape with conditional border color
-//                            RoundedCornerShape(corners: corners(for: index), radius: Warp.Border.borderRadius100)
-//                                .stroke(buttons[index].isSelected ? colorProvider.token.borderSelected : colorProvider.token.border, lineWidth: 1)
                         )
                         .onTapGesture {
                             toggleSelection(at: index)
                         }
-//                    if index < buttons.count - 1 {
-//                        Rectangle()
-//                            .fill(colorProvider.token.border)
-//                            .frame(width: 1, height: 32)
-//                    }
                 }
             }
             .background(colorProvider.token.background)
