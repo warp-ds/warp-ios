@@ -105,7 +105,7 @@ extension Warp {
 /// A view modifier that applies double shadows to a view based on the specified `Warp.Shadow` properties.
 private struct ShadowViewModifier: ViewModifier {
     let shadow: Warp.Shadow
-    let isPressed: Bool
+    @Binding var isPressed: Bool
     
     func body(content: Content) -> some View {
         content
@@ -117,6 +117,15 @@ private struct ShadowViewModifier: ViewModifier {
                     radius: isPressed ? shadow.radius2 * shadow.pressedModifier : shadow.radius2,
                     x: shadow.x2,
                     y: isPressed ? shadow.y2 * shadow.pressedModifier : shadow.y2)
+            .onLongPressGesture(
+                minimumDuration: 0,
+                pressing: { inProgress in
+                    isPressed = inProgress
+                },
+                perform: {
+                    isPressed = false
+                }
+            )
     }
 }
 
@@ -126,7 +135,7 @@ extension View {
     /// - Parameter shadow: A `Warp.Shadow` object containing properties for the two shadows.
     /// - Parameter isPressed: Bool indicating if the shadow should be modified to indicate that view is in a pressed state
     /// - Returns: A view modified with the specified double shadows.
-    public func addShadow(_ shadow: Warp.Shadow, isPressed: Bool = false) -> some View {
+    public func addShadow(_ shadow: Warp.Shadow, isPressed: Binding<Bool> = .constant(false)) -> some View {
         modifier(ShadowViewModifier(shadow: shadow, isPressed: isPressed))
     }
 }
