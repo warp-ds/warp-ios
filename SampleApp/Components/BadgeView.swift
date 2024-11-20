@@ -2,39 +2,51 @@ import SwiftUI
 import Warp
 
 struct BadgeView: View {
+    @State private var showIcon = false
+    @State private var variant = Warp.BadgeVariant.info
+    @State private var position = Warp.BadgePosition.default
+
     var body: some View {
         ScrollView(showsIndicators: false) {
-            ForEach(Warp.BadgeVariant.allCases, id: \.self) { variant in
-                createView(for: variant)
-            }
-            .padding(.horizontal)
-            .navigationTitle("Badge")
-            .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-
-    private func createView(for variant: Warp.BadgeVariant) -> some View {
-        let name = String(describing: variant)
-        let capitalizedName = name.capitalized
-        
-        return GroupBox(
-            content: {
-                VStack(alignment: .trailing, spacing: 8) {
-                    ForEach(Warp.BadgePosition.allCases, id: \.self) { position in
-                        createView(for: variant, position: position)
+            // Switch display with dynamic state
+            Warp.Badge(text: variant.rawValue,
+                       icon: showIcon ? .plus : nil,
+                       variant: variant,
+                       position: position)
+            .padding()
+            
+            // Controls to modify Badge's state
+            GroupBox(content: {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Show or Hide Icon")
+                        Spacer()
+                        Warp.Switch(isOn: $showIcon.animation(.smooth))
                     }
+                    Divider()
+                    Text("Badge variant")
+                    Picker("Pick your badge variant please", selection: $variant.animation(.smooth)) {
+                        ForEach(Warp.BadgeVariant.allCases, id: \.self) { variant in
+                            Text(variant.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    Divider()
+                    Text("Badge position")
+                    Picker("Pick your badge position please", selection: $position.animation(.smooth)) {
+                        ForEach(Warp.BadgePosition.allCases, id: \.self) { position in
+                            Text(position.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
                 }
             }, label: {
-                Text(capitalizedName)
-            }
-        )
-    }
-    
-    private func createView(for variant: Warp.BadgeVariant, position: Warp.BadgePosition) -> some View {
-        HStack {
-            Text(String(describing: position))
-            Warp.Badge(text: String(describing: variant), variant: variant, position: position)
+                Text("Modify Badge")
+            })
         }
+        .padding(.horizontal)
+        .navigationTitle("Badge")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

@@ -10,6 +10,7 @@ extension Warp {
         /// Equatable conformance for comparing two `Badge` instances.
         public static func == (lhs: Warp.Badge, rhs: Warp.Badge) -> Bool {
             lhs.text == rhs.text &&
+            lhs.icon == rhs.icon &&
             lhs.variant == rhs.variant &&
             lhs.position == rhs.position
         }
@@ -17,12 +18,16 @@ extension Warp {
         /// Hashes the essential properties to ensure that `Badge` can be used in hash-based collections.
         public func hash(into hasher: inout Hasher) {
             hasher.combine(text)
+            hasher.combine(icon)
             hasher.combine(variant)
             hasher.combine(position)
         }
         
         /// The text displayed inside the badge.
         private let text: String
+        
+        /// The icon displayed inside the badge.
+        private let icon: Warp.Icon?
         
         /// The style of the badge, determining its appearance.
         private let variant: Warp.BadgeVariant
@@ -33,30 +38,37 @@ extension Warp {
         /// The object responsible for providing colors to the badge based on the current environment or theme.
         private let colorProvider: ColorProvider = Warp.Color
         
-        /// Initializes a `Badge` with the given text, style, and position.
+        /// Initializes a `Badge` with the given text, optional icon, style, and position.
         ///
         /// - Parameters:
         ///   - text: The text to display inside the badge.
+        ///   - icon: The optional icon to display inside the badge.
         ///   - variant: The style of the badge, defined by `Warp.BadgeVariant`.
         ///   - position: The corner position for the badge, defined by `Warp.BadgePosition`. Defaults to `.default`.
         public init(
             text: String,
+            icon: Warp.Icon? = nil,
             variant: Warp.BadgeVariant,
             position: Warp.BadgePosition = .default
         ) {
             self.text = text
+            self.icon = icon
             self.variant = variant
             self.position = position
         }
         
-        /// The body of the `Badge` view, rendering the badge with the given text, style, and position.
+        /// The body of the `Badge` view, rendering the badge with the given text, optional icon, style, and position.
         public var body: some View {
-            Text(text, style: .detail)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .foregroundColor(foregroundColor)
-                .background(backgroundColor)
-                .cornerRadius(4, corners: corners)
+            HStack(spacing: Warp.Spacing.spacing50) {
+                if let icon {
+                    IconView(icon, size: .small, color: foregroundColor)
+                }
+                Text(text, style: .detail, color: foregroundColor)
+            }
+            .padding(.horizontal, Warp.Spacing.spacing100)
+            .padding(.vertical, Warp.Spacing.spacing50)
+            .background(backgroundColor)
+            .cornerRadius(Warp.Border.borderRadius50, corners: corners)
         }
         
         /// Determines the foreground (text) color based on the badge variant.
