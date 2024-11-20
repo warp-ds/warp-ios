@@ -15,8 +15,11 @@ public struct FinnColorsView: View {
                                     FinnColors.blue500,
                                     FinnColors.blue600,
                                     FinnColors.blue700,
+                                    FinnColors.blue750,
                                     FinnColors.blue800,
-                                    FinnColors.blue900])
+                                    FinnColors.blue850,
+                                    FinnColors.blue900,
+                                    FinnColors.blue950])
                 
                 createView(for: "Aqua",
                            colors: [FinnColors.aqua50,

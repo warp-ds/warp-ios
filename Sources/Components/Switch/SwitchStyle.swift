@@ -28,6 +28,10 @@ extension Warp {
                         .offset(x: configuration.isOn ? 9 : -9)
                         .animation(.easeInOut, value: configuration.isOn)
                 }
+                .overlay(
+                    RoundedRectangle(cornerRadius: 100)
+                        .stroke(borderColor, lineWidth: configuration.isOn ? 0 : 1)
+                )
                 .onTapGesture {
                     if state != .disabled {
                         configuration.isOn.toggle()
@@ -40,9 +44,9 @@ extension Warp {
         private var backgroundColor: Color {
             switch state {
             case .default:
-                return isOn ? colorProvider.token.backgroundPrimary : colorProvider.switchTrackBackground
+                return isOn ? colorProvider.token.backgroundPrimary : colorProvider.token.background
             case .disabled:
-                return colorProvider.token.backgroundDisabledSubtle
+                return isOn ? colorProvider.token.backgroundDisabled : colorProvider.token.backgroundDisabledSubtle
             }
         }
         
@@ -50,9 +54,19 @@ extension Warp {
         private var circleColor: Color {
             switch state {
             case .default:
-                return colorProvider.token.background
+                return isOn ? colorProvider.token.background : colorProvider.switchHandleBackground
             case .disabled:
-                return colorProvider.token.backgroundDisabled
+                return isOn ? colorProvider.token.backgroundDisabledSubtle : colorProvider.token.backgroundDisabled
+            }
+        }
+        
+        /// Determines the color of the border based on the current state.
+        private var borderColor: Color {
+            switch state {
+            case .default:
+                return colorProvider.token.border
+            case .disabled:
+                return colorProvider.token.borderDisabled
             }
         }
     }

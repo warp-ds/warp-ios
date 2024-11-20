@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Fri, 11 Oct 2024 10:37:57 GMT by https://github.com/warp-ds/tokens
+// Generated on Tue, 19 Nov 2024 16:58:07 GMT by https://github.com/warp-ds/tokens
 struct BlocketColors {
     static let white = Color(hex: "#ffffff")
     static let black = Color(hex: "#000000")
@@ -11,9 +11,12 @@ struct BlocketColors {
     static let blue400 = Color(hex: "#509df1")
     static let blue500 = Color(hex: "#2887ee")
     static let blue600 = Color(hex: "#0071eb")
-    static let blue700 = Color(hex: "#0051a9")
-    static let blue800 = Color(hex: "#003167")
-    static let blue900 = Color(hex: "#001124")
+    static let blue700 = Color(hex: "#0055b1")
+    static let blue750 = Color(hex: "#004794")
+    static let blue800 = Color(hex: "#003977")
+    static let blue850 = Color(hex: "#002b5a")
+    static let blue900 = Color(hex: "#001d3d")
+    static let blue950 = Color(hex: "#000f20")
     static let red50 = Color(hex: "#fff0f1")
     static let red100 = Color(hex: "#fdc8cb")
     static let red200 = Color(hex: "#f9a0a7")
@@ -80,9 +83,12 @@ struct BlocketUIColors {
     static let blue400 = UIColor(hex: "#509df1")
     static let blue500 = UIColor(hex: "#2887ee")
     static let blue600 = UIColor(hex: "#0071eb")
-    static let blue700 = UIColor(hex: "#0051a9")
-    static let blue800 = UIColor(hex: "#003167")
-    static let blue900 = UIColor(hex: "#001124")
+    static let blue700 = UIColor(hex: "#0055b1")
+    static let blue750 = UIColor(hex: "#004794")
+    static let blue800 = UIColor(hex: "#003977")
+    static let blue850 = UIColor(hex: "#002b5a")
+    static let blue900 = UIColor(hex: "#001d3d")
+    static let blue950 = UIColor(hex: "#000f20")
     static let red50 = UIColor(hex: "#fff0f1")
     static let red100 = UIColor(hex: "#fdc8cb")
     static let red200 = UIColor(hex: "#f9a0a7")

@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Fri, 11 Oct 2024 10:37:57 GMT by https://github.com/warp-ds/tokens
+// Generated on Tue, 19 Nov 2024 16:58:07 GMT by https://github.com/warp-ds/tokens
 public protocol TokenProvider {
     var text: Color { get }
     var textSubtle: Color { get }
@@ -13,19 +13,6 @@ public protocol TokenProvider {
     var textDisabled: Color { get }
     var textNegative: Color { get }
     var textPositive: Color { get }
-    var surface: Color { get }
-    var surfaceHover: Color { get }
-    var surfaceActive: Color { get }
-    var surfaceSunken: Color { get }
-    var surfaceElevated100: Color { get }
-    var surfaceElevated100Hover: Color { get }
-    var surfaceElevated100Active: Color { get }
-    var surfaceElevated200: Color { get }
-    var surfaceElevated200Hover: Color { get }
-    var surfaceElevated200Active: Color { get }
-    var surfaceElevated300: Color { get }
-    var surfaceElevated300Hover: Color { get }
-    var surfaceElevated300Active: Color { get }
     var background: Color { get }
     var backgroundHover: Color { get }
     var backgroundActive: Color { get }
@@ -73,9 +60,22 @@ public protocol TokenProvider {
     var backgroundInfoSubtleActive: Color { get }
     var backgroundTransparent0: Color { get }
     var backgroundNotification: Color { get }
+    var surfaceSunken: Color { get }
+    var surfaceElevated100: Color { get }
+    var surfaceElevated100Hover: Color { get }
+    var surfaceElevated100Active: Color { get }
+    var surfaceElevated200: Color { get }
+    var surfaceElevated200Hover: Color { get }
+    var surfaceElevated200Active: Color { get }
+    var surfaceElevated300: Color { get }
+    var surfaceElevated300Hover: Color { get }
+    var surfaceElevated300Active: Color { get }
     var border: Color { get }
     var borderHover: Color { get }
     var borderActive: Color { get }
+    var borderSubtle: Color { get }
+    var borderSubtleHover: Color { get }
+    var borderSubtleActive: Color { get }
     var borderDisabled: Color { get }
     var borderSelected: Color { get }
     var borderSelectedHover: Color { get }
@@ -153,19 +153,6 @@ public protocol UITokenProvider {
     var textDisabled: UIColor { get }
     var textNegative: UIColor { get }
     var textPositive: UIColor { get }
-    var surface: UIColor { get }
-    var surfaceHover: UIColor { get }
-    var surfaceActive: UIColor { get }
-    var surfaceSunken: UIColor { get }
-    var surfaceElevated100: UIColor { get }
-    var surfaceElevated100Hover: UIColor { get }
-    var surfaceElevated100Active: UIColor { get }
-    var surfaceElevated200: UIColor { get }
-    var surfaceElevated200Hover: UIColor { get }
-    var surfaceElevated200Active: UIColor { get }
-    var surfaceElevated300: UIColor { get }
-    var surfaceElevated300Hover: UIColor { get }
-    var surfaceElevated300Active: UIColor { get }
     var background: UIColor { get }
     var backgroundHover: UIColor { get }
     var backgroundActive: UIColor { get }
@@ -213,9 +200,22 @@ public protocol UITokenProvider {
     var backgroundInfoSubtleActive: UIColor { get }
     var backgroundTransparent0: UIColor { get }
     var backgroundNotification: UIColor { get }
+    var surfaceSunken: UIColor { get }
+    var surfaceElevated100: UIColor { get }
+    var surfaceElevated100Hover: UIColor { get }
+    var surfaceElevated100Active: UIColor { get }
+    var surfaceElevated200: UIColor { get }
+    var surfaceElevated200Hover: UIColor { get }
+    var surfaceElevated200Active: UIColor { get }
+    var surfaceElevated300: UIColor { get }
+    var surfaceElevated300Hover: UIColor { get }
+    var surfaceElevated300Active: UIColor { get }
     var border: UIColor { get }
     var borderHover: UIColor { get }
     var borderActive: UIColor { get }
+    var borderSubtle: UIColor { get }
+    var borderSubtleHover: UIColor { get }
+    var borderSubtleActive: UIColor { get }
     var borderDisabled: UIColor { get }
     var borderSelected: UIColor { get }
     var borderSelectedHover: UIColor { get }

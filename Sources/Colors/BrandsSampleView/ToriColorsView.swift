@@ -15,8 +15,11 @@ public struct ToriColorsView: View {
                                     ToriColors.blueberry500,
                                     ToriColors.blueberry600,
                                     ToriColors.blueberry700,
+                                    ToriColors.blueberry750,
                                     ToriColors.blueberry800,
-                                    ToriColors.blueberry900])
+                                    ToriColors.blueberry850,
+                                    ToriColors.blueberry900,
+                                    ToriColors.blueberry950])
                 
                 createView(for: "Watermelon",
                            colors: [ToriColors.watermelon50,

@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Fri, 11 Oct 2024 10:37:57 GMT by https://github.com/warp-ds/tokens
+// Generated on Tue, 19 Nov 2024 16:58:07 GMT by https://github.com/warp-ds/tokens
 struct DbaColors {
     static let jeanblue50 = Color(hex: "#f3f6fc")
     static let jeanblue100 = Color(hex: "#d2e1f5")
@@ -9,9 +9,12 @@ struct DbaColors {
     static let jeanblue400 = Color(hex: "#7299da")
     static let jeanblue500 = Color(hex: "#5281d1")
     static let jeanblue600 = Color(hex: "#3269c8")
-    static let jeanblue700 = Color(hex: "#244b8f")
-    static let jeanblue800 = Color(hex: "#162d56")
-    static let jeanblue900 = Color(hex: "#070f1d")
+    static let jeanblue700 = Color(hex: "#264f96")
+    static let jeanblue750 = Color(hex: "#20427d")
+    static let jeanblue800 = Color(hex: "#1a3564")
+    static let jeanblue850 = Color(hex: "#14284b")
+    static let jeanblue900 = Color(hex: "#0e1b32")
+    static let jeanblue950 = Color(hex: "#080e19")
     static let phthaloblue50 = Color(hex: "#f0f1ff")
     static let phthaloblue100 = Color(hex: "#c8ccee")
     static let phthaloblue200 = Color(hex: "#a0a5da")
@@ -78,9 +81,12 @@ struct DbaUIColors {
     static let jeanblue400 = UIColor(hex: "#7299da")
     static let jeanblue500 = UIColor(hex: "#5281d1")
     static let jeanblue600 = UIColor(hex: "#3269c8")
-    static let jeanblue700 = UIColor(hex: "#244b8f")
-    static let jeanblue800 = UIColor(hex: "#162d56")
-    static let jeanblue900 = UIColor(hex: "#070f1d")
+    static let jeanblue700 = UIColor(hex: "#264f96")
+    static let jeanblue750 = UIColor(hex: "#20427d")
+    static let jeanblue800 = UIColor(hex: "#1a3564")
+    static let jeanblue850 = UIColor(hex: "#14284b")
+    static let jeanblue900 = UIColor(hex: "#0e1b32")
+    static let jeanblue950 = UIColor(hex: "#080e19")
     static let phthaloblue50 = UIColor(hex: "#f0f1ff")
     static let phthaloblue100 = UIColor(hex: "#c8ccee")
     static let phthaloblue200 = UIColor(hex: "#a0a5da")

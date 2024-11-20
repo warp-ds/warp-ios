@@ -15,8 +15,11 @@ public struct BlocketColorsView: View {
                                     BlocketColors.blue500,
                                     BlocketColors.blue600,
                                     BlocketColors.blue700,
+                                    BlocketColors.blue750,
                                     BlocketColors.blue800,
-                                    BlocketColors.blue900])
+                                    BlocketColors.blue850,
+                                    BlocketColors.blue900,
+                                    BlocketColors.blue950])
                 
                 createView(for: "Red",
                            colors: [BlocketColors.red50,
