@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Tue, 19 Nov 2024 16:58:07 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
 struct BlocketColors {
     static let white = Color(hex: "#ffffff")
     static let black = Color(hex: "#000000")

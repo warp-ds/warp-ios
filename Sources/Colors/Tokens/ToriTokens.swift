@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Tue, 19 Nov 2024 16:58:07 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
 struct ToriTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: ToriColors.gray900, darkModeColor: ToriColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.gray600, darkModeColor: ToriColors.gray400) }
@@ -80,7 +80,6 @@ struct ToriTokenProvider: TokenProvider {
     public var borderSelected: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry600, darkModeColor: ToriColors.blueberry400) }
     public var borderSelectedHover: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry700, darkModeColor: ToriColors.blueberry300) }
     public var borderSelectedActive: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry800, darkModeColor: ToriColors.blueberry200) }
-    public var borderInverted: Color { Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray600) }
     public var borderPrimary: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry600, darkModeColor: ToriColors.blueberry400) }
     public var borderPrimaryHover: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry700, darkModeColor: ToriColors.blueberry300) }
     public var borderPrimaryActive: Color { Color.dynamicColor(defaultColor: ToriColors.blueberry800, darkModeColor: ToriColors.blueberry200) }
@@ -220,7 +219,6 @@ struct ToriUITokenProvider: UITokenProvider {
     public var borderSelected: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry600, darkModeColor: ToriUIColors.blueberry400) }
     public var borderSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry700, darkModeColor: ToriUIColors.blueberry300) }
     public var borderSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry800, darkModeColor: ToriUIColors.blueberry200) }
-    public var borderInverted: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray600) }
     public var borderPrimary: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry600, darkModeColor: ToriUIColors.blueberry400) }
     public var borderPrimaryHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry700, darkModeColor: ToriUIColors.blueberry300) }
     public var borderPrimaryActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blueberry800, darkModeColor: ToriUIColors.blueberry200) }

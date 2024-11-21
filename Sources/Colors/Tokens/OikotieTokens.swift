@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Tue, 19 Nov 2024 16:58:07 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
 struct OikotieTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: OikotieColors.gray900, darkModeColor: OikotieColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: OikotieColors.gray600, darkModeColor: OikotieColors.gray400) }
@@ -80,7 +80,6 @@ struct OikotieTokenProvider: TokenProvider {
     public var borderSelected: Color { Color.dynamicColor(defaultColor: OikotieColors.gray900, darkModeColor: OikotieColors.white) }
     public var borderSelectedHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray800, darkModeColor: OikotieColors.gray100) }
     public var borderSelectedActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray700, darkModeColor: OikotieColors.gray200) }
-    public var borderInverted: Color { Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray600) }
     public var borderPrimary: Color { Color.dynamicColor(defaultColor: OikotieColors.gray900, darkModeColor: OikotieColors.white) }
     public var borderPrimaryHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray800, darkModeColor: OikotieColors.gray100) }
     public var borderPrimaryActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray700, darkModeColor: OikotieColors.gray200) }
@@ -220,7 +219,6 @@ struct OikotieUITokenProvider: UITokenProvider {
     public var borderSelected: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray900, darkModeColor: OikotieUIColors.white) }
     public var borderSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray800, darkModeColor: OikotieUIColors.gray100) }
     public var borderSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray700, darkModeColor: OikotieUIColors.gray200) }
-    public var borderInverted: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray600) }
     public var borderPrimary: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray900, darkModeColor: OikotieUIColors.white) }
     public var borderPrimaryHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray800, darkModeColor: OikotieUIColors.gray100) }
     public var borderPrimaryActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray700, darkModeColor: OikotieUIColors.gray200) }

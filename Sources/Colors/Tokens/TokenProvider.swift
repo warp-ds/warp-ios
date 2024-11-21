@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Tue, 19 Nov 2024 16:58:07 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
 public protocol TokenProvider {
     var text: Color { get }
     var textSubtle: Color { get }
@@ -80,7 +80,6 @@ public protocol TokenProvider {
     var borderSelected: Color { get }
     var borderSelectedHover: Color { get }
     var borderSelectedActive: Color { get }
-    var borderInverted: Color { get }
     var borderPrimary: Color { get }
     var borderPrimaryHover: Color { get }
     var borderPrimaryActive: Color { get }
@@ -220,7 +219,6 @@ public protocol UITokenProvider {
     var borderSelected: UIColor { get }
     var borderSelectedHover: UIColor { get }
     var borderSelectedActive: UIColor { get }
-    var borderInverted: UIColor { get }
     var borderPrimary: UIColor { get }
     var borderPrimaryHover: UIColor { get }
     var borderPrimaryActive: UIColor { get }

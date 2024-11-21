@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Tue, 19 Nov 2024 16:58:07 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
 struct DbaTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: DbaColors.gray900, darkModeColor: DbaColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: DbaColors.gray600, darkModeColor: DbaColors.gray400) }
@@ -80,7 +80,6 @@ struct DbaTokenProvider: TokenProvider {
     public var borderSelected: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue600, darkModeColor: DbaColors.jeanblue400) }
     public var borderSelectedHover: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue700, darkModeColor: DbaColors.jeanblue300) }
     public var borderSelectedActive: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue800, darkModeColor: DbaColors.jeanblue200) }
-    public var borderInverted: Color { Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray600) }
     public var borderPrimary: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue600, darkModeColor: DbaColors.jeanblue400) }
     public var borderPrimaryHover: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue700, darkModeColor: DbaColors.jeanblue300) }
     public var borderPrimaryActive: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue800, darkModeColor: DbaColors.jeanblue200) }
@@ -220,7 +219,6 @@ struct DbaUITokenProvider: UITokenProvider {
     public var borderSelected: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue600, darkModeColor: DbaUIColors.jeanblue400) }
     public var borderSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue700, darkModeColor: DbaUIColors.jeanblue300) }
     public var borderSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue800, darkModeColor: DbaUIColors.jeanblue200) }
-    public var borderInverted: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray600) }
     public var borderPrimary: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue600, darkModeColor: DbaUIColors.jeanblue400) }
     public var borderPrimaryHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue700, darkModeColor: DbaUIColors.jeanblue300) }
     public var borderPrimaryActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue800, darkModeColor: DbaUIColors.jeanblue200) }

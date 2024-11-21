@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Tue, 19 Nov 2024 16:58:07 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
 public struct ColorProvider {
     public let token: TokenProvider
     
@@ -141,36 +141,6 @@ public struct ColorProvider {
         case .finn: return Color.dynamicColor(defaultColor: FinnColors.green400, darkModeColor: FinnColors.green600)
         case .oikotie: return Color.dynamicColor(defaultColor: OikotieColors.green400, darkModeColor: OikotieColors.green600)
         case .tori: return Color.dynamicColor(defaultColor: ToriColors.blue400, darkModeColor: ToriColors.blue600)
-        }
-    }
-    
-    public var cardBackground: Color {
-        switch Warp.Theme {
-        case .blocket: return token.background
-        case .dba: return token.background
-        case .finn: return token.background
-        case .oikotie: return token.background
-        case .tori: return token.background
-        }
-    }
-    
-    public var datepickerBackgroundButtonHover: Color {
-        switch Warp.Theme {
-        case .blocket: return token.backgroundHover
-        case .dba: return token.backgroundHover
-        case .finn: return token.backgroundHover
-        case .oikotie: return token.backgroundHover
-        case .tori: return token.backgroundHover
-        }
-    }
-    
-    public var inputIcon: Color {
-        switch Warp.Theme {
-        case .blocket: return token.icon
-        case .dba: return token.icon
-        case .finn: return token.icon
-        case .oikotie: return token.icon
-        case .tori: return token.icon
         }
     }
     
@@ -417,37 +387,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.blue400, darkModeColor: ToriUIColors.blue600)
         }
     }
-    
-    public var cardBackground: UIColor {
-        switch Warp.Theme {
-        case .blocket: return token.background
-        case .dba: return token.background
-        case .finn: return token.background
-        case .oikotie: return token.background
-        case .tori: return token.background
-        }
-    }
-    
-    public var datepickerBackgroundButtonHover: UIColor {
-        switch Warp.Theme {
-        case .blocket: return token.backgroundHover
-        case .dba: return token.backgroundHover
-        case .finn: return token.backgroundHover
-        case .oikotie: return token.backgroundHover
-        case .tori: return token.backgroundHover
-        }
-    }
-    
-    public var inputIcon: UIColor {
-        switch Warp.Theme {
-        case .blocket: return token.icon
-        case .dba: return token.icon
-        case .finn: return token.icon
-        case .oikotie: return token.icon
-        case .tori: return token.icon
-        }
-    }
-    
+        
     public var navbarIconSelected: UIColor {
         switch Warp.Theme {
         case .blocket: return token.iconSecondary

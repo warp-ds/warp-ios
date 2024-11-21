@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Tue, 19 Nov 2024 16:58:07 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
 struct BlocketTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: BlocketColors.gray900, darkModeColor: BlocketColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: BlocketColors.gray600, darkModeColor: BlocketColors.gray400) }
@@ -80,7 +80,6 @@ struct BlocketTokenProvider: TokenProvider {
     public var borderSelected: Color { Color.dynamicColor(defaultColor: BlocketColors.blue600, darkModeColor: BlocketColors.blue400) }
     public var borderSelectedHover: Color { Color.dynamicColor(defaultColor: BlocketColors.blue700, darkModeColor: BlocketColors.blue300) }
     public var borderSelectedActive: Color { Color.dynamicColor(defaultColor: BlocketColors.blue800, darkModeColor: BlocketColors.blue200) }
-    public var borderInverted: Color { Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray600) }
     public var borderPrimary: Color { Color.dynamicColor(defaultColor: BlocketColors.blue600, darkModeColor: BlocketColors.blue400) }
     public var borderPrimaryHover: Color { Color.dynamicColor(defaultColor: BlocketColors.blue700, darkModeColor: BlocketColors.blue300) }
     public var borderPrimaryActive: Color { Color.dynamicColor(defaultColor: BlocketColors.blue800, darkModeColor: BlocketColors.blue200) }
@@ -220,7 +219,6 @@ struct BlocketUITokenProvider: UITokenProvider {
     public var borderSelected: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.blue600, darkModeColor: BlocketUIColors.blue400) }
     public var borderSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.blue700, darkModeColor: BlocketUIColors.blue300) }
     public var borderSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.blue800, darkModeColor: BlocketUIColors.blue200) }
-    public var borderInverted: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray600) }
     public var borderPrimary: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.blue600, darkModeColor: BlocketUIColors.blue400) }
     public var borderPrimaryHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.blue700, darkModeColor: BlocketUIColors.blue300) }
     public var borderPrimaryActive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.blue800, darkModeColor: BlocketUIColors.blue200) }

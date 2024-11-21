@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Tue, 19 Nov 2024 16:58:07 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
 struct DbaColors {
     static let jeanblue50 = Color(hex: "#f3f6fc")
     static let jeanblue100 = Color(hex: "#d2e1f5")
