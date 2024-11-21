@@ -1,6 +1,6 @@
 extension Warp {
     /// Warp badge styles that are designed for specific scenarios.
-    public enum BadgeVariant: Equatable, CaseIterable {
+    public enum BadgeVariant: String, Equatable, CaseIterable {
         /// Used to convey general information that isn’t critical.
         case info
         
@@ -28,7 +28,7 @@ extension Warp {
     
     /// Badge positions are custom badges used only as overlays on images and cards.
     /// They have predefined corner radii, so it’s important to use the correct variant in the appropriate corner of your image or card.
-    public enum BadgePosition: Equatable, CaseIterable {
+    public enum BadgePosition: String, Equatable, CaseIterable {
         case `default`
         case topLeft
         case topRight
