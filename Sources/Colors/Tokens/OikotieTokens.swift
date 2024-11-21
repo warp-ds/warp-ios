@@ -1,39 +1,26 @@
 import SwiftUI
 
-// Generated on Fri, 11 Oct 2024 10:37:57 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
 struct OikotieTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: OikotieColors.gray900, darkModeColor: OikotieColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: OikotieColors.gray600, darkModeColor: OikotieColors.gray400) }
     public var textStatic: Color { Color.dynamicColor(defaultColor: OikotieColors.gray900, darkModeColor: OikotieColors.gray900) }
     public var textPlaceholder: Color { Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray500) }
     public var textInverted: Color { Color.dynamicColor(defaultColor: OikotieColors.white, darkModeColor: OikotieColors.gray900) }
-    public var textInvertedSubtle: Color { Color.dynamicColor(defaultColor: OikotieColors.gray50, darkModeColor: OikotieColors.gray700) }
+    public var textInvertedSubtle: Color { Color.dynamicColor(defaultColor: OikotieColors.gray400, darkModeColor: OikotieColors.gray600) }
     public var textInvertedStatic: Color { Color.dynamicColor(defaultColor: OikotieColors.white, darkModeColor: OikotieColors.white) }
     public var textLink: Color { Color.dynamicColor(defaultColor: OikotieColors.gray900, darkModeColor: OikotieColors.white) }
-    public var textDisabled: Color { Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray500) }
+    public var textDisabled: Color { Color.dynamicColor(defaultColor: OikotieColors.gray400, darkModeColor: OikotieColors.gray600) }
     public var textNegative: Color { Color.dynamicColor(defaultColor: OikotieColors.red600, darkModeColor: OikotieColors.red400) }
     public var textPositive: Color { Color.dynamicColor(defaultColor: OikotieColors.green600, darkModeColor: OikotieColors.green400) }
-    public var surface: Color { Color.dynamicColor(defaultColor: OikotieColors.white, darkModeColor: OikotieColors.gray900) }
-    public var surfaceHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray850) }
-    public var surfaceActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray800) }
-    public var surfaceSunken: Color { Color.dynamicColor(defaultColor: OikotieColors.gray50, darkModeColor: OikotieColors.gray950) }
-    public var surfaceElevated100: Color { Color.dynamicColor(defaultColor: OikotieColors.white, darkModeColor: OikotieColors.gray850) }
-    public var surfaceElevated100Hover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray850) }
-    public var surfaceElevated100Active: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray750) }
-    public var surfaceElevated200: Color { Color.dynamicColor(defaultColor: OikotieColors.white, darkModeColor: OikotieColors.gray800) }
-    public var surfaceElevated200Hover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray750) }
-    public var surfaceElevated200Active: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray700) }
-    public var surfaceElevated300: Color { Color.dynamicColor(defaultColor: OikotieColors.white, darkModeColor: OikotieColors.gray750) }
-    public var surfaceElevated300Hover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray700) }
-    public var surfaceElevated300Active: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray600) }
     public var background: Color { Color.dynamicColor(defaultColor: OikotieColors.white, darkModeColor: OikotieColors.gray900) }
     public var backgroundHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray850) }
     public var backgroundActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray800) }
     public var backgroundSubtle: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray750) }
     public var backgroundSubtleHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray700) }
     public var backgroundSubtleActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray600) }
-    public var backgroundDisabled: Color { Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray700) }
-    public var backgroundDisabledSubtle: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray600) }
+    public var backgroundDisabled: Color { Color.dynamicColor(defaultColor: OikotieColors.gray400, darkModeColor: OikotieColors.gray600) }
+    public var backgroundDisabledSubtle: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray750) }
     public var backgroundSelected: Color { Color.dynamicColor(defaultColor: OikotieColors.gray50, darkModeColor: OikotieColors.gray900) }
     public var backgroundSelectedHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray800) }
     public var backgroundSelectedActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray700) }
@@ -41,9 +28,9 @@ struct OikotieTokenProvider: TokenProvider {
     public var backgroundPrimary: Color { Color.dynamicColor(defaultColor: OikotieColors.gray900, darkModeColor: OikotieColors.white) }
     public var backgroundPrimaryHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray800, darkModeColor: OikotieColors.gray100) }
     public var backgroundPrimaryActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray700, darkModeColor: OikotieColors.gray200) }
-    public var backgroundPrimarySubtle: Color { Color.dynamicColor(defaultColor: OikotieColors.gray50, darkModeColor: OikotieColors.gray800) }
-    public var backgroundPrimarySubtleHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray700) }
-    public var backgroundPrimarySubtleActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray600) }
+    public var backgroundPrimarySubtle: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray850) }
+    public var backgroundPrimarySubtleHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray800) }
+    public var backgroundPrimarySubtleActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray750) }
     public var backgroundSecondary: Color { Color.dynamicColor(defaultColor: OikotieColors.gray900, darkModeColor: OikotieColors.white) }
     public var backgroundSecondaryHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray800, darkModeColor: OikotieColors.gray100) }
     public var backgroundSecondaryActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray700, darkModeColor: OikotieColors.gray200) }
@@ -73,14 +60,26 @@ struct OikotieTokenProvider: TokenProvider {
     public var backgroundInfoSubtleActive: Color { Color.dynamicColor(defaultColor: OikotieColors.blue200, darkModeColor: OikotieColors.blue700) }
     public var backgroundTransparent0: Color { Color.dynamicColor(defaultColor: OikotieColors.transparent, darkModeColor: OikotieColors.transparent) }
     public var backgroundNotification: Color { Color.dynamicColor(defaultColor: OikotieColors.red600, darkModeColor: OikotieColors.red500) }
-    public var border: Color { Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray600) }
-    public var borderHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray400, darkModeColor: OikotieColors.gray500) }
-    public var borderActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray500, darkModeColor: OikotieColors.gray400) }
-    public var borderDisabled: Color { Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray700) }
+    public var surfaceSunken: Color { Color.dynamicColor(defaultColor: OikotieColors.gray50, darkModeColor: OikotieColors.gray950) }
+    public var surfaceElevated100: Color { Color.dynamicColor(defaultColor: OikotieColors.white, darkModeColor: OikotieColors.gray850) }
+    public var surfaceElevated100Hover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray850) }
+    public var surfaceElevated100Active: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray750) }
+    public var surfaceElevated200: Color { Color.dynamicColor(defaultColor: OikotieColors.white, darkModeColor: OikotieColors.gray800) }
+    public var surfaceElevated200Hover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray750) }
+    public var surfaceElevated200Active: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray700) }
+    public var surfaceElevated300: Color { Color.dynamicColor(defaultColor: OikotieColors.white, darkModeColor: OikotieColors.gray750) }
+    public var surfaceElevated300Hover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray700) }
+    public var surfaceElevated300Active: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray600) }
+    public var border: Color { Color.dynamicColor(defaultColor: OikotieColors.gray500, darkModeColor: OikotieColors.gray500) }
+    public var borderHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray600, darkModeColor: OikotieColors.gray400) }
+    public var borderActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray700, darkModeColor: OikotieColors.gray300) }
+    public var borderSubtle: Color { Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray700) }
+    public var borderSubtleHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray400, darkModeColor: OikotieColors.gray600) }
+    public var borderSubtleActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray500, darkModeColor: OikotieColors.gray500) }
+    public var borderDisabled: Color { Color.dynamicColor(defaultColor: OikotieColors.gray400, darkModeColor: OikotieColors.gray600) }
     public var borderSelected: Color { Color.dynamicColor(defaultColor: OikotieColors.gray900, darkModeColor: OikotieColors.white) }
     public var borderSelectedHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray800, darkModeColor: OikotieColors.gray100) }
     public var borderSelectedActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray700, darkModeColor: OikotieColors.gray200) }
-    public var borderInverted: Color { Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray600) }
     public var borderPrimary: Color { Color.dynamicColor(defaultColor: OikotieColors.gray900, darkModeColor: OikotieColors.white) }
     public var borderPrimaryHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray800, darkModeColor: OikotieColors.gray100) }
     public var borderPrimaryActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray700, darkModeColor: OikotieColors.gray200) }
@@ -122,10 +121,10 @@ struct OikotieTokenProvider: TokenProvider {
     public var iconSelected: Color { Color.dynamicColor(defaultColor: OikotieColors.gray900, darkModeColor: OikotieColors.white) }
     public var iconSelectedHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray800, darkModeColor: OikotieColors.gray100) }
     public var iconSelectedActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray700, darkModeColor: OikotieColors.gray200) }
-    public var iconDisabled: Color { Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray600) }
+    public var iconDisabled: Color { Color.dynamicColor(defaultColor: OikotieColors.gray400, darkModeColor: OikotieColors.gray600) }
     public var iconSubtle: Color { Color.dynamicColor(defaultColor: OikotieColors.gray600, darkModeColor: OikotieColors.gray400) }
-    public var iconSubtleHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray700, darkModeColor: OikotieColors.gray200) }
-    public var iconSubtleActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray800, darkModeColor: OikotieColors.gray100) }
+    public var iconSubtleHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray700, darkModeColor: OikotieColors.gray300) }
+    public var iconSubtleActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray800, darkModeColor: OikotieColors.gray200) }
     public var iconInverted: Color { Color.dynamicColor(defaultColor: OikotieColors.white, darkModeColor: OikotieColors.gray900) }
     public var iconInvertedHover: Color { Color.dynamicColor(defaultColor: OikotieColors.gray100, darkModeColor: OikotieColors.gray850) }
     public var iconInvertedActive: Color { Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray800) }
@@ -147,33 +146,20 @@ struct OikotieUITokenProvider: UITokenProvider {
     public var textStatic: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray900, darkModeColor: OikotieUIColors.gray900) }
     public var textPlaceholder: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray500) }
     public var textInverted: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.white, darkModeColor: OikotieUIColors.gray900) }
-    public var textInvertedSubtle: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray50, darkModeColor: OikotieUIColors.gray700) }
+    public var textInvertedSubtle: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray400, darkModeColor: OikotieUIColors.gray600) }
     public var textInvertedStatic: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.white, darkModeColor: OikotieUIColors.white) }
     public var textLink: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray900, darkModeColor: OikotieUIColors.white) }
-    public var textDisabled: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray500) }
+    public var textDisabled: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray400, darkModeColor: OikotieUIColors.gray600) }
     public var textNegative: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.red600, darkModeColor: OikotieUIColors.red400) }
     public var textPositive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.green600, darkModeColor: OikotieUIColors.green400) }
-    public var surface: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.white, darkModeColor: OikotieUIColors.gray900) }
-    public var surfaceHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray850) }
-    public var surfaceActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray800) }
-    public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray50, darkModeColor: OikotieUIColors.gray950) }
-    public var surfaceElevated100: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.white, darkModeColor: OikotieUIColors.gray850) }
-    public var surfaceElevated100Hover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray850) }
-    public var surfaceElevated100Active: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray750) }
-    public var surfaceElevated200: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.white, darkModeColor: OikotieUIColors.gray800) }
-    public var surfaceElevated200Hover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray750) }
-    public var surfaceElevated200Active: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray700) }
-    public var surfaceElevated300: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.white, darkModeColor: OikotieUIColors.gray750) }
-    public var surfaceElevated300Hover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray700) }
-    public var surfaceElevated300Active: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray600) }
     public var background: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.white, darkModeColor: OikotieUIColors.gray900) }
     public var backgroundHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray850) }
     public var backgroundActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray800) }
     public var backgroundSubtle: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray750) }
     public var backgroundSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray700) }
     public var backgroundSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray600) }
-    public var backgroundDisabled: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray700) }
-    public var backgroundDisabledSubtle: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray600) }
+    public var backgroundDisabled: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray400, darkModeColor: OikotieUIColors.gray600) }
+    public var backgroundDisabledSubtle: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray750) }
     public var backgroundSelected: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray50, darkModeColor: OikotieUIColors.gray900) }
     public var backgroundSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray800) }
     public var backgroundSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray700) }
@@ -181,9 +167,9 @@ struct OikotieUITokenProvider: UITokenProvider {
     public var backgroundPrimary: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray900, darkModeColor: OikotieUIColors.white) }
     public var backgroundPrimaryHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray800, darkModeColor: OikotieUIColors.gray100) }
     public var backgroundPrimaryActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray700, darkModeColor: OikotieUIColors.gray200) }
-    public var backgroundPrimarySubtle: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray50, darkModeColor: OikotieUIColors.gray800) }
-    public var backgroundPrimarySubtleHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray700) }
-    public var backgroundPrimarySubtleActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray600) }
+    public var backgroundPrimarySubtle: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray850) }
+    public var backgroundPrimarySubtleHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray800) }
+    public var backgroundPrimarySubtleActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray750) }
     public var backgroundSecondary: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray900, darkModeColor: OikotieUIColors.white) }
     public var backgroundSecondaryHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray800, darkModeColor: OikotieUIColors.gray100) }
     public var backgroundSecondaryActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray700, darkModeColor: OikotieUIColors.gray200) }
@@ -213,14 +199,26 @@ struct OikotieUITokenProvider: UITokenProvider {
     public var backgroundInfoSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.blue200, darkModeColor: OikotieUIColors.blue700) }
     public var backgroundTransparent0: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.transparent, darkModeColor: OikotieUIColors.transparent) }
     public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.red600, darkModeColor: OikotieUIColors.red500) }
-    public var border: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray600) }
-    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray400, darkModeColor: OikotieUIColors.gray500) }
-    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray500, darkModeColor: OikotieUIColors.gray400) }
-    public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray700) }
+    public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray50, darkModeColor: OikotieUIColors.gray950) }
+    public var surfaceElevated100: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.white, darkModeColor: OikotieUIColors.gray850) }
+    public var surfaceElevated100Hover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray850) }
+    public var surfaceElevated100Active: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray750) }
+    public var surfaceElevated200: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.white, darkModeColor: OikotieUIColors.gray800) }
+    public var surfaceElevated200Hover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray750) }
+    public var surfaceElevated200Active: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray700) }
+    public var surfaceElevated300: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.white, darkModeColor: OikotieUIColors.gray750) }
+    public var surfaceElevated300Hover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray700) }
+    public var surfaceElevated300Active: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray600) }
+    public var border: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray500, darkModeColor: OikotieUIColors.gray500) }
+    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray600, darkModeColor: OikotieUIColors.gray400) }
+    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray700, darkModeColor: OikotieUIColors.gray300) }
+    public var borderSubtle: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray700) }
+    public var borderSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray400, darkModeColor: OikotieUIColors.gray600) }
+    public var borderSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray500, darkModeColor: OikotieUIColors.gray500) }
+    public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray400, darkModeColor: OikotieUIColors.gray600) }
     public var borderSelected: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray900, darkModeColor: OikotieUIColors.white) }
     public var borderSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray800, darkModeColor: OikotieUIColors.gray100) }
     public var borderSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray700, darkModeColor: OikotieUIColors.gray200) }
-    public var borderInverted: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray600) }
     public var borderPrimary: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray900, darkModeColor: OikotieUIColors.white) }
     public var borderPrimaryHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray800, darkModeColor: OikotieUIColors.gray100) }
     public var borderPrimaryActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray700, darkModeColor: OikotieUIColors.gray200) }
@@ -262,10 +260,10 @@ struct OikotieUITokenProvider: UITokenProvider {
     public var iconSelected: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray900, darkModeColor: OikotieUIColors.white) }
     public var iconSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray800, darkModeColor: OikotieUIColors.gray100) }
     public var iconSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray700, darkModeColor: OikotieUIColors.gray200) }
-    public var iconDisabled: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray600) }
+    public var iconDisabled: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray400, darkModeColor: OikotieUIColors.gray600) }
     public var iconSubtle: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray600, darkModeColor: OikotieUIColors.gray400) }
-    public var iconSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray700, darkModeColor: OikotieUIColors.gray200) }
-    public var iconSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray800, darkModeColor: OikotieUIColors.gray100) }
+    public var iconSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray700, darkModeColor: OikotieUIColors.gray300) }
+    public var iconSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray800, darkModeColor: OikotieUIColors.gray200) }
     public var iconInverted: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.white, darkModeColor: OikotieUIColors.gray900) }
     public var iconInvertedHover: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray100, darkModeColor: OikotieUIColors.gray850) }
     public var iconInvertedActive: UIColor { UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray800) }

@@ -15,8 +15,11 @@ public struct DbaColorsView: View {
                                     DbaColors.jeanblue500,
                                     DbaColors.jeanblue600,
                                     DbaColors.jeanblue700,
+                                    DbaColors.jeanblue750,
                                     DbaColors.jeanblue800,
-                                    DbaColors.jeanblue900])
+                                    DbaColors.jeanblue850,
+                                    DbaColors.jeanblue900,
+                                    DbaColors.jeanblue950])
                 
                 createView(for: "Phthaloblue",
                            colors: [DbaColors.phthaloblue50,

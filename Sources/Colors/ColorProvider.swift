@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Fri, 18 Oct 2024 09:36:50 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
 public struct ColorProvider {
     public let token: TokenProvider
     
@@ -214,36 +214,6 @@ public struct ColorProvider {
         }
     }
     
-    public var switchTrackBackground: Color {
-        switch Warp.Theme {
-        case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray600)
-        case .dba: return Color.dynamicColor(defaultColor: DbaColors.gray200, darkModeColor: DbaColors.gray600)
-        case .finn: return Color.dynamicColor(defaultColor: FinnColors.gray200, darkModeColor: FinnColors.gray600)
-        case .oikotie: return Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray600)
-        case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
-        }
-    }
-    
-    public var switchTrackBackgroundHover: Color {
-        switch Warp.Theme {
-        case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray500)
-        case .dba: return Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray500)
-        case .finn: return Color.dynamicColor(defaultColor: FinnColors.gray300, darkModeColor: FinnColors.gray500)
-        case .oikotie: return Color.dynamicColor(defaultColor: OikotieColors.gray300, darkModeColor: OikotieColors.gray500)
-        case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray500)
-        }
-    }
-    
-    public var switchBackgroundTrackDisabled: Color {
-        switch Warp.Theme {
-        case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray600)
-        case .dba: return Color.dynamicColor(defaultColor: DbaColors.gray200, darkModeColor: DbaColors.gray600)
-        case .finn: return Color.dynamicColor(defaultColor: FinnColors.gray200, darkModeColor: FinnColors.gray600)
-        case .oikotie: return Color.dynamicColor(defaultColor: OikotieColors.gray200, darkModeColor: OikotieColors.gray600)
-        case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600)
-        }
-    }
-    
     public var tooltipBackgroundStatic: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
@@ -251,6 +221,26 @@ public struct ColorProvider {
         case .finn: return Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
         case .oikotie: return Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
         case .tori: return Color.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
+        }
+    }
+    
+    public var switchHandleBackground: Color {
+        switch Warp.Theme {
+        case .blocket: return BlocketColors.gray500
+        case .dba: return DbaColors.gray500
+        case .finn: return FinnColors.gray500
+        case .oikotie: return OikotieColors.gray500
+        case .tori: return ToriColors.gray500
+        }
+    }
+    
+    public var switchHandleBackgroundHover: Color {
+        switch Warp.Theme {
+        case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray600, darkModeColor: BlocketColors.gray400)
+        case .dba: return Color.dynamicColor(defaultColor: DbaColors.gray600, darkModeColor: DbaColors.gray400)
+        case .finn: return Color.dynamicColor(defaultColor: FinnColors.gray600, darkModeColor: FinnColors.gray400)
+        case .oikotie: return Color.dynamicColor(defaultColor: OikotieColors.gray600, darkModeColor: OikotieColors.gray400)
+        case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray600, darkModeColor: ToriColors.gray400)
         }
     }
 }
@@ -468,36 +458,6 @@ public struct UIColorProvider {
         }
     }
     
-    public var switchTrackBackground: UIColor {
-        switch Warp.Theme {
-        case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray600)
-        case .dba: return UIColor.dynamicColor(defaultColor: DbaUIColors.gray200, darkModeColor: DbaUIColors.gray600)
-        case .finn: return UIColor.dynamicColor(defaultColor: FinnUIColors.gray200, darkModeColor: FinnUIColors.gray600)
-        case .oikotie: return UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray600)
-        case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600)
-        }
-    }
-    
-    public var switchTrackBackgroundHover: UIColor {
-        switch Warp.Theme {
-        case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray500)
-        case .dba: return UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray500)
-        case .finn: return UIColor.dynamicColor(defaultColor: FinnUIColors.gray300, darkModeColor: FinnUIColors.gray500)
-        case .oikotie: return UIColor.dynamicColor(defaultColor: OikotieUIColors.gray300, darkModeColor: OikotieUIColors.gray500)
-        case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray500)
-        }
-    }
-    
-    public var switchBackgroundTrackDisabled: UIColor {
-        switch Warp.Theme {
-        case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray600)
-        case .dba: return UIColor.dynamicColor(defaultColor: DbaUIColors.gray200, darkModeColor: DbaUIColors.gray600)
-        case .finn: return UIColor.dynamicColor(defaultColor: FinnUIColors.gray200, darkModeColor: FinnUIColors.gray600)
-        case .oikotie: return UIColor.dynamicColor(defaultColor: OikotieUIColors.gray200, darkModeColor: OikotieUIColors.gray600)
-        case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600)
-        }
-    }
-    
     public var tooltipBackgroundStatic: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
@@ -505,6 +465,26 @@ public struct UIColorProvider {
         case .finn: return UIColor.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
         case .oikotie: return UIColor.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
         case .tori: return UIColor.dynamicColor(defaultColor: token.backgroundInverted, darkModeColor: token.surfaceElevated300)
+        }
+    }
+    
+    public var switchHandleBackground: UIColor {
+        switch Warp.Theme {
+        case .blocket: return BlocketUIColors.gray500
+        case .dba: return DbaUIColors.gray500
+        case .finn: return FinnUIColors.gray500
+        case .oikotie: return OikotieUIColors.gray500
+        case .tori: return ToriUIColors.gray500
+        }
+    }
+    
+    public var switchHandleBackgroundHover: UIColor {
+        switch Warp.Theme {
+        case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray600, darkModeColor: BlocketUIColors.gray400)
+        case .dba: return UIColor.dynamicColor(defaultColor: DbaUIColors.gray600, darkModeColor: DbaUIColors.gray400)
+        case .finn: return UIColor.dynamicColor(defaultColor: FinnUIColors.gray600, darkModeColor: FinnUIColors.gray400)
+        case .oikotie: return UIColor.dynamicColor(defaultColor: OikotieUIColors.gray600, darkModeColor: OikotieUIColors.gray400)
+        case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray600, darkModeColor: ToriUIColors.gray400)
         }
     }
 }

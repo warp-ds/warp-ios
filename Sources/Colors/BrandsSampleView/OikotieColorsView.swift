@@ -15,8 +15,11 @@ public struct OikotieColorsView: View {
                                     OikotieColors.blue500,
                                     OikotieColors.blue600,
                                     OikotieColors.blue700,
+                                    OikotieColors.blue750,
                                     OikotieColors.blue800,
-                                    OikotieColors.blue900])
+                                    OikotieColors.blue850,
+                                    OikotieColors.blue900,
+                                    OikotieColors.blue950])
                 
                 createView(for: "Green",
                            colors: [OikotieColors.green50,
@@ -26,9 +29,13 @@ public struct OikotieColorsView: View {
                                     OikotieColors.green400,
                                     OikotieColors.green500,
                                     OikotieColors.green600,
+                                    OikotieColors.green650,
                                     OikotieColors.green700,
+                                    OikotieColors.green750,
                                     OikotieColors.green800,
-                                    OikotieColors.green900])
+                                    OikotieColors.green850,
+                                    OikotieColors.green900,
+                                    OikotieColors.green950])
                 
                 createView(for: "Orange",
                            colors: [OikotieColors.orange50,
