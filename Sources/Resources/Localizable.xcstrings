@@ -5,10 +5,34 @@
       "comment" : "A11y title for active ads icon",
       "extractionState" : "manual",
       "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ark med billede og overskrift med fremhævet flueben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sheet with image and headline with highlighted checkmark"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paperiarkki, jossa kuva, otsikko ja korostettu valintamerkki"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ark med bilde og overskrift med uthevet hakemerke"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ark med bild och rubrik med betonad bock"
           }
         }
       }
