@@ -387,7 +387,7 @@ public struct UIColorProvider {
         case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.blue400, darkModeColor: ToriUIColors.blue600)
         }
     }
-        
+    
     public var navbarIconSelected: UIColor {
         switch Warp.Theme {
         case .blocket: return token.iconSecondary
