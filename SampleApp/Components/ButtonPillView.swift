@@ -1,10 +1,11 @@
 import SwiftUI
 import Warp
 
+/// A view showcasing the `ButtonPill` component and allowing dynamic customization.
 struct ButtonPillView: View {
     @State private var type = Warp.ButtonPillType.flat
     @State private var isSelected = false
-
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             // Display ButtonPill with dynamic state

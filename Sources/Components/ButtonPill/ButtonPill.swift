@@ -1,12 +1,19 @@
 import SwiftUI
 
 extension Warp {
+    /// A customizable button with two styles: `flat` and `overlay`. The button toggles between selected and unselected states.
+    /// Button pill allows users to toggle an element to their favourites.
     public struct ButtonPill: View {
+        // MARK: - Properties
         private let type: ButtonPillType
         @State private var state: ButtonPillState = .default
         @Binding private var selected: Bool
         private let colorProvider: ColorProvider = Warp.Color
         
+        /// Initializes a `ButtonPill` with a given type and selected state.
+        /// - Parameters:
+        ///   - type: The type of the button (`flat` or `overlay`).
+        ///   - selected: A binding to the selected state of the button.
         public init(type: ButtonPillType,
                     selected: Binding<Bool>) {
             self.type = type
@@ -76,6 +83,7 @@ extension Warp {
             }
         }
         
+        // MARK: - Shadow Types and Modifiers
         private enum ShadowType {
             case none
             case small
