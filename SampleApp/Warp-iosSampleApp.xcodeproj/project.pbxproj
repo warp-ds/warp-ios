@@ -123,6 +123,10 @@
 		825516D22CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */; };
 		825516D32CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */; };
 		825516D42CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */; };
+		825FBF4F2CEF431B0052761F /* ButtonPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FBF4E2CEF431A0052761F /* ButtonPillView.swift */; };
+		825FBF502CEF431B0052761F /* ButtonPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FBF4E2CEF431A0052761F /* ButtonPillView.swift */; };
+		825FBF512CEF431B0052761F /* ButtonPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FBF4E2CEF431A0052761F /* ButtonPillView.swift */; };
+		825FBF522CEF431B0052761F /* ButtonPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FBF4E2CEF431A0052761F /* ButtonPillView.swift */; };
 		82635D082BFE1CD800F7FA6F /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82635D062BFE1CA700F7FA6F /* SpinnerView.swift */; };
 		828095382C9C3AE900472CB5 /* IconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828095372C9C3AE700472CB5 /* IconsView.swift */; };
 		828095392C9C3AE900472CB5 /* IconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828095372C9C3AE700472CB5 /* IconsView.swift */; };
@@ -206,6 +210,7 @@
 		82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosTori.swift; sourceTree = "<group>"; };
 		8251E8C92B4E8B7D00106720 /* TokensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokensView.swift; sourceTree = "<group>"; };
 		825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyIconsView.swift; sourceTree = "<group>"; };
+		825FBF4E2CEF431A0052761F /* ButtonPillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPillView.swift; sourceTree = "<group>"; };
 		82635D062BFE1CA700F7FA6F /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		827C4B952A89410800660D82 /* Tori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		828095372C9C3AE700472CB5 /* IconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsView.swift; sourceTree = "<group>"; };
@@ -402,6 +407,7 @@
 				82C7E6F42B7B85E000760C08 /* BroadcastView.swift */,
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
 				821E8B372CE34DFE00173F8E /* ButtonGroupView.swift */,
+				825FBF4E2CEF431A0052761F /* ButtonPillView.swift */,
 				B2A8B2782B6D33B800122DBC /* CalloutView.swift */,
 				82E098822C85AEFE00033535 /* CheckboxView.swift */,
 				B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */,
@@ -633,6 +639,7 @@
 				50F58AD92CBD52BA0006804C /* LabelView.swift in Sources */,
 				2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */,
 				B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
+				825FBF4F2CEF431B0052761F /* ButtonPillView.swift in Sources */,
 				2E1ADF5A2C2561A700DFEE06 /* BoxView.swift in Sources */,
 				2E1ADF5B2C2561A700DFEE06 /* ButtonView.swift in Sources */,
 				2E1ADF5C2C2561A700DFEE06 /* ToastView.swift in Sources */,
@@ -675,6 +682,7 @@
 				50F58AD72CBD52BA0006804C /* LabelView.swift in Sources */,
 				820A85F92C6CEB0C006D35A0 /* AlertView.swift in Sources */,
 				820A85FA2C6CEB0C006D35A0 /* ExpandableView.swift in Sources */,
+				825FBF522CEF431B0052761F /* ButtonPillView.swift in Sources */,
 				820A85FB2C6CEB0C006D35A0 /* BoxView.swift in Sources */,
 				820A85FC2C6CEB0C006D35A0 /* ButtonView.swift in Sources */,
 				820A85FD2C6CEB0C006D35A0 /* ToastView.swift in Sources */,
@@ -717,6 +725,7 @@
 				50F58ADA2CBD52BA0006804C /* LabelView.swift in Sources */,
 				820A86362C6D4388006D35A0 /* AlertView.swift in Sources */,
 				820A86372C6D4388006D35A0 /* BoxView.swift in Sources */,
+				825FBF502CEF431B0052761F /* ButtonPillView.swift in Sources */,
 				820A86382C6D4388006D35A0 /* ButtonView.swift in Sources */,
 				820A86392C6D4388006D35A0 /* ToastView.swift in Sources */,
 				820A863A2C6D4388006D35A0 /* ContentView.swift in Sources */,
@@ -759,6 +768,7 @@
 				50F58AD82CBD52BA0006804C /* LabelView.swift in Sources */,
 				8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */,
 				349D0E142B62D67E00AAB421 /* AlertView.swift in Sources */,
+				825FBF512CEF431B0052761F /* ButtonPillView.swift in Sources */,
 				341B20E92B751C250068FF43 /* BoxView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				B2922A6F2B68E7F200A3E9F4 /* ToastView.swift in Sources */,
