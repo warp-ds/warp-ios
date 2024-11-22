@@ -1,60 +1,53 @@
-//
-//  ModalView.swift
-//  Finn
-//
-//  Created by Milad Ajilianabbasi on 2024-06-05.
-//
-
 import SwiftUI
-extension Warp {    
 
+extension Warp {
+    /// A view modifier to display a modal on top of the existing content.
     public struct ModalViewModifier: ViewModifier {
-        /// Text that will be shown as modal's heading.
+        // MARK: - Properties
+        
+        /// The title text to be displayed in the modal's header.
         var title: String
         
-        /// Text that will be shown after title in the middle of the modal.
-        var subtitle: String? = nil
+        /// An optional subtitle text to provide additional context below the title.
+        var subtitle: String?
         
-        /// Text that will be shown as main content of the modal.
+        /// The main body text content of the modal.
         var bodyText: String
         
-        /// Binding to a boolean value that allows the modal to control dismissal
-        @Binding var isPresented: Bool
+        public typealias ButtonConstructor = Warp.Modal.ButtonConstructor
         
-        public typealias ButtonConstructor = (title: String, action: () -> Void)
-        
-        /// Tuple that will provide a title and an action for creating a primary button view.
-        /// Passing `nil` will skip adding primary button view.
+        /// Provides a title and action for creating a primary button. Passing `nil` will hide the primary button.
         let primaryButtonProvider: ButtonConstructor?
         
-        
-        
-        /// Tuple that will provide a title and an action for creating a secondary button view.
-        /// Passing `nil` will skip adding secondary button view.
+        /// Provides a title and action for creating a secondary button. Passing `nil` will hide the secondary button.
         let secondaryButtonProvider: ButtonConstructor?
         
-        /// boolean show/hide close image view.
+        /// Determines whether the modal should display a close button.
         var hasCloseButton: Bool
         
-        /// A Boolean value indicating whether the component should be dismissed when the user clicks outside of it.
-        let dismissOnClickOutside: Bool
+        /// Determines whether the component should be dismissed when the user clicks outside of it.
+        var dismissOnClickOutside: Bool
         
-        /// Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal.
+        /// The action to execute when the modal is dismissed.
         let onDismiss: (() -> Void)?
         
-        /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider
+        /// A binding to control the visibility of the modal.
+        @Binding var isPresented: Bool
+        
+        // MARK: - Initializer
+        
         /**
-         - Parameter title: The main title text to be displayed.
-         - Parameter subtitle: An optional subtitle text to provide additional context or information. Defaults to `nil`.
-         - Parameter bodyText: The main body text content of the component.
-         - Parameter primaryButton: An optional primary button constructor for defining the primary action. Defaults to `nil`.
-         - Parameter secondaryButton: An optional secondary button constructor for defining a secondary action. Defaults to `nil`.
-         - Parameter hasCloseButton: A Boolean value indicating whether a close button should be shown. Defaults to `false`.
-         - Parameter dismissOnClickOutside: A Boolean value indicating whether the component should be dismissed when the user clicks outside of it. Defaults to `true.
-         - Parameter onDismiss: Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal. Defaults to `nil`.
-         - Parameter isPresented: A binding to a Boolean value that controls the visibility of the component.
-         - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Warp.Color`.
+         Initializes the Modal view.
+         - Parameters:
+         - title: The main title text to be displayed.
+         - subtitle: An optional subtitle text. Defaults to `nil`.
+         - bodyText: The main body text content of the modal.
+         - primaryButton: An optional provider for defining the primary button. Defaults to `nil`.
+         - secondaryButton: An optional provider for defining the secondary button. Defaults to `nil`.
+         - hasCloseButton: Whether the modal should include a close button. Defaults to `false`.
+         - dismissOnClickOutside: Determines whether the component should be dismissed when the user clicks outside of it.
+         - onDismiss: An optional action to execute when the modal is dismissed.
+         - isPresented: A binding to control the visibility of the modal.
          */
         public init(
             title: String,
@@ -65,8 +58,7 @@ extension Warp {
             hasCloseButton: Bool = false,
             dismissOnClickOutside: Bool = true,
             onDismiss: (() -> Void)? = nil,
-            isPresented: Binding<Bool>,
-            colorProvider: ColorProvider = Warp.Color
+            isPresented: Binding<Bool>
         ) {
             self.title = title
             self.subtitle = subtitle
@@ -76,18 +68,19 @@ extension Warp {
             self.hasCloseButton = hasCloseButton
             self.dismissOnClickOutside = dismissOnClickOutside
             self.onDismiss = onDismiss
-            self.colorProvider = colorProvider
             self._isPresented = isPresented
         }
+        
+        // MARK: - Body
         
         public func body(content: Content) -> some View {
             ZStack {
                 content
                     .disabled(isPresented)
-                    .fullScreenCover(isPresented: $isPresented, content: {
+                    .fullScreenCover(isPresented: $isPresented) {
                         warpModalOverlay()
                             .background(TransparentBackground())
-                    })
+                    }
                     .transaction { transaction in
                         transaction.disablesAnimations = true
                     }
@@ -95,7 +88,7 @@ extension Warp {
         }
         
         @ViewBuilder
-        func warpModalOverlay() -> some View {
+        private func warpModalOverlay() -> some View {
             if isPresented {
                 ZStack {
                     SwiftUI.Color.black.opacity(0.3)
@@ -112,13 +105,11 @@ extension Warp {
                         secondaryButton: secondaryButtonProvider,
                         hasCloseButton: hasCloseButton,
                         onDismiss: onDismiss,
-                        isPresented: $isPresented,
-                        colorProvider: colorProvider
+                        isPresented: $isPresented
                     )
                 }
                 .edgesIgnoringSafeArea(.all)
                 .ignoresSafeArea(edges: .all)
-                
             }
         }
     }
@@ -132,7 +123,7 @@ struct TransparentBackground: UIViewRepresentable {
         }
         return view
     }
-
+    
     func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
@@ -146,8 +137,7 @@ public extension View {
         closeButton: Bool = false,
         dismissOnClickOutside: Bool = true,
         onDismiss: (() -> Void)? = nil,
-        isPresented: Binding<Bool>,
-        colorProvider: ColorProvider = Warp.Color
+        isPresented: Binding<Bool>
     ) -> some View {
         self.modifier(
             Warp.ModalViewModifier(
@@ -159,8 +149,7 @@ public extension View {
                 hasCloseButton: closeButton,
                 dismissOnClickOutside: dismissOnClickOutside,
                 onDismiss: onDismiss,
-                isPresented: isPresented,
-                colorProvider: colorProvider
+                isPresented: isPresented
             )
         )
     }
