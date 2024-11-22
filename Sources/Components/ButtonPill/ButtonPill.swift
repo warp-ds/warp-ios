@@ -15,7 +15,10 @@ extension Warp {
         
         public var body: some View {
             ZStack {
-                CustomHeartIcon(fillColor: iconBackgroundColor, borderColor: iconColor, lineWidth: 2)
+                Image("Heart-Selected", bundle: .module)
+                    .foregroundColor(iconBackgroundColor)
+                Image("Heart-Unselected", bundle: .module)
+                    .foregroundColor(iconColor)
                     .modifier(shadowModifier)
             }
             .frame(width: 44, height: 44)
@@ -24,8 +27,12 @@ extension Warp {
             .onLongPressGesture(
                 minimumDuration: 0,
                 pressing: { inProgress in
-                    state = inProgress ? .active : .default
-                    if !inProgress {
+                    if inProgress {
+                        state = .active
+                    } else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            state = .default
+                        }
                         selected.toggle()
                     }
                 },
