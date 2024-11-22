@@ -24,8 +24,12 @@ extension Warp {
             ZStack {
                 Image("Heart-Selected", bundle: .module)
                     .foregroundColor(iconBackgroundColor)
+                    .frame(width: 22, height: 20)
+                    .offset(y: 1)
                 Image("Heart-Unselected", bundle: .module)
                     .foregroundColor(iconColor)
+                    .frame(width: 22, height: 20)
+                    .offset(y: 1)
                     .modifier(shadowModifier)
             }
             .frame(width: 44, height: 44)
@@ -34,13 +38,15 @@ extension Warp {
             .onLongPressGesture(
                 minimumDuration: 0,
                 pressing: { inProgress in
-                    if inProgress {
-                        state = .active
-                    } else {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                            state = .default
+                    withAnimation(.easeIn(duration: 0.1)) {
+                        if inProgress {
+                            state = .active
+                        } else {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                state = .default
+                            }
+                            selected.toggle()
                         }
-                        selected.toggle()
                     }
                 },
                 perform: {}
