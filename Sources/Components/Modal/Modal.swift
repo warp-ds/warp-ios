@@ -1,14 +1,6 @@
-//
-//  ModalView.swift
-//  Finn
-//
-//  Created by Milad Ajilianabbasi on 2024-06-05.
-//
-
 import SwiftUI
+
 extension Warp {
-    private static let modalCornerRadius: CGFloat = 12
-    
     /// Modal is a component to display dioalog.
     public struct Modal: View {
         /// Text that will be shown as modal's heading.
@@ -35,12 +27,12 @@ extension Warp {
         
         /// Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal.
         let onDismiss: (() -> Void)?
-
+        
         /// Binding to present modal view.
         @Binding var isPresented: Bool
         
         /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider
+        private let colorProvider: ColorProvider = Warp.Color
         
         /**
          - Parameter title: The main title text to be displayed.
@@ -51,7 +43,6 @@ extension Warp {
          - Parameter hasCloseButton: A Boolean value indicating whether a close button should be shown. Defaults to `false`.
          - Parameter onDismiss: Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal. Defaults to `nil`.
          - Parameter isPresented: A binding to a Boolean value that controls the visibility of the component.
-         - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Warp.Color`.
          */
         public init(
             title: String,
@@ -61,8 +52,7 @@ extension Warp {
             secondaryButton: ButtonConstructor? = nil,
             hasCloseButton: Bool = false,
             onDismiss: (() -> Void)? = nil,
-            isPresented: Binding<Bool>,
-            colorProvider: ColorProvider = Warp.Color
+            isPresented: Binding<Bool>
         ) {
             self.title = title
             self.subtitle = subtitle
@@ -72,18 +62,17 @@ extension Warp {
             self.hasCloseButton = hasCloseButton
             self.onDismiss = onDismiss
             self._isPresented = isPresented
-            self.colorProvider = colorProvider
         }
         
         public var body: some View {
             ZStack {
                 backgroundView
-
+                
                 foregroundView
             }
             .fixedSize(horizontal: false, vertical: true)
-            .cornerRadius(modalCornerRadius)
-            .addShadow(.small)
+            .cornerRadius(Warp.Border.borderRadius100)
+            .addShadow(.medium)
             .accessibilityElement(children: .combine)
             .padding()
         }
@@ -118,7 +107,7 @@ extension Warp {
         }
         
         private var backgroundView: some View {
-            colorProvider.token.surfaceElevated200
+            colorProvider.token.surfaceElevated100
         }
         
         private var foregroundView: some View {

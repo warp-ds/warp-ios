@@ -1,13 +1,6 @@
-//
-//  ModalView.swift
-//  Finn
-//
-//  Created by Milad Ajilianabbasi on 2024-06-05.
-//
-
 import SwiftUI
-extension Warp {    
 
+extension Warp {
     public struct ModalViewModifier: ViewModifier {
         /// Text that will be shown as modal's heading.
         var title: String
@@ -42,8 +35,6 @@ extension Warp {
         /// Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal.
         let onDismiss: (() -> Void)?
         
-        /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider
         /**
          - Parameter title: The main title text to be displayed.
          - Parameter subtitle: An optional subtitle text to provide additional context or information. Defaults to `nil`.
@@ -54,7 +45,6 @@ extension Warp {
          - Parameter dismissOnClickOutside: A Boolean value indicating whether the component should be dismissed when the user clicks outside of it. Defaults to `true.
          - Parameter onDismiss: Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal. Defaults to `nil`.
          - Parameter isPresented: A binding to a Boolean value that controls the visibility of the component.
-         - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Warp.Color`.
          */
         public init(
             title: String,
@@ -65,8 +55,7 @@ extension Warp {
             hasCloseButton: Bool = false,
             dismissOnClickOutside: Bool = true,
             onDismiss: (() -> Void)? = nil,
-            isPresented: Binding<Bool>,
-            colorProvider: ColorProvider = Warp.Color
+            isPresented: Binding<Bool>
         ) {
             self.title = title
             self.subtitle = subtitle
@@ -76,7 +65,6 @@ extension Warp {
             self.hasCloseButton = hasCloseButton
             self.dismissOnClickOutside = dismissOnClickOutside
             self.onDismiss = onDismiss
-            self.colorProvider = colorProvider
             self._isPresented = isPresented
         }
         
@@ -84,10 +72,10 @@ extension Warp {
             ZStack {
                 content
                     .disabled(isPresented)
-                    .fullScreenCover(isPresented: $isPresented, content: {
+                    .fullScreenCover(isPresented: $isPresented) {
                         warpModalOverlay()
                             .background(TransparentBackground())
-                    })
+                    }
                     .transaction { transaction in
                         transaction.disablesAnimations = true
                     }
@@ -112,13 +100,11 @@ extension Warp {
                         secondaryButton: secondaryButtonProvider,
                         hasCloseButton: hasCloseButton,
                         onDismiss: onDismiss,
-                        isPresented: $isPresented,
-                        colorProvider: colorProvider
+                        isPresented: $isPresented
                     )
                 }
                 .edgesIgnoringSafeArea(.all)
                 .ignoresSafeArea(edges: .all)
-                
             }
         }
     }
@@ -132,7 +118,7 @@ struct TransparentBackground: UIViewRepresentable {
         }
         return view
     }
-
+    
     func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
@@ -146,8 +132,7 @@ public extension View {
         closeButton: Bool = false,
         dismissOnClickOutside: Bool = true,
         onDismiss: (() -> Void)? = nil,
-        isPresented: Binding<Bool>,
-        colorProvider: ColorProvider = Warp.Color
+        isPresented: Binding<Bool>
     ) -> some View {
         self.modifier(
             Warp.ModalViewModifier(
@@ -159,8 +144,7 @@ public extension View {
                 hasCloseButton: closeButton,
                 dismissOnClickOutside: dismissOnClickOutside,
                 onDismiss: onDismiss,
-                isPresented: isPresented,
-                colorProvider: colorProvider
+                isPresented: isPresented
             )
         )
     }
