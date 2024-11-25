@@ -11,7 +11,11 @@ extension Warp {
         
         public func makeUIView(context: Context) -> UIDatePicker {
             let datePicker = UIDatePicker()
-            datePicker.datePickerMode = .date
+            if #available(iOS 17.4, *) {
+                datePicker.datePickerMode = .yearAndMonth
+            } else {
+                datePicker.datePickerMode = .date
+            }
             datePicker.preferredDatePickerStyle = .wheels
             datePicker.addTarget(
                 context.coordinator,
