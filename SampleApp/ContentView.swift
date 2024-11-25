@@ -63,6 +63,7 @@ struct ContentView: View {
                     row("PageIndicator", destination: PageIndicatorView())
                     row("Pill", destination: PillView())
                     row("Radio", destination: RadioView())
+                    row("RangeSlider", destination: RangeSliderView())
                     row("Shadow", destination: ShadowView())
                     row("ShadowUI", destination: ShadowUIView())
                     row("Slider", destination: SliderView())

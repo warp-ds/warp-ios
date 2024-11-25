@@ -46,7 +46,7 @@ struct PageIndicatorView: View {
             .padding(.bottom)
         }
         .padding(.horizontal)
-        .navigationTitle("PageIndicator")
+        .navigationTitle("Page Indicator")
         .navigationBarTitleDisplayMode(.inline)
         .onTapGesture {
             dismissKeyboard() // Dismiss keyboard when tapping outside

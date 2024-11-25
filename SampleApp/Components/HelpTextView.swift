@@ -48,7 +48,7 @@ struct HelpTextView: View {
             .padding(.bottom)
         }
         .padding(.horizontal)
-        .navigationTitle("HelpText")
+        .navigationTitle("Help Text")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

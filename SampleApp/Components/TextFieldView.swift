@@ -108,8 +108,6 @@ struct TextFieldView: View {
                 createToggle(binding: $isSecured, text: ("Secured", "Unsecured"))
             }
             .padding(.horizontal)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("TextField")
             .onChange(of: informationState) { newInformationState in
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 
@@ -125,7 +123,7 @@ struct TextFieldView: View {
                 }
             }
         }
-        .navigationTitle("TextField")
+        .navigationTitle("Text Field")
         .navigationBarTitleDisplayMode(.inline)
     }
 

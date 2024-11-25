@@ -157,6 +157,10 @@
 		82BF22262C6A15F900DDF06E /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BF22242C6A15F500DDF06E /* TooltipView.swift */; };
 		82BF22272C6A15F900DDF06E /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BF22242C6A15F500DDF06E /* TooltipView.swift */; };
 		82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
+		82CC5CCA2CF46BE8006FC18E /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC5CC92CF46BE3006FC18E /* RangeSliderView.swift */; };
+		82CC5CCB2CF46BE8006FC18E /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC5CC92CF46BE3006FC18E /* RangeSliderView.swift */; };
+		82CC5CCC2CF46BE8006FC18E /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC5CC92CF46BE3006FC18E /* RangeSliderView.swift */; };
+		82CC5CCD2CF46BE8006FC18E /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC5CC92CF46BE3006FC18E /* RangeSliderView.swift */; };
 		82E098832C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
 		82E098842C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
 		82E098852C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
@@ -226,6 +230,7 @@
 		82B168112B750BED00DCDDE5 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		82BF22242C6A15F500DDF06E /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		82C7E6F42B7B85E000760C08 /* BroadcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastView.swift; sourceTree = "<group>"; };
+		82CC5CC92CF46BE3006FC18E /* RangeSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderView.swift; sourceTree = "<group>"; };
 		82E098822C85AEFE00033535 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandIconsView.swift; sourceTree = "<group>"; };
 		B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
@@ -418,6 +423,7 @@
 				508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */,
 				82838CF02B62B35400E3C495 /* PillView.swift */,
 				82A9A00C2C7EF79C0053A961 /* RadioView.swift */,
+				82CC5CC92CF46BE3006FC18E /* RangeSliderView.swift */,
 				8213D0AE2B9078D700FCA310 /* ShadowView.swift */,
 				82AE96102C64C2C000BF3920 /* ShadowUIView.swift */,
 				506939DF2CB52EF000AA631F /* SliderView.swift */,
@@ -609,6 +615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82CC5CCC2CF46BE8006FC18E /* RangeSliderView.swift in Sources */,
 				82A9A00F2C7EF7A20053A961 /* RadioView.swift in Sources */,
 				506939E32CB52EF000AA631F /* SliderView.swift in Sources */,
 				2E1ADF4E2C2561A700DFEE06 /* TypographyView.swift in Sources */,
@@ -652,6 +659,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82CC5CCD2CF46BE8006FC18E /* RangeSliderView.swift in Sources */,
 				82A9A00D2C7EF7A20053A961 /* RadioView.swift in Sources */,
 				506939E12CB52EF000AA631F /* SliderView.swift in Sources */,
 				820A85EB2C6CEB0C006D35A0 /* TypographyView.swift in Sources */,
@@ -695,6 +703,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82CC5CCB2CF46BE8006FC18E /* RangeSliderView.swift in Sources */,
 				82A9A0102C7EF7A20053A961 /* RadioView.swift in Sources */,
 				506939E02CB52EF000AA631F /* SliderView.swift in Sources */,
 				820A86272C6D4388006D35A0 /* TypographyView.swift in Sources */,
@@ -738,6 +747,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82CC5CCA2CF46BE8006FC18E /* RangeSliderView.swift in Sources */,
 				82A9A00E2C7EF7A20053A961 /* RadioView.swift in Sources */,
 				506939E22CB52EF000AA631F /* SliderView.swift in Sources */,
 				349586652B0F727600A14570 /* TypographyView.swift in Sources */,

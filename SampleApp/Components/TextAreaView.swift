@@ -102,7 +102,7 @@ struct TextAreaView: View {
             .padding(.bottom)
         }
         .padding(.horizontal)
-        .navigationTitle("TextArea")
+        .navigationTitle("Text Area")
         .navigationBarTitleDisplayMode(.inline)
     }
     
