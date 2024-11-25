@@ -7,7 +7,7 @@ extension Warp {
         let title: String
         let range: ClosedRange<Date>?
         let style: any SwiftUI.DatePickerStyle
-
+        
         public init(
             title: String = "Select a Date",
             selectedDate: Binding<Date>,
@@ -19,7 +19,7 @@ extension Warp {
             self.range = range
             self.style = style
         }
-
+        
         public var body: some View {
             VStack(alignment: .leading) {
                 Text(title, style: .bodyStrong)

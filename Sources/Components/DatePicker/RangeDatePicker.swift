@@ -7,7 +7,7 @@ extension Warp {
         @Binding var endDate: Date
         let title: String
         let style: any SwiftUI.DatePickerStyle
-
+        
         public init(
             title: String = "Select a Date Range",
             startDate: Binding<Date>,
@@ -19,11 +19,11 @@ extension Warp {
             self._endDate = endDate
             self.style = style
         }
-
+        
         public var body: some View {
             VStack(alignment: .leading, spacing: 16) {
                 Text(title, style: .bodyStrong)
-
+                
                 VStack(spacing: 12) {
                     // Start Date Picker
                     SwiftUI.DatePicker(
@@ -33,7 +33,7 @@ extension Warp {
                         displayedComponents: [.date]
                     )
                     .applyDatePickerStyle(style)
-
+                    
                     // End Date Picker
                     SwiftUI.DatePicker(
                         "End Date",
