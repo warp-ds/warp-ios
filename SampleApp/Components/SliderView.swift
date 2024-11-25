@@ -2,7 +2,7 @@ import SwiftUI
 import Warp
 
 struct SliderView: View {
-    @State var sliderValue = 0.0 // Current slider value
+    @State var sliderValue = 20.0 // Current slider value
     @State var minValue = "0.0" // Minimum value input by user
     @State var maxValue = "100.0" // Maximum value input by user
     @State var stepValue = "1.0" // Step value input by user
@@ -19,7 +19,7 @@ struct SliderView: View {
                         step: Double(stepValue) ?? 1.0
                     )
                     .padding()
-
+                    
                     HStack {
                         Spacer()
                         // Display the slider value with the specified precision
@@ -31,7 +31,7 @@ struct SliderView: View {
                 Text("Slider")
             })
             .padding(.bottom)
-
+            
             GroupBox(content: {
                 HStack {
                     VStack(alignment: .leading) {
