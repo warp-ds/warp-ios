@@ -346,14 +346,6 @@ extension Warp.BoxStyle {
     }
 }
 
-extension Warp.BoxStyle {
-    fileprivate static var allCases: [Warp.BoxStyle] = [
-        .neutral,
-        .info,
-        .bordered
-    ]
-}
-
 #Preview("Simple use case") {
     ForEach(Warp.BoxStyle.allCases, id: \.self) { style in
         Warp.Box(

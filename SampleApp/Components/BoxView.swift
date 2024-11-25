@@ -30,88 +30,49 @@ struct BoxView: View {
 
                 GroupBox(
                     content: {
-                        Picker("Pick your box style please", selection: $style.animation(.easeIn)) {
-                            ForEach(Warp.BoxStyle.allCases, id: \.self) { style in
-                                Text(style.styleName)
+                        HStack {
+                            Warp.Text("Style", style: .bodyStrong)
+                            Picker("Pick your box style please", selection: $style.animation(.easeIn)) {
+                                ForEach(Warp.BoxStyle.allCases, id: \.self) { style in
+                                    Text(style.rawValue.capitalized)
+                                }
                             }
+                            .pickerStyle(.segmented)
                         }
-                        .pickerStyle(.segmented)
-                        .defaultPadding()
-                    }, label: {
-                        Text("Style")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Warp.TextField(text: $boxTitle)
-                            .defaultPadding()
-                    }, label: {
-                        Text("Title")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Toggle(isOn: $shouldShowIcon.animation(.bouncy)) {
-                            HStack {
-                                Text(shouldShowIcon ? "Hide icon": "Show icon")
-
-                                Spacer()
-                            }
+                        Divider()
+                        HStack {
+                            Warp.Text("Title", style: .bodyStrong)
+                            Spacer()
+                            Warp.TextField(text: $boxTitle)
                         }
-                        .defaultPadding()
-                    }, label: {
-                        Text("Tool tip icon")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Warp.TextField(text: $boxSubtitle)
-                            .defaultPadding()
-                    }, label: {
-                        Text("Subtitle")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Toggle(isOn: $hasLink.defaultAnimation()) {
-                            HStack {
-                                let prependStaticText = !hasLink ? "Add": "Remove"
-
-                                Text(prependStaticText + " link")
-
-                                Spacer()
-                            }
+                        Divider()
+                        createToggle(binding: $shouldShowIcon, text: "Show icon")
+                        Divider()
+                        HStack {
+                            Warp.Text("Subtitle", style: .bodyStrong)
+                            Spacer()
+                            Warp.TextField(text: $boxSubtitle)
                         }
-                        .defaultPadding()
+                        Divider()
+                        createToggle(binding: $hasLink, text: "Show link")
+                        Divider()
+                        createToggle(binding: $hasButton, text: "Show button")
                     }, label: {
-                        Text("Link")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Toggle(isOn: $hasButton.defaultAnimation()) {
-                            HStack {
-                                let prependStaticText = !hasButton ? "Add": "Remove"
-
-                                Text(prependStaticText + " button")
-
-                                Spacer()
-                            }
-                        }
-                        .defaultPadding()
-                    }, label: {
-                        Text("Button")
+                        Text("Modify Box")
                     }
                 )
             }
             .padding(.horizontal, 20)
             .navigationTitle("Box")
             .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+    
+    private func createToggle(binding: Binding<Bool>, text: String) -> some View {
+        HStack {
+            Warp.Text(text, style: .bodyStrong)
+            Spacer()
+            Warp.Switch(isOn: binding.animation(.smooth))
         }
     }
 
@@ -155,39 +116,6 @@ struct BoxView: View {
             link: linkProvider,
             button: buttonProvider
         )
-    }
-}
-
-extension Warp.BoxStyle: CaseIterable {
-    public static var allCases: [Warp.BoxStyle] = [
-        .neutral,
-        .info,
-        .bordered
-    ]
-
-    fileprivate var styleName: String {
-        switch self {
-            case .neutral:
-                return "Neutral"
-
-            case .info:
-                return "Info"
-
-            case .bordered:
-                return "Bordered"
-        }
-    }
-}
-
-private extension Binding<Bool> {
-    func defaultAnimation() -> Binding<Bool> {
-        animation(.smooth)
-    }
-}
-
-private extension View {
-    func defaultPadding() -> some View {
-        padding(.all, 8)
     }
 }
 
