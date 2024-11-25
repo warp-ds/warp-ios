@@ -286,9 +286,10 @@ private struct ButtonView: View, Hashable {
     
     var body: some View {
         HStack {
-            Warp.Button.createSecondary(
+            Warp.Button(
                 title: buttonProvider.title,
-                action: buttonProvider.action
+                action: buttonProvider.action,
+                type: .secondary
             )
             
             Spacer()

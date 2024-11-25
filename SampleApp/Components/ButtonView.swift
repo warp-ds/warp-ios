@@ -21,13 +21,13 @@ struct ButtonView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             createButton()
-                .padding(.vertical)
+                .padding()
             Divider()
             HStack {
                 Warp.Text("Type", style: .bodyStrong)
                 Picker("Pick your box style please", selection: $type.animation(.smooth)) {
                     ForEach(Warp.ButtonType.allCases, id: \.self) { type in
-                        Text(type.name)
+                        Text(type.rawValue.capitalized)
                     }
                 }
                 .pickerStyle(.wheel)
@@ -48,7 +48,7 @@ struct ButtonView: View {
                 Spacer()
                 Picker("Pick your box style please", selection: $buttonSize.animation(.interpolatingSpring)) {
                     ForEach(Warp.ButtonSize.allCases, id: \.self) { type in
-                        Text(type.name)
+                        Text(type.rawValue.capitalized)
                     }
                 }
                 .pickerStyle(.segmented)
@@ -76,49 +76,17 @@ struct ButtonView: View {
     }
 
     private func createButton() -> some View {
-        Warp.Button.create(
-            for: type,
+        Warp.Button(
             title: buttonTitle,
-            leadingIcon: buttonHasLeadingIcon ? Image(systemName: "plus"): nil,
-            trailingIcon: buttonHasTrailingIcon ? Image(systemName: "square.and.arrow.up"): nil,
+            leadingIcon: buttonHasLeadingIcon ? Warp.Icon.plus : nil,
+            trailingIcon: buttonHasTrailingIcon ? Warp.Icon.arrowUp : nil,
             action: {},
+            type: type,
             size: buttonSize,
             isEnabled: isButtonEnabled,
             fullWidth: isButtonFullWidth,
             isLoading: isButtonLoading
         )
-    }
-}
-
-extension Warp.ButtonType: CaseIterable {
-    public static var allCases: [Warp.ButtonType] = [
-        .primary,
-        .secondary,
-        .tertiary,
-        .critical,
-        .criticalTertiary,
-        .utility,
-        .utilityTertiary,
-        .utilityOverlay
-    ]
-
-    fileprivate var name: String {
-        let _name = String(describing: self)
-
-        return _name.capitalized
-    }
-}
-
-extension Warp.ButtonSize: CaseIterable {
-    public static var allCases: [Warp.ButtonSize] = [
-        .big,
-        .small
-    ]
-
-    fileprivate var name: String {
-        let _name = String(describing: self)
-
-        return _name.capitalized
     }
 }
 

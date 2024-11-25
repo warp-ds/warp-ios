@@ -283,14 +283,15 @@ private struct ButtonsView: View, Hashable {
     var body: some View {
         HStack {
             if let primaryButtonProvider {
-                Warp.Button.createSecondary(
+                Warp.Button(
                     title: primaryButtonProvider.title,
-                    action: primaryButtonProvider.action
+                    action: primaryButtonProvider.action,
+                    type: .secondary
                 )
             }
             
             if let secondaryButtonProvider {
-                Warp.Button.createTertiary(
+                Warp.Button(
                     title: secondaryButtonProvider.title,
                     action: secondaryButtonProvider.action
                 )
