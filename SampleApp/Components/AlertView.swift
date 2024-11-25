@@ -31,72 +31,49 @@ struct AlertView: View {
 
                 GroupBox(
                     content: {
-                        Picker("Pick your box style please", selection: $style.animation(.smooth)) {
-                            ForEach(Warp.AlertStyle.allCases, id: \.self) { style in
-                                Text(style.styleName)
+                        HStack {
+                            Warp.Text("Style", style: .bodyStrong)
+                            Picker("Pick your box style please", selection: $style.animation(.smooth)) {
+                                ForEach(Warp.AlertStyle.allCases, id: \.self) { style in
+                                    Text(style.rawValue.capitalized)
+                                }
                             }
+                            .pickerStyle(.segmented)
                         }
-                        .pickerStyle(.segmented)
-                        .defaultPadding()
-                    }, label: {
-                        Text("Style")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Warp.TextField(text: $alertTitle)
-                            .defaultPadding()
-                    }, label: {
-                        Text("Title")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Warp.TextField(text: $alertSubtitle)
-                            .defaultPadding()
-                    }, label: {
-                        Text("Subtitle")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Toggle(isOn: $hasLink.defaultAnimation()) {
-                            createToggleLabelView(hasValue: hasLink, tag: "link")
+                        Divider()
+                        HStack {
+                            Warp.Text("Title", style: .bodyStrong)
+                            Spacer()
+                            Warp.TextField(text: $alertTitle)
                         }
-                        .defaultPadding()
-                    }, label: {
-                        Text("Link")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Toggle(isOn: $hasPrimaryButton.defaultAnimation()) {
-                            createToggleLabelView(hasValue: hasPrimaryButton, tag: "primary button")
+                        Divider()
+                        HStack {
+                            Warp.Text("Subtitle", style: .bodyStrong)
+                            Spacer()
+                            Warp.TextField(text: $alertSubtitle)
                         }
-                        .defaultPadding()
+                        Divider()
+                        createToggle(binding: $hasLink, text: "Show link")
+                        Divider()
+                        createToggle(binding: $hasPrimaryButton, text: "Show first button")
+                        Divider()
+                        createToggle(binding: $hasSecondaryButton, text: "Show second button")
                     }, label: {
-                        Text("Primary button")
-                    }
-                )
-
-                GroupBox(
-                    content: {
-                        Toggle(isOn: $hasSecondaryButton) {
-                            createToggleLabelView(hasValue: hasSecondaryButton, tag: "secondary button")
-                        }
-                        .defaultPadding()
-                    }, label: {
-                        Text("Secondary button")
+                        Text("Modify Alert")
                     }
                 )
             }
             .padding(.horizontal, 20)
             .navigationTitle("Alert")
             .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+    
+    private func createToggle(binding: Binding<Bool>, text: String) -> some View {
+        HStack {
+            Warp.Text(text, style: .bodyStrong)
+            Spacer()
+            Warp.Switch(isOn: binding.animation(.smooth))
         }
     }
 
@@ -154,46 +131,6 @@ struct AlertView: View {
             primaryButton: primaryButtonProvider,
             secondaryButton: secondaryButtonProvider
         )
-    }
-
-    private func createToggleLabelView(hasValue: Bool, tag: String) -> some View {
-        HStack {
-            let prependStaticText = !hasValue ? "Add": "Remove"
-
-            Text(prependStaticText + " \(tag)")
-
-            Spacer()
-        }
-    }
-}
-
-extension Warp.AlertStyle {
-    fileprivate var styleName: String {
-        switch self {
-            case .info:
-                return "Info"
-
-            case .warning:
-                return "Warning"
-
-            case .critical:
-                return "Critical"
-
-            case .success:
-                return "Success"
-        }
-    }
-}
-
-private extension Binding<Bool> {
-    func defaultAnimation() -> Binding<Bool> {
-        animation(.bouncy)
-    }
-}
-
-private extension View {
-    func defaultPadding() -> some View {
-        padding(.all, 8)
     }
 }
 

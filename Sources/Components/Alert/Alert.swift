@@ -293,7 +293,8 @@ private struct ButtonsView: View, Hashable {
             if let secondaryButtonProvider {
                 Warp.Button(
                     title: secondaryButtonProvider.title,
-                    action: secondaryButtonProvider.action
+                    action: secondaryButtonProvider.action,
+                    type: .tertiary
                 )
             }
             
