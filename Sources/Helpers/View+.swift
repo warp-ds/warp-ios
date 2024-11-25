@@ -65,4 +65,18 @@ extension View {
                 .addShadow(.large)
         }
     }
+    
+    /// Dynamically applies the provided `DatePickerStyle`.
+    @ViewBuilder
+    func applyDatePickerStyle(_ style: any SwiftUI.DatePickerStyle) -> some View {
+        if let style = style as? CompactDatePickerStyle {
+            self.datePickerStyle(style)
+        } else if let style = style as? GraphicalDatePickerStyle {
+            self.datePickerStyle(style)
+        } else if let style = style as? WheelDatePickerStyle {
+            self.datePickerStyle(style)
+        } else {
+            self // Fallback in case of an unsupported style
+        }
+    }
 }

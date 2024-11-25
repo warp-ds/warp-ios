@@ -157,6 +157,10 @@
 		82BF22262C6A15F900DDF06E /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BF22242C6A15F500DDF06E /* TooltipView.swift */; };
 		82BF22272C6A15F900DDF06E /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BF22242C6A15F500DDF06E /* TooltipView.swift */; };
 		82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
+		82CC5CCF2CF49FDF006FC18E /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC5CCE2CF49FDB006FC18E /* DatePickerView.swift */; };
+		82CC5CD02CF49FDF006FC18E /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC5CCE2CF49FDB006FC18E /* DatePickerView.swift */; };
+		82CC5CD12CF49FDF006FC18E /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC5CCE2CF49FDB006FC18E /* DatePickerView.swift */; };
+		82CC5CD22CF49FDF006FC18E /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC5CCE2CF49FDB006FC18E /* DatePickerView.swift */; };
 		82E098832C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
 		82E098842C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
 		82E098852C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
@@ -226,6 +230,7 @@
 		82B168112B750BED00DCDDE5 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		82BF22242C6A15F500DDF06E /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		82C7E6F42B7B85E000760C08 /* BroadcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastView.swift; sourceTree = "<group>"; };
+		82CC5CCE2CF49FDB006FC18E /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		82E098822C85AEFE00033535 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandIconsView.swift; sourceTree = "<group>"; };
 		B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
@@ -410,6 +415,7 @@
 				825FBF4E2CEF431A0052761F /* ButtonPillView.swift */,
 				B2A8B2782B6D33B800122DBC /* CalloutView.swift */,
 				82E098822C85AEFE00033535 /* CheckboxView.swift */,
+				82CC5CCE2CF49FDB006FC18E /* DatePickerView.swift */,
 				B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */,
 				50F58ADB2CBE6A4B0006804C /* HelpTextView.swift */,
 				8280953C2C9C794500472CB5 /* IconView.swift */,
@@ -630,6 +636,7 @@
 				2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */,
 				50F58ADD2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098852C85AEFF00033535 /* CheckboxView.swift in Sources */,
+				82CC5CD22CF49FDF006FC18E /* DatePickerView.swift in Sources */,
 				8280953F2C9C794900472CB5 /* IconView.swift in Sources */,
 				828095382C9C3AE900472CB5 /* IconsView.swift in Sources */,
 				2E1ADF562C2561A700DFEE06 /* TokensView.swift in Sources */,
@@ -673,6 +680,7 @@
 				820A85F62C6CEB0C006D35A0 /* TokensView.swift in Sources */,
 				50F58ADF2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098862C85AEFF00033535 /* CheckboxView.swift in Sources */,
+				82CC5CD02CF49FDF006FC18E /* DatePickerView.swift in Sources */,
 				8280953D2C9C794900472CB5 /* IconView.swift in Sources */,
 				8280953A2C9C3AE900472CB5 /* IconsView.swift in Sources */,
 				820A85F72C6CEB0C006D35A0 /* PillView.swift in Sources */,
@@ -716,6 +724,7 @@
 				820A86332C6D4388006D35A0 /* TokensView.swift in Sources */,
 				50F58ADE2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098842C85AEFF00033535 /* CheckboxView.swift in Sources */,
+				82CC5CD12CF49FDF006FC18E /* DatePickerView.swift in Sources */,
 				828095402C9C794900472CB5 /* IconView.swift in Sources */,
 				8280953B2C9C3AE900472CB5 /* IconsView.swift in Sources */,
 				820A86342C6D4388006D35A0 /* PillView.swift in Sources */,
@@ -759,6 +768,7 @@
 				82635D082BFE1CD800F7FA6F /* SpinnerView.swift in Sources */,
 				50F58ADC2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098832C85AEFF00033535 /* CheckboxView.swift in Sources */,
+				82CC5CCF2CF49FDF006FC18E /* DatePickerView.swift in Sources */,
 				8280953E2C9C794900472CB5 /* IconView.swift in Sources */,
 				828095392C9C3AE900472CB5 /* IconsView.swift in Sources */,
 				82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
