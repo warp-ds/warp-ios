@@ -5,7 +5,7 @@ extension Warp {
     ///
     /// The `AlertStyle` is used to create a themed visual representation for the alert component, such as setting
     /// colors, icon according to the alert's purpose.
-    public enum AlertStyle: Equatable, CaseIterable {
+    public enum AlertStyle: String, Equatable, CaseIterable {
         /// Used to display messages that provide the user with general information.
         case info
         

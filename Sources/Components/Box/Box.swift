@@ -286,9 +286,10 @@ private struct ButtonView: View, Hashable {
     
     var body: some View {
         HStack {
-            Warp.Button.createSecondary(
+            Warp.Button(
                 title: buttonProvider.title,
-                action: buttonProvider.action
+                action: buttonProvider.action,
+                type: .secondary
             )
             
             Spacer()
@@ -343,14 +344,6 @@ extension Warp.BoxStyle {
             return colorProvider.token.backgroundTransparent0
         }
     }
-}
-
-extension Warp.BoxStyle {
-    fileprivate static var allCases: [Warp.BoxStyle] = [
-        .neutral,
-        .info,
-        .bordered
-    ]
 }
 
 #Preview("Simple use case") {

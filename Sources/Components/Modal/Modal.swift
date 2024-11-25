@@ -212,14 +212,15 @@ private struct ButtonsView: View, Hashable {
         HStack(spacing: Warp.Spacing.spacing200) {
             Spacer()
             if let secondaryButtonProvider {
-                Warp.Button.createSecondary(
+                Warp.Button(
                     title: secondaryButtonProvider.title,
-                    action: secondaryButtonProvider.action
+                    action: secondaryButtonProvider.action,
+                    type: .secondary
                 )
             }
             
             if let primaryButtonProvider {
-                Warp.Button.createPrimary(
+                Warp.Button(
                     title: primaryButtonProvider.title,
                     action: primaryButtonProvider.action
                 )

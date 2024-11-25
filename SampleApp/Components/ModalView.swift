@@ -15,7 +15,7 @@ struct ModalView: View {
         ScrollView(showsIndicators: false) {
             createModalView()
             VStack(alignment: .leading) {
-                Warp.Button.create(for: .primary, title: "Tap me to show the Modal", action: {
+                Warp.Button(title: "Tap me to show the Modal", action: {
                     withAnimation {
                         presentModal = true
                     }

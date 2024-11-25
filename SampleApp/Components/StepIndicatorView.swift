@@ -66,8 +66,7 @@ struct StepIndicatorView: View {
                         .pickerStyle(.segmented)
 
                         HStack {
-                            Warp.Button.create(
-                                for: .primary,
+                            Warp.Button(
                                 title: "Push Step",
                                 action: {
                                     pushStep()
@@ -75,12 +74,12 @@ struct StepIndicatorView: View {
                                 fullWidth: true
                             )
 
-                            Warp.Button.create(
-                                for: .critical,
+                            Warp.Button(
                                 title: "Pop Step",
                                 action: {
                                     popStep()
                                 },
+                                type: .critical,
                                 fullWidth: true
                             )
                         }
