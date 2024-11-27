@@ -23,7 +23,7 @@
             "value" : "Paperiarkki, jossa kuva, otsikko ja korostettu valintamerkki"
           }
         },
-        "nb-NO" : {
+        "nb" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ark med bilde og overskrift med uthevet hakemerke"
