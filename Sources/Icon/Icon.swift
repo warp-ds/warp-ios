@@ -17,8 +17,8 @@ extension Warp {
         case arrowRight
         case arrowUp
         case attachment
-        case awardMedal
         case automatic
+        case awardMedal
         case backWheelDrive
         case bag
         case bank
@@ -267,6 +267,7 @@ extension Warp {
                 // Handle the error (e.g., log it) if image loading fails
                 return UIImage()
             }
+            image.accessibilityLabel = localization
             return image.withRenderingMode(.alwaysTemplate)
         }
         
@@ -291,8 +292,8 @@ extension Warp {
             case .arrowRight: return Warp.Strings.iconArrowRight.localized
             case .arrowUp: return Warp.Strings.iconArrowUp.localized
             case .attachment: return Warp.Strings.iconAttachment.localized
-            case .awardMedal: return Warp.Strings.iconAwardMedal.localized
             case .automatic: return Warp.Strings.iconAutomatic.localized
+            case .awardMedal: return Warp.Strings.iconAwardMedal.localized
             case .backWheelDrive: return Warp.Strings.iconBackWheelDrive.localized
             case .bag: return Warp.Strings.iconBag.localized
             case .bank: return Warp.Strings.iconBank.localized
@@ -568,6 +569,7 @@ extension Warp {
             SwiftUI.Image(rawValue, bundle: .module) // Load the image from the asset catalog
                 .renderingMode(.template) // Ensure template rendering mode for vector images
                 .resizable()
+                .accessibilityLabel(localization)
         }
         
         /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog.
@@ -579,7 +581,51 @@ extension Warp {
                 // Handle the error (e.g., log it) if image loading fails
                 return UIImage()
             }
+            image.accessibilityLabel = localization
             return image.withRenderingMode(.alwaysTemplate)
+        }
+
+        private var localization: String {
+            switch self {
+            case .airplane: return Warp.Strings.taxonomyIconAirplane.localized
+            case .airplaneHotel: return Warp.Strings.taxonomyIconAirplaneHotel.localized
+            case .babyonesie: return Warp.Strings.taxonomyIconBabyonesie.localized
+            case .bulldozer: return Warp.Strings.taxonomyIconBulldozer.localized
+            case .cabin: return Warp.Strings.taxonomyIconCabin.localized
+            case .camping: return Warp.Strings.taxonomyIconCamping.localized
+            case .carFront: return Warp.Strings.taxonomyIconCarFront.localized
+            case .carPart: return Warp.Strings.taxonomyIconCarPart.localized
+            case .carRent: return Warp.Strings.taxonomyIconCarRent.localized
+            case .carSubscription: return Warp.Strings.taxonomyIconCarSubscription.localized
+            case .cart: return Warp.Strings.taxonomyIconCart.localized
+            case .chainsaw: return Warp.Strings.taxonomyIconChainsaw.localized
+            case .chair: return Warp.Strings.taxonomyIconChair.localized
+            case .dating: return Warp.Strings.taxonomyIconDating.localized
+            case .economy: return Warp.Strings.taxonomyIconEconomy.localized
+            case .football: return Warp.Strings.taxonomyIconFootball.localized
+            case .geometricShapes: return Warp.Strings.taxonomyIconGeometricShapes.localized
+            case .guitarBat: return Warp.Strings.taxonomyIconGuitarBat.localized
+            case .hotel: return Warp.Strings.taxonomyIconHotel.localized
+            case .iceSkater: return Warp.Strings.taxonomyIconIceSkater.localized
+            case .job: return Warp.Strings.taxonomyIconJob.localized
+            case .minivan: return Warp.Strings.taxonomyIconMinivan.localized
+            case .motorcycle: return Warp.Strings.taxonomyIconMotorcycle.localized
+            case .paintRoller: return Warp.Strings.taxonomyIconPaintRoller.localized
+            case .paw: return Warp.Strings.taxonomyIconPaw.localized
+            case .phoneBadgeCheck: return Warp.Strings.taxonomyIconPhoneBadgeCheck.localized
+            case .realEstate: return Warp.Strings.taxonomyIconRealEstate.localized
+            case .sailboat: return Warp.Strings.taxonomyIconSailboat.localized
+            case .shirt: return Warp.Strings.taxonomyIconShirt.localized
+            case .smartPhone: return Warp.Strings.taxonomyIconSmartPhone.localized
+            case .sofa: return Warp.Strings.taxonomyIconSofa.localized
+            case .storeFront: return Warp.Strings.taxonomyIconStoreFront.localized
+            case .stroller: return Warp.Strings.taxonomyIconStroller.localized
+            case .sweater: return Warp.Strings.taxonomyIconSweater.localized
+            case .tools: return Warp.Strings.taxonomyIconTools.localized
+            case .tractor: return Warp.Strings.taxonomyIconTractor.localized
+            case .van: return Warp.Strings.taxonomyIconVan.localized
+            case .vase: return Warp.Strings.taxonomyIconVase.localized
+            }
         }
     }
 }
@@ -601,6 +647,7 @@ extension Warp {
             SwiftUI.Image(rawValue, bundle: .module) // Load the image from the asset catalog
                 .renderingMode(.original) // Ensure original rendering mode for vector images
                 .resizable()
+                .accessibilityLabel(localization)
         }
         
         /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog.
@@ -612,7 +659,19 @@ extension Warp {
                 // Handle the error (e.g., log it) if image loading fails
                 return UIImage()
             }
+            image.accessibilityLabel = localization
             return image.withRenderingMode(.alwaysOriginal)
+        }
+
+        private var localization: String {
+            switch self {
+            case .autovex: return Warp.Strings.brandIconAutovex.localized
+            case .honk: return Warp.Strings.brandIconHonk.localized
+            case .mittAnbud: return Warp.Strings.brandIconMittAnbud.localized
+            case .nettbil: return Warp.Strings.brandIconNettbil.localized
+            case .oikotie: return Warp.Strings.brandIconOikotie.localized
+            case .remppatori: return Warp.Strings.brandIconRemppatori.localized
+            }
         }
     }
 }

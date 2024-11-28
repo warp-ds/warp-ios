@@ -1,6 +1,78 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "brand.icon.title.autovex" : {
+      "comment" : "A11y title for Autovex icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autovex logo"
+          }
+        }
+      }
+    },
+    "brand.icon.title.honk" : {
+      "comment" : "A11y title for Honk icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Honk"
+          }
+        }
+      }
+    },
+    "brand.icon.title.mittAnbud" : {
+      "comment" : "A11y title for MittAnbud icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MittAnbud"
+          }
+        }
+      }
+    },
+    "brand.icon.title.nettbil" : {
+      "comment" : "A11y title for Nettbil icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettbil"
+          }
+        }
+      }
+    },
+    "brand.icon.title.oikotie" : {
+      "comment" : "A11y title for Oikotie icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oikotie"
+          }
+        }
+      }
+    },
+    "brand.icon.title.remppatori" : {
+      "comment" : "A11y title for Remppatori icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RemppaTori"
+          }
+        }
+      }
+    },
     "icon.title.activeAds" : {
       "comment" : "A11y title for active ads icon",
       "extractionState" : "manual",
@@ -2829,6 +2901,462 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "YouTube logo"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.airplane" : {
+      "comment" : "A11y title for airplane icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Airplane"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.airplaneHotel" : {
+      "comment" : "A11y title for airplane hotel icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flight and hotel"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.babyonesie" : {
+      "comment" : "A11y title for baby onesie icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baby onesie"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.bulldozer" : {
+      "comment" : "A11y title for bulldozer icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bulldozer"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.cabin" : {
+      "comment" : "A11y title for cabin icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vacation cabin"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.camping" : {
+      "comment" : "A11y title for camping icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camper"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.carFront" : {
+      "comment" : "A11y title for car front icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Car front view"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.carPart" : {
+      "comment" : "A11y title for car part icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Car part"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.carRent" : {
+      "comment" : "A11y title for car rent icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Car and clock"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.carSubscription" : {
+      "comment" : "A11y title for car subscription icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Car and checklist"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.cart" : {
+      "comment" : "A11y title for cart icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shopping cart"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.chainsaw" : {
+      "comment" : "A11y title for chainsaw icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chainsaw"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.chair" : {
+      "comment" : "A11y title for chair icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chair"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.dating" : {
+      "comment" : "A11y title for dating icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two hearts"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.economy" : {
+      "comment" : "A11y title for economy icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banknote and two coins"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.football" : {
+      "comment" : "A11y title for football icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Football"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.geometricShapes" : {
+      "comment" : "A11y title for geometric shapes icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rectangle, ellipse, diamond and triangle shapes"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.guitarBat" : {
+      "comment" : "A11y title for guitar bat icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guiter with a bat"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.hotel" : {
+      "comment" : "A11y title for hotel icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hotel building"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.iceSkater" : {
+      "comment" : "A11y title for ice skater icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ice skater"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.job" : {
+      "comment" : "A11y title for job icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Document folder"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.minivan" : {
+      "comment" : "A11y title for minivan icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minivan"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.motorcycle" : {
+      "comment" : "A11y title for motorcycle icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motorcycle"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.paintRoller" : {
+      "comment" : "A11y title for paint roller icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paint roller in action"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.paw" : {
+      "comment" : "A11y title for paw icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cat's paw"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.phoneBadgeCheck" : {
+      "comment" : "A11y title for phone badge check icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smartphone and a badge with a check mark"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.realEstate" : {
+      "comment" : "A11y title for real estate icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "House with a garden"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.sailboat" : {
+      "comment" : "A11y title for sailboat icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two birds and a sailboat on water"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.shirt" : {
+      "comment" : "A11y title for shirt icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shirt"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.smartPhone" : {
+      "comment" : "A11y title for smartphone icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smartphone"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.sofa" : {
+      "comment" : "A11y title for sofa icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sofa"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.storeFront" : {
+      "comment" : "A11y title for store front icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Storefront building"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.stroller" : {
+      "comment" : "A11y title for stroller icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stroller"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.sweater" : {
+      "comment" : "A11y title for sweater icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sweater"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.tools" : {
+      "comment" : "A11y title for tools icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tools"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.tractor" : {
+      "comment" : "A11y title for tractor icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tractor"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.van" : {
+      "comment" : "A11y title for van icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camper van"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.vase" : {
+      "comment" : "A11y title for vase icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vase"
           }
         }
       }
