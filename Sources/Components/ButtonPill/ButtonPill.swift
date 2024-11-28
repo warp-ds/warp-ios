@@ -38,16 +38,16 @@ extension Warp {
             .onLongPressGesture(
                 minimumDuration: 0,
                 pressing: { inProgress in
-                    withAnimation(.easeIn(duration: 0.1)) {
+//                    withAnimation(.easeIn(duration: 0.1)) {
                         if inProgress {
-                            state = .active
+//                            state = .active
                         } else {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                state = .default
-                            }
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//                                state = .default
+//                            }
                             selected.toggle()
                         }
-                    }
+//                    }
                 },
                 perform: {}
             )
