@@ -1,6 +1,78 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "brand.icon.title.autovex" : {
+      "comment" : "A11y title for Autovex icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autovex logo"
+          }
+        }
+      }
+    },
+    "brand.icon.title.honk" : {
+      "comment" : "A11y title for Honk icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Honk"
+          }
+        }
+      }
+    },
+    "brand.icon.title.mittAnbud" : {
+      "comment" : "A11y title for MittAnbud icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MittAnbud"
+          }
+        }
+      }
+    },
+    "brand.icon.title.nettbil" : {
+      "comment" : "A11y title for Nettbil icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettbil"
+          }
+        }
+      }
+    },
+    "brand.icon.title.oikotie" : {
+      "comment" : "A11y title for Oikotie icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oikotie"
+          }
+        }
+      }
+    },
+    "brand.icon.title.remppatori" : {
+      "comment" : "A11y title for Remppatori icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RemppaTori"
+          }
+        }
+      }
+    },
     "icon.title.activeAds" : {
       "comment" : "A11y title for active ads icon",
       "extractionState" : "manual",
@@ -23,7 +95,7 @@
             "value" : "Paperiarkki, jossa kuva, otsikko ja korostettu valintamerkki"
           }
         },
-        "nb-NO" : {
+        "nb" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ark med bilde og overskrift med uthevet hakemerke"
@@ -33,6 +105,3258 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ark med bild och rubrik med betonad bock"
+          }
+        }
+      }
+    },
+    "icon.title.ads" : {
+      "comment" : "A11y title for ads icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sheet with image and headline"
+          }
+        }
+      }
+    },
+    "icon.title.airCon" : {
+      "comment" : "A11y title for air con icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Small air cooler"
+          }
+        }
+      }
+    },
+    "icon.title.allWheelDrive" : {
+      "comment" : "A11y title for all wheel drive icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All-wheel drive"
+          }
+        }
+      }
+    },
+    "icon.title.animalPaw" : {
+      "comment" : "A11y title for animal paw icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dog's paw"
+          }
+        }
+      }
+    },
+    "icon.title.archway" : {
+      "comment" : "A11y title for archway icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archway"
+          }
+        }
+      }
+    },
+    "icon.title.arrowDown" : {
+      "comment" : "A11y title for arrow down icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downward-pointing arrow"
+          }
+        }
+      }
+    },
+    "icon.title.arrowLeft" : {
+      "comment" : "A11y title for arrow left icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leftward-pointing arrow"
+          }
+        }
+      }
+    },
+    "icon.title.arrowRight" : {
+      "comment" : "A11y title for arrow right icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rightward-pointing arrow"
+          }
+        }
+      }
+    },
+    "icon.title.arrowUp" : {
+      "comment" : "A11y title for arrow up icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upward-pointing arrow"
+          }
+        }
+      }
+    },
+    "icon.title.attachment" : {
+      "comment" : "A11y title for attachment icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paperclip"
+          }
+        }
+      }
+    },
+    "icon.title.automatic" : {
+      "comment" : "A11y title for automatic icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic transmission"
+          }
+        }
+      }
+    },
+    "icon.title.awardMedal" : {
+      "comment" : "A11y title for award medal icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Award medal"
+          }
+        }
+      }
+    },
+    "icon.title.backWheelDrive" : {
+      "comment" : "A11y title for back wheel drive icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rear-wheel drive"
+          }
+        }
+      }
+    },
+    "icon.title.bag" : {
+      "comment" : "A11y title for bag icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Handbag"
+          }
+        }
+      }
+    },
+    "icon.title.bank" : {
+      "comment" : "A11y title for bank icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A bank with three columns"
+          }
+        }
+      }
+    },
+    "icon.title.bankIdNo" : {
+      "comment" : "A11y title for Norwegian BankID icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BankID logo"
+          }
+        }
+      }
+    },
+    "icon.title.batteryEmpty" : {
+      "comment" : "A11y title for battery empty icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty battery"
+          }
+        }
+      }
+    },
+    "icon.title.batteryFull" : {
+      "comment" : "A11y title for battery full icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full battery"
+          }
+        }
+      }
+    },
+    "icon.title.batteryHalfFull" : {
+      "comment" : "A11y title for battery half full icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Half-full battery"
+          }
+        }
+      }
+    },
+    "icon.title.beach" : {
+      "comment" : "A11y title for beach icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beach umbrella"
+          }
+        }
+      }
+    },
+    "icon.title.bell" : {
+      "comment" : "A11y title for bell icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bell"
+          }
+        }
+      }
+    },
+    "icon.title.bellFilled" : {
+      "comment" : "A11y title for bell filled icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bell"
+          }
+        }
+      }
+    },
+    "icon.title.bin" : {
+      "comment" : "A11y title for bin icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trash can"
+          }
+        }
+      }
+    },
+    "icon.title.block" : {
+      "comment" : "A11y title for block icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Person with highlighted no entry sign"
+          }
+        }
+      }
+    },
+    "icon.title.boatLength" : {
+      "comment" : "A11y title for boat length icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boat with arrows in both directions"
+          }
+        }
+      }
+    },
+    "icon.title.bolt" : {
+      "comment" : "A11y title for bolt icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lightning bolt"
+          }
+        }
+      }
+    },
+    "icon.title.bookmark" : {
+      "comment" : "A11y title for bookmark icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark"
+          }
+        }
+      }
+    },
+    "icon.title.browser" : {
+      "comment" : "A11y title for browser icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Browser window with a t-shirt and a highlighted mouse pointer"
+          }
+        }
+      }
+    },
+    "icon.title.browserVerified" : {
+      "comment" : "A11y title for browser verified icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Browser with highlighted shield in the bottom right corner"
+          }
+        }
+      }
+    },
+    "icon.title.building" : {
+      "comment" : "A11y title for building icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apartment building"
+          }
+        }
+      }
+    },
+    "icon.title.buildingPlot" : {
+      "comment" : "A11y title for building plot icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dotted square with a highlighted house"
+          }
+        }
+      }
+    },
+    "icon.title.bulb" : {
+      "comment" : "A11y title for bulb icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lightbulb"
+          }
+        }
+      }
+    },
+    "icon.title.burger" : {
+      "comment" : "A11y title for burger icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Three horizontal lines"
+          }
+        }
+      }
+    },
+    "icon.title.bus" : {
+      "comment" : "A11y title for bus icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bus"
+          }
+        }
+      }
+    },
+    "icon.title.cabinHut" : {
+      "comment" : "A11y title for cabin hut icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vacation cabin"
+          }
+        }
+      }
+    },
+    "icon.title.calculator" : {
+      "comment" : "A11y title for calculator icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculator"
+          }
+        }
+      }
+    },
+    "icon.title.calendar" : {
+      "comment" : "A11y title for calendar icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendar"
+          }
+        }
+      }
+    },
+    "icon.title.camera" : {
+      "comment" : "A11y title for camera icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera"
+          }
+        }
+      }
+    },
+    "icon.title.cancel" : {
+      "comment" : "A11y title for cancel icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circle with a diagonal line"
+          }
+        }
+      }
+    },
+    "icon.title.car" : {
+      "comment" : "A11y title for car icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Car"
+          }
+        }
+      }
+    },
+    "icon.title.carKey" : {
+      "comment" : "A11y title for car key icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Car key"
+          }
+        }
+      }
+    },
+    "icon.title.carService" : {
+      "comment" : "A11y title for car service icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Car and star"
+          }
+        }
+      }
+    },
+    "icon.title.charger" : {
+      "comment" : "A11y title for charger icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Charging cable"
+          }
+        }
+      }
+    },
+    "icon.title.charter" : {
+      "comment" : "A11y title for charter icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suitcase"
+          }
+        }
+      }
+    },
+    "icon.title.chatRequest" : {
+      "comment" : "A11y title for chat request icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech bubble next to a person"
+          }
+        }
+      }
+    },
+    "icon.title.chatSupport" : {
+      "comment" : "A11y title for chat support icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech bubbles with smiley faces"
+          }
+        }
+      }
+    },
+    "icon.title.check" : {
+      "comment" : "A11y title for check icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checkmark"
+          }
+        }
+      }
+    },
+    "icon.title.checklist" : {
+      "comment" : "A11y title for checklist icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checklist"
+          }
+        }
+      }
+    },
+    "icon.title.checkShield" : {
+      "comment" : "A11y title for check shield icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shield with checkmark"
+          }
+        }
+      }
+    },
+    "icon.title.chevronDoubleLeft" : {
+      "comment" : "A11y title for chevron-double-left icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double leftward arrow"
+          }
+        }
+      }
+    },
+    "icon.title.chevronDoubleRight" : {
+      "comment" : "A11y title for chevron-double-right icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double rightward arrow"
+          }
+        }
+      }
+    },
+    "icon.title.chevronDown" : {
+      "comment" : "A11y title for chevron-down icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downward arrow"
+          }
+        }
+      }
+    },
+    "icon.title.chevronLeft" : {
+      "comment" : "A11y title for chevron-left icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leftward arrow"
+          }
+        }
+      }
+    },
+    "icon.title.chevronRight" : {
+      "comment" : "A11y title for chevron-right icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rightward arrow"
+          }
+        }
+      }
+    },
+    "icon.title.chevronUp" : {
+      "comment" : "A11y title for chevron-up icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upward arrow"
+          }
+        }
+      }
+    },
+    "icon.title.circlePlus" : {
+      "comment" : "A11y title for circle-plus icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circle with plus sign"
+          }
+        }
+      }
+    },
+    "icon.title.circlePlusFilled" : {
+      "comment" : "A11y title for circle plus filled icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus sign inside a circle"
+          }
+        }
+      }
+    },
+    "icon.title.circleUser" : {
+      "comment" : "A11y title for circle-user icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circle with user profile"
+          }
+        }
+      }
+    },
+    "icon.title.circleUserFilled" : {
+      "comment" : "A11y title for circle user filled icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Person in a circle"
+          }
+        }
+      }
+    },
+    "icon.title.clock" : {
+      "comment" : "A11y title for clock icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clock"
+          }
+        }
+      }
+    },
+    "icon.title.close" : {
+      "comment" : "A11y title for close icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cross"
+          }
+        }
+      }
+    },
+    "icon.title.cog" : {
+      "comment" : "A11y title for cog icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gear"
+          }
+        }
+      }
+    },
+    "icon.title.colorPalette" : {
+      "comment" : "A11y title for color palette icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color palette"
+          }
+        }
+      }
+    },
+    "icon.title.cottagePlot" : {
+      "comment" : "A11y title for cottage plot icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dotted square with a highlighted house"
+          }
+        }
+      }
+    },
+    "icon.title.creditCard" : {
+      "comment" : "A11y title for credit card icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credit card"
+          }
+        }
+      }
+    },
+    "icon.title.cursor" : {
+      "comment" : "A11y title for cursor icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mouse pointer over a circle"
+          }
+        }
+      }
+    },
+    "icon.title.delivery" : {
+      "comment" : "A11y title for delivery icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hand holding a small box"
+          }
+        }
+      }
+    },
+    "icon.title.diner" : {
+      "comment" : "A11y title for diner icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Knife and fork"
+          }
+        }
+      }
+    },
+    "icon.title.discount" : {
+      "comment" : "A11y title for discount icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Percentage sign"
+          }
+        }
+      }
+    },
+    "icon.title.dislike" : {
+      "comment" : "A11y title for dislike icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thumbs down"
+          }
+        }
+      }
+    },
+    "icon.title.door" : {
+      "comment" : "A11y title for door icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Door"
+          }
+        }
+      }
+    },
+    "icon.title.dots" : {
+      "comment" : "A11y title for dots icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Three dots"
+          }
+        }
+      }
+    },
+    "icon.title.dotsVertical" : {
+      "comment" : "A11y title for dots vertical icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Three vertical dots"
+          }
+        }
+      }
+    },
+    "icon.title.doubleBed" : {
+      "comment" : "A11y title for double bed icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double bed"
+          }
+        }
+      }
+    },
+    "icon.title.download" : {
+      "comment" : "A11y title for download icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrow pointing down"
+          }
+        }
+      }
+    },
+    "icon.title.drawer" : {
+      "comment" : "A11y title for drawer icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drawer"
+          }
+        }
+      }
+    },
+    "icon.title.drink" : {
+      "comment" : "A11y title for drink icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocktail glass"
+          }
+        }
+      }
+    },
+    "icon.title.edit" : {
+      "comment" : "A11y title for edit icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pencil"
+          }
+        }
+      }
+    },
+    "icon.title.energy" : {
+      "comment" : "A11y title for energy icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lightning bolt"
+          }
+        }
+      }
+    },
+    "icon.title.engine" : {
+      "comment" : "A11y title for engine icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engine"
+          }
+        }
+      }
+    },
+    "icon.title.engineBelt" : {
+      "comment" : "A11y title for engine belt icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fan belt"
+          }
+        }
+      }
+    },
+    "icon.title.error" : {
+      "comment" : "A11y title for error icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Octagon with exclamation point"
+          }
+        }
+      }
+    },
+    "icon.title.exchange" : {
+      "comment" : "A11y title for exchange icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two arrows forming a circle"
+          }
+        }
+      }
+    },
+    "icon.title.expand" : {
+      "comment" : "A11y title for expand icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrows pointing outwards"
+          }
+        }
+      }
+    },
+    "icon.title.eyeOff" : {
+      "comment" : "A11y title for eye-off icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Closed eye"
+          }
+        }
+      }
+    },
+    "icon.title.eyeOn" : {
+      "comment" : "A11y title for eye-on icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open eye"
+          }
+        }
+      }
+    },
+    "icon.title.facebook" : {
+      "comment" : "A11y title for Facebook icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facebook logo"
+          }
+        }
+      }
+    },
+    "icon.title.farm" : {
+      "comment" : "A11y title for farm icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barn with silo and birds"
+          }
+        }
+      }
+    },
+    "icon.title.feedback" : {
+      "comment" : "A11y title for feedback icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech bubbles"
+          }
+        }
+      }
+    },
+    "icon.title.fileAdd" : {
+      "comment" : "A11y title for file add icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File folder"
+          }
+        }
+      }
+    },
+    "icon.title.filter" : {
+      "comment" : "A11y title for filter icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funnel"
+          }
+        }
+      }
+    },
+    "icon.title.fireplace" : {
+      "comment" : "A11y title for fireplace icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fireplace"
+          }
+        }
+      }
+    },
+    "icon.title.fishing" : {
+      "comment" : "A11y title for fishing icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fishing hook"
+          }
+        }
+      }
+    },
+    "icon.title.fitness" : {
+      "comment" : "A11y title for fitness icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Running shoe"
+          }
+        }
+      }
+    },
+    "icon.title.frontWheelDrive" : {
+      "comment" : "A11y title for front-wheel drive icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Front-wheel drive"
+          }
+        }
+      }
+    },
+    "icon.title.gasDiesel" : {
+      "comment" : "A11y title for gas diesel icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diesel pump"
+          }
+        }
+      }
+    },
+    "icon.title.gasFuel" : {
+      "comment" : "A11y title for gas fuel icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gas pump"
+          }
+        }
+      }
+    },
+    "icon.title.gasHybrid" : {
+      "comment" : "A11y title for gas hybrid icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circle with a plug and a drop"
+          }
+        }
+      }
+    },
+    "icon.title.graphLine" : {
+      "comment" : "A11y title for graph line icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line graph"
+          }
+        }
+      }
+    },
+    "icon.title.graphPie" : {
+      "comment" : "A11y title for graph pie icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pie chart"
+          }
+        }
+      }
+    },
+    "icon.title.grid" : {
+      "comment" : "A11y title for grid icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grid of squares"
+          }
+        }
+      }
+    },
+    "icon.title.grill" : {
+      "comment" : "A11y title for grill icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Charcoal grill"
+          }
+        }
+      }
+    },
+    "icon.title.headset" : {
+      "comment" : "A11y title for headset icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Headphones"
+          }
+        }
+      }
+    },
+    "icon.title.heart" : {
+      "comment" : "A11y title for heart icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heart"
+          }
+        }
+      }
+    },
+    "icon.title.heartRate" : {
+      "comment" : "A11y title for heart rate icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heart with heart rate indicator"
+          }
+        }
+      }
+    },
+    "icon.title.hiking" : {
+      "comment" : "A11y title for hiking icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forest path"
+          }
+        }
+      }
+    },
+    "icon.title.history" : {
+      "comment" : "A11y title for history icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clock with arrow going counterclockwise"
+          }
+        }
+      }
+    },
+    "icon.title.house" : {
+      "comment" : "A11y title for house icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "House"
+          }
+        }
+      }
+    },
+    "icon.title.houseBed" : {
+      "comment" : "A11y title for house bed icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bed with a roof over it"
+          }
+        }
+      }
+    },
+    "icon.title.houseCabin" : {
+      "comment" : "A11y title for house cabin icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cabin"
+          }
+        }
+      }
+    },
+    "icon.title.houseFilled" : {
+      "comment" : "A11y title for house filled icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "House"
+          }
+        }
+      }
+    },
+    "icon.title.houseModern" : {
+      "comment" : "A11y title for house modern icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modern house"
+          }
+        }
+      }
+    },
+    "icon.title.housePerson" : {
+      "comment" : "A11y title for house person icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "House with a person"
+          }
+        }
+      }
+    },
+    "icon.title.image" : {
+      "comment" : "A11y title for image icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image"
+          }
+        }
+      }
+    },
+    "icon.title.info" : {
+      "comment" : "A11y title for info icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information circle"
+          }
+        }
+      }
+    },
+    "icon.title.instagram" : {
+      "comment" : "A11y title for Instagram icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instagram logo"
+          }
+        }
+      }
+    },
+    "icon.title.keys" : {
+      "comment" : "A11y title for keys icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two keys on a keyring"
+          }
+        }
+      }
+    },
+    "icon.title.krone" : {
+      "comment" : "A11y title for krone icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circle with KR"
+          }
+        }
+      }
+    },
+    "icon.title.lamp" : {
+      "comment" : "A11y title for lamp icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Floor lamp"
+          }
+        }
+      }
+    },
+    "icon.title.laundry" : {
+      "comment" : "A11y title for laundry icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Washing machine"
+          }
+        }
+      }
+    },
+    "icon.title.layers" : {
+      "comment" : "A11y title for layers icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Three squares overlapping"
+          }
+        }
+      }
+    },
+    "icon.title.leaf" : {
+      "comment" : "A11y title for leaf icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leaf"
+          }
+        }
+      }
+    },
+    "icon.title.lift" : {
+      "comment" : "A11y title for lift icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elevator"
+          }
+        }
+      }
+    },
+    "icon.title.like" : {
+      "comment" : "A11y title for like icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thumbs-up"
+          }
+        }
+      }
+    },
+    "icon.title.link" : {
+      "comment" : "A11y title for link icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chain link"
+          }
+        }
+      }
+    },
+    "icon.title.linkExternal" : {
+      "comment" : "A11y title for link external icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Square with an upward arrow to the right"
+          }
+        }
+      }
+    },
+    "icon.title.listSort" : {
+      "comment" : "A11y title for list sort icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vertical list with sorting arrow"
+          }
+        }
+      }
+    },
+    "icon.title.lockShield" : {
+      "comment" : "A11y title for lock shield icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shield with padlock"
+          }
+        }
+      }
+    },
+    "icon.title.logout" : {
+      "comment" : "A11y title for logout icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit door"
+          }
+        }
+      }
+    },
+    "icon.title.mail" : {
+      "comment" : "A11y title for mail icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envelope with letter"
+          }
+        }
+      }
+    },
+    "icon.title.mailbox" : {
+      "comment" : "A11y title for mailbox icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mailbox with a flag indicating new mail"
+          }
+        }
+      }
+    },
+    "icon.title.manual" : {
+      "comment" : "A11y title for manual icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manual transmission gearbox"
+          }
+        }
+      }
+    },
+    "icon.title.map" : {
+      "comment" : "A11y title for map icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map"
+          }
+        }
+      }
+    },
+    "icon.title.measure" : {
+      "comment" : "A11y title for measure icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dotted square with measuring arrows"
+          }
+        }
+      }
+    },
+    "icon.title.message" : {
+      "comment" : "A11y title for message icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chat bubble"
+          }
+        }
+      }
+    },
+    "icon.title.messages" : {
+      "comment" : "A11y title for messages icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech bubbles"
+          }
+        }
+      }
+    },
+    "icon.title.messagesFilled" : {
+      "comment" : "A11y title for messages filled icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Message bubble with smiley face"
+          }
+        }
+      }
+    },
+    "icon.title.minus" : {
+      "comment" : "A11y title for minus icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minus"
+          }
+        }
+      }
+    },
+    "icon.title.mixer" : {
+      "comment" : "A11y title for mixer icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Food mixer"
+          }
+        }
+      }
+    },
+    "icon.title.money" : {
+      "comment" : "A11y title for money icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stack of banknotes"
+          }
+        }
+      }
+    },
+    "icon.title.mountain" : {
+      "comment" : "A11y title for mountain icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mountain"
+          }
+        }
+      }
+    },
+    "icon.title.newAd" : {
+      "comment" : "A11y title for new ad icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sheet with image, headline, and highlighted plus sign"
+          }
+        }
+      }
+    },
+    "icon.title.norwegianMotor" : {
+      "comment" : "A11y title for Norwegian Motor icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circle with NBF"
+          }
+        }
+      }
+    },
+    "icon.title.noSmoking" : {
+      "comment" : "A11y title for no smoking icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overlaid cigarette"
+          }
+        }
+      }
+    },
+    "icon.title.officeDesk" : {
+      "comment" : "A11y title for office desk icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Office desk with a computer screen"
+          }
+        }
+      }
+    },
+    "icon.title.organize" : {
+      "comment" : "A11y title for organize icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two horizontal lines between two opposite vertical arrows"
+          }
+        }
+      }
+    },
+    "icon.title.parking" : {
+      "comment" : "A11y title for parking icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parking sign"
+          }
+        }
+      }
+    },
+    "icon.title.phone" : {
+      "comment" : "A11y title for phone icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smartphone"
+          }
+        }
+      }
+    },
+    "icon.title.phoneScratched" : {
+      "comment" : "A11y title for phone scratched icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smartphone with three scratches on the glass"
+          }
+        }
+      }
+    },
+    "icon.title.phoneUsed" : {
+      "comment" : "A11y title for phone used icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smartphone with three scratches on the glass"
+          }
+        }
+      }
+    },
+    "icon.title.pictureStack" : {
+      "comment" : "A11y title for picture stack icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Picture stack"
+          }
+        }
+      }
+    },
+    "icon.title.pinMarker" : {
+      "comment" : "A11y title for pin marker icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map pin"
+          }
+        }
+      }
+    },
+    "icon.title.pinRound" : {
+      "comment" : "A11y title for pin round icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map pin with a shadow underneath"
+          }
+        }
+      }
+    },
+    "icon.title.planeTicket" : {
+      "comment" : "A11y title for plane ticket icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hand with plane ticket"
+          }
+        }
+      }
+    },
+    "icon.title.play" : {
+      "comment" : "A11y title for play icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play button"
+          }
+        }
+      }
+    },
+    "icon.title.playhouse" : {
+      "comment" : "A11y title for playhouse icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Climbing frame"
+          }
+        }
+      }
+    },
+    "icon.title.plots" : {
+      "comment" : "A11y title for plots icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dotted square with a highlighted smaller square"
+          }
+        }
+      }
+    },
+    "icon.title.plus" : {
+      "comment" : "A11y title for plus icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus sign"
+          }
+        }
+      }
+    },
+    "icon.title.productBlink" : {
+      "comment" : "A11y title for product blink icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rocket"
+          }
+        }
+      }
+    },
+    "icon.title.productBump" : {
+      "comment" : "A11y title for product bump icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image with text highlighted by an upward arrow"
+          }
+        }
+      }
+    },
+    "icon.title.productCarousel" : {
+      "comment" : "A11y title for product carousel icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highlighted vertical rectangle with two rectangles in the background"
+          }
+        }
+      }
+    },
+    "icon.title.productHighlightListing" : {
+      "comment" : "A11y title for product highlight listing icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text with highlighted image"
+          }
+        }
+      }
+    },
+    "icon.title.productNabolagsprofil" : {
+      "comment" : "A11y title for product nabolagsprofil icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "House with a highlighted map pin"
+          }
+        }
+      }
+    },
+    "icon.title.productNoAds" : {
+      "comment" : "A11y title for product no ads icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loudspeaker"
+          }
+        }
+      }
+    },
+    "icon.title.productStarred" : {
+      "comment" : "A11y title for product starred icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Three stars with text below"
+          }
+        }
+      }
+    },
+    "icon.title.productTop" : {
+      "comment" : "A11y title for product top icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrow pointing to an image with text below"
+          }
+        }
+      }
+    },
+    "icon.title.propeller" : {
+      "comment" : "A11y title for propeller icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spinning propeller"
+          }
+        }
+      }
+    },
+    "icon.title.question" : {
+      "comment" : "A11y title for question icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Question mark"
+          }
+        }
+      }
+    },
+    "icon.title.refresh" : {
+      "comment" : "A11y title for refresh icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circular arrow"
+          }
+        }
+      }
+    },
+    "icon.title.roomService" : {
+      "comment" : "A11y title for room service icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gloved hand and serving tray with a dome"
+          }
+        }
+      }
+    },
+    "icon.title.sailing" : {
+      "comment" : "A11y title for sailing icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sailboat on water"
+          }
+        }
+      }
+    },
+    "icon.title.sauna" : {
+      "comment" : "A11y title for sauna icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "House with heat waves"
+          }
+        }
+      }
+    },
+    "icon.title.scrollUp" : {
+      "comment" : "A11y title for scroll up icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upward arrow"
+          }
+        }
+      }
+    },
+    "icon.title.search" : {
+      "comment" : "A11y title for search icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Magnifying glass"
+          }
+        }
+      }
+    },
+    "icon.title.searchFavorites" : {
+      "comment" : "A11y title for search favorites icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Magnifying glass with a heart"
+          }
+        }
+      }
+    },
+    "icon.title.seat" : {
+      "comment" : "A11y title for seat icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Airplane seat"
+          }
+        }
+      }
+    },
+    "icon.title.send" : {
+      "comment" : "A11y title for send icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paper plane"
+          }
+        }
+      }
+    },
+    "icon.title.service" : {
+      "comment" : "A11y title for service icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotating arrow with a wrench"
+          }
+        }
+      }
+    },
+    "icon.title.share" : {
+      "comment" : "A11y title for share icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share icon"
+          }
+        }
+      }
+    },
+    "icon.title.shipping" : {
+      "comment" : "A11y title for shipping icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Truck in motion"
+          }
+        }
+      }
+    },
+    "icon.title.shoes" : {
+      "comment" : "A11y title for shoes icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A pair of shoes"
+          }
+        }
+      }
+    },
+    "icon.title.shoppingCart" : {
+      "comment" : "A11y title for shopping cart icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shopping cart"
+          }
+        }
+      }
+    },
+    "icon.title.shower" : {
+      "comment" : "A11y title for shower icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Running shower head"
+          }
+        }
+      }
+    },
+    "icon.title.skyscraper" : {
+      "comment" : "A11y title for skyscraper icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two skyscrapers with a cloud above"
+          }
+        }
+      }
+    },
+    "icon.title.smileyGood" : {
+      "comment" : "A11y title for smiley good icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good smiley face"
+          }
+        }
+      }
+    },
+    "icon.title.smileyHappy" : {
+      "comment" : "A11y title for smiley happy icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Happy face"
+          }
+        }
+      }
+    },
+    "icon.title.smileyNeutral" : {
+      "comment" : "A11y title for smiley neutral icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neutral face"
+          }
+        }
+      }
+    },
+    "icon.title.smileySad" : {
+      "comment" : "A11y title for smiley sad icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sad face"
+          }
+        }
+      }
+    },
+    "icon.title.sorting" : {
+      "comment" : "A11y title for sorting icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorting arrows"
+          }
+        }
+      }
+    },
+    "icon.title.spa" : {
+      "comment" : "A11y title for spa icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Water lily"
+          }
+        }
+      }
+    },
+    "icon.title.sparkles" : {
+      "comment" : "A11y title for sparkles icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sparkles"
+          }
+        }
+      }
+    },
+    "icon.title.speedometer" : {
+      "comment" : "A11y title for speedometer icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speedometer"
+          }
+        }
+      }
+    },
+    "icon.title.stairs" : {
+      "comment" : "A11y title for stairs icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stairs with diagonal arrow up"
+          }
+        }
+      }
+    },
+    "icon.title.starCheck" : {
+      "comment" : "A11y title for star-check icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Star with highlighted checkmark"
+          }
+        }
+      }
+    },
+    "icon.title.starEmpty" : {
+      "comment" : "A11y title for star empty icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty blue star"
+          }
+        }
+      }
+    },
+    "icon.title.starFull" : {
+      "comment" : "A11y title for star full icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full blue star"
+          }
+        }
+      }
+    },
+    "icon.title.starHalf" : {
+      "comment" : "A11y title for star half icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Half full blue star"
+          }
+        }
+      }
+    },
+    "icon.title.store" : {
+      "comment" : "A11y title for store icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Storefront building"
+          }
+        }
+      }
+    },
+    "icon.title.stove" : {
+      "comment" : "A11y title for stove icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stove"
+          }
+        }
+      }
+    },
+    "icon.title.success" : {
+      "comment" : "A11y title for success icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circle with checkmark"
+          }
+        }
+      }
+    },
+    "icon.title.suitcase" : {
+      "comment" : "A11y title for success icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suitcase"
+          }
+        }
+      }
+    },
+    "icon.title.support" : {
+      "comment" : "A11y title for success icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customer support headset"
+          }
+        }
+      }
+    },
+    "icon.title.swimming" : {
+      "comment" : "A11y title for swimming icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swimming person"
+          }
+        }
+      }
+    },
+    "icon.title.tag" : {
+      "comment" : "A11y title for tag icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag"
+          }
+        }
+      }
+    },
+    "icon.title.taskList" : {
+      "comment" : "A11y title for task list icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "List with checkmark"
+          }
+        }
+      }
+    },
+    "icon.title.textBold" : {
+      "comment" : "A11y title for bold text icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bold text"
+          }
+        }
+      }
+    },
+    "icon.title.textItalic" : {
+      "comment" : "A11y title for italic text icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italic text"
+          }
+        }
+      }
+    },
+    "icon.title.textStrikethrough" : {
+      "comment" : "A11y title for strikethrough text icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strikethrough text"
+          }
+        }
+      }
+    },
+    "icon.title.textUnderline" : {
+      "comment" : "A11y title for underline text icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Underline text"
+          }
+        }
+      }
+    },
+    "icon.title.theater" : {
+      "comment" : "A11y title for theater icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Costume mask with a smiley face"
+          }
+        }
+      }
+    },
+    "icon.title.threeSixty" : {
+      "comment" : "A11y title for Three Sixty icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Right-pointing rotating arrow with a house"
+          }
+        }
+      }
+    },
+    "icon.title.townHouse" : {
+      "comment" : "A11y title for townhouse icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two townhouses"
+          }
+        }
+      }
+    },
+    "icon.title.trendDown" : {
+      "comment" : "A11y title for trend down icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wavy arrow pointing down right"
+          }
+        }
+      }
+    },
+    "icon.title.trendFlat" : {
+      "comment" : "A11y title for trend flat icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wavy arrow pointing right"
+          }
+        }
+      }
+    },
+    "icon.title.trendUp" : {
+      "comment" : "A11y title for trend up icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wavy arrow pointing up right"
+          }
+        }
+      }
+    },
+    "icon.title.tv" : {
+      "comment" : "A11y title for TV icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flat screen TV"
+          }
+        }
+      }
+    },
+    "icon.title.twitter" : {
+      "comment" : "A11y title for Twitter icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Twitter logo"
+          }
+        }
+      }
+    },
+    "icon.title.up" : {
+      "comment" : "A11y title for up icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Square with arrow pointing up"
+          }
+        }
+      }
+    },
+    "icon.title.upload" : {
+      "comment" : "A11y title for upload icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload arrow"
+          }
+        }
+      }
+    },
+    "icon.title.user" : {
+      "comment" : "A11y title for user icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User profile"
+          }
+        }
+      }
+    },
+    "icon.title.userGroup" : {
+      "comment" : "A11y title for user group icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Three people"
+          }
+        }
+      }
+    },
+    "icon.title.users" : {
+      "comment" : "A11y title for users icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Group of users"
+          }
+        }
+      }
+    },
+    "icon.title.userWoman" : {
+      "comment" : "A11y title for user woman icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Woman with braids"
+          }
+        }
+      }
+    },
+    "icon.title.vacuum" : {
+      "comment" : "A11y title for vacuum icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vacuum cleaner"
+          }
+        }
+      }
+    },
+    "icon.title.verification" : {
+      "comment" : "A11y title for verification icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blue shield with checkmark"
+          }
+        }
+      }
+    },
+    "icon.title.wallet" : {
+      "comment" : "A11y title for wallet icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wallet"
+          }
+        }
+      }
+    },
+    "icon.title.warning" : {
+      "comment" : "A11y title for warning icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warning triangle with exclamation point"
+          }
+        }
+      }
+    },
+    "icon.title.warranty" : {
+      "comment" : "A11y title for warranty icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ribbon with checkmark"
+          }
+        }
+      }
+    },
+    "icon.title.waterPitcher" : {
+      "comment" : "A11y title for water pitcher icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Water pitcher"
+          }
+        }
+      }
+    },
+    "icon.title.wheelchair" : {
+      "comment" : "A11y title for wheelchair icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wheelchair"
+          }
+        }
+      }
+    },
+    "icon.title.wifi" : {
+      "comment" : "A11y title for Wi-Fi icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wi-Fi symbol"
+          }
+        }
+      }
+    },
+    "icon.title.woods" : {
+      "comment" : "A11y title for woods icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two spruce trees"
+          }
+        }
+      }
+    },
+    "icon.title.youtube" : {
+      "comment" : "A11y title for YouTube icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YouTube logo"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.airplane" : {
+      "comment" : "A11y title for airplane icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Airplane"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.airplaneHotel" : {
+      "comment" : "A11y title for airplane hotel icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flight and hotel"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.babyonesie" : {
+      "comment" : "A11y title for baby onesie icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baby onesie"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.bulldozer" : {
+      "comment" : "A11y title for bulldozer icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bulldozer"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.cabin" : {
+      "comment" : "A11y title for cabin icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vacation cabin"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.camping" : {
+      "comment" : "A11y title for camping icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camper"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.carFront" : {
+      "comment" : "A11y title for car front icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Car front view"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.carPart" : {
+      "comment" : "A11y title for car part icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Car part"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.carRent" : {
+      "comment" : "A11y title for car rent icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Car and clock"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.carSubscription" : {
+      "comment" : "A11y title for car subscription icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Car and checklist"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.cart" : {
+      "comment" : "A11y title for cart icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shopping cart"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.chainsaw" : {
+      "comment" : "A11y title for chainsaw icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chainsaw"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.chair" : {
+      "comment" : "A11y title for chair icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chair"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.dating" : {
+      "comment" : "A11y title for dating icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two hearts"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.economy" : {
+      "comment" : "A11y title for economy icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Banknote and two coins"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.football" : {
+      "comment" : "A11y title for football icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Football"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.geometricShapes" : {
+      "comment" : "A11y title for geometric shapes icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rectangle, ellipse, diamond and triangle shapes"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.guitarBat" : {
+      "comment" : "A11y title for guitar bat icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guiter with a bat"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.hotel" : {
+      "comment" : "A11y title for hotel icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hotel building"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.iceSkater" : {
+      "comment" : "A11y title for ice skater icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ice skater"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.job" : {
+      "comment" : "A11y title for job icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Document folder"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.minivan" : {
+      "comment" : "A11y title for minivan icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minivan"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.motorcycle" : {
+      "comment" : "A11y title for motorcycle icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motorcycle"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.paintRoller" : {
+      "comment" : "A11y title for paint roller icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paint roller in action"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.paw" : {
+      "comment" : "A11y title for paw icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cat's paw"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.phoneBadgeCheck" : {
+      "comment" : "A11y title for phone badge check icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smartphone and a badge with a check mark"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.realEstate" : {
+      "comment" : "A11y title for real estate icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "House with a garden"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.sailboat" : {
+      "comment" : "A11y title for sailboat icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two birds and a sailboat on water"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.shirt" : {
+      "comment" : "A11y title for shirt icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shirt"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.smartPhone" : {
+      "comment" : "A11y title for smartphone icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smartphone"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.sofa" : {
+      "comment" : "A11y title for sofa icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sofa"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.storeFront" : {
+      "comment" : "A11y title for store front icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Storefront building"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.stroller" : {
+      "comment" : "A11y title for stroller icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stroller"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.sweater" : {
+      "comment" : "A11y title for sweater icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sweater"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.tools" : {
+      "comment" : "A11y title for tools icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tools"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.tractor" : {
+      "comment" : "A11y title for tractor icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tractor"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.van" : {
+      "comment" : "A11y title for van icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camper van"
+          }
+        }
+      }
+    },
+    "taxonomy.icon.title.vase" : {
+      "comment" : "A11y title for vase icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vase"
           }
         }
       }
