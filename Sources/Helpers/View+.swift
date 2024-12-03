@@ -32,15 +32,17 @@ extension View {
     /// - Parameters:
     ///   - color: The color to be used for the background. Defaults to `Warp.Token.surfaceElevated200`.
     ///   - cornerRadius: The radius of the rounded corners. Defaults to `Warp.Spacing.spacing200`.
+    ///   - isPressed: A value indicating whether the view is currently in a pressed state and should update its shadow accordingly. Defaults to `false`.
     /// - Returns: A view with the applied card-like background and shadow.
     public func withCardBackground(
         _ color: Color = Warp.Token.surfaceElevated200,
-        cornerRadius: CGFloat = Warp.Spacing.spacing200
+        cornerRadius: CGFloat = Warp.Spacing.spacing200,
+        isPressed: Bool = false
     ) -> some View {
         self.background {
             RoundedRectangle(cornerRadius: cornerRadius)
                 .fill(color)
-                .addShadow(.small)
+                .addShadow(.small, isPressed: isPressed)
         }
     }
     

@@ -21,13 +21,12 @@ struct ShadowView: View {
             }
             .ignoresSafeArea()
             VStack {
-                VStack {
+                Button(action: {}, label: {
                     Warp.Text("surfaceElevated200", style: .caption)
-                }
-                .frame(width: 192, height: 192)
-                .background(colorProvider.token.surfaceElevated200)
-                .cornerRadius(8)
-                .addShadow(shadow)
+                        .frame(width: 192, height: 192)
+                })
+                .buttonStyle(ShadowButtonStyle(shadow: shadow))
+
                 Spacer()
                 Picker("Pick your shadow", selection: $shadow.animation(.interpolatingSpring)) {
                     ForEach(Warp.Shadow.allCases, id: \.self) { shadow in
@@ -40,6 +39,23 @@ struct ShadowView: View {
         }
         .navigationTitle("Shadow")
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+private struct ShadowButtonStyle: ButtonStyle {
+    let shadow: Warp.Shadow
+
+    init(shadow: Warp.Shadow) {
+        self.shadow = shadow
+    }
+
+    func makeBody(configuration: Configuration) -> some View {
+        return configuration.label
+            .background {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Warp.Color.token.surfaceElevated200)
+                    .addShadow(shadow, isPressed: configuration.isPressed)
+            }
     }
 }
 
