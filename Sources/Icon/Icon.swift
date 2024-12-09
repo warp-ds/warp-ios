@@ -126,6 +126,7 @@ extension Warp {
         case keys
         case krone
         case lamp
+        case landscape
         case laundry
         case layers
         case leaf
@@ -401,6 +402,7 @@ extension Warp {
             case .keys: return Warp.Strings.iconKeys.localized
             case .krone: return Warp.Strings.iconKrone.localized
             case .lamp: return Warp.Strings.iconLamp.localized
+            case .landscape: return Warp.Strings.iconLandscape.localized
             case .laundry: return Warp.Strings.iconLaundry.localized
             case .layers: return Warp.Strings.iconLayers.localized
             case .leaf: return Warp.Strings.iconLeaf.localized

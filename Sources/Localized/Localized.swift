@@ -122,6 +122,7 @@ extension Warp {
         case iconKeys = "icon.title.keys"
         case iconKrone = "icon.title.krone"
         case iconLamp = "icon.title.lamp"
+        case iconLandscape = "icon.title.landscape"
         case iconLaundry = "icon.title.laundry"
         case iconLayers = "icon.title.layers"
         case iconLeaf = "icon.title.leaf"
