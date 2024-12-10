@@ -39,6 +39,7 @@ struct ContentView: View {
                     row("Icons", destination: IconsView())
                     row("Taxonomy Icons", destination: TaxonomyIconsView())
                     row("Brand Icons", destination: BrandIconsView())
+                    row("Brand Logos", destination: BrandLogosView())
                     row("Tokens", destination: TokensView())
                     row("Typography", destination: TypographyView())
                     
@@ -59,6 +60,7 @@ struct ContentView: View {
                     row("HelpText", destination: HelpTextView())
                     row("Icon", destination: IconView())
                     row("Label", destination: LabelView())
+                    row("Logo", destination: LogoView())
                     row("Modal", destination: ModalView())
                     row("PageIndicator", destination: PageIndicatorView())
                     row("Pill", destination: PillView())
