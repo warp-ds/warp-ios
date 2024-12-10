@@ -1,9 +1,6 @@
 import Foundation
 import SwiftUI
 
-/// Minimum height reserved for text field in order to keep it elegant.
-private let textFieldMinHeight = 28.0
-
 extension Warp {
     /// Text field style that will be used internally.
     /// Responsible for configuring text field inside the borders.
@@ -93,7 +90,7 @@ extension Warp {
                 }
 
                 configuration
-                    .frame(minHeight: textFieldMinHeight, maxHeight: .infinity)
+                    .frame(height: 48)
                     .font(.callout)
 
                 if let rightView = rightView {

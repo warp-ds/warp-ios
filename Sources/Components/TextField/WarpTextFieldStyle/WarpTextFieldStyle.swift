@@ -1,9 +1,6 @@
 import Foundation
 import SwiftUI
 
-/// Minimum height reserved for TextField in order to keep it elegant.
-private let textFieldMinHeight = 34.0
-
 extension Warp {
     /// Style that is responsible to transform TextField into warp design system TextField.
     public struct TextFieldStyle: SwiftUI.TextFieldStyle {
@@ -79,7 +76,7 @@ extension Warp {
 
                 helperTextView
             }
-            .frame(minHeight: textFieldMinHeight, maxHeight: .infinity)
+            .frame(height: 48)
             .disabled(state.shouldBeDisabled)
             .onTapGesture {
                 // Not checking for stateful disable logic.
