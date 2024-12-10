@@ -73,6 +73,90 @@
         }
       }
     },
+    "brand.logo.title.bilbasen" : {
+      "comment" : "A11y title for Bilbasen logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilbasen logo"
+          }
+        }
+      }
+    },
+    "brand.logo.title.blocket" : {
+      "comment" : "A11y title for Blocket logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blocket logo"
+          }
+        }
+      }
+    },
+    "brand.logo.title.dba" : {
+      "comment" : "A11y title for DBA logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DBA logo"
+          }
+        }
+      }
+    },
+    "brand.logo.title.finn" : {
+      "comment" : "A11y title for Finn logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finn logo"
+          }
+        }
+      }
+    },
+    "brand.logo.title.oikotie" : {
+      "comment" : "A11y title for Oikotie logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oikotie logo"
+          }
+        }
+      }
+    },
+    "brand.logo.title.schibsted" : {
+      "comment" : "A11y title for Schibsted logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schibsted logo"
+          }
+        }
+      }
+    },
+    "brand.logo.title.tori" : {
+      "comment" : "A11y title for Tori logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tori logo"
+          }
+        }
+      }
+    },
     "icon.title.activeAds" : {
       "comment" : "A11y title for active ads icon",
       "extractionState" : "manual",
