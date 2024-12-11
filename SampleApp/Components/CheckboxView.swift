@@ -43,7 +43,7 @@ struct CheckboxView: View {
         .onChange(of: style) { _ in
             populateOptions()
         }
-        .navigationTitle("Checkboxes")
+        .navigationTitle("Checkbox")
         .navigationBarTitleDisplayMode(.inline)
     }
 

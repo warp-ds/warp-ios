@@ -299,7 +299,7 @@ struct TokensView: View {
                            colors: [tokenProvider.textPositive])
             }
             .padding(.horizontal)
-            .navigationTitle("Token")
+            .navigationTitle("Tokens")
             .navigationBarTitleDisplayMode(.inline)
         }
     }

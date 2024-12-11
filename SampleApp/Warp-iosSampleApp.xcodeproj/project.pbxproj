@@ -399,12 +399,12 @@
 		82FF12F72C80FBC200CC2110 /* BrandItems */ = {
 			isa = PBXGroup;
 			children = (
+				8251E8C92B4E8B7D00106720 /* TokensView.swift */,
+				349586632B0EAD2D00A14570 /* TypographyView.swift */,
 				828095372C9C3AE700472CB5 /* IconsView.swift */,
 				825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */,
 				82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */,
 				82E3507C2D08915D00B2DBDA /* BrandLogosView.swift */,
-				8251E8C92B4E8B7D00106720 /* TokensView.swift */,
-				349586632B0EAD2D00A14570 /* TypographyView.swift */,
 			);
 			path = BrandItems;
 			sourceTree = "<group>";

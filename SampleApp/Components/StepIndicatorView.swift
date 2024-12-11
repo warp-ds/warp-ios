@@ -123,7 +123,7 @@ struct StepIndicatorView: View {
             edge: .top,
             isPresented: $toastIsPresented
         )
-        .navigationTitle("Step Indicator")
+        .navigationTitle("StepIndicator")
         .navigationBarTitleDisplayMode(.inline)
     }
 

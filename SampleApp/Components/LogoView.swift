@@ -21,7 +21,7 @@ struct LogoView: View {
             Warp.Logo(for: selectedLogo)
             Spacer()
         }
-        .navigationTitle("Logo View")
+        .navigationTitle("Logo")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

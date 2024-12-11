@@ -30,7 +30,7 @@ struct ButtonPillView: View {
             })
         }
         .padding(.horizontal)
-        .navigationTitle("Button Pill")
+        .navigationTitle("ButtonPill")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

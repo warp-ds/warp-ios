@@ -28,6 +28,8 @@ struct ButtonGroupView: View {
                 Text("Modify ButtonGroup")
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("ButtonGroup")
         .padding()
     }
 }
