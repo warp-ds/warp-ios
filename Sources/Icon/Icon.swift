@@ -691,7 +691,6 @@ extension Warp {
         case dbaSmall
         case finn
         case finnSmall
-        case finnTagline
         case oikotie
         case oikotieSmall
         case schibsted
@@ -729,7 +728,6 @@ extension Warp {
             case .dbaSmall: return Warp.Strings.brandLogoDba.localized
             case .finn: return Warp.Strings.brandLogoFinn.localized
             case .finnSmall: return Warp.Strings.brandLogoFinn.localized
-            case .finnTagline: return Warp.Strings.brandLogoFinn.localized
             case .oikotie: return Warp.Strings.brandLogoOikotie.localized
             case .oikotieSmall: return Warp.Strings.brandLogoOikotie.localized
             case .schibsted: return Warp.Strings.brandLogoSchibsted.localized
