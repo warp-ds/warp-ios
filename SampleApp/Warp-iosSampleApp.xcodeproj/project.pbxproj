@@ -161,6 +161,14 @@
 		82E098842C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
 		82E098852C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
 		82E098862C85AEFF00033535 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E098822C85AEFE00033535 /* CheckboxView.swift */; };
+		82E3507D2D08915F00B2DBDA /* BrandLogosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E3507C2D08915D00B2DBDA /* BrandLogosView.swift */; };
+		82E3507E2D08915F00B2DBDA /* BrandLogosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E3507C2D08915D00B2DBDA /* BrandLogosView.swift */; };
+		82E3507F2D08915F00B2DBDA /* BrandLogosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E3507C2D08915D00B2DBDA /* BrandLogosView.swift */; };
+		82E350802D08915F00B2DBDA /* BrandLogosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E3507C2D08915D00B2DBDA /* BrandLogosView.swift */; };
+		82E350822D08926100B2DBDA /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E350812D08925D00B2DBDA /* LogoView.swift */; };
+		82E350832D08926100B2DBDA /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E350812D08925D00B2DBDA /* LogoView.swift */; };
+		82E350842D08926100B2DBDA /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E350812D08925D00B2DBDA /* LogoView.swift */; };
+		82E350852D08926100B2DBDA /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E350812D08925D00B2DBDA /* LogoView.swift */; };
 		82FE9FDC2CC7B216002906F9 /* BrandIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */; };
 		82FE9FDD2CC7B216002906F9 /* BrandIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */; };
 		82FE9FDE2CC7B216002906F9 /* BrandIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */; };
@@ -227,6 +235,8 @@
 		82BF22242C6A15F500DDF06E /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		82C7E6F42B7B85E000760C08 /* BroadcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastView.swift; sourceTree = "<group>"; };
 		82E098822C85AEFE00033535 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
+		82E3507C2D08915D00B2DBDA /* BrandLogosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandLogosView.swift; sourceTree = "<group>"; };
+		82E350812D08925D00B2DBDA /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandIconsView.swift; sourceTree = "<group>"; };
 		B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
 		B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -389,11 +399,12 @@
 		82FF12F72C80FBC200CC2110 /* BrandItems */ = {
 			isa = PBXGroup;
 			children = (
+				8251E8C92B4E8B7D00106720 /* TokensView.swift */,
+				349586632B0EAD2D00A14570 /* TypographyView.swift */,
 				828095372C9C3AE700472CB5 /* IconsView.swift */,
 				825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */,
 				82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */,
-				8251E8C92B4E8B7D00106720 /* TokensView.swift */,
-				349586632B0EAD2D00A14570 /* TypographyView.swift */,
+				82E3507C2D08915D00B2DBDA /* BrandLogosView.swift */,
 			);
 			path = BrandItems;
 			sourceTree = "<group>";
@@ -414,6 +425,7 @@
 				50F58ADB2CBE6A4B0006804C /* HelpTextView.swift */,
 				8280953C2C9C794500472CB5 /* IconView.swift */,
 				50F58AD62CBD52BA0006804C /* LabelView.swift */,
+				82E350812D08925D00B2DBDA /* LogoView.swift */,
 				003CB8E82C19B5D5008C42B1 /* ModalView.swift */,
 				508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */,
 				82838CF02B62B35400E3C495 /* PillView.swift */,
@@ -614,7 +626,9 @@
 				2E1ADF4E2C2561A700DFEE06 /* TypographyView.swift in Sources */,
 				2E1ADF4F2C2561A700DFEE06 /* TextView.swift in Sources */,
 				82A73D242CDA574F00C983AF /* TabsView.swift in Sources */,
+				82E3507D2D08915F00B2DBDA /* BrandLogosView.swift in Sources */,
 				2E1ADF722C2561D200DFEE06 /* Warp_iosDBA.swift in Sources */,
+				82E350832D08926100B2DBDA /* LogoView.swift in Sources */,
 				825516D32CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				B286EDFC2C33EACF00D25DCC /* StepIndicatorView.swift in Sources */,
 				508AB09F2CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
@@ -657,7 +671,9 @@
 				820A85EB2C6CEB0C006D35A0 /* TypographyView.swift in Sources */,
 				820A85EC2C6CEB0C006D35A0 /* TextView.swift in Sources */,
 				82A73D222CDA574F00C983AF /* TabsView.swift in Sources */,
+				82E350802D08915F00B2DBDA /* BrandLogosView.swift in Sources */,
 				820A86142C6CEC30006D35A0 /* Warp_iosBlocket.swift in Sources */,
+				82E350822D08926100B2DBDA /* LogoView.swift in Sources */,
 				825516D12CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				820A85EE2C6CEB0C006D35A0 /* StepIndicatorView.swift in Sources */,
 				508AB0A22CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
@@ -700,7 +716,9 @@
 				820A86272C6D4388006D35A0 /* TypographyView.swift in Sources */,
 				820A86282C6D4388006D35A0 /* TextView.swift in Sources */,
 				82A73D212CDA574F00C983AF /* TabsView.swift in Sources */,
+				82E3507E2D08915F00B2DBDA /* BrandLogosView.swift in Sources */,
 				820A86292C6D4388006D35A0 /* StepIndicatorView.swift in Sources */,
+				82E350852D08926100B2DBDA /* LogoView.swift in Sources */,
 				825516D22CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				820A862A2C6D4388006D35A0 /* BadgeView.swift in Sources */,
 				508AB0A12CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
@@ -743,7 +761,9 @@
 				349586652B0F727600A14570 /* TypographyView.swift in Sources */,
 				82B168132B750BED00DCDDE5 /* TextView.swift in Sources */,
 				82A73D232CDA574F00C983AF /* TabsView.swift in Sources */,
+				82E3507F2D08915F00B2DBDA /* BrandLogosView.swift in Sources */,
 				B295AC3B2C22F93D004C77BB /* StepIndicatorView.swift in Sources */,
+				82E350842D08926100B2DBDA /* LogoView.swift in Sources */,
 				825516D42CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				828E7D462B61239100869C58 /* BadgeView.swift in Sources */,
 				508AB0A02CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,

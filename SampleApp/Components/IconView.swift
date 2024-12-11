@@ -53,7 +53,7 @@ struct IconView: View {
                 .foregroundColor(selectedColor) // Apply selected color to icon
             Spacer()
         }
-        .navigationTitle("Icon View")
+        .navigationTitle("Icon")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

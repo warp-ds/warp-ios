@@ -36,11 +36,12 @@ struct ContentView: View {
                     case .oikotie:
                         row("Colors", destination: OikotieColorsView())
                     }
+                    row("Tokens", destination: TokensView())
+                    row("Typography", destination: TypographyView())
                     row("Icons", destination: IconsView())
                     row("Taxonomy Icons", destination: TaxonomyIconsView())
                     row("Brand Icons", destination: BrandIconsView())
-                    row("Tokens", destination: TokensView())
-                    row("Typography", destination: TypographyView())
+                    row("Brand Logos", destination: BrandLogosView())
                     
                     Text("Warp Components")
                         .font(.title2)
@@ -59,6 +60,7 @@ struct ContentView: View {
                     row("HelpText", destination: HelpTextView())
                     row("Icon", destination: IconView())
                     row("Label", destination: LabelView())
+                    row("Logo", destination: LogoView())
                     row("Modal", destination: ModalView())
                     row("PageIndicator", destination: PageIndicatorView())
                     row("Pill", destination: PillView())

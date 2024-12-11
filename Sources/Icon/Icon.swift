@@ -241,7 +241,7 @@ extension Warp {
         case wifi
         case woods
         case youtube
-        
+
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         ///
         /// - Returns: A resizable `SwiftUI.Image` instance representing the icon, with a template rendering mode.
@@ -258,7 +258,7 @@ extension Warp {
                 .renderingMode(.template) // Ensure template rendering mode for vector images
                 .resizable()
         }
-        
+
         /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog.
         ///
         /// - Returns: A `UIImage` object corresponding to the icon.
@@ -271,7 +271,7 @@ extension Warp {
             image.accessibilityLabel = localization
             return image.withRenderingMode(.alwaysTemplate)
         }
-        
+
         /// Maps the icon case to the corresponding asset name in the asset catalog.
         ///
         /// This converts the enum case name (in camelCase) to the format used by asset names in the asset catalog.
@@ -279,7 +279,7 @@ extension Warp {
         private var assetName: String {
             return rawValue.prefix(1).capitalized + rawValue.dropFirst() // CapitalizedCamelCase asset name
         }
-        
+
         private var localization: String {
             switch self {
             case .activeAds: return Warp.Strings.iconActiveAds.localized
@@ -565,7 +565,7 @@ extension Warp {
         case tractor
         case van
         case vase
-        
+
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         public var body: some View {
             SwiftUI.Image(rawValue, bundle: .module) // Load the image from the asset catalog
@@ -573,7 +573,7 @@ extension Warp {
                 .resizable()
                 .accessibilityLabel(localization)
         }
-        
+
         /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog.
         ///
         /// - Returns: A `UIImage` object corresponding to the icon.
@@ -643,7 +643,7 @@ extension Warp {
         case nettbil
         case oikotie
         case remppatori
-        
+
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         public var body: some View {
             SwiftUI.Image(rawValue, bundle: .module) // Load the image from the asset catalog
@@ -651,7 +651,7 @@ extension Warp {
                 .resizable()
                 .accessibilityLabel(localization)
         }
-        
+
         /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog.
         ///
         /// - Returns: A `UIImage` object corresponding to the icon.
@@ -675,5 +675,93 @@ extension Warp {
             case .remppatori: return Warp.Strings.brandIconRemppatori.localized
             }
         }
+    }
+}
+
+extension Warp {
+    /// Icon set used for brand logos, loaded from the asset catalog in the framework.
+    ///
+    /// Provides both SwiftUI `Image` and UIKit `UIImage` representations for each icon.
+    public enum BrandLogo: CaseIterable, View, Hashable {
+        case bilbasen(LogoSize)
+        case blocket(LogoSize)
+        case dba(LogoSize)
+        case finn(LogoSize)
+        case oikotie(LogoSize)
+        case schibsted(LogoSize)
+        case tori(LogoSize)
+
+        /// Enum representing the size of a `LogoView`.
+        public enum LogoSize {
+            case small
+            case `default`
+        }
+
+        /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
+        public var body: some View {
+            SwiftUI.Image(assetName, bundle: .module) // Load the image from the asset catalog
+                .renderingMode(.original) // Ensure original rendering mode for vector images
+                .accessibilityLabel(localization)
+        }
+
+        /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog.
+        ///
+        /// - Returns: A `UIImage` object corresponding to the icon.
+        public var uiImage: UIImage {
+            // Load the image from the asset catalog
+            guard let image = UIImage(named: assetName, in: .module, compatibleWith: nil) else {
+                // Handle the error (e.g., log it) if image loading fails
+                return UIImage()
+            }
+            image.accessibilityLabel = localization
+            return image.withRenderingMode(.alwaysOriginal)
+        }
+
+        /// The name of the asset associated with the brand logo.
+        public var assetName: String {
+            switch self {
+            case .bilbasen(let size):
+                size == .default ? "bilbasen" : "bilbasenSmall"
+            case .blocket(let size):
+                size == .default ? "blocket" : "blocketSmall"
+            case .dba(let size):
+                size == .default ? "dba" : "dbaSmall"
+            case .finn(let size):
+                size == .default ? "finn" : "finnSmall"
+            case .oikotie(let size):
+                size == .default ? "oikotie" : "oikotieSmall"
+            case .schibsted(let size):
+                size == .default ? "schibsted" : "schibstedSmall"
+            case .tori(let size):
+                size == .default ? "tori" : "toriSmall"
+            }
+        }
+
+        private var localization: String {
+            switch self {
+            case .bilbasen: return Warp.Strings.brandLogoBilbasen.localized
+            case .blocket: return Warp.Strings.brandLogoBlocket.localized
+            case .dba: return Warp.Strings.brandLogoDba.localized
+            case .finn: return Warp.Strings.brandLogoFinn.localized
+            case .oikotie: return Warp.Strings.brandLogoOikotie.localized
+            case .schibsted: return Warp.Strings.brandLogoSchibsted.localized
+            case .tori: return Warp.Strings.brandLogoTori.localized
+            }
+        }
+
+        public static var allCases = [Warp.BrandLogo.bilbasen(.default),
+                                      Warp.BrandLogo.bilbasen(.small),
+                                      Warp.BrandLogo.blocket(.default),
+                                      Warp.BrandLogo.blocket(.small),
+                                      Warp.BrandLogo.dba(.default),
+                                      Warp.BrandLogo.dba(.small),
+                                      Warp.BrandLogo.finn(.default),
+                                      Warp.BrandLogo.finn(.small),
+                                      Warp.BrandLogo.oikotie(.default),
+                                      Warp.BrandLogo.oikotie(.small),
+                                      Warp.BrandLogo.schibsted(.default),
+                                      Warp.BrandLogo.schibsted(.small),
+                                      Warp.BrandLogo.tori(.default),
+                                      Warp.BrandLogo.tori(.small)]
     }
 }
