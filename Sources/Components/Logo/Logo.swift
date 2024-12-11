@@ -25,9 +25,20 @@ extension Warp {
     ScrollView(showsIndicators: false) {
         // Example preview displaying logos from multiple brands with different sizes
         VStack(spacing: 20) {
-            Warp.Logo(for: .tori)
-            Warp.Logo(for: .finn)
-            Warp.Logo(for: .blocket)
+            Warp.Logo(for: .bilbasen(.default))
+            Warp.Logo(for: .bilbasen(.small))
+            Warp.Logo(for: .blocket(.default))
+            Warp.Logo(for: .blocket(.small))
+            Warp.Logo(for: .dba(.default))
+            Warp.Logo(for: .dba(.small))
+            Warp.Logo(for: .finn(.default))
+            Warp.Logo(for: .finn(.small))
+            Warp.Logo(for: .oikotie(.default))
+            Warp.Logo(for: .oikotie(.small))
+            Warp.Logo(for: .schibsted(.default))
+            Warp.Logo(for: .schibsted(.small))
+            Warp.Logo(for: .tori(.default))
+            Warp.Logo(for: .tori(.small))
         }
         .padding()
     }

@@ -2,7 +2,7 @@ import SwiftUI
 import Warp
 
 struct LogoView: View {
-    @State private var selectedLogo: Warp.BrandLogo = .bilbasen // Default selected logo
+    @State private var selectedLogo: Warp.BrandLogo = .bilbasen(.default) // Default selected logo
 
     private let logos = Warp.BrandLogo.allCases // Get all logos
 
@@ -11,7 +11,7 @@ struct LogoView: View {
             // Picker to choose an logo
             Picker("Select a logo", selection: $selectedLogo) {
                 ForEach(logos, id: \.self) { logo in
-                    Text(logo.rawValue) // Display logo names in picker
+                    Text(logo.assetName) // Display logo names in picker
                 }
             }
             .pickerStyle(WheelPickerStyle()) // Wheel picker style for better UX

@@ -8,7 +8,7 @@ struct BrandLogosView: View {
         List(logos, id: \.self) { logo in
             HStack {
                 logo
-                Warp.Text(logo.rawValue, style: .body) // Display the name of the logo
+                Warp.Text(logo.assetName, style: .body) // Display the name of the logo
                     .padding(.leading, Warp.Spacing.spacing100)
             }
         }
