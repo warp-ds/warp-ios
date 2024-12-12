@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 12 Dec 2024 12:23:06 GMT by https://github.com/warp-ds/tokens
 struct BlocketTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: BlocketColors.gray900, darkModeColor: BlocketColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: BlocketColors.gray600, darkModeColor: BlocketColors.gray400) }

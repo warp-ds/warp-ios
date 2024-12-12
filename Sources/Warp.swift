@@ -15,8 +15,6 @@ public enum Warp {
         case dba
         /// Represents the `Blocket` brand theme.
         case blocket
-        /// Represents the `Oikotie` brand theme.
-        case oikotie
     }
     
     // MARK: - Theme Property
@@ -54,8 +52,6 @@ public enum Warp {
             return DbaTokenProvider()
         case .blocket:
             return BlocketTokenProvider()
-        case .oikotie:
-            return OikotieTokenProvider()
         }
     }()
     
@@ -73,8 +69,6 @@ public enum Warp {
             return DbaUITokenProvider()
         case .blocket:
             return BlocketUITokenProvider()
-        case .oikotie:
-            return OikotieUITokenProvider()
         }
     }()
     
@@ -94,5 +88,23 @@ public enum Warp {
     /// It facilitates easy access to brand-specific UIColors that are used throughout the design system.
     public static var UIColor: UIColorProvider = {
         UIColorProvider(token: Warp.UIToken)
+    }()
+
+    // MARK: - Dataviz Token Providers
+
+    /// Provides color values for Dataviz tokens.
+    ///
+    /// This computed property returns an instance of a `DatavizTokenProvider`.
+    /// It facilitates easy access to dataviz colors that are used throughout the design system.
+    public static var DatavizToken = {
+        DatavizTokenProvider()
+    }()
+
+    /// Provides `UIColor` values for Dataviz tokens.
+    ///
+    /// This computed property returns an instance of a `DatavizUITokenProvider`.
+    /// It facilitates easy access to dataviz colors that are used throughout the design system.
+    public static var DatavizUIToken = {
+        DatavizUITokenProvider()
     }()
 }
