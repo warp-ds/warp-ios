@@ -29,7 +29,7 @@ struct ToolTipView: View {
     private var titleView: some View {
         if let title = title {
             Text(title)
-                .font(.footnote)
+                .font(from: .title5)
                 .foregroundColor(colorProvider.token.text)
         }
     }
@@ -38,8 +38,7 @@ struct ToolTipView: View {
     private var optionalLabelView: some View {
         if let additionalInformation = additionalInformation {
             Text(additionalInformation)
-                .font(.caption)
-                .fontWeight(.thin)
+                .font(from: .detail)
                 .foregroundColor(colorProvider.token.textSubtle)
         }
     }
