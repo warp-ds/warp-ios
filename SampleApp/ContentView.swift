@@ -24,19 +24,11 @@ struct ContentView: View {
                     Text("Brand Specific Items")
                         .font(.title2)
                     Divider()
-                    switch Warp.Theme {
-                    case .finn:
-                        row("Colors", destination: FinnColorsView())
-                    case .tori:
-                        row("Colors", destination: ToriColorsView())
-                    case .dba:
-                        row("Colors", destination: DbaColorsView())
-                    case .blocket:
-                        row("Colors", destination: BlocketColorsView())
-                    case .oikotie:
-                        row("Colors", destination: OikotieColorsView())
-                    }
-                    row("Tokens", destination: TokensView())
+                    row("PrimitiveColors", destination: PrimitiveColorsView())
+                    row("SemanticTokens", destination: SemanticTokensView())
+                    row("ComponentColors", destination: ComponentColorsView())
+                    row("DatavizColors", destination: DatavizSampleColorsView())
+                    row("DatavizTokens", destination: DatavizTokensView())
                     row("Typography", destination: TypographyView())
                     row("Icons", destination: IconsView())
                     row("Taxonomy Icons", destination: TaxonomyIconsView())

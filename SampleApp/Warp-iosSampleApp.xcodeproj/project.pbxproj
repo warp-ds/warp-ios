@@ -16,7 +16,7 @@
 		2E1ADF532C2561A700DFEE06 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A8B2782B6D33B800122DBC /* CalloutView.swift */; };
 		2E1ADF542C2561A700DFEE06 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82635D062BFE1CA700F7FA6F /* SpinnerView.swift */; };
 		2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
-		2E1ADF562C2561A700DFEE06 /* TokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* TokensView.swift */; };
+		2E1ADF562C2561A700DFEE06 /* SemanticTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* SemanticTokensView.swift */; };
 		2E1ADF572C2561A700DFEE06 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82838CF02B62B35400E3C495 /* PillView.swift */; };
 		2E1ADF582C2561A700DFEE06 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349D0E122B62D67A00AAB421 /* AlertView.swift */; };
@@ -67,7 +67,7 @@
 		820A85F32C6CEB0C006D35A0 /* ShadowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE96102C64C2C000BF3920 /* ShadowUIView.swift */; };
 		820A85F42C6CEB0C006D35A0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82635D062BFE1CA700F7FA6F /* SpinnerView.swift */; };
 		820A85F52C6CEB0C006D35A0 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
-		820A85F62C6CEB0C006D35A0 /* TokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* TokensView.swift */; };
+		820A85F62C6CEB0C006D35A0 /* SemanticTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* SemanticTokensView.swift */; };
 		820A85F72C6CEB0C006D35A0 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82838CF02B62B35400E3C495 /* PillView.swift */; };
 		820A85F82C6CEB0C006D35A0 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		820A85F92C6CEB0C006D35A0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349D0E122B62D67A00AAB421 /* AlertView.swift */; };
@@ -93,7 +93,7 @@
 		820A86302C6D4388006D35A0 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A8B2782B6D33B800122DBC /* CalloutView.swift */; };
 		820A86312C6D4388006D35A0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82635D062BFE1CA700F7FA6F /* SpinnerView.swift */; };
 		820A86322C6D4388006D35A0 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
-		820A86332C6D4388006D35A0 /* TokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* TokensView.swift */; };
+		820A86332C6D4388006D35A0 /* SemanticTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* SemanticTokensView.swift */; };
 		820A86342C6D4388006D35A0 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82838CF02B62B35400E3C495 /* PillView.swift */; };
 		820A86352C6D4388006D35A0 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8213D0AE2B9078D700FCA310 /* ShadowView.swift */; };
 		820A86362C6D4388006D35A0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349D0E122B62D67A00AAB421 /* AlertView.swift */; };
@@ -118,7 +118,7 @@
 		82355B002A8CCBE70023EB11 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 82355AFC2A8CCBE70023EB11 /* Preview Content */; };
 		82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */; };
 		82355B122A8CD1120023EB11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82355B0A2A8CD0AA0023EB11 /* ContentView.swift */; };
-		8251E8CB2B4E8B7D00106720 /* TokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* TokensView.swift */; };
+		8251E8CB2B4E8B7D00106720 /* SemanticTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8251E8C92B4E8B7D00106720 /* SemanticTokensView.swift */; };
 		825516D12CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */; };
 		825516D22CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */; };
 		825516D32CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */; };
@@ -169,6 +169,22 @@
 		82E350832D08926100B2DBDA /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E350812D08925D00B2DBDA /* LogoView.swift */; };
 		82E350842D08926100B2DBDA /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E350812D08925D00B2DBDA /* LogoView.swift */; };
 		82E350852D08926100B2DBDA /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E350812D08925D00B2DBDA /* LogoView.swift */; };
+		82F7B0472D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0462D0AF0B20015D48F /* PrimitiveColorsView.swift */; };
+		82F7B0482D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0462D0AF0B20015D48F /* PrimitiveColorsView.swift */; };
+		82F7B0492D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0462D0AF0B20015D48F /* PrimitiveColorsView.swift */; };
+		82F7B04A2D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0462D0AF0B20015D48F /* PrimitiveColorsView.swift */; };
+		82F7B04C2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B04B2D0AF1B80015D48F /* DatavizColorsView.swift */; };
+		82F7B04D2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B04B2D0AF1B80015D48F /* DatavizColorsView.swift */; };
+		82F7B04E2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B04B2D0AF1B80015D48F /* DatavizColorsView.swift */; };
+		82F7B04F2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B04B2D0AF1B80015D48F /* DatavizColorsView.swift */; };
+		82F7B0512D0AF26A0015D48F /* DatavizTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0502D0AF2690015D48F /* DatavizTokensView.swift */; };
+		82F7B0522D0AF26A0015D48F /* DatavizTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0502D0AF2690015D48F /* DatavizTokensView.swift */; };
+		82F7B0532D0AF26A0015D48F /* DatavizTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0502D0AF2690015D48F /* DatavizTokensView.swift */; };
+		82F7B0542D0AF26A0015D48F /* DatavizTokensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0502D0AF2690015D48F /* DatavizTokensView.swift */; };
+		82F7B0562D0B00150015D48F /* ComponentColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0552D0B00140015D48F /* ComponentColorsView.swift */; };
+		82F7B0572D0B00150015D48F /* ComponentColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0552D0B00140015D48F /* ComponentColorsView.swift */; };
+		82F7B0582D0B00150015D48F /* ComponentColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0552D0B00140015D48F /* ComponentColorsView.swift */; };
+		82F7B0592D0B00150015D48F /* ComponentColorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7B0552D0B00140015D48F /* ComponentColorsView.swift */; };
 		82FE9FDC2CC7B216002906F9 /* BrandIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */; };
 		82FE9FDD2CC7B216002906F9 /* BrandIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */; };
 		82FE9FDE2CC7B216002906F9 /* BrandIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */; };
@@ -216,7 +232,7 @@
 		82355B0A2A8CD0AA0023EB11 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		82355B0B2A8CD0AA0023EB11 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		82355B102A8CD0C10023EB11 /* Warp_iosTori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosTori.swift; sourceTree = "<group>"; };
-		8251E8C92B4E8B7D00106720 /* TokensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokensView.swift; sourceTree = "<group>"; };
+		8251E8C92B4E8B7D00106720 /* SemanticTokensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticTokensView.swift; sourceTree = "<group>"; };
 		825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyIconsView.swift; sourceTree = "<group>"; };
 		825FBF4E2CEF431A0052761F /* ButtonPillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPillView.swift; sourceTree = "<group>"; };
 		82635D062BFE1CA700F7FA6F /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
@@ -237,6 +253,10 @@
 		82E098822C85AEFE00033535 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		82E3507C2D08915D00B2DBDA /* BrandLogosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandLogosView.swift; sourceTree = "<group>"; };
 		82E350812D08925D00B2DBDA /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		82F7B0462D0AF0B20015D48F /* PrimitiveColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitiveColorsView.swift; sourceTree = "<group>"; };
+		82F7B04B2D0AF1B80015D48F /* DatavizColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatavizColorsView.swift; sourceTree = "<group>"; };
+		82F7B0502D0AF2690015D48F /* DatavizTokensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatavizTokensView.swift; sourceTree = "<group>"; };
+		82F7B0552D0B00140015D48F /* ComponentColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentColorsView.swift; sourceTree = "<group>"; };
 		82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandIconsView.swift; sourceTree = "<group>"; };
 		B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
 		B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -399,7 +419,11 @@
 		82FF12F72C80FBC200CC2110 /* BrandItems */ = {
 			isa = PBXGroup;
 			children = (
-				8251E8C92B4E8B7D00106720 /* TokensView.swift */,
+				82F7B0462D0AF0B20015D48F /* PrimitiveColorsView.swift */,
+				8251E8C92B4E8B7D00106720 /* SemanticTokensView.swift */,
+				82F7B0552D0B00140015D48F /* ComponentColorsView.swift */,
+				82F7B04B2D0AF1B80015D48F /* DatavizColorsView.swift */,
+				82F7B0502D0AF2690015D48F /* DatavizTokensView.swift */,
 				349586632B0EAD2D00A14570 /* TypographyView.swift */,
 				828095372C9C3AE700472CB5 /* IconsView.swift */,
 				825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */,
@@ -646,10 +670,13 @@
 				82E098852C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				8280953F2C9C794900472CB5 /* IconView.swift in Sources */,
 				828095382C9C3AE900472CB5 /* IconsView.swift in Sources */,
-				2E1ADF562C2561A700DFEE06 /* TokensView.swift in Sources */,
+				2E1ADF562C2561A700DFEE06 /* SemanticTokensView.swift in Sources */,
+				82F7B04F2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */,
 				2E1ADF572C2561A700DFEE06 /* PillView.swift in Sources */,
 				2E1ADF582C2561A700DFEE06 /* ShadowView.swift in Sources */,
 				508AB09B2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
+				82F7B0562D0B00150015D48F /* ComponentColorsView.swift in Sources */,
+				82F7B0542D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				50F58AD92CBD52BA0006804C /* LabelView.swift in Sources */,
 				2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */,
 				B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
@@ -657,6 +684,7 @@
 				2E1ADF5A2C2561A700DFEE06 /* BoxView.swift in Sources */,
 				2E1ADF5B2C2561A700DFEE06 /* ButtonView.swift in Sources */,
 				2E1ADF5C2C2561A700DFEE06 /* ToastView.swift in Sources */,
+				82F7B0482D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B3A2CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				2E1ADF5D2C2561A700DFEE06 /* ContentView.swift in Sources */,
 			);
@@ -686,15 +714,18 @@
 				820A85F52C6CEB0C006D35A0 /* TextFieldView.swift in Sources */,
 				507344132CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDE2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
-				820A85F62C6CEB0C006D35A0 /* TokensView.swift in Sources */,
+				820A85F62C6CEB0C006D35A0 /* SemanticTokensView.swift in Sources */,
 				50F58ADF2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098862C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				8280953D2C9C794900472CB5 /* IconView.swift in Sources */,
 				8280953A2C9C3AE900472CB5 /* IconsView.swift in Sources */,
 				820A85F72C6CEB0C006D35A0 /* PillView.swift in Sources */,
+				82F7B04D2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */,
 				820A85F82C6CEB0C006D35A0 /* ShadowView.swift in Sources */,
 				820A864B2C6DFAAE006D35A0 /* TooltipView.swift in Sources */,
 				508AB09A2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
+				82F7B0572D0B00150015D48F /* ComponentColorsView.swift in Sources */,
+				82F7B0522D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				50F58AD72CBD52BA0006804C /* LabelView.swift in Sources */,
 				820A85F92C6CEB0C006D35A0 /* AlertView.swift in Sources */,
 				820A85FA2C6CEB0C006D35A0 /* ExpandableView.swift in Sources */,
@@ -702,6 +733,7 @@
 				820A85FB2C6CEB0C006D35A0 /* BoxView.swift in Sources */,
 				820A85FC2C6CEB0C006D35A0 /* ButtonView.swift in Sources */,
 				820A85FD2C6CEB0C006D35A0 /* ToastView.swift in Sources */,
+				82F7B0492D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B382CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				820A85FE2C6CEB0C006D35A0 /* ContentView.swift in Sources */,
 			);
@@ -731,15 +763,18 @@
 				820A86322C6D4388006D35A0 /* TextFieldView.swift in Sources */,
 				507344122CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDC2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
-				820A86332C6D4388006D35A0 /* TokensView.swift in Sources */,
+				820A86332C6D4388006D35A0 /* SemanticTokensView.swift in Sources */,
 				50F58ADE2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098842C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				828095402C9C794900472CB5 /* IconView.swift in Sources */,
 				8280953B2C9C3AE900472CB5 /* IconsView.swift in Sources */,
 				820A86342C6D4388006D35A0 /* PillView.swift in Sources */,
+				82F7B04E2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */,
 				820A86492C6D43CE006D35A0 /* Warp_iosFinn.swift in Sources */,
 				820A86352C6D4388006D35A0 /* ShadowView.swift in Sources */,
 				508AB09C2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
+				82F7B0592D0B00150015D48F /* ComponentColorsView.swift in Sources */,
+				82F7B0512D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				50F58ADA2CBD52BA0006804C /* LabelView.swift in Sources */,
 				820A86362C6D4388006D35A0 /* AlertView.swift in Sources */,
 				820A86372C6D4388006D35A0 /* BoxView.swift in Sources */,
@@ -747,6 +782,7 @@
 				820A86382C6D4388006D35A0 /* ButtonView.swift in Sources */,
 				820A86392C6D4388006D35A0 /* ToastView.swift in Sources */,
 				820A863A2C6D4388006D35A0 /* ContentView.swift in Sources */,
+				82F7B0472D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B392CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				82BF22262C6A15F900DDF06E /* TooltipView.swift in Sources */,
 			);
@@ -782,9 +818,12 @@
 				8280953E2C9C794900472CB5 /* IconView.swift in Sources */,
 				828095392C9C3AE900472CB5 /* IconsView.swift in Sources */,
 				82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */,
-				8251E8CB2B4E8B7D00106720 /* TokensView.swift in Sources */,
+				82F7B04C2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */,
+				8251E8CB2B4E8B7D00106720 /* SemanticTokensView.swift in Sources */,
 				82838CF22B62B35400E3C495 /* PillView.swift in Sources */,
 				508AB09D2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
+				82F7B0582D0B00150015D48F /* ComponentColorsView.swift in Sources */,
+				82F7B0532D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				50F58AD82CBD52BA0006804C /* LabelView.swift in Sources */,
 				8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */,
 				349D0E142B62D67E00AAB421 /* AlertView.swift in Sources */,
@@ -792,6 +831,7 @@
 				341B20E92B751C250068FF43 /* BoxView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				B2922A6F2B68E7F200A3E9F4 /* ToastView.swift in Sources */,
+				82F7B04A2D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B3B2CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				82355B122A8CD1120023EB11 /* ContentView.swift in Sources */,
 			);

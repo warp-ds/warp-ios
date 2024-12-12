@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Thu, 21 Nov 2024 08:29:20 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 12 Dec 2024 10:09:30 GMT by https://github.com/warp-ds/tokens
 struct DbaTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: DbaColors.gray900, darkModeColor: DbaColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: DbaColors.gray600, darkModeColor: DbaColors.gray400) }

@@ -106,8 +106,6 @@ extension Warp {
                 return [.dbaAltBold, .dbaAltLight, .dbaAltThin, .dbaBlack, .dbaBold, .dbaExtraBold, .dbaThin, .dbaRegular]
             case .blocket:
                 return [.blocketDisplay, .blocketBold, .blocketMedium, .blocketRegular]
-            case .oikotie:
-                return []
             }
         }
     }
