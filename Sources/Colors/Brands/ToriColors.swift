@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Thu, 12 Dec 2024 10:09:29 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 12 Dec 2024 12:23:06 GMT by https://github.com/warp-ds/tokens
 struct ToriColors {
     static let blueberry50 = Color(hex: "#f0f3fa")
     static let blueberry100 = Color(hex: "#d7e0f4")
