@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Thu, 12 Dec 2024 12:23:06 GMT by https://github.com/warp-ds/tokens
+// Generated on Fri, 13 Dec 2024 14:38:41 GMT by https://github.com/warp-ds/tokens
 public struct DatavizTokenProvider {
     public var fillPrimary: Color { Color.dynamicColor(defaultColor: DatavizColors.blue600, darkModeColor: DatavizColors.blue400) }
     public var fillPrimaryFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue650, darkModeColor: DatavizColors.blue300) }
@@ -118,22 +118,22 @@ public struct DatavizTokenProvider {
     public var textPrimaryFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue800, darkModeColor: DatavizColors.blue50) }
     public var textSecondary: Color { Color.dynamicColor(defaultColor: DatavizColors.gray650, darkModeColor: DatavizColors.gray200) }
     public var textSecondaryFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray800, darkModeColor: DatavizColors.gray50) }
-    public var textCategorical1: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo650, darkModeColor: DatavizColors.indigo200) }
-    public var textCategorical1Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo800, darkModeColor: DatavizColors.indigo50) }
-    public var textCategorical2: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow650, darkModeColor: DatavizColors.yellow200) }
-    public var textCategorical2Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow800, darkModeColor: DatavizColors.yellow50) }
-    public var textCategorical3: Color { Color.dynamicColor(defaultColor: DatavizColors.pink650, darkModeColor: DatavizColors.pink200) }
-    public var textCategorical3Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.pink800, darkModeColor: DatavizColors.pink50) }
-    public var textCategorical4: Color { Color.dynamicColor(defaultColor: DatavizColors.green650, darkModeColor: DatavizColors.green200) }
-    public var textCategorical4Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.green800, darkModeColor: DatavizColors.green50) }
-    public var textCategorical5: Color { Color.dynamicColor(defaultColor: DatavizColors.orange650, darkModeColor: DatavizColors.orange200) }
-    public var textCategorical5Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.orange800, darkModeColor: DatavizColors.orange50) }
-    public var textCategorical6: Color { Color.dynamicColor(defaultColor: DatavizColors.teal650, darkModeColor: DatavizColors.teal200) }
-    public var textCategorical6Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.teal800, darkModeColor: DatavizColors.teal50) }
-    public var textCategorical7: Color { Color.dynamicColor(defaultColor: DatavizColors.blue650, darkModeColor: DatavizColors.blue200) }
-    public var textCategorical7Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue800, darkModeColor: DatavizColors.blue50) }
-    public var textCategorical8: Color { Color.dynamicColor(defaultColor: DatavizColors.gray650, darkModeColor: DatavizColors.gray200) }
-    public var textCategorical8Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray800, darkModeColor: DatavizColors.gray50) }
+    public var textCategory1: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo650, darkModeColor: DatavizColors.indigo200) }
+    public var textCategory1Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo800, darkModeColor: DatavizColors.indigo50) }
+    public var textCategory2: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow650, darkModeColor: DatavizColors.yellow200) }
+    public var textCategory2Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow800, darkModeColor: DatavizColors.yellow50) }
+    public var textCategory3: Color { Color.dynamicColor(defaultColor: DatavizColors.pink650, darkModeColor: DatavizColors.pink200) }
+    public var textCategory3Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.pink800, darkModeColor: DatavizColors.pink50) }
+    public var textCategory4: Color { Color.dynamicColor(defaultColor: DatavizColors.green650, darkModeColor: DatavizColors.green200) }
+    public var textCategory4Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.green800, darkModeColor: DatavizColors.green50) }
+    public var textCategory5: Color { Color.dynamicColor(defaultColor: DatavizColors.orange650, darkModeColor: DatavizColors.orange200) }
+    public var textCategory5Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.orange800, darkModeColor: DatavizColors.orange50) }
+    public var textCategory6: Color { Color.dynamicColor(defaultColor: DatavizColors.teal650, darkModeColor: DatavizColors.teal200) }
+    public var textCategory6Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.teal800, darkModeColor: DatavizColors.teal50) }
+    public var textCategory7: Color { Color.dynamicColor(defaultColor: DatavizColors.blue650, darkModeColor: DatavizColors.blue200) }
+    public var textCategory7Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue800, darkModeColor: DatavizColors.blue50) }
+    public var textCategory8: Color { Color.dynamicColor(defaultColor: DatavizColors.gray650, darkModeColor: DatavizColors.gray200) }
+    public var textCategory8Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray800, darkModeColor: DatavizColors.gray50) }
     public var textPositive: Color { Color.dynamicColor(defaultColor: DatavizColors.green650, darkModeColor: DatavizColors.green200) }
     public var textPositiveFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.green800, darkModeColor: DatavizColors.green50) }
     public var textWarning: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow650, darkModeColor: DatavizColors.yellow200) }
@@ -146,22 +146,22 @@ public struct DatavizTokenProvider {
     public var iconPrimaryFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue700, darkModeColor: DatavizColors.blue100) }
     public var iconSecondary: Color { Color.dynamicColor(defaultColor: DatavizColors.gray650, darkModeColor: DatavizColors.gray200) }
     public var iconSecondaryFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray700, darkModeColor: DatavizColors.gray100) }
-    public var iconCategorical1: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo650, darkModeColor: DatavizColors.indigo200) }
-    public var iconCategorical1Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo700, darkModeColor: DatavizColors.indigo100) }
-    public var iconCategorical2: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow650, darkModeColor: DatavizColors.yellow200) }
-    public var iconCategorical2Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow700, darkModeColor: DatavizColors.yellow100) }
-    public var iconCategorical3: Color { Color.dynamicColor(defaultColor: DatavizColors.pink650, darkModeColor: DatavizColors.pink200) }
-    public var iconCategorical3Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.pink700, darkModeColor: DatavizColors.pink100) }
-    public var iconCategorical4: Color { Color.dynamicColor(defaultColor: DatavizColors.green650, darkModeColor: DatavizColors.green200) }
-    public var iconCategorical4Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.green700, darkModeColor: DatavizColors.green100) }
-    public var iconCategorical5: Color { Color.dynamicColor(defaultColor: DatavizColors.orange650, darkModeColor: DatavizColors.orange200) }
-    public var iconCategorical5Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.orange700, darkModeColor: DatavizColors.orange100) }
-    public var iconCategorical6: Color { Color.dynamicColor(defaultColor: DatavizColors.teal650, darkModeColor: DatavizColors.teal200) }
-    public var iconCategorical6Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.teal700, darkModeColor: DatavizColors.teal100) }
-    public var iconCategorical7: Color { Color.dynamicColor(defaultColor: DatavizColors.blue650, darkModeColor: DatavizColors.blue200) }
-    public var iconCategorical7Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue700, darkModeColor: DatavizColors.blue100) }
-    public var iconCategorical8: Color { Color.dynamicColor(defaultColor: DatavizColors.gray650, darkModeColor: DatavizColors.gray200) }
-    public var iconCategorical8Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray700, darkModeColor: DatavizColors.gray100) }
+    public var iconCategory1: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo650, darkModeColor: DatavizColors.indigo200) }
+    public var iconCategory1Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo700, darkModeColor: DatavizColors.indigo100) }
+    public var iconCategory2: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow650, darkModeColor: DatavizColors.yellow200) }
+    public var iconCategory2Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow700, darkModeColor: DatavizColors.yellow100) }
+    public var iconCategory3: Color { Color.dynamicColor(defaultColor: DatavizColors.pink650, darkModeColor: DatavizColors.pink200) }
+    public var iconCategory3Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.pink700, darkModeColor: DatavizColors.pink100) }
+    public var iconCategory4: Color { Color.dynamicColor(defaultColor: DatavizColors.green650, darkModeColor: DatavizColors.green200) }
+    public var iconCategory4Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.green700, darkModeColor: DatavizColors.green100) }
+    public var iconCategory5: Color { Color.dynamicColor(defaultColor: DatavizColors.orange650, darkModeColor: DatavizColors.orange200) }
+    public var iconCategory5Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.orange700, darkModeColor: DatavizColors.orange100) }
+    public var iconCategory6: Color { Color.dynamicColor(defaultColor: DatavizColors.teal650, darkModeColor: DatavizColors.teal200) }
+    public var iconCategory6Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.teal700, darkModeColor: DatavizColors.teal100) }
+    public var iconCategory7: Color { Color.dynamicColor(defaultColor: DatavizColors.blue650, darkModeColor: DatavizColors.blue200) }
+    public var iconCategory7Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue700, darkModeColor: DatavizColors.blue100) }
+    public var iconCategory8: Color { Color.dynamicColor(defaultColor: DatavizColors.gray650, darkModeColor: DatavizColors.gray200) }
+    public var iconCategory8Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray700, darkModeColor: DatavizColors.gray100) }
     public var iconPositive: Color { Color.dynamicColor(defaultColor: DatavizColors.green650, darkModeColor: DatavizColors.green200) }
     public var iconPositiveFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.green700, darkModeColor: DatavizColors.green100) }
     public var iconWarning: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow650, darkModeColor: DatavizColors.yellow200) }
@@ -289,22 +289,22 @@ public struct DatavizUITokenProvider {
     public var textPrimaryFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue800, darkModeColor: DatavizUIColors.blue50) }
     public var textSecondary: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray650, darkModeColor: DatavizUIColors.gray200) }
     public var textSecondaryFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray800, darkModeColor: DatavizUIColors.gray50) }
-    public var textCategorical1: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo650, darkModeColor: DatavizUIColors.indigo200) }
-    public var textCategorical1Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo800, darkModeColor: DatavizUIColors.indigo50) }
-    public var textCategorical2: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow650, darkModeColor: DatavizUIColors.yellow200) }
-    public var textCategorical2Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow800, darkModeColor: DatavizUIColors.yellow50) }
-    public var textCategorical3: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink650, darkModeColor: DatavizUIColors.pink200) }
-    public var textCategorical3Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink800, darkModeColor: DatavizUIColors.pink50) }
-    public var textCategorical4: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green650, darkModeColor: DatavizUIColors.green200) }
-    public var textCategorical4Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green800, darkModeColor: DatavizUIColors.green50) }
-    public var textCategorical5: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange650, darkModeColor: DatavizUIColors.orange200) }
-    public var textCategorical5Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange800, darkModeColor: DatavizUIColors.orange50) }
-    public var textCategorical6: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal650, darkModeColor: DatavizUIColors.teal200) }
-    public var textCategorical6Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal800, darkModeColor: DatavizUIColors.teal50) }
-    public var textCategorical7: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue650, darkModeColor: DatavizUIColors.blue200) }
-    public var textCategorical7Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue800, darkModeColor: DatavizUIColors.blue50) }
-    public var textCategorical8: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray650, darkModeColor: DatavizUIColors.gray200) }
-    public var textCategorical8Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray800, darkModeColor: DatavizUIColors.gray50) }
+    public var textCategory1: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo650, darkModeColor: DatavizUIColors.indigo200) }
+    public var textCategory1Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo800, darkModeColor: DatavizUIColors.indigo50) }
+    public var textCategory2: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow650, darkModeColor: DatavizUIColors.yellow200) }
+    public var textCategory2Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow800, darkModeColor: DatavizUIColors.yellow50) }
+    public var textCategory3: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink650, darkModeColor: DatavizUIColors.pink200) }
+    public var textCategory3Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink800, darkModeColor: DatavizUIColors.pink50) }
+    public var textCategory4: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green650, darkModeColor: DatavizUIColors.green200) }
+    public var textCategory4Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green800, darkModeColor: DatavizUIColors.green50) }
+    public var textCategory5: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange650, darkModeColor: DatavizUIColors.orange200) }
+    public var textCategory5Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange800, darkModeColor: DatavizUIColors.orange50) }
+    public var textCategory6: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal650, darkModeColor: DatavizUIColors.teal200) }
+    public var textCategory6Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal800, darkModeColor: DatavizUIColors.teal50) }
+    public var textCategory7: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue650, darkModeColor: DatavizUIColors.blue200) }
+    public var textCategory7Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue800, darkModeColor: DatavizUIColors.blue50) }
+    public var textCategory8: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray650, darkModeColor: DatavizUIColors.gray200) }
+    public var textCategory8Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray800, darkModeColor: DatavizUIColors.gray50) }
     public var textPositive: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green650, darkModeColor: DatavizUIColors.green200) }
     public var textPositiveFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green800, darkModeColor: DatavizUIColors.green50) }
     public var textWarning: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow650, darkModeColor: DatavizUIColors.yellow200) }
@@ -317,22 +317,22 @@ public struct DatavizUITokenProvider {
     public var iconPrimaryFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue700, darkModeColor: DatavizUIColors.blue100) }
     public var iconSecondary: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray650, darkModeColor: DatavizUIColors.gray200) }
     public var iconSecondaryFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray700, darkModeColor: DatavizUIColors.gray100) }
-    public var iconCategorical1: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo650, darkModeColor: DatavizUIColors.indigo200) }
-    public var iconCategorical1Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo700, darkModeColor: DatavizUIColors.indigo100) }
-    public var iconCategorical2: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow650, darkModeColor: DatavizUIColors.yellow200) }
-    public var iconCategorical2Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow700, darkModeColor: DatavizUIColors.yellow100) }
-    public var iconCategorical3: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink650, darkModeColor: DatavizUIColors.pink200) }
-    public var iconCategorical3Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink700, darkModeColor: DatavizUIColors.pink100) }
-    public var iconCategorical4: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green650, darkModeColor: DatavizUIColors.green200) }
-    public var iconCategorical4Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green700, darkModeColor: DatavizUIColors.green100) }
-    public var iconCategorical5: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange650, darkModeColor: DatavizUIColors.orange200) }
-    public var iconCategorical5Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange700, darkModeColor: DatavizUIColors.orange100) }
-    public var iconCategorical6: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal650, darkModeColor: DatavizUIColors.teal200) }
-    public var iconCategorical6Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal700, darkModeColor: DatavizUIColors.teal100) }
-    public var iconCategorical7: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue650, darkModeColor: DatavizUIColors.blue200) }
-    public var iconCategorical7Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue700, darkModeColor: DatavizUIColors.blue100) }
-    public var iconCategorical8: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray650, darkModeColor: DatavizUIColors.gray200) }
-    public var iconCategorical8Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray700, darkModeColor: DatavizUIColors.gray100) }
+    public var iconCategory1: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo650, darkModeColor: DatavizUIColors.indigo200) }
+    public var iconCategory1Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo700, darkModeColor: DatavizUIColors.indigo100) }
+    public var iconCategory2: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow650, darkModeColor: DatavizUIColors.yellow200) }
+    public var iconCategory2Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow700, darkModeColor: DatavizUIColors.yellow100) }
+    public var iconCategory3: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink650, darkModeColor: DatavizUIColors.pink200) }
+    public var iconCategory3Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink700, darkModeColor: DatavizUIColors.pink100) }
+    public var iconCategory4: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green650, darkModeColor: DatavizUIColors.green200) }
+    public var iconCategory4Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green700, darkModeColor: DatavizUIColors.green100) }
+    public var iconCategory5: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange650, darkModeColor: DatavizUIColors.orange200) }
+    public var iconCategory5Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange700, darkModeColor: DatavizUIColors.orange100) }
+    public var iconCategory6: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal650, darkModeColor: DatavizUIColors.teal200) }
+    public var iconCategory6Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal700, darkModeColor: DatavizUIColors.teal100) }
+    public var iconCategory7: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue650, darkModeColor: DatavizUIColors.blue200) }
+    public var iconCategory7Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue700, darkModeColor: DatavizUIColors.blue100) }
+    public var iconCategory8: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray650, darkModeColor: DatavizUIColors.gray200) }
+    public var iconCategory8Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray700, darkModeColor: DatavizUIColors.gray100) }
     public var iconPositive: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green650, darkModeColor: DatavizUIColors.green200) }
     public var iconPositiveFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green700, darkModeColor: DatavizUIColors.green100) }
     public var iconWarning: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow650, darkModeColor: DatavizUIColors.yellow200) }

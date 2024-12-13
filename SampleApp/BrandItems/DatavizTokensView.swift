@@ -239,38 +239,38 @@ struct DatavizTokensView: View {
                            colors: [tokenProvider.textSecondary])
                     createView(for: "textSecondaryFocus",
                            colors: [tokenProvider.textSecondaryFocus])
-                    createView(for: "textCategorical1",
-                           colors: [tokenProvider.textCategorical1])
-                    createView(for: "textCategorical1Focus",
-                           colors: [tokenProvider.textCategorical1Focus])
-                    createView(for: "textCategorical2",
-                           colors: [tokenProvider.textCategorical2])
-                    createView(for: "textCategorical2Focus",
-                           colors: [tokenProvider.textCategorical2Focus])
-                    createView(for: "textCategorical3",
-                           colors: [tokenProvider.textCategorical3])
-                    createView(for: "textCategorical3Focus",
-                           colors: [tokenProvider.textCategorical3Focus])
-                    createView(for: "textCategorical4",
-                           colors: [tokenProvider.textCategorical4])
-                    createView(for: "textCategorical4Focus",
-                           colors: [tokenProvider.textCategorical4Focus])
-                    createView(for: "textCategorical5",
-                           colors: [tokenProvider.textCategorical5])
-                    createView(for: "textCategorical5Focus",
-                           colors: [tokenProvider.textCategorical5Focus])
-                    createView(for: "textCategorical6",
-                           colors: [tokenProvider.textCategorical6])
-                    createView(for: "textCategorical6Focus",
-                           colors: [tokenProvider.textCategorical6Focus])
-                    createView(for: "textCategorical7",
-                           colors: [tokenProvider.textCategorical7])
-                    createView(for: "textCategorical7Focus",
-                           colors: [tokenProvider.textCategorical7Focus])
-                    createView(for: "textCategorical8",
-                           colors: [tokenProvider.textCategorical8])
-                    createView(for: "textCategorical8Focus",
-                           colors: [tokenProvider.textCategorical8Focus])
+                    createView(for: "textCategory1",
+                           colors: [tokenProvider.textCategory1])
+                    createView(for: "textCategory1Focus",
+                           colors: [tokenProvider.textCategory1Focus])
+                    createView(for: "textCategory2",
+                           colors: [tokenProvider.textCategory2])
+                    createView(for: "textCategory2Focus",
+                           colors: [tokenProvider.textCategory2Focus])
+                    createView(for: "textCategory3",
+                           colors: [tokenProvider.textCategory3])
+                    createView(for: "textCategory3Focus",
+                           colors: [tokenProvider.textCategory3Focus])
+                    createView(for: "textCategory4",
+                           colors: [tokenProvider.textCategory4])
+                    createView(for: "textCategory4Focus",
+                           colors: [tokenProvider.textCategory4Focus])
+                    createView(for: "textCategory5",
+                           colors: [tokenProvider.textCategory5])
+                    createView(for: "textCategory5Focus",
+                           colors: [tokenProvider.textCategory5Focus])
+                    createView(for: "textCategory6",
+                           colors: [tokenProvider.textCategory6])
+                    createView(for: "textCategory6Focus",
+                           colors: [tokenProvider.textCategory6Focus])
+                    createView(for: "textCategory7",
+                           colors: [tokenProvider.textCategory7])
+                    createView(for: "textCategory7Focus",
+                           colors: [tokenProvider.textCategory7Focus])
+                    createView(for: "textCategory8",
+                           colors: [tokenProvider.textCategory8])
+                    createView(for: "textCategory8Focus",
+                           colors: [tokenProvider.textCategory8Focus])
                     createView(for: "textPositive",
                            colors: [tokenProvider.textPositive])
                     createView(for: "textPositiveFocus",
@@ -295,38 +295,38 @@ struct DatavizTokensView: View {
                            colors: [tokenProvider.iconSecondary])
                     createView(for: "iconSecondaryFocus",
                            colors: [tokenProvider.iconSecondaryFocus])
-                    createView(for: "iconCategorical1",
-                           colors: [tokenProvider.iconCategorical1])
-                    createView(for: "iconCategorical1Focus",
-                           colors: [tokenProvider.iconCategorical1Focus])
-                    createView(for: "iconCategorical2",
-                           colors: [tokenProvider.iconCategorical2])
-                    createView(for: "iconCategorical2Focus",
-                           colors: [tokenProvider.iconCategorical2Focus])
-                    createView(for: "iconCategorical3",
-                           colors: [tokenProvider.iconCategorical3])
-                    createView(for: "iconCategorical3Focus",
-                           colors: [tokenProvider.iconCategorical3Focus])
-                    createView(for: "iconCategorical4",
-                           colors: [tokenProvider.iconCategorical4])
-                    createView(for: "iconCategorical4Focus",
-                           colors: [tokenProvider.iconCategorical4Focus])
-                    createView(for: "iconCategorical5",
-                           colors: [tokenProvider.iconCategorical5])
-                    createView(for: "iconCategorical5Focus",
-                           colors: [tokenProvider.iconCategorical5Focus])
-                    createView(for: "iconCategorical6",
-                           colors: [tokenProvider.iconCategorical6])
-                    createView(for: "iconCategorical6Focus",
-                           colors: [tokenProvider.iconCategorical6Focus])
-                    createView(for: "iconCategorical7",
-                           colors: [tokenProvider.iconCategorical7])
-                    createView(for: "iconCategorical7Focus",
-                           colors: [tokenProvider.iconCategorical7Focus])
-                    createView(for: "iconCategorical8",
-                           colors: [tokenProvider.iconCategorical8])
-                    createView(for: "iconCategorical8Focus",
-                           colors: [tokenProvider.iconCategorical8Focus])
+                    createView(for: "iconCategory1",
+                           colors: [tokenProvider.iconCategory1])
+                    createView(for: "iconCategory1Focus",
+                           colors: [tokenProvider.iconCategory1Focus])
+                    createView(for: "iconCategory2",
+                           colors: [tokenProvider.iconCategory2])
+                    createView(for: "iconCategory2Focus",
+                           colors: [tokenProvider.iconCategory2Focus])
+                    createView(for: "iconCategory3",
+                           colors: [tokenProvider.iconCategory3])
+                    createView(for: "iconCategory3Focus",
+                           colors: [tokenProvider.iconCategory3Focus])
+                    createView(for: "iconCategory4",
+                           colors: [tokenProvider.iconCategory4])
+                    createView(for: "iconCategory4Focus",
+                           colors: [tokenProvider.iconCategory4Focus])
+                    createView(for: "iconCategory5",
+                           colors: [tokenProvider.iconCategory5])
+                    createView(for: "iconCategory5Focus",
+                           colors: [tokenProvider.iconCategory5Focus])
+                    createView(for: "iconCategory6",
+                           colors: [tokenProvider.iconCategory6])
+                    createView(for: "iconCategory6Focus",
+                           colors: [tokenProvider.iconCategory6Focus])
+                    createView(for: "iconCategory7",
+                           colors: [tokenProvider.iconCategory7])
+                    createView(for: "iconCategory7Focus",
+                           colors: [tokenProvider.iconCategory7Focus])
+                    createView(for: "iconCategory8",
+                           colors: [tokenProvider.iconCategory8])
+                    createView(for: "iconCategory8Focus",
+                           colors: [tokenProvider.iconCategory8Focus])
                     createView(for: "iconPositive",
                            colors: [tokenProvider.iconPositive])
                     createView(for: "iconPositiveFocus",
