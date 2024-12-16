@@ -6,7 +6,7 @@ public enum Warp {
     // MARK: - Brand Enum
 
     /// Enumeration representing different brands supported by the Warp design system.
-    public enum Brand {
+    public enum Brand: CustomStringConvertible {
         /// Represents the `Finn` brand theme.
         case finn
         /// Represents the `Tori` brand theme.
@@ -15,6 +15,19 @@ public enum Warp {
         case dba
         /// Represents the `Blocket` brand theme.
         case blocket
+
+        public var description: String {
+            switch self {
+            case .finn:
+                return "FINN"
+            case .tori:
+                return "Tori"
+            case .dba:
+                return "DBA"
+            case .blocket:
+                return "Blocket"
+            }
+        }
     }
     
     // MARK: - Theme Property
