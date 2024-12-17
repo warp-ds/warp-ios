@@ -35,19 +35,19 @@ extension Warp.Button {
             case .secondary:
                 return colorProvider.token.textLink
                 
-            case .tertiary:
+            case .quiet:
                 return colorProvider.token.textLink
                 
             case .critical:
                 return colorProvider.token.textInverted
                 
-            case .criticalTertiary:
+            case .criticalQuiet:
                 return colorProvider.token.textNegative
                 
             case .utility:
                 return colorProvider.token.text
                 
-            case .utilityTertiary:
+            case .utilityQuiet:
                 return colorProvider.token.text
                 
             case .utilityOverlay:
@@ -82,19 +82,19 @@ extension Warp.Button {
             case .secondary:
                 return colorProvider.token.background
                 
-            case .tertiary:
+            case .quiet:
                 return colorProvider.token.backgroundTransparent0
                 
             case .critical:
                 return colorProvider.token.backgroundNegative
                 
-            case .criticalTertiary:
+            case .criticalQuiet:
                 return colorProvider.token.backgroundTransparent0
 
             case .utility:
                 return colorProvider.token.background
                 
-            case .utilityTertiary:
+            case .utilityQuiet:
                 return colorProvider.token.backgroundTransparent0
 
             case .utilityOverlay:
@@ -110,19 +110,19 @@ extension Warp.Button {
             case .secondary:
                 return colorProvider.token.backgroundActive
                 
-            case .tertiary:
+            case .quiet:
                 return colorProvider.token.backgroundActive
                 
             case .critical:
                 return colorProvider.token.backgroundNegativeActive
                 
-            case .criticalTertiary:
+            case .criticalQuiet:
                 return colorProvider.token.backgroundNegativeSubtleActive
                 
             case .utility:
                 return colorProvider.token.backgroundActive
                 
-            case .utilityTertiary:
+            case .utilityQuiet:
                 return colorProvider.token.backgroundActive
                 
             case .utilityOverlay:

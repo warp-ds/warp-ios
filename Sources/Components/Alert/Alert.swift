@@ -294,7 +294,7 @@ private struct ButtonsView: View, Hashable {
                 Warp.Button(
                     title: secondaryButtonProvider.title,
                     action: secondaryButtonProvider.action,
-                    type: .tertiary
+                    type: .quiet
                 )
             }
             
