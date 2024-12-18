@@ -2,19 +2,22 @@ import Foundation
 import SwiftUI
 
 extension Warp {
-    /// A view that displays high-signal messages designed to attract user attention and prompt action.
+    /// A view that show high-signal messages meant to be noticed and prompting users to take action.
     ///
-    /// This `Alert` view can be styled with different visual variants (`AlertStyle`), and it supports multiple content sections
-    /// such as title, subtitle, links, and buttons. The alert adapts to various environments through the provided `ColorProvider`.
+    /// When to use:
+    /// Alerts appear after the action of the user, where direct feedback is needed.
+    ///
+    /// This `Alert` view can be styled with different visual variants (`AlertType`),
+    /// and it supports multiple content sections such as title, subtitle, links, and buttons.
     public struct Alert: View, Hashable {
         private let alertCornerRadius = Warp.Border.borderRadius50
 
         /// Typealias for constructing buttons in the alert.
         public typealias ButtonConstructor = (title: String, action: () -> Void)
         
-        /// The preferred style of the alert, which defines its appearance.
-        private let style: AlertStyle
-        
+        /// The preferred type of the alert, which defines its appearance.
+        private let type: AlertType
+
         /// The text shown at the top of the alert.
         private let title: String
         
@@ -38,19 +41,19 @@ extension Warp {
         
         /// Hashing implementation for the `Alert` structure, ensuring proper usage in collections.
         public func hash(into hasher: inout Hasher) {
-            hasher.combine(style)
+            hasher.combine(type)
             hasher.combine(title)
         }
         
         public static func == (lhs: Alert, rhs: Alert) -> Bool {
-            let styleComparison = lhs.style == rhs.style
+            lazy var typeComparison = lhs.type == rhs.type
             lazy var titleComparison = lhs.title == rhs.title
             lazy var subtitleComparison = lhs.subtitle == rhs.subtitle
             lazy var linkProviderComparison = lhs.linkProvider?.title == rhs.linkProvider?.title
             lazy var primaryButtonProviderComparison = lhs.primaryButtonProvider?.title == rhs.primaryButtonProvider?.title
             lazy var secondaryButtonProviderComparison = lhs.secondaryButtonProvider?.title == rhs.secondaryButtonProvider?.title
             
-            return styleComparison &&
+            return typeComparison &&
             titleComparison &&
             subtitleComparison &&
             linkProviderComparison &&
@@ -61,8 +64,8 @@ extension Warp {
         /// Initializes a new `Alert` view with the specified content and optional buttons.
         ///
         /// - Parameters:
-        ///   - style: The visual style of the alert, which dictates its colors, icons, and overall appearance.
-        ///     Use one of the predefined `AlertStyle` values: `.info`, `.warning`, `.critical`, or `.success`.
+        ///   - type: The visual type of the alert, which dictates its colors, icons, and overall appearance.
+        ///     Use one of the predefined `AlertType` values: `.information`, `.warning`, `.negative`, or `.success`.
         ///   - title: The primary text displayed at the top of the alert, used to capture the user's attention.
         ///   - subtitle: Additional information displayed below the title, used to provide further context to the alert.
         ///   - link: An optional tuple containing the title and action for a clickable link that appears below the subtitle.
@@ -72,14 +75,14 @@ extension Warp {
         ///   - secondaryButton: An optional tuple containing the title and action for a secondary button.
         ///     If `nil`, the secondary button will not be displayed.
         public init(
-            style: Warp.AlertStyle,
+            type: Warp.AlertType,
             title: String,
             subtitle: String,
             link: ButtonConstructor? = nil,
             primaryButton: ButtonConstructor? = nil,
             secondaryButton: ButtonConstructor? = nil
         ) {
-            self.style = style
+            self.type = type
             self.title = title
             self.subtitle = subtitle
             self.linkProvider = link
@@ -114,10 +117,10 @@ extension Warp {
         
         /// The background view for the alert, including the border and background colors.
         private var backgroundView: some View {
-            style.getBackgroundColor(from: colorProvider)
+            type.getBackgroundColor(from: colorProvider)
                 .overlay(
                     RoundedRectangle(cornerRadius: alertCornerRadius)
-                        .stroke(style.getBorderColor(from: colorProvider), lineWidth: 2)
+                        .stroke(type.getBorderColor(from: colorProvider), lineWidth: 2)
                 )
         }
         
@@ -139,17 +142,16 @@ extension Warp {
         
         /// A view that displays a left vertical line, usually matching the alert's icon color.
         private var leftLineView: some View {
-            style.getLeftLineColor(from: colorProvider)
+            type.getLeftLineColor(from: colorProvider)
         }
         
         /// The icon displayed at the top left of the alert.
         private var toolTipIconView: some View {
-            Image(systemName: style.tooltipImageName)
+            Image(type.tooltipImageName, bundle: .module)
                 .renderingMode(.template)
                 .frame(width: 16, height: 16)
-                .foregroundColor(style.getIconColor(from: colorProvider))
-                .accessibilityLabel(style.tooltipImageTitle)
-                .offset(y: 2)
+                .foregroundColor(type.getIconColor(from: colorProvider))
+                .accessibilityLabel(type.tooltipImageTitle)
         }
         
         /// The information view, which includes the title, subtitle, link, and buttons.
@@ -166,17 +168,23 @@ extension Warp {
         }
         
         /// The title text of the alert.
+        @ViewBuilder
         private var titleView: some View {
-            Warp.Text(title, style: .title4)
-                .foregroundColor(colorProvider.token.text)
-                .accessibilityAddTraits(.isHeader)
+            if !title.isEmpty {
+                Warp.Text(title, style: .title4)
+                    .foregroundColor(colorProvider.token.text)
+                    .accessibilityAddTraits(.isHeader)
+            }
         }
         
         /// The subtitle text of the alert.
+        @ViewBuilder
         private var subtitleView: some View {
-            Warp.Text(subtitle, style: .body)
-                .foregroundColor(colorProvider.token.text)
-                .accessibilityRemoveTraits(.isHeader)
+            if !subtitle.isEmpty {
+                Warp.Text(subtitle, style: .body)
+                    .foregroundColor(colorProvider.token.text)
+                    .accessibilityRemoveTraits(.isHeader)
+            }
         }
         
         /// A view that displays the optional link in the alert.
@@ -389,9 +397,9 @@ private struct UnderlinedLinkModifier: ViewModifier {
 }
 
 #Preview("Simple use case") {
-    ForEach(Warp.AlertStyle.allCases, id: \.self) { style in
+    ForEach(Warp.AlertType.allCases, id: \.self) { type in
         Warp.Alert(
-            style: style,
+            type: type,
             title: "Title",
             subtitle: "Use this variant to call extra attention to useful, contextual information.",
             link: nil,
@@ -402,9 +410,9 @@ private struct UnderlinedLinkModifier: ViewModifier {
 }
 
 #Preview("Full experience use case") {
-    ForEach(Warp.AlertStyle.allCases, id: \.self) { style in
+    ForEach(Warp.AlertType.allCases, id: \.self) { type in
         Warp.Alert(
-            style: style,
+            type: type,
             title: "Title",
             subtitle: "Use this variant to call extra attention to useful, contextual information.",
             link: (title: "Link to more information", action: {}),

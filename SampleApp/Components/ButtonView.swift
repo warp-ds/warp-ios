@@ -38,7 +38,8 @@ struct ButtonView: View {
                     Warp.Text("Type", style: .bodyStrong)
                     Picker("Pick your box style please", selection: $type.animation(.smooth)) {
                         ForEach(Warp.ButtonType.allCases, id: \.self) { type in
-                            Text(type.rawValue)
+                            Text(type.rawValue
+                            )
                         }
                     }
                     .pickerStyle(.wheel)

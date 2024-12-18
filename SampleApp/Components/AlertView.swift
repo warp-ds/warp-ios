@@ -10,11 +10,11 @@ import SwiftUI
 import Warp
 
 struct AlertView: View {
-    @State private var style: Warp.AlertStyle = .info
+    @State private var type: Warp.AlertType = .information
 
-    @State private var alertTitle = "Title"
+    @State private var title = "Title"
 
-    @State private var alertSubtitle = "Use this variant to call extra attention to useful, contextual information."
+    @State private var subtitle = "Use this variant to call extra attention to useful, contextual information."
 
     @State private var hasLink = false
 
@@ -32,10 +32,10 @@ struct AlertView: View {
                 GroupBox(
                     content: {
                         HStack {
-                            Warp.Text("Style", style: .bodyStrong)
-                            Picker("Pick your box style please", selection: $style.animation(.smooth)) {
-                                ForEach(Warp.AlertStyle.allCases, id: \.self) { style in
-                                    Text(style.rawValue.capitalized)
+                            Warp.Text("Type", style: .bodyStrong)
+                            Picker("Pick your box type please", selection: $type.animation(.smooth)) {
+                                ForEach(Warp.AlertType.allCases, id: \.self) { type in
+                                    Text(type.rawValue.capitalized)
                                 }
                             }
                             .pickerStyle(.segmented)
@@ -44,13 +44,13 @@ struct AlertView: View {
                         HStack {
                             Warp.Text("Title", style: .bodyStrong)
                             Spacer()
-                            Warp.TextField(text: $alertTitle)
+                            Warp.TextField(text: $title)
                         }
                         Divider()
                         HStack {
                             Warp.Text("Subtitle", style: .bodyStrong)
                             Spacer()
-                            Warp.TextField(text: $alertSubtitle)
+                            Warp.TextField(text: $subtitle)
                         }
                         Divider()
                         createToggle(binding: $hasLink, text: "Show link")
@@ -119,12 +119,8 @@ struct AlertView: View {
             return nil
         }()
 
-        let style = style
-        let title = alertTitle
-        let subtitle = alertSubtitle
-
         return Warp.Alert(
-            style: style,
+            type: type,
             title: title,
             subtitle: subtitle,
             link: linkProvider,
