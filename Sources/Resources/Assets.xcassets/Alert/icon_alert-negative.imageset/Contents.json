@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "icon_alert-critical.svg",
+      "filename" : "icon_alert-negative.svg",
       "idiom" : "universal"
     }
   ],

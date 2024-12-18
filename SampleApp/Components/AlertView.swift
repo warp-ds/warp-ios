@@ -10,7 +10,7 @@ import SwiftUI
 import Warp
 
 struct AlertView: View {
-    @State private var type: Warp.AlertType = .information
+    @State private var type: Warp.AlertType = .info
 
     @State private var title = "Title"
 

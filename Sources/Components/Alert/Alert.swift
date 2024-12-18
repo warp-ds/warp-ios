@@ -65,7 +65,7 @@ extension Warp {
         ///
         /// - Parameters:
         ///   - type: The visual type of the alert, which dictates its colors, icons, and overall appearance.
-        ///     Use one of the predefined `AlertType` values: `.information`, `.warning`, `.negative`, or `.success`.
+        ///     Use one of the predefined `AlertType` values: `.info`, `.warning`, `.negative`, or `.positive`.
         ///   - title: The primary text displayed at the top of the alert, used to capture the user's attention.
         ///   - subtitle: Additional information displayed below the title, used to provide further context to the alert.
         ///   - link: An optional tuple containing the title and action for a clickable link that appears below the subtitle.
