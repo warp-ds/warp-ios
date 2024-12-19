@@ -47,9 +47,6 @@ public enum Warp {
     }
 
     private static func handleThemeChanged(_ oldValue: Brand, _ newValue: Brand) throws {
-        // If the theme has not changed, return early
-        guard oldValue != newValue else { return }
-
         // Attempt to register the fonts for the new theme
         try Warp.Typography.registerFonts()
         LanguageManager.shared.setLanguage()
