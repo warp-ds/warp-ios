@@ -47,7 +47,7 @@ extension Warp {
                                     
                                     // Draw underline based on selection
                                     Rectangle()
-                                        .fill(index == selectedIndex ? colorProvider.token.borderSelected : colorProvider.token.borderSubtle)
+                                        .fill(index == selectedIndex ? colorProvider.token.borderSelected : colorProvider.token.border)
                                         .frame(height: index == selectedIndex ? 3 : 0)
                                         .offset(y: index == selectedIndex ? -1.5 : 0)
                                         .animation(.easeInOut(duration: 0.3), value: selectedIndex)
@@ -63,7 +63,7 @@ extension Warp {
                             .frame(height: 34)
                         // Draw underline
                         Rectangle()
-                            .fill(colorProvider.token.borderSubtle)
+                            .fill(colorProvider.token.border)
                             .frame(height: 1)
                             .offset(y: -3.5)
                     }

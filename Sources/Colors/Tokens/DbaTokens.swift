@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Tue, 17 Dec 2024 08:14:00 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 09 Jan 2025 13:37:44 GMT by https://github.com/warp-ds/tokens
 struct DbaTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: DbaColors.gray900, darkModeColor: DbaColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: DbaColors.gray600, darkModeColor: DbaColors.gray400) }
@@ -10,7 +10,7 @@ struct DbaTokenProvider: TokenProvider {
     public var textInvertedSubtle: Color { Color.dynamicColor(defaultColor: DbaColors.gray400, darkModeColor: DbaColors.gray600) }
     public var textInvertedStatic: Color { Color.dynamicColor(defaultColor: DbaColors.white, darkModeColor: DbaColors.white) }
     public var textLink: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue600, darkModeColor: DbaColors.jeanblue400) }
-    public var textDisabled: Color { Color.dynamicColor(defaultColor: DbaColors.gray400, darkModeColor: DbaColors.gray600) }
+    public var textDisabled: Color { Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray500) }
     public var textNegative: Color { Color.dynamicColor(defaultColor: DbaColors.red600, darkModeColor: DbaColors.red400) }
     public var textPositive: Color { Color.dynamicColor(defaultColor: DbaColors.green600, darkModeColor: DbaColors.green500) }
     public var background: Color { Color.dynamicColor(defaultColor: DbaColors.white, darkModeColor: DbaColors.gray900) }
@@ -19,8 +19,8 @@ struct DbaTokenProvider: TokenProvider {
     public var backgroundSubtle: Color { Color.dynamicColor(defaultColor: DbaColors.gray100, darkModeColor: DbaColors.gray750) }
     public var backgroundSubtleHover: Color { Color.dynamicColor(defaultColor: DbaColors.gray200, darkModeColor: DbaColors.gray700) }
     public var backgroundSubtleActive: Color { Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray600) }
-    public var backgroundDisabled: Color { Color.dynamicColor(defaultColor: DbaColors.gray400, darkModeColor: DbaColors.gray600) }
-    public var backgroundDisabledSubtle: Color { Color.dynamicColor(defaultColor: DbaColors.gray200, darkModeColor: DbaColors.gray750) }
+    public var backgroundDisabled: Color { Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray700) }
+    public var backgroundDisabledSubtle: Color { Color.dynamicColor(defaultColor: DbaColors.gray200, darkModeColor: DbaColors.gray600) }
     public var backgroundSelected: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue50, darkModeColor: DbaColors.jeanblue900) }
     public var backgroundSelectedHover: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue100, darkModeColor: DbaColors.jeanblue800) }
     public var backgroundSelectedActive: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue200, darkModeColor: DbaColors.jeanblue700) }
@@ -70,16 +70,14 @@ struct DbaTokenProvider: TokenProvider {
     public var surfaceElevated300: Color { Color.dynamicColor(defaultColor: DbaColors.white, darkModeColor: DbaColors.gray750) }
     public var surfaceElevated300Hover: Color { Color.dynamicColor(defaultColor: DbaColors.gray100, darkModeColor: DbaColors.gray700) }
     public var surfaceElevated300Active: Color { Color.dynamicColor(defaultColor: DbaColors.gray200, darkModeColor: DbaColors.gray600) }
-    public var border: Color { Color.dynamicColor(defaultColor: DbaColors.gray500, darkModeColor: DbaColors.gray500) }
-    public var borderHover: Color { Color.dynamicColor(defaultColor: DbaColors.gray600, darkModeColor: DbaColors.gray400) }
-    public var borderActive: Color { Color.dynamicColor(defaultColor: DbaColors.gray700, darkModeColor: DbaColors.gray300) }
-    public var borderSubtle: Color { Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray700) }
-    public var borderSubtleHover: Color { Color.dynamicColor(defaultColor: DbaColors.gray400, darkModeColor: DbaColors.gray600) }
-    public var borderSubtleActive: Color { Color.dynamicColor(defaultColor: DbaColors.gray500, darkModeColor: DbaColors.gray500) }
-    public var borderDisabled: Color { Color.dynamicColor(defaultColor: DbaColors.gray400, darkModeColor: DbaColors.gray600) }
+    public var border: Color { Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray600) }
+    public var borderHover: Color { Color.dynamicColor(defaultColor: DbaColors.gray400, darkModeColor: DbaColors.gray500) }
+    public var borderActive: Color { Color.dynamicColor(defaultColor: DbaColors.gray500, darkModeColor: DbaColors.gray400) }
+    public var borderDisabled: Color { Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray700) }
     public var borderSelected: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue600, darkModeColor: DbaColors.jeanblue400) }
     public var borderSelectedHover: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue700, darkModeColor: DbaColors.jeanblue300) }
     public var borderSelectedActive: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue800, darkModeColor: DbaColors.jeanblue200) }
+    public var borderInverted: Color { Color.dynamicColor(defaultColor: DbaColors.white, darkModeColor: DbaColors.gray900) }
     public var borderPrimary: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue600, darkModeColor: DbaColors.jeanblue400) }
     public var borderPrimaryHover: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue700, darkModeColor: DbaColors.jeanblue300) }
     public var borderPrimaryActive: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue800, darkModeColor: DbaColors.jeanblue200) }
@@ -121,7 +119,7 @@ struct DbaTokenProvider: TokenProvider {
     public var iconSelected: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue600, darkModeColor: DbaColors.jeanblue400) }
     public var iconSelectedHover: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue700, darkModeColor: DbaColors.jeanblue300) }
     public var iconSelectedActive: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue800, darkModeColor: DbaColors.jeanblue200) }
-    public var iconDisabled: Color { Color.dynamicColor(defaultColor: DbaColors.gray400, darkModeColor: DbaColors.gray600) }
+    public var iconDisabled: Color { Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray600) }
     public var iconSubtle: Color { Color.dynamicColor(defaultColor: DbaColors.gray600, darkModeColor: DbaColors.gray400) }
     public var iconSubtleHover: Color { Color.dynamicColor(defaultColor: DbaColors.gray700, darkModeColor: DbaColors.gray300) }
     public var iconSubtleActive: Color { Color.dynamicColor(defaultColor: DbaColors.gray800, darkModeColor: DbaColors.gray200) }
@@ -149,7 +147,7 @@ struct DbaUITokenProvider: UITokenProvider {
     public var textInvertedSubtle: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray400, darkModeColor: DbaUIColors.gray600) }
     public var textInvertedStatic: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.white, darkModeColor: DbaUIColors.white) }
     public var textLink: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue600, darkModeColor: DbaUIColors.jeanblue400) }
-    public var textDisabled: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray400, darkModeColor: DbaUIColors.gray600) }
+    public var textDisabled: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray500) }
     public var textNegative: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.red600, darkModeColor: DbaUIColors.red400) }
     public var textPositive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.green600, darkModeColor: DbaUIColors.green500) }
     public var background: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.white, darkModeColor: DbaUIColors.gray900) }
@@ -158,8 +156,8 @@ struct DbaUITokenProvider: UITokenProvider {
     public var backgroundSubtle: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray100, darkModeColor: DbaUIColors.gray750) }
     public var backgroundSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray200, darkModeColor: DbaUIColors.gray700) }
     public var backgroundSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray600) }
-    public var backgroundDisabled: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray400, darkModeColor: DbaUIColors.gray600) }
-    public var backgroundDisabledSubtle: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray200, darkModeColor: DbaUIColors.gray750) }
+    public var backgroundDisabled: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray700) }
+    public var backgroundDisabledSubtle: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray200, darkModeColor: DbaUIColors.gray600) }
     public var backgroundSelected: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue50, darkModeColor: DbaUIColors.jeanblue900) }
     public var backgroundSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue100, darkModeColor: DbaUIColors.jeanblue800) }
     public var backgroundSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue200, darkModeColor: DbaUIColors.jeanblue700) }
@@ -209,16 +207,14 @@ struct DbaUITokenProvider: UITokenProvider {
     public var surfaceElevated300: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.white, darkModeColor: DbaUIColors.gray750) }
     public var surfaceElevated300Hover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray100, darkModeColor: DbaUIColors.gray700) }
     public var surfaceElevated300Active: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray200, darkModeColor: DbaUIColors.gray600) }
-    public var border: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray500, darkModeColor: DbaUIColors.gray500) }
-    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray600, darkModeColor: DbaUIColors.gray400) }
-    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray700, darkModeColor: DbaUIColors.gray300) }
-    public var borderSubtle: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray700) }
-    public var borderSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray400, darkModeColor: DbaUIColors.gray600) }
-    public var borderSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray500, darkModeColor: DbaUIColors.gray500) }
-    public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray400, darkModeColor: DbaUIColors.gray600) }
+    public var border: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray600) }
+    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray400, darkModeColor: DbaUIColors.gray500) }
+    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray500, darkModeColor: DbaUIColors.gray400) }
+    public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray700) }
     public var borderSelected: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue600, darkModeColor: DbaUIColors.jeanblue400) }
     public var borderSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue700, darkModeColor: DbaUIColors.jeanblue300) }
     public var borderSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue800, darkModeColor: DbaUIColors.jeanblue200) }
+    public var borderInverted: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.white, darkModeColor: DbaUIColors.gray900) }
     public var borderPrimary: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue600, darkModeColor: DbaUIColors.jeanblue400) }
     public var borderPrimaryHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue700, darkModeColor: DbaUIColors.jeanblue300) }
     public var borderPrimaryActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue800, darkModeColor: DbaUIColors.jeanblue200) }
@@ -260,7 +256,7 @@ struct DbaUITokenProvider: UITokenProvider {
     public var iconSelected: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue600, darkModeColor: DbaUIColors.jeanblue400) }
     public var iconSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue700, darkModeColor: DbaUIColors.jeanblue300) }
     public var iconSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue800, darkModeColor: DbaUIColors.jeanblue200) }
-    public var iconDisabled: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray400, darkModeColor: DbaUIColors.gray600) }
+    public var iconDisabled: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray600) }
     public var iconSubtle: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray600, darkModeColor: DbaUIColors.gray400) }
     public var iconSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray700, darkModeColor: DbaUIColors.gray300) }
     public var iconSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray800, darkModeColor: DbaUIColors.gray200) }

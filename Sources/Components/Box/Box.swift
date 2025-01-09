@@ -338,7 +338,7 @@ extension Warp.BoxStyle {
     fileprivate func getBorderColor(from colorProvider: ColorProvider) -> Color {
         switch self {
         case .bordered:
-            return colorProvider.token.borderSubtle
+            return colorProvider.token.border
             
         default:
             return colorProvider.token.backgroundTransparent0

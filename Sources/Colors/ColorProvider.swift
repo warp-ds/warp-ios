@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Tue, 17 Dec 2024 08:14:00 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 09 Jan 2025 13:37:44 GMT by https://github.com/warp-ds/tokens
 public struct ColorProvider {
     public let token: TokenProvider
     
@@ -221,6 +221,24 @@ public struct ColorProvider {
     }
     
     public var switchHandleBackgroundHover: Color {
+        switch Warp.Theme {
+        case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray600, darkModeColor: BlocketColors.gray400)
+        case .dba: return Color.dynamicColor(defaultColor: DbaColors.gray600, darkModeColor: DbaColors.gray400)
+        case .finn: return Color.dynamicColor(defaultColor: FinnColors.gray600, darkModeColor: FinnColors.gray400)
+        case .tori: return Color.dynamicColor(defaultColor: ToriColors.gray600, darkModeColor: ToriColors.gray400)
+        }
+    }
+    
+    public var switchTrackBorder: Color {
+        switch Warp.Theme {
+        case .blocket: return BlocketColors.gray500
+        case .dba: return DbaColors.gray500
+        case .finn: return FinnColors.gray500
+        case .tori: return ToriColors.gray500
+        }
+    }
+    
+    public var switchTrackBorderHover: Color {
         switch Warp.Theme {
         case .blocket: return Color.dynamicColor(defaultColor: BlocketColors.gray600, darkModeColor: BlocketColors.gray400)
         case .dba: return Color.dynamicColor(defaultColor: DbaColors.gray600, darkModeColor: DbaColors.gray400)
@@ -450,6 +468,24 @@ public struct UIColorProvider {
     }
     
     public var switchHandleBackgroundHover: UIColor {
+        switch Warp.Theme {
+        case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray600, darkModeColor: BlocketUIColors.gray400)
+        case .dba: return UIColor.dynamicColor(defaultColor: DbaUIColors.gray600, darkModeColor: DbaUIColors.gray400)
+        case .finn: return UIColor.dynamicColor(defaultColor: FinnUIColors.gray600, darkModeColor: FinnUIColors.gray400)
+        case .tori: return UIColor.dynamicColor(defaultColor: ToriUIColors.gray600, darkModeColor: ToriUIColors.gray400)
+        }
+    }
+    
+    public var switchTrackBorder: UIColor {
+        switch Warp.Theme {
+        case .blocket: return BlocketUIColors.gray500
+        case .dba: return DbaUIColors.gray500
+        case .finn: return FinnUIColors.gray500
+        case .tori: return ToriUIColors.gray500
+        }
+    }
+    
+    public var switchTrackBorderHover: UIColor {
         switch Warp.Theme {
         case .blocket: return UIColor.dynamicColor(defaultColor: BlocketUIColors.gray600, darkModeColor: BlocketUIColors.gray400)
         case .dba: return UIColor.dynamicColor(defaultColor: DbaUIColors.gray600, darkModeColor: DbaUIColors.gray400)
