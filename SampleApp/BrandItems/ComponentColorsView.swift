@@ -57,6 +57,10 @@ struct ComponentColorsView: View {
                            colors: [colorProvider.switchHandleBackground])
                 createView(for: "switchHandleBackgroundHover",
                            colors: [colorProvider.switchHandleBackgroundHover])
+                createView(for: "switchTrackBorder",
+                           colors: [colorProvider.switchTrackBorder])
+                createView(for: "switchTrackBorderHover",
+                           colors: [colorProvider.switchTrackBorderHover])
             }
             .padding(.horizontal)
             .navigationTitle("ComponentColors")

@@ -1,63 +1,63 @@
 import SwiftUI
 
-// Generated on Tue, 17 Dec 2024 08:14:00 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 09 Jan 2025 13:37:44 GMT by https://github.com/warp-ds/tokens
 public struct DatavizTokenProvider {
     public var backgroundPrimary: Color { Color.dynamicColor(defaultColor: DatavizColors.blue600, darkModeColor: DatavizColors.blue400) }
-    public var backgroundPrimaryFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue650, darkModeColor: DatavizColors.blue300) }
+    public var backgroundPrimaryFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue700, darkModeColor: DatavizColors.blue200) }
     public var backgroundSecondary: Color { Color.dynamicColor(defaultColor: DatavizColors.gray500, darkModeColor: DatavizColors.gray400) }
-    public var backgroundSecondaryFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray600, darkModeColor: DatavizColors.gray300) }
+    public var backgroundSecondaryFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray650, darkModeColor: DatavizColors.gray200) }
     public var backgroundCategory1: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo650, darkModeColor: DatavizColors.indigo200) }
-    public var backgroundCategory1Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo700, darkModeColor: DatavizColors.indigo100) }
+    public var backgroundCategory1Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo800, darkModeColor: DatavizColors.indigo50) }
     public var backgroundCategory2: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow500, darkModeColor: DatavizColors.yellow200) }
-    public var backgroundCategory2Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow600, darkModeColor: DatavizColors.yellow100) }
+    public var backgroundCategory2Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow650, darkModeColor: DatavizColors.yellow50) }
     public var backgroundCategory3: Color { Color.dynamicColor(defaultColor: DatavizColors.pink500, darkModeColor: DatavizColors.pink400) }
-    public var backgroundCategory3Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.pink600, darkModeColor: DatavizColors.pink300) }
+    public var backgroundCategory3Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.pink650, darkModeColor: DatavizColors.pink200) }
     public var backgroundCategory4: Color { Color.dynamicColor(defaultColor: DatavizColors.green500, darkModeColor: DatavizColors.green400) }
-    public var backgroundCategory4Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.green600, darkModeColor: DatavizColors.green300) }
+    public var backgroundCategory4Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.green650, darkModeColor: DatavizColors.green200) }
     public var backgroundCategory5: Color { Color.dynamicColor(defaultColor: DatavizColors.orange600, darkModeColor: DatavizColors.orange400) }
-    public var backgroundCategory5Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.orange650, darkModeColor: DatavizColors.orange300) }
+    public var backgroundCategory5Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.orange700, darkModeColor: DatavizColors.orange200) }
     public var backgroundCategory6: Color { Color.dynamicColor(defaultColor: DatavizColors.teal650, darkModeColor: DatavizColors.teal200) }
-    public var backgroundCategory6Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.teal700, darkModeColor: DatavizColors.teal100) }
+    public var backgroundCategory6Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.teal800, darkModeColor: DatavizColors.teal50) }
     public var backgroundCategory7: Color { Color.dynamicColor(defaultColor: DatavizColors.blue500, darkModeColor: DatavizColors.blue400) }
-    public var backgroundCategory7Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue600, darkModeColor: DatavizColors.blue300) }
+    public var backgroundCategory7Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue650, darkModeColor: DatavizColors.blue200) }
     public var backgroundCategory8: Color { Color.dynamicColor(defaultColor: DatavizColors.gray500, darkModeColor: DatavizColors.gray100) }
-    public var backgroundCategory8Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray600, darkModeColor: DatavizColors.gray50) }
+    public var backgroundCategory8Focus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray650, darkModeColor: DatavizColors.gray300) }
     public var backgroundPositive: Color { Color.dynamicColor(defaultColor: DatavizColors.green500, darkModeColor: DatavizColors.green300) }
-    public var backgroundPositiveFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.green600, darkModeColor: DatavizColors.green200) }
+    public var backgroundPositiveFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.green650, darkModeColor: DatavizColors.green100) }
     public var backgroundWarning: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow500, darkModeColor: DatavizColors.yellow200) }
-    public var backgroundWarningFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow600, darkModeColor: DatavizColors.yellow100) }
+    public var backgroundWarningFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow650, darkModeColor: DatavizColors.yellow50) }
     public var backgroundNegative: Color { Color.dynamicColor(defaultColor: DatavizColors.red600, darkModeColor: DatavizColors.red400) }
-    public var backgroundNegativeFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.red650, darkModeColor: DatavizColors.red300) }
+    public var backgroundNegativeFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.red700, darkModeColor: DatavizColors.red200) }
     public var backgroundNeutral: Color { Color.dynamicColor(defaultColor: DatavizColors.gray600, darkModeColor: DatavizColors.gray200) }
-    public var backgroundNeutralFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray650, darkModeColor: DatavizColors.gray100) }
+    public var backgroundNeutralFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray700, darkModeColor: DatavizColors.gray50) }
     public var backgroundPrimarySubtle: Color { Color.dynamicColor(defaultColor: DatavizColors.blue100, darkModeColor: DatavizColors.blue800) }
-    public var backgroundPrimarySubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue200, darkModeColor: DatavizColors.blue700) }
+    public var backgroundPrimarySubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue300, darkModeColor: DatavizColors.blue650) }
     public var backgroundSecondarySubtle: Color { Color.dynamicColor(defaultColor: DatavizColors.gray100, darkModeColor: DatavizColors.gray800) }
-    public var backgroundSecondarySubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray200, darkModeColor: DatavizColors.gray700) }
+    public var backgroundSecondarySubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray300, darkModeColor: DatavizColors.gray650) }
     public var backgroundCategory1Subtle: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo200, darkModeColor: DatavizColors.indigo800) }
-    public var backgroundCategory1SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo300, darkModeColor: DatavizColors.indigo700) }
+    public var backgroundCategory1SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.indigo400, darkModeColor: DatavizColors.indigo650) }
     public var backgroundCategory2Subtle: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow100, darkModeColor: DatavizColors.yellow800) }
-    public var backgroundCategory2SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow200, darkModeColor: DatavizColors.yellow700) }
+    public var backgroundCategory2SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow300, darkModeColor: DatavizColors.yellow650) }
     public var backgroundCategory3Subtle: Color { Color.dynamicColor(defaultColor: DatavizColors.pink100, darkModeColor: DatavizColors.pink800) }
-    public var backgroundCategory3SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.pink200, darkModeColor: DatavizColors.pink700) }
+    public var backgroundCategory3SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.pink300, darkModeColor: DatavizColors.pink650) }
     public var backgroundCategory4Subtle: Color { Color.dynamicColor(defaultColor: DatavizColors.green100, darkModeColor: DatavizColors.green800) }
-    public var backgroundCategory4SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.green200, darkModeColor: DatavizColors.green700) }
+    public var backgroundCategory4SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.green300, darkModeColor: DatavizColors.green650) }
     public var backgroundCategory5Subtle: Color { Color.dynamicColor(defaultColor: DatavizColors.orange200, darkModeColor: DatavizColors.orange800) }
-    public var backgroundCategory5SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.orange300, darkModeColor: DatavizColors.orange700) }
+    public var backgroundCategory5SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.orange400, darkModeColor: DatavizColors.orange650) }
     public var backgroundCategory6Subtle: Color { Color.dynamicColor(defaultColor: DatavizColors.teal200, darkModeColor: DatavizColors.teal800) }
-    public var backgroundCategory6SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.teal300, darkModeColor: DatavizColors.teal700) }
+    public var backgroundCategory6SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.teal400, darkModeColor: DatavizColors.teal650) }
     public var backgroundCategory7Subtle: Color { Color.dynamicColor(defaultColor: DatavizColors.blue100, darkModeColor: DatavizColors.blue800) }
-    public var backgroundCategory7SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue200, darkModeColor: DatavizColors.blue700) }
+    public var backgroundCategory7SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue300, darkModeColor: DatavizColors.blue650) }
     public var backgroundCategory8Subtle: Color { Color.dynamicColor(defaultColor: DatavizColors.gray200, darkModeColor: DatavizColors.gray800) }
-    public var backgroundCategory8SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray300, darkModeColor: DatavizColors.gray700) }
+    public var backgroundCategory8SubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray400, darkModeColor: DatavizColors.gray650) }
     public var backgroundPositiveSubtle: Color { Color.dynamicColor(defaultColor: DatavizColors.green100, darkModeColor: DatavizColors.green800) }
-    public var backgroundPositiveSubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.green200, darkModeColor: DatavizColors.green700) }
+    public var backgroundPositiveSubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.green300, darkModeColor: DatavizColors.green650) }
     public var backgroundWarningSubtle: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow100, darkModeColor: DatavizColors.yellow800) }
-    public var backgroundWarningSubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow200, darkModeColor: DatavizColors.yellow700) }
+    public var backgroundWarningSubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.yellow300, darkModeColor: DatavizColors.yellow650) }
     public var backgroundNegativeSubtle: Color { Color.dynamicColor(defaultColor: DatavizColors.red200, darkModeColor: DatavizColors.red800) }
-    public var backgroundNegativeSubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.red300, darkModeColor: DatavizColors.red700) }
+    public var backgroundNegativeSubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.red400, darkModeColor: DatavizColors.red650) }
     public var backgroundNeutralSubtle: Color { Color.dynamicColor(defaultColor: DatavizColors.gray200, darkModeColor: DatavizColors.gray800) }
-    public var backgroundNeutralSubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray300, darkModeColor: DatavizColors.gray700) }
+    public var backgroundNeutralSubtleFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.gray400, darkModeColor: DatavizColors.gray650) }
     public var linePrimary: Color { Color.dynamicColor(defaultColor: DatavizColors.blue600, darkModeColor: DatavizColors.blue300) }
     public var linePrimaryFocus: Color { Color.dynamicColor(defaultColor: DatavizColors.blue700, darkModeColor: DatavizColors.blue100) }
     public var lineSecondary: Color { Color.dynamicColor(defaultColor: DatavizColors.gray500, darkModeColor: DatavizColors.gray400) }
@@ -174,61 +174,61 @@ public struct DatavizTokenProvider {
 
 public struct DatavizUITokenProvider {
     public var backgroundPrimary: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue600, darkModeColor: DatavizUIColors.blue400) }
-    public var backgroundPrimaryFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue650, darkModeColor: DatavizUIColors.blue300) }
+    public var backgroundPrimaryFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue700, darkModeColor: DatavizUIColors.blue200) }
     public var backgroundSecondary: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray500, darkModeColor: DatavizUIColors.gray400) }
-    public var backgroundSecondaryFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray600, darkModeColor: DatavizUIColors.gray300) }
+    public var backgroundSecondaryFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray650, darkModeColor: DatavizUIColors.gray200) }
     public var backgroundCategory1: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo650, darkModeColor: DatavizUIColors.indigo200) }
-    public var backgroundCategory1Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo700, darkModeColor: DatavizUIColors.indigo100) }
+    public var backgroundCategory1Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo800, darkModeColor: DatavizUIColors.indigo50) }
     public var backgroundCategory2: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow500, darkModeColor: DatavizUIColors.yellow200) }
-    public var backgroundCategory2Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow600, darkModeColor: DatavizUIColors.yellow100) }
+    public var backgroundCategory2Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow650, darkModeColor: DatavizUIColors.yellow50) }
     public var backgroundCategory3: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink500, darkModeColor: DatavizUIColors.pink400) }
-    public var backgroundCategory3Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink600, darkModeColor: DatavizUIColors.pink300) }
+    public var backgroundCategory3Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink650, darkModeColor: DatavizUIColors.pink200) }
     public var backgroundCategory4: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green500, darkModeColor: DatavizUIColors.green400) }
-    public var backgroundCategory4Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green600, darkModeColor: DatavizUIColors.green300) }
+    public var backgroundCategory4Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green650, darkModeColor: DatavizUIColors.green200) }
     public var backgroundCategory5: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange600, darkModeColor: DatavizUIColors.orange400) }
-    public var backgroundCategory5Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange650, darkModeColor: DatavizUIColors.orange300) }
+    public var backgroundCategory5Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange700, darkModeColor: DatavizUIColors.orange200) }
     public var backgroundCategory6: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal650, darkModeColor: DatavizUIColors.teal200) }
-    public var backgroundCategory6Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal700, darkModeColor: DatavizUIColors.teal100) }
+    public var backgroundCategory6Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal800, darkModeColor: DatavizUIColors.teal50) }
     public var backgroundCategory7: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue500, darkModeColor: DatavizUIColors.blue400) }
-    public var backgroundCategory7Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue600, darkModeColor: DatavizUIColors.blue300) }
+    public var backgroundCategory7Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue650, darkModeColor: DatavizUIColors.blue200) }
     public var backgroundCategory8: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray500, darkModeColor: DatavizUIColors.gray100) }
-    public var backgroundCategory8Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray600, darkModeColor: DatavizUIColors.gray50) }
+    public var backgroundCategory8Focus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray650, darkModeColor: DatavizUIColors.gray300) }
     public var backgroundPositive: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green500, darkModeColor: DatavizUIColors.green300) }
-    public var backgroundPositiveFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green600, darkModeColor: DatavizUIColors.green200) }
+    public var backgroundPositiveFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green650, darkModeColor: DatavizUIColors.green100) }
     public var backgroundWarning: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow500, darkModeColor: DatavizUIColors.yellow200) }
-    public var backgroundWarningFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow600, darkModeColor: DatavizUIColors.yellow100) }
+    public var backgroundWarningFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow650, darkModeColor: DatavizUIColors.yellow50) }
     public var backgroundNegative: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.red600, darkModeColor: DatavizUIColors.red400) }
-    public var backgroundNegativeFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.red650, darkModeColor: DatavizUIColors.red300) }
+    public var backgroundNegativeFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.red700, darkModeColor: DatavizUIColors.red200) }
     public var backgroundNeutral: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray600, darkModeColor: DatavizUIColors.gray200) }
-    public var backgroundNeutralFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray650, darkModeColor: DatavizUIColors.gray100) }
+    public var backgroundNeutralFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray700, darkModeColor: DatavizUIColors.gray50) }
     public var backgroundPrimarySubtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue100, darkModeColor: DatavizUIColors.blue800) }
-    public var backgroundPrimarySubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue200, darkModeColor: DatavizUIColors.blue700) }
+    public var backgroundPrimarySubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue300, darkModeColor: DatavizUIColors.blue650) }
     public var backgroundSecondarySubtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray100, darkModeColor: DatavizUIColors.gray800) }
-    public var backgroundSecondarySubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray200, darkModeColor: DatavizUIColors.gray700) }
+    public var backgroundSecondarySubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray300, darkModeColor: DatavizUIColors.gray650) }
     public var backgroundCategory1Subtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo200, darkModeColor: DatavizUIColors.indigo800) }
-    public var backgroundCategory1SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo300, darkModeColor: DatavizUIColors.indigo700) }
+    public var backgroundCategory1SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.indigo400, darkModeColor: DatavizUIColors.indigo650) }
     public var backgroundCategory2Subtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow100, darkModeColor: DatavizUIColors.yellow800) }
-    public var backgroundCategory2SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow200, darkModeColor: DatavizUIColors.yellow700) }
+    public var backgroundCategory2SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow300, darkModeColor: DatavizUIColors.yellow650) }
     public var backgroundCategory3Subtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink100, darkModeColor: DatavizUIColors.pink800) }
-    public var backgroundCategory3SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink200, darkModeColor: DatavizUIColors.pink700) }
+    public var backgroundCategory3SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.pink300, darkModeColor: DatavizUIColors.pink650) }
     public var backgroundCategory4Subtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green100, darkModeColor: DatavizUIColors.green800) }
-    public var backgroundCategory4SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green200, darkModeColor: DatavizUIColors.green700) }
+    public var backgroundCategory4SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green300, darkModeColor: DatavizUIColors.green650) }
     public var backgroundCategory5Subtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange200, darkModeColor: DatavizUIColors.orange800) }
-    public var backgroundCategory5SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange300, darkModeColor: DatavizUIColors.orange700) }
+    public var backgroundCategory5SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.orange400, darkModeColor: DatavizUIColors.orange650) }
     public var backgroundCategory6Subtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal200, darkModeColor: DatavizUIColors.teal800) }
-    public var backgroundCategory6SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal300, darkModeColor: DatavizUIColors.teal700) }
+    public var backgroundCategory6SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.teal400, darkModeColor: DatavizUIColors.teal650) }
     public var backgroundCategory7Subtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue100, darkModeColor: DatavizUIColors.blue800) }
-    public var backgroundCategory7SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue200, darkModeColor: DatavizUIColors.blue700) }
+    public var backgroundCategory7SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue300, darkModeColor: DatavizUIColors.blue650) }
     public var backgroundCategory8Subtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray200, darkModeColor: DatavizUIColors.gray800) }
-    public var backgroundCategory8SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray300, darkModeColor: DatavizUIColors.gray700) }
+    public var backgroundCategory8SubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray400, darkModeColor: DatavizUIColors.gray650) }
     public var backgroundPositiveSubtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green100, darkModeColor: DatavizUIColors.green800) }
-    public var backgroundPositiveSubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green200, darkModeColor: DatavizUIColors.green700) }
+    public var backgroundPositiveSubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.green300, darkModeColor: DatavizUIColors.green650) }
     public var backgroundWarningSubtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow100, darkModeColor: DatavizUIColors.yellow800) }
-    public var backgroundWarningSubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow200, darkModeColor: DatavizUIColors.yellow700) }
+    public var backgroundWarningSubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.yellow300, darkModeColor: DatavizUIColors.yellow650) }
     public var backgroundNegativeSubtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.red200, darkModeColor: DatavizUIColors.red800) }
-    public var backgroundNegativeSubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.red300, darkModeColor: DatavizUIColors.red700) }
+    public var backgroundNegativeSubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.red400, darkModeColor: DatavizUIColors.red650) }
     public var backgroundNeutralSubtle: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray200, darkModeColor: DatavizUIColors.gray800) }
-    public var backgroundNeutralSubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray300, darkModeColor: DatavizUIColors.gray700) }
+    public var backgroundNeutralSubtleFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray400, darkModeColor: DatavizUIColors.gray650) }
     public var linePrimary: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue600, darkModeColor: DatavizUIColors.blue300) }
     public var linePrimaryFocus: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.blue700, darkModeColor: DatavizUIColors.blue100) }
     public var lineSecondary: UIColor { UIColor.dynamicColor(defaultColor: DatavizUIColors.gray500, darkModeColor: DatavizUIColors.gray400) }
