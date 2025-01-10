@@ -2,11 +2,10 @@ import Foundation
 
 /// The `Warp` namespace containing the design system's themes, tokens, and color providers.
 public enum Warp {
-    
     // MARK: - Brand Enum
 
     /// Enumeration representing different brands supported by the Warp design system.
-    public enum Brand {
+    public enum Brand: CustomStringConvertible, CaseIterable {
         /// Represents the `Finn` brand theme.
         case finn
         /// Represents the `Tori` brand theme.
@@ -15,6 +14,19 @@ public enum Warp {
         case dba
         /// Represents the `Blocket` brand theme.
         case blocket
+
+        public var description: String {
+            switch self {
+            case .finn:
+                return "FINN"
+            case .tori:
+                return "Tori"
+            case .dba:
+                return "DBA"
+            case .blocket:
+                return "Blocket"
+            }
+        }
     }
     
     // MARK: - Theme Property
@@ -27,12 +39,35 @@ public enum Warp {
     public static var Theme: Brand = .finn {
         didSet {
             do {
-                // Attempt to register the fonts for the new theme
-                try Warp.Typography.registerFonts()
-                LanguageManager.shared.setLanguage()
+                try handleThemeChanged(oldValue, Theme)
             } catch {
                 // Handle the error (e.g., log it) if font registration fails
             }
+        }
+    }
+
+    private static func handleThemeChanged(_ oldValue: Brand, _ newValue: Brand) throws {
+        // If the theme has not changed, return early
+        guard oldValue != newValue else { return }
+
+        // Attempt to register the fonts for the new theme
+        try Warp.Typography.registerFonts()
+        LanguageManager.shared.setLanguage()
+
+        // Update the token and color providers based on the new theme
+        switch newValue {
+        case .blocket:
+            Self.Token = BlocketTokenProvider()
+            Self.UIToken = BlocketUITokenProvider()
+        case .dba:
+            Self.Token = DbaTokenProvider()
+            Self.UIToken = DbaUITokenProvider()
+        case .finn:
+            Self.Token = FinnTokenProvider()
+            Self.UIToken = FinnUITokenProvider()
+        case .tori:
+            Self.Token = ToriTokenProvider()
+            Self.UIToken = ToriUITokenProvider()
         }
     }
     
