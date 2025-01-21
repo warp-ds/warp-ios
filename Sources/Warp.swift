@@ -1,7 +1,10 @@
 import Foundation
 
 /// The `Warp` namespace containing the design system's themes, tokens, and color providers.
+
 public enum Warp {
+    static let lock = NSLock()
+    
     // MARK: - Brand Enum
 
     /// Enumeration representing different brands supported by the Warp design system.
@@ -39,13 +42,15 @@ public enum Warp {
     public static var Theme: Brand = .finn {
         didSet {
             do {
+                Self.lock.lock()
                 try handleThemeChanged(oldValue, Theme)
+                Self.lock.unlock()
             } catch {
                 // Handle the error (e.g., log it) if font registration fails
             }
         }
     }
-
+    
     private static func handleThemeChanged(_ oldValue: Brand, _ newValue: Brand) throws {
         // If the theme has not changed, return early
         guard oldValue != newValue else { return }
