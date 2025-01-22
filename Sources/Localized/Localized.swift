@@ -313,7 +313,7 @@ class LanguageManager {
         var language: String
         switch Warp.Theme {
         case .finn:
-            language = "nb"
+            language = "nb-NO"
         case .tori:
             language = "fi"
         case .dba:
