@@ -21,12 +21,12 @@ struct PillView: View {
             content: {
                 VStack {
                     HStack {
-                        Warp.Pill(text: String(describing: style), style: style)
-                        Warp.Pill(text: String(describing: style), onClose: {}, style: style)
+                        Warp.Pill(text: String(describing: style), onTap: { print("onTap") }, style: style)
+                        Warp.Pill(text: String(describing: style), onTap: { print("onTap") }, onClose: { print("onClose") }, style: style)
                     }
                     HStack {
-                        Warp.Pill(text: String(describing: style), icon: Image(systemName: "plus"), style: style)
-                        Warp.Pill(text: String(describing: style), icon: Image(systemName: "plus"), onClose: {}, style: style)
+                        Warp.Pill(text: String(describing: style), icon: .plus, onTap: { print("onTap") }, style: style)
+                        Warp.Pill(text: String(describing: style), icon: .plus, onTap: { print("onTap") }, onClose: { print("onClose") }, style: style)
                     }
                 }
             }, label: {

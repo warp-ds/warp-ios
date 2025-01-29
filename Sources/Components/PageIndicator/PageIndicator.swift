@@ -38,7 +38,7 @@ extension Warp {
         ///   - selectedPage: Binding to an integer representing the currently selected page.
         public init(
             pageCount: Int,
-            selectedPage: Binding<Int> = .constant(0)
+            selectedPage: Binding<Int>
         ) {
             self.pageCount = pageCount > 1 ? pageCount : 2
             self._selectedPage = selectedPage
