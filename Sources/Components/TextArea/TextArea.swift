@@ -12,7 +12,7 @@ extension Warp {
     ///     text: .constant(""),
     ///     placeholder: "Enter your text here...",
     ///     style: .default,
-    ///     helpText: Warp.HelpText(text: "This is a required field.", style: .default),
+    ///     helpText: "This is a required field.",
     ///     minHeight: 120
     /// )
     /// ```
@@ -22,7 +22,7 @@ extension Warp {
     ///   - text: Binding to the text content.
     ///   - placeholder: Text to display when the text area is empty.
     ///   - style: The style of the text area. Options are `.default`, `.disabled`, `.error`, and `.readOnly`.
-    ///   - helpText: Optional `Warp.HelpText` to display below the text area.
+    ///   - helpText: Optional `String` to display below the text area.
     ///   - minHeight: Optional minimum height for the text area. Defaults to `88`.
     public struct TextArea: View {
         
@@ -49,8 +49,8 @@ extension Warp {
         /// The style of the text area.
         private let style: Warp.TextAreaStyle
 
-        /// Optional `Warp.HelpText` to display below the text area.
-        private let helpText: Warp.HelpText?
+        /// Optional `String` to display below the text area.
+        private let helpText: String?
         
         /// The minimum height of the text area.
         private let minHeight: CGFloat
@@ -64,14 +64,14 @@ extension Warp {
         ///   - text: Binding to the text content.
         ///   - placeholder: Text to display when the text area is empty.
         ///   - style: The style of the text area. Defaults to `.default`.
-        ///   - helpText: Optional `Warp.HelpText` to display below the text area.
+        ///   - helpText: Optional `String` to display below the text area.
         ///   - minHeight: Optional minimum height for the text area. Defaults to `88`.
         public init(
             label: Warp.Label? = nil,
             text: Binding<String>,
             placeholder: String,
             style: Warp.TextAreaStyle = .default,
-            helpText: Warp.HelpText? = nil,
+            helpText: String? = nil,
             minHeight: CGFloat = 88
         ) {
             self.label = label
@@ -93,8 +93,21 @@ extension Warp {
                 textAreaView
 
                 if let helpText = helpText {
-                    helpText
+                    Warp.HelpText(text: helpText, style: helpTextStyle())
                 }
+            }
+        }
+
+        private func helpTextStyle() -> Warp.HelpTextStyle {
+            switch style {
+            case .default:
+                return .default
+            case .disabled:
+                return .disabled
+            case .error:
+                return .error
+            case .readOnly:
+                return .default
             }
         }
 
@@ -232,7 +245,7 @@ private extension View {
             text: .constant(""),
             placeholder: "Hint...",
             style: .default,
-            helpText: Warp.HelpText(text: "Help text", style: .error)
+            helpText: "Help text"
         )
 
         Divider()
@@ -242,7 +255,7 @@ private extension View {
             text: .constant("Text"),
             placeholder: "Hint...",
             style: .disabled,
-            helpText: Warp.HelpText(text: "Help text", style: .default)
+            helpText: "Help text"
         )
         
         Divider()
@@ -251,7 +264,7 @@ private extension View {
             text: .constant(""),
             placeholder: "Hint...",
             style: .error,
-            helpText: Warp.HelpText(text: "Error occurred.", style: .error)
+            helpText: "Error occurred."
         )
         
         Divider()
@@ -261,7 +274,7 @@ private extension View {
             text: .constant("Text"),
             placeholder: "Hint...",
             style: .readOnly,
-            helpText: Warp.HelpText(text: "Read-only field.", style: .default)
+            helpText: "Read-only field."
         )
     }
     .padding(Warp.Spacing.spacing200)

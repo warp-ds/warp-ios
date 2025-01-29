@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Warp {
-    public enum ExpandableStyle {
+    public enum ExpandableStyle: String, CaseIterable {
         /// Basic expandable component.
         case `default`
 

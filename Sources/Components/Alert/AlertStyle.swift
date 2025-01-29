@@ -54,22 +54,13 @@ extension Warp {
             }
         }
         
-        var tooltipImageName: String {
+        var tooltipIcon: Warp.Icon {
             switch self {
-            case .info: return "exclamationmark.circle.fill"
-            case .warning: return "exclamationmark.triangle.fill"
-            case .critical: return "exclamationmark.octagon.fill"
-            case .success: return "exclamationmark.circle.fill"
+            case .info: return .info
+            case .warning: return .warning
+            case .critical: return .error
+            case .success: return .success
             }
-        }
-        
-        var tooltipImageTitle: String {
-            switch self {
-            case .info: return "Info"
-            case .warning: return "Warning"
-            case .critical: return "Error"
-            case .success: return "Success"
-            }
-        }
+        }        
     }
 }

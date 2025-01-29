@@ -21,6 +21,8 @@ struct BoxView: View {
 
     @State private var hasButton = false
 
+    @State private var type: Warp.ButtonType = .primary
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
@@ -57,6 +59,18 @@ struct BoxView: View {
                         createToggle(binding: $hasLink, text: "Show link")
                         Divider()
                         createToggle(binding: $hasButton, text: "Show button")
+                        if hasButton {
+                            Divider()
+                            HStack {
+                                Warp.Text("Type", style: .bodyStrong)
+                                Picker("Pick your box style please", selection: $type.animation(.smooth)) {
+                                    ForEach(Warp.ButtonType.allCases, id: \.self) { type in
+                                        Text(type.rawValue)
+                                    }
+                                }
+                                .pickerStyle(.wheel)
+                            }
+                        }
                     }, label: {
                         Text("Modify Box")
                     }
@@ -90,14 +104,11 @@ struct BoxView: View {
             return nil
         }()
 
-        let buttonProvider: Warp.Box.ButtonConstructor? = {
+        let buttonProvider: Warp.Button? = {
             if state.hasButton {
-                return (
-                    title: "Click me!",
-                    action: {
-                        // no-op
-                    }
-                )
+                return Warp.Button(title: "Button",
+                                   action: {},
+                                   type: type)
             }
 
             return nil

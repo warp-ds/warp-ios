@@ -9,7 +9,6 @@ struct TextAreaView: View {
     @State private var text = ""
     @State private var placeholder = "Enter your text here..."
     @State private var helpTextValue = "This is a Help text."
-    @State private var helpTextStyle: Warp.HelpTextStyle = .default
     @State private var textAreaStyle: Warp.TextAreaStyle = .default
     @State private var minHeight: CGFloat = 120
     
@@ -27,7 +26,7 @@ struct TextAreaView: View {
                     text: $text,
                     placeholder: placeholder,
                     style: textAreaStyle,
-                    helpText: Warp.HelpText(text: helpTextValue, style: helpTextStyle),
+                    helpText: helpTextValue,
                     minHeight: minHeight
                 )
                 .padding(.vertical, 14)
@@ -81,18 +80,6 @@ struct TextAreaView: View {
                     VStack(alignment: .leading) {
                         Text("Help Text")
                         Warp.TextField(text: $helpTextValue)
-                    }
-                    .padding()
-
-                    // Help text style picker
-                    VStack(alignment: .leading) {
-                        Text("Help Text Style")
-                        Picker("Help Style", selection: $helpTextStyle) {
-                            ForEach(Warp.HelpTextStyle.allCases, id: \.self) { style in
-                                Text(style.rawValue.capitalized)
-                            }
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
                     }
                     .padding()
                 }
