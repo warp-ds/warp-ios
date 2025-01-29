@@ -49,7 +49,6 @@ struct ContentView: View {
                     row("Checkbox", destination: CheckboxView())
                     row("Expandable", destination: ExpandableView())
                     row("Icon", destination: IconView())
-                    row("Label", destination: LabelView())
                     row("Logo", destination: LogoView())
                     row("Modal", destination: ModalView())
                     row("PageIndicator", destination: PageIndicatorView())

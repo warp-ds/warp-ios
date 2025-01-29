@@ -11,7 +11,6 @@ extension Warp {
     /// Warp.Label(
     ///     title: "Label Title",
     ///     additionalInformation: "Optional Info",
-    ///     showToolTipImage: true,
     ///     tooltipContent: AnyView(Warp.Tooltip(title: "Tooltip text"))
     /// )
     /// ```
@@ -19,9 +18,8 @@ extension Warp {
     /// - Parameters:
     ///   - title: The main title text to display.
     ///   - additionalInformation: Optional text to display after the title.
-    ///   - showTooltipImage: Indicates whether to show the tooltip icon.
     ///   - tooltipContent: An optional view to display when the tooltip icon is tapped.
-    public struct Label: View {
+    struct Label: View {
 
         // MARK: - Properties
 
@@ -37,9 +35,6 @@ extension Warp {
         /// Optional text to display after the title.
         private let additionalInformation: String?
 
-        /// Indicates whether to show the tooltip icon.
-        private let showTooltipImage: Bool
-
         /// An optional view to display when the tooltip icon is tapped.
         private let tooltipContent: AnyView?
 
@@ -51,23 +46,20 @@ extension Warp {
         /// - Parameters:
         ///   - title: The main title text to display.
         ///   - additionalInformation: Optional text to display after the title.
-        ///   - showTooltipImage: Indicates whether to show the tooltip icon.
         ///   - tooltipContent: An optional view to display when the tooltip icon is tapped.
-        public init(
+        init(
             title: String,
             additionalInformation: String? = nil,
-            showTooltipImage: Bool = false,
             tooltipContent: AnyView? = nil
         ) {
             self.title = title
             self.additionalInformation = additionalInformation
-            self.showTooltipImage = showTooltipImage
             self.tooltipContent = tooltipContent
         }
 
         // MARK: - Body
 
-        public var body: some View {
+        var body: some View {
             HStack(spacing: Warp.Spacing.spacing50) {
                 titleView
                 optionalLabelView
@@ -98,15 +90,15 @@ extension Warp {
         /// View displaying the tooltip icon and handling its interaction.
         @ViewBuilder
         private var toolTipView: some View {
-            if showTooltipImage {
+            if let tooltipContent = tooltipContent {
                 Warp.IconView(.info, size: .small, color: colorProvider.token.iconSubtle)
                     .onTapGesture {
                         withAnimation {
                             isTooltipPresented.toggle()
                         }
                     }
-                
-                if isTooltipPresented, let tooltipContent = tooltipContent {
+
+                if isTooltipPresented {
                     tooltipContent
                         .onTapGesture {
                             withAnimation {
@@ -134,7 +126,6 @@ extension Warp {
             Warp.Label(
                 title: "Label Title",
                 additionalInformation: "Optional",
-                showTooltipImage: true,
                 tooltipContent: AnyView(
                     Warp.Tooltip(title: "Test message", arrowEdge: .leading)
                 )

@@ -17,12 +17,9 @@ struct TextAreaView: View {
             // TextArea display with dynamic label and help text
             GroupBox(content: {
                 Warp.TextArea(
-                    label: Warp.Label(
-                        title: labelTitle,
-                        additionalInformation: labelAdditionalInfo,
-                        showTooltipImage: showTooltipImage,
-                        tooltipContent: createTooltipView
-                    ),
+                    title: labelTitle,
+                    additionalInformation: labelAdditionalInfo,
+                    tooltipContent: showTooltipImage ? createTooltipView : nil,
                     text: $text,
                     placeholder: placeholder,
                     style: textAreaStyle,

@@ -49,10 +49,6 @@
 		508AB0A02CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */; };
 		508AB0A12CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */; };
 		508AB0A22CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */; };
-		50F58AD72CBD52BA0006804C /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58AD62CBD52BA0006804C /* LabelView.swift */; };
-		50F58AD82CBD52BA0006804C /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58AD62CBD52BA0006804C /* LabelView.swift */; };
-		50F58AD92CBD52BA0006804C /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58AD62CBD52BA0006804C /* LabelView.swift */; };
-		50F58ADA2CBD52BA0006804C /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58AD62CBD52BA0006804C /* LabelView.swift */; };
 		820A85EB2C6CEB0C006D35A0 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
 		820A85EC2C6CEB0C006D35A0 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B168112B750BED00DCDDE5 /* TextView.swift */; };
 		820A85EE2C6CEB0C006D35A0 /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
@@ -207,7 +203,6 @@
 		507344112CC0F0DB00928836 /* TextAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAreaView.swift; sourceTree = "<group>"; };
 		508AB0992CCFCCAF00C03CC5 /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicatorView.swift; sourceTree = "<group>"; };
-		50F58AD62CBD52BA0006804C /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		8206620F2A8CC97C0088677D /* warp-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "warp-ios"; path = ..; sourceTree = "<group>"; };
 		820A860A2C6CEB0C006D35A0 /* Blocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		820A860B2C6CEC30006D35A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -442,7 +437,6 @@
 				82E098822C85AEFE00033535 /* CheckboxView.swift */,
 				B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */,
 				8280953C2C9C794500472CB5 /* IconView.swift */,
-				50F58AD62CBD52BA0006804C /* LabelView.swift */,
 				82E350812D08925D00B2DBDA /* LogoView.swift */,
 				003CB8E82C19B5D5008C42B1 /* ModalView.swift */,
 				508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */,
@@ -670,7 +664,6 @@
 				508AB09B2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0562D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				82F7B0542D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
-				50F58AD92CBD52BA0006804C /* LabelView.swift in Sources */,
 				2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */,
 				B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
 				825FBF4F2CEF431B0052761F /* ButtonPillView.swift in Sources */,
@@ -718,7 +711,6 @@
 				508AB09A2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0572D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				82F7B0522D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
-				50F58AD72CBD52BA0006804C /* LabelView.swift in Sources */,
 				820A85F92C6CEB0C006D35A0 /* AlertView.swift in Sources */,
 				820A85FA2C6CEB0C006D35A0 /* ExpandableView.swift in Sources */,
 				825FBF522CEF431B0052761F /* ButtonPillView.swift in Sources */,
@@ -766,7 +758,6 @@
 				508AB09C2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0592D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				82F7B0512D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
-				50F58ADA2CBD52BA0006804C /* LabelView.swift in Sources */,
 				820A86362C6D4388006D35A0 /* AlertView.swift in Sources */,
 				820A86372C6D4388006D35A0 /* BoxView.swift in Sources */,
 				825FBF502CEF431B0052761F /* ButtonPillView.swift in Sources */,
@@ -814,7 +805,6 @@
 				508AB09D2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0582D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				82F7B0532D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
-				50F58AD82CBD52BA0006804C /* LabelView.swift in Sources */,
 				8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */,
 				349D0E142B62D67E00AAB421 /* AlertView.swift in Sources */,
 				825FBF512CEF431B0052761F /* ButtonPillView.swift in Sources */,

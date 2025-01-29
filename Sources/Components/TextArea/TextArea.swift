@@ -8,7 +8,7 @@ extension Warp {
     /// **Usage:**
     /// ```swift
     /// Warp.TextArea(
-    ///     label: Warp.Label(title: "Description"),
+    ///     title: "Description",
     ///     text: .constant(""),
     ///     placeholder: "Enter your text here...",
     ///     style: .default,
@@ -18,7 +18,9 @@ extension Warp {
     /// ```
     ///
     /// - Parameters:
-    ///   - label: An optional `Warp.Label` to display above the text area.
+    ///   - title: The main title text to display.
+    ///   - additionalInformation: Optional text to display after the title.
+    ///   - tooltipContent: An optional view to display when the tooltip icon is tapped.
     ///   - text: Binding to the text content.
     ///   - placeholder: Text to display when the text area is empty.
     ///   - style: The style of the text area. Options are `.default`, `.disabled`, `.error`, and `.readOnly`.
@@ -40,8 +42,14 @@ extension Warp {
         /// Binding to the text content.
         @Binding private var text: String
 
-        /// An optional `Warp.Label` to display above the text area.
-        private let label: Warp.Label?
+        /// The main title text to display.
+        private let title: String
+
+        /// Optional text to display after the title.
+        private let additionalInformation: String?
+
+        /// An optional view to display when the tooltip icon is tapped.
+        private let tooltipContent: AnyView?
 
         /// Text to display when the text area is empty.
         private let placeholder: String
@@ -60,21 +68,27 @@ extension Warp {
         /// Creates a new `TextArea` instance.
         ///
         /// - Parameters:
-        ///   - label: An optional `Warp.Label` to display above the text area.
+        ///   - title: The main title text to display.
+        ///   - additionalInformation: Optional text to display after the title.
+        ///   - tooltipContent: An optional view to display when the tooltip icon is tapped.
         ///   - text: Binding to the text content.
         ///   - placeholder: Text to display when the text area is empty.
         ///   - style: The style of the text area. Defaults to `.default`.
         ///   - helpText: Optional `String` to display below the text area.
         ///   - minHeight: Optional minimum height for the text area. Defaults to `88`.
         public init(
-            label: Warp.Label? = nil,
+            title: String,
+            additionalInformation: String? = nil,
+            tooltipContent: AnyView? = nil,
             text: Binding<String>,
             placeholder: String,
             style: Warp.TextAreaStyle = .default,
             helpText: String? = nil,
             minHeight: CGFloat = 88
         ) {
-            self.label = label
+            self.title = title
+            self.additionalInformation = additionalInformation
+            self.tooltipContent = tooltipContent
             self._text = text
             self.placeholder = placeholder
             self.style = style
@@ -86,8 +100,8 @@ extension Warp {
 
         public var body: some View {
             VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
-                if let label = label {
-                    label
+                if !title.isEmpty {
+                    Warp.Label(title: title, additionalInformation: additionalInformation, tooltipContent: tooltipContent)
                 }
                 
                 textAreaView
@@ -234,13 +248,10 @@ private extension View {
 #Preview {
     VStack(spacing: 30) {
         Warp.TextArea(
-            label: Warp.Label(
-                title: "Label",
-                additionalInformation: "Optional",
-                showTooltipImage: true,
-                tooltipContent: AnyView(
-                    Warp.Tooltip(title: "It's an optional field", arrowEdge: .leading)
-                )
+            title: "Label",
+            additionalInformation: "Optional",
+            tooltipContent: AnyView(
+                Warp.Tooltip(title: "It's an optional field", arrowEdge: .leading)
             ),
             text: .constant(""),
             placeholder: "Hint...",
@@ -251,7 +262,7 @@ private extension View {
         Divider()
 
         Warp.TextArea(
-            label: Warp.Label(title: "Label"),
+            title: "Label",
             text: .constant("Text"),
             placeholder: "Hint...",
             style: .disabled,
@@ -261,6 +272,7 @@ private extension View {
         Divider()
 
         Warp.TextArea(
+            title: "",
             text: .constant(""),
             placeholder: "Hint...",
             style: .error,
@@ -270,7 +282,7 @@ private extension View {
         Divider()
 
         Warp.TextArea(
-            label: Warp.Label(title: "Label"),
+            title: "Label",
             text: .constant("Text"),
             placeholder: "Hint...",
             style: .readOnly,
