@@ -25,7 +25,12 @@ extension Warp {
         let step: Double // Step value for the slider
         let onEditingChanged: ((Double) -> Void)? // Completion handler to return the value when handle is dropped
 
-        public init(value: Binding<Double>, range: ClosedRange<Double>, step: Double = 1.0, onEditingChanged: ((Double) -> Void)? = nil) {
+        public init(
+            value: Binding<Double>,
+            range: ClosedRange<Double>,
+            step: Double = 1.0,
+            onEditingChanged: ((Double) -> Void)? = nil
+        ) {
             self._value = value
             self.range = range
             self.step = step
