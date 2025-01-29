@@ -18,8 +18,7 @@ extension Warp.TextField {
         return Warp.TextField(
             config: configuration,
             text: text,
-            state: .constant(constantState),
-            colorProvider: colorProvider
+            state: .constant(constantState)
         )
         .keyboardType(.decimalPad)
     }
@@ -98,8 +97,7 @@ extension Warp.TextField {
                 Warp.TextField(
                     config: configuration,
                     text: text,
-                    state: state,
-                    colorProvider: colorProvider
+                    state: state
                 )
                 .textContentType(.password)
                 .keyboardType(.asciiCapable)
@@ -136,8 +134,7 @@ extension Warp.TextField {
         return Warp.TextField(
             config: configuration,
             text: text,
-            state: state,
-            colorProvider: colorProvider
+            state: state
         )
     }
 }

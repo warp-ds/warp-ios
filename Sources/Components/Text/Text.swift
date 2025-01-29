@@ -27,11 +27,11 @@ extension Warp {
         /// - Parameters:
         ///   - text: The text content to display.
         ///   - style: The text style, defined by `Warp.TextStyle`, which determines typography and size.
-        ///   - color: A solid color for the text. Defaults to `Warp.Color.token.text`.
+        ///   - color: A solid color for the text. Defaults to `Warp.Token.text`.
         public init(
             _ text: String,
             style: Warp.TextStyle,
-            color: Color = Warp.Color.token.text
+            color: Color = Warp.Token.text
         ) {
             self.text = text
             self.style = style

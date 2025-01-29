@@ -20,7 +20,7 @@ extension Warp {
         @State private var __state: TextFieldState?
 
         /// Object responsible for providing needed colors.
-        private let colorProvider: ColorProvider
+        private let colorProvider: ColorProvider = Warp.Color
 
         public init(
             placeholder: String = "",
@@ -32,8 +32,7 @@ extension Warp {
             informationState: Warp.TextField.InformationState = .none,
             isAnimated: Bool = true,
             text: Binding<String>,
-            state: Binding<TextFieldState>,
-            colorProvider: ColorProvider = Warp.Color
+            state: Binding<TextFieldState>
         ) {
             self.configuration = TextFieldConfiguration(
                 placeholder: placeholder,
@@ -48,7 +47,6 @@ extension Warp {
 
             self.text = text
             self.state = state
-            self.colorProvider = colorProvider
         }
 
         public init(
@@ -61,8 +59,7 @@ extension Warp {
             informationState: Warp.TextField.InformationState = .none,
             isAnimated: Bool = true,
             text: Binding<String>,
-            state: TextFieldState = Warp.textFieldDefaultInactiveState,
-            colorProvider: ColorProvider = Warp.Color
+            state: TextFieldState = Warp.textFieldDefaultInactiveState
         ) {
             self.configuration = TextFieldConfiguration(
                 placeholder: placeholder,
@@ -76,7 +73,6 @@ extension Warp {
             )
 
             self.text = text
-            self.colorProvider = colorProvider
             __state = state
             self.state = .constant(state)
         }
@@ -84,13 +80,11 @@ extension Warp {
         public init(
             config: TextFieldConfiguration,
             text: Binding<String>,
-            state: Binding<TextFieldState>,
-            colorProvider: ColorProvider = Warp.Color
+            state: Binding<TextFieldState>
         ) {
             self.configuration = config
             self.text = text
             self.state = state
-            self.colorProvider = colorProvider
         }
 
         public var body: some View {
@@ -145,7 +139,7 @@ private struct WarpTextFieldPreview: PreviewProvider {
 
         return GroupBox(
             content: {
-                Warp.TextField(text: bindingText, state: state, colorProvider: colorProvider)
+                Warp.TextField(text: bindingText, state: state)
             }, label: {
                 Text(state.title)
             }
