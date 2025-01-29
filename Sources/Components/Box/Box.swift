@@ -3,10 +3,7 @@ import SwiftUI
 
 extension Warp {
     private static let boxCornerRadius = 8.0
-    
-    /// Asset name of the `Box` tooltip image.
-    private static let toolTipImageName = "icon_box-info"
-    
+
     /// Box is a layout component to display information in addition to the main content of a page.
     public struct Box: View, Hashable {
         /// Preferred style of box.
@@ -109,8 +106,8 @@ extension Warp {
                     .accessibilityHidden(true)
                 
                 informationView
-                    .padding(.leading, 16)
-                
+                    .padding(.leading, 8)
+
                 Spacer()
             }
         }
@@ -119,11 +116,8 @@ extension Warp {
         private var toolTipIconView: some View {
             if shouldShowToolTipImage {
                 VStack {
-                    Image(toolTipImageName, bundle: .module)
-                        .renderingMode(.template)
-                        .frame(width: 24, height: 24)
+                    Warp.IconView(.checkShield)
                         .foregroundColor(colorProvider.token.iconSelected)
-                        .padding(.leading, 8)
                     
                     Spacer()
                 }

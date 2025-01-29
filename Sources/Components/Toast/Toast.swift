@@ -32,27 +32,24 @@ extension Warp {
         @Binding public var isPresented: Bool
 
         /// Object responsible for providing colors in different environments and variants.
-        let colorProvider: ColorProvider
+        let colorProvider: ColorProvider = Warp.Color
 
         /**
          - Parameter style: The `ToastStyle` of the `Toast`
          - Parameter title: String to display in the `Toast`
          - Parameter toastEdge: The `ToastEdge` on where to present the `Toast`
          - Parameter isPresented: Is the `Toast` presented or not
-         - Parameter colorProvider: ColorProvider used for styling the `Toast`, default value is read from `Config`
          */
         public init(
             style: Warp.ToastStyle,
             title: String,
             toastEdge: Warp.ToastEdge,
-            isPresented: Binding<Bool>,
-            colorProvider: ColorProvider = Warp.Color
+            isPresented: Binding<Bool>
         ) {
             self.style = style
             self.title = title
             self.toastEdge = toastEdge
             self._isPresented = isPresented
-            self.colorProvider = colorProvider
         }
 
         public var body: some View {
@@ -74,8 +71,7 @@ extension Warp {
 
         private var contentView: some View {
             HStack(spacing: 0) {
-                style.icon
-                    .renderingMode(.template)
+                Warp.IconView(style.icon, size: .small)
                     .foregroundColor(style.iconColor(from: colorProvider))
 
                 Text(title, style: .body)
@@ -84,7 +80,7 @@ extension Warp {
 
                 Spacer()
 
-                Image("icon-close", bundle: .module)
+                Warp.IconView(.close, size: .small)
             }
             .padding(16)
         }
@@ -129,18 +125,14 @@ extension Warp.ToastStyle {
         }
     }
 
-    fileprivate var icon: Image {
+    fileprivate var icon: Warp.Icon {
         switch self {
-        // TODO: Change to Alert variants when we have variants with transparent icons
         case .error:
-//            Image("icon_toast-error", bundle: .module)
-            Image(systemName: "exclamationmark.octagon.fill")
+            return .error
         case .success:
-//            Image("icon_toast-success", bundle: .module)
-            Image(systemName: "checkmark.circle.fill")
+            return .success
         case .warning:
-//            Image("icon_toast-warning", bundle: .module)
-            Image(systemName: "exclamationmark.triangle.fill")
+            return .warning
         }
     }
 }

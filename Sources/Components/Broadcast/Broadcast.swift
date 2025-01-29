@@ -88,8 +88,7 @@ extension Warp {
         }
         
         private var warningImageView: some View {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .renderingMode(.template)
+            Warp.IconView(.warning, size: .small)
                 .foregroundColor(colorProvider.token.iconWarning)
         }
         
@@ -100,9 +99,7 @@ extension Warp {
         }
         
         private var closeView: some View {
-            Image("icon-close", bundle: .module)
-                .renderingMode(.template)
-                .foregroundColor(colorProvider.token.icon)
+            Warp.IconView(.close, size: .small)
         }
     }
 }

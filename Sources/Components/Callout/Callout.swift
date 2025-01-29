@@ -78,7 +78,7 @@ extension Warp {
                     EmptyView()
                 case .popover(let onTapped):
                     if let onTapped = onTapped {
-                        Image("icon-close", bundle: .module)
+                        Warp.IconView(.close, size: .small)
                             .accessibilityAddTraits(.isButton) // Make it behave like a button for VoiceOver
                             .accessibilityAction {
                                 // VoiceOver double-tap handling

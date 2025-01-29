@@ -144,8 +144,7 @@ extension Warp {
         
         /// The icon displayed at the top left of the alert.
         private var toolTipIconView: some View {
-            style.tooltipIcon
-                .frame(width: 16, height: 16)
+            Warp.IconView(style.tooltipIcon, size: .small)
                 .foregroundColor(style.getIconColor(from: colorProvider))
         }
         

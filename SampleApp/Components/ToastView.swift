@@ -17,15 +17,6 @@ struct ToastView: View {
                     Spacer()
                 }
 
-                ForEach(Warp.ToastStyle.allCases, id: \.self) { currentStyle in
-                    Warp.Toast(
-                        style: currentStyle,
-                        title: "A toast to you",
-                        toastEdge: .top,
-                        isPresented: .constant(true)
-                    )
-                }
-
                 Text("Playground")
                     .font(.title2)
                 Text("Experiment with Toast Style and Toast Edge to see the variants")
