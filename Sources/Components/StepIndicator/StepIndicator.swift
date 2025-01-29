@@ -26,18 +26,16 @@ extension Warp {
 
         let layoutOrientation: LayoutOrientation
 
-        let colorProvider: ColorProvider
+        let colorProvider: ColorProvider = Warp.Color
 
         private let orderedSteps: [StepIndicatorModel.OrderedStepIndicatorItem]
 
         public init(
             layoutOrientation: LayoutOrientation = .vertical,
-            stepModel: Warp.StepIndicatorModel,
-            colorProvider: ColorProvider = Warp.Color
+            stepModel: Warp.StepIndicatorModel
         ) {
             self.layoutOrientation = layoutOrientation
             self.orderedSteps = stepModel.asOrderedSteps
-            self.colorProvider = colorProvider
         }
 
         public var body: some View {
