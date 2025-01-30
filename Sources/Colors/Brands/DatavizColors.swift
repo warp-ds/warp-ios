@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Thu, 09 Jan 2025 13:37:44 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 30 Jan 2025 13:44:32 GMT by https://github.com/warp-ds/tokens
 struct DatavizColors {
     static let blue50 = Color(hex: "#d6edff")
     static let blue100 = Color(hex: "#b4defd")
@@ -101,6 +101,20 @@ struct DatavizColors {
     static let gray700 = Color(hex: "#65686d")
     static let gray800 = Color(hex: "#535659")
     static let gray900 = Color(hex: "#434445")
+    static let white = Color(hex: "#ffffff")
+    static let chartgray50 = Color(hex: "#f6f6f6")
+    static let chartgray100 = Color(hex: "#f0f0f2")
+    static let chartgray200 = Color(hex: "#dedee3")
+    static let chartgray300 = Color(hex: "#cacad1")
+    static let chartgray400 = Color(hex: "#afafb8")
+    static let chartgray500 = Color(hex: "#84848f")
+    static let chartgray600 = Color(hex: "#5c5c66")
+    static let chartgray700 = Color(hex: "#47474f")
+    static let chartgray750 = Color(hex: "#333338")
+    static let chartgray800 = Color(hex: "#2b2b30")
+    static let chartgray850 = Color(hex: "#26262b")
+    static let chartgray900 = Color(hex: "#1b1b1f")
+    static let chartgray950 = Color(hex: "#121212")
 }
 
 struct DatavizUIColors {
@@ -203,4 +217,18 @@ struct DatavizUIColors {
     static let gray700 = UIColor(hex: "#65686d")
     static let gray800 = UIColor(hex: "#535659")
     static let gray900 = UIColor(hex: "#434445")
+    static let white = UIColor(hex: "#ffffff")
+    static let chartgray50 = UIColor(hex: "#f6f6f6")
+    static let chartgray100 = UIColor(hex: "#f0f0f2")
+    static let chartgray200 = UIColor(hex: "#dedee3")
+    static let chartgray300 = UIColor(hex: "#cacad1")
+    static let chartgray400 = UIColor(hex: "#afafb8")
+    static let chartgray500 = UIColor(hex: "#84848f")
+    static let chartgray600 = UIColor(hex: "#5c5c66")
+    static let chartgray700 = UIColor(hex: "#47474f")
+    static let chartgray750 = UIColor(hex: "#333338")
+    static let chartgray800 = UIColor(hex: "#2b2b30")
+    static let chartgray850 = UIColor(hex: "#26262b")
+    static let chartgray900 = UIColor(hex: "#1b1b1f")
+    static let chartgray950 = UIColor(hex: "#121212")
 }

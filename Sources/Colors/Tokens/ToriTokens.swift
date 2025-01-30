@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Thu, 09 Jan 2025 13:37:44 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 30 Jan 2025 13:44:33 GMT by https://github.com/warp-ds/tokens
 struct ToriTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: ToriColors.gray900, darkModeColor: ToriColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.gray600, darkModeColor: ToriColors.gray400) }

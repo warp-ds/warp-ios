@@ -122,6 +122,22 @@ public struct DatavizColorsView: View {
                                     DatavizColors.gray700,
                                     DatavizColors.gray800,
                                     DatavizColors.gray900])
+
+                createView(for: "Chartgray",
+                           colors: [DatavizColors.white,
+                                    DatavizColors.chartgray50,
+                                    DatavizColors.chartgray100,
+                                    DatavizColors.chartgray200,
+                                    DatavizColors.chartgray300,
+                                    DatavizColors.chartgray400,
+                                    DatavizColors.chartgray500,
+                                    DatavizColors.chartgray600,
+                                    DatavizColors.chartgray700,
+                                    DatavizColors.chartgray750,
+                                    DatavizColors.chartgray800,
+                                    DatavizColors.chartgray850,
+                                    DatavizColors.chartgray900,
+                                    DatavizColors.chartgray950])
             }
             .padding(.horizontal)
             .navigationTitle("DatavizColors")

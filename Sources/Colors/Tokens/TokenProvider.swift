@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Thu, 09 Jan 2025 13:37:44 GMT by https://github.com/warp-ds/tokens
+// Generated on Thu, 30 Jan 2025 13:44:32 GMT by https://github.com/warp-ds/tokens
 public protocol TokenProvider {
     var text: Color { get }
     var textSubtle: Color { get }
