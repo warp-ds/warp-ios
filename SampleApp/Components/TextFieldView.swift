@@ -32,7 +32,6 @@ struct TextFieldView: View {
                     style: textFieldStyle,
                     helpText: helpTextValue
                 )
-                .padding(.vertical, 14)
             }, label: {
                 Text("Text Field")
             })
@@ -45,18 +44,12 @@ struct TextFieldView: View {
             GroupBox(content: {
                 VStack(alignment: .leading) {
                     // Label title input
-                    VStack(alignment: .leading) {
-                        Text("Label Title")
-                        Warp.TextField(text: $labelTitle)
-                    }
-                    .padding()
+                    Warp.TextField(title: "Label Title", text: $labelTitle)
+                    Divider()
 
                     // Additional information input
-                    VStack(alignment: .leading) {
-                        Text("Additional Information")
-                        Warp.TextField(text: $labelAdditionalInfo)
-                    }
-                    .padding()
+                    Warp.TextField(title: "Additional Information", text: $labelAdditionalInfo)
+                    Divider()
 
                     // Toggle for showing the tooltip image
                     HStack {
@@ -64,6 +57,7 @@ struct TextFieldView: View {
                         Spacer()
                         Warp.Switch(isOn: $showTooltipImage.animation(.bouncy))
                     }
+                    Divider()
 
                     // TextField style picker
                     VStack(alignment: .leading) {
@@ -75,7 +69,7 @@ struct TextFieldView: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                     }
-                    .padding()
+                    Divider()
 
                     HStack {
                         Text("Show LeftIcon")
@@ -106,11 +100,7 @@ struct TextFieldView: View {
                     Divider()
 
                     // Help text input
-                    VStack(alignment: .leading) {
-                        Text("Help Text")
-                        Warp.TextField(text: $helpTextValue)
-                    }
-                    .padding()
+                    Warp.TextField(title: "Help Text", text: $helpTextValue)
                 }
             }, label: {
                 Text("Modify Text Field")
