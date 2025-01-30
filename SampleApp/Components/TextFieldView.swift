@@ -1,221 +1,138 @@
 import SwiftUI
 import Warp
 
-private let allowedTextFieldStates: [Warp.TextFieldState] = [.normal(.none), .disabled, .readOnly]
-
 struct TextFieldView: View {
-    @State private var state = Warp.TextFieldState.normal(.none)
 
-    private let colorProvider = Warp.Color
-
-    @State private var textFieldText = ""
-    
-    @State private var textFieldPlaceholder = "Warp"
-
-    @State private var textFieldTitle = "WarpTextField"
-
-    @State private var textFieldAdditionalInformation = "Optional"
-
-    @State private var hasInfoToolTipView = true
-    
-    @State private var hasLeftView = true
-
-    @State private var hasRightView = true
-
-    @State private var informationState: Warp.TextField.InformationState = .none
-
-    @State private var isSecured = false
-    @State private var isTextSecured = true
-
-    @FocusState private var isFocused: Bool
-
-    private static let defaultConfiguration = Warp.TextFieldConfiguration.default
+    @State private var labelTitle = "Description"
+    @State private var labelAdditionalInfo = "Optional"
+    @State private var showLeftIcon = false
+    @State private var showPrefix = false
+    @State private var showTooltipImage = true
+    @State private var text = ""
+    @State private var placeholder = "Enter your text here..."
+    @State private var showSuffix = false
+    @State private var showRightIcon = false
+    @State private var helpTextValue = "This is a Help text."
+    @State private var textFieldStyle: Warp.TextFieldStyle = .default
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack (alignment: .leading) {
-                createView()
-                    .padding(.vertical)
-
-                Divider()
-
-                HStack {
-                    Warp.Text("Type", style: .bodyStrong)
-
-                    Picker("", selection: $state.animation(.smooth)) {
-                        ForEach(allowedTextFieldStates, id: \.self) { state in
-                            Text(state.title)
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                }
-
-                Divider()
-
-                HStack {
-                    Warp.Text("Placeholder", style: .bodyStrong)
-
-                    Spacer()
-
-                    Warp.TextField(text: $textFieldPlaceholder)
-                }
-
-                Divider()
-
-                HStack {
-                    Warp.Text("Title", style: .bodyStrong)
-
-                    Spacer()
-
-                    Warp.TextField(text: $textFieldTitle)
-                }
-
-                Divider()
-
-                HStack {
-                    Warp.Text("Additional Information", style: .bodyStrong)
-
-                    Spacer()
-
-                    Warp.TextField(text: $textFieldAdditionalInformation)
-                }
-
-                createToggle(binding: $hasInfoToolTipView, text: ("Hide info tool tip view", "Show info tool tip view"))
-
-                Divider()
-
-                createToggle(binding: $hasLeftView, text: ("Hide left view", "Show left view"))
-
-                Divider()
-
-                createToggle(binding: $hasRightView, text: ("Hide right view", "Show right view"))
-
-                Divider()
-
-                HStack {
-                    Warp.Text("Information state", style: .bodyStrong)
-
-                    Picker("", selection: $informationState.animation(.smooth)) {
-                        ForEach(Warp.TextField.InformationState.allCases, id: \.self) { state in
-                            Text(state.title)
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                }
-
-                Divider()
-
-                createToggle(binding: $isSecured, text: ("Secured", "Unsecured"))
+            // TextField display with dynamic label and help text
+            GroupBox(content: {
+                Warp.TextField(
+                    title: labelTitle,
+                    additionalInformation: labelAdditionalInfo,
+                    tooltipContent: showTooltipImage ? createTooltipView : nil,
+                    leftIcon: showLeftIcon ? .search : nil,
+                    prefix: showPrefix ? "kr" : nil,
+                    text: $text,
+                    placeholder: placeholder,
+                    suffix: showSuffix ? "kr" : nil,
+                    rightIcon: showRightIcon ? .close : nil,
+                    style: textFieldStyle,
+                    helpText: helpTextValue
+                )
+                .padding(.vertical, 14)
+            }, label: {
+                Text("Text Field")
+            })
+            .padding(.bottom)
+            .onTapGesture {
+                dismissKeyboard() // Dismiss keyboard when tapping outside
             }
-            .padding(.horizontal)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("TextField")
-            .onChange(of: informationState) { newInformationState in
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                
-                switch newInformationState {
-                    case .error:
-                        state = .normal(.error("Error message"))
 
-                    case .helper:
-                        state = .normal(.helper("Helper message"))
+            // Controls to modify TextField's label, help text, and style
+            GroupBox(content: {
+                VStack(alignment: .leading) {
+                    // Label title input
+                    VStack(alignment: .leading) {
+                        Text("Label Title")
+                        Warp.TextField(text: $labelTitle)
+                    }
+                    .padding()
 
-                    case .none:
-                        break
+                    // Additional information input
+                    VStack(alignment: .leading) {
+                        Text("Additional Information")
+                        Warp.TextField(text: $labelAdditionalInfo)
+                    }
+                    .padding()
+
+                    // Toggle for showing the tooltip image
+                    HStack {
+                        Text("Show Tooltip Image")
+                        Spacer()
+                        Warp.Switch(isOn: $showTooltipImage.animation(.bouncy))
+                    }
+
+                    // TextField style picker
+                    VStack(alignment: .leading) {
+                        Text("TextField Style")
+                        Picker("Style", selection: $textFieldStyle) {
+                            ForEach(Warp.TextFieldStyle.allCases, id: \.self) { style in
+                                Text(style.rawValue.capitalized)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                    }
+                    .padding()
+
+                    HStack {
+                        Text("Show LeftIcon")
+                        Spacer()
+                        Warp.Switch(isOn: $showLeftIcon.animation(.bouncy))
+                    }
+                    Divider()
+
+                    HStack {
+                        Text("Show Prefix")
+                        Spacer()
+                        Warp.Switch(isOn: $showPrefix.animation(.bouncy))
+                    }
+                    Divider()
+
+                    HStack {
+                        Text("Show Suffix")
+                        Spacer()
+                        Warp.Switch(isOn: $showSuffix.animation(.bouncy))
+                    }
+                    Divider()
+
+                    HStack {
+                        Text("Show Right Icon")
+                        Spacer()
+                        Warp.Switch(isOn: $showRightIcon.animation(.bouncy))
+                    }
+                    Divider()
+
+                    // Help text input
+                    VStack(alignment: .leading) {
+                        Text("Help Text")
+                        Warp.TextField(text: $helpTextValue)
+                    }
+                    .padding()
                 }
-            }
+            }, label: {
+                Text("Modify Text Field")
+            })
+            .padding(.bottom)
         }
+        .padding(.horizontal)
         .navigationTitle("TextField")
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private func createToggle(binding: Binding<Bool>, text: (true: String, false: String)) -> some View {
-        Toggle(isOn: binding.animation(.smooth)) {
-            Warp.Text(binding.wrappedValue ? text.true: text.false, style: .bodyStrong)
-        }
-        .padding(.trailing, 4)
+    // Tooltip view creation
+    private var createTooltipView: AnyView {
+        AnyView(Warp.Tooltip(title: "Sample tooltip", arrowEdge: .leading))
     }
 
-    @ViewBuilder
-    private func createView() -> some View {
-        let infoToolTipView = hasInfoToolTipView ? AnyView(Image(systemName: "exclamationmark.circle")): nil
-        let leftView = hasLeftView ? AnyView(Image(systemName: "magnifyingglass")): nil
-        let rightView = hasRightView ? AnyView(Image(systemName: "xmark")): nil
-
-        if isSecured {
-            Warp.TextField.createSecureTextField(
-                configuration: Warp.TextFieldConfiguration(
-                    placeholder: textFieldPlaceholder,
-                    title: textFieldTitle,
-                    additionalInformation: textFieldAdditionalInformation,
-                    infoToolTipView: infoToolTipView,
-                    leftView: leftView,
-                    rightView: rightView,
-                    informationState: informationState
-                ),
-                text: $textFieldText,
-                state: $state,
-                isSecured: $isTextSecured
-            )
-            .padding()
-        } else {
-            Warp.TextField(
-                placeholder: textFieldPlaceholder,
-                title: textFieldTitle,
-                additionalInformation: textFieldAdditionalInformation,
-                infoToolTipView: infoToolTipView,
-                leftView: leftView,
-                rightView: rightView,
-                informationState: informationState,
-                text: $textFieldText,
-                state: $state
-            )
-            .padding()
-        }
+    // Helper function to dismiss the keyboard
+    private func dismissKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
 #Preview {
     TextFieldView()
-}
-
-extension Warp.TextField.InformationState: CaseIterable {
-    public static var allCases: [Warp.TextField.InformationState] {
-        [
-            .none,
-            .error("Error message"),
-            .helper("Helper message")
-        ]
-    }
-
-    fileprivate var title: String {
-        switch self {
-            case .none:
-                return "None"
-
-            case let .error(error):
-                return error
-
-            case let .helper(helpText):
-                return helpText
-        }
-    }
-}
-
-extension Warp.TextFieldState {
-    fileprivate var title: String {
-        switch self {
-            case .normal:
-                return "Normal"
-
-            case .active:
-                return "Active"
-
-            case .disabled:
-                return "Disabled"
-
-            case .readOnly:
-                return "Read only"
-        }
-    }
 }
