@@ -77,11 +77,11 @@ extension Warp {
         ///   - helpText: Optional `String` to display below the text area.
         ///   - minHeight: Optional minimum height for the text area. Defaults to `88`.
         public init(
-            title: String,
+            title: String = "",
             additionalInformation: String? = nil,
             tooltipContent: AnyView? = nil,
             text: Binding<String>,
-            placeholder: String,
+            placeholder: String = "",
             style: Warp.TextAreaStyle = .default,
             helpText: String? = nil,
             minHeight: CGFloat = 88
