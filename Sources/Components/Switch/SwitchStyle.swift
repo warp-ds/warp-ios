@@ -4,7 +4,7 @@ extension Warp {
     /// A custom toggle style used for the Warp switch.
     ///
     /// The `Warp.SwitchStyle` allows for customizing the appearance of the toggle switch, including the background and circle colors. It supports two states: `.default` and `.disabled`.
-    public struct SwitchStyle: ToggleStyle {
+    struct SwitchStyle: ToggleStyle {
         /// The state of the switch, determining its appearance and behavior.
         var state: Warp.SwitchState
         
@@ -14,7 +14,7 @@ extension Warp {
         /// Object responsible for providing colors in different environments and variants.
         var colorProvider: ColorProvider
         
-        public func makeBody(configuration: Configuration) -> some View {
+        func makeBody(configuration: Configuration) -> some View {
             HStack {
                 configuration.label
                 ZStack {

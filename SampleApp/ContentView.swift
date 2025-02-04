@@ -21,9 +21,9 @@ struct ContentView: View {
                 }
                 #endif
                 LazyVStack (alignment: .leading) {
-                    Text("Brand Specific Items")
-                        .font(.title2)
+                    Warp.Text("Brand Specific Items", style: .title3)
                     Divider()
+
                     row("PrimitiveColors", destination: PrimitiveColorsView())
                     row("SemanticTokens", destination: SemanticTokensView())
                     row("ComponentColors", destination: ComponentColorsView())
@@ -34,11 +34,10 @@ struct ContentView: View {
                     row("Taxonomy Icons", destination: TaxonomyIconsView())
                     row("Brand Icons", destination: BrandIconsView())
                     row("Brand Logos", destination: BrandLogosView())
-                    
-                    Text("Warp Components")
-                        .font(.title2)
+
+                    Warp.Text("Warp Components", style: .title3)
                     Divider()
-                    
+
                     row("Alert", destination: AlertView())
                     row("Badge", destination: BadgeView())
                     row("Box", destination: BoxView())
@@ -49,9 +48,7 @@ struct ContentView: View {
                     row("Callout", destination: CalloutView())
                     row("Checkbox", destination: CheckboxView())
                     row("Expandable", destination: ExpandableView())
-                    row("HelpText", destination: HelpTextView())
                     row("Icon", destination: IconView())
-                    row("Label", destination: LabelView())
                     row("Logo", destination: LogoView())
                     row("Modal", destination: ModalView())
                     row("PageIndicator", destination: PageIndicatorView())
@@ -70,8 +67,7 @@ struct ContentView: View {
                     row("Toast", destination: ToastView())
                     row("Tooltip", destination: TooltipView())
 
-                    Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
-                        .font(.caption2)
+                    Warp.Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))", style: .caption)
                 }
                 .padding()
             }
@@ -82,7 +78,8 @@ struct ContentView: View {
     private func row(_ title: String, destination: some View) -> some View {
         NavigationLink(destination: destination) {
             VStack(alignment: .leading) {
-                Text(title)
+                Warp.Text(title, style: .title4)
+                    .foregroundColor(Warp.Token.textLink)
                     .padding()
                 Divider()
             }

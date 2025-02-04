@@ -24,9 +24,11 @@ extension Warp {
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
-        public init(size: SpinnerSize = .default,
-                    duration: CGFloat = 1,
-                    lineWidth: CGFloat = 3) {
+        public init(
+            size: SpinnerSize = .default,
+            duration: CGFloat = 1,
+            lineWidth: CGFloat = 3
+        ) {
             self.size = size
             self.duration = duration
             self.lineWidth = lineWidth

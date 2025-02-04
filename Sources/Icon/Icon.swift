@@ -280,7 +280,7 @@ extension Warp {
             return rawValue.prefix(1).capitalized + rawValue.dropFirst() // CapitalizedCamelCase asset name
         }
 
-        private var localization: String {
+        var localization: String {
             switch self {
             case .activeAds: return Warp.Strings.iconActiveAds.localized
             case .ads: return Warp.Strings.iconAds.localized

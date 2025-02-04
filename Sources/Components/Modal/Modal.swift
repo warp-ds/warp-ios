@@ -92,9 +92,7 @@ extension Warp {
         @ViewBuilder
         private var closeButtonView: some View {
             if hasCloseButton {
-                Image("icon-close", bundle: .module)
-                    .renderingMode(.template)
-                    .foregroundStyle(colorProvider.token.icon)
+                Warp.IconView(.close, size: .small)
                     .onTapGesture {
                         isPresented.toggle()
                         onDismiss?()

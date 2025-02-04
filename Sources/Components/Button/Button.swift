@@ -3,7 +3,7 @@ import SwiftUI
 
 extension Warp {
     /// A control that initiates an action with `Warp` designed label.
-    public struct Button: View {
+    public struct Button: View, Hashable {
         /// Button title.
         private let title: String
 
@@ -14,7 +14,7 @@ extension Warp {
         private let trailingIcon: Warp.Icon?
 
         /// Button action.
-        private let action: () -> Void
+        let action: () -> Void
 
         /// Button type.
         private let type: Warp.ButtonType
@@ -33,6 +33,18 @@ extension Warp {
 
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
+
+        public static func == (lhs: Button, rhs: Button) -> Bool {
+            lhs.title == rhs.title &&
+            lhs.type == rhs.type &&
+            lhs.size == rhs.size
+        }
+
+        public func hash(into hasher: inout Hasher) {
+            hasher.combine(title)
+            hasher.combine(type)
+            hasher.combine(size)
+        }
 
         public init(
             title: String,

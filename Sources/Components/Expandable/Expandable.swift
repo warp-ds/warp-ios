@@ -23,7 +23,6 @@ extension Warp {
        - A `subtitle` String
        - An `expandableView` `View`
      - A boolean `isAnimated` to determine if the expand/collapse transition is animated or not. **Optional** _default value is `true` if none is specified_.
-     - A `ColorProvider`. **Optional:** _default is read from `Warp.Color` if none is specified_.
      */
     public struct Expandable<Content: View>: View {
         @State private var isExpanded: Bool
@@ -35,22 +34,20 @@ extension Warp {
         let style: Warp.ExpandableStyle
         let isAnimated: Bool
 
-        let colorProvider: ColorProvider
+        let colorProvider: ColorProvider = Warp.Color
 
         public init(
             style: Warp.ExpandableStyle,
             title: String,
             @ViewBuilder expandableView: () -> Content,
             isAnimated: Bool = true,
-            isExpanded: Bool = false,
-            colorProvider: ColorProvider = Warp.Color
+            isExpanded: Bool = false
         ) {
             self.style = style
             self.title = title
             self.expandableView = expandableView()
             self.isAnimated = isAnimated
             self.isExpanded = isExpanded
-            self.colorProvider = colorProvider
         }
 
         public var body: some View {
@@ -62,7 +59,8 @@ extension Warp {
                 }
             }
             .frame(maxWidth: .infinity)
-            .padding(Warp.Spacing.spacing200)
+            .padding(.vertical, Warp.Spacing.spacing200)
+            .padding(.horizontal, style == .default ? 0 : Warp.Spacing.spacing200)
             .background(style.backgroundColor(using: colorProvider))
             .cornerRadius(style.cornerRadius)
         }
@@ -88,11 +86,13 @@ extension Warp {
                         Spacer()
                     }
 
-                    Image("icon-expandable-chevron", bundle: .module)
-                        .renderingMode(.template)
-                        .foregroundColor(colorProvider.token.icon)
-                        .frame(width: 16, height: 16)
+                    Warp.IconView(.chevronDown, size: .small)
                         .rotationEffect(.degrees(isExpanded ? 180 : 0))
+                        .transaction { transaction in
+                            if !isAnimated {
+                                transaction.animation = nil
+                            }
+                        }
 
                     if style == .default {
                         Spacer()
@@ -112,16 +112,14 @@ extension Warp.Expandable where Content == Warp.ExpandableStringWrapperView {
         title: String,
         subtitle: String,
         isAnimated: Bool = true,
-        isExpanded: Bool = false,
-        colorProvider: ColorProvider = Warp.Color
+        isExpanded: Bool = false
     ) {
         self.init(
             style: style,
             title: title,
-            expandableView: { Warp.ExpandableStringWrapperView(subtitle: subtitle, colorProvider: colorProvider) },
+            expandableView: { Warp.ExpandableStringWrapperView(subtitle: subtitle) },
             isAnimated: isAnimated,
-            isExpanded: isExpanded,
-            colorProvider: colorProvider
+            isExpanded: isExpanded
         )
     }
 }
@@ -133,7 +131,7 @@ public extension Warp {
      */
     struct ExpandableStringWrapperView: View {
         let subtitle: String
-        let colorProvider: ColorProvider
+        let colorProvider: ColorProvider = Warp.Color
 
         public var body: some View {
             VStack(spacing: 0) {

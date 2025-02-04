@@ -1,170 +1,332 @@
 import SwiftUI
-import Combine
 
 extension Warp {
-    /// Inactive state of TextField.
-    public static let textFieldDefaultInactiveState = TextFieldState.normal(.none)
-
-    /// A control that displays an editable text with `Warp` designed interface.
+    /// A text field component used for capturing multi-line text input.
+    ///
+    /// The `Warp.TextField` component allows for longer text inputs compared to a standard text field. It supports multiple styles: `.default`, `.disabled`, `.error`, and `.readOnly`. You can also provide an optional label and help text to display alongside the text field, as well as specify the minimum height.
+    ///
+    /// **Usage:**
+    /// ```swift
+    /// Warp.TextField(
+    ///     title: "Description",
+    ///     text: .constant(""),
+    ///     placeholder: "Enter your text here...",
+    ///     style: .default,
+    ///     helpText: "This is a required field."
+    /// )
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - title: The main title text to display.
+    ///   - additionalInformation: Optional text to display after the title.
+    ///   - tooltipContent: An optional view to display when the tooltip icon is tapped.
+    ///   - leftIcon: An optional `Warp.Icon` displayed on the left side of the text field.
+    ///   - prefix: An optional string displayed before the text input.
+    ///   - text: Binding to the text content.
+    ///   - placeholder: Text to display when the text field is empty.
+    ///   - suffix: An optional string displayed after the text input.
+    ///   - rightIcon: An optional `Warp.Icon` displayed on the right side of the text field.
+    ///   - style: The style of the text field. Options are `.default`, `.disabled`, `.error`, and `.readOnly`.
+    ///   - helpText: Optional `String` to display below the text field.
     public struct TextField: View {
-        /// TextField configurations.
-        private let configuration: TextFieldConfiguration
 
-        /// One-way binding TextField text.
-        private var text: Binding<String>
+        // MARK: - Properties
 
-        /// Two-way binding TextField state.
-        private var state: Binding<TextFieldState>
-        
-        /// State property that will act as a workaround for handling not bounded state situation.
-        @State private var __state: TextFieldState?
+        /// Object responsible for providing colors in different environments and variants.
+        private let colorProvider: ColorProvider = Warp.Color
 
-        /// Object responsible for providing needed colors.
-        private let colorProvider: ColorProvider
+        /// The corner radius for the text field border.
+        private let cornerRadius = Warp.Border.borderRadius50
 
+        /// Tracks whether the text field is currently focused.
+        @FocusState private var isFocused: Bool
+
+        /// Binding to the text content.
+        @Binding private var text: String
+
+        /// The main title text to display.
+        private let title: String
+
+        /// Optional text to display after the title.
+        private let additionalInformation: String?
+
+        /// An optional view to display when the tooltip icon is tapped.
+        private let tooltipContent: AnyView?
+
+        /// Text to display when the text field is empty.
+        private let placeholder: String
+
+        /// An optional `Warp.Icon` displayed on the left side of the text field.
+        private let leftIcon: Warp.Icon?
+
+        /// An optional string displayed before the text input.
+        private let prefix: String?
+
+        /// An optional string displayed after the text input.
+        private let suffix: String?
+
+        /// An optional `Warp.Icon` displayed on the right side of the text field.
+        private let rightIcon: Warp.Icon?
+
+        /// The style of the text field.
+        private let style: Warp.TextFieldStyle
+
+        /// Optional `String` to display below the text field.
+        private let helpText: String?
+
+        // MARK: - Initialization
+
+        /// Creates a new `TextField` instance.
+        ///
+        /// - Parameters:
+        ///   - title: The main title text to display.
+        ///   - additionalInformation: Optional text to display after the title.
+        ///   - tooltipContent: An optional view to display when the tooltip icon is tapped.
+        ///   - leftIcon: An optional `Warp.Icon` displayed on the left side of the text field.
+        ///   - prefix: An optional string displayed before the text input.
+        ///   - text: Binding to the text content.
+        ///   - placeholder: Text to display when the text field is empty.
+        ///   - suffix: An optional string displayed after the text input.
+        ///   - rightIcon: An optional `Warp.Icon` displayed on the right side of the text field.
+        ///   - style: The style of the text field. Defaults to `.default`.
+        ///   - helpText: Optional `String` to display below the text field.
         public init(
-            placeholder: String = "",
-            title: String? = nil,
+            title: String = "",
             additionalInformation: String? = nil,
-            infoToolTipView: AnyView? = nil,
-            leftView: AnyView? = nil,
-            rightView: AnyView? = nil,
-            informationState: Warp.TextField.InformationState = .none,
-            isAnimated: Bool = true,
+            tooltipContent: AnyView? = nil,
+            leftIcon: Warp.Icon? = nil,
+            prefix: String? = nil,
             text: Binding<String>,
-            state: Binding<TextFieldState>,
-            colorProvider: ColorProvider = Warp.Color
-        ) {
-            self.configuration = TextFieldConfiguration(
-                placeholder: placeholder,
-                title: title,
-                additionalInformation: additionalInformation,
-                infoToolTipView: infoToolTipView,
-                leftView: leftView,
-                rightView: rightView,
-                informationState: informationState,
-                isAnimated: isAnimated
-            )
-
-            self.text = text
-            self.state = state
-            self.colorProvider = colorProvider
-        }
-
-        public init(
             placeholder: String = "",
-            title: String? = nil,
-            additionalInformation: String? = nil,
-            infoToolTipView: AnyView? = nil,
-            leftView: AnyView? = nil,
-            rightView: AnyView? = nil,
-            informationState: Warp.TextField.InformationState = .none,
-            isAnimated: Bool = true,
-            text: Binding<String>,
-            state: TextFieldState = Warp.textFieldDefaultInactiveState,
-            colorProvider: ColorProvider = Warp.Color
+            suffix: String? = nil,
+            rightIcon: Warp.Icon? = nil,
+            style: Warp.TextFieldStyle = .default,
+            helpText: String? = nil
         ) {
-            self.configuration = TextFieldConfiguration(
-                placeholder: placeholder,
-                title: title,
-                additionalInformation: additionalInformation,
-                infoToolTipView: infoToolTipView,
-                leftView: leftView,
-                rightView: rightView,
-                informationState: informationState,
-                isAnimated: isAnimated
-            )
-
-            self.text = text
-            self.colorProvider = colorProvider
-            __state = state
-            self.state = .constant(state)
+            self.title = title
+            self.additionalInformation = additionalInformation
+            self.tooltipContent = tooltipContent
+            self.leftIcon = leftIcon
+            self.prefix = prefix
+            self._text = text
+            self.placeholder = placeholder
+            self.suffix = suffix
+            self.rightIcon = rightIcon
+            self.style = style
+            self.helpText = helpText
         }
 
-        public init(
-            config: TextFieldConfiguration,
-            text: Binding<String>,
-            state: Binding<TextFieldState>,
-            colorProvider: ColorProvider = Warp.Color
-        ) {
-            self.configuration = config
-            self.text = text
-            self.state = state
-            self.colorProvider = colorProvider
-        }
+        // MARK: - Body
 
         public var body: some View {
-            let state: Binding<Warp.TextFieldState> = {
-                if let _state = self.__state {
-                    return Binding(
-                        get: { _state },
-                        set: { self.__state = $0 }
-                    )
-                } else {
-                    return self.state
+            VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
+                if !title.isEmpty {
+                    Warp.Label(title: title, additionalInformation: additionalInformation, tooltipContent: tooltipContent)
                 }
-            }()
 
-            SwiftUI.TextField(
-                configuration.placeholder,
-                text: text
-            )
-            .textFieldStyle(
-                .warp(
-                    configuration: configuration,
-                    text: text.wrappedValue,
-                    state: state,
-                    colorProvider: colorProvider
-                )
-            )
+                textFieldView
+                    .frame(height: 48)
+
+                if let helpText = helpText {
+                    Warp.HelpText(text: helpText, style: helpTextStyle())
+                }
+            }
+        }
+
+        private func helpTextStyle() -> Warp.HelpTextStyle {
+            switch style {
+            case .default:
+                return .default
+            case .disabled:
+                return .disabled
+            case .error:
+                return .error
+            case .readOnly:
+                return .default
+            }
+        }
+
+        // MARK: - Subviews
+
+        /// The text field view, including the placeholder text.
+        @ViewBuilder
+        private var textFieldView: some View {
+            HStack(spacing: 0) {
+                if let leftIcon {
+                    Warp.IconView(leftIcon, size: .small)
+                        .padding(.leading, Warp.Spacing.spacing100)
+                }
+                if let prefix {
+                    Text(prefix, style: .detail)
+                        .padding(.leading, Warp.Spacing.spacing100)
+                }
+                ZStack(alignment: .topLeading) {
+                    if text.isEmpty && !isFocused {
+                        Text(
+                            placeholder,
+                            style: .body,
+                            color: colorProvider.token.textPlaceholder
+                        )
+                        .padding(.horizontal, horizontalPadding)
+                        .padding(.vertical, Warp.Spacing.spacing150)
+                    }
+                    SwiftUI.TextField(text, text: $text)
+                        .disabled(style == .disabled || style == .readOnly)
+                        .foregroundColor(textColor)
+                        .font(from: Warp.Typography.body)
+                        .clearTextEditorBackground()
+                        .focused($isFocused)
+                        .padding(.horizontal, horizontalPadding)
+                        .padding(.vertical, Warp.Spacing.spacing150)
+                }
+                .padding(.horizontal, Warp.Spacing.spacing100)
+                if let suffix {
+                    Text(suffix, style: .detail)
+                        .padding(.trailing, Warp.Spacing.spacing100)
+                }
+                if let rightIcon {
+                    Warp.IconView(rightIcon, size: .small)
+                        .padding(.trailing, Warp.Spacing.spacing100)
+                }
+            }
+            .modifier(BorderModifier(isFocused: isFocused, style: style, cornerRadius: cornerRadius, colorProvider: colorProvider, borderColor: borderColor))
+            .background(backgroundColor)
+        }
+
+        // MARK: - Computed Properties
+
+        /// Determines the background color based on the selected style.
+        private var backgroundColor: Color {
+            switch style {
+            case .default:
+                return colorProvider.token.background
+            case .disabled:
+                return colorProvider.token.backgroundDisabledSubtle
+            case .error:
+                return colorProvider.token.background
+            case .readOnly:
+                return colorProvider.token.backgroundTransparent0
+            }
+        }
+
+        /// Determines the border color based on the selected style.
+        private var borderColor: Color {
+            switch style {
+            case .default:
+                return colorProvider.token.border
+            case .disabled:
+                return colorProvider.token.borderDisabled
+            case .error:
+                return colorProvider.token.borderNegative
+            case .readOnly:
+                return .clear
+            }
+        }
+
+        /// Determines the text color based on the style and focus state.
+        private var textColor: Color {
+            switch style {
+            case .default, .readOnly:
+                return colorProvider.token.text
+            case .disabled:
+                return colorProvider.token.textDisabled
+            case .error:
+                return isFocused ? colorProvider.token.text : colorProvider.token.textNegative
+            }
+        }
+
+        /// Calculates the horizontal padding based on the style.
+        private var horizontalPadding: CGFloat {
+            switch style {
+            case .readOnly where !text.isEmpty:
+                return -Warp.Spacing.spacing50
+            case .readOnly:
+                return 0
+            default:
+                return Warp.Spacing.spacing100
+            }
         }
     }
 }
 
-private struct WarpTextFieldPreview: PreviewProvider {
-    private static let colorProvider = Warp.Color
+private struct BorderModifier: ViewModifier {
+    var isFocused: Bool
+    var style: Warp.TextFieldStyle
+    var cornerRadius: CGFloat
+    var colorProvider: ColorProvider
+    var borderColor: Color
 
-    static var previews: some View {
-        ScrollView(showsIndicators: false) {
-            VStack (alignment: .leading) {
-                ForEach(Warp.TextFieldState.allCases, id: \.self) { state in
-                    createView(for: state)
+    func body(content: Content) -> some View {
+        content.overlay(
+            Group {
+                if style != .readOnly {
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .stroke(isFocused ? colorProvider.token.borderFocus : borderColor, lineWidth: 1)
                 }
-            }
-        }
-    }
-
-    private static func createView(for state: Warp.TextFieldState) -> some View {
-        var text = state.title
-
-        let bindingText = Binding {
-            text
-        } set: { newValue in
-            text = newValue
-        }
-
-        return GroupBox(
-            content: {
-                Warp.TextField(text: bindingText, state: state, colorProvider: colorProvider)
-            }, label: {
-                Text(state.title)
             }
         )
     }
 }
 
-extension Warp.TextFieldState {
-    fileprivate static var allCases: [Warp.TextFieldState] = [
-        .normal(.none),
-        .active(.none),
-        .disabled,
-        .normal(.error("Error")),
-        .readOnly
-    ]
+private struct ClearTextEditorBackgroundModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 16.0, *) {
+            content.scrollContentBackground(.hidden)
+        } else {
+            content
+        }
+    }
 }
 
-extension Warp.TextFieldState {
-    fileprivate var title: String {
-        String(describing: self).localizedCapitalized
+private extension View {
+    func clearTextEditorBackground() -> some View {
+        modifier(ClearTextEditorBackgroundModifier())
     }
+}
+
+#Preview {
+    VStack(spacing: 30) {
+        Warp.TextField(
+            title: "Label",
+            additionalInformation: "Optional",
+            tooltipContent: AnyView(
+                Warp.Tooltip(title: "It's an optional field", arrowEdge: .leading)
+            ),
+            text: .constant(""),
+            placeholder: "Hint...",
+            style: .default,
+            helpText: "Help text"
+        )
+
+        Divider()
+
+        Warp.TextField(
+            title: "Label",
+            text: .constant("Text"),
+            placeholder: "Hint...",
+            style: .disabled,
+            helpText: "Help text"
+        )
+
+        Divider()
+
+        Warp.TextField(
+            title: "",
+            text: .constant(""),
+            placeholder: "Hint...",
+            style: .error,
+            helpText: "Error occurred."
+        )
+
+        Divider()
+
+        Warp.TextField(
+            title: "Label",
+            text: .constant("Text"),
+            placeholder: "Hint...",
+            style: .readOnly,
+            helpText: "Read-only field."
+        )
+    }
+    .padding(Warp.Spacing.spacing200)
 }

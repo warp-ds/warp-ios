@@ -18,10 +18,10 @@ extension Warp {
         /// - Parameters:
         ///   - icon: The `Warp.Icon` to display.
         ///   - size: The size of the icon (small, default, large, or custom). Default is `.default`.
-        ///   - color: The color of the icon. Defaults to `Warp.Color.token.icon`.
+        ///   - color: The color of the icon. Defaults to `Warp.Token.icon`.
         public init(_ icon: Warp.Icon,
                     size: Warp.IconSize = .default,
-                    color: Color = Warp.Color.token.icon) {
+                    color: Color = Warp.Token.icon) {
             self.icon = icon
             self.size = size
             self.color = color

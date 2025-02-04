@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Warp {
-    public struct ToastViewModifier: ViewModifier {
+    struct ToastViewModifier: ViewModifier {
         let style: Warp.ToastStyle
         let title: String
         let edge: ToastEdge

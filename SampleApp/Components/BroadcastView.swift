@@ -2,6 +2,7 @@ import SwiftUI
 import Warp
 
 struct BroadcastView: View {
+    @State var isDismissable: Bool = true
     @State var broadcastIsPresented: Bool = true
     @State var broadcastEdge: Warp.BroadcastEdge = .top
 
@@ -59,7 +60,7 @@ struct BroadcastView: View {
                 .pickerStyle(.segmented)
 
                 Divider()
-
+                createToggle(binding: $isDismissable, text: "Is dismissable")
                 Spacer()
             }
         }
@@ -69,12 +70,21 @@ struct BroadcastView: View {
         .warpBroadcast(
             text: "Here's a broadcast located at the \(broadcastEdge.description) edge",
             edge: broadcastEdge,
+            isDismissable: isDismissable,
             isPresented: $broadcastIsPresented
         )
     }
 
     private var broadcastStatus: String {
         broadcastIsPresented ? "visible" : "not visible"
+    }
+
+    private func createToggle(binding: Binding<Bool>, text: String) -> some View {
+        HStack {
+            Warp.Text(text, style: .bodyStrong)
+            Spacer()
+            Warp.Switch(isOn: binding.animation(.smooth))
+        }
     }
 }
 

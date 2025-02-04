@@ -15,7 +15,7 @@ extension Warp {
     /// - Parameters:
     ///   - text: The text to display.
     ///   - style: The style to apply to the text. Defaults to `.default`.
-    public struct HelpText: View {
+    struct HelpText: View {
 
         // MARK: - Properties
 
@@ -35,7 +35,7 @@ extension Warp {
         /// - Parameters:
         ///   - text: The text to display.
         ///   - style: The style to apply to the text. Defaults to `.default`.
-        public init(
+        init(
             text: String,
             style: Warp.HelpTextStyle = .default
         ) {
@@ -45,7 +45,7 @@ extension Warp {
 
         // MARK: - Body
 
-        public var body: some View {
+        var body: some View {
             SwiftUI.Text(
                 text
             )

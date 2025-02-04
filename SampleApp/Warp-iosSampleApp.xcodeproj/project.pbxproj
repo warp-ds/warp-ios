@@ -49,14 +49,6 @@
 		508AB0A02CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */; };
 		508AB0A12CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */; };
 		508AB0A22CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */; };
-		50F58AD72CBD52BA0006804C /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58AD62CBD52BA0006804C /* LabelView.swift */; };
-		50F58AD82CBD52BA0006804C /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58AD62CBD52BA0006804C /* LabelView.swift */; };
-		50F58AD92CBD52BA0006804C /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58AD62CBD52BA0006804C /* LabelView.swift */; };
-		50F58ADA2CBD52BA0006804C /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58AD62CBD52BA0006804C /* LabelView.swift */; };
-		50F58ADC2CBE6A580006804C /* HelpTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58ADB2CBE6A4B0006804C /* HelpTextView.swift */; };
-		50F58ADD2CBE6A580006804C /* HelpTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58ADB2CBE6A4B0006804C /* HelpTextView.swift */; };
-		50F58ADE2CBE6A580006804C /* HelpTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58ADB2CBE6A4B0006804C /* HelpTextView.swift */; };
-		50F58ADF2CBE6A580006804C /* HelpTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F58ADB2CBE6A4B0006804C /* HelpTextView.swift */; };
 		820A85EB2C6CEB0C006D35A0 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
 		820A85EC2C6CEB0C006D35A0 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B168112B750BED00DCDDE5 /* TextView.swift */; };
 		820A85EE2C6CEB0C006D35A0 /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
@@ -211,8 +203,6 @@
 		507344112CC0F0DB00928836 /* TextAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAreaView.swift; sourceTree = "<group>"; };
 		508AB0992CCFCCAF00C03CC5 /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicatorView.swift; sourceTree = "<group>"; };
-		50F58AD62CBD52BA0006804C /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
-		50F58ADB2CBE6A4B0006804C /* HelpTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTextView.swift; sourceTree = "<group>"; };
 		8206620F2A8CC97C0088677D /* warp-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "warp-ios"; path = ..; sourceTree = "<group>"; };
 		820A860A2C6CEB0C006D35A0 /* Blocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		820A860B2C6CEC30006D35A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -446,9 +436,7 @@
 				B2A8B2782B6D33B800122DBC /* CalloutView.swift */,
 				82E098822C85AEFE00033535 /* CheckboxView.swift */,
 				B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */,
-				50F58ADB2CBE6A4B0006804C /* HelpTextView.swift */,
 				8280953C2C9C794500472CB5 /* IconView.swift */,
-				50F58AD62CBD52BA0006804C /* LabelView.swift */,
 				82E350812D08925D00B2DBDA /* LogoView.swift */,
 				003CB8E82C19B5D5008C42B1 /* ModalView.swift */,
 				508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */,
@@ -666,7 +654,6 @@
 				507344152CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDF2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */,
-				50F58ADD2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098852C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				8280953F2C9C794900472CB5 /* IconView.swift in Sources */,
 				828095382C9C3AE900472CB5 /* IconsView.swift in Sources */,
@@ -677,7 +664,6 @@
 				508AB09B2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0562D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				82F7B0542D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
-				50F58AD92CBD52BA0006804C /* LabelView.swift in Sources */,
 				2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */,
 				B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
 				825FBF4F2CEF431B0052761F /* ButtonPillView.swift in Sources */,
@@ -715,7 +701,6 @@
 				507344132CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDE2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				820A85F62C6CEB0C006D35A0 /* SemanticTokensView.swift in Sources */,
-				50F58ADF2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098862C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				8280953D2C9C794900472CB5 /* IconView.swift in Sources */,
 				8280953A2C9C3AE900472CB5 /* IconsView.swift in Sources */,
@@ -726,7 +711,6 @@
 				508AB09A2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0572D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				82F7B0522D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
-				50F58AD72CBD52BA0006804C /* LabelView.swift in Sources */,
 				820A85F92C6CEB0C006D35A0 /* AlertView.swift in Sources */,
 				820A85FA2C6CEB0C006D35A0 /* ExpandableView.swift in Sources */,
 				825FBF522CEF431B0052761F /* ButtonPillView.swift in Sources */,
@@ -764,7 +748,6 @@
 				507344122CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDC2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				820A86332C6D4388006D35A0 /* SemanticTokensView.swift in Sources */,
-				50F58ADE2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098842C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				828095402C9C794900472CB5 /* IconView.swift in Sources */,
 				8280953B2C9C3AE900472CB5 /* IconsView.swift in Sources */,
@@ -775,7 +758,6 @@
 				508AB09C2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0592D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				82F7B0512D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
-				50F58ADA2CBD52BA0006804C /* LabelView.swift in Sources */,
 				820A86362C6D4388006D35A0 /* AlertView.swift in Sources */,
 				820A86372C6D4388006D35A0 /* BoxView.swift in Sources */,
 				825FBF502CEF431B0052761F /* ButtonPillView.swift in Sources */,
@@ -813,7 +795,6 @@
 				507344142CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDD2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				82635D082BFE1CD800F7FA6F /* SpinnerView.swift in Sources */,
-				50F58ADC2CBE6A580006804C /* HelpTextView.swift in Sources */,
 				82E098832C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				8280953E2C9C794900472CB5 /* IconView.swift in Sources */,
 				828095392C9C3AE900472CB5 /* IconsView.swift in Sources */,
@@ -824,7 +805,6 @@
 				508AB09D2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0582D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				82F7B0532D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
-				50F58AD82CBD52BA0006804C /* LabelView.swift in Sources */,
 				8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */,
 				349D0E142B62D67E00AAB421 /* AlertView.swift in Sources */,
 				825FBF512CEF431B0052761F /* ButtonPillView.swift in Sources */,

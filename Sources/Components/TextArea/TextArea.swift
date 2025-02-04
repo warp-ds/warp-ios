@@ -8,21 +8,23 @@ extension Warp {
     /// **Usage:**
     /// ```swift
     /// Warp.TextArea(
-    ///     label: Warp.Label(title: "Description"),
+    ///     title: "Description",
     ///     text: .constant(""),
     ///     placeholder: "Enter your text here...",
     ///     style: .default,
-    ///     helpText: Warp.HelpText(text: "This is a required field.", style: .default),
+    ///     helpText: "This is a required field.",
     ///     minHeight: 120
     /// )
     /// ```
     ///
     /// - Parameters:
-    ///   - label: An optional `Warp.Label` to display above the text area.
+    ///   - title: The main title text to display.
+    ///   - additionalInformation: Optional text to display after the title.
+    ///   - tooltipContent: An optional view to display when the tooltip icon is tapped.
     ///   - text: Binding to the text content.
     ///   - placeholder: Text to display when the text area is empty.
     ///   - style: The style of the text area. Options are `.default`, `.disabled`, `.error`, and `.readOnly`.
-    ///   - helpText: Optional `Warp.HelpText` to display below the text area.
+    ///   - helpText: Optional `String` to display below the text area.
     ///   - minHeight: Optional minimum height for the text area. Defaults to `88`.
     public struct TextArea: View {
         
@@ -40,8 +42,14 @@ extension Warp {
         /// Binding to the text content.
         @Binding private var text: String
 
-        /// An optional `Warp.Label` to display above the text area.
-        private let label: Warp.Label?
+        /// The main title text to display.
+        private let title: String
+
+        /// Optional text to display after the title.
+        private let additionalInformation: String?
+
+        /// An optional view to display when the tooltip icon is tapped.
+        private let tooltipContent: AnyView?
 
         /// Text to display when the text area is empty.
         private let placeholder: String
@@ -49,8 +57,8 @@ extension Warp {
         /// The style of the text area.
         private let style: Warp.TextAreaStyle
 
-        /// Optional `Warp.HelpText` to display below the text area.
-        private let helpText: Warp.HelpText?
+        /// Optional `String` to display below the text area.
+        private let helpText: String?
         
         /// The minimum height of the text area.
         private let minHeight: CGFloat
@@ -60,21 +68,27 @@ extension Warp {
         /// Creates a new `TextArea` instance.
         ///
         /// - Parameters:
-        ///   - label: An optional `Warp.Label` to display above the text area.
+        ///   - title: The main title text to display.
+        ///   - additionalInformation: Optional text to display after the title.
+        ///   - tooltipContent: An optional view to display when the tooltip icon is tapped.
         ///   - text: Binding to the text content.
         ///   - placeholder: Text to display when the text area is empty.
         ///   - style: The style of the text area. Defaults to `.default`.
-        ///   - helpText: Optional `Warp.HelpText` to display below the text area.
+        ///   - helpText: Optional `String` to display below the text area.
         ///   - minHeight: Optional minimum height for the text area. Defaults to `88`.
         public init(
-            label: Warp.Label? = nil,
+            title: String = "",
+            additionalInformation: String? = nil,
+            tooltipContent: AnyView? = nil,
             text: Binding<String>,
-            placeholder: String,
+            placeholder: String = "",
             style: Warp.TextAreaStyle = .default,
-            helpText: Warp.HelpText? = nil,
+            helpText: String? = nil,
             minHeight: CGFloat = 88
         ) {
-            self.label = label
+            self.title = title
+            self.additionalInformation = additionalInformation
+            self.tooltipContent = tooltipContent
             self._text = text
             self.placeholder = placeholder
             self.style = style
@@ -86,15 +100,28 @@ extension Warp {
 
         public var body: some View {
             VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
-                if let label = label {
-                    label
+                if !title.isEmpty {
+                    Warp.Label(title: title, additionalInformation: additionalInformation, tooltipContent: tooltipContent)
                 }
                 
                 textAreaView
 
                 if let helpText = helpText {
-                    helpText
+                    Warp.HelpText(text: helpText, style: helpTextStyle())
                 }
+            }
+        }
+
+        private func helpTextStyle() -> Warp.HelpTextStyle {
+            switch style {
+            case .default:
+                return .default
+            case .disabled:
+                return .disabled
+            case .error:
+                return .error
+            case .readOnly:
+                return .default
             }
         }
 
@@ -221,47 +248,45 @@ private extension View {
 #Preview {
     VStack(spacing: 30) {
         Warp.TextArea(
-            label: Warp.Label(
-                title: "Label",
-                additionalInformation: "Optional",
-                showTooltipImage: true,
-                tooltipContent: AnyView(
-                    Warp.Tooltip(title: "It's an optional field", arrowEdge: .leading)
-                )
+            title: "Label",
+            additionalInformation: "Optional",
+            tooltipContent: AnyView(
+                Warp.Tooltip(title: "It's an optional field", arrowEdge: .leading)
             ),
             text: .constant(""),
             placeholder: "Hint...",
             style: .default,
-            helpText: Warp.HelpText(text: "Help text", style: .error)
+            helpText: "Help text"
         )
 
         Divider()
 
         Warp.TextArea(
-            label: Warp.Label(title: "Label"),
+            title: "Label",
             text: .constant("Text"),
             placeholder: "Hint...",
             style: .disabled,
-            helpText: Warp.HelpText(text: "Help text", style: .default)
+            helpText: "Help text"
         )
         
         Divider()
 
         Warp.TextArea(
+            title: "",
             text: .constant(""),
             placeholder: "Hint...",
             style: .error,
-            helpText: Warp.HelpText(text: "Error occurred.", style: .error)
+            helpText: "Error occurred."
         )
         
         Divider()
 
         Warp.TextArea(
-            label: Warp.Label(title: "Label"),
+            title: "Label",
             text: .constant("Text"),
             placeholder: "Hint...",
             style: .readOnly,
-            helpText: Warp.HelpText(text: "Read-only field.", style: .default)
+            helpText: "Read-only field."
         )
     }
     .padding(Warp.Spacing.spacing200)

@@ -144,12 +144,8 @@ extension Warp {
         
         /// The icon displayed at the top left of the alert.
         private var toolTipIconView: some View {
-            Image(systemName: style.tooltipImageName)
-                .renderingMode(.template)
-                .frame(width: 16, height: 16)
+            Warp.IconView(style.tooltipIcon, size: .small)
                 .foregroundColor(style.getIconColor(from: colorProvider))
-                .accessibilityLabel(style.tooltipImageTitle)
-                .offset(y: 2)
         }
         
         /// The information view, which includes the title, subtitle, link, and buttons.
@@ -166,17 +162,23 @@ extension Warp {
         }
         
         /// The title text of the alert.
+        @ViewBuilder
         private var titleView: some View {
-            Warp.Text(title, style: .title4)
-                .foregroundColor(colorProvider.token.text)
-                .accessibilityAddTraits(.isHeader)
+            if !title.isEmpty {
+                Warp.Text(title, style: .title4)
+                    .foregroundColor(colorProvider.token.text)
+                    .accessibilityAddTraits(.isHeader)
+            }
         }
         
         /// The subtitle text of the alert.
+        @ViewBuilder
         private var subtitleView: some View {
-            Warp.Text(subtitle, style: .body)
-                .foregroundColor(colorProvider.token.text)
-                .accessibilityRemoveTraits(.isHeader)
+            if !subtitle.isEmpty {
+                Warp.Text(subtitle, style: .body)
+                    .foregroundColor(colorProvider.token.text)
+                    .accessibilityRemoveTraits(.isHeader)
+            }
         }
         
         /// A view that displays the optional link in the alert.
@@ -189,7 +191,7 @@ extension Warp {
                         HStack {
                             Warp.Text(
                                 linkProvider.title,
-                                style: .caption,
+                                style: .body,
                                 color: colorProvider.token.textLink
                             )
                             .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))

@@ -40,28 +40,25 @@ extension Warp {
         private let cornerRadius: Double
 
         /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider
+        private let colorProvider: ColorProvider = Warp.Color
 
         /**
          - Parameter size: Size of callout, default value is `.default`
          - Parameter type:  Type of callout, default is `.inline`
          - Parameter title: String to display in the `Callout`
          - Parameter arrowEdge: Edge where to draw the arrow, default value is `.top`
-         - Parameter colorProvider: ColorProvider used for styling the `Callout`, default value is read from `Config`
          */
         public init(
             size: CalloutSize = .default,
             type: CalloutType = .inline,
             title: String,
-            arrowEdge: Edge = .top,
-            colorProvider: ColorProvider = Warp.Color
+            arrowEdge: Edge = .top
         ) {
             self.size = size
             self.type = type
             self.title = title
             self.arrowEdge = arrowEdge
             self.cornerRadius = size.cornerRadius
-            self.colorProvider = colorProvider
         }
 
         public var body: some View {
@@ -81,7 +78,7 @@ extension Warp {
                     EmptyView()
                 case .popover(let onTapped):
                     if let onTapped = onTapped {
-                        Image("icon-close", bundle: .module)
+                        Warp.IconView(.close, size: .small)
                             .accessibilityAddTraits(.isButton) // Make it behave like a button for VoiceOver
                             .accessibilityAction {
                                 // VoiceOver double-tap handling
