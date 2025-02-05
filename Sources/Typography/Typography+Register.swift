@@ -30,13 +30,22 @@ extension Warp.Typography {
             throw Warp.FontRegistrationError.unableToFindFont(name: fontName)
         }
         
-        // Attempt to register the font with Core Text
-        var error: Unmanaged<CFError>?
-        let isSuccessful = CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, &error)
+        let isFontAlreadyRegistered = UIFont.familyNames.contains(where: { family in
+            UIFont.fontNames(forFamilyName: family).contains(fontName)
+        })
         
-        // If registration fails, throw an error
-        if !isSuccessful {
-            throw Warp.FontRegistrationError.unableToRegisterFont(error: error?.takeUnretainedValue())
+        // Register the font only if it has not been registered from before
+        guard isFontAlreadyRegistered == true else {
+            // Attempt to register the font with Core Text
+            var error: Unmanaged<CFError>?
+            let isSuccessful = CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, &error)
+            
+            // If registration fails, throw an error
+            if !isSuccessful {
+                throw Warp.FontRegistrationError.unableToRegisterFont(error: error?.takeUnretainedValue())
+            }
+
+            return
         }
     }
 }
