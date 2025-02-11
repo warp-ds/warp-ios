@@ -8,6 +8,7 @@ extension Warp {
     public enum Icon: String, CaseIterable, View {
         case activeAds
         case ads
+        case agricultureMachine
         case airCon
         case allWheelDrive
         case animalPaw
@@ -31,6 +32,7 @@ extension Warp {
         case bellFilled
         case bin
         case block
+        case boat
         case boatLength
         case bolt
         case bookmark
@@ -47,6 +49,7 @@ extension Warp {
         case camera
         case cancel
         case car
+        case carEngine
         case carKey
         case carService
         case charger
@@ -123,6 +126,7 @@ extension Warp {
         case image
         case info
         case instagram
+        case jetski
         case keys
         case krone
         case lamp
@@ -177,7 +181,10 @@ extension Warp {
         case propeller
         case question
         case refresh
+        case road
         case roomService
+        case rowingBoat
+        case ruler
         case sailing
         case sauna
         case scrollUp
@@ -191,6 +198,7 @@ extension Warp {
         case shoes
         case shoppingCart
         case shower
+        case singleCylinder
         case skyscraper
         case smileyGood
         case smileyHappy
@@ -237,6 +245,7 @@ extension Warp {
         case warning
         case warranty
         case waterPitcher
+        case weight
         case wheelchair
         case wifi
         case woods
@@ -284,6 +293,7 @@ extension Warp {
             switch self {
             case .activeAds: return Warp.Strings.iconActiveAds.localized
             case .ads: return Warp.Strings.iconAds.localized
+            case .agricultureMachine: return Warp.Strings.iconAgricultureMachine.localized
             case .airCon: return Warp.Strings.iconAirCon.localized
             case .allWheelDrive: return Warp.Strings.iconAllWheelDrive.localized
             case .animalPaw: return Warp.Strings.iconAnimalPaw.localized
@@ -307,6 +317,7 @@ extension Warp {
             case .bellFilled: return Warp.Strings.iconBellFilled.localized
             case .bin: return Warp.Strings.iconBin.localized
             case .block: return Warp.Strings.iconBlock.localized
+            case .boat: return Warp.Strings.iconBoat.localized
             case .boatLength: return Warp.Strings.iconBoatLength.localized
             case .bolt: return Warp.Strings.iconBolt.localized
             case .bookmark: return Warp.Strings.iconBookmark.localized
@@ -323,6 +334,7 @@ extension Warp {
             case .camera: return Warp.Strings.iconCamera.localized
             case .cancel: return Warp.Strings.iconCancel.localized
             case .car: return Warp.Strings.iconCar.localized
+            case .carEngine: return Warp.Strings.iconCarEngine.localized
             case .carKey: return Warp.Strings.iconCarKey.localized
             case .carService: return Warp.Strings.iconCarService.localized
             case .charger: return Warp.Strings.iconCharger.localized
@@ -399,6 +411,7 @@ extension Warp {
             case .image: return Warp.Strings.iconImage.localized
             case .info: return Warp.Strings.iconInfo.localized
             case .instagram: return Warp.Strings.iconInstagram.localized
+            case .jetski: return Warp.Strings.iconJetski.localized
             case .keys: return Warp.Strings.iconKeys.localized
             case .krone: return Warp.Strings.iconKrone.localized
             case .lamp: return Warp.Strings.iconLamp.localized
@@ -453,7 +466,10 @@ extension Warp {
             case .propeller: return Warp.Strings.iconPropeller.localized
             case .question: return Warp.Strings.iconQuestion.localized
             case .refresh: return Warp.Strings.iconRefresh.localized
+            case .road: return Warp.Strings.iconRoad.localized
             case .roomService: return Warp.Strings.iconRoomService.localized
+            case .rowingBoat: return Warp.Strings.iconRowingBoat.localized
+            case .ruler: return Warp.Strings.iconRuler.localized
             case .sailing: return Warp.Strings.iconSailing.localized
             case .sauna: return Warp.Strings.iconSauna.localized
             case .scrollUp: return Warp.Strings.iconScrollUp.localized
@@ -467,6 +483,7 @@ extension Warp {
             case .shoes: return Warp.Strings.iconShoes.localized
             case .shoppingCart: return Warp.Strings.iconShoppingCart.localized
             case .shower: return Warp.Strings.iconShower.localized
+            case .singleCylinder: return Warp.Strings.iconSingleCylinder.localized
             case .skyscraper: return Warp.Strings.iconSkyscraper.localized
             case .smileyGood: return Warp.Strings.iconSmileyGood.localized
             case .smileyHappy: return Warp.Strings.iconSmileyHappy.localized
@@ -513,6 +530,7 @@ extension Warp {
             case .warning: return Warp.Strings.iconWarning.localized
             case .warranty: return Warp.Strings.iconWarranty.localized
             case .waterPitcher: return Warp.Strings.iconWaterPitcher.localized
+            case .weight: return Warp.Strings.iconWeight.localized
             case .wheelchair: return Warp.Strings.iconWheelchair.localized
             case .wifi: return Warp.Strings.iconWifi.localized
             case .woods: return Warp.Strings.iconWoods.localized
