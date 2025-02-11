@@ -1,5 +1,9 @@
 name: Crowdin Synchronisation
 
+permissions:
+  contents: write
+  pull-requests: write
+  
 on:
   push:
     branches: [next]
@@ -10,12 +14,38 @@ on:
     - cron: "0 8-17/2 * * 1-5" # At minute 0 past every 2nd hour from 8 through 17 on every day-of-week from Monday through Friday (https://crontab.guru/#0_8-17/2_*_*_1-5)
   # Run a GitHub Action on demand, without having to push to next or wait for a scheduled run
   workflow_dispatch:
+      inputs:
+      download_sources:
+        type: boolean
+        description: "Enable downloading of source files (uploading of sources will then be disabled)"
+        default: false
+      upload_translations_nb:
+        type: boolean
+        description: "Upload translations for Norwegian"
+        default: false
+      upload_translations_da:
+        type: boolean
+        description: "Upload translations for Danish"
+        default: false
+      upload_translations_sv:
+        type: boolean
+        description: "Upload translations for Swedish"
+        default: false
+      upload_translations_fi:
+        type: boolean
+        description: "Upload translations for Finnish"
+        default: false
   # Forward comments in .po files from Crowdin PRs to the translator in Crowdin
   pull_request_review_comment:
 
 jobs:
   synchronize-with-crowdin:
-    uses: warp-ds/reusable-workflows/.github/workflows/crowdin-sync.yml@main
+    uses: warp-ds/reusable-workflows/.github/workflows/crowdin-sync.yml@v2
     secrets: inherit
     with:
+      download_sources: ${{ inputs.download_sources || false }}
+      upload_translations_nb: ${{ inputs.upload_translations_nb || false }}
+      upload_translations_da: ${{ inputs.upload_translations_da || false }}
+      upload_translations_sv: ${{ inputs.upload_translations_sv || false }}
+      upload_translations_fi: ${{ inputs.upload_translations_fi || false }}
       pull_request_reviewers: "mohsen-schibsted"
