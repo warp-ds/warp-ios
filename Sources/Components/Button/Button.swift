@@ -37,13 +37,19 @@ extension Warp {
         public static func == (lhs: Button, rhs: Button) -> Bool {
             lhs.title == rhs.title &&
             lhs.type == rhs.type &&
-            lhs.size == rhs.size
+            lhs.size == rhs.size &&
+            lhs.isEnabled == rhs.isEnabled &&
+            lhs.isLoading == rhs.isLoading &&
+            lhs.fullWidth == rhs.fullWidth
         }
 
         public func hash(into hasher: inout Hasher) {
             hasher.combine(title)
             hasher.combine(type)
             hasher.combine(size)
+            hasher.combine(isEnabled)
+            hasher.combine(isLoading)
+            hasher.combine(fullWidth)
         }
 
         public init(
