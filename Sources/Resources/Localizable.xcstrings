@@ -541,18 +541,6 @@
         }
       }
     },
-    "icon.title.agricultureMachine" : {
-      "comment" : "A11y title for agriculture machine icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agriculture machine"
-          }
-        }
-      }
-    },
     "icon.title.airCon" : {
       "comment" : "A11y title for air con icon",
       "extractionState" : "manual",
@@ -1381,18 +1369,6 @@
         }
       }
     },
-    "icon.title.boat" : {
-      "comment" : "A11y title for boat icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Boat"
-          }
-        }
-      }
-    },
     "icon.title.boatLength" : {
       "comment" : "A11y title for boat length icon",
       "extractionState" : "manual",
@@ -1965,18 +1941,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bil"
-          }
-        }
-      }
-    },
-    "icon.title.carEngine" : {
-      "comment" : "A11y title for car engine icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Car engine"
           }
         }
       }
@@ -4717,18 +4681,6 @@
         }
       }
     },
-    "icon.title.jetski" : {
-      "comment" : "A11y title for jetski icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jetski"
-          }
-        }
-      }
-    },
     "icon.title.keys" : {
       "comment" : "A11y title for keys icon",
       "extractionState" : "manual",
@@ -6673,18 +6625,6 @@
         }
       }
     },
-    "icon.title.road" : {
-      "comment" : "A11y title for road icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Road"
-          }
-        }
-      }
-    },
     "icon.title.roomService" : {
       "comment" : "A11y title for room service icon",
       "extractionState" : "manual",
@@ -6717,30 +6657,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hand i handske och en serveringsbricka med lock"
-          }
-        }
-      }
-    },
-    "icon.title.rowingBoat" : {
-      "comment" : "A11y title for rowing boat icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rowing boat"
-          }
-        }
-      }
-    },
-    "icon.title.ruler" : {
-      "comment" : "A11y title for ruler icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ruler"
           }
         }
       }
@@ -6788,7 +6704,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Talo ja lämpöaaltoja"
+            "value" : "Hus med hedebølger"
           }
         },
         "en" : {
@@ -6931,31 +6847,31 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Flysæde"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seat"
+            "value" : "Airplane seat"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Lentokoneen istuin"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Flysete"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Flygplanssäte"
           }
         }
@@ -7209,18 +7125,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rinnande duschmunstycke"
-          }
-        }
-      }
-    },
-    "icon.title.singleCylinder" : {
-      "comment" : "A11y title for single cylinder icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Single cylinder"
           }
         }
       }
@@ -8877,18 +8781,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vattenkanna"
-          }
-        }
-      }
-    },
-    "icon.title.weight" : {
-      "comment" : "A11y title for weight icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Weight"
           }
         }
       }
