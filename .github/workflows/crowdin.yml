@@ -48,4 +48,4 @@ jobs:
       upload_translations_da: ${{ inputs.upload_translations_da || false }}
       upload_translations_sv: ${{ inputs.upload_translations_sv || false }}
       upload_translations_fi: ${{ inputs.upload_translations_fi || false }}
-      pull_request_reviewers: "mohsen-schibsted"
+      pull_request_reviewers: "warp-ios-contributors"
