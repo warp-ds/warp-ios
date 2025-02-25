@@ -18,4 +18,4 @@ jobs:
     uses: warp-ds/reusable-workflows/.github/workflows/crowdin-sync.yml@main
     secrets: inherit
     with:
-      pull_request_reviewers: "mohsen-schibsted"
+      pull_request_reviewers: "warp-ios-contributors"
