@@ -2017,6 +2017,30 @@
         }
       }
     },
+    "icon.title.carLeft" : {
+      "comment" : "A11y title for car left icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A car facing to the left"
+          }
+        }
+      }
+    },
+    "icon.title.carRight" : {
+      "comment" : "A11y title for car right icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A car facing to the right"
+          }
+        }
+      }
+    },
     "icon.title.carService" : {
       "comment" : "A11y title for car service icon",
       "extractionState" : "manual",
@@ -6093,6 +6117,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kartnål med skugga under"
+          }
+        }
+      }
+    },
+    "icon.title.planeLand" : {
+      "comment" : "A11y title for plane land icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A plane landing"
+          }
+        }
+      }
+    },
+    "icon.title.planeTakeOff" : {
+      "comment" : "A11y title for plane take off icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A plane taking off"
           }
         }
       }

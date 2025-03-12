@@ -51,6 +51,8 @@ extension Warp {
         case car
         case carEngine
         case carKey
+        case carLeft
+        case carRight
         case carService
         case charger
         case charter
@@ -165,6 +167,8 @@ extension Warp {
         case pictureStack
         case pinMarker
         case pinRound
+        case planeLand
+        case planeTakeOff
         case planeTicket
         case play
         case playhouse
@@ -336,6 +340,8 @@ extension Warp {
             case .car: return Warp.Strings.iconCar.localized
             case .carEngine: return Warp.Strings.iconCarEngine.localized
             case .carKey: return Warp.Strings.iconCarKey.localized
+            case .carLeft: return Warp.Strings.iconCarLeft.localized
+            case .carRight: return Warp.Strings.iconCarRight.localized
             case .carService: return Warp.Strings.iconCarService.localized
             case .charger: return Warp.Strings.iconCharger.localized
             case .charter: return Warp.Strings.iconCharter.localized
@@ -450,6 +456,8 @@ extension Warp {
             case .pictureStack: return Warp.Strings.iconPictureStack.localized
             case .pinMarker: return Warp.Strings.iconPinMarker.localized
             case .pinRound: return Warp.Strings.iconPinRound.localized
+            case .planeLand: return Warp.Strings.iconPlaneLand.localized
+            case .planeTakeOff: return Warp.Strings.iconPlaneTakeOff.localized
             case .planeTicket: return Warp.Strings.iconPlaneTicket.localized
             case .play: return Warp.Strings.iconPlay.localized
             case .playhouse: return Warp.Strings.iconPlayhouse.localized

@@ -135,7 +135,6 @@ extension Warp {
                 
                 buttonsView
                     .padding(.top, 4)
-                    .padding(.bottom, 8)
             }
         }
         
