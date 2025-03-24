@@ -59,8 +59,7 @@ extension Warp {
                 }
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, Warp.Spacing.spacing200)
-            .padding(.horizontal, style == .default ? 0 : Warp.Spacing.spacing200)
+            .padding(style == .default ? 0 : Warp.Spacing.spacing200)
             .background(style.backgroundColor(using: colorProvider))
             .cornerRadius(style.cornerRadius)
         }
