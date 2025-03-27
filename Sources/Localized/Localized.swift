@@ -83,6 +83,7 @@ extension Warp {
         case iconDotsVertical = "icon.title.dotsVertical"
         case iconDoubleBed = "icon.title.doubleBed"
         case iconDownload = "icon.title.download"
+        case iconDragDots = "icon.title.dragDots"
         case iconDrawer = "icon.title.drawer"
         case iconDrink = "icon.title.drink"
         case iconEdit = "icon.title.edit"

@@ -3265,6 +3265,18 @@
         }
       }
     },
+    "icon.title.dragDots" : {
+      "comment" : "A11y title for dragDots icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Six dots bundled together"
+          }
+        }
+      }
+    },
     "icon.title.drawer" : {
       "comment" : "A11y title for drawer icon",
       "extractionState" : "manual",
