@@ -87,6 +87,7 @@ extension Warp {
         case dotsVertical
         case doubleBed
         case download
+        case dragDots
         case drawer
         case drink
         case edit
@@ -376,6 +377,7 @@ extension Warp {
             case .dotsVertical: return Warp.Strings.iconDotsVertical.localized
             case .doubleBed: return Warp.Strings.iconDoubleBed.localized
             case .download: return Warp.Strings.iconDownload.localized
+            case .dragDots: return Warp.Strings.iconDragDots.localized
             case .drawer: return Warp.Strings.iconDrawer.localized
             case .drink: return Warp.Strings.iconDrink.localized
             case .edit: return Warp.Strings.iconEdit.localized
