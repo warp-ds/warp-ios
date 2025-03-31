@@ -17,6 +17,8 @@ struct BoxView: View {
 
     @State private var boxSubtitle = "Use this variant to call extra attention to useful, contextual information."
 
+    @State private var boxbadge: Warp.BadgeVariant? = nil
+
     @State private var hasLink = false
 
     @State private var hasButton = false
@@ -49,6 +51,18 @@ struct BoxView: View {
                         }
                         Divider()
                         createToggle(binding: $shouldShowIcon, text: "Show icon")
+                        Divider()
+                        VStack(alignment: .leading) {
+                            Warp.Text("Select a Badge Variant", style: .bodyStrong)
+                            // Picker to choose a badge
+                            Picker("Badge Variant", selection: $boxbadge) {
+                                ForEach(badgeOptions, id: \.self) { option in
+                                    Text(option?.rawValue ?? "none")
+                                        .tag(option)
+                                }
+                            }
+                            .pickerStyle(WheelPickerStyle()) // Wheel picker style for better UX
+                        }
                         Divider()
                         HStack {
                             Warp.Text("Subtitle", style: .bodyStrong)
@@ -122,11 +136,17 @@ struct BoxView: View {
         return Warp.Box(
             style: style,
             title: title,
+            badge: boxbadge == nil ? nil : Warp.Badge(text: "Badge", variant: boxbadge ?? .info),
             shouldShowToolTipImage: shouldShowToolTipImage,
             subtitle: boxSubtitle,
             link: linkProvider,
             button: buttonProvider
         )
+    }
+
+    // Computed list with "None" first, then all badge variants
+    private var badgeOptions: [Warp.BadgeVariant?] {
+        [nil] + Warp.BadgeVariant.allCases
     }
 }
 
