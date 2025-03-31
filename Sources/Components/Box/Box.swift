@@ -17,7 +17,10 @@ extension Warp {
         
         /// Text that will be shown after title in the middle of the box.
         let subtitle: String
-        
+
+        /// Optional badge that will be beside the title.
+        let badge: Badge?
+
         public typealias ButtonConstructor = (title: String, action: () -> Void)
         
         /// The optional title and an action for creating a link view below subtitle.
@@ -34,6 +37,7 @@ extension Warp {
         public static func == (lhs: Box, rhs: Box) -> Bool {
             let styleComparison = lhs.style == rhs.style
             lazy var titleComparison = lhs.title == rhs.title
+            lazy var badgeComparison = lhs.badge == rhs.badge
             lazy var iconComparison = lhs.shouldShowToolTipImage == rhs.shouldShowToolTipImage
             lazy var subtitleComparison = lhs.subtitle == rhs.subtitle
             lazy var linkProviderComparison = lhs.linkProvider?.title == rhs.linkProvider?.title
@@ -41,6 +45,7 @@ extension Warp {
             
             return styleComparison &&
             titleComparison &&
+            badgeComparison &&
             iconComparison &&
             subtitleComparison &&
             linkProviderComparison &&
@@ -56,6 +61,7 @@ extension Warp {
         public init(
             style: Warp.BoxStyle,
             title: String?,
+            badge: Badge? = nil,
             shouldShowToolTipImage: Bool = true,
             subtitle: String,
             link: ButtonConstructor? = nil,
@@ -63,6 +69,7 @@ extension Warp {
         ) {
             self.style = style
             self.title = title
+            self.badge = badge
             self.shouldShowToolTipImage = shouldShowToolTipImage
             self.subtitle = subtitle
             self.linkProvider = link
@@ -140,10 +147,15 @@ extension Warp {
         
         @ViewBuilder
         private var titleView: some View {
-            if let title, !title.isEmpty {
-                Text(title, style: .title3)
-                    .foregroundColor(colorProvider.token.text)
-                    .accessibilityAddTraits(.isHeader)
+            HStack(spacing: Spacing.spacing200) {
+                if let title, !title.isEmpty {
+                    Text(title, style: .title3)
+                        .foregroundColor(colorProvider.token.text)
+                        .accessibilityAddTraits(.isHeader)
+                }
+                if let badge {
+                    badge
+                }
             }
         }
         
