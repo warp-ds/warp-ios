@@ -68,6 +68,9 @@ extension Warp {
         /// An optional `Warp.Icon` displayed on the right side of the text field.
         private let rightIcon: Warp.Icon?
 
+        /// An optional action for right icon
+        private let rightIconAction: () -> Void?
+
         /// The style of the text field.
         private let style: Warp.TextFieldStyle
 
@@ -100,6 +103,7 @@ extension Warp {
             placeholder: String = "",
             suffix: String? = nil,
             rightIcon: Warp.Icon? = nil,
+            rightIconAction: @escaping () -> Void? = { nil },
             style: Warp.TextFieldStyle = .default,
             helpText: String? = nil
         ) {
@@ -112,6 +116,7 @@ extension Warp {
             self.placeholder = placeholder
             self.suffix = suffix
             self.rightIcon = rightIcon
+            self.rightIconAction = rightIconAction
             self.style = style
             self.helpText = helpText
         }
@@ -185,8 +190,12 @@ extension Warp {
                         .padding(.trailing, Warp.Spacing.spacing100)
                 }
                 if let rightIcon {
-                    Warp.IconView(rightIcon, size: .small)
-                        .padding(.trailing, Warp.Spacing.spacing100)
+                    SwiftUI.Button {
+                        rightIconAction()
+                    } label: {
+                        Warp.IconView(rightIcon, size: .small)
+                            .padding(.trailing, Warp.Spacing.spacing100)
+                    }
                 }
             }
             .modifier(BorderModifier(isFocused: isFocused, style: style, cornerRadius: cornerRadius, colorProvider: colorProvider, borderColor: borderColor))

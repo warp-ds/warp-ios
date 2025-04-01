@@ -29,6 +29,7 @@ struct TextFieldView: View {
                     placeholder: placeholder,
                     suffix: showSuffix ? "kr" : nil,
                     rightIcon: showRightIcon ? .close : nil,
+                    rightIconAction: { text = "" },
                     style: textFieldStyle,
                     helpText: helpTextValue
                 )
