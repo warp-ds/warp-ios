@@ -3,14 +3,14 @@ import SwiftUI
 /// A preview modifier that sets the Warp theme in the preview.
 ///
 /// Usage: `#Preview(traits: .themeFinn)`
-public struct ThemePreviewModifier: PreviewModifier {
+struct ThemePreviewModifier: PreviewModifier {
     init(theme: Warp.Brand) {
         Warp.Theme = theme
     }
 
-    public static func makeSharedContext() async throws -> Void {}
+    static func makeSharedContext() async throws -> Void {}
 
-    public func body(content: Content, context: Void) -> some View {
+    func body(content: Content, context: Void) -> some View {
         content
     }
  }
