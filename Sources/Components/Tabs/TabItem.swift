@@ -24,19 +24,18 @@ extension Warp {
         private let colorProvider: ColorProvider = Warp.Color
         
         public var body: some View {
-            VStack {
-                HStack(alignment: .center, spacing: Warp.Spacing.spacing100) {
-                    if let icon = icon {
-                        Warp.IconView(icon, size: .small)
-                            .foregroundColor(isSelected ? colorProvider.token.textLink : colorProvider.token.textSubtle)
-                    }
-                    SwiftUI.Text(title)
-                        .font(from: .bodyStrong)
+            HStack(alignment: .center, spacing: Warp.Spacing.spacing100) {
+                if let icon = icon {
+                    Warp.IconView(icon, size: .small)
                         .foregroundColor(isSelected ? colorProvider.token.textLink : colorProvider.token.textSubtle)
-                        .lineLimit(1)
                 }
-                .padding(.horizontal, Warp.Spacing.spacing200)
+                SwiftUI.Text(title)
+                    .font(from: .bodyStrong)
+                    .foregroundColor(isSelected ? colorProvider.token.textLink : colorProvider.token.textSubtle)
+                    .lineLimit(1)
             }
+            .padding(.horizontal, Warp.Spacing.spacing200)
+            .contentShape(Rectangle())
         }
     }
 }
