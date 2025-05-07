@@ -2,8 +2,9 @@ name: Crowdin Synchronisation
 
 on:
   push:
-    branches: [main]
-  paths:
+    branches: 
+      - main
+    paths:
       - "Sources/Resources/*.xcstrings"
       - "crowdin.yml"
   schedule:
