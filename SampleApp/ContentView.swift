@@ -30,6 +30,7 @@ struct ContentView: View {
                     row("DatavizColors", destination: DatavizSampleColorsView())
                     row("DatavizTokens", destination: DatavizTokensView())
                     row("Typography", destination: TypographyView())
+                    row("TypographyUI", destination: TypographyUIView())
                     row("Icons", destination: IconsView())
                     row("Taxonomy Icons", destination: TaxonomyIconsView())
                     row("Brand Icons", destination: BrandIconsView())

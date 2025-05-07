@@ -181,6 +181,10 @@
 		82FE9FDD2CC7B216002906F9 /* BrandIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */; };
 		82FE9FDE2CC7B216002906F9 /* BrandIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */; };
 		82FE9FDF2CC7B216002906F9 /* BrandIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */; };
+		9ABE19EF2DCB55DC00AD37CA /* TypographyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */; };
+		9ABE19F02DCB55DC00AD37CA /* TypographyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */; };
+		9ABE19F12DCB55DC00AD37CA /* TypographyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */; };
+		9ABE19F22DCB55DC00AD37CA /* TypographyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */; };
 		B238A26F2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
 		B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
 		B286EDFC2C33EACF00D25DCC /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
@@ -248,6 +252,7 @@
 		82F7B0502D0AF2690015D48F /* DatavizTokensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatavizTokensView.swift; sourceTree = "<group>"; };
 		82F7B0552D0B00140015D48F /* ComponentColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentColorsView.swift; sourceTree = "<group>"; };
 		82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandIconsView.swift; sourceTree = "<group>"; };
+		9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyUIView.swift; sourceTree = "<group>"; };
 		B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableView.swift; sourceTree = "<group>"; };
 		B2922A6D2B68E7F200A3E9F4 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		B295AC392C22F93D004C77BB /* StepIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepIndicatorView.swift; sourceTree = "<group>"; };
@@ -415,6 +420,7 @@
 				82F7B04B2D0AF1B80015D48F /* DatavizColorsView.swift */,
 				82F7B0502D0AF2690015D48F /* DatavizTokensView.swift */,
 				349586632B0EAD2D00A14570 /* TypographyView.swift */,
+				9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */,
 				828095372C9C3AE700472CB5 /* IconsView.swift */,
 				825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */,
 				82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */,
@@ -663,6 +669,7 @@
 				2E1ADF582C2561A700DFEE06 /* ShadowView.swift in Sources */,
 				508AB09B2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0562D0B00150015D48F /* ComponentColorsView.swift in Sources */,
+				9ABE19F02DCB55DC00AD37CA /* TypographyUIView.swift in Sources */,
 				82F7B0542D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */,
 				B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
@@ -710,6 +717,7 @@
 				820A864B2C6DFAAE006D35A0 /* TooltipView.swift in Sources */,
 				508AB09A2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0572D0B00150015D48F /* ComponentColorsView.swift in Sources */,
+				9ABE19F12DCB55DC00AD37CA /* TypographyUIView.swift in Sources */,
 				82F7B0522D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				820A85F92C6CEB0C006D35A0 /* AlertView.swift in Sources */,
 				820A85FA2C6CEB0C006D35A0 /* ExpandableView.swift in Sources */,
@@ -757,6 +765,7 @@
 				820A86352C6D4388006D35A0 /* ShadowView.swift in Sources */,
 				508AB09C2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0592D0B00150015D48F /* ComponentColorsView.swift in Sources */,
+				9ABE19F22DCB55DC00AD37CA /* TypographyUIView.swift in Sources */,
 				82F7B0512D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				820A86362C6D4388006D35A0 /* AlertView.swift in Sources */,
 				820A86372C6D4388006D35A0 /* BoxView.swift in Sources */,
@@ -804,6 +813,7 @@
 				82838CF22B62B35400E3C495 /* PillView.swift in Sources */,
 				508AB09D2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0582D0B00150015D48F /* ComponentColorsView.swift in Sources */,
+				9ABE19EF2DCB55DC00AD37CA /* TypographyUIView.swift in Sources */,
 				82F7B0532D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */,
 				349D0E142B62D67E00AAB421 /* AlertView.swift in Sources */,
