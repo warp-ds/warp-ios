@@ -2,7 +2,10 @@ name: Crowdin Synchronisation
 
 on:
   push:
-    branches: [next]
+    branches: [main]
+  paths:
+      - "Sources/Resources/*.xcstrings"
+      - "crowdin.yml"
   schedule:
     # We need a schedule to detect translations from Crowdin. Every 2nd hour from 8-17
     # on weekdays is a proposed starting point. You may change the minute counter to
