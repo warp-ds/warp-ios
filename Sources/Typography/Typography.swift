@@ -116,24 +116,12 @@ extension Warp.Typography {
     
     /// Creates a custom `UIFont` from a given `FontStrategyInterface`.
     private func createUIFont(from fontStrategy: FontStrategyInterface) -> UIFont {
+        let style = fontStrategy.style.uiFontTextStyle
         if let font = UIFont(name: fontStrategy.font.name, size: fontStrategy.size) {
-            return font
+            // Need to explicitly scale a custom UIFont
+            let fontMetrics = UIFontMetrics(forTextStyle: style)
+            return fontMetrics.scaledFont(for: font)
         } else {
-            let style: UIFont.TextStyle
-            switch fontStrategy.style {
-            case .largeTitle: style = .largeTitle
-            case .title: style = .title1
-            case .title2: style = .title2
-            case .title3: style = .title3
-            case .headline: style = .headline
-            case .subheadline: style = .subheadline
-            case .callout: style = .callout
-            case .caption: style = .caption1
-            case .caption2: style = .caption2
-            case .footnote: style = .footnote
-            case .body: style = .body
-            @unknown default: style = .body
-            }
             return UIFont.preferredFont(forTextStyle: style)
         }
     }
@@ -198,5 +186,26 @@ extension Warp.Typography {
         case .blocket:
             return createUIFont(from: BlocketRegularFont(size: size, style: fontStyle))
         }
+    }
+}
+
+private extension Font.TextStyle {
+    var uiFontTextStyle: UIFont.TextStyle {
+        let style: UIFont.TextStyle
+        switch self {
+        case .largeTitle: style = .largeTitle
+        case .title: style = .title1
+        case .title2: style = .title2
+        case .title3: style = .title3
+        case .headline: style = .headline
+        case .subheadline: style = .subheadline
+        case .callout: style = .callout
+        case .caption: style = .caption1
+        case .caption2: style = .caption2
+        case .footnote: style = .footnote
+        case .body: style = .body
+        @unknown default: style = .body
+        }
+        return style
     }
 }
