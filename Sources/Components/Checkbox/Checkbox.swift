@@ -15,8 +15,8 @@ extension Warp {
     public struct Checkbox: View {
         /// A `Binding` value indicating whether the checkbox button is selected.
         @Binding var isSelected: Bool
-        /// The text label for the checkbox.
-        var label: String
+        /// The optional text label for the checkbox.
+        var label: String?
         /// The style the checkbox can have (default, error, disabled).
         var style: CheckboxStyle
         /// An optional view that will be displayed beside the label.
@@ -35,7 +35,7 @@ extension Warp {
         ///   - extraContent: An optional view that will be displayed beside the label.
         ///   - action: A closure that is executed when the checkbox is tapped.
         public init(isSelected: Binding<Bool>,
-                    label: String,
+                    label: String?,
                     style: CheckboxStyle = .default,
                     extraContent: AnyView? = nil,
                     action: @escaping () -> Void) {
@@ -55,10 +55,10 @@ extension Warp {
                     .frame(width: 20, height: 20)
                     .background(backgroundColor.cornerRadius(4))
                     .animation(.interpolatingSpring())
-                
-                contentStack
-                
-                Spacer()
+
+                if label != nil || extraContent != nil {
+                    contentStack
+                }
             }
             .onTapGesture {
                 if style != .disabled {
@@ -70,9 +70,11 @@ extension Warp {
         @ViewBuilder
         private var contentStack: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
-                SwiftUI.Text(label)
-                    .font(from: .body)
-                    .foregroundColor(textColor)
+                if let label {
+                    SwiftUI.Text(label)
+                        .font(from: .body)
+                        .foregroundColor(textColor)
+                }
                 if let extraContent = extraContent {
                     extraContent
                 }
@@ -105,7 +107,7 @@ extension Warp {
             case .default, .error:
                 return colorProvider.token.background
             case .disabled:
-                return colorProvider.token.backgroundDisabledSubtle
+                return colorProvider.token.textInverted
             }
         }
         
