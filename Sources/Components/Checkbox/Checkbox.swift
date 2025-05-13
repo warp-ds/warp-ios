@@ -35,7 +35,7 @@ extension Warp {
         ///   - extraContent: An optional view that will be displayed beside the label.
         ///   - action: A closure that is executed when the checkbox is tapped.
         public init(isSelected: Binding<Bool>,
-                    label: String?,
+                    label: String? = nil,
                     style: CheckboxStyle = .default,
                     extraContent: AnyView? = nil,
                     action: @escaping () -> Void) {
