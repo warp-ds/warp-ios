@@ -35,7 +35,7 @@ extension Warp {
         ///   - extraContent: An optional view that will be displayed beside the label.
         ///   - action: A closure that is executed when the checkbox is tapped.
         public init(isSelected: Binding<Bool>,
-                    label: String? = nil,
+                    label: String,
                     style: CheckboxStyle = .default,
                     extraContent: AnyView? = nil,
                     action: @escaping () -> Void) {
@@ -45,7 +45,21 @@ extension Warp {
             self.extraContent = extraContent
             self.action = action
         }
-        
+
+        /// Initializes a new `Checkbox` without title and extra content.
+        ///
+        /// - Parameters:
+        ///   - isSelected: A `Binding` value indicating whether the checkbox button is selected.
+        ///   - style: The style the checkbox can have (default, error, disabled).
+        public init(isSelected: Binding<Bool>,
+                    style: CheckboxStyle = .default) {
+            self._isSelected = isSelected
+            self.label = nil
+            self.style = style
+            self.extraContent = nil
+            self.action = { }
+        }
+
         public var body: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
                 Image(iconName, bundle: .module)
