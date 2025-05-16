@@ -8,8 +8,10 @@ extension Warp {
     enum Font: CaseIterable {
         // MARK: - Finn Fonts
         case finnLight
+        case finnLightItalic
         case finnMedium
-        
+        case finnMediumItalic
+
         // MARK: - Tori Fonts
         case toriBold
         case toriBoldItalic
@@ -41,7 +43,9 @@ extension Warp {
         var fileName: String {
             switch self {
             case .finnLight: return "finntype_light"
+            case .finnLightItalic: return "finntype_light_italic"
             case .finnMedium: return "finntype_medium"
+            case .finnMediumItalic: return "finntype_medium_italic"
             case .toriBold: return "torisans_bold"
             case .toriBoldItalic: return "torisans_bolditalic"
             case .toriItalic: return "torisans_italic"
@@ -70,7 +74,9 @@ extension Warp {
         var name: String {
             switch self {
             case .finnLight: return "FINNType-Light"
+            case .finnLightItalic: return "FINNType-LightItalic"
             case .finnMedium: return "FINNType-Medium"
+            case .finnMediumItalic: return "FINNType-MediumItalic"
             case .toriBold: return "ToriSans-Bold"
             case .toriBoldItalic: return "ToriSans-BoldItalic"
             case .toriItalic: return "ToriSans-Italic"
@@ -99,7 +105,7 @@ extension Warp {
         static var fontForTheme: [Font] {
             switch Theme {
             case .finn:
-                return [.finnLight, .finnMedium]
+                return [.finnLight, .finnLightItalic, .finnMedium, .finnMediumItalic]
             case .tori:
                 return [.toriBold, .toriBoldItalic, .toriItalic, .toriMedium, .toriMediumItalic, .toriRegular]
             case .dba:
