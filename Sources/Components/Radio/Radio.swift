@@ -16,7 +16,7 @@ extension Warp {
         /// A Boolean value indicating whether the radio button is selected.
         var isSelected: Bool
         /// The text label for the radio button.
-        var label: String
+        var label: String?
         /// The style the radio button can have (default, error, disabled).
         var style: RadioStyle
         /// An optional view that will be displayed beside the label.
@@ -30,15 +30,15 @@ extension Warp {
         ///
         /// - Parameters:
         ///   - isSelected: A Boolean value indicating whether the radio button is selected.
-        ///   - label: The text label for the radio button.
+        ///   - label: An optional text label for the radio button.
         ///   - style: The style the radio button can have (default, error, disabled).
         ///   - extraContent: An optional view that will be displayed beside or below the label.
-        ///   - action: A closure that is executed when the radio button is tapped.
+        ///   - action: An optional closure that is executed when the radio button is tapped.
         public init(isSelected: Bool,
-                    label: String,
+                    label: String? = nil,
                     style: RadioStyle = .default,
                     extraContent: AnyView? = nil,
-                    action: @escaping () -> Void) {
+                    action: @escaping () -> Void = { }) {
             self.isSelected = isSelected
             self.label = label
             self.style = style
@@ -54,9 +54,9 @@ extension Warp {
                     .frame(width: 20, height: 20)
                     .animation(.interpolatingSpring)
                 
-                contentStack
-                
-                Spacer()
+                if label != nil || extraContent != nil {
+                    contentStack
+                }
             }
             .onTapGesture {
                 if style != .disabled {
@@ -68,9 +68,11 @@ extension Warp {
         @ViewBuilder
         private var contentStack: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
-                SwiftUI.Text(label)
-                    .font(from: .body)
-                    .foregroundColor(textColor)
+                if let label {
+                    SwiftUI.Text(label)
+                        .font(from: .body)
+                        .foregroundColor(textColor)
+                }
                 if let extraContent = extraContent {
                     extraContent
                 }
