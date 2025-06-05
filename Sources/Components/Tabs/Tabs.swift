@@ -65,17 +65,19 @@ extension Warp {
                     let tab = tabs[index]
                     VStack(spacing: 8) {
                         // Display tab content
-                        TabItemView(
-                            title: tab.title,
-                            icon: tab.icon,
-                            isSelected: index == selectedIndex
-                        )
-                        .onTapGesture {
+                        SwiftUI.Button {
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 selectedIndex = index
                                 scrollProxy?.scrollTo(index, anchor: .center)
                             }
+                        } label: {
+                            TabItemView(
+                                title: tab.title,
+                                icon: tab.icon,
+                                isSelected: index == selectedIndex
+                            )
                         }
+                        .buttonStyle(.plain)
                         .offset(y: index == selectedIndex ? 1.5 : 0)
 
                         // Draw underline based on selection
