@@ -13,6 +13,8 @@ struct PrimitiveColorsView: View {
             DbaColorsView()
         case .blocket:
             BlocketColorsView()
+        case .vend:
+            VendColorsView()
         }
     }
 }

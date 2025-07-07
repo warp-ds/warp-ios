@@ -173,3 +173,37 @@ struct BlocketRegularFont: FontStrategyInterface {
         self.style = style
     }
 }
+
+/// A regular-weight font strategy for the `Vend` brand.
+struct VendRegularFont: FontStrategyInterface {
+    let font: Warp.Font = .vendRegular
+    let size: CGFloat
+    let style: Font.TextStyle
+
+    /// Initializes a new `VendRegularFont` with the specified size and text style.
+    ///
+    /// - Parameters:
+    ///   - size: The font size.
+    ///   - style: The SwiftUI text style.
+    init(size: CGFloat, style: Font.TextStyle) {
+        self.size = size
+        self.style = style
+    }
+}
+
+/// A bold font strategy for the `Vend` brand.
+struct VendBoldFont: FontStrategyInterface {
+    let font: Warp.Font = .vendBold
+    let size: CGFloat
+    let style: Font.TextStyle
+
+    /// Initializes a new `VendBoldFont` with the specified size and text style.
+    ///
+    /// - Parameters:
+    ///   - size: The font size.
+    ///   - style: The SwiftUI text style.
+    init(size: CGFloat, style: Font.TextStyle) {
+        self.size = size
+        self.style = style
+    }
+}

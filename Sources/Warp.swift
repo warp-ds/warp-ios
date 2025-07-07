@@ -15,6 +15,8 @@ public enum Warp {
         case dba
         /// Represents the `Blocket` brand theme.
         case blocket
+        /// Represents the `Vend` brand theme.
+        case vend
 
         public var description: String {
             switch self {
@@ -26,6 +28,8 @@ public enum Warp {
                 return "DBA"
             case .blocket:
                 return "Blocket"
+            case .vend:
+                return "Vend"
             }
         }
     }
@@ -45,6 +49,7 @@ public enum Warp {
                 LanguageManager.shared.setLanguage()
             } catch {
                 // Handle the error (e.g., log it) if font registration fails
+                print("Error registering fonts for theme \(Theme.description): \(error.localizedDescription)")
             }
         }
     }
@@ -65,6 +70,8 @@ public enum Warp {
             return DbaTokenProvider()
         case .blocket:
             return BlocketTokenProvider()
+        case .vend:
+            return VendTokenProvider()
         }
     }
     
@@ -82,6 +89,8 @@ public enum Warp {
             return DbaUITokenProvider()
         case .blocket:
             return BlocketUITokenProvider()
+        case .vend:
+            return VendUITokenProvider()
         }
     }
     

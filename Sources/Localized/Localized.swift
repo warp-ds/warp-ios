@@ -334,8 +334,10 @@ class LanguageManager {
             language = "da"
         case .blocket:
             language = "sv"
+        case .vend:
+            language = "no"
         }
-//        language = "en"
+        language = "en"
         guard let path = Bundle.module.path(forResource: language, ofType: "lproj"),
               let bundle = Bundle(path: path) else {
             self.bundle = .module
