@@ -10,59 +10,47 @@ final class MetricsFactorySmokeTests: XCTestCase {
         let mockButtonVariants: [ButtonVariant<CGFloat>] = [
             // Primary
             ButtonVariant(
-                type: .primary,
-                expectation: defaultBorderWidthExpectation
+                    type: .primary,
+                    expectation: defaultBorderWidthExpectation
             ),
 
             // Secondary
             ButtonVariant(
-                type: .secondary,
-                expectation: defaultBorderWidthExpectation
-            ),
-
-            // Tertiary
-            ButtonVariant(
-                type: .tertiary,
-                expectation: defaultBorderWidthExpectation
+                    type: .secondary,
+                    expectation: defaultBorderWidthExpectation
             ),
 
             // Critical
             ButtonVariant(
-                type: .critical,
-                expectation: defaultBorderWidthExpectation
-            ),
-
-            // Critical Tertiary
-            ButtonVariant(
-                type: .criticalTertiary,
-                expectation: defaultBorderWidthExpectation
+                    type: .critical,
+                    expectation: defaultBorderWidthExpectation
             ),
 
             // Utility
             ButtonVariant(
-                type: .utility,
-                expectation: defaultBorderWidthExpectation / 2
+                    type: .utility,
+                    expectation: defaultBorderWidthExpectation / 2
             ),
 
-            // UtilityTertiary
+            // UtilityQuiet
             ButtonVariant(
-                type: .utilityTertiary,
-                expectation: defaultBorderWidthExpectation
+                    type: .utilityQuiet,
+                    expectation: defaultBorderWidthExpectation
             ),
 
             // UtilityOverlay
             ButtonVariant(
-                type: .utilityOverlay,
-                expectation: defaultBorderWidthExpectation
-            ),
+                    type: .utilityOverlay,
+                    expectation: defaultBorderWidthExpectation
+            )
         ]
 
         mockButtonVariants.forEach { variant in
             let sut = UIMetricsFactory(
-                type: variant.type,
-                size: variant.size,
-                isEnabled: variant.isEnabled,
-                isLoading: false
+                    type: variant.type,
+                    size: variant.size,
+                    isEnabled: variant.isEnabled,
+                    isLoading: false
             )
 
             XCTAssertEqual(sut.borderWidth, variant.expectation)
@@ -75,59 +63,47 @@ final class MetricsFactorySmokeTests: XCTestCase {
         let mockButtonVariants: [ButtonVariant<CGFloat>] = [
             // Primary
             ButtonVariant(
-                type: .primary,
-                expectation: defaultCornerRadiusExpectation
+                    type: .primary,
+                    expectation: defaultCornerRadiusExpectation
             ),
 
             // Secondary
             ButtonVariant(
-                type: .secondary,
-                expectation: defaultCornerRadiusExpectation
-            ),
-
-            // Tertiary
-            ButtonVariant(
-                type: .tertiary,
-                expectation: defaultCornerRadiusExpectation
+                    type: .secondary,
+                    expectation: defaultCornerRadiusExpectation
             ),
 
             // Critical
             ButtonVariant(
-                type: .critical,
-                expectation: defaultCornerRadiusExpectation
-            ),
-
-            // Critical Tertiary
-            ButtonVariant(
-                type: .criticalTertiary,
-                expectation: defaultCornerRadiusExpectation
+                    type: .critical,
+                    expectation: defaultCornerRadiusExpectation
             ),
 
             // Utility
             ButtonVariant(
-                type: .utility,
-                expectation: defaultCornerRadiusExpectation / 2
+                    type: .utility,
+                    expectation: defaultCornerRadiusExpectation / 2
             ),
 
-            // UtilityTertiary
+            // UtilityQuiet
             ButtonVariant(
-                type: .utilityTertiary,
-                expectation: defaultCornerRadiusExpectation / 2
+                    type: .utilityQuiet,
+                    expectation: defaultCornerRadiusExpectation / 2
             ),
 
             // UtilityOverlay
             ButtonVariant(
-                type: .utilityOverlay,
-                expectation: defaultCornerRadiusExpectation / 2
-            ),
+                    type: .utilityOverlay,
+                    expectation: defaultCornerRadiusExpectation / 2
+            )
         ]
 
         mockButtonVariants.forEach { variant in
             let sut = UIMetricsFactory(
-                type: variant.type,
-                size: variant.size,
-                isEnabled: variant.isEnabled,
-                isLoading: false
+                    type: variant.type,
+                    size: variant.size,
+                    isEnabled: variant.isEnabled,
+                    isLoading: false
             )
 
             XCTAssertEqual(sut.cornerRadius, variant.expectation)
@@ -142,115 +118,83 @@ final class MetricsFactorySmokeTests: XCTestCase {
         let mockButtonVariants: [ButtonVariant<CGFloat>] = [
             // Primary
             ButtonVariant(
-                type: .primary,
-                size: .big,
-                expectation: bigButtonVerticalPadding
+                    type: .primary,
+                    size: .big,
+                    expectation: bigButtonVerticalPadding
             ),
-
             ButtonVariant(
-                type: .primary,
-                size: .small,
-                expectation: smallButtonVerticalPadding
+                    type: .primary,
+                    size: .small,
+                    expectation: smallButtonVerticalPadding
             ),
 
             // Secondary
             ButtonVariant(
-                type: .secondary,
-                size: .big,
-                expectation: bigButtonVerticalPadding
+                    type: .secondary,
+                    size: .big,
+                    expectation: bigButtonVerticalPadding
             ),
-
             ButtonVariant(
-                type: .secondary,
-                size: .small,
-                expectation: smallButtonVerticalPadding
-            ),
-
-            // Tertiary
-            ButtonVariant(
-                type: .tertiary,
-                size: .big,
-                expectation: bigButtonVerticalPadding
-            ),
-
-            ButtonVariant(
-                type: .tertiary,
-                size: .small,
-                expectation: smallButtonVerticalPadding
+                    type: .secondary,
+                    size: .small,
+                    expectation: smallButtonVerticalPadding
             ),
 
             // Critical
             ButtonVariant(
-                type: .critical,
-                size: .big,
-                expectation: bigButtonVerticalPadding
+                    type: .critical,
+                    size: .big,
+                    expectation: bigButtonVerticalPadding
             ),
-
             ButtonVariant(
-                type: .critical,
-                size: .small,
-                expectation: smallButtonVerticalPadding
-            ),
-
-            // Critical Tertiary
-            ButtonVariant(
-                type: .criticalTertiary,
-                size: .big,
-                expectation: bigButtonVerticalPadding
-            ),
-
-            ButtonVariant(
-                type: .criticalTertiary,
-                size: .small,
-                expectation: smallButtonVerticalPadding
+                    type: .critical,
+                    size: .small,
+                    expectation: smallButtonVerticalPadding
             ),
 
             // Utility
             ButtonVariant(
-                type: .utility,
-                size: .big,
-                expectation: utilityRelatedButtonVerticalPadding
+                    type: .utility,
+                    size: .big,
+                    expectation: utilityRelatedButtonVerticalPadding
+            ),
+            ButtonVariant(
+                    type: .utility,
+                    size: .small,
+                    expectation: utilityRelatedButtonVerticalPadding
             ),
 
+            // UtilityQuiet
             ButtonVariant(
-                type: .utility,
-                size: .small,
-                expectation: utilityRelatedButtonVerticalPadding
+                    type: .utilityQuiet,
+                    size: .big,
+                    expectation: utilityRelatedButtonVerticalPadding
             ),
-
-            // UtilityTertiary
             ButtonVariant(
-                type: .utilityTertiary,
-                size: .big,
-                expectation: utilityRelatedButtonVerticalPadding
-            ),
-
-            ButtonVariant(
-                type: .utilityTertiary,
-                size: .small,
-                expectation: utilityRelatedButtonVerticalPadding
+                    type: .utilityQuiet,
+                    size: .small,
+                    expectation: utilityRelatedButtonVerticalPadding
             ),
 
             // UtilityOverlay
             ButtonVariant(
-                type: .utilityOverlay,
-                size: .big,
-                expectation: utilityRelatedButtonVerticalPadding
+                    type: .utilityOverlay,
+                    size: .big,
+                    expectation: utilityRelatedButtonVerticalPadding
             ),
-
             ButtonVariant(
-                type: .utilityOverlay,
-                size: .small,
-                expectation: utilityRelatedButtonVerticalPadding
+                    type: .utilityOverlay,
+                    size: .small,
+                    expectation: utilityRelatedButtonVerticalPadding
             )
         ]
 
         mockButtonVariants.forEach { variant in
             let sut = UIMetricsFactory(
-                type: variant.type,
-                size: variant.size,
-                isEnabled: variant.isEnabled,
-                isLoading: false
+                    type: variant.type,
+                    size: variant.size,
+                    isEnabled: variant.isEnabled,
+                    isLoading: false
             )
 
             XCTAssertEqual(sut.verticalPadding, variant.expectation)
@@ -265,115 +209,83 @@ final class MetricsFactorySmokeTests: XCTestCase {
         let mockButtonVariants: [ButtonVariant<CGFloat>] = [
             // Primary
             ButtonVariant(
-                type: .primary,
-                size: .big,
-                expectation: bigButtonHorizontalPadding
+                    type: .primary,
+                    size: .big,
+                    expectation: bigButtonHorizontalPadding
             ),
-
             ButtonVariant(
-                type: .primary,
-                size: .small,
-                expectation: smallButtonHorizontalPadding
+                    type: .primary,
+                    size: .small,
+                    expectation: smallButtonHorizontalPadding
             ),
 
             // Secondary
             ButtonVariant(
-                type: .secondary,
-                size: .big,
-                expectation: bigButtonHorizontalPadding
+                    type: .secondary,
+                    size: .big,
+                    expectation: bigButtonHorizontalPadding
             ),
-
             ButtonVariant(
-                type: .secondary,
-                size: .small,
-                expectation: smallButtonHorizontalPadding
-            ),
-
-            // Tertiary
-            ButtonVariant(
-                type: .tertiary,
-                size: .big,
-                expectation: bigButtonHorizontalPadding
-            ),
-
-            ButtonVariant(
-                type: .tertiary,
-                size: .small,
-                expectation: smallButtonHorizontalPadding
+                    type: .secondary,
+                    size: .small,
+                    expectation: smallButtonHorizontalPadding
             ),
 
             // Critical
             ButtonVariant(
-                type: .critical,
-                size: .big,
-                expectation: bigButtonHorizontalPadding
+                    type: .critical,
+                    size: .big,
+                    expectation: bigButtonHorizontalPadding
             ),
-
             ButtonVariant(
-                type: .critical,
-                size: .small,
-                expectation: smallButtonHorizontalPadding
-            ),
-
-            // Critical Tertiary
-            ButtonVariant(
-                type: .criticalTertiary,
-                size: .big,
-                expectation: bigButtonHorizontalPadding
-            ),
-
-            ButtonVariant(
-                type: .criticalTertiary,
-                size: .small,
-                expectation: smallButtonHorizontalPadding
+                    type: .critical,
+                    size: .small,
+                    expectation: smallButtonHorizontalPadding
             ),
 
             // Utility
             ButtonVariant(
-                type: .utility,
-                size: .big,
-                expectation: utilityRelatedButtonHorizontalPadding
+                    type: .utility,
+                    size: .big,
+                    expectation: utilityRelatedButtonHorizontalPadding
+            ),
+            ButtonVariant(
+                    type: .utility,
+                    size: .small,
+                    expectation: utilityRelatedButtonHorizontalPadding
             ),
 
+            // UtilityQuiet
             ButtonVariant(
-                type: .utility,
-                size: .small,
-                expectation: utilityRelatedButtonHorizontalPadding
+                    type: .utilityQuiet,
+                    size: .big,
+                    expectation: utilityRelatedButtonHorizontalPadding
             ),
-
-            // UtilityTertiary
             ButtonVariant(
-                type: .utilityTertiary,
-                size: .big,
-                expectation: utilityRelatedButtonHorizontalPadding
-            ),
-
-            ButtonVariant(
-                type: .utilityTertiary,
-                size: .small,
-                expectation: utilityRelatedButtonHorizontalPadding
+                    type: .utilityQuiet,
+                    size: .small,
+                    expectation: utilityRelatedButtonHorizontalPadding
             ),
 
             // UtilityOverlay
             ButtonVariant(
-                type: .utilityOverlay,
-                size: .big,
-                expectation: utilityRelatedButtonHorizontalPadding
+                    type: .utilityOverlay,
+                    size: .big,
+                    expectation: utilityRelatedButtonHorizontalPadding
             ),
-
             ButtonVariant(
-                type: .utilityOverlay,
-                size: .small,
-                expectation: utilityRelatedButtonHorizontalPadding
+                    type: .utilityOverlay,
+                    size: .small,
+                    expectation: utilityRelatedButtonHorizontalPadding
             )
         ]
 
         mockButtonVariants.forEach { variant in
             let sut = UIMetricsFactory(
-                type: variant.type,
-                size: variant.size,
-                isEnabled: variant.isEnabled,
-                isLoading: false
+                    type: variant.type,
+                    size: variant.size,
+                    isEnabled: variant.isEnabled,
+                    isLoading: false
             )
 
             XCTAssertEqual(sut.horizontalPadding, variant.expectation)
