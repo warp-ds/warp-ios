@@ -1,106 +1,107 @@
 import XCTest
-import struct SwiftUI.Color
+import SwiftUI
 @testable import Warp
 
+@available(iOS 17.0, *) // resolve(in:) color method supported from iOS 17.0
 final class ColorFactorySmokeTests: XCTestCase {
     private typealias ColorFactory = Warp.Button.ColorFactory
-
+    
     func testForegroundColor_Parameterized_ShouldBeEqual() throws {
-        // INS
+        let environment = EnvironmentValues()
+        
         let colorProvider = Warp.Color
-
-        let disabledTextColor = colorProvider.buttonDisabledText
-
+        let disabledTextColor = colorProvider.token.textInverted
+        
         let mockButtonVariants: [ButtonVariant] = [
             // Primary
             ButtonVariant(
                 type: .primary,
                 isEnabled: true,
-                expectedColor: colorProvider.buttonPrimaryText
+                expectedColor: colorProvider.token.textInverted
             ),
             ButtonVariant(
                 type: .primary,
                 isEnabled: false,
-                expectedColor: colorProvider.buttonPrimaryTextDisabled
+                expectedColor: disabledTextColor
             ),
-
+            
             // Secondary
             ButtonVariant(
                 type: .secondary,
                 isEnabled: true,
-                expectedColor: colorProvider.buttonSecondaryText
+                expectedColor: colorProvider.token.textLink
             ),
             ButtonVariant(
                 type: .secondary,
                 isEnabled: false,
                 expectedColor: disabledTextColor
             ),
-
-            // Tertiary
+            
+            // Quiet
             ButtonVariant(
-                type: .tertiary,
+                type: .quiet,
                 isEnabled: true,
-                expectedColor: colorProvider.buttonQuietText
+                expectedColor: colorProvider.token.textLink
             ),
             ButtonVariant(
-                type: .tertiary,
+                type: .quiet,
                 isEnabled: false,
                 expectedColor: disabledTextColor
             ),
-
+            
             // Critical
             ButtonVariant(
                 type: .critical,
                 isEnabled: true,
-                expectedColor: colorProvider.buttonNegativeText
+                expectedColor: colorProvider.token.textInverted
             ),
             ButtonVariant(
                 type: .critical,
                 isEnabled: false,
                 expectedColor: disabledTextColor
             ),
-
-            // CriticalTertiary
+            
+            // CriticalQuiet
             ButtonVariant(
-                type: .criticalTertiary,
+                type: .criticalQuiet,
                 isEnabled: true,
-                expectedColor: colorProvider.buttonNegativeQuietText
+                expectedColor: colorProvider.token.textNegative
             ),
             ButtonVariant(
-                type: .criticalTertiary,
+                type: .criticalQuiet,
                 isEnabled: false,
                 expectedColor: disabledTextColor
             ),
-
+            
             // Utility
             ButtonVariant(
                 type: .utility,
                 isEnabled: true,
-                expectedColor: colorProvider.buttonUtilityText
+                expectedColor: colorProvider.token.text
             ),
             ButtonVariant(
                 type: .utility,
                 isEnabled: false,
                 expectedColor: disabledTextColor
             ),
-
-            // UtilityTertiary
+            
+            // UtilityQuiet
             ButtonVariant(
-                type: .utilityTertiary,
+                type: .utilityQuiet,
                 isEnabled: true,
-                expectedColor: colorProvider.buttonUtilityQuietText
+                expectedColor: colorProvider.token.text
             ),
             ButtonVariant(
-                type: .utilityTertiary,
+                type: .utilityQuiet,
                 isEnabled: false,
                 expectedColor: disabledTextColor
             ),
-
+            
             // UtilityOverlay
             ButtonVariant(
                 type: .utilityOverlay,
                 isEnabled: true,
-                expectedColor: colorProvider.buttonUtilityQuietText
+                expectedColor: colorProvider.token.text
             ),
             ButtonVariant(
                 type: .utilityOverlay,
@@ -108,7 +109,7 @@ final class ColorFactorySmokeTests: XCTestCase {
                 expectedColor: disabledTextColor
             )
         ]
-
+        
         mockButtonVariants.forEach { variant in
             let sut = ColorFactory(
                 for: variant.type,
@@ -116,18 +117,21 @@ final class ColorFactorySmokeTests: XCTestCase {
                 isEnabled: variant.isEnabled,
                 isLoading: false
             )
-
-            XCTAssertEqual(sut.makeForegroundColor(), variant.expectedColor)
+            
+            XCTAssertEqual(
+                sut.makeForegroundColor().resolve(in: environment),
+                variant.expectedColor.resolve(in: environment)
+            )
         }
     }
-
+    
     func testBackgroundColor_Parameterized_ShouldBeEqual() throws {
-        // INS
+        let environment = EnvironmentValues()
+        
         let colorProvider = Warp.Color
-
-        let disabledBackgroundColor = colorProvider.buttonDisabledBackground
-        let utilityDisabledBackgroundColor = colorProvider.buttonUtilityBackgroundDisabled
-
+        let disabledBackgroundColor = colorProvider.token.backgroundDisabled
+        let loadingBackgroundColor = colorProvider.token.backgroundTransparent0
+        
         let mockButtonVariants: [ButtonVariant] = [
             // Primary
             ButtonVariant(
@@ -145,143 +149,143 @@ final class ColorFactorySmokeTests: XCTestCase {
             ButtonVariant(
                 type: .primary,
                 isEnabled: false,
-                expectedColor: colorProvider.buttonPrimaryBackgroundDisabled
+                expectedColor: disabledBackgroundColor
             ),
-
+            
             // Secondary
             ButtonVariant(
                 type: .secondary,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonSecondaryBackground
+                expectedColor: colorProvider.token.background
             ),
             ButtonVariant(
                 type: .secondary,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonSecondaryBackgroundActive
+                expectedColor: colorProvider.token.backgroundActive
             ),
             ButtonVariant(
                 type: .secondary,
-                isEnabled: false,
-                expectedColor: colorProvider.buttonSecondaryBackgroundDisabled
-            ),
-
-            // Tertiary
-            ButtonVariant(
-                type: .tertiary,
-                isEnabled: true,
-                isPressed: false,
-                expectedColor: colorProvider.buttonQuietBackground
-            ),
-            ButtonVariant(
-                type: .tertiary,
-                isEnabled: true,
-                isPressed: true,
-                expectedColor: colorProvider.buttonQuietBackgroundActive
-            ),
-            ButtonVariant(
-                type: .tertiary,
                 isEnabled: false,
                 expectedColor: disabledBackgroundColor
             ),
-
+            
+            // Quiet
+            ButtonVariant(
+                type: .quiet,
+                isEnabled: true,
+                isPressed: false,
+                expectedColor: colorProvider.token.backgroundTransparent0
+            ),
+            ButtonVariant(
+                type: .quiet,
+                isEnabled: true,
+                isPressed: true,
+                expectedColor: colorProvider.token.backgroundActive
+            ),
+            ButtonVariant(
+                type: .quiet,
+                isEnabled: false,
+                expectedColor: disabledBackgroundColor
+            ),
+            
             // Critical
             ButtonVariant(
                 type: .critical,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonNegativeBackground
+                expectedColor: colorProvider.token.backgroundNegative
             ),
             ButtonVariant(
                 type: .critical,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonNegativeBackgroundActive
+                expectedColor: colorProvider.token.backgroundNegativeActive
             ),
             ButtonVariant(
                 type: .critical,
                 isEnabled: false,
                 expectedColor: disabledBackgroundColor
             ),
-
-            // CriticalTertiary
+            
+            // CriticalQuiet
             ButtonVariant(
-                type: .criticalTertiary,
+                type: .criticalQuiet,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonNegativeQuietBackground
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .criticalTertiary,
+                type: .criticalQuiet,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonNegativeQuietBackgroundActive
+                expectedColor: colorProvider.token.backgroundNegativeSubtleActive
             ),
             ButtonVariant(
-                type: .criticalTertiary,
+                type: .criticalQuiet,
                 isEnabled: false,
                 expectedColor: disabledBackgroundColor
             ),
-
+            
             // Utility
             ButtonVariant(
                 type: .utility,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonUtilityBackground
+                expectedColor: colorProvider.token.background
             ),
             ButtonVariant(
                 type: .utility,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonUtilityBackgroundActive
+                expectedColor: colorProvider.token.backgroundActive
             ),
             ButtonVariant(
                 type: .utility,
                 isEnabled: false,
-                expectedColor: utilityDisabledBackgroundColor
+                expectedColor: disabledBackgroundColor
             ),
-
-            // UtilityTertiary
+            
+            // UtilityQuiet
             ButtonVariant(
-                type: .utilityTertiary,
+                type: .utilityQuiet,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonUtilityQuietBackground
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .utilityTertiary,
+                type: .utilityQuiet,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonUtilityQuietBackgroundActive
+                expectedColor: colorProvider.token.backgroundActive
             ),
             ButtonVariant(
-                type: .utilityTertiary,
+                type: .utilityQuiet,
                 isEnabled: false,
-                expectedColor: utilityDisabledBackgroundColor
+                expectedColor: disabledBackgroundColor
             ),
-
+            
             // UtilityOverlay
             ButtonVariant(
                 type: .utilityOverlay,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonUtilityBackground
+                expectedColor: colorProvider.token.surfaceElevated300
             ),
             ButtonVariant(
                 type: .utilityOverlay,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonUtilityBackground
+                expectedColor: colorProvider.token.surfaceElevated300Active
             ),
             ButtonVariant(
                 type: .utilityOverlay,
                 isEnabled: false,
-                expectedColor: utilityDisabledBackgroundColor
-            ),
+                expectedColor: disabledBackgroundColor
+            )
         ]
-
+        
         mockButtonVariants.forEach { variant in
             let sut = ColorFactory(
                 for: variant.type,
@@ -289,176 +293,175 @@ final class ColorFactorySmokeTests: XCTestCase {
                 isEnabled: variant.isEnabled,
                 isLoading: false
             )
-
+            
             XCTAssertEqual(
-                sut.makeBackgroundColor(isPressed: variant.isPressed),
-                variant.expectedColor
+                sut.makeBackgroundColor(isPressed: variant.isPressed).resolve(in: environment),
+                variant.expectedColor.resolve(in: environment)
             )
         }
     }
-
+    
     func testBorderColor_Parameterized_ShouldBeEqual() throws {
-        // INS
+        let environment = EnvironmentValues()
+        
         let colorProvider = Warp.Color
-
-        let clearColor = Color.clear
-
-        let disabledBorderColor = colorProvider.buttonDisabledQuietBorder
-
+        let disabledBorderColor = colorProvider.token.backgroundTransparent0
+        let loadingBorderColor = colorProvider.token.backgroundTransparent0
+        
         let mockButtonVariants: [ButtonVariant] = [
             // Primary
             ButtonVariant(
                 type: .primary,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonPrimaryBorder
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
                 type: .primary,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonPrimaryBorderActive
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
                 type: .primary,
                 isEnabled: false,
                 expectedColor: disabledBorderColor
             ),
-
+            
             // Secondary
             ButtonVariant(
                 type: .secondary,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonSecondaryBorder
+                expectedColor: colorProvider.token.border
             ),
             ButtonVariant(
                 type: .secondary,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonSecondaryBorderActive
+                expectedColor: colorProvider.token.borderActive
             ),
             ButtonVariant(
                 type: .secondary,
                 isEnabled: false,
                 expectedColor: disabledBorderColor
             ),
-
-            // Tertiary
+            
+            // Quiet
             ButtonVariant(
-                type: .tertiary,
+                type: .quiet,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonQuietBackground
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .tertiary,
+                type: .quiet,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: clearColor
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .tertiary,
+                type: .quiet,
                 isEnabled: false,
                 expectedColor: disabledBorderColor
             ),
-
+            
             // Critical
             ButtonVariant(
                 type: .critical,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonNegativeBorder
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
                 type: .critical,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonNegativeBorderActive
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
                 type: .critical,
                 isEnabled: false,
                 expectedColor: disabledBorderColor
             ),
-
-            // CriticalTertiary
+            
+            // CriticalQuiet
             ButtonVariant(
-                type: .criticalTertiary,
+                type: .criticalQuiet,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonNegativeQuietBorder
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .criticalTertiary,
+                type: .criticalQuiet,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonNegativeQuietBorderActive
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .criticalTertiary,
+                type: .criticalQuiet,
                 isEnabled: false,
                 expectedColor: disabledBorderColor
             ),
-
+            
             // Utility
             ButtonVariant(
                 type: .utility,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: colorProvider.buttonUtilityBorder
+                expectedColor: colorProvider.token.border
             ),
             ButtonVariant(
                 type: .utility,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonUtilityBorderActive
+                expectedColor: colorProvider.token.borderActive
             ),
             ButtonVariant(
                 type: .utility,
                 isEnabled: false,
                 expectedColor: disabledBorderColor
             ),
-
-            // UtilityTertiary
+            
+            // UtilityQuiet
             ButtonVariant(
-                type: .utilityTertiary,
+                type: .utilityQuiet,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: clearColor
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .utilityTertiary,
+                type: .utilityQuiet,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonUtilityQuietBorderActive
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .utilityTertiary,
+                type: .utilityQuiet,
                 isEnabled: false,
                 expectedColor: disabledBorderColor
             ),
-
+            
             // UtilityOverlay
             ButtonVariant(
                 type: .utilityOverlay,
                 isEnabled: true,
                 isPressed: false,
-                expectedColor: clearColor
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
                 type: .utilityOverlay,
                 isEnabled: true,
                 isPressed: true,
-                expectedColor: colorProvider.buttonUtilityBackground
+                expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
                 type: .utilityOverlay,
                 isEnabled: false,
                 expectedColor: disabledBorderColor
-            ),
+            )
         ]
-
+        
         mockButtonVariants.forEach { variant in
             let sut = ColorFactory(
                 for: variant.type,
@@ -466,10 +469,10 @@ final class ColorFactorySmokeTests: XCTestCase {
                 isEnabled: variant.isEnabled,
                 isLoading: false
             )
-
+            
             XCTAssertEqual(
-                sut.makeBorderColor(isPressed: variant.isPressed),
-                variant.expectedColor
+                sut.makeBorderColor(isPressed: variant.isPressed).resolve(in: environment),
+                variant.expectedColor.resolve(in: environment)
             )
         }
     }
@@ -480,7 +483,7 @@ private struct ButtonVariant {
     let isEnabled: Bool
     let isPressed: Bool
     let expectedColor: Color
-
+    
     init(
         type: Warp.ButtonType,
         isEnabled: Bool = true,

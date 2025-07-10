@@ -34,6 +34,10 @@ extension Warp {
         case blocketBold
         case blocketMedium
         case blocketRegular
+
+        // MARK: - Vend Fonts
+        case vendRegular
+        case vendBold
         
         // MARK: - Font File Names
         /// The file name for the font as it appears in the bundle (without extension).
@@ -62,6 +66,8 @@ extension Warp {
             case .blocketBold: return "BlocketSans-Bold"
             case .blocketMedium: return "BlocketSans-Medium"
             case .blocketRegular: return "BlocketSans-Regular"
+            case .vendRegular: return "VendSansText-Regular"
+            case .vendBold: return "VendSansText-Bold"
             }
         }
         
@@ -92,6 +98,8 @@ extension Warp {
             case .blocketBold: return "BlocketSans-Bold"
             case .blocketMedium: return "BlocketSans-Medium"
             case .blocketRegular: return "BlocketSans-Regular"
+            case .vendRegular: return "VendSansText-Regular"
+            case .vendBold: return "VendSansText-Bold"
             }
         }
         
@@ -109,6 +117,8 @@ extension Warp {
                 return [.dbaAltBold, .dbaAltLight, .dbaAltThin, .dbaBlack, .dbaBold, .dbaExtraBold, .dbaThin, .dbaRegular]
             case .blocket:
                 return [.blocketDisplay, .blocketBold, .blocketMedium, .blocketRegular]
+            case .vend:
+                return [.vendRegular, .vendBold]
             }
         }
     }
