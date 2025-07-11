@@ -88,7 +88,7 @@ extension Warp {
         }
         
         private var warningImageView: some View {
-            Warp.IconView(.warning, size: .small)
+            Warp.IconView(.warning, size: .default)
                 .foregroundColor(colorProvider.token.iconWarning)
         }
         
