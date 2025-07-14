@@ -37,42 +37,6 @@
         }
       }
     },
-    "brand.icon.title.honk" : {
-      "comment" : "A11y title for Honk icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Honk"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Honk"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Honk"
-          }
-        },
-        "nb-NO" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Honk"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Honk"
-          }
-        }
-      }
-    },
     "brand.icon.title.mittAnbud" : {
       "comment" : "A11y title for MittAnbud icon",
       "extractionState" : "manual",

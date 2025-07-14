@@ -666,7 +666,6 @@ extension Warp {
     /// Provides both SwiftUI `Image` and UIKit `UIImage` representations for each icon.
     public enum BrandIcon: String, CaseIterable, View {
         case autovex
-        case honk
         case mittAnbud = "mitt-anbud"
         case nettbil
         case oikotie
@@ -697,7 +696,6 @@ extension Warp {
         private var localization: String {
             switch self {
             case .autovex: return Warp.Strings.brandIconAutovex.localized
-            case .honk: return Warp.Strings.brandIconHonk.localized
             case .mittAnbud: return Warp.Strings.brandIconMittAnbud.localized
             case .nettbil: return Warp.Strings.brandIconNettbil.localized
             case .oikotie: return Warp.Strings.brandIconOikotie.localized

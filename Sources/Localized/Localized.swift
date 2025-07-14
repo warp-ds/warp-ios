@@ -292,7 +292,6 @@ extension Warp {
         case taxonomyIconVase = "taxonomy.icon.title.vase"
 
         case brandIconAutovex = "brand.icon.title.autovex"
-        case brandIconHonk = "brand.icon.title.honk"
         case brandIconMittAnbud = "brand.icon.title.mittAnbud"
         case brandIconNettbil = "brand.icon.title.nettbil"
         case brandIconOikotie = "brand.icon.title.oikotie"
