@@ -297,6 +297,7 @@ extension Warp {
         case brandIconNettbil = "brand.icon.title.nettbil"
         case brandIconOikotie = "brand.icon.title.oikotie"
         case brandIconRemppatori = "brand.icon.title.remppatori"
+        case brandIconQasa = "brand.icon.title.qasa"
 
         case brandLogoBilbasen = "brand.logo.title.bilbasen"
         case brandLogoBlocket = "brand.logo.title.blocket"

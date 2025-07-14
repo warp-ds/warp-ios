@@ -181,6 +181,18 @@
         }
       }
     },
+    "brand.icon.title.qasa" : {
+      "comment" : "A11y title for Qasa icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qasa logo"
+          }
+        }
+      }
+    },
     "brand.icon.title.remppatori" : {
       "comment" : "A11y title for Remppatori icon",
       "extractionState" : "manual",

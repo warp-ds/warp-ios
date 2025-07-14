@@ -671,6 +671,7 @@ extension Warp {
         case nettbil
         case oikotie
         case remppatori
+        case qasa
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         public var body: some View {
@@ -701,6 +702,7 @@ extension Warp {
             case .nettbil: return Warp.Strings.brandIconNettbil.localized
             case .oikotie: return Warp.Strings.brandIconOikotie.localized
             case .remppatori: return Warp.Strings.brandIconRemppatori.localized
+            case .qasa: return Warp.Strings.brandIconQasa.localized
             }
         }
     }
