@@ -71,7 +71,7 @@ extension Warp {
 
         private var contentView: some View {
             HStack(spacing: 0) {
-                Warp.IconView(style.icon, size: .small)
+                Warp.IconView(style.icon, size: .default)
                     .foregroundColor(style.iconColor(from: colorProvider))
 
                 Text(title, style: .body)

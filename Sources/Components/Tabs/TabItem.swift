@@ -26,7 +26,7 @@ extension Warp {
         public var body: some View {
             HStack(alignment: .center, spacing: Warp.Spacing.spacing100) {
                 if let icon = icon {
-                    Warp.IconView(icon, size: .small)
+                    Warp.IconView(icon, size: .default)
                         .foregroundColor(isSelected ? colorProvider.token.textLink : colorProvider.token.textSubtle)
                 }
                 SwiftUI.Text(title)
