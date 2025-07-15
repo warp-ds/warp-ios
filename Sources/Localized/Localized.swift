@@ -70,6 +70,7 @@ extension Warp {
         case iconClock = "icon.title.clock"
         case iconClose = "icon.title.close"
         case iconCog = "icon.title.cog"
+        case iconCopy = "icon.title.copy"
         case iconColorPalette = "icon.title.colorPalette"
         case iconCottagePlot = "icon.title.cottagePlot"
         case iconCreditCard = "icon.title.creditCard"

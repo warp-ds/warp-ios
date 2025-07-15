@@ -74,6 +74,7 @@ extension Warp {
         case clock
         case close
         case cog
+        case copy
         case colorPalette
         case cottagePlot
         case creditCard
@@ -364,6 +365,7 @@ extension Warp {
             case .clock: return Warp.Strings.iconClock.localized
             case .close: return Warp.Strings.iconClose.localized
             case .cog: return Warp.Strings.iconCog.localized
+            case .copy: return Warp.Strings.iconCopy.localized
             case .colorPalette: return Warp.Strings.iconColorPalette.localized
             case .cottagePlot: return Warp.Strings.iconCottagePlot.localized
             case .creditCard: return Warp.Strings.iconCreditCard.localized

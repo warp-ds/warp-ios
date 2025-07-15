@@ -2929,6 +2929,18 @@
         }
       }
     },
+    "icon.title.copy" : {
+      "comment" : "A11y title for copy icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy"
+          }
+        }
+      }
+    },
     "icon.title.cottagePlot" : {
       "comment" : "A11y title for cottage plot icon",
       "extractionState" : "manual",
