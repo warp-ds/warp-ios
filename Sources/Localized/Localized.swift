@@ -324,7 +324,7 @@ class LanguageManager {
 
     private var bundle: Bundle?
 
-    func setLanguage() {
+    func setLanguage(for theme: Warp.Brand = Warp.Theme) {
         var language: String
         switch Warp.Theme {
         case .finn:

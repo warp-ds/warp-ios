@@ -617,7 +617,7 @@ extension Warp {
             return image.withRenderingMode(.alwaysTemplate)
         }
 
-        private var localization: String {
+        var localization: String {
             switch self {
             case .airplane: return Warp.Strings.taxonomyIconAirplane.localized
             case .airplaneHotel: return Warp.Strings.taxonomyIconAirplaneHotel.localized
@@ -695,7 +695,7 @@ extension Warp {
             return image.withRenderingMode(.alwaysOriginal)
         }
 
-        private var localization: String {
+        var localization: String {
             switch self {
             case .autovex: return Warp.Strings.brandIconAutovex.localized
             case .mittAnbud: return Warp.Strings.brandIconMittAnbud.localized
@@ -767,7 +767,7 @@ extension Warp {
             }
         }
 
-        private var localization: String {
+        var localization: String {
             switch self {
             case .bilbasen: return Warp.Strings.brandLogoBilbasen.localized
             case .blocket: return Warp.Strings.brandLogoBlocket.localized
