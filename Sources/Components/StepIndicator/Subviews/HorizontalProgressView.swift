@@ -36,10 +36,8 @@ extension Warp.StepIndicator {
                         Circle()
                             .fill(progress.fillColor(using: colorProvider))
                             .overlay(alignment: .leading) {
-                                Image("icon-stepindicator-completed", bundle: .module)
-                                    .renderingMode(.template)
-                                    .foregroundColor(colorProvider.stepIndicatorHandleIcon)
-                                    .frame(width: 16, height: 16)
+                                Warp.IconView(.check, size: .small)
+                                    .foregroundColor(colorProvider.token.iconInverted)
                                     .offset(x: 2)
                             }
                     }

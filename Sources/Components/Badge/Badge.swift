@@ -1,67 +1,86 @@
 import SwiftUI
 
 extension Warp {
-    /// Use badges to highlight status of an ad (Active/Inactive/Sold/Removed) or to mark paid placements (Sponsored/Ad/House of the week).
+    /// A `Badge` is used to highlight the status of an ad (Active/Inactive/Sold/Removed) or mark paid placements
+    /// (Sponsored/Ad/House of the week).
+    ///
+    /// Badges can be displayed in various visual styles, indicated by the `BadgeVariant`, and can be positioned
+    /// in different corners, defined by the `BadgePosition`.
     public struct Badge: View, Hashable {
+        /// Equatable conformance for comparing two `Badge` instances.
         public static func == (lhs: Warp.Badge, rhs: Warp.Badge) -> Bool {
             lhs.text == rhs.text &&
+            lhs.icon == rhs.icon &&
             lhs.variant == rhs.variant &&
             lhs.position == rhs.position
         }
         
+        /// Hashes the essential properties to ensure that `Badge` can be used in hash-based collections.
         public func hash(into hasher: inout Hasher) {
             hasher.combine(text)
+            hasher.combine(icon)
             hasher.combine(variant)
             hasher.combine(position)
         }
         
-        /// Badge text.
+        /// The text displayed inside the badge.
         private let text: String
-        /// Badge type.
-        private let variant: Warp.Badge.Variant
-        /// Badge corner variant.
-        private let position: Warp.Badge.Position
-        /// Object that will provide needed colors.
+        
+        /// The icon displayed inside the badge.
+        private let icon: Warp.Icon?
+        
+        /// The style of the badge, determining its appearance.
+        private let variant: Warp.BadgeVariant
+        
+        /// The corner positioning of the badge.
+        private let position: Warp.BadgePosition
+        
+        /// The object responsible for providing colors to the badge based on the current environment or theme.
         private let colorProvider: ColorProvider = Warp.Color
-
+        
+        /// Initializes a `Badge` with the given text, optional icon, style, and position.
+        ///
+        /// - Parameters:
+        ///   - text: The text to display inside the badge.
+        ///   - icon: The optional icon to display inside the badge.
+        ///   - variant: The style of the badge, defined by `Warp.BadgeVariant`.
+        ///   - position: The corner position for the badge, defined by `Warp.BadgePosition`. Defaults to `.default`.
         public init(
             text: String,
-            variant: Warp.Badge.Variant,
-            position: Warp.Badge.Position = .default
+            icon: Warp.Icon? = nil,
+            variant: Warp.BadgeVariant,
+            position: Warp.BadgePosition = .default
         ) {
             self.text = text
+            self.icon = icon
             self.variant = variant
             self.position = position
         }
-
+        
+        /// The body of the `Badge` view, rendering the badge with the given text, optional icon, style, and position.
         public var body: some View {
-            Text(text, style: .detail)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .foregroundColor(foregroundColor)
-                .background(backgroundColor)
-                .cornerRadius(4, corners: corners)
+            HStack(spacing: Warp.Spacing.spacing50) {
+                if let icon {
+                    IconView(icon, size: .small, color: foregroundColor)
+                }
+                Text(text, style: .detail, color: foregroundColor)
+            }
+            .padding(.horizontal, Warp.Spacing.spacing100)
+            .padding(.vertical, Warp.Spacing.spacing50)
+            .background(backgroundColor)
+            .cornerRadius(Warp.Border.borderRadius50, corners: corners)
         }
         
+        /// Determines the foreground (text) color based on the badge variant.
         private var foregroundColor: Color {
-            switch variant {
-            case .info:
-                return colorProvider.badgeInfoText
-            case .success:
-                return colorProvider.badgePositiveText
-            case .warning:
-                return colorProvider.badgeWarningText
-            case .error:
-                return colorProvider.badgeNegativeText
-            case .disabled:
-                return colorProvider.badgeDisabledText
-            case .sponsored:
-                return colorProvider.badgeNeutralText
-            case .neutral:
-                return colorProvider.badgeNeutralText
+            if variant == .price {
+                return colorProvider.token.textInvertedStatic
+            } else {
+                return colorProvider.token.text
             }
         }
         
+        /// Determines the background color based on the badge variant.
         private var backgroundColor: Color {
             switch variant {
             case .info:
@@ -70,17 +89,20 @@ extension Warp {
                 return colorProvider.badgePositiveBackground
             case .warning:
                 return colorProvider.badgeWarningBackground
-            case .error:
+            case .negative:
                 return colorProvider.badgeNegativeBackground
             case .disabled:
-                return colorProvider.badgeDisabledBackground
+                return colorProvider.token.backgroundDisabled
             case .sponsored:
                 return colorProvider.badgeSponsoredBackground
             case .neutral:
                 return colorProvider.badgeNeutralBackground
+            case .price:
+                return colorProvider.badgePriceBackground
             }
         }
         
+        /// Determines the corner radii based on the badge position.
         private var corners: UIRectCorner {
             switch position {
             case .default:
@@ -96,20 +118,20 @@ extension Warp {
 
 #Preview {
     return ScrollView(showsIndicators: false) {
-        ForEach(Warp.Badge.Variant.allCases, id: \.self) { variant in
+        ForEach(Warp.BadgeVariant.allCases, id: \.self) { variant in
             createView(for: variant)
         }
         .padding(.horizontal)
     }
     
-    func createView(for variant: Warp.Badge.Variant) -> some View {
+    func createView(for variant: Warp.BadgeVariant) -> some View {
         let name = String(describing: variant)
         let capitalizedName = name.capitalized
         
         return GroupBox(
             content: {
                 VStack(alignment: .trailing, spacing: 8) {
-                    ForEach(Warp.Badge.Position.allCases, id: \.self) { position in
+                    ForEach(Warp.BadgePosition.allCases, id: \.self) { position in
                         createView(for: variant, position: position)
                     }
                 }
@@ -119,7 +141,7 @@ extension Warp {
         )
     }
     
-    func createView(for variant: Warp.Badge.Variant, position: Warp.Badge.Position) -> some View {
+    func createView(for variant: Warp.BadgeVariant, position: Warp.BadgePosition) -> some View {
         HStack {
             Text(String(describing: position))
             Warp.Badge(text: String(describing: variant), variant: variant, position: position)

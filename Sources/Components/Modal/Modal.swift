@@ -1,57 +1,52 @@
-//
-//  ModalView.swift
-//  Finn
-//
-//  Created by Milad Ajilianabbasi on 2024-06-05.
-//
-
 import SwiftUI
+
 extension Warp {
-    private static let modalCornerRadius: CGFloat = 12
-    
-    /// Modal is a component to display dioalog.
+    /// A customizable modal dialog component to display important content, such as alerts, forms, or actions.
     public struct Modal: View {
-        /// Text that will be shown as modal's heading.
+        // MARK: - Properties
+        
+        /// The title text to be displayed in the modal's header.
         var title: String
         
-        /// Text that will be shown after title in the middle of the modal.
-        var subtitle: String? = nil
+        /// An optional subtitle text to provide additional context below the title.
+        var subtitle: String?
         
-        /// Text that will be shown as main content of the modal.
+        /// The main body text content of the modal.
         var bodyText: String
         
         public typealias ButtonConstructor = (title: String, action: () -> Void)
         
-        /// Tuple that will provide a title and an action for creating a primary button view.
-        /// Passing `nil` will skip adding primary button view.
+        /// Provides a title and action for creating a primary button. Passing `nil` will hide the primary button.
         let primaryButtonProvider: ButtonConstructor?
         
-        /// Tuple that will provide a title and an action for creating a secondary button view.
-        /// Passing `nil` will skip adding secondary button view.
+        /// Provides a title and action for creating a secondary button. Passing `nil` will hide the secondary button.
         let secondaryButtonProvider: ButtonConstructor?
         
-        /// Show/Hide close  image view.
+        /// Determines whether the modal should display a close button.
         var hasCloseButton: Bool
         
-        /// Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal.
+        /// The action to execute when the modal is dismissed.
         let onDismiss: (() -> Void)?
-
-        /// Binding to present modal view.
+        
+        /// A binding to control the visibility of the modal.
         @Binding var isPresented: Bool
         
         /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider
+        private let colorProvider: ColorProvider = Warp.Color
+        
+        // MARK: - Initializer
         
         /**
-         - Parameter title: The main title text to be displayed.
-         - Parameter subtitle: An optional subtitle text to provide additional context or information. Defaults to `nil`.
-         - Parameter bodyText: The main body text content of the component.
-         - Parameter primaryButton: An optional primary button constructor for defining the primary action. Defaults to `nil`.
-         - Parameter secondaryButton: An optional secondary button constructor for defining a secondary action. Defaults to `nil`.
-         - Parameter hasCloseButton: A Boolean value indicating whether a close button should be shown. Defaults to `false`.
-         - Parameter onDismiss: Action to be executed when the Modal is dismissed, either by pressing the Close button or by clicking outside the Modal. Defaults to `nil`.
-         - Parameter isPresented: A binding to a Boolean value that controls the visibility of the component.
-         - Parameter colorProvider: A provider for the color scheme of the component. Defaults to `Warp.Color`.
+         Initializes the Modal view.
+         - Parameters:
+         - title: The main title text to be displayed.
+         - subtitle: An optional subtitle text. Defaults to `nil`.
+         - bodyText: The main body text content of the modal.
+         - primaryButton: An optional provider for defining the primary button. Defaults to `nil`.
+         - secondaryButton: An optional provider for defining the secondary button. Defaults to `nil`.
+         - hasCloseButton: Whether the modal should include a close button. Defaults to `false`.
+         - onDismiss: An optional action to execute when the modal is dismissed.
+         - isPresented: A binding to control the visibility of the modal.
          */
         public init(
             title: String,
@@ -61,8 +56,7 @@ extension Warp {
             secondaryButton: ButtonConstructor? = nil,
             hasCloseButton: Bool = false,
             onDismiss: (() -> Void)? = nil,
-            isPresented: Binding<Bool>,
-            colorProvider: ColorProvider = Warp.Color
+            isPresented: Binding<Bool>
         ) {
             self.title = title
             self.subtitle = subtitle
@@ -72,21 +66,24 @@ extension Warp {
             self.hasCloseButton = hasCloseButton
             self.onDismiss = onDismiss
             self._isPresented = isPresented
-            self.colorProvider = colorProvider
         }
+        
+        // MARK: - Body
         
         public var body: some View {
             ZStack {
                 backgroundView
-
                 foregroundView
             }
             .fixedSize(horizontal: false, vertical: true)
-            .cornerRadius(modalCornerRadius)
-            .addShadow(.small)
+            .cornerRadius(Warp.Border.borderRadius100)
+            .addShadow(.medium)
             .accessibilityElement(children: .combine)
             .padding()
         }
+        
+        // MARK: - Views
+        
         private var titleView: some View {
             Text(title, style: .title3)
                 .accessibilityAddTraits(.isHeader)
@@ -95,7 +92,7 @@ extension Warp {
         @ViewBuilder
         private var closeButtonView: some View {
             if hasCloseButton {
-                Image("icon-close", bundle: .module)
+                Warp.IconView(.close, size: .small)
                     .onTapGesture {
                         isPresented.toggle()
                         onDismiss?()
@@ -107,22 +104,20 @@ extension Warp {
         private var subtitleView: some View {
             if let subtitle, !subtitle.isEmpty {
                 Text(subtitle, style: .title4)
-                    .accessibilityRemoveTraits(.isHeader)
             }
         }
         
         private var bodyTextView: some View {
             Text(bodyText, style: .body)
                 .fixedSize(horizontal: false, vertical: true)
-                .accessibilityRemoveTraits(.isHeader)
         }
         
         private var backgroundView: some View {
-            colorProvider.cardBackground
+            colorProvider.token.surfaceElevated100
         }
         
         private var foregroundView: some View {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: Warp.Spacing.spacing200) {
                 HStack {
                     titleView
                     Spacer()
@@ -132,27 +127,26 @@ extension Warp {
                     subtitleView
                     bodyTextView
                     buttonsView
-                        .padding(.top)
+                        .padding(.top, Warp.Spacing.spacing300)
                 }
             }
             .padding()
         }
+        
         private var buttonsView: some View {
             ButtonsView(
                 primaryButtonProvider: primaryButtonProvider,
-                secondaryButtonProvider: secondaryButtonProvider,
-                colorProvider: colorProvider
+                secondaryButtonProvider: secondaryButtonProvider
             )
         }
     }
 }
 
+// MARK: - ButtonsView
+
 private struct ButtonsView: View, Hashable {
-    let primaryButtonProvider: Warp.Alert.ButtonConstructor?
-    
-    let secondaryButtonProvider: Warp.Alert.ButtonConstructor?
-    
-    let colorProvider: ColorProvider
+    let primaryButtonProvider: Warp.Modal.ButtonConstructor?
+    let secondaryButtonProvider: Warp.Modal.ButtonConstructor?
     
     static func == (lhs: ButtonsView, rhs: ButtonsView) -> Bool {
         let primaryComparison: Bool
@@ -202,8 +196,7 @@ private struct ButtonsView: View, Hashable {
     
     init?(
         primaryButtonProvider: Warp.Alert.ButtonConstructor?,
-        secondaryButtonProvider: Warp.Alert.ButtonConstructor?,
-        colorProvider: ColorProvider
+        secondaryButtonProvider: Warp.Alert.ButtonConstructor?
     ) {
         if primaryButtonProvider == nil, secondaryButtonProvider == nil {
             return nil
@@ -211,21 +204,21 @@ private struct ButtonsView: View, Hashable {
         
         self.primaryButtonProvider = primaryButtonProvider
         self.secondaryButtonProvider = secondaryButtonProvider
-        self.colorProvider = colorProvider
     }
     
     var body: some View {
-        HStack {
+        HStack(spacing: Warp.Spacing.spacing200) {
             Spacer()
             if let secondaryButtonProvider {
-                Warp.Button.createSecondary(
+                Warp.Button(
                     title: secondaryButtonProvider.title,
-                    action: secondaryButtonProvider.action
+                    action: secondaryButtonProvider.action,
+                    type: .secondary
                 )
             }
             
             if let primaryButtonProvider {
-                Warp.Button.createPrimary(
+                Warp.Button(
                     title: primaryButtonProvider.title,
                     action: primaryButtonProvider.action
                 )

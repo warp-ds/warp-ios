@@ -16,7 +16,7 @@ extension Warp {
         /// Pill text.
         private let text: String
         /// Pill icon. If you provide onClose then the Pill will have a close button instead of this icon.
-        private let icon: Image?
+        private let icon: Warp.Icon?
         /// Triggered when Pill is tapped.
         private let onTap: () -> Void
         /// Triggered when Pill is closed. If provided a close button will replace any provided icon.
@@ -30,7 +30,7 @@ extension Warp {
 
         public init(
             text: String,
-            icon: Image? = nil,
+            icon: Warp.Icon? = nil,
             onTap: @escaping () -> Void = {},
             onClose: (() -> Void)? = nil,
             iconContentDescription: String? = nil,
@@ -48,23 +48,21 @@ extension Warp {
             SwiftUI.Button {
                 onTap()
             } label: {
-                HStack(spacing: 8) {
+                HStack(spacing: 4) {
                     Text(text,
-                         style: textStyle,
+                         style: .captionStrong,
                          color: textColor
                     )
                     if let onClose {
                         SwiftUI.Button {
                             onClose()
                         } label: {
-                            Image(systemName: "xmark")
-                                .foregroundStyle(textColor)
+                            Warp.IconView(.close, size: .small, color: textColor)
                         }
                         .accessibilityLabel(iconContentDescription ?? "Close")
                     } else if let icon {
-                        icon
-                            .foregroundStyle(textColor)
-                            .accessibilityLabel(iconContentDescription ?? "")
+                        Warp.IconView(icon, size: .small, color: textColor)
+                            .accessibilityLabel(iconContentDescription ?? icon.localization)
                     }
                 }
                 .padding(.horizontal, 16)
@@ -81,20 +79,11 @@ extension Warp {
         private var textColor: Color {
             switch style {
             case .filter:
-                return colorProvider.pillFilterText
+                return colorProvider.token.textInverted
             case .suggestion:
-                return colorProvider.pillSuggestionText
+                return colorProvider.token.text
             }
         }
-        
-        private var textStyle: Warp.TextStyle {
-            switch style {
-            case .filter:
-                return .caption
-            case .suggestion:
-                return .captionStrong
-            }
-        }        
     }
 }
 
@@ -118,8 +107,8 @@ extension Warp {
                         Warp.Pill(text: String(describing: style), onClose: {}, style: style)
                     }
                     HStack {
-                        Warp.Pill(text: String(describing: style), icon: Image(systemName: "plus"), style: style)
-                        Warp.Pill(text: String(describing: style), icon: Image(systemName: "plus"), onClose: {}, style: style)
+                        Warp.Pill(text: String(describing: style), icon: .plus, style: style)
+                        Warp.Pill(text: String(describing: style), icon: .plus, onClose: {}, style: style)
                     }
                 }
             }, label: {

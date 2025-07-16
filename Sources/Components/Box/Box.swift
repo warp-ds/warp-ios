@@ -4,9 +4,6 @@ import SwiftUI
 extension Warp {
     private static let boxCornerRadius = 8.0
 
-    /// Asset name of the `Box` tooltip image.
-    private static let toolTipImageName = "icon_box-info"
-
     /// Box is a layout component to display information in addition to the main content of a page.
     public struct Box: View, Hashable {
         /// Preferred style of box.
@@ -14,88 +11,75 @@ extension Warp {
         
         /// Flag indicating tooltip image should be shown.
         let shouldShowToolTipImage: Bool
-
+        
         /// Text that will be shown as box's heading.
         let title: String?
-
+        
         /// Text that will be shown after title in the middle of the box.
         let subtitle: String
 
-        public typealias ButtonConstructor = (title: String, action: () -> Void)
+        /// Optional badge that will be beside the title.
+        let badge: Badge?
 
-        /// Tuple that will provide a title and an action for creating a link view below subtitle.
+        public typealias ButtonConstructor = (title: String, action: () -> Void)
+        
+        /// The optional title and an action for creating a link view below subtitle.
         /// Passing `nil` will skip adding link view.
         let linkProvider: ButtonConstructor?
 
-        /// Tuple that will provide a title and an action for creating a button view below link.
+        /// The optional button view below link.
         /// Passing `nil` will skip adding button view.
-        let buttonProvider: ButtonConstructor?
+        let buttonProvider: Warp.Button?
 
         /// Object responsible for providing colors in different environments and variants.
-        let colorProvider: ColorProvider
+        let colorProvider: ColorProvider = Warp.Color
 
         public static func == (lhs: Box, rhs: Box) -> Bool {
             let styleComparison = lhs.style == rhs.style
             lazy var titleComparison = lhs.title == rhs.title
+            lazy var badgeComparison = lhs.badge == rhs.badge
             lazy var iconComparison = lhs.shouldShowToolTipImage == rhs.shouldShowToolTipImage
             lazy var subtitleComparison = lhs.subtitle == rhs.subtitle
             lazy var linkProviderComparison = lhs.linkProvider?.title == rhs.linkProvider?.title
-            lazy var buttonProviderComparison = lhs.buttonProvider?.title == rhs.buttonProvider?.title
-
+            lazy var buttonProviderComparison = lhs.buttonProvider == rhs.buttonProvider
+            
             return styleComparison &&
             titleComparison &&
+            badgeComparison &&
             iconComparison &&
             subtitleComparison &&
             linkProviderComparison &&
             buttonProviderComparison
         }
-
+        
         public func hash(into hasher: inout Hasher) {
             hasher.combine(style)
             hasher.combine(title)
             hasher.combine(subtitle)
         }
-
+        
         public init(
             style: Warp.BoxStyle,
             title: String?,
+            badge: Badge? = nil,
             shouldShowToolTipImage: Bool = true,
             subtitle: String,
             link: ButtonConstructor? = nil,
-            button: ButtonConstructor? = nil,
-            colorProvider: ColorProvider = Warp.Color
+            button: Warp.Button? = nil
         ) {
             self.style = style
             self.title = title
+            self.badge = badge
             self.shouldShowToolTipImage = shouldShowToolTipImage
             self.subtitle = subtitle
             self.linkProvider = link
-            buttonProvider = button
-            self.colorProvider = colorProvider
-        }
-
-        init(
-            style: Warp.BoxStyle,
-            title: String?,
-            shouldShowToolTipImage: Bool = true,
-            subtitle: String,
-            linkProvider: ButtonConstructor?,
-            buttonProvider: ButtonConstructor?,
-            colorProvider: ColorProvider = Warp.Color
-        ) {
-            self.style = style
-            self.title = title
-            self.shouldShowToolTipImage = shouldShowToolTipImage
-            self.subtitle = subtitle
-            self.linkProvider = linkProvider
-            self.buttonProvider = buttonProvider
-            self.colorProvider = colorProvider
+            self.buttonProvider = button
         }
 
         public var body: some View {
             ZStack {
                 backgroundView
-
+                
                 foregroundView
                     .padding(.all, 24)
             }
@@ -109,85 +93,78 @@ extension Warp {
             )
             .modifier(AccessibilityButtonActionBuilder(buttonProvider: buttonProvider))
         }
-
+        
         private var backgroundView: some View {
             style.getBackgroundColor(from: colorProvider)
-                // View with rounded edges,
-                // and optional border.
+            // View with rounded edges,
+            // and optional border.
                 .overlay(borderView)
         }
-
+        
         @ViewBuilder
         private var borderView: some View {
             RoundedRectangle(cornerRadius: boxCornerRadius)
                 .stroke(style.getBorderColor(from: colorProvider), lineWidth: 2)
         }
-
+        
         private var foregroundView: some View {
             HStack(spacing: 8) {
                 toolTipIconView
                     .accessibilityHidden(true)
-
+                
                 informationView
-                    .padding(.leading, 16)
+                    .padding(.leading, 8)
 
                 Spacer()
             }
         }
-
+        
         @ViewBuilder
         private var toolTipIconView: some View {
-            lazy var isTitleAvailableAndNotEmpty = {
-                if let title {
-                    return !title.isEmpty
-                }
-
-                return false
-            }()
-
-            if shouldShowToolTipImage, isTitleAvailableAndNotEmpty {
+            if shouldShowToolTipImage {
                 VStack {
-                    Image(toolTipImageName, bundle: .module)
-                        .renderingMode(.template)
-                        .frame(width: 24, height: 24)
+                    Warp.IconView(.checkShield)
                         .foregroundColor(colorProvider.token.iconSelected)
-                        .padding(.leading, 8)
-
+                    
                     Spacer()
                 }
             }
         }
-
+        
         private var informationView: some View {
             VStack(alignment: .leading, spacing: 8) {
                 titleView
-
+                
                 subtitleView
-
+                
                 linkView
                     .padding(.vertical, 8)
-
+                
                 buttonsView
                     .padding(.top, 4)
-                    .padding(.bottom, 8)
             }
         }
-
+        
         @ViewBuilder
         private var titleView: some View {
-            if let title, !title.isEmpty {
-                Text(title, style: .title3)
-                    .foregroundColor(style.getTextColor(from: colorProvider))
-                    .accessibilityAddTraits(.isHeader)
+            HStack(spacing: Spacing.spacing200) {
+                if let title, !title.isEmpty {
+                    Text(title, style: .title3)
+                        .foregroundColor(colorProvider.token.text)
+                        .accessibilityAddTraits(.isHeader)
+                }
+                if let badge {
+                    badge
+                }
             }
         }
-
+        
         private var subtitleView: some View {
             Text(subtitle, style: .body)
-                .foregroundColor(colorProvider.boxInfoText)
+                .foregroundColor(colorProvider.token.text)
                 .accessibilityRemoveTraits(.isHeader)
         }
-
+        
         @ViewBuilder
         private var linkView: some View {
             if let linkProvider = linkProvider {
@@ -201,7 +178,7 @@ extension Warp {
                                 color: colorProvider.token.textLink
                             )
                             .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
-
+                            
                             Spacer()
                         }
                     }
@@ -210,10 +187,10 @@ extension Warp {
                 .accessibilityAddTraits(.isLink)
             }
         }
-
+        
         private var buttonsView: some View {
             ButtonView(
-                primaryButtonProvider: buttonProvider,
+                buttonProvider: buttonProvider,
                 colorProvider: colorProvider
             )
         }
@@ -221,33 +198,33 @@ extension Warp {
 }
 
 private struct AccessibilityTraitBuilder: ViewModifier {
-    let buttonProvider: Warp.Box.ButtonConstructor?
+    let buttonProvider: Warp.Button?
     let linkProvider: Warp.Box.ButtonConstructor?
-
+    
     func body(content: Content) -> some View {
         switch (linkProvider, buttonProvider) {
-            case (.some, .some):
-                content
-                    .accessibilityAddTraits(.isLink)
-                    .accessibilityAddTraits(.isButton)
-
-            case (.some, .none):
-                content
-                    .accessibilityAddTraits(.isLink)
-
-            case (.none, .some):
-                content
-                    .accessibilityAddTraits(.isButton)
-
-            case (.none, .none):
-                content
-                    .accessibilityAddTraits(.isStaticText)
+        case (.some, .some):
+            content
+                .accessibilityAddTraits(.isLink)
+                .accessibilityAddTraits(.isButton)
+            
+        case (.some, .none):
+            content
+                .accessibilityAddTraits(.isLink)
+            
+        case (.none, .some):
+            content
+                .accessibilityAddTraits(.isButton)
+            
+        case (.none, .none):
+            content
+                .accessibilityAddTraits(.isStaticText)
         }
     }
 }
 
 private struct AccessibilityButtonActionBuilder: ViewModifier {
-    let buttonProvider: Warp.Box.ButtonConstructor?
+    let buttonProvider: Warp.Button?
 
     func body(content: Content) -> some View {
         if let buttonProvider {
@@ -260,36 +237,33 @@ private struct AccessibilityButtonActionBuilder: ViewModifier {
 }
 
 private struct ButtonView: View, Hashable {
-    let buttonProvider: Warp.Box.ButtonConstructor
+    let buttonProvider: Warp.Button
 
     let colorProvider: ColorProvider
-
+    
     static func == (lhs: ButtonView, rhs: ButtonView) -> Bool {
-        lhs.buttonProvider.title == rhs.buttonProvider.title
+        lhs.buttonProvider == rhs.buttonProvider
     }
-
+    
     func hash(into hasher: inout Hasher) {
-        hasher.combine(buttonProvider.title)
+        hasher.combine(buttonProvider)
     }
-
+    
     init?(
-        primaryButtonProvider: Warp.Box.ButtonConstructor?,
+        buttonProvider: Warp.Button?,
         colorProvider: ColorProvider
     ) {
-        guard let primaryButtonProvider else {
+        guard let buttonProvider else {
             return nil
         }
-
-        self.buttonProvider = primaryButtonProvider
+        
+        self.buttonProvider = buttonProvider
         self.colorProvider = colorProvider
     }
-
+    
     var body: some View {
         HStack {
-            Warp.Button.createSecondary(
-                title: buttonProvider.title,
-                action: buttonProvider.action
-            )
+            buttonProvider
 
             Spacer()
         }
@@ -298,11 +272,11 @@ private struct ButtonView: View, Hashable {
 
 private struct UnderlinedLinkModifier: ViewModifier {
     let colorProvider: ColorProvider
-
+    
     private var linkColor: Color {
         colorProvider.token.textLink
     }
-
+    
     func body(content: Content) -> some View {
         if #available(iOS 16.0, *) {
             content
@@ -312,7 +286,7 @@ private struct UnderlinedLinkModifier: ViewModifier {
                 .background(lineBackground)
         }
     }
-
+    
     private var lineBackground: some View {
         linkColor
             .frame(height: 1)
@@ -323,47 +297,26 @@ private struct UnderlinedLinkModifier: ViewModifier {
 extension Warp.BoxStyle {
     fileprivate func getBackgroundColor(from colorProvider: ColorProvider) -> Color {
         switch self {
-            case .neutral:
-                return colorProvider.boxNeutralBackground
-
-            case .info:
-                return colorProvider.boxInfoBackground
-
-            case .bordered:
-                return colorProvider.boxBorderedBackground
+        case .neutral:
+            return colorProvider.token.backgroundSubtle
+            
+        case .info:
+            return colorProvider.token.backgroundInfoSubtle
+            
+        case .bordered:
+            return colorProvider.token.background
         }
     }
-
+    
     fileprivate func getBorderColor(from colorProvider: ColorProvider) -> Color {
         switch self {
-            case .bordered:
-                return colorProvider.boxBorderedBorder
-
-            default:
-                return .clear
+        case .bordered:
+            return colorProvider.token.border
+            
+        default:
+            return colorProvider.token.backgroundTransparent0
         }
     }
-
-    fileprivate func getTextColor(from colorProvider: ColorProvider) -> Color {
-        switch self {
-            case .neutral:
-                return colorProvider.boxNeutralText
-
-            case .info:
-                return colorProvider.boxInfoText
-
-            case .bordered:
-                return colorProvider.boxBorderedText
-        }
-    }
-}
-
-extension Warp.BoxStyle {
-    fileprivate static var allCases: [Warp.BoxStyle] = [
-        .neutral,
-        .info,
-        .bordered
-    ]
 }
 
 #Preview("Simple use case") {
@@ -371,9 +324,7 @@ extension Warp.BoxStyle {
         Warp.Box(
             style: style,
             title: "Title",
-            subtitle: "Use this variant to call extra attention to useful, contextual information.",
-            linkProvider: nil,
-            buttonProvider: nil
+            subtitle: "Use this variant to call extra attention to useful, contextual information."
         )
     }
 }
@@ -384,8 +335,8 @@ extension Warp.BoxStyle {
             style: style,
             title: "Title",
             subtitle: "Use this variant to call extra attention to useful, contextual information.",
-            linkProvider: (title: "Link to more information", action: {}),
-            buttonProvider: (title: "Button", action: {})
+            link: (title: "Link to more information", action: {}),
+            button: Warp.Button(title: "Button") {}
         )
     }
 }

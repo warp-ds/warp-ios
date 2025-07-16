@@ -24,9 +24,11 @@ extension Warp {
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
         
-        public init(size: SpinnerSize = .default,
-                    duration: CGFloat = 1,
-                    lineWidth: CGFloat = 3) {
+        public init(
+            size: SpinnerSize = .default,
+            duration: CGFloat = 1,
+            lineWidth: CGFloat = 3
+        ) {
             self.size = size
             self.duration = duration
             self.lineWidth = lineWidth
@@ -36,7 +38,7 @@ extension Warp {
             ZStack {
                 Circle()
                     .stroke(lineWidth: lineWidth)
-                    .fill(colorProvider.spinnerBorder)
+                    .fill(colorProvider.token.borderPrimarySubtle)
                     .frame(width: size.value, height: size.value)
                 
                 Circle()
@@ -44,7 +46,7 @@ extension Warp {
                     .stroke(lineWidth: lineWidth)
                     .rotationEffect(.degrees(isCircleRotating ? 0 : 360))
                     .frame(width: size.value, height: size.value)
-                    .foregroundColor(colorProvider.spinnerBorderTop)
+                    .foregroundColor(colorProvider.token.borderPrimary)
                     .onAppear() {
                         DispatchQueue.main.async {
                             withAnimation(Animation

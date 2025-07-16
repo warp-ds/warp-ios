@@ -1,10 +1,14 @@
 import SwiftUI
 
 extension Warp {
-    /// Defines shadow properties for different shadow sizes.
+    /// Defines shadow properties for different shadow sizes used in the Warp design system.
+    ///
+    /// Each shadow size consists of two shadow layers, each with its own opacity, blur radius, and offset. These shadows
+    /// provide visual depth to UI components.
     public enum Shadow: CaseIterable {
         case small, medium, large, xLarge
         
+        /// The name of the shadow size for reference.
         public var name: String {
             switch self {
             case .small:  return "Small"
@@ -13,6 +17,8 @@ extension Warp {
             case .xLarge: return "xLarge"
             }
         }
+        
+        // MARK: - Shadow Properties
         
         /// The opacity for the first shadow layer.
         fileprivate var opacity1: Double {
@@ -83,23 +89,34 @@ extension Warp {
             case .xLarge: return 9
             }
         }
+
+        /// Modifier for offset and radius when view with shadow is in pressed state
+        fileprivate var pressedModifier: CGFloat {
+            switch self {
+            case .small: 0.2
+            case .medium: 0.3
+            case .large: 0.4
+            case .xLarge: 0.7
+            }
+        }
     }
 }
 
 /// A view modifier that applies double shadows to a view based on the specified `Warp.Shadow` properties.
 private struct ShadowViewModifier: ViewModifier {
     let shadow: Warp.Shadow
+    let isPressed: Bool
     
     func body(content: Content) -> some View {
         content
             .shadow(color: .black.opacity(shadow.opacity1),
-                    radius: shadow.radius1,
+                    radius: isPressed ? shadow.radius1 * shadow.pressedModifier : shadow.radius1,
                     x: shadow.x1,
-                    y: shadow.y1)
+                    y: isPressed ? shadow.y1 * shadow.pressedModifier : shadow.y1)
             .shadow(color: .black.opacity(shadow.opacity2),
-                    radius: shadow.radius2,
+                    radius: isPressed ? shadow.radius2 * shadow.pressedModifier : shadow.radius2,
                     x: shadow.x2,
-                    y: shadow.y2)
+                    y: isPressed ? shadow.y2 * shadow.pressedModifier : shadow.y2)
     }
 }
 
@@ -107,9 +124,10 @@ extension View {
     /// Applies double shadows to the view based on the specified `Warp.Shadow` properties.
     ///
     /// - Parameter shadow: A `Warp.Shadow` object containing properties for the two shadows.
+    /// - Parameter isPressed: Bool indicating if the shadow should be modified to indicate that view is in a pressed state
     /// - Returns: A view modified with the specified double shadows.
-    public func addShadow(_ shadow: Warp.Shadow) -> some View {
-        modifier(ShadowViewModifier(shadow: shadow))
+    public func addShadow(_ shadow: Warp.Shadow, isPressed: Bool = false) -> some View {
+        modifier(ShadowViewModifier(shadow: shadow, isPressed: isPressed))
     }
 }
 

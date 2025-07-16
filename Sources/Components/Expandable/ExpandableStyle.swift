@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Warp {
-    public enum ExpandableStyle {
+    public enum ExpandableStyle: String, CaseIterable {
         /// Basic expandable component.
         case `default`
 
@@ -14,9 +14,9 @@ extension Warp {
         func backgroundColor(using colorProvider: ColorProvider) -> Color {
             switch self {
             case .default:
-                .clear
+                colorProvider.token.backgroundTransparent0
             case .box, .boxBleed:
-                colorProvider.expandableBackground
+                colorProvider.token.backgroundSubtle
             }
         }
         

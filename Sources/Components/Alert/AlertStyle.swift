@@ -1,18 +1,66 @@
-import Foundation
+import SwiftUI
 
 extension Warp {
-    /// Preferred style of alert that will be consumed in order to create a theme for alert.
-    public enum AlertStyle: Equatable {
-        /// Display messages to provide user with general information.
+    /// Defines the preferred style of an alert, which dictates its appearance and tone.
+    ///
+    /// The `AlertStyle` is used to create a themed visual representation for the alert component, such as setting
+    /// colors, icon according to the alert's purpose.
+    public enum AlertStyle: String, Equatable, CaseIterable {
+        /// Used to display messages that provide the user with general information.
         case info
-
-        /// Indicate that something is not working as expected.
+        
+        /// Used to indicate that something is not working as expected or might need attention.
         case warning
-
-        /// Indicate a severe problem or error.
+        
+        /// Used to indicate a severe problem or error that requires immediate attention.
         case critical
-
-        /// Indicating a successful action or completing a task.
+        
+        /// Used to indicate that an action was successful or that a task was completed successfully.
         case success
+        
+        func getBackgroundColor(from colorProvider: ColorProvider) -> Color {
+            switch self {
+            case .info: return colorProvider.token.backgroundInfoSubtle
+            case .warning: return colorProvider.token.backgroundWarningSubtle
+            case .critical: return colorProvider.token.backgroundNegativeSubtle
+            case .success: return colorProvider.token.backgroundPositiveSubtle
+            }
+        }
+        
+        func getBorderColor(from colorProvider: ColorProvider) -> Color {
+            switch self {
+            case .info: return colorProvider.token.borderInfoSubtle
+            case .warning: return colorProvider.token.borderWarningSubtle
+            case .critical: return colorProvider.token.borderNegativeSubtle
+            case .success: return colorProvider.token.borderPositiveSubtle
+            }
+        }
+        
+        func getLeftLineColor(from colorProvider: ColorProvider) -> Color {
+            switch self {
+            case .info: return colorProvider.token.borderInfo
+            case .warning: return colorProvider.token.borderWarning
+            case .critical: return colorProvider.token.borderNegative
+            case .success: return colorProvider.token.borderPositive
+            }
+        }
+        
+        func getIconColor(from colorProvider: ColorProvider) -> Color {
+            switch self {
+            case .info: return colorProvider.token.iconInfo
+            case .warning: return colorProvider.token.iconWarning
+            case .critical: return colorProvider.token.iconNegative
+            case .success: return colorProvider.token.iconPositive
+            }
+        }
+        
+        var tooltipIcon: Warp.Icon {
+            switch self {
+            case .info: return .info
+            case .warning: return .warning
+            case .critical: return .error
+            case .success: return .success
+            }
+        }        
     }
 }

@@ -14,6 +14,7 @@ extension Warp {
          To use the iOS `Broadcast` View you need to provide it with
         - a `title`
         - a `BroadcastEdge` (can be `.bottom` or `.top`)
+        - a boolean that will determine if user can dismiss the `Broadcast` or not
         - a Binding to a boolean value allowing the `Broadcast` to dismiss
      */
     public struct Broadcast: View {
@@ -24,28 +25,31 @@ extension Warp {
         /// Edge from where the broadcast is presented
         let broadcastEdge: Warp.BroadcastEdge
 
+        /// Boolean that will add a close button
+        let isDismissable: Bool
+
         /// Binding to a boolean value that allows the broadcast to control dismissal
         @Binding public var isPresented: Bool
 
         /// Object responsible for providing colors in different environments and variants.
-        let colorProvider: ColorProvider
+        let colorProvider: ColorProvider = Warp.Color
 
         /**
          - Parameter text: String to display in the `Broadcast`
          - Parameter broadcastEdge: The `BroadcastEdge` on where to present the `Broadcast`
+         - Parameter isDismissable: Is the `Broadcast` dismissable by the user or not
          - Parameter isPresented: Is the `Broadcast` presented or not
-         - Parameter colorProvider: ColorProvider used for styling the `Broadcast`, default value is read from `Config`
          */
         public init(
             text: String,
             broadcastEdge: Warp.BroadcastEdge,
-            isPresented: Binding<Bool>,
-            colorProvider: ColorProvider = Warp.Color
+            isDismissable: Bool = true,
+            isPresented: Binding<Bool>
         ) {
             self.text = text
             self.broadcastEdge = broadcastEdge
+            self.isDismissable = isDismissable
             self._isPresented = isPresented
-            self.colorProvider = colorProvider
         }
 
         public var body: some View {
@@ -53,13 +57,13 @@ extension Warp {
                 .overlay(
                     ZStack(alignment: .leading) {
                         RoundedRectangle(cornerRadius: broadcastCornerRadius)
-                            .stroke(colorProvider.broadcastBorderSubtle, lineWidth: 4)
-                        colorProvider.broadcastBorder
+                            .stroke(colorProvider.token.borderWarningSubtle, lineWidth: 4)
+                        colorProvider.token.borderWarning
                             .frame(width: 6)
                     }
                 )
                 .frame(maxWidth: .infinity)
-                .background(colorProvider.broadcastBackground)
+                .background(colorProvider.token.backgroundWarningSubtle)
                 .cornerRadius(broadcastCornerRadius)
                 .transition(.move(edge: broadcastEdge.asEdge).combined(with: .opacity))
                 .onTapGesture {
@@ -76,30 +80,26 @@ extension Warp {
                 textView
                 
                 Spacer()
-                
-                closeView
+                if isDismissable {
+                    closeView
+                }
             }
             .padding(16)
         }
         
         private var warningImageView: some View {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .renderingMode(.template)
-                .foregroundColor(colorProvider.broadcastIcon)
+            Warp.IconView(.warning, size: .small)
+                .foregroundColor(colorProvider.token.iconWarning)
         }
         
         private var textView: some View {
             Text(text, style: .body)
                 .padding(.leading, 8)
-                .foregroundStyle(colorProvider.broadcastText)
+                .foregroundStyle(colorProvider.token.text)
         }
         
         private var closeView: some View {
-            Image("icon-close", bundle: .module)
-        }
-        
-        private var leftLineView: some View {
-            return colorProvider.broadcastBorder
+            Warp.IconView(.close, size: .small)
         }
     }
 }

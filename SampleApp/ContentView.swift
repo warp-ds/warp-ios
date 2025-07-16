@@ -21,179 +21,69 @@ struct ContentView: View {
                 }
                 #endif
                 LazyVStack (alignment: .leading) {
-                    Text("Brand Specific Items")
-                        .font(.title2)
-                    Divider()
-                    switch Warp.Theme {
-                    case .finn:
-                        NavigationLink(destination: FinnColorsView()) {
-                            Text("Colors")
-                                .padding()
-                        }
-                    case .tori:
-                        NavigationLink(destination: ToriColorsView()) {
-                            Text("Colors")
-                                .padding()
-                        }
-                    case .dba:
-                        NavigationLink(destination: DBAColorsView()) {
-                            Text("BrandColors")
-                                .padding()
-                        }
-                    case .blocket:
-                        NavigationLink(destination: BlocketColorsView()) {
-                            Text("BrandColors")
-                                .padding()
-                        }
-                    }
-                    Divider()
-                    NavigationLink(destination: BrandTokensView()) {
-                        Text("Tokens")
-                            .padding()
-                    }
+                    Warp.Text("Brand Specific Items", style: .title3)
                     Divider()
 
-                    NavigationLink(destination: TypographyView()) {
-                        Text("Typography")
-                            .padding()
-                    }
+                    row("PrimitiveColors", destination: PrimitiveColorsView())
+                    row("SemanticTokens", destination: SemanticTokensView())
+                    row("ComponentColors", destination: ComponentColorsView())
+                    row("DatavizColors", destination: DatavizSampleColorsView())
+                    row("DatavizTokens", destination: DatavizTokensView())
+                    row("Typography", destination: TypographyView())
+                    row("TypographyUI", destination: TypographyUIView())
+                    row("Icons", destination: IconsView())
+                    row("Taxonomy Icons", destination: TaxonomyIconsView())
+                    row("Brand Icons", destination: BrandIconsView())
+                    row("Brand Logos", destination: BrandLogosView())
 
+                    Warp.Text("Warp Components", style: .title3)
                     Divider()
 
-                    Text("Warp Components")
-                        .font(.title2)
+                    row("Alert", destination: AlertView())
+                    row("Badge", destination: BadgeView())
+                    row("Box", destination: BoxView())
+                    row("Broadcast", destination: BroadcastView())
+                    row("Button", destination: ButtonView())
+                    row("ButtonGroup", destination: ButtonGroupView())
+                    row("ButtonPill", destination: ButtonPillView())
+                    row("Callout", destination: CalloutView())
+                    row("Checkbox", destination: CheckboxView())
+                    row("Expandable", destination: ExpandableView())
+                    row("Icon", destination: IconView())
+                    row("Logo", destination: LogoView())
+                    row("Modal", destination: ModalView())
+                    row("PageIndicator", destination: PageIndicatorView())
+                    row("Pill", destination: PillView())
+                    row("Radio", destination: RadioView())
+                    row("Shadow", destination: ShadowView())
+                    row("ShadowUI", destination: ShadowUIView())
+                    row("Slider", destination: SliderView())
+                    row("Spinner", destination: SpinnerView())
+                    row("StepIndicator", destination: StepIndicatorView())
+                    row("Switch", destination: SwitchView())
+                    row("Tabs", destination: TabsView())
+                    row("Text", destination: TextView())
+                    row("TextArea", destination: TextAreaView())
+                    row("TextField", destination: TextFieldView())
+                    row("Toast", destination: ToastView())
+                    row("Tooltip", destination: TooltipView())
 
-                    Divider()
-
-                    NavigationLink(destination: AlertView()) {
-                        Text("Alert")
-                            .padding()
-                    }
-                    Divider()
-
-                    NavigationLink(destination: BadgeView()) {
-                        Text("Badge")
-                            .padding()
-                    }
-                    Divider()
-
-                    NavigationLink(destination: BoxView()) {
-                        Text("Box")
-                            .padding()
-                    }
-                    
-                    Divider()
-
-                    NavigationLink(destination: BroadcastView()) {
-                        Text("Broadcast")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    NavigationLink(destination: ButtonView()) {
-                        Text("Button")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    NavigationLink(destination: CalloutView()) {
-                        Text("Callout")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    NavigationLink(destination: ExpandableView()) {
-                        Text("Expandable")
-                            .padding()
-                    }
-
-                    Divider()
-                    
-                    NavigationLink(destination: ModalView()) {
-                        Text("Modal")
-                            .padding()
-                    }
-                    Divider()
-
-                    NavigationLink(destination: ModalView()) {
-                        Text("Modal")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    NavigationLink(destination: PillView()) {
-                        Text("Pill")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    NavigationLink(destination: ShadowView()) {
-                        Text("Shadow")
-                            .padding()
-                    }
-                    
-                    Divider()
-                    
-                    NavigationLink(destination: ShadowUIView()) {
-                        Text("ShadowUI")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    NavigationLink(destination: SpinnerView()) {
-                        Text("Spinner")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    NavigationLink(destination: StepIndicatorView()) {
-                        Text("StepIndicator")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    NavigationLink(destination: TextView()) {
-                        Text("Text")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    NavigationLink(destination: TextFieldView()) {
-                        Text("TextField")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    NavigationLink(destination: ToastView()) {
-                        Text("Toast")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    NavigationLink(destination: TooltipView()) {
-                        Text("Tooltip")
-                            .padding()
-                    }
-
-                    Divider()
-
-                    Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
-                        .font(.caption2)
+                    Warp.Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))", style: .caption)
                 }
                 .padding()
             }
             .navigationTitle(Bundle.main.applicationName)
+        }
+    }
+    
+    private func row(_ title: String, destination: some View) -> some View {
+        NavigationLink(destination: destination) {
+            VStack(alignment: .leading) {
+                Warp.Text(title, style: .title4)
+                    .foregroundColor(Warp.Token.textLink)
+                    .padding()
+                Divider()
+            }
         }
     }
 }
