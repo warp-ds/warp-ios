@@ -5,6 +5,7 @@ extension Warp {
         let style: Warp.ToastStyle
         let title: String
         let edge: ToastEdge
+        let duration: Toast.Duration
         private let horizontalPadding: Double = 16
         @Binding var isPresented: Bool
 
@@ -25,6 +26,7 @@ extension Warp {
                     style: style,
                     title: title,
                     toastEdge: edge,
+                    duration: duration,
                     isPresented: $isPresented
                 )
                 .padding(.horizontal, horizontalPadding)
@@ -39,6 +41,7 @@ public extension View {
         style: Warp.ToastStyle,
         title: String,
         edge: Warp.ToastEdge,
+        duration: Warp.Toast.Duration = .short,
         isPresented: Binding<Bool>
     ) -> some View {
         self.modifier(
@@ -46,6 +49,7 @@ public extension View {
                 style: style,
                 title: title,
                 edge: edge,
+                duration: duration,
                 isPresented: isPresented
             )
         )
