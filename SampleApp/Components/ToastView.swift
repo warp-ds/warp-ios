@@ -5,6 +5,7 @@ struct ToastView: View {
     @State var toastIsPresented: Bool = true
     @State var toastStyle: Warp.ToastStyle = .success
     @State var toastEdge: Warp.ToastEdge = .top
+    @State var toastDuration: Warp.Toast.Duration = .short
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -70,6 +71,18 @@ struct ToastView: View {
 
                 Divider()
 
+                Text("Toast duration")
+                        .font(.headline)
+
+                Picker("Toast duration:", selection: $toastDuration) {
+                    ForEach(Warp.Toast.Duration.demoCases, id: \.self) { currentDuration in
+                        Text(currentDuration.description)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                Divider()
+
                 Spacer()
             }
         }
@@ -78,6 +91,7 @@ struct ToastView: View {
             style: toastStyle,
             title: "Here's a toast of type \(toastStyle.description) located at the \(toastEdge.description) edge",
             edge: toastEdge,
+            duration: toastDuration,
             isPresented: $toastIsPresented
         )
         .navigationBarTitleDisplayMode(.inline)
@@ -109,6 +123,25 @@ fileprivate extension Warp.ToastEdge {
             "top"
         case .bottom:
             "bottom"
+        }
+    }
+}
+
+fileprivate extension Warp.Toast.Duration {
+    static var demoCases: [Warp.Toast.Duration] {
+        [.short, .long, .infinite]
+    }
+    
+    var description: String {
+        switch self {
+        case .short:
+            "Short (5 seconds)"
+        case .long:
+            "Long (10 seconds)"
+        case .infinite:
+            "Infinite"
+        case .custom(let interval):
+            "custom (\(interval) seconds)"
         }
     }
 }
