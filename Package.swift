@@ -14,6 +14,10 @@ let package = Package(
             targets: ["Warp"]
         ),
     ],
+    dependencies: [
+        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.0.0"),
+        .package(url: "https://github.com/alexey1312/SnapshotTestingHEIC.git", from: "1.0.0"),
+    ],
     targets: [
         .target(
             name: "Warp",
@@ -24,8 +28,12 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "tests",
-            dependencies: ["Warp"]
+            name: "WarpTests",
+            dependencies: [
+                "Warp",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+                .product(name: "SnapshotTestingHEIC", package: "SnapshotTestingHEIC"),
+            ]
         )
     ]
 )
