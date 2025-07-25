@@ -6,7 +6,7 @@ import SwiftUI
 @Suite @MainActor
 struct AlertSnapshotTests {
 
-    typealias Button = Warp.Alert.ButtonConstructor
+    typealias ButtonConstructor = Warp.Alert.ButtonConstructor
 
     static let alertStyle = [
         Warp.AlertStyle.info,
@@ -14,41 +14,57 @@ struct AlertSnapshotTests {
         Warp.AlertStyle.critical,
         Warp.AlertStyle.success
     ]
-
-    static let linkProvider: [Warp.Alert.ButtonConstructor?] = [
-        nil,
-        nil,
-        nil,
-        (title: "Action", action: {}),
+    static let titleProvider: [String] = [
+        "",
+        "Title"
     ]
-
-    static let buttonProvider: [Warp.Alert.ButtonConstructor?] = [
+    static let subtitleProvider: [String] = [
+        "",
+        "Use this variant to call extra attention to useful, contextual information."
+    ]
+    static let linkProvider: [ButtonConstructor?] = [
         nil,
-        nil,
+        (title: "Visit this link for more information", action: {}),
+    ]
+    static let buttonProvider: [ButtonConstructor?] = [
         nil,
         (title: "Click me!", action: {}),
     ]
+    static let allArgumentsCombined = combine(
+        alertStyle,
+        titleProvider,
+        subtitleProvider,
+        linkProvider,
+        buttonProvider,
+        buttonProvider
+    )
 
-    @Test(arguments: AlertSnapshotTests.alertStyle, AlertSnapshotTests.linkProvider, AlertSnapshotTests.buttonProvider, AlertSnapshotTests.buttonProvider)
-    func testAlert(style: Warp.AlertStyle, link: Button?, primary: Button?, secondary: Button?) throws {
-        let alert = Warp.Alert(
-            style: style,
-            title: "Title",
-            subtitle: "Use this variant to call extra attention to useful, contextual information.",
-            link: link,
-            primaryButton: primary,
-            secondaryButton: secondary
-        )
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotAllAlertsInColumn(brand: Warp.Brand) throws {
+        let snapshotName = ".\(brand.description)"
+        // Set the theme to the current brand
+        Warp.Theme = brand
+        let alertViews = Self.allArgumentsCombined.map { (style, title, subtitle, link, primary, secondary) in
+            Warp.Alert(
+                style: style,
+                title: title,
+                subtitle: subtitle,
+                link: link,
+                primaryButton: primary,
+                secondaryButton: secondary
+            )
+        }
 
-        let snapshotName = [
-            "\(style.rawValue)Style",
-            (link != nil) ? "Link" : nil,
-            (primary != nil) ? "Primary" : nil,
-            (secondary != nil) ? "Secondary" : nil,
-            "Alert"
-        ].compactMap() { $0 }.joined(separator: ".")
+        let alertsInColumnView = VStack {
+            ForEach(alertViews.indices, id: \.self) { index in
+                alertViews[index]
+            }
+        }
+            .padding(8)
+            // Set width to match iPhone 13 size
+            .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: alert, as: .warpImage, named: snapshotName)
+        assertSnapshot(of: alertsInColumnView, as: .warpImage(compressionQuality: .high), named: snapshotName)
     }
 }
 
