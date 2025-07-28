@@ -40,7 +40,7 @@ struct AlertSnapshotTests {
     )
 
     @Test(arguments: Warp.Brand.allCases)
-    func snapshotAllAlertsInColumn(brand: Warp.Brand) throws {
+    func snapshotAllAlertsInColumn(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         // Set the theme to the current brand
         Warp.Theme = brand

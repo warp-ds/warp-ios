@@ -12,7 +12,7 @@ struct BadgeSnapshotTests {
     static let allArgumentsCombined = combine(iconProvider, variantProvider, badgePositionsProvider)
 
     @Test(arguments: Warp.Brand.allCases)
-    func testBadgeSnapshots(brand: Warp.Brand) throws {
+    func testBadgeSnapshots(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         // Set the theme to the current brand
         Warp.Theme = brand

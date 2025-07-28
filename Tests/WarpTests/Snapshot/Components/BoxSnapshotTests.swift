@@ -34,7 +34,7 @@ struct BoxSnapshotTests {
         .disabled("Disabled due to the sheer size of combinations, needs to restrict configurations count"),
         arguments: Warp.Brand.allCases
     )
-    func snapshotAllBoxesInColumn(brand: Warp.Brand) throws {
+    func snapshotAllBoxesInColumn(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         // Set the theme to the current brand
         Warp.Theme = brand
