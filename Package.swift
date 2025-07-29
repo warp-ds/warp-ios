@@ -14,6 +14,9 @@ let package = Package(
             targets: ["Warp"]
         ),
     ],
+    dependencies: [
+        .package(url: "https://github.com/nalexn/ViewInspector", from: "0.10.0"),
+    ],
     targets: [
         .target(
             name: "Warp",
@@ -25,7 +28,10 @@ let package = Package(
         ),
         .testTarget(
             name: "tests",
-            dependencies: ["Warp"]
+            dependencies: [
+                "Warp",
+                .product(name: "ViewInspector", package: "ViewInspector")
+            ]
         )
     ]
 )

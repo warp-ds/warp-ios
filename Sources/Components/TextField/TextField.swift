@@ -158,7 +158,7 @@ extension Warp {
         private var textFieldView: some View {
             HStack(spacing: 0) {
                 if let leftIcon {
-                    Warp.IconView(leftIcon, size: .small)
+                    Warp.IconView(leftIcon, size: .default)
                         .padding(.leading, Warp.Spacing.spacing100)
                 }
                 if let prefix {
@@ -193,7 +193,7 @@ extension Warp {
                     SwiftUI.Button {
                         rightIconAction()
                     } label: {
-                        Warp.IconView(rightIcon, size: .small)
+                        Warp.IconView(rightIcon, size: .default)
                             .padding(.trailing, Warp.Spacing.spacing100)
                     }
                 }
