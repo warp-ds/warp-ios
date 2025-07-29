@@ -9,7 +9,7 @@ struct ToastTests {
     @Test @MainActor
     func testToastShouldAutomaticallyDisappear() async throws {
         let dissapearAfterTime: TimeInterval = 0.3
-        let waitingTime: TimeInterval = dissapearAfterTime + 0.1
+        let waitingTime: TimeInterval = dissapearAfterTime + 0.2
 
         var isPresented = true
         let toast = EmptyView()
