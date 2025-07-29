@@ -28,6 +28,9 @@ extension Warp {
         /// Edge from where the toast is presented
         let toastEdge: Warp.ToastEdge
 
+        /// Duration for which the toast will be displayed
+        let duration: Duration
+
         /// Binding to a boolean value that allows the toast to control dismissal
         @Binding public var isPresented: Bool
 
@@ -38,17 +41,20 @@ extension Warp {
          - Parameter style: The `ToastStyle` of the `Toast`
          - Parameter title: String to display in the `Toast`
          - Parameter toastEdge: The `ToastEdge` on where to present the `Toast`
+         - Parameter duration: Duration for which the `Toast` will be displayed, default is `.short`
          - Parameter isPresented: Is the `Toast` presented or not
          */
         public init(
             style: Warp.ToastStyle,
             title: String,
             toastEdge: Warp.ToastEdge,
+            duration: Duration = .short,
             isPresented: Binding<Bool>
         ) {
             self.style = style
             self.title = title
             self.toastEdge = toastEdge
+            self.duration = duration
             self._isPresented = isPresented
         }
 
@@ -58,10 +64,16 @@ extension Warp {
                 RoundedRectangle(cornerRadius: toastCornerRadius)
                     .stroke(style.subtleBorderColor(from: colorProvider), lineWidth: 4)
             )
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: 420)
             .background(style.backgroundColor(from: colorProvider))
             .cornerRadius(toastCornerRadius)
             .transition(AnyTransition.move(edge: toastEdge.asEdge).combined(with: .opacity))
+            .task {
+                do {
+                    try await Task.sleep(nanoseconds: duration.timeInNanoseconds)
+                    isPresented.toggle()
+                } catch {} // Handle cancellation if needed
+            }
             .onTapGesture {
                 withAnimation {
                     isPresented.toggle()
