@@ -4,18 +4,18 @@ import SwiftUI
 @testable import Warp
 
 @Suite @MainActor
-struct CheckboxSnapshotTests {
+struct RadioSnapshotTests {
 
-    static let checkboxStyle = Warp.CheckboxStyle.allCases
+    static let radioStyle = Warp.RadioStyle.allCases
     static let layoutAxis: [Axis.Set] = [.vertical, .horizontal]
     static let allArgumentsCombined = combine(
         Warp.Brand.allCases,
-        checkboxStyle,
+        radioStyle,
         layoutAxis
     )
 
     @Test(arguments: Self.allArgumentsCombined)
-    func snapshotAllCheckboxes(brand: Warp.Brand, style: Warp.CheckboxStyle, axis: Axis.Set) {
+    func snapshotAllRadios(brand: Warp.Brand, style: Warp.RadioStyle, axis: Axis.Set) {
         let snapshotName = [
             ".\(brand.description)",
             "\(style.description)Style",
@@ -39,10 +39,11 @@ struct CheckboxSnapshotTests {
             )
         ]
 
-        let checkboxView = Warp.CheckboxGroup(
+        let radioView = Warp.RadioGroup(
             title: "Title",
             helpText: "Help text",
-            options: .constant(options),
+            selectedOption: .constant(options[1]),
+            options: options,
             style: style,
             axis: axis
         )
@@ -51,24 +52,14 @@ struct CheckboxSnapshotTests {
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
         assertSnapshot(
-            of: checkboxView,
+            of: radioView,
             as: .warpImage(compressionQuality: .medium),
             named: snapshotName
         )
     }
 }
 
-extension Axis.Set {
-    var description: String {
-        switch self {
-        case .vertical: return "Vertical"
-        case .horizontal: return "Horizontal"
-        default: return "Unknown"
-        }
-    }
-}
-
-private extension Warp.CheckboxStyle {
+private extension Warp.RadioStyle {
     var description: String {
         switch self {
         case .default: return "Default"
@@ -78,7 +69,7 @@ private extension Warp.CheckboxStyle {
     }
 }
 
-private struct ExampleOption: CheckboxOption {
+private struct ExampleOption: RadioOption {
     var id: String { title }
     let title: String
     var isSelected: Binding<Bool>
