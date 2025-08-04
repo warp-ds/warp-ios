@@ -29,11 +29,17 @@ let package = Package(
         ),
         .testTarget(
             name: "WarpTests",
+            dependencies: ["Warp"],
+            path: "Tests/WarpTests"
+        ),
+        .testTarget(
+            name: "WarpSnapshotTests",
             dependencies: [
                 "Warp",
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
                 .product(name: "SnapshotTestingHEIC", package: "SnapshotTestingHEIC"),
-            ]
+            ],
+            path: "Tests/WarpSnapshotTests"
         )
     ]
 )
