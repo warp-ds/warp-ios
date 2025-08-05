@@ -74,6 +74,7 @@ extension Warp {
         case clock
         case close
         case cog
+        case copy
         case colorPalette
         case cottagePlot
         case creditCard
@@ -364,6 +365,7 @@ extension Warp {
             case .clock: return Warp.Strings.iconClock.localized
             case .close: return Warp.Strings.iconClose.localized
             case .cog: return Warp.Strings.iconCog.localized
+            case .copy: return Warp.Strings.iconCopy.localized
             case .colorPalette: return Warp.Strings.iconColorPalette.localized
             case .cottagePlot: return Warp.Strings.iconCottagePlot.localized
             case .creditCard: return Warp.Strings.iconCreditCard.localized
@@ -615,7 +617,7 @@ extension Warp {
             return image.withRenderingMode(.alwaysTemplate)
         }
 
-        private var localization: String {
+        var localization: String {
             switch self {
             case .airplane: return Warp.Strings.taxonomyIconAirplane.localized
             case .airplaneHotel: return Warp.Strings.taxonomyIconAirplaneHotel.localized
@@ -666,11 +668,11 @@ extension Warp {
     /// Provides both SwiftUI `Image` and UIKit `UIImage` representations for each icon.
     public enum BrandIcon: String, CaseIterable, View {
         case autovex
-        case honk
         case mittAnbud = "mitt-anbud"
         case nettbil
         case oikotie
         case remppatori
+        case qasa
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         public var body: some View {
@@ -693,14 +695,14 @@ extension Warp {
             return image.withRenderingMode(.alwaysOriginal)
         }
 
-        private var localization: String {
+        var localization: String {
             switch self {
             case .autovex: return Warp.Strings.brandIconAutovex.localized
-            case .honk: return Warp.Strings.brandIconHonk.localized
             case .mittAnbud: return Warp.Strings.brandIconMittAnbud.localized
             case .nettbil: return Warp.Strings.brandIconNettbil.localized
             case .oikotie: return Warp.Strings.brandIconOikotie.localized
             case .remppatori: return Warp.Strings.brandIconRemppatori.localized
+            case .qasa: return Warp.Strings.brandIconQasa.localized
             }
         }
     }
@@ -765,7 +767,7 @@ extension Warp {
             }
         }
 
-        private var localization: String {
+        var localization: String {
             switch self {
             case .bilbasen: return Warp.Strings.brandLogoBilbasen.localized
             case .blocket: return Warp.Strings.brandLogoBlocket.localized
