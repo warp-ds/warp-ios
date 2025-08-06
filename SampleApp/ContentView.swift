@@ -10,14 +10,14 @@ struct ContentView: View {
             ScrollView {
                 #if WARP
                 Picker("Select a Theme", selection: $selectedTheme) {
-                    ForEach(WarpTheme.allCases, id: \.self) { theme in
-                        Text(theme.rawValue)
+                    ForEach(Warp.Brand.allCases, id: \.self) { theme in
+                        Text(theme.description)
                     }
                 }
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
                 .onChange(of: selectedTheme) { newValue in
-                    Config.warpTheme = selectedTheme
+                    Warp.Theme = selectedTheme
                 }
                 #endif
                 LazyVStack (alignment: .leading) {
