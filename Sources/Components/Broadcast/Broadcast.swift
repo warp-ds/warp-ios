@@ -16,7 +16,10 @@ extension Warp {
         - a `BroadcastEdge` (can be `.bottom` or `.top`)
         - a boolean that will determine if user can dismiss the `Broadcast` or not
         - a Binding to a boolean value allowing the `Broadcast` to dismiss
+
+        - Warning: This view is deprecated and will be removed in a future release. Use Alert component (warning) instead.
      */
+    @available(iOS, deprecated, message: "Use Alert component (warning) instead")
     public struct Broadcast: View {
 
         /// Text that will be shown in broadcast
