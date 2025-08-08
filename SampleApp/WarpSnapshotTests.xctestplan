@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "7D594E18-1CDD-4013-856F-D3FBD3C6C997",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "WarpSnapshotTests",
+        "name" : "WarpSnapshotTests"
+      }
+    }
+  ],
+  "version" : 1
+}
