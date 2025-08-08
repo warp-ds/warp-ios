@@ -70,6 +70,7 @@ extension Warp {
         case iconClock = "icon.title.clock"
         case iconClose = "icon.title.close"
         case iconCog = "icon.title.cog"
+        case iconCopy = "icon.title.copy"
         case iconColorPalette = "icon.title.colorPalette"
         case iconCottagePlot = "icon.title.cottagePlot"
         case iconCreditCard = "icon.title.creditCard"
@@ -292,11 +293,11 @@ extension Warp {
         case taxonomyIconVase = "taxonomy.icon.title.vase"
 
         case brandIconAutovex = "brand.icon.title.autovex"
-        case brandIconHonk = "brand.icon.title.honk"
         case brandIconMittAnbud = "brand.icon.title.mittAnbud"
         case brandIconNettbil = "brand.icon.title.nettbil"
         case brandIconOikotie = "brand.icon.title.oikotie"
         case brandIconRemppatori = "brand.icon.title.remppatori"
+        case brandIconQasa = "brand.icon.title.qasa"
 
         case brandLogoBilbasen = "brand.logo.title.bilbasen"
         case brandLogoBlocket = "brand.logo.title.blocket"
@@ -323,7 +324,7 @@ class LanguageManager {
 
     private var bundle: Bundle?
 
-    func setLanguage() {
+    func setLanguage(for theme: Warp.Brand = Warp.Theme) {
         var language: String
         switch Warp.Theme {
         case .finn:
