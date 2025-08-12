@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "BEAE84A8-DE42-4983-A2FA-93056A1D61A0",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "WarpTests",
+        "name" : "WarpTests"
+      }
+    }
+  ],
+  "version" : 1
+}
