@@ -26,6 +26,7 @@ extension Warp {
     ///   - placeholder: Text to display when the text field is empty.
     ///   - suffix: An optional string displayed after the text input.
     ///   - rightIcon: An optional `Warp.Icon` displayed on the right side of the text field.
+    ///   - rightIconAction: An optional action for the right icon.
     ///   - style: The style of the text field. Options are `.default`, `.disabled`, `.error`, and `.readOnly`.
     ///   - helpText: Optional `String` to display below the text field.
     public struct TextField: View {
@@ -91,6 +92,7 @@ extension Warp {
         ///   - placeholder: Text to display when the text field is empty.
         ///   - suffix: An optional string displayed after the text input.
         ///   - rightIcon: An optional `Warp.Icon` displayed on the right side of the text field.
+        ///   - rightIconAction: An optional action for the right icon.
         ///   - style: The style of the text field. Defaults to `.default`.
         ///   - helpText: Optional `String` to display below the text field.
         public init(
