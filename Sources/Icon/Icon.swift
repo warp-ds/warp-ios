@@ -256,6 +256,16 @@ extension Warp {
         case wifi
         case woods
         case youtube
+        case briefcaseUser
+        case calendarPlus
+        case confetti
+        case draw
+        case luggage
+        case rotateLeft
+        case rotateRight
+        case shrink
+        case suitcaseTrolley
+        case tShirt
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         ///
@@ -547,6 +557,16 @@ extension Warp {
             case .wifi: return Warp.Strings.iconWifi.localized
             case .woods: return Warp.Strings.iconWoods.localized
             case .youtube: return Warp.Strings.iconYoutube.localized
+            case .briefcaseUser: return Warp.Strings.iconBriefcaseUser.localized
+            case .calendarPlus: return Warp.Strings.iconCalendarPlus.localized
+            case .confetti: return Warp.Strings.iconConfetti.localized
+            case .draw: return Warp.Strings.iconDraw.localized
+            case .luggage: return Warp.Strings.iconLuggage.localized
+            case .rotateLeft: return Warp.Strings.iconRotateLeft.localized
+            case .rotateRight: return Warp.Strings.iconRotateRight.localized
+            case .shrink: return Warp.Strings.iconShrink.localized
+            case .suitcaseTrolley: return Warp.Strings.iconSuitcaseTrolley.localized
+            case .tShirt: return Warp.Strings.iconTShirt.localized
             }
         }
     }

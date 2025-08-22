@@ -1549,6 +1549,42 @@
         }
       }
     },
+    "icon.title.briefcaseUser" : {
+      "comment" : "A11y title for briefcase user icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bruger foran en mappe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User in front of a briefcase"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Käyttäjä salkun edessä"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bruker foran en koffert"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Användare framför en portfölj"
+          }
+        }
+      }
+    },
     "icon.title.browser" : {
       "comment" : "A11y title for browser icon",
       "extractionState" : "manual",
@@ -1905,6 +1941,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kalender"
+          }
+        }
+      }
+    },
+    "icon.title.calendarPlus" : {
+      "comment" : "A11y title for calendar plus icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalender indeholdende et plus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendar containing a plus"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalenteri, jossa on plusmerkki"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalender som inneholder et plusstegn"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalender med ett plustecken"
           }
         }
       }
@@ -2953,6 +3025,42 @@
         }
       }
     },
+    "icon.title.confetti" : {
+      "comment" : "A11y title for confetti icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfetti, der sprænger ud af et kræmmerhus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confetti bursting out from a cone"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfetti pursuaa kartiosta"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfetti som sprenger ut fra en kjegle"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfetti som sprutar ut från en strut"
+          }
+        }
+      }
+    },
     "icon.title.copy" : {
       "comment" : "A11y title for copy icon",
       "extractionState" : "manual",
@@ -3453,6 +3561,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sex ihopbuntade prickar"
+          }
+        }
+      }
+    },
+    "icon.title.draw" : {
+      "comment" : "A11y title for draw icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blyant, der tegner en buet linje"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pencil drawing a curved line"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kynä piirtää kaarevan viivan"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blyant som tegner en buet linje"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Penna som ritar en böjd linje"
           }
         }
       }
@@ -5473,6 +5617,42 @@
         }
       }
     },
+    "icon.title.luggage" : {
+      "comment" : "A11y title for luggage icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bagage på to hjul med et håndtag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luggage on two wheels with a handle"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matkalaukku kahdella pyörällä ja kahvalla"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bagasje på to hjul med håndtak"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bagage på två hjul med handtag"
+          }
+        }
+      }
+    },
     "icon.title.mail" : {
       "comment" : "A11y title for mail icon",
       "extractionState" : "manual",
@@ -7057,6 +7237,78 @@
         }
       }
     },
+    "icon.title.rotateLeft" : {
+      "comment" : "A11y title for rotate left icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Venstrevendt buet pil over en firkant"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Left facing curvy arrow above a square"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vasemmalle osoittava kaareva nuoli neliön yläpuolella"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Venstrevendt buet pil over en firkant"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vänstervänd böjd pil ovanför en fyrkant"
+          }
+        }
+      }
+    },
+    "icon.title.rotateRight" : {
+      "comment" : "A11y title for rotate right icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Højrevendt buet pil over en firkant"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Right facing curvy arrow above a square"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oikealle osoittava kaareva nuoli neliön yläpuolella"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Høyrevendt buet pil over en firkant"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Högervänd böjd pil ovanför en fyrkant"
+          }
+        }
+      }
+    },
     "icon.title.rowingBoat" : {
       "comment" : "A11y title for rowing boat icon",
       "extractionState" : "manual",
@@ -7593,6 +7845,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rinnande duschmunstycke"
+          }
+        }
+      }
+    },
+    "icon.title.shrink" : {
+      "comment" : "A11y title for shrink icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To indadpegende pile"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two inwards pointing arrows"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaksi sisäänpäin osoittavaa nuolta"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To innoverpekende piler"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Två inåtriktade pilar"
           }
         }
       }
@@ -8281,6 +8569,42 @@
         }
       }
     },
+    "icon.title.suitcaseTrolley" : {
+      "comment" : "A11y title for suitcase trolley icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kuffert på en platformsvogn"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suitcase on a platform trolley"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matkalaukku laiturikärryllä"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koffert på en plattformtrall"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resväska på en plattformsvagn"
+          }
+        }
+      }
+    },
     "icon.title.support" : {
       "comment" : "A11y title for success icon",
       "extractionState" : "manual",
@@ -8781,6 +9105,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vågig pil som pekar upp åt höger"
+          }
+        }
+      }
+    },
+    "icon.title.tShirt" : {
+      "comment" : "A11y title for T-shirt icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T-shirt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T shirt"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T-paita"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T-skjorte"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T-shirt"
           }
         }
       }
