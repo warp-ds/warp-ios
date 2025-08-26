@@ -547,28 +547,16 @@ extension Warp {
     public enum TaxonomyIcon: String, CaseIterable, View {
         case planeTakeOff = "airplane"
         case airplaneBed = "airplane-hotel"
-        case babyonesie = "baby-onesie"
-        case bulldozer
         case cabinHut = "cabin"
-        case camping
-        case carFront = "car-front"
         case carPart = "car-part"
         case carRent = "car-rent"
-        case carSubscription = "car-subscription"
-        case cart
-        case chainsaw
         case chair
-        case dating
-        case economy
-        case football
-        case geometricShapes = "geometric-shapes"
         case guitar = "guitar-bat"
         case building = "hotel"
         case iceSkater = "ice-skater"
         case briefcase = "job"
         case carRight = "minivan"
         case motorcycle
-        case paintRoller = "paint-roller"
         case animalPaw = "paw"
         case phoneCheck = "phone-badge-check"
         case houseModern = "real-estate"
@@ -578,10 +566,8 @@ extension Warp {
         case sofa
         case storeFront = "store-front"
         case stroller
-        case sweater
         case service = "tools"
         case tractor
-        case van
         case vase
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
@@ -609,28 +595,16 @@ extension Warp {
             switch self {
             case .planeTakeOff: return Warp.Strings.taxonomyIconPlaneTakeOff.localized
             case .airplaneBed: return Warp.Strings.taxonomyIconAirplaneBed.localized
-            case .babyonesie: return Warp.Strings.taxonomyIconBabyonesie.localized
-            case .bulldozer: return Warp.Strings.taxonomyIconBulldozer.localized
             case .cabinHut: return Warp.Strings.taxonomyIconCabinHut.localized
-            case .camping: return Warp.Strings.taxonomyIconCamping.localized
-            case .carFront: return Warp.Strings.taxonomyIconCarFront.localized
             case .carPart: return Warp.Strings.taxonomyIconCarPart.localized
             case .carRent: return Warp.Strings.taxonomyIconCarRent.localized
-            case .carSubscription: return Warp.Strings.taxonomyIconCarSubscription.localized
-            case .cart: return Warp.Strings.taxonomyIconCart.localized
-            case .chainsaw: return Warp.Strings.taxonomyIconChainsaw.localized
             case .chair: return Warp.Strings.taxonomyIconChair.localized
-            case .dating: return Warp.Strings.taxonomyIconDating.localized
-            case .economy: return Warp.Strings.taxonomyIconEconomy.localized
-            case .football: return Warp.Strings.taxonomyIconFootball.localized
-            case .geometricShapes: return Warp.Strings.taxonomyIconGeometricShapes.localized
             case .guitar: return Warp.Strings.taxonomyIconGuitar.localized
             case .building: return Warp.Strings.taxonomyIconBuilding.localized
             case .iceSkater: return Warp.Strings.taxonomyIconIceSkater.localized
             case .briefcase: return Warp.Strings.taxonomyIconBriefcase.localized
             case .carRight: return Warp.Strings.taxonomyIconCarRight.localized
             case .motorcycle: return Warp.Strings.taxonomyIconMotorcycle.localized
-            case .paintRoller: return Warp.Strings.taxonomyIconPaintRoller.localized
             case .animalPaw: return Warp.Strings.taxonomyIconAnimalPaw.localized
             case .phoneCheck: return Warp.Strings.taxonomyIconPhoneCheck.localized
             case .houseModern: return Warp.Strings.taxonomyIconHouseModern.localized
@@ -640,10 +614,8 @@ extension Warp {
             case .sofa: return Warp.Strings.taxonomyIconSofa.localized
             case .storeFront: return Warp.Strings.taxonomyIconStoreFront.localized
             case .stroller: return Warp.Strings.taxonomyIconStroller.localized
-            case .sweater: return Warp.Strings.taxonomyIconSweater.localized
             case .service: return Warp.Strings.taxonomyIconService.localized
             case .tractor: return Warp.Strings.taxonomyIconTractor.localized
-            case .van: return Warp.Strings.taxonomyIconVan.localized
             case .vase: return Warp.Strings.taxonomyIconVase.localized
             }
         }
