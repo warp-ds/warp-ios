@@ -267,7 +267,7 @@ extension Warp {
         case taxonomyIconSofa = "taxonomy.icon.title.sofa"
         case taxonomyIconStoreFront = "taxonomy.icon.title.storeFront"
         case taxonomyIconStroller = "taxonomy.icon.title.stroller"
-        case taxonomyIconService = "taxonomy.icon.title.service"
+        case taxonomyIconDrill = "taxonomy.icon.title.drill"
         case taxonomyIconTractor = "taxonomy.icon.title.tractor"
         case taxonomyIconVase = "taxonomy.icon.title.vase"
 

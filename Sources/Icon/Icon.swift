@@ -546,7 +546,7 @@ extension Warp {
         case sofa
         case storeFront = "store-front"
         case stroller
-        case service = "tools"
+        case drill = "tools"
         case tractor
         case vase
         case briefcaseUser
@@ -604,7 +604,7 @@ extension Warp {
             case .sofa: return Warp.Strings.taxonomyIconSofa.localized
             case .storeFront: return Warp.Strings.taxonomyIconStoreFront.localized
             case .stroller: return Warp.Strings.taxonomyIconStroller.localized
-            case .service: return Warp.Strings.taxonomyIconService.localized
+            case .drill: return Warp.Strings.taxonomyIconDrill.localized
             case .tractor: return Warp.Strings.taxonomyIconTractor.localized
             case .vase: return Warp.Strings.taxonomyIconVase.localized
             case .briefcaseUser: return Warp.Strings.iconBriefcaseUser.localized
@@ -645,7 +645,7 @@ extension Warp {
             case .sofa: return "Sofa"
             case .storeFront: return "StoreFront"
             case .stroller: return "Stroller"
-            case .service: return "Service"
+            case .drill: return "Drill"
             case .tractor: return "Tractor"
             case .vase: return "Vase"
             case .briefcaseUser: return "BriefcaseUser"
