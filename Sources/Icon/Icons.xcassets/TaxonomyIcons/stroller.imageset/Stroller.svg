@@ -1,10 +1,3 @@
-<svg width="42" height="28" viewBox="0 0 42 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M13.25 26.1875C14.5962 26.1875 15.6875 25.0962 15.6875 23.75C15.6875 22.4038 14.5962 21.3125 13.25 21.3125C11.9038 21.3125 10.8125 22.4038 10.8125 23.75C10.8125 25.0962 11.9038 26.1875 13.25 26.1875Z" stroke="#47474F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M24.625 26.1875C25.9712 26.1875 27.0625 25.0962 27.0625 23.75C27.0625 22.4038 25.9712 21.3125 24.625 21.3125C23.2788 21.3125 22.1875 22.4038 22.1875 23.75C22.1875 25.0962 23.2788 26.1875 24.625 26.1875Z" stroke="#47474F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M26.25 18.0625H13.7061C13.3438 18.0625 12.9918 17.9413 12.7062 17.7183C12.4206 17.4954 12.2178 17.1833 12.1298 16.8318L10.8125 11.5625H28.6875" stroke="#47474F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M25.0195 21.3438L30.3365 7.16516C30.5688 6.54562 30.9846 6.01172 31.5284 5.63481C32.0721 5.2579 32.718 5.05594 33.3796 5.05591H35.1877" stroke="#47474F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M15.5488 22.9375H22.3262" stroke="#47474F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10.8125 11.5625C10.8125 8.97664 11.8397 6.49669 13.6682 4.66821C15.4967 2.83973 17.9766 1.8125 20.5625 1.8125V11.5625" stroke="#47474F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M20.5625 11.5624L12.1396 6.64844" stroke="#47474F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M20.5624 11.5626L15.6484 3.13965" stroke="#47474F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M15.15 15H5.887a1.2 1.2 0 0 1-1.164-.909L3.75 10.2m0 0h13.2m-13.2 0a7.2 7.2 0 0 1 7.2-7.2v7.2m3.291 7.223 3.927-10.47a2.4 2.4 0 0 1 2.247-1.558h1.335M7.248 18.6h5.004M5.55 21a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6Zm8.4 0a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6Z" stroke="#1B1B1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
