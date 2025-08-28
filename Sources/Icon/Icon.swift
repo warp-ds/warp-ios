@@ -622,7 +622,7 @@ extension Warp {
 
         /// Maps the icon case to the corresponding asset name in the asset catalog.
         /// This is to avoid dash case issues with enum raw values.
-        private var taxonomyAssetName: String {
+        var taxonomyAssetName: String {
             switch self {
             case .planeTakeOff: return "PlaneTakeOff"
             case .airplaneBed: return "AirplaneBed"

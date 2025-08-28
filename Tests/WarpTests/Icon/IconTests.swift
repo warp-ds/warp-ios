@@ -51,9 +51,9 @@ struct IconTests {
 
         func checkIconsLocalization() {
             for icon in icons {
-                let localizationKey = "taxonomy.icon.title.\(icon.rawValue)"
+                let localizationKey = "taxonomy.icon.title.\(icon.taxonomyAssetName.uncapitalize)" // We cannot use rawValue here because they're taxonomy ids
                 let localizedName = icon.localization
-                #expect(localizedName != localizationKey, "TaxonomyIcon: \(icon.rawValue) should have a localized name")
+                #expect(localizedName != localizationKey, "TaxonomyIcon: \(icon.taxonomyAssetName) should have a localized name")
             }
         }
 
@@ -122,6 +122,16 @@ struct IconTests {
             LanguageManager.shared.setLanguage(for: brand)
             checkIconsLocalization()
         }
+    }
+}
+
+extension String {
+
+    var uncapitalize: String {
+        guard let first = self.first else { return self }
+        let lowercasedFirst = String(first).lowercased()
+        let remaining = self.dropFirst()
+        return lowercasedFirst + remaining
     }
 }
 
