@@ -565,6 +565,7 @@ extension Warp {
             SwiftUI.Image(taxonomyAssetName, bundle: .module) // Load the image from the asset catalog
                 .renderingMode(.template) // Ensure template rendering mode for vector images
                 .resizable()
+                .scaledToFit()
                 .accessibilityLabel(localization)
         }
 
