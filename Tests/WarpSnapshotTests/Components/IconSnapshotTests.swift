@@ -36,7 +36,7 @@ struct IconSnapshotTests {
         let allIconsInRowView = VStack(alignment: .leading) {
             ForEach(icons, id: \.self) { icon in
                 HStack {
-                    Text(icon.taxonomyAssetName)
+                    Text(icon.assetName)
                         .font(.caption)
                         .frame(width: 150, alignment: .leading)
                     icon
