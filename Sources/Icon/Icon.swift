@@ -240,6 +240,16 @@ extension Warp {
         case wifi
         case tree
         case youtube
+        case briefcaseUser
+        case calendarPlus
+        case confetti
+        case draw
+        case luggage
+        case rotateLeft
+        case rotateRight
+        case shrink
+        case suitcaseTrolley
+        case tShirt
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         ///
@@ -515,6 +525,16 @@ extension Warp {
             case .wifi: return Warp.Strings.iconWifi.localized
             case .tree: return Warp.Strings.iconTree.localized
             case .youtube: return Warp.Strings.iconYoutube.localized
+            case .briefcaseUser: return Warp.Strings.iconBriefcaseUser.localized
+            case .calendarPlus: return Warp.Strings.iconCalendarPlus.localized
+            case .confetti: return Warp.Strings.iconConfetti.localized
+            case .draw: return Warp.Strings.iconDraw.localized
+            case .luggage: return Warp.Strings.iconLuggage.localized
+            case .rotateLeft: return Warp.Strings.iconRotateLeft.localized
+            case .rotateRight: return Warp.Strings.iconRotateRight.localized
+            case .shrink: return Warp.Strings.iconShrink.localized
+            case .suitcaseTrolley: return Warp.Strings.iconSuitcaseTrolley.localized
+            case .tShirt: return Warp.Strings.iconTShirt.localized
             }
         }
     }
@@ -549,20 +569,10 @@ extension Warp {
         case drill = "tools"
         case tractor
         case vase
-        case briefcaseUser
-        case calendarPlus
-        case confetti
-        case draw
-        case luggage
-        case rotateLeft
-        case rotateRight
-        case shrink
-        case suitcaseTrolley
-        case tShirt
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         public var body: some View {
-            SwiftUI.Image(taxonomyAssetName, bundle: .module) // Load the image from the asset catalog
+            SwiftUI.Image(assetName, bundle: .module) // Load the image from the asset catalog
                 .renderingMode(.template) // Ensure template rendering mode for vector images
                 .resizable()
                 .scaledToFit()
@@ -574,12 +584,41 @@ extension Warp {
         /// - Returns: A `UIImage` object corresponding to the icon.
         public var uiImage: UIImage {
             // Load the image from the asset catalog
-            guard let image = UIImage(named: taxonomyAssetName, in: .module, compatibleWith: nil) else {
+            guard let image = UIImage(named: assetName, in: .module, compatibleWith: nil) else {
                 // Handle the error (e.g., log it) if image loading fails
                 return UIImage()
             }
             image.accessibilityLabel = localization
             return image.withRenderingMode(.alwaysTemplate)
+        }
+
+        var assetName: String {
+            switch self {
+            case .planeTakeOff: return "PlaneTakeOff"
+            case .airplaneBed: return "AirplaneBed"
+            case .cabinHut: return "CabinHut"
+            case .carPart: return "CarPart"
+            case .carRent: return "CarRent"
+            case .chair: return "Chair"
+            case .guitar: return "Guitar"
+            case .building: return "Building"
+            case .iceSkater: return "IceSkater"
+            case .briefcase: return "Briefcase"
+            case .carRight: return "CarRight"
+            case .motorcycle: return "Motorcycle"
+            case .animalPaw: return "AnimalPaw"
+            case .phoneCheck: return "PhoneCheck"
+            case .houseModern: return "HouseModern"
+            case .boat: return "Boat"
+            case .shirt: return "Shirt"
+            case .phone: return "Phone"
+            case .sofa: return "Sofa"
+            case .storeFront: return "StoreFront"
+            case .stroller: return "Stroller"
+            case .drill: return "Drill"
+            case .tractor: return "Tractor"
+            case .vase: return "Vase"
+            }
         }
 
         var localization: String {
@@ -608,57 +647,6 @@ extension Warp {
             case .drill: return Warp.Strings.taxonomyIconDrill.localized
             case .tractor: return Warp.Strings.taxonomyIconTractor.localized
             case .vase: return Warp.Strings.taxonomyIconVase.localized
-            case .briefcaseUser: return Warp.Strings.iconBriefcaseUser.localized
-            case .calendarPlus: return Warp.Strings.iconCalendarPlus.localized
-            case .confetti: return Warp.Strings.iconConfetti.localized
-            case .draw: return Warp.Strings.iconDraw.localized
-            case .luggage: return Warp.Strings.iconLuggage.localized
-            case .rotateLeft: return Warp.Strings.iconRotateLeft.localized
-            case .rotateRight: return Warp.Strings.iconRotateRight.localized
-            case .shrink: return Warp.Strings.iconShrink.localized
-            case .suitcaseTrolley: return Warp.Strings.iconSuitcaseTrolley.localized
-            case .tShirt: return Warp.Strings.iconTShirt.localized
-            }
-        }
-
-        /// Maps the icon case to the corresponding asset name in the asset catalog.
-        /// This is to avoid dash case issues with enum raw values.
-        var taxonomyAssetName: String {
-            switch self {
-            case .planeTakeOff: return "PlaneTakeOff"
-            case .airplaneBed: return "AirplaneBed"
-            case .cabinHut: return "CabinHut"
-            case .carPart: return "CarPart"
-            case .carRent: return "CarRent"
-            case .chair: return "Chair"
-            case .guitar: return "Guitar"
-            case .building: return "Building"
-            case .iceSkater: return "IceSkater"
-            case .briefcase: return "Briefcase"
-            case .carRight: return "CarRight"
-            case .motorcycle: return "Motorcycle"
-            case .animalPaw: return "AnimalPaw"
-            case .phoneCheck: return "PhoneCheck"
-            case .houseModern: return "HouseModern"
-            case .boat: return "Boat"
-            case .shirt: return "Shirt"
-            case .phone: return "Phone"
-            case .sofa: return "Sofa"
-            case .storeFront: return "StoreFront"
-            case .stroller: return "Stroller"
-            case .drill: return "Drill"
-            case .tractor: return "Tractor"
-            case .vase: return "Vase"
-            case .briefcaseUser: return "BriefcaseUser"
-            case .calendarPlus: return "CalendarPlus"
-            case .confetti: return "Confetti"
-            case .draw: return "Draw"
-            case .luggage: return "Luggage"
-            case .rotateLeft: return "RotateLeft"
-            case .rotateRight: return "RotateRight"
-            case .shrink: return "Shrink"
-            case .suitcaseTrolley: return "SuitcaseTrolley"
-            case .tShirt: return "TShirt"
             }
         }
     }

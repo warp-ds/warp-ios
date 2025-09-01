@@ -51,9 +51,9 @@ struct IconTests {
 
         func checkIconsLocalization() {
             for icon in icons {
-                let localizationKey = "taxonomy.icon.title.\(icon.taxonomyAssetName.uncapitalize)" // We cannot use rawValue here because they're taxonomy ids
+                let localizationKey = "taxonomy.icon.title.\(icon.assetName.uncapitalize)" // We cannot use rawValue here because they're taxonomy ids
                 let localizedName = icon.localization
-                #expect(localizedName != localizationKey, "TaxonomyIcon: \(icon.taxonomyAssetName) should have a localized name")
+                #expect(localizedName != localizationKey, "TaxonomyIcon: \(icon.assetName) should have a localized name")
             }
         }
 
