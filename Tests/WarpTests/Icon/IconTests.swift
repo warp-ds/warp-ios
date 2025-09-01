@@ -41,7 +41,7 @@ struct IconTests {
 
         for icon in icons {
             let iconImage = icon.uiImage
-            #expect(iconImage.size != .zero, "TaxonomyIcon: \(icon.rawValue) should not have an empty image")
+            #expect(iconImage.size != .zero, "TaxonomyIcon: \(icon.assetName) should not have an empty image")
         }
     }
 
