@@ -545,30 +545,30 @@ extension Warp {
     ///
     /// Provides both SwiftUI `Image` and UIKit `UIImage` representations for each icon.
     public enum TaxonomyIcon: String, CaseIterable, View {
-        case planeTakeOff = "airplane"
-        case airplaneBed = "airplane-hotel"
-        case cabinHut = "cabin"
+case planeTakeOff = "plane-take-off"
+        case airplaneBed = "airplane-bed"
+        case cabinHut = "cabin-hut"
         case carPart = "car-part"
         case carRent = "car-rent"
-        case chair
+        case chair = "chair"
         case guitar = "guitar-bat"
-        case building = "hotel"
+        case building = "building"
         case iceSkater = "ice-skater"
-        case briefcase = "job"
-        case carRight = "minivan"
-        case motorcycle
-        case animalPaw = "paw"
-        case phoneCheck = "phone-badge-check"
-        case houseModern = "real-estate"
-        case boat = "sailboat"
-        case shirt
-        case phone = "smart-phone"
-        case sofa
+        case briefcase = "briefcase"
+        case carRight = "car-right"
+        case motorcycle = "motorcycle"
+        case animalPaw = "animal-paw"
+        case phoneCheck = "phone-check"
+        case houseModern = "house-modern"
+        case boat = "boat"
+        case shirt = "shirt"
+        case phone = "phone"
+        case sofa = "sofa"
         case storeFront = "store-front"
-        case stroller
-        case drill = "tools"
-        case tractor
-        case vase
+        case stroller = "stroller"
+        case drill = "drill"
+        case tractor = "tractor"
+        case vase = "vase"
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         public var body: some View {
