@@ -545,12 +545,13 @@ extension Warp {
     ///
     /// Provides both SwiftUI `Image` and UIKit `UIImage` representations for each icon.
     public enum TaxonomyIcon: String, CaseIterable, View {
-case planeTakeOff = "plane-take-off"
+        case planeTakeOff = "plane-take-off"
         case airplaneBed = "airplane-bed"
         case cabinHut = "cabin-hut"
         case carPart = "car-part"
         case carRent = "car-rent"
         case chair = "chair"
+        case geometricShapes = "geometric-shapes"
         case guitar = "guitar-bat"
         case building = "building"
         case iceSkater = "ice-skater"
@@ -600,6 +601,7 @@ case planeTakeOff = "plane-take-off"
             case .carPart: return "CarPart"
             case .carRent: return "CarRent"
             case .chair: return "Chair"
+            case .geometricShapes: return "GeometricShapes"
             case .guitar: return "Guitar"
             case .building: return "Building"
             case .iceSkater: return "IceSkater"
@@ -629,6 +631,7 @@ case planeTakeOff = "plane-take-off"
             case .carPart: return Warp.Strings.taxonomyIconCarPart.localized
             case .carRent: return Warp.Strings.taxonomyIconCarRent.localized
             case .chair: return Warp.Strings.taxonomyIconChair.localized
+            case .geometricShapes: return Warp.Strings.taxonomyIconGeometricShapes.localized
             case .guitar: return Warp.Strings.taxonomyIconGuitar.localized
             case .building: return Warp.Strings.taxonomyIconBuilding.localized
             case .iceSkater: return Warp.Strings.taxonomyIconIceSkater.localized

@@ -10987,6 +10987,42 @@
         }
       }
     },
+   "taxonomy.icon.title.geometricShapes" : {
+      "comment" : "A11y title for geometric shapes icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rektangel, ellipse, diamant og trekant former"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rectangle, ellipse, diamond and triangle shapes"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neliö, ympyrä, vinoneliö ja kolmio"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rektangel-, ellipse-, diamant- og trekantformer"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rektangel-, ellips-, diamant- och triangelformer"
+          }
+        }
+      }
+    },
     "taxonomy.icon.title.wheelchair" : {
       "comment" : "Title for wheelchair icon",
       "extractionState" : "manual",
