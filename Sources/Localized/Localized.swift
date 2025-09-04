@@ -252,6 +252,7 @@ extension Warp {
         case taxonomyIconCarPart = "taxonomy.icon.title.carPart"
         case taxonomyIconCarRent = "taxonomy.icon.title.carRent"
         case taxonomyIconChair = "taxonomy.icon.title.chair"
+        case taxonomyIconGeometricShapes = "taxonomy.icon.title.geometricShapes"
         case taxonomyIconGuitar = "taxonomy.icon.title.guitar"
         case taxonomyIconBuilding = "taxonomy.icon.title.building"
         case taxonomyIconIceSkater = "taxonomy.icon.title.iceSkater"
