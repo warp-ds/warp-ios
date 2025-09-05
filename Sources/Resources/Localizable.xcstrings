@@ -1412,7 +1412,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bruger foran en mappe"
+            "value" : "Bruger foran en attachétaske"
           }
         },
         "en" : {
@@ -1808,7 +1808,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kalender indeholdende et plus"
+            "value" : "Kalender med et plus på"
           }
         },
         "en" : {
@@ -1820,19 +1820,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kalenteri, jossa on plusmerkki"
+            "value" : "Kalenteri, jossa on plus-merkki"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kalender som inneholder et plusstegn"
+            "value" : "Kalender med et pluss"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kalender med ett plustecken"
+            "value" : "Kalender med ett plus"
           }
         }
       }
@@ -1987,37 +1987,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Bildel"
+            "value" : "Bil med et tandhjul"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for car part icon",
             "state" : "translated",
             "value" : "Car with a coghweel"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Auton osa"
+            "value" : "Auto ja hammaspyörä"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Bildel"
+            "value" : "Bil med et tannhjul"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Bildel"
+            "value" : "Bil med ett kugghjul"
           }
         }
       }
@@ -2028,37 +2023,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Bil og ur"
+            "value" : "Bil med et ur"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for car rent icon",
             "state" : "translated",
             "value" : "Car with a clock"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Auto ja kello"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Bil og klokke"
+            "value" : "Bil med en klokke"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Bil och klocka"
+            "value" : "Bil med en klocka"
           }
         }
       }
@@ -2826,7 +2816,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konfetti, der sprænger ud af et kræmmerhus"
+            "value" : "Konfetti, der flyver ud af en kegle"
           }
         },
         "en" : {
@@ -2838,19 +2828,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konfetti pursuaa kartiosta"
+            "value" : "Kartiosta ulos lentävät konfetit"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konfetti som sprenger ut fra en kjegle"
+            "value" : "Konfetti som flyr ut av en kjegle"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konfetti som sprutar ut från en strut"
+            "value" : "Konfetti som sprutar ut ur en strut"
           }
         }
       }
@@ -3330,7 +3320,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Blyant, der tegner en buet linje"
+            "value" : "Blyant, der tegner en buet streg"
           }
         },
         "en" : {
@@ -3342,7 +3332,7 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kynä piirtää kaarevan viivan"
+            "value" : "Lyijykynä, joka piirtää kaarevaa viivaa"
           }
         },
         "nb-NO" : {
@@ -3437,35 +3427,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Håndvægt"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for dumbbell icon",
             "state" : "translated",
             "value" : "Dumbbell"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Käsipaino"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Manual"
+            "value" : "Treningsmanual"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Hantel"
           }
@@ -4162,37 +4147,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Automatgearkasse"
+            "value" : "Automatisk gear"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for gear automatic icon",
             "state" : "translated",
             "value" : "Automatic gearbox"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Automaattivaihteisto"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Automatgir"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Automatväxel"
+            "value" : "Automatisk växellåda"
           }
         }
       }
@@ -4203,35 +4183,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Manuel gearkasse"
+            "value" : "Manuelt gear"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for gear manual icon",
             "state" : "translated",
             "value" : "Manual transmission gearbox"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Manuaalivaihteisto"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Manuell girkasse"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Manuell växellåda"
           }
@@ -4892,35 +4867,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Jetski"
+            "value" : "Vandscooter"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for jet ski icon",
             "state" : "translated",
             "value" : "Jet ski"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Vesijetti"
+            "value" : "Vesiskootteri"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Vannscooter"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Vattenskoter"
           }
@@ -4933,37 +4903,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Nøgler"
+            "value" : "Nøgle"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for key icon",
             "state" : "translated",
             "value" : "Key"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Avaimet"
+            "value" : "Avain"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Nøkler"
+            "value" : "Nøkkel"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Nycklar"
+            "value" : "Nyckel"
           }
         }
       }
@@ -5370,37 +5335,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Vandlilje"
+            "value" : "Lotusblomst"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for lotus flower icon",
             "state" : "translated",
             "value" : "Lotus flower"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Lumpeenkukka"
+            "value" : "Lootuksen kukka"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Vannlilje"
+            "value" : "Lotusblomst"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Näckros"
+            "value" : "Lotusblomma"
           }
         }
       }
@@ -5412,7 +5372,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bagage på to hjul med et håndtag"
+            "value" : "Kuffert med to hjul og hank"
           }
         },
         "en" : {
@@ -5424,19 +5384,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matkalaukku kahdella pyörällä ja kahvalla"
+            "value" : "Matkalaukku, jossa on kaksi pyörää ja kahva"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bagasje på to hjul med håndtak"
+            "value" : "Bagasje på to hjul med et håndtak"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bagage på två hjul med handtag"
+            "value" : "Bagage på två hjul med ett handtag"
           }
         }
       }
@@ -5555,37 +5515,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Højttaler"
+            "value" : "Megafon"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for megaphone icon",
             "state" : "translated",
             "value" : "Megaphone"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Kaiutin"
+            "value" : "Megafoni"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Høyttaler"
+            "value" : "Megafon"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Högtalare"
+            "value" : "Megafon"
           }
         }
       }
@@ -5956,35 +5911,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Papirclips"
+            "value" : "Papirklip"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for paperclip icon",
             "state" : "translated",
             "value" : "Paperclip"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Paperiliitin"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Binders"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Gem"
           }
@@ -6069,37 +6019,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Smartphone med badge og flueben"
+            "value" : "Smartphone og et badge med et flueben"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for phone check icon",
             "state" : "translated",
             "value" : "Smartphone and a badge with a check mark"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Älypuhelin ja merkki valintamerkillä"
+            "value" : "Älypuhelin ja valintamerkki"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Smarttelefon med merke og hake"
+            "value" : "Smartphone and a badge with a check mark"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Smarttelefon med badge och bock"
+            "value" : "Smartphone och ett emblem med bock"
           }
         }
       }
@@ -6830,37 +6775,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Raketsymbol"
+            "value" : "Raket"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for rocket icon",
             "state" : "translated",
             "value" : "Rocket"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Raketti"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Rakett"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Raketsymbol"
+            "value" : "Raket"
           }
         }
       }
@@ -6908,7 +6848,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Venstrevendt buet pil over en firkant"
+            "value" : "Buet venstrepil oven over en firkant"
           }
         },
         "en" : {
@@ -6932,7 +6872,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vänstervänd böjd pil ovanför en fyrkant"
+            "value" : "Pil böjd åt vänster ovanför en kvadrat"
           }
         }
       }
@@ -6944,7 +6884,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Højrevendt buet pil over en firkant"
+            "value" : "Buet højrepil oven over en firkant"
           }
         },
         "en" : {
@@ -6968,7 +6908,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Högervänd böjd pil ovanför en fyrkant"
+            "value" : "Pil böjd åt höger ovanför en kvadrat"
           }
         }
       }
@@ -7412,7 +7352,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To indadpegende pile"
+            "value" : "To indadgående pile"
           }
         },
         "en" : {
@@ -7430,13 +7370,13 @@
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To innoverpekende piler"
+            "value" : "To piler som peker innover"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Två inåtriktade pilar"
+            "value" : "Två inåtpekande pilar"
           }
         }
       }
@@ -7987,37 +7927,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Butiksfacade"
+            "value" : "Bygning med butiksfacade"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for store front icon",
             "state" : "translated",
             "value" : "Storefront building"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Myymälän julkisivu"
+            "value" : "Kaupan julkisivu"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Butikkfasade"
+            "value" : "Butikkbygning"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Butiksfasad"
+            "value" : "Butiksbyggnad"
           }
         }
       }
@@ -8137,7 +8072,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kuffert på en platformsvogn"
+            "value" : "Kuffert på en rullevogn"
           }
         },
         "en" : {
@@ -8149,13 +8084,13 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matkalaukku laiturikärryllä"
+            "value" : "Lavavaunuissa oleva matkalaukku"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Koffert på en plattformtrall"
+            "value" : "Koffert på en tralle"
           }
         },
         "sv" : {
@@ -8532,35 +8467,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Billet"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for ticket icon",
             "state" : "translated",
             "value" : "Ticket"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Lippu"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Billett"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Biljett"
           }
@@ -8609,35 +8539,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Grantræ"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for tree icon",
             "state" : "translated",
             "value" : "Spruce tree"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Kuusi"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Gran"
+            "value" : "Grantre"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Gran"
           }
@@ -9190,35 +9115,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Vaskemaskine"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for washing machine icon",
             "state" : "translated",
             "value" : "Washing machine"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Pesukone"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Vaskemaskin"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Tvättmaskin"
           }
@@ -9375,35 +9295,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Skruenøgle"
+            "value" : "Skiftenøgle"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for wrench icon",
             "state" : "translated",
             "value" : "Wrench"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Jakoavain"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Skiftenøkkel"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Skiftnyckel"
           }
@@ -9416,35 +9331,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "X-ikon"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for x icon",
             "state" : "translated",
             "value" : "X icon"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "X-ikoni"
+            "value" : "X-kuvake"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "X-ikon"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "X-ikon"
           }
@@ -9493,35 +9403,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Seng med et fly i baggrunden"
+            "value" : "Seng med flyvemaskine i baggrunden"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for airplane icon",
             "state" : "translated",
             "value" : "Bed with an airplane in the background"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Sänky, jonka taustalla on lentokone"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Seng med et fly i bakgrunnen"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Säng med ett flygplan i bakgrunden"
           }
@@ -9534,35 +9439,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Hundetasse"
+            "value" : "Hundepote"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for animal paw icon",
             "state" : "translated",
             "value" : "Dog paw"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Koiran tassu"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Hundetass"
+            "value" : "Hundepote"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Hundtass"
           }
@@ -9575,35 +9475,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Sejlbåd"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for boat icon",
             "state" : "translated",
             "value" : "Sailboat"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Purjevene"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Seilbåt"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Segelbåt"
           }
@@ -9616,35 +9511,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Attachémappe"
+            "value" : "Attachétaske"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for briefcase icon",
             "state" : "translated",
             "value" : "Briefcase"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Salkku"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Stresskoffert"
+            "value" : "Koffert"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Portfölj"
           }
@@ -9658,7 +9548,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bruger foran en mappe"
+            "value" : "Bruger foran en attachétaske"
           }
         },
         "en" : {
@@ -9693,37 +9583,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Lejlighedsbygning"
+            "value" : "Lejlighedskompleks"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for building icon",
             "state" : "translated",
             "value" : "Apartment building"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Kerrostalo"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Leilighetsbygg"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Flerbostadshus"
+            "value" : "Lägenhetsbyggnad"
           }
         }
       }
@@ -9734,37 +9619,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Lille firkant omgivet af større stiplet firkant"
+            "value" : "Lille, helfarvet firkant inden i en større firkant med stiplet kant"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for building plot icon",
             "state" : "translated",
             "value" : "Small, solid square surrounded by a bigger square with dashed line"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Pieni neliö isomman katkoviivaneliön sisällä"
+            "value" : "Katkoviivoilla piirretty neliö, jonka sisällä on pienempi neliö"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Liten firkant omgitt av større stiplet firkant"
+            "value" : "Liten, fylt firkant omgitt av en større firkant med stiplet linje"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Liten kvadrat omgiven av större streckad kvadrat"
+            "value" : "Liten, heldragen kvadrat omgiven av en större kvadrat med streckad linje"
           }
         }
       }
@@ -9775,37 +9655,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Hus med træ"
+            "value" : "Hus med et træ"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for cabin hut icon",
             "state" : "translated",
             "value" : "House with a tree"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Talo puun kanssa"
+            "value" : "Talo ja puu"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Hus med tre"
+            "value" : "Hus med et tre"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Hus med träd"
+            "value" : "Hus med ett träd"
           }
         }
       }
@@ -9817,7 +9692,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kalender indeholdende et plus"
+            "value" : "Kalender med et plus på"
           }
         },
         "en" : {
@@ -9829,19 +9704,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kalenteri, jossa on plusmerkki"
+            "value" : "Kalenteri, jossa on plus-merkki"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kalender som inneholder et plusstegn"
+            "value" : "Kalender med et pluss"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kalender med ett plustecken"
+            "value" : "Kalender med ett plus"
           }
         }
       }
@@ -9924,37 +9799,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Bil peger til højre"
+            "value" : "En bil, som vender mod højre"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for car right icon",
             "state" : "translated",
             "value" : "Car facing right"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Auto, joka osoittaa oikealle"
+            "value" : "Oikealle kääntynyt auto"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Bil som peker til høyre"
+            "value" : "Bil som peker mot høyre"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Bil som vänder åt höger"
+            "value" : "Bil vänd åt höger"
           }
         }
       }
@@ -10002,7 +9872,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konfetti, der sprænger ud af et kræmmerhus"
+            "value" : "Konfetti, der flyver ud af en kegle"
           }
         },
         "en" : {
@@ -10014,19 +9884,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konfetti pursuaa kartiosta"
+            "value" : "Kartiosta ulos lentävät konfetit"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konfetti som sprenger ut fra en kjegle"
+            "value" : "Konfetti som flyr ut av en kjegle"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konfetti som sprutar ut från en strut"
+            "value" : "Konfetti som sprutar ut ur en strut"
           }
         }
       }
@@ -10037,37 +9907,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Kommode"
+            "value" : "Skuffe"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for drawer icon",
             "state" : "translated",
             "value" : "Drawer"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Lipasto"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Kommode"
+            "value" : "Skuff"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Byrå"
+            "value" : "Låda"
           }
         }
       }
@@ -10078,37 +9943,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Elektrisk boremaskine"
+            "value" : "Boremaskine"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for drill icon",
             "state" : "translated",
             "value" : "Electric drill"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Sähköpora"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Elektrisk drill"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Elektrisk borrmaskin"
+            "value" : "Elektrisk borr"
           }
         }
       }
@@ -10125,7 +9985,6 @@
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for guitar icon",
             "state" : "translated",
             "value" : "Guitar"
           }
@@ -10156,37 +10015,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Moderne hus med højt vindues­afsnit og fladt tag"
+            "value" : "Moderne hus-ikon med højt glasparti og smalt, flat tag"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for house modern icon",
             "state" : "translated",
             "value" : "Modern house icon with a tall windowed section and a short flat-roof section"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Moderni talo, jossa korkea ikkunaseinä ja matala tasakatto"
+            "value" : "Modernin talon kuvake, jossa on korkea ikkunallinen puoli ja matala tasakattoinen puoli"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Moderne husikon med høyt vindusparti og flatt tak"
+            "value" : "Moderne husikon med en høy del med vinduer og en lav del med flatt tak"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Modern husikon med högt fönster och platt tak"
+            "value" : "Ikon med modernt hus med en hög fönsterdel och en låg del med platt tak"
           }
         }
       }
@@ -10197,37 +10051,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Kunstskøjteløber"
+            "value" : "Skøjtende pindefigur"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for IceSkater icon",
             "state" : "translated",
             "value" : "Ice skating stick figure"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Taitoluistelija"
+            "value" : "Luisteleva tikku-ukko"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Kunstløper"
+            "value" : "Strekfigur som står på skøyter"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Konståkare"
+            "value" : "Streckgubbe som åker skridskor"
           }
         }
       }
@@ -10275,7 +10124,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bagage på to hjul med et håndtag"
+            "value" : "Kuffert med to hjul og hank"
           }
         },
         "en" : {
@@ -10287,19 +10136,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matkalaukku kahdella pyörällä ja kahvalla"
+            "value" : "Matkalaukku, jossa on kaksi pyörää ja kahva"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bagasje på to hjul med håndtak"
+            "value" : "Bagasje på to hjul med et håndtak"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bagage på två hjul med handtag"
+            "value" : "Bagage på två hjul med ett handtag"
           }
         }
       }
@@ -10310,37 +10159,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Højttaler"
+            "value" : "Megafon"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for megaphone icon",
             "state" : "translated",
             "value" : "Megaphone"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Kaiutin"
+            "value" : "Megafoni"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Høyttaler"
+            "value" : "Megafon"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Högtalare"
+            "value" : "Megafon"
           }
         }
       }
@@ -10387,37 +10231,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Smartphone"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for phone icon",
             "state" : "translated",
             "value" : "Smartphone"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Älypuhelin"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Smarttelefon"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Smarttelefon"
+            "value" : "Smartphone"
           }
         }
       }
@@ -10428,37 +10267,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Smartphone med badge og flueben"
+            "value" : "Smartphone og et badge med et flueben"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for phone check icon",
             "state" : "translated",
             "value" : "Smartphone and a badge with a check mark"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Älypuhelin ja merkki valintamerkillä"
+            "value" : "Älypuhelin ja valintamerkki"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Smarttelefon med merke og hake"
+            "value" : "Smarttelefon og et merke med et sjekkmerke"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Smarttelefon med badge och bock"
+            "value" : "Smartphone och ett emblem med bock"
           }
         }
       }
@@ -10469,37 +10303,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Smartphone med ridset skærm"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for phone scratched icon",
             "state" : "translated",
             "value" : "Smartphone with scratched screen"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Älypuhelin naarmuisella näytöllä"
+            "value" : "Älypuhelin, jonka näyttö on naarmuuntunut"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Smarttelefon med ripet skjerm"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Smarttelefon med repad skärm"
+            "value" : "Smartphone med repad skärm"
           }
         }
       }
@@ -10510,37 +10339,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Smartphone med ridset skærm"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for phone used icon",
             "state" : "translated",
             "value" : "Smartphone with scratched screen"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Älypuhelin naarmuisella näytöllä"
+            "value" : "Älypuhelin, jonka näyttö on naarmuuntunut"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Smarttelefon med ripet skjerm"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Smarttelefon med repad skärm"
+            "value" : "Smartphone med repad skärm"
           }
         }
       }
@@ -10551,37 +10375,32 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Fly tager afsted"
+            "value" : "Fly, der letter"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for plane take off icon",
             "state" : "translated",
             "value" : "Plane taking off"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Lentokone nousee"
+            "value" : "Lähtevä lentokone"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Fly tar av"
+            "value" : "Fly som letter"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Flygplan lyfter"
+            "value" : "Flygplan som lyfter"
           }
         }
       }
@@ -10593,7 +10412,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Venstrevendt buet pil over en firkant"
+            "value" : "Buet venstrepil oven over en firkant"
           }
         },
         "en" : {
@@ -10617,7 +10436,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vänstervänd böjd pil ovanför en fyrkant"
+            "value" : "Pil böjd åt vänster ovanför en kvadrat"
           }
         }
       }
@@ -10629,7 +10448,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Højrevendt buet pil over en firkant"
+            "value" : "Buet højrepil oven over en firkant"
           }
         },
         "en" : {
@@ -10653,7 +10472,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Högervänd böjd pil ovanför en fyrkant"
+            "value" : "Pil böjd åt höger ovanför en kvadrat"
           }
         }
       }
@@ -10664,35 +10483,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
-            "value" : "Roddbåd"
+            "value" : "Robåd"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for rowing boat icon",
             "state" : "translated",
             "value" : "Rowing boat"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Soutuvene"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Robåt"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Roddbåt"
           }
@@ -10742,7 +10556,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To indadpegende pile"
+            "value" : "To indadgående pile"
           }
         },
         "en" : {
@@ -10760,13 +10574,13 @@
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To innoverpekende piler"
+            "value" : "To piler som peker innover"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Två inåtriktade pilar"
+            "value" : "Två inåtpekande pilar"
           }
         }
       }
@@ -10886,7 +10700,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kuffert på en platformsvogn"
+            "value" : "Kuffert på en rullevogn"
           }
         },
         "en" : {
@@ -10898,13 +10712,13 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matkalaukku laiturikärryllä"
+            "value" : "Lavavaunuissa oleva matkalaukku"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Koffert på en plattformtrall"
+            "value" : "Koffert på en tralle"
           }
         },
         "sv" : {
@@ -10987,7 +10801,7 @@
         }
       }
     },
-   "taxonomy.icon.title.geometricShapes" : {
+    "taxonomy.icon.title.geometricShapes" : {
       "comment" : "A11y title for geometric shapes icon",
       "extractionState" : "manual",
       "localizations" : {
@@ -11029,35 +10843,30 @@
       "localizations" : {
         "da" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Kørestol"
           }
         },
         "en" : {
           "stringUnit" : {
-            "comment" : "Title for wheelchair icon",
             "state" : "translated",
             "value" : "Wheelchair"
           }
         },
         "fi" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Pyörätuoli"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Rullestol"
           }
         },
         "sv" : {
           "stringUnit" : {
-            "comment" : "",
             "state" : "translated",
             "value" : "Rullstol"
           }
