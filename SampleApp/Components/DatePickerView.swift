@@ -5,34 +5,60 @@ struct DatePickerView: View {
 
     @State private var selectedDate = Date()
 
+    @State private var presentingPopover = false
+
     var body: some View {
         ScrollView(showsIndicators: false) {
+
+            // Warp date picker
             GroupBox(content: {
                 VStack {
-                    // DatePicker with custom format
-                    DatePicker(
-                        "Select a date",
-                        selection: $selectedDate,
-                        displayedComponents: [.date]
+                    Warp.DatePicker(
+                        date: $selectedDate,
+                        text: Binding(
+                            get: { formattedDate(selectedDate) },
+                            set: { _ in }
+                        ),
+                        placeholder: "Select a date"
                     )
-                    .warpDatePicker()
                     .padding()
 
                     HStack {
                         Spacer()
-                        // Display the selected date in the specified format
                         Text("Selected date: \(formattedDate(selectedDate))")
                         Spacer()
                     }
                 }
             }, label: {
-                Text("Date Picker")
+                Text("TextField with Date Picker")
             })
-            .padding(.bottom)
+                 
+
+            // Inline datepicker
+            GroupBox(content: {
+                VStack {
+                    DatePicker(
+                        "Select a date",
+                        selection: $selectedDate,
+                        displayedComponents: [.date]
+                    )
+                    .datePickerStyle( .graphical)
+                    .padding()
+
+                    HStack {
+                        Spacer()
+                        Text("Selected date: \(formattedDate(selectedDate))")
+                        Spacer()
+                    }
+                }
+            }, label: {
+                Text("Embedded Date Picker")
+            })
         }
         .padding()
         .navigationTitle("Date Picker")
         .navigationBarTitleDisplayMode(.inline)
+
     }
 
     private func formattedDate(_ date: Date) -> String {
