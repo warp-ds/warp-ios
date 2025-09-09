@@ -10,6 +10,12 @@ extension Warp {
         /// The formatted date as a string.
         @Binding var text: String
 
+        /// The style of the text field.
+        private let style: Warp.TextFieldStyle
+
+        /// Optional `String` to display below the text field.
+        private let helpText: String?
+
         /// Text to display when the text field is empty.
         private let placeholder: String
 
@@ -19,9 +25,19 @@ extension Warp {
         ///   - date: Binding to the currently selected date.
         ///   - text: Binding to the formatted date string.
         ///   - placeholder: Placeholder text for the text field when no date is selected.
-        public init(date: Binding<Date>, text: Binding<String>, placeholder: String) {
+        ///   - style: The style of the text field. Default is `.default`.
+        ///   - helpText: Optional help text to display below the text field.
+        public init(
+            date: Binding<Date>,
+            text: Binding<String>,
+            style: TextFieldStyle = .default,
+            helpText: String? = nil,
+            placeholder: String
+        ) {
             self._date = date
             self._text = text
+            self.style = style
+            self.helpText = helpText
             self.placeholder = placeholder
         }
 
@@ -29,14 +45,21 @@ extension Warp {
             Warp.TextField(
                 text: $text,
                 placeholder: placeholder,
-                rightIcon: .calendar
+                rightIcon: .calendar,
+                style: style,
+                helpText: helpText
             )
+            .disableEditing(true)
             .overlay {
-                SwiftUI.DatePicker(
-                    "",
-                    selection: $date,
-                    displayedComponents: [.date]
-                )
+                VStack {
+                    SwiftUI.DatePicker(
+                        "",
+                        selection: $date,
+                        displayedComponents: [.date]
+                    )
+                    .padding(.top, 8)
+                    Spacer()
+                }
                 .colorMultiply(.clear)
             }
         }

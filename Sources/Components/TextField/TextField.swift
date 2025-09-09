@@ -77,6 +77,9 @@ extension Warp {
         /// Optional `String` to display below the text field.
         private let helpText: String?
 
+        /// Determines whether editing is disabled.
+        private var disableEditing: Bool = false
+
         // MARK: - Initialization
 
         /// Creates a new `TextField` instance.
@@ -138,6 +141,13 @@ extension Warp {
             }
         }
 
+        /// Returns a new `TextField` instance with editing disabled or enabled.
+        func disableEditing(_ disable: Bool) -> Self {
+            var copy = self
+            copy.disableEditing = disable
+            return copy
+        }
+
         private func helpTextStyle() -> Warp.HelpTextStyle {
             switch style {
             case .default:
@@ -176,6 +186,7 @@ extension Warp {
                         .padding(.vertical, Warp.Spacing.spacing150)
                     }
                     SwiftUI.TextField(text, text: $text)
+                        .allowsHitTesting(!disableEditing)
                         .disabled(style == .disabled || style == .readOnly)
                         .foregroundColor(textColor)
                         .font(from: Warp.Typography.body)

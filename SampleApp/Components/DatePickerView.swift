@@ -6,6 +6,8 @@ struct DatePickerView: View {
     @State private var selectedDate = Date()
 
     @State private var presentingPopover = false
+    
+    @State private var isError = false
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -13,15 +15,33 @@ struct DatePickerView: View {
             // Warp date picker
             GroupBox(content: {
                 VStack {
-                    Warp.DatePicker(
-                        date: $selectedDate,
-                        text: Binding(
-                            get: { formattedDate(selectedDate) },
-                            set: { _ in }
-                        ),
-                        placeholder: "Select a date"
-                    )
-                    .padding()
+                    if #available(iOS 17.0, *) {
+                        Warp.DatePicker(
+                            date: $selectedDate,
+                            text: Binding(
+                                get: { formattedDate(selectedDate) },
+                                set: { _ in }
+                            ),
+                            style: isError ? .error : .default,
+                            helpText: isError ? "This is an error" : nil,
+                            placeholder: "Select a date"
+                        )
+                        .onChange(of: selectedDate) { _, newValue in
+                            isError = newValue < Date()
+                        }
+                        .padding()
+                    } else {
+                        Warp.DatePicker(
+                            date: $selectedDate,
+                            text: Binding(
+                                get: { formattedDate(selectedDate) },
+                                set: { _ in }
+                            ),
+                            style: isError ? .error : .default,
+                            helpText: isError ? "This is an error" : nil,
+                            placeholder: "Select a date"
+                        )
+                    }
 
                     HStack {
                         Spacer()
