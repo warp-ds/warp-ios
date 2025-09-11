@@ -4,64 +4,107 @@ extension Warp {
 
     public struct DatePicker: View {
 
+        private static let shortDateFormatter: (Date) -> String = { date in
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            return formatter.string(from: date)
+        }
+
+        /// The style of the date picker
+        public enum Style {
+            /// The default style with a text field and calendar icon that opens an overlay date picker.
+            case `default`
+            /// An inline date picker that is always visible.
+            case inline
+        }
+
+        private let style: Style
+
         /// The current selected date.
-        @Binding var date: Date
+        @Binding private var date: Date
 
-        /// The formatted date as a string.
-        @Binding var text: String
+        /// Date to string transformation closure.
+        /// by default it uses short date style
+        private var dateFormatter: (Date) -> String
 
-        /// The style of the text field.
-        private let style: Warp.TextFieldStyle
+        /// A closure that validates the selected date.
+        private var dateValidator: (Date) -> Bool
 
-        /// Optional `String` to display below the text field.
+        /// Optional `String` to display below the text field for the default style date picker.
         private let helpText: String?
 
-        /// Text to display when the text field is empty.
-        private let placeholder: String
+        /// Optional text to display when the text field is empty.
+        private let placeholder: String?
 
         /// Creates a Warp date picker component that combines a text field with a calendar icon and an overlay date picker.
         /// The text field displays the selected date in a formatted string, and tapping the calendar icon opens the date picker.
         /// - Parameters:
+        ///   - style: The style of the date picker, either `.default` or `.inline`. Default is `.default`.
         ///   - date: Binding to the currently selected date.
-        ///   - text: Binding to the formatted date string.
-        ///   - placeholder: Placeholder text for the text field when no date is selected.
-        ///   - style: The style of the text field. Default is `.default`.
-        ///   - helpText: Optional help text to display below the text field.
+        ///   - dateFormatter: Optional closure to format the selected date into a string for display in the text field. Defaults to a short date style formatter.
+        ///   - dateValidator: Optional closure closure that takes a `Date` and returns a `Bool` indicating whether the date is valid. Default always returns true.
+        ///   - helpText: Optional help text to display below the text field
+        ///   - placeholder: Optional placeholder text to display in the text field when no date is selected.
         public init(
+            style: Style = .default,
             date: Binding<Date>,
-            text: Binding<String>,
-            style: TextFieldStyle = .default,
+            dateFormatter: ((Date) -> String)? = nil,
+            dateValidator: ((Date) -> Bool)? = nil,
             helpText: String? = nil,
-            placeholder: String
+            placeholder: String? = nil
         ) {
-            self._date = date
-            self._text = text
             self.style = style
+            self._date = date
+            self.dateValidator = dateValidator ?? { _ in true }
             self.helpText = helpText
             self.placeholder = placeholder
+            self.dateFormatter = dateFormatter ?? Warp.DatePicker.shortDateFormatter
         }
 
         public var body: some View {
-            Warp.TextField(
-                text: $text,
-                placeholder: placeholder,
+            switch style {
+            case .default:
+                defaultDatePicker
+            case .inline:
+                inlineDatePicker
+            }
+        }
+
+        private var defaultDatePicker: some View {
+            let isValid = dateValidator(date)
+            return Warp.TextField(
+                text: Binding(
+                    get: { dateFormatter(date) },
+                    set: { _ in }
+                ),
+                placeholder: placeholder ?? "",
                 rightIcon: .calendar,
-                style: style,
+                style: isValid ? .default : .error,
                 helpText: helpText
             )
             .disableEditing(true)
             .overlay {
                 VStack {
-                    SwiftUI.DatePicker(
-                        "",
-                        selection: $date,
-                        displayedComponents: [.date]
-                    )
+                    datePicker
                     .padding(.top, 8)
                     Spacer()
                 }
                 .colorMultiply(.clear)
             }
+        }
+
+        private var inlineDatePicker: some View {
+            datePicker
+            .datePickerStyle(.graphical)
+        }
+
+        private var datePicker: some View {
+            SwiftUI.DatePicker(
+                "",
+                selection: $date,
+                displayedComponents: [.date]
+            )
+            .accentColor(Warp.Token.backgroundPrimary)
         }
     }
 }

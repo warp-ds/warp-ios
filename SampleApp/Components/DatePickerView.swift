@@ -18,27 +18,19 @@ struct DatePickerView: View {
                     if #available(iOS 17.0, *) {
                         Warp.DatePicker(
                             date: $selectedDate,
-                            text: Binding(
-                                get: { formattedDate(selectedDate) },
-                                set: { _ in }
-                            ),
-                            style: isError ? .error : .default,
+                            dateValidator: validate(date:),
                             helpText: isError ? "This is an error" : nil,
                             placeholder: "Select a date"
                         )
-                        .onChange(of: selectedDate) { _, newValue in
-                            isError = newValue < Date()
+                        .onChange(of: selectedDate) { _, date in
+                            isError = !validate(date: date)
                         }
                         .padding()
                     } else {
                         Warp.DatePicker(
                             date: $selectedDate,
-                            text: Binding(
-                                get: { formattedDate(selectedDate) },
-                                set: { _ in }
-                            ),
-                            style: isError ? .error : .default,
-                            helpText: isError ? "This is an error" : nil,
+                            dateValidator: validate(date:),
+                            helpText: "This is an error",
                             placeholder: "Select a date"
                         )
                     }
@@ -57,12 +49,11 @@ struct DatePickerView: View {
             // Inline datepicker
             GroupBox(content: {
                 VStack {
-                    DatePicker(
-                        "Select a date",
-                        selection: $selectedDate,
-                        displayedComponents: [.date]
+                    Warp.DatePicker(
+                        style: .inline,
+                        date: $selectedDate,
+                        dateValidator: validate(date:)
                     )
-                    .datePickerStyle( .graphical)
                     .padding()
 
                     HStack {
@@ -81,9 +72,13 @@ struct DatePickerView: View {
 
     }
 
+    private func validate(date: Date) -> Bool {
+        return date < Date()
+    }
+
     private func formattedDate(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMMM yyyy"
+        formatter.dateStyle = .short
         return formatter.string(from: date)
     }
 }

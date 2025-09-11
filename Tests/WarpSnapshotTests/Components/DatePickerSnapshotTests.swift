@@ -3,7 +3,7 @@ import SnapshotTesting
 import SwiftUI
 @testable import Warp
 
-@Suite(.disabled(reason: "Snapshot tests are rendered differently on device vs ImageRenderer, needs investigation"))
+@Suite(.disabled("Snapshot tests are rendered differently on device vs ImageRenderer, needs investigation"))
 @MainActor
 struct DatePickerSnapshotTests {
 
@@ -16,8 +16,6 @@ struct DatePickerSnapshotTests {
 
         let datePickerView =  Warp.DatePicker(
             date: .constant(fixedDate),
-            text: .constant(""),
-            style: .default,
             placeholder: "Select a date"
         )
         .padding()
@@ -36,8 +34,6 @@ struct DatePickerSnapshotTests {
 
         let datePickerView =  Warp.DatePicker(
                     date: .constant(fixedDate),
-                    text: .constant(""),
-                    style: .error,
                     helpText: "This is an error",
                     placeholder: "Select a date"
                 )
