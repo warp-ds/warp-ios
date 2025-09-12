@@ -1,7 +1,25 @@
 import SwiftUI
 
 extension Warp {
-
+    /// A date picker component which enable selection of a date either through a text field with a calendar icon that opens an overlay date picker, or an inline date picker that is always visible.
+    ///
+    /// **Usage:**
+    /// ```swift
+    /// Warp.DatePicker(
+    ///   style: .default,
+    ///   date: $selectedDate,
+    ///   dateValidator: { date in /* validation logic */ },
+    ///   helpText: "Select a date",
+    ///   placeholder: "MM/DD/YYYY"
+    /// )
+    ///
+    /// - Parameters:
+    ///   - style: The style of the date picker, either `.default` or `.inline`. Default is `.default`.
+    ///   - date: Binding to the currently selected date.
+    ///   - dateFormatter: Optional closure to format the selected date into a string for display in the text field. Defaults to a short date style formatter.
+    ///   - dateValidator: Optional closure closure that takes a `Date` and returns a `Bool` indicating whether the date is valid. Default always returns true.
+    ///   - helpText: Optional help text to display below the text field (could be used to describe errors)
+    ///   - placeholder: Optional placeholder text to display in the text field when no date is selected.
     public struct DatePicker: View {
 
         private static let shortDateFormatter: (Date) -> String = { date in
