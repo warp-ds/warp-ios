@@ -8,6 +8,7 @@ extension Warp {
     /// Warp.DatePicker(
     ///   style: .default,
     ///   date: $selectedDate,
+    ///   dateFormatter: { date in /* formatting logic */ },
     ///   dateValidator: { date in /* validation logic */ },
     ///   helpText: "Select a date",
     ///   placeholder: "MM/DD/YYYY"
