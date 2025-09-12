@@ -12,11 +12,26 @@ struct DatePickerView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
 
-            // Warp date picker
+            // Warp default date picker
+            GroupBox(content: {
+                VStack {
+                    Warp.DatePicker(
+                        style: .dialog,
+                        date: $selectedDate
+                    )
+                    .padding()
+                }
+            }, label: {
+                Text("Dialog Date Picker")
+            })
+
+
+            // Warp date picker with text field
             GroupBox(content: {
                 VStack {
                     if #available(iOS 17.0, *) {
                         Warp.DatePicker(
+                            style: .textfield,
                             date: $selectedDate,
                             dateValidator: validate(date:),
                             helpText: isError ? "This is an error" : nil,
@@ -63,7 +78,7 @@ struct DatePickerView: View {
                     }
                 }
             }, label: {
-                Text("Embedded Date Picker")
+                Text("Inline Date Picker")
             })
         }
         .padding()

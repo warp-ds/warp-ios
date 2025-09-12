@@ -6,7 +6,7 @@ extension Warp {
     /// **Usage:**
     /// ```swift
     /// Warp.DatePicker(
-    ///   style: .default,
+    ///   style: .textfield,
     ///   date: $selectedDate,
     ///   dateFormatter: { date in /* formatting logic */ },
     ///   dateValidator: { date in /* validation logic */ },
@@ -15,11 +15,11 @@ extension Warp {
     /// )
     ///
     /// - Parameters:
-    ///   - style: The style of the date picker, either `.default` or `.inline`. Default is `.default`.
+    ///   - style: The style of the date picker, either `dialog`, `textfield`, or `inline`. Default is `dialog`.
     ///   - date: Binding to the currently selected date.
     ///   - dateFormatter: Optional closure to format the selected date into a string for display in the text field. Defaults to a short date style formatter.
     ///   - dateValidator: Optional closure closure that takes a `Date` and returns a `Bool` indicating whether the date is valid. Default always returns true.
-    ///   - helpText: Optional help text to display below the text field (could be used to describe errors)
+    ///   - helpText: Optional help text to display below the text field
     ///   - placeholder: Optional placeholder text to display in the text field when no date is selected.
     public struct DatePicker: View {
 
@@ -31,8 +31,10 @@ extension Warp {
 
         /// The style of the date picker
         public enum Style {
-            /// The default style with a text field and calendar icon that opens an overlay date picker.
-            case `default`
+            /// A native button date picker with Warp styling
+            case dialog
+            /// A date picker that combines a text field with a calendar icon and an overlay date picker.
+            case textfield
             /// An inline date picker that is always visible.
             case inline
         }
@@ -58,14 +60,14 @@ extension Warp {
         /// Creates a Warp date picker component that combines a text field with a calendar icon and an overlay date picker.
         /// The text field displays the selected date in a formatted string, and tapping the calendar icon opens the date picker.
         /// - Parameters:
-        ///   - style: The style of the date picker, either `.default` or `.inline`. Default is `.default`.
+        ///   - style: The style of the date picker, either `dialog`, `textfield`, or `inline`. Default is `dialog`.
         ///   - date: Binding to the currently selected date.
         ///   - dateFormatter: Optional closure to format the selected date into a string for display in the text field. Defaults to a short date style formatter.
         ///   - dateValidator: Optional closure closure that takes a `Date` and returns a `Bool` indicating whether the date is valid. Default always returns true.
         ///   - helpText: Optional help text to display below the text field
         ///   - placeholder: Optional placeholder text to display in the text field when no date is selected.
         public init(
-            style: Style = .default,
+            style: Style = .dialog,
             date: Binding<Date>,
             dateFormatter: ((Date) -> String)? = nil,
             dateValidator: ((Date) -> Bool)? = nil,
@@ -82,14 +84,17 @@ extension Warp {
 
         public var body: some View {
             switch style {
-            case .default:
-                defaultDatePicker
+            case .dialog:
+                datePicker
+                    .labelsHidden()
+            case .textfield:
+                datePickerWithTextField
             case .inline:
                 inlineDatePicker
             }
         }
 
-        private var defaultDatePicker: some View {
+        private var datePickerWithTextField: some View {
             let isValid = dateValidator(date)
             return Warp.TextField(
                 text: Binding(
