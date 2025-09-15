@@ -1,134 +1,121 @@
 import SwiftUI
 
 extension Warp {
-    /// A date picker component which enable selection of a date either through a text field with a calendar icon that opens an overlay date picker, or an inline date picker that is always visible.
+
+    /// A WARP-styled inlined date picker component that allows users to select a date from a graphical calendar interface.
+    /// The `DatePicker` component can be customized with optional date range constraints to limit the selectable dates.
     ///
     /// **Usage:**
     /// ```swift
-    /// Warp.DatePicker(
-    ///   style: .textfield,
-    ///   date: $selectedDate,
-    ///   dateFormatter: { date in /* formatting logic */ },
-    ///   dateValidator: { date in /* validation logic */ },
-    ///   helpText: "Select a date",
-    ///   placeholder: "MM/DD/YYYY"
-    /// )
+    /// Warp.DatePicker(date: $selectedDate)
+    /// ```
     ///
     /// - Parameters:
-    ///   - style: The style of the date picker, either `dialog`, `textfield`, or `inline`. Default is `dialog`.
-    ///   - date: Binding to the currently selected date.
-    ///   - dateFormatter: Optional closure to format the selected date into a string for display in the text field. Defaults to a short date style formatter.
-    ///   - dateValidator: Optional closure closure that takes a `Date` and returns a `Bool` indicating whether the date is valid. Default always returns true.
-    ///   - helpText: Optional help text to display below the text field
-    ///   - placeholder: Optional placeholder text to display in the text field when no date is selected.
+    ///   - date: A binding to the selected date.
+    ///   - range: An optional range of selectable dates.
     public struct DatePicker: View {
 
-        private static let shortDateFormatter: (Date) -> String = { date in
-            let formatter = DateFormatter()
-            formatter.dateStyle = .short
-            return formatter.string(from: date)
-        }
-
-        /// The style of the date picker
-        public enum Style {
-            /// A native button date picker with Warp styling
-            case dialog
-            /// A date picker that combines a text field with a calendar icon and an overlay date picker.
-            case textfield
-            /// An inline date picker that is always visible.
-            case inline
-        }
-
-        private let style: Style
-
-        /// The current selected date.
+        /// The selected date.
         @Binding private var date: Date
 
-        /// Date to string transformation closure.
-        /// by default it uses short date style
-        private var dateFormatter: (Date) -> String
+        /// The range of selectable dates.
+        private let range: DatePickerRange?
 
-        /// A closure that validates the selected date.
-        private var dateValidator: (Date) -> Bool
-
-        /// Optional `String` to display below the text field for the default style date picker.
-        private let helpText: String?
-
-        /// Optional text to display when the text field is empty.
-        private let placeholder: String?
-
-        /// Creates a Warp date picker component that combines a text field with a calendar icon and an overlay date picker.
-        /// The text field displays the selected date in a formatted string, and tapping the calendar icon opens the date picker.
+        /// Initializes a `DatePicker` with a binding to the selected date.
+        ///
+        /// **Usage:**
+        /// ```swift
+        /// Warp.DatePicker(date: $selectedDate)
+        /// ```
+        ///
         /// - Parameters:
-        ///   - style: The style of the date picker, either `dialog`, `textfield`, or `inline`. Default is `dialog`.
-        ///   - date: Binding to the currently selected date.
-        ///   - dateFormatter: Optional closure to format the selected date into a string for display in the text field. Defaults to a short date style formatter.
-        ///   - dateValidator: Optional closure closure that takes a `Date` and returns a `Bool` indicating whether the date is valid. Default always returns true.
-        ///   - helpText: Optional help text to display below the text field
-        ///   - placeholder: Optional placeholder text to display in the text field when no date is selected.
-        public init(
-            style: Style = .dialog,
-            date: Binding<Date>,
-            dateFormatter: ((Date) -> String)? = nil,
-            dateValidator: ((Date) -> Bool)? = nil,
-            helpText: String? = nil,
-            placeholder: String? = nil
-        ) {
-            self.style = style
+        ///   - date: A binding to the selected date.
+        public init(date: Binding<Date>) {
             self._date = date
-            self.dateValidator = dateValidator ?? { _ in true }
-            self.helpText = helpText
-            self.placeholder = placeholder
-            self.dateFormatter = dateFormatter ?? Warp.DatePicker.shortDateFormatter
+            range = nil
+        }
+
+        /// Initializes a `DatePicker` with a binding to the selected date and a closed range of selectable dates.
+        ///
+        /// **Usage:**
+        /// ```swift
+        /// Warp.DatePicker(date: $selectedDate, range: startDate...endDate)
+        /// ```
+        ///
+        /// - Parameters:
+        ///   - date: A binding to the selected date.
+        ///   - range: A closed range of dates that the user can select from.
+        public init(date: Binding<Date>, range: ClosedRange<Date>) {
+            self._date = date
+            self.range = .closed(range)
+        }
+
+        /// Initializes a `DatePicker` with a binding to the selected date and a partial range starting from a specific date.
+        ///
+        /// **Usage:**
+        /// ```swift
+        /// Warp.DatePicker(date: $selectedDate, range: startDate...)
+        /// ```
+        ///
+        /// - Parameters:
+        ///   - date: A binding to the selected date.
+        ///   - range: A partial range of dates that the user can select from, starting from a specific date.
+        public init(date: Binding<Date>, range: PartialRangeFrom<Date>) {
+            self._date = date
+            self.range = .from(range)
+        }
+
+        /// Initializes a `DatePicker` with a binding to the selected date and a partial range up to a specific date.
+        ///
+        /// **Usage:**
+        /// ```swift
+        /// Warp.DatePicker(date: $selectedDate, range: ...endDate)
+        /// ```
+        ///
+        /// - Parameters:
+        ///   - date: A binding to the selected date.
+        ///   - range: A partial range of dates that the user can select from, up to a specific date.
+        public init(date: Binding<Date>, range: PartialRangeThrough<Date>) {
+            self._date = date
+            self.range = .to(range)
         }
 
         public var body: some View {
-            switch style {
-            case .dialog:
-                datePicker
-                    .labelsHidden()
-            case .textfield:
-                datePickerWithTextField
-            case .inline:
-                inlineDatePicker
-            }
-        }
-
-        private var datePickerWithTextField: some View {
-            let isValid = dateValidator(date)
-            return Warp.TextField(
-                text: Binding(
-                    get: { dateFormatter(date) },
-                    set: { _ in }
-                ),
-                placeholder: placeholder ?? "",
-                rightIcon: .calendar,
-                style: isValid ? .default : .error,
-                helpText: helpText
-            )
-            .disableEditing(true)
-            .overlay {
-                VStack {
-                    datePicker
-                    .padding(.top, 8)
-                    Spacer()
-                }
-                .colorMultiply(.clear)
-            }
-        }
-
-        private var inlineDatePicker: some View {
-            datePicker
+            nativeDatePicker
             .datePickerStyle(.graphical)
+            .accentColor(Warp.Token.backgroundPrimary)
         }
 
-        private var datePicker: some View {
-            SwiftUI.DatePicker(
-                "",
-                selection: $date,
-                displayedComponents: [.date]
-            )
-            .accentColor(Warp.Token.backgroundPrimary)
+        private var nativeDatePicker: some View {
+            switch range {
+            case .none:
+                return SwiftUI.DatePicker(
+                    "",
+                    selection: $date,
+                    displayedComponents: [.date]
+                  )
+            case .closed(let closedRange):
+                return SwiftUI.DatePicker(
+                    "",
+                    selection: $date,
+                    in: closedRange,
+                    displayedComponents: [.date]
+                  )
+            case .from(let partialRangeFrom):
+                return SwiftUI.DatePicker(
+                    "",
+                    selection: $date,
+                    in: partialRangeFrom,
+                    displayedComponents: [.date]
+                  )
+            case .to(let partialRangeThrough):
+                return SwiftUI.DatePicker(
+                    "",
+                    selection: $date,
+                    in: partialRangeThrough,
+                    displayedComponents: [.date]
+                  )
+            }
         }
     }
 }

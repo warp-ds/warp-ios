@@ -5,69 +5,50 @@ struct DatePickerView: View {
 
     @State private var selectedDate = Date()
 
-    @State private var presentingPopover = false
-    
-    @State private var isError = false
-
     var body: some View {
         ScrollView(showsIndicators: false) {
-
-            // Warp default date picker
+            // WARP date picker
             GroupBox(content: {
                 VStack {
-                    Warp.DatePicker(
-                        style: .dialog,
-                        date: $selectedDate
+                    Warp.TextField(
+                        text: Binding(
+                            get: { formattedDate(selectedDate) },
+                            set: { _ in }
+                        ),
+                        placeholder: "Select a date",
+                        rightIcon: .calendar
                     )
-                    .padding()
+                    .warpDatePicker(date: $selectedDate)
                 }
             }, label: {
                 Text("Dialog Date Picker")
             })
-
-
-            // Warp date picker with text field
+            
+            // Ranged WARP date picker
             GroupBox(content: {
                 VStack {
-                    if #available(iOS 17.0, *) {
-                        Warp.DatePicker(
-                            style: .textfield,
-                            date: $selectedDate,
-                            dateValidator: validate(date:),
-                            helpText: isError ? "This is an error" : nil,
-                            placeholder: "Select a date"
-                        )
-                        .onChange(of: selectedDate) { _, date in
-                            isError = !validate(date: date)
-                        }
-                        .padding()
-                    } else {
-                        Warp.DatePicker(
-                            date: $selectedDate,
-                            dateValidator: validate(date:),
-                            helpText: "This is an error",
-                            placeholder: "Select a date"
-                        )
-                    }
-
-                    HStack {
-                        Spacer()
-                        Text("Selected date: \(formattedDate(selectedDate))")
-                        Spacer()
-                    }
+                    Warp.TextField(
+                        text: Binding(
+                          get: { formattedDate(selectedDate) },
+                          set: { _ in }
+                        ),
+                        placeholder: "Select a date",
+                        rightIcon: .calendar
+                      )
+                    .warpDatePicker(
+                        date: $selectedDate,
+                        range: Calendar.current.date(byAdding: .day, value: -7, to: Date())!...Calendar.current.date(byAdding: .day, value: 7, to: Date())!
+                    )
                 }
             }, label: {
-                Text("TextField with Date Picker")
+                Text("Ranged Dialog Date Picker")
             })
-                 
 
-            // Inline datepicker
+            // WARP inline datepicker
             GroupBox(content: {
                 VStack {
                     Warp.DatePicker(
-                        style: .inline,
-                        date: $selectedDate,
-                        dateValidator: validate(date:)
+                        date: $selectedDate
                     )
                     .padding()
 
@@ -85,10 +66,6 @@ struct DatePickerView: View {
         .navigationTitle("Date Picker")
         .navigationBarTitleDisplayMode(.inline)
 
-    }
-
-    private func validate(date: Date) -> Bool {
-        return date < Date()
     }
 
     private func formattedDate(_ date: Date) -> String {
