@@ -18,7 +18,8 @@ struct WarpTests {
             .tori: ToriTokenProvider(),
             .dba: DbaTokenProvider(),
             .blocket: BlocketTokenProvider(),
-            .vend: VendTokenProvider()
+            .vend: VendTokenProvider(),
+            .neutral: NeutralTokenProvider()
         ]
         
         for (brand, expectedProvider) in expectedProvidersForTheme {
@@ -52,7 +53,8 @@ struct WarpTests {
             .tori: ToriTokenProvider(),
             .dba: DbaTokenProvider(),
             .blocket: BlocketTokenProvider(),
-            .vend: VendTokenProvider()
+            .vend: VendTokenProvider(),
+            .neutral: NeutralTokenProvider()
         ]
         
         for (brand, expectedProvider) in expectedTokenProviderForTheme {
@@ -69,7 +71,8 @@ struct WarpTests {
             .tori: ToriUITokenProvider(),
             .dba: DbaUITokenProvider(),
             .blocket: BlocketUITokenProvider(),
-            .vend: VendUITokenProvider()
+            .vend: VendUITokenProvider(),
+            .neutral: NeutralUITokenProvider()
         ]
         
         for (brand, expectedProvider) in expectedUITokenProviderForTheme {

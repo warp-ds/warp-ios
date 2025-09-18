@@ -38,6 +38,10 @@ extension Warp {
         // MARK: - Vend Fonts
         case vendRegular
         case vendBold
+
+        // MARK: - Neutral Fonts
+        case neutralRegular
+        case neutralSemiBold
         
         // MARK: - Font File Names
         /// The file name for the font as it appears in the bundle (without extension).
@@ -68,6 +72,8 @@ extension Warp {
             case .blocketRegular: return "BlocketSans-Regular"
             case .vendRegular: return "VendSansText-Regular"
             case .vendBold: return "VendSansText-Bold"
+            case .neutralRegular: return "Inter-Regular"
+            case .neutralSemiBold: return "Inter-SemiBold"
             }
         }
         
@@ -100,6 +106,8 @@ extension Warp {
             case .blocketRegular: return "BlocketSans-Regular"
             case .vendRegular: return "VendSansText-Regular"
             case .vendBold: return "VendSansText-Bold"
+            case .neutralRegular: return "Inter-Regular"
+            case .neutralSemiBold: return "Inter-SemiBold"
             }
         }
         
@@ -119,6 +127,8 @@ extension Warp {
                 return [.blocketDisplay, .blocketBold, .blocketMedium, .blocketRegular]
             case .vend:
                 return [.vendRegular, .vendBold]
+            case .neutral:
+                return [.neutralRegular, .neutralSemiBold]
             }
         }
     }

@@ -327,7 +327,7 @@ class LanguageManager {
     func setLanguage(for theme: Warp.Brand = Warp.Theme) {
         var language: String
         switch Warp.Theme {
-        case .finn:
+        case .finn, .neutral:
             language = "nb-NO"
         case .tori:
             language = "fi"
