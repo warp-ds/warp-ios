@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Wed, 17 Sep 2025 11:33:38 GMT by https://github.com/warp-ds/tokens
+// Generated on Fri, 19 Sep 2025 11:07:54 GMT by https://github.com/warp-ds/tokens
 struct NeutralTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: NeutralColors.gray900, darkModeColor: NeutralColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: NeutralColors.gray600, darkModeColor: NeutralColors.gray400) }
@@ -21,9 +21,9 @@ struct NeutralTokenProvider: TokenProvider {
     public var backgroundSubtleActive: Color { Color.dynamicColor(defaultColor: NeutralColors.gray300, darkModeColor: NeutralColors.gray600) }
     public var backgroundDisabled: Color { Color.dynamicColor(defaultColor: NeutralColors.gray300, darkModeColor: NeutralColors.gray700) }
     public var backgroundDisabledSubtle: Color { Color.dynamicColor(defaultColor: NeutralColors.gray200, darkModeColor: NeutralColors.gray600) }
-    public var backgroundSelected: Color { Color.dynamicColor(defaultColor: NeutralColors.gray50, darkModeColor: NeutralColors.gray900) }
-    public var backgroundSelectedHover: Color { Color.dynamicColor(defaultColor: NeutralColors.gray100, darkModeColor: NeutralColors.gray800) }
-    public var backgroundSelectedActive: Color { Color.dynamicColor(defaultColor: NeutralColors.gray200, darkModeColor: NeutralColors.gray700) }
+    public var backgroundSelected: Color { Color.dynamicColor(defaultColor: NeutralColors.blue50, darkModeColor: NeutralColors.blue900) }
+    public var backgroundSelectedHover: Color { Color.dynamicColor(defaultColor: NeutralColors.blue100, darkModeColor: NeutralColors.blue800) }
+    public var backgroundSelectedActive: Color { Color.dynamicColor(defaultColor: NeutralColors.blue200, darkModeColor: NeutralColors.blue700) }
     public var backgroundInverted: Color { Color.dynamicColor(defaultColor: NeutralColors.gray900, darkModeColor: NeutralColors.gray50) }
     public var backgroundPrimary: Color { Color.dynamicColor(defaultColor: NeutralColors.blue600, darkModeColor: NeutralColors.blue400) }
     public var backgroundPrimaryHover: Color { Color.dynamicColor(defaultColor: NeutralColors.blue700, darkModeColor: NeutralColors.blue300) }
@@ -158,9 +158,9 @@ struct NeutralUITokenProvider: UITokenProvider {
     public var backgroundSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray300, darkModeColor: NeutralUIColors.gray600) }
     public var backgroundDisabled: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray300, darkModeColor: NeutralUIColors.gray700) }
     public var backgroundDisabledSubtle: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray200, darkModeColor: NeutralUIColors.gray600) }
-    public var backgroundSelected: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray50, darkModeColor: NeutralUIColors.gray900) }
-    public var backgroundSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray100, darkModeColor: NeutralUIColors.gray800) }
-    public var backgroundSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray200, darkModeColor: NeutralUIColors.gray700) }
+    public var backgroundSelected: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.blue50, darkModeColor: NeutralUIColors.blue900) }
+    public var backgroundSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.blue100, darkModeColor: NeutralUIColors.blue800) }
+    public var backgroundSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.blue200, darkModeColor: NeutralUIColors.blue700) }
     public var backgroundInverted: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray900, darkModeColor: NeutralUIColors.gray50) }
     public var backgroundPrimary: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.blue600, darkModeColor: NeutralUIColors.blue400) }
     public var backgroundPrimaryHover: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.blue700, darkModeColor: NeutralUIColors.blue300) }

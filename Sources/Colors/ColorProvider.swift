@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Wed, 17 Sep 2025 11:33:38 GMT by https://github.com/warp-ds/tokens
+// Generated on Fri, 19 Sep 2025 11:07:54 GMT by https://github.com/warp-ds/tokens
 public struct ColorProvider {
     public let token: TokenProvider
     
@@ -174,7 +174,7 @@ public struct ColorProvider {
         case .blocket: return token.iconSecondary
         case .dba: return token.iconSecondary
         case .finn: return token.iconSelected
-        case .neutral: return token.iconSecondary
+        case .neutral: return token.iconSelected
         case .tori: return token.iconSecondary
         case .vend: return token.iconSecondary
         }
@@ -185,7 +185,7 @@ public struct ColorProvider {
         case .blocket: return token.borderSecondary
         case .dba: return token.borderSecondary
         case .finn: return token.borderSelected
-        case .neutral: return token.borderSecondary
+        case .neutral: return token.borderSelected
         case .tori: return token.borderSecondary
         case .vend: return token.borderSecondary
         }
@@ -475,7 +475,7 @@ public struct UIColorProvider {
         case .blocket: return token.iconSecondary
         case .dba: return token.iconSecondary
         case .finn: return token.iconSelected
-        case .neutral: return token.iconSecondary
+        case .neutral: return token.iconSelected
         case .tori: return token.iconSecondary
         case .vend: return token.iconSecondary
         }
@@ -486,7 +486,7 @@ public struct UIColorProvider {
         case .blocket: return token.borderSecondary
         case .dba: return token.borderSecondary
         case .finn: return token.borderSelected
-        case .neutral: return token.borderSecondary
+        case .neutral: return token.borderSelected
         case .tori: return token.borderSecondary
         case .vend: return token.borderSecondary
         }
