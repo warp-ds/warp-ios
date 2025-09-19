@@ -168,14 +168,12 @@ extension Warp {
         /// The text field view, including the placeholder text.
         @ViewBuilder
         private var textFieldView: some View {
-            HStack(spacing: 0) {
+            HStack(spacing: Warp.Spacing.spacing100) {
                 if let leftIcon {
                     Warp.IconView(leftIcon, size: .default)
-                        .padding(.leading, Warp.Spacing.spacing100)
                 }
                 if let prefix {
                     Text(prefix, style: .detail)
-                        .padding(.leading, Warp.Spacing.spacing100)
                 }
                 ZStack(alignment: .topLeading) {
                     if text.isEmpty && !isFocused {
@@ -184,7 +182,6 @@ extension Warp {
                             style: .body,
                             color: colorProvider.token.textPlaceholder
                         )
-                        .padding(.horizontal, horizontalPadding)
                         .padding(.vertical, Warp.Spacing.spacing150)
                     }
                     SwiftUI.TextField(text, text: $text)
@@ -194,23 +191,20 @@ extension Warp {
                         .font(from: Warp.Typography.body)
                         .clearTextEditorBackground()
                         .focused($isFocused)
-                        .padding(.horizontal, horizontalPadding)
                         .padding(.vertical, Warp.Spacing.spacing150)
                 }
-                .padding(.horizontal, Warp.Spacing.spacing100)
                 if let suffix {
                     Text(suffix, style: .detail)
-                        .padding(.trailing, Warp.Spacing.spacing100)
                 }
                 if let rightIcon {
                     SwiftUI.Button {
                         rightIconAction()
                     } label: {
                         Warp.IconView(rightIcon, size: .default)
-                            .padding(.trailing, Warp.Spacing.spacing100)
                     }
                 }
             }
+            .padding(.horizontal, horizontalPadding)
             .modifier(BorderModifier(isFocused: isFocused, style: style, cornerRadius: cornerRadius, colorProvider: colorProvider, borderColor: borderColor))
             .background(backgroundColor)
         }
@@ -260,8 +254,6 @@ extension Warp {
         /// Calculates the horizontal padding based on the style.
         private var horizontalPadding: CGFloat {
             switch style {
-            case .readOnly where !text.isEmpty:
-                return -Warp.Spacing.spacing50
             case .readOnly:
                 return 0
             default:
