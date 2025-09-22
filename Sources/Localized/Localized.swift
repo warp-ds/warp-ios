@@ -327,7 +327,7 @@ class LanguageManager {
     func setLanguage(for theme: Warp.Brand = Warp.Theme) {
         var language: String
         switch Warp.Theme {
-        case .finn, .neutral:
+        case .finn:
             language = "nb-NO"
         case .tori:
             language = "fi"
@@ -335,8 +335,8 @@ class LanguageManager {
             language = "da"
         case .blocket:
             language = "sv"
-        case .vend:
-            language = "no"
+        case .vend, .neutral:
+            language = "en"
         }
 //        language = "en"
         guard let path = Bundle.module.path(forResource: language, ofType: "lproj"),
