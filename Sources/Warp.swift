@@ -17,6 +17,8 @@ public enum Warp {
         case blocket
         /// Represents the `Vend` brand theme.
         case vend
+        /// Represents a neutral theme without specific brand styling.
+        case neutral
 
         public var description: String {
             switch self {
@@ -30,6 +32,8 @@ public enum Warp {
                 return "Blocket"
             case .vend:
                 return "Vend"
+            case .neutral:
+                return "Neutral"
             }
         }
     }
@@ -72,6 +76,8 @@ public enum Warp {
             return BlocketTokenProvider()
         case .vend:
             return VendTokenProvider()
+        case .neutral:
+            return NeutralTokenProvider()
         }
     }
     
@@ -91,6 +97,8 @@ public enum Warp {
             return BlocketUITokenProvider()
         case .vend:
             return VendUITokenProvider()
+        case .neutral:
+            return NeutralUITokenProvider()
         }
     }
     

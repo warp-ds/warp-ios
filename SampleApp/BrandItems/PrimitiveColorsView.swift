@@ -15,6 +15,8 @@ struct PrimitiveColorsView: View {
             BlocketColorsView()
         case .vend:
             VendColorsView()
+        case .neutral:
+            NeutralColorsView()
         }
     }
 }
