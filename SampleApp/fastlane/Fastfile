@@ -1,0 +1,38 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+  lane :build_and_deploy_enterprise do
+      desc "Build the enterprise version of the app and deploy it to Firebase App Distribution"
+      match(type: "enterprise")
+      gym(
+        scheme: "WarpDemo",
+        export_method: "enterprise"
+      )
+      firebase_app_distribution
+    end
+
+    lane :firebase_distribution do
+      desc "Distribute the app to Firebase App Distribution"
+      firebase_app_distribution(
+        app: "1:1234567890:ios:abcdef123456", # Replace with your Firebase App ID
+        ipa_path: "./build/WarpDemo.ipa", # Path to the built IPA file
+        groups: "testers" # Replace with your Firebase tester group(s)
+      )
+    end
+end
