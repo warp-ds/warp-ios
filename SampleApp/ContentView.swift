@@ -59,6 +59,7 @@ struct ContentView: View {
                     row("Shadow", destination: ShadowView())
                     row("ShadowUI", destination: ShadowUIView())
                     row("Slider", destination: SliderView())
+                    row("RangeSlider", destination: RangeSliderView())
                     row("Spinner", destination: SpinnerView())
                     row("StepIndicator", destination: StepIndicatorView())
                     row("Switch", destination: SwitchView())
