@@ -112,6 +112,7 @@ extension Warp {
                     }
                 }
             }
+            .allowsHitTesting(enabled)
         }
 
         // Background track (gray line for incomplete part)
@@ -125,7 +126,7 @@ extension Warp {
             let lowerProgress = progress(for: range.lowerBound)
             let upperProgress = progress(for: range.upperBound)
             return Capsule()
-                .fill(enabled ? filledTrackColor: disabledColor)
+                .fill(enabled ? filledTrackColor : disabledColor)
                 .frame(width: CGFloat(upperProgress - lowerProgress) * width)
                 .offset(x: CGFloat(lowerProgress) * width)
         }
