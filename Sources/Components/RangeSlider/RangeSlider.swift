@@ -18,11 +18,13 @@ extension Warp {
         private let filledTrackColor = Warp.Token.backgroundPrimary
         private let thumbColor = Warp.Token.backgroundPrimary
         private let thumbActiveColor = Warp.Token.backgroundPrimaryActive
+        private let disabledColor = Warp.Token.backgroundDisabled
 
         @Binding var range: ClosedRange<Element>  // Binding range to update the slider range
         let bounds: ClosedRange<Element>  // Defines the bounds for the slider
         let step: Element  // Step value for the slider
         let showTooltips: Bool  // Whether to show tooltips above thumbs
+        let enabled: Bool  // Whether the slider is enabled or disabled
         let onEditingChanged: ((ClosedRange<Element>) -> Void)?  // Completion handler to return the range when thumbs are dropped
 
         private enum ActiveThumb {
@@ -36,12 +38,14 @@ extension Warp {
             bounds: ClosedRange<Element>,
             step: Element = 1.0,
             showTooltips: Bool = true,
+            enabled: Bool = true,
             onEditingChanged: ((ClosedRange<Element>) -> Void)? = nil
         ) {
             self._range = range
             self.bounds = bounds
             self.step = step
             self.showTooltips = showTooltips
+            self.enabled = enabled
             self.onEditingChanged = onEditingChanged
         }
 
@@ -121,7 +125,7 @@ extension Warp {
             let lowerProgress = progress(for: range.lowerBound)
             let upperProgress = progress(for: range.upperBound)
             return Capsule()
-                .fill(filledTrackColor)
+                .fill(enabled ? filledTrackColor: disabledColor)
                 .frame(width: CGFloat(upperProgress - lowerProgress) * width)
                 .offset(x: CGFloat(lowerProgress) * width)
         }
@@ -129,7 +133,10 @@ extension Warp {
         // Square thumb (slider handle)
         private func thumbView() -> some View {
             Rectangle()
-                .fill(activeThumb != .none ? thumbActiveColor : thumbColor)
+                .fill({
+                    guard enabled else { return disabledColor }
+                    return activeThumb != .none ? thumbActiveColor : thumbColor
+                }())
                 .cornerRadius(cornerRadius)
                 .addShadow(.small)
                 .frame(width: 24, height: 24)
