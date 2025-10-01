@@ -94,7 +94,7 @@ extension Warp {
             case (true, .disabled):
                 return colorProvider.token.backgroundDisabled
             case (false, .default):
-                return colorProvider.token.border
+                return colorProvider.token.borderStrong
             case (false, .error):
                 return colorProvider.token.borderNegative
             case (false, .disabled):

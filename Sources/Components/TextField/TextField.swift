@@ -229,7 +229,7 @@ extension Warp {
         private var borderColor: Color {
             switch style {
             case .default:
-                return colorProvider.token.border
+                return colorProvider.token.borderStrong
             case .disabled:
                 return colorProvider.token.borderDisabled
             case .error:
