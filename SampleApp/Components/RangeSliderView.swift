@@ -2,36 +2,103 @@ import SwiftUI
 import Warp
 
 struct RangeSliderView: View {
-  @State var range: ClosedRange<Double> = 0.0...100.0
-  @State var bounds: ClosedRange<Double> = 0.0...100.0
-  @State var sliderValue = 0.0 // Current slider value
-  @State var minValue = "0.0" // Minimum value input by user
-  @State var maxValue = "100.0" // Maximum value input by user
+  @State var range: ClosedRange<Double> = 1.0...20.0
+  @State var bounds: ClosedRange<Double> = 1.0...20.0
+  @State var items = stride(from: 1910, through: 2020, by: 10).map {
+    "\($0)"
+  }
+  @State var minValue = "1.0" // Minimum value input by user
+  @State var maxValue = "20.0" // Maximum value input by user
   @State var stepValue = "1.0" // Step value input by user
-  @State var precision = "2" // Precision for displayed slider value
+  @State var precision = "1" // Precision for displayed slider value
+
+  @State var wideDoubleRange: ClosedRange<Double> = Double.leastNormalMagnitude...Double.greatestFiniteMagnitude
+  @State var wideDoubleBounds: ClosedRange<Double> = Double.leastNormalMagnitude...Double.greatestFiniteMagnitude
 
   var body: some View {
     ScrollView(showsIndicators: false) {
+
+      // Very wide double range slider
       GroupBox(content: {
         VStack {
+          Text("From: \(humanReadableNumber(wideDoubleRange.lowerBound)) to \(humanReadableNumber(wideDoubleRange.upperBound))")
           // Warp Slider that dynamically updates based on user input
           Warp.RangeSlider(
-            range: $range,
-            bounds: bounds,
-            step: Double(stepValue) ?? 1.0
-          )
-          .padding()
-
-          HStack {
-            Spacer()
-            // Display the slider value with the specified precision
-            Text(String(format: "Value: %.\(Int(precision) ?? 2)f - %.\(Int(precision) ?? 2)f", range.lowerBound, range.upperBound))
-              .font(.headline)
-            Spacer()
-          }
+                range: $wideDoubleRange,
+                bounds: wideDoubleBounds,
+                step: Double(stepValue) ?? 1.0,
+                enabled: true,
+                valueFormat: humanReadableNumber
+            )
+            .padding()
         }
       }, label: {
-        Text("RangeSlider")
+        Text("RangeSlider with infinite range")
+      })
+        .padding(.bottom)
+
+      GroupBox(content: {
+        VStack {
+          Text(String(format: "From: %.\(Int(precision) ?? 2)f to %.\(Int(precision) ?? 2)f", range.lowerBound, range.upperBound))
+          // Warp Slider that dynamically updates based on user input
+          Warp.RangeSlider(
+                range: $range,
+                bounds: bounds,
+                step: Double(stepValue) ?? 1.0,
+                enabled: true
+            )
+            .padding()
+        }
+      }, label: {
+        Text("RangeSlider with integers")
+      })
+        .padding(.bottom)
+
+      GroupBox(content: {
+        VStack {
+          Text("From: \(items.first!) to \(items.last!)")
+          // Warp Slider that dynamically updates based on user input
+          Warp.RangeSlider(selectedItems: $items,
+                items: stride(from: 1910, through: 2020, by: 10).map {
+                  "\($0)"
+                }
+            )
+            .padding()
+        }
+      }, label: {
+        Text("RangeSlider with strings")
+      })
+        .padding(.bottom)
+
+      // Range slider with indicators
+      GroupBox(content: {
+        VStack {
+          Text("From: \(items.first!) to \(items.last!)")
+          // Warp Slider that dynamically updates based on user input
+          Warp.RangeSlider(selectedItems: $items,
+                items: stride(from: 1910, through: 2020, by: 10).map { "\($0)" },
+                showRange: true
+            )
+            .padding()
+        }
+      }, label: {
+        Text("RangeSlider with indicators")
+      })
+        .padding(.bottom)
+
+      // Disabled Range slider
+      GroupBox(content: {
+        VStack {
+          Text("From: \(items.first!) to \(items.last!)")
+          // Warp Slider that dynamically updates based on user input
+          Warp.RangeSlider(selectedItems: $items,
+                items: stride(from: 1910, through: 2020, by: 10).map { "\($0)" },
+                enabled: false
+            )
+            .padding()
+        }
+      }, label: {
+        Text("Disabled RangeSlider")
       })
         .padding(.bottom)
 
@@ -97,11 +164,26 @@ struct RangeSliderView: View {
     }
   }
 
+  private func humanReadableNumber(_ value: Double) -> String {
+      guard !(value ~= Double.leastNonzeroMagnitude || value ~= Double.greatestFiniteMagnitude) else {
+          return "∞"
+      }
+      return formatter.string(from: NSNumber(value: value)) ?? "0.00e0"
+  }
+
   // Helper function to dismiss the keyboard
   private func dismissKeyboard() {
     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
   }
 }
+
+let formatter: NumberFormatter = {
+  let formatter = NumberFormatter()
+  formatter.numberStyle = .scientific
+  formatter.maximumFractionDigits = 2
+  formatter.exponentSymbol = "e"
+  return formatter
+}()
 
 #Preview {
   RangeSliderView()
