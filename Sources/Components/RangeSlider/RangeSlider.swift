@@ -3,19 +3,37 @@ import SwiftUI
 extension Warp {
     /// A customizable range slider component to adjust a range of values within a given range.
     ///
-    /// The range slider allows for setting the minimum and maximum values with a defined step interval.
+    /// The range slider allows for setting the minimum and maximum values with a defined step interval or by selecting from an array of discrete values.
     ///
-    /// - Parameters:
-    ///   - range: A `Binding` to the current range of values (min and max).
-    ///   - bounds: The minimum and maximum bounds for the slider, defined as a `ClosedRange<Double>`.
-    ///   - step: The increment by which the slider values should change. Defaults to `1.0`.
-    ///   - onEditingChanged: A closure that is called when either thumb is released, passing the final range as an argument.
+    /// **Usage:**
+    /// ***Example 1: Using with a range of Double values***
+    /// ```swift
+    /// @State private var sliderRange = 30.0...100.0
+    ///
+    /// Warp.RangeSlider(
+    ///   range: $sliderRange,
+    ///   bounds: 0...100,
+    ///   showRange: true
+    /// )
+    /// ```
+    /// ***Example 2: Using with an array of discrete values***
+    /// ```swift
+    /// @State private var selectedItems = ["Banana", "Date"]
+    /// let items = ["Apple", "Banana", "Cherry", "Date", "Fig", "Grape"]
+    ///
+    /// Warp.RangeSlider(
+    ///  selectedItems: $selectedItems,
+    /// items: items,
+    /// showRange: true
+    /// )
+    /// ```
+    /// - Note: The component is designed to be flexible and can be adapted for various use cases, including selecting ranges of dates, predefined categories, or any other non-continuous values.
     public struct RangeSlider: View {
         
         public typealias Element = Double // Could be generic, just in case...
         
         // Constants for styling
-        private let thumbDiameter: CGFloat = 24 + 16
+        private let thumbDiameter: CGFloat = 24 + 16 // 16 for the active border
         private let trackColor = Warp.Token.backgroundDisabledSubtle
         private let filledTrackColor = Warp.Token.backgroundPrimary
         private let thumbColor = Warp.Token.backgroundPrimary
@@ -30,7 +48,7 @@ extension Warp {
         let showTooltips: Bool  // Whether to show tooltips above thumbs
         let showRange: Bool  // Whether to show min/max range indicators
         let enabled: Bool  // Whether the slider is enabled or disabled
-        let valueFormat: ((Element) -> String) // Describe given value
+        let valueFormatter: ((Element) -> String) // Describe given value
 
         @State private var mainBodyWidth: CGFloat = 0
         private enum ActiveThumb {
@@ -40,6 +58,17 @@ extension Warp {
         @State private var tooltipWidth: CGFloat = 0
         @State private var leftIndicatorWidth: CGFloat = 0
 
+        /// The range slider allows for setting the minimum and maximum values with a defined step interval
+        ///
+        /// - Parameters:
+        ///   - range: A `Binding` value representing the current range of the slider.
+        ///   - bounds: The minimum and maximum values for the slider, defined as a `ClosedRange<Double>`.
+        ///   - showTooltips: A Boolean value that determines whether to show tooltips above the thumbs. Defaults to `true`.
+        ///   - showRange: A Boolean value that determines whether to show min/max range indicators. Defaults to `false`.
+        ///   - enabled: A Boolean value that determines whether the slider is enabled or disabled. Defaults to `true`.
+        ///   - valueFormatter: A closure that formats the displayed value. Defaults to a simple string conversion.
+        ///
+        ///  Warning: The initial range should be within the provided bounds, otherwise the behavior is undefined.
         public init(
             range: Binding<ClosedRange<Element>>,
             bounds: ClosedRange<Element>,
@@ -47,7 +76,7 @@ extension Warp {
             showTooltips: Bool = true,
             showRange: Bool = false,
             enabled: Bool = true,
-            valueFormat: ((Element) -> String)? = nil
+            valueFormatter: ((Element) -> String)? = nil
         ) {
             self._range = range
             self.bounds = bounds
@@ -55,9 +84,23 @@ extension Warp {
             self.showTooltips = showTooltips
             self.showRange = showRange
             self.enabled = enabled
-            self.valueFormat = valueFormat ?? { "\($0)" }
+            self.valueFormatter = valueFormatter ?? { "\($0)" }
         }
-        
+
+        /// The range slider allows for setting the minimum and maximum values by selecting from an array of discrete values.
+        /// This is useful for scenarios like selecting a range of dates, predefined categories, or any other non-continuous values.
+        ///
+        /// - Parameters:
+        ///   - selectedItems: A `Binding` value representing the currently selected items in the slider range.
+        ///   - items: An array of discrete values from which the user can select a range.
+        ///   - showTooltips: A Boolean value that determines whether to show tooltips above the thumbs. Defaults to `true`.
+        ///   - showRange: A Boolean value that determines whether to show min/max range indicators. Defaults to `false`.
+        ///   - enabled: A Boolean value that determines whether the slider is enabled or disabled. Defaults to `true`.
+        ///   - valueFormat: A closure that formats the displayed value. Defaults to a simple string conversion.
+        ///
+        /// - Note: The `Array.Element` type must conform to `LosslessStringConvertible` and `Equatable` to ensure proper conversion and comparison.
+        ///
+        /// Warning: The initial selectedItems should contain at least one element from the items array, otherwise the behavior is undefined.
         public init<ArrayElement: LosslessStringConvertible & Equatable>(
             selectedItems: Binding<Array<ArrayElement>>,
             items: Array<ArrayElement>,
@@ -92,7 +135,7 @@ extension Warp {
             self.showTooltips = showTooltips
             self.showRange = showRange
             self.enabled = enabled
-            self.valueFormat = { index in
+            self.valueFormatter = { index in
                 let intIndex = Int(index.rounded())
                 let element = items[intIndex]
                 if let valueFormat {
@@ -120,12 +163,12 @@ extension Warp {
 
                 if showRange {
                     // Left indicator
-                    textIndicator(text: valueFormat(bounds.lowerBound))
+                    textIndicator(text: valueFormatter(bounds.lowerBound))
                     .measureWidth($leftIndicatorWidth)
                     .offset(x: -(leftIndicatorWidth / 2), y: 18)
 
                     // Right indicator
-                    textIndicator(text: valueFormat(bounds.upperBound))
+                    textIndicator(text: valueFormatter(bounds.upperBound))
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .offset(x: (thumbDiameter / 2) - 2, y: 18)
                 }
@@ -143,13 +186,13 @@ extension Warp {
             }
         }
 
-        // Background track (gray line for incomplete part)
+        /// Background track (gray line for incomplete part)
         private var trackView: some View {
             Capsule()
                 .fill(trackColor)
         }
 
-        // Filled track (colorful line for filled part)
+        /// Filled track (colorful line for filled part)
         private func filledTrackView(width: CGFloat) -> some View {
             let lowerProgress = progress(for: range.lowerBound)
             let upperProgress = progress(for: range.upperBound)
@@ -202,7 +245,7 @@ extension Warp {
         /// Warp Tooltip view above the thumb
         private func tooltipView(totalWidth: CGFloat) -> some View {
             Warp.Tooltip(
-                title: valueFormat(
+                title: valueFormatter(
                     {
                         switch activeThumb {
                         case .lower, .none:
