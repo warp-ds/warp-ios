@@ -6,7 +6,7 @@ public struct NeutralColorsView: View {
   public var body: some View {
     ScrollView(showsIndicators: false) {
       VStack (alignment: .leading) {
-        createView(for: "Vend",
+        createView(for: "Neutral",
           colors: [NeutralColors.white,
                    NeutralColors.black,
                    NeutralColors.transparent])
