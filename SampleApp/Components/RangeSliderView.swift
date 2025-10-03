@@ -28,7 +28,7 @@ struct RangeSliderView: View {
                 bounds: wideDoubleBounds,
                 step: Double(stepValue) ?? 1.0,
                 enabled: true,
-                valueFormat: humanReadableNumber
+                valueFormatter: humanReadableNumber
             )
             .padding()
         }

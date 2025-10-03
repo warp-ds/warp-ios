@@ -280,7 +280,7 @@ extension Warp {
         private func textIndicator(text: String) -> some View {
             VStack(spacing: 0) {
                 Capsule()
-                    .fill(trackColor)
+                    .fill(SwiftUI.Color.clear)
                     .padding(.top, 8)
                     .frame(width: 4, height: 16)
 
