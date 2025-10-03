@@ -157,6 +157,10 @@ struct SemanticTokensView: View {
                            colors: [tokenProvider.borderSelectedHover])
                 createView(for: "borderSelectedActive",
                            colors: [tokenProvider.borderSelectedActive])
+                createView(for: "borderStrong",
+                           colors: [tokenProvider.borderStrong])
+                createView(for: "borderStrongHover",
+                           colors: [tokenProvider.borderStrongHover])
                 createView(for: "borderInverted",
                            colors: [tokenProvider.borderInverted])
                 createView(for: "borderPrimary",
