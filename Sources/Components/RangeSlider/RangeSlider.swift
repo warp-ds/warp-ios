@@ -68,7 +68,7 @@ extension Warp {
         ///   - enabled: A Boolean value that determines whether the slider is enabled or disabled. Defaults to `true`.
         ///   - valueFormatter: A closure that formats the displayed value. Defaults to a simple string conversion.
         ///
-        ///  Warning: The initial range should be within the provided bounds, otherwise the behavior is undefined.
+        /// - Warning: The initial range should be within the provided bounds, otherwise the behavior is undefined.
         public init(
             range: Binding<ClosedRange<Element>>,
             bounds: ClosedRange<Element>,
@@ -99,8 +99,7 @@ extension Warp {
         ///   - valueFormat: A closure that formats the displayed value. Defaults to a simple string conversion.
         ///
         /// - Note: The `Array.Element` type must conform to `LosslessStringConvertible` and `Equatable` to ensure proper conversion and comparison.
-        ///
-        /// Warning: The initial selectedItems should contain at least one element from the items array, otherwise the behavior is undefined.
+        /// - Warning: The initial selectedItems should contain at least one element from the items array, otherwise the behavior is undefined.
         public init<ArrayElement: LosslessStringConvertible & Equatable>(
             selectedItems: Binding<Array<ArrayElement>>,
             items: Array<ArrayElement>,
@@ -342,7 +341,7 @@ extension Warp {
 
 extension View {
     // Helper method to dynamically save actual component width
-    fileprivate func measureWidth(_ width: Binding<CGFloat>) -> some View {
+    func measureWidth(_ width: Binding<CGFloat>) -> some View {
         background(
             GeometryReader { geometry in
                 Color.clear

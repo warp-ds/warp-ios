@@ -7,24 +7,72 @@ import SwiftUI
 struct SliderSnapshotTests {
 
     @Test(arguments: Warp.Brand.allCases)
-    func snapshotAllSliders(brand: Warp.Brand) {
-        let snapshotName = ".\(brand.description)"
+    func snapshotSliders(brand: Warp.Brand) {
+        let snapshotName = "\(brand.description)"
         // Set the theme to the current brand
         Warp.Theme = brand
 
-        let slider = Warp.Slider(
-            value: .constant(0.5),
-            range: 0...1
-        )
+        let combinedView = VStack {
+            Spacer(minLength: 40)
+            VStack {
+                Text("Slider with integers")
+                  .font(.headline)
+                Warp.Slider(
+                      value: .constant(10),
+                      range: 0...20,
+                      step: 1.0,
+                      showRange: true
+                  )
+                  .padding()
+                  .frame(width: 300)
+            }
 
-        let sliderContainer = VStack {
-            slider
-                .padding(.bottom, 24)
+            // With list of strings
+            VStack {
+                Text("Slider with strings")
+                  .font(.headline)
+                let items = ["One", "Two", "Three", "Four", "Five"]
+                let selectedItems = Binding.constant("Three")
+                Warp.Slider(
+                      selectedItem: selectedItems,
+                      items: items,
+                      showRange: true
+                  )
+                  .padding()
+                  .frame(width: 300)
+            }
+
+            // With text indicators
+            VStack {
+                Text("Slider with disabled indicators")
+                  .font(.headline)
+                Warp.Slider(
+                      value: .constant(10),
+                      range: 0...20,
+                      step: 1.0
+                  )
+                  .padding()
+                  .frame(width: 300)
+            }
+
+            // Disabled state
+            VStack {
+                Text("Disabled Slider")
+                  .font(.headline)
+                Warp.Slider(
+                      value: .constant(10),
+                      range: 0...20,
+                      step: 1.0,
+                      enabled: false
+                  )
+                  .padding()
+                  .frame(width: 300)
+            }
+
+            Spacer(minLength: 40)
         }
-        .padding(8)
-        // Set width to match iPhone 13 size
-        .frame(width: ViewImageConfig.iPhone13.size!.width)
+          .padding()
 
-        assertSnapshot(of: sliderContainer, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: combinedView, as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
 }
