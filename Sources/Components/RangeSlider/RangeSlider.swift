@@ -33,7 +33,7 @@ extension Warp {
         public typealias Element = Double // Could be generic, just in case...
         
         // Constants for styling
-        private let thumbDiameter: CGFloat = 24 + 16 // 16 for the active border
+        private let thumbDiameter: CGFloat = 28 + 16 // 16 for the active border
         private let trackColor = Warp.Token.backgroundDisabledSubtle
         private let filledTrackColor = Warp.Token.backgroundPrimary
         private let thumbColor = Warp.Token.backgroundPrimary
@@ -155,21 +155,19 @@ extension Warp {
             ZStack(alignment: .leading) {
                 trackView  // Gray background track
                     .frame(height: 4)
-                    .padding([.leading, .trailing], showRange ? -8 : 0)
 
                 filledTrackView(width: mainBodyWidth)  // Filled track
                     .frame(height: 6)
 
                 if showRange {
                     // Left indicator
-                    textIndicator(text: valueFormatter(bounds.lowerBound))
+                    textIndicator(text: valueFormatter(bounds.lowerBound), alignment: .leading)
                     .measureWidth($leftIndicatorWidth)
                     .offset(x: -(leftIndicatorWidth / 2), y: 18)
 
                     // Right indicator
-                    textIndicator(text: valueFormatter(bounds.upperBound))
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .offset(x: (thumbDiameter / 2) - 2, y: 18)
+                    textIndicator(text: valueFormatter(bounds.upperBound), alignment: .trailing)
+                    .offset(x: mainBodyWidth - ((thumbDiameter / 2) - 4), y: 18)
                 }
 
                 // Lower thumb
@@ -276,12 +274,12 @@ extension Warp {
         }
 
         /// Text indicator view for lower and upper bounds
-        private func textIndicator(text: String) -> some View {
-            VStack(spacing: 0) {
+        private func textIndicator(text: String, alignment: HorizontalAlignment) -> some View {
+            VStack(alignment: alignment, spacing: 0) {
                 Capsule()
                     .fill(SwiftUI.Color.clear)
                     .padding(.top, 8)
-                    .frame(width: 4, height: 16)
+                    .frame(width: 4, height: 20)
 
                 Text(text, style: .caption, color: enabled ? textIndicatorColor : disabledColor)
             }

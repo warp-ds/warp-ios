@@ -20,7 +20,7 @@ extension Warp {
     /// - Note: The slider supports both continuous values with a specified step and discrete selections from an array of items.
     public struct Slider: View {
         // Constants for styling
-        private let thumbDiameter: CGFloat = 24 + 16 // 16 for the active border
+        private let thumbDiameter: CGFloat = 28 + 16 // 16 for the active border
         private let cornerRadius = Warp.Border.borderRadius50
         private let trackColor = Warp.Token.backgroundDisabledSubtle
         private let filledTrackColor = Warp.Token.backgroundPrimary
@@ -147,14 +147,13 @@ extension Warp {
 
                 if showRange {
                     // Left indicator
-                    textIndicator(text: valueFormatter(range.lowerBound))
+                    textIndicator(text: valueFormatter(range.lowerBound), alignment: .leading)
                       .measureWidth($leftIndicatorWidth)
                       .offset(x: -(leftIndicatorWidth / 2), y: 18)
 
                     // Right indicator
-                    textIndicator(text: valueFormatter(range.upperBound))
-                      .frame(maxWidth: .infinity, alignment: .trailing)
-                      .offset(x: (thumbDiameter / 2) - 2, y: 18)
+                    textIndicator(text: valueFormatter(range.upperBound), alignment: .trailing)
+                      .offset(x: mainBodyWidth - ((thumbDiameter / 2) - 4), y: 18)
                 }
 
                 thumbView(value: value) // Draggable thumb
@@ -222,12 +221,12 @@ extension Warp {
         }
 
         /// Text indicator view for lower and upper bounds
-        private func textIndicator(text: String) -> some View {
-            VStack(spacing: 0) {
+        private func textIndicator(text: String, alignment: HorizontalAlignment) -> some View {
+            VStack(alignment: alignment, spacing: 0) {
                 Capsule()
                   .fill(SwiftUI.Color.clear)
                   .padding(.top, 8)
-                  .frame(width: 4, height: 16)
+                  .frame(width: 4, height: 20)
 
                 Text(text, style: .caption, color: enabled ? textIndicatorColor : disabledColor)
             }
