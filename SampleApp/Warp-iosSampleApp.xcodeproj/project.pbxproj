@@ -183,6 +183,12 @@
 		9ABE19F02DCB55DC00AD37CA /* TypographyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */; };
 		9ABE19F12DCB55DC00AD37CA /* TypographyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */; };
 		9ABE19F22DCB55DC00AD37CA /* TypographyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */; };
+		9E54AC6E2E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
+		9E54AC6F2E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
+		9E54AC702E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
+		9E54AC712E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
+		9E54AC722E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
+		9E54AC732E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
 		9E7149652E1BF28900674698 /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9A00C2C7EF79C0053A961 /* RadioView.swift */; };
 		9E7149662E1BF28900674698 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506939DF2CB52EF000AA631F /* SliderView.swift */; };
 		9E7149672E1BF28900674698 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
@@ -345,6 +351,7 @@
 		82F7B0552D0B00140015D48F /* ComponentColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentColorsView.swift; sourceTree = "<group>"; };
 		82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandIconsView.swift; sourceTree = "<group>"; };
 		9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyUIView.swift; sourceTree = "<group>"; };
+		9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		9E54F07A2E40B82E008BDFB9 /* WarpSnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpSnapshotTests.xctestplan; sourceTree = "<group>"; };
 		9E54F07B2E40BD9B008BDFB9 /* WarpTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpTests.xctestplan; sourceTree = "<group>"; };
 		9E7149982E1BF28900674698 /* Vend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vend.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -560,6 +567,7 @@
 		82FF12F82C80FC1200CC2110 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */,
 				349D0E122B62D67A00AAB421 /* AlertView.swift */,
 				828E7D442B61239100869C58 /* BadgeView.swift */,
 				341B20E72B751BD30068FF43 /* BoxView.swift */,
@@ -887,6 +895,7 @@
 				2E1ADF532C2561A700DFEE06 /* CalloutView.swift in Sources */,
 				82AE96122C64C2C000BF3920 /* ShadowUIView.swift in Sources */,
 				2E1ADF542C2561A700DFEE06 /* SpinnerView.swift in Sources */,
+				9E54AC6F2E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				507344152CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDF2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */,
@@ -935,6 +944,7 @@
 				820A85F32C6CEB0C006D35A0 /* ShadowUIView.swift in Sources */,
 				820A85F42C6CEB0C006D35A0 /* SpinnerView.swift in Sources */,
 				820A85F52C6CEB0C006D35A0 /* TextFieldView.swift in Sources */,
+				9E54AC702E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				507344132CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDE2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				820A85F62C6CEB0C006D35A0 /* SemanticTokensView.swift in Sources */,
@@ -983,6 +993,7 @@
 				820A86302C6D4388006D35A0 /* CalloutView.swift in Sources */,
 				820A86312C6D4388006D35A0 /* SpinnerView.swift in Sources */,
 				820A86322C6D4388006D35A0 /* TextFieldView.swift in Sources */,
+				9E54AC712E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				507344122CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDC2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				820A86332C6D4388006D35A0 /* SemanticTokensView.swift in Sources */,
@@ -1031,6 +1042,7 @@
 				82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */,
 				82AE96132C64C2C000BF3920 /* ShadowUIView.swift in Sources */,
 				B2A8B27A2B6D33B800122DBC /* CalloutView.swift in Sources */,
+				9E54AC732E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				507344142CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDD2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				82635D082BFE1CD800F7FA6F /* SpinnerView.swift in Sources */,
@@ -1079,6 +1091,7 @@
 				9E7149742E1BF28900674698 /* ShadowUIView.swift in Sources */,
 				9E7149752E1BF28900674698 /* SpinnerView.swift in Sources */,
 				9E7149762E1BF28900674698 /* TextFieldView.swift in Sources */,
+				9E54AC722E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				9E7149772E1BF28900674698 /* TextAreaView.swift in Sources */,
 				9E7149782E1BF28900674698 /* BrandIconsView.swift in Sources */,
 				9E7149792E1BF28900674698 /* SemanticTokensView.swift in Sources */,
@@ -1127,6 +1140,7 @@
 				9EFC48222E4219940048E4E7 /* CalloutView.swift in Sources */,
 				9EFC48232E4219940048E4E7 /* SpinnerView.swift in Sources */,
 				9EFC48242E4219940048E4E7 /* TextFieldView.swift in Sources */,
+				9E54AC6E2E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				9EFC48252E4219940048E4E7 /* TextAreaView.swift in Sources */,
 				9EFC48262E4219940048E4E7 /* BrandIconsView.swift in Sources */,
 				9EFC48272E4219940048E4E7 /* SemanticTokensView.swift in Sources */,

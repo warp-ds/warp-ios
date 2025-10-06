@@ -78,6 +78,9 @@ extension Warp {
         /// Optional `String` to display below the text field.
         private let helpText: String?
 
+        /// Determines whether editing is disabled.
+        private var disableEditing: Bool = false
+
         // MARK: - Initialization
 
         /// Creates a new `TextField` instance.
@@ -140,6 +143,13 @@ extension Warp {
             }
         }
 
+        /// Returns a new `TextField` instance with editing disabled or enabled.
+        func disableEditing(_ disable: Bool) -> Self {
+            var copy = self
+            copy.disableEditing = disable
+            return copy
+        }
+
         private func helpTextStyle() -> Warp.HelpTextStyle {
             switch style {
             case .default:
@@ -158,14 +168,12 @@ extension Warp {
         /// The text field view, including the placeholder text.
         @ViewBuilder
         private var textFieldView: some View {
-            HStack(spacing: 0) {
+            HStack(spacing: Warp.Spacing.spacing100) {
                 if let leftIcon {
                     Warp.IconView(leftIcon, size: .default)
-                        .padding(.leading, Warp.Spacing.spacing100)
                 }
                 if let prefix {
                     Text(prefix, style: .detail)
-                        .padding(.leading, Warp.Spacing.spacing100)
                 }
                 ZStack(alignment: .topLeading) {
                     if text.isEmpty && !isFocused {
@@ -174,32 +182,29 @@ extension Warp {
                             style: .body,
                             color: colorProvider.token.textPlaceholder
                         )
-                        .padding(.horizontal, horizontalPadding)
                         .padding(.vertical, Warp.Spacing.spacing150)
                     }
                     SwiftUI.TextField(text, text: $text)
+                        .allowsHitTesting(!disableEditing)
                         .disabled(style == .disabled || style == .readOnly)
                         .foregroundColor(textColor)
                         .font(from: Warp.Typography.body)
                         .clearTextEditorBackground()
                         .focused($isFocused)
-                        .padding(.horizontal, horizontalPadding)
                         .padding(.vertical, Warp.Spacing.spacing150)
                 }
-                .padding(.horizontal, Warp.Spacing.spacing100)
                 if let suffix {
                     Text(suffix, style: .detail)
-                        .padding(.trailing, Warp.Spacing.spacing100)
                 }
                 if let rightIcon {
                     SwiftUI.Button {
                         rightIconAction()
                     } label: {
                         Warp.IconView(rightIcon, size: .default)
-                            .padding(.trailing, Warp.Spacing.spacing100)
                     }
                 }
             }
+            .padding(.horizontal, horizontalPadding)
             .modifier(BorderModifier(isFocused: isFocused, style: style, cornerRadius: cornerRadius, colorProvider: colorProvider, borderColor: borderColor))
             .background(backgroundColor)
         }
@@ -224,7 +229,7 @@ extension Warp {
         private var borderColor: Color {
             switch style {
             case .default:
-                return colorProvider.token.border
+                return colorProvider.token.borderStrong
             case .disabled:
                 return colorProvider.token.borderDisabled
             case .error:
@@ -249,8 +254,6 @@ extension Warp {
         /// Calculates the horizontal padding based on the style.
         private var horizontalPadding: CGFloat {
             switch style {
-            case .readOnly where !text.isEmpty:
-                return -Warp.Spacing.spacing50
             case .readOnly:
                 return 0
             default:

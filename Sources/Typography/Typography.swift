@@ -142,6 +142,8 @@ extension Warp.Typography {
             return createFont(from: BlocketBoldFont(size: size, style: fontStyle))
         case .vend:
             return createFont(from: VendBoldFont(size: size, style: fontStyle))
+        case .neutral:
+            return createFont(from: NeutralSemiBoldFont(size: size, style: fontStyle) )
         }
     }
 
@@ -158,6 +160,8 @@ extension Warp.Typography {
             return createFont(from: BlocketRegularFont(size: size, style: fontStyle))
         case .vend:
             return createFont(from: VendRegularFont(size: size, style: fontStyle))
+        case .neutral:
+            return createFont(from: NeutralRegularFont(size: size, style: fontStyle) )
         }
     }
     
@@ -177,6 +181,8 @@ extension Warp.Typography {
             return createUIFont(from: BlocketBoldFont(size: size, style: fontStyle))
         case .vend:
             return createUIFont(from: VendBoldFont(size: size, style: fontStyle))
+        case .neutral:
+            return createUIFont(from: NeutralSemiBoldFont(size: size, style: fontStyle) )
         }
     }
 
@@ -193,6 +199,8 @@ extension Warp.Typography {
             return createUIFont(from: BlocketRegularFont(size: size, style: fontStyle))
         case .vend:
             return createUIFont(from: VendRegularFont(size: size, style: fontStyle))
+        case .neutral:
+            return createUIFont(from: NeutralRegularFont(size: size, style: fontStyle) )
         }
     }
 }

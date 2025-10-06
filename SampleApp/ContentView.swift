@@ -48,6 +48,7 @@ struct ContentView: View {
                     row("ButtonPill", destination: ButtonPillView())
                     row("Callout", destination: CalloutView())
                     row("Checkbox", destination: CheckboxView())
+                    row("DatePicker", destination: DatePickerView())
                     row("Expandable", destination: ExpandableView())
                     row("Icon", destination: IconView())
                     row("Logo", destination: LogoView())

@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Mon, 07 Jul 2025 10:32:13 GMT by https://github.com/warp-ds/tokens
+// Generated on Wed, 01 Oct 2025 07:49:52 GMT by https://github.com/warp-ds/tokens
 struct VendTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: VendColors.gray900, darkModeColor: VendColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: VendColors.gray600, darkModeColor: VendColors.gray400) }
@@ -13,6 +13,30 @@ struct VendTokenProvider: TokenProvider {
     public var textDisabled: Color { Color.dynamicColor(defaultColor: VendColors.gray300, darkModeColor: VendColors.gray500) }
     public var textNegative: Color { Color.dynamicColor(defaultColor: VendColors.red600, darkModeColor: VendColors.red400) }
     public var textPositive: Color { Color.dynamicColor(defaultColor: VendColors.green600, darkModeColor: VendColors.green400) }
+    public var icon: Color { Color.dynamicColor(defaultColor: VendColors.gray900, darkModeColor: VendColors.white) }
+    public var iconHover: Color { Color.dynamicColor(defaultColor: VendColors.gray800, darkModeColor: VendColors.gray100) }
+    public var iconActive: Color { Color.dynamicColor(defaultColor: VendColors.gray700, darkModeColor: VendColors.gray200) }
+    public var iconStatic: Color { Color.dynamicColor(defaultColor: VendColors.gray900, darkModeColor: VendColors.gray900) }
+    public var iconSelected: Color { Color.dynamicColor(defaultColor: VendColors.gray900, darkModeColor: VendColors.white) }
+    public var iconSelectedHover: Color { Color.dynamicColor(defaultColor: VendColors.gray800, darkModeColor: VendColors.gray100) }
+    public var iconSelectedActive: Color { Color.dynamicColor(defaultColor: VendColors.gray700, darkModeColor: VendColors.gray200) }
+    public var iconDisabled: Color { Color.dynamicColor(defaultColor: VendColors.gray300, darkModeColor: VendColors.gray600) }
+    public var iconSubtle: Color { Color.dynamicColor(defaultColor: VendColors.gray600, darkModeColor: VendColors.gray400) }
+    public var iconSubtleHover: Color { Color.dynamicColor(defaultColor: VendColors.gray700, darkModeColor: VendColors.gray300) }
+    public var iconSubtleActive: Color { Color.dynamicColor(defaultColor: VendColors.gray800, darkModeColor: VendColors.gray200) }
+    public var iconInverted: Color { Color.dynamicColor(defaultColor: VendColors.white, darkModeColor: VendColors.gray900) }
+    public var iconInvertedHover: Color { Color.dynamicColor(defaultColor: VendColors.gray100, darkModeColor: VendColors.gray850) }
+    public var iconInvertedActive: Color { Color.dynamicColor(defaultColor: VendColors.gray200, darkModeColor: VendColors.gray800) }
+    public var iconInvertedStatic: Color { Color.dynamicColor(defaultColor: VendColors.white, darkModeColor: VendColors.white) }
+    public var iconPrimary: Color { Color.dynamicColor(defaultColor: VendColors.gray900, darkModeColor: VendColors.white) }
+    public var iconSecondary: Color { Color.dynamicColor(defaultColor: VendColors.brown600, darkModeColor: VendColors.brown400) }
+    public var iconSecondaryHover: Color { Color.dynamicColor(defaultColor: VendColors.brown700, darkModeColor: VendColors.brown300) }
+    public var iconSecondaryActive: Color { Color.dynamicColor(defaultColor: VendColors.brown800, darkModeColor: VendColors.brown200) }
+    public var iconPositive: Color { Color.dynamicColor(defaultColor: VendColors.green600, darkModeColor: VendColors.green400) }
+    public var iconNegative: Color { Color.dynamicColor(defaultColor: VendColors.red600, darkModeColor: VendColors.red400) }
+    public var iconWarning: Color { Color.dynamicColor(defaultColor: VendColors.orange600, darkModeColor: VendColors.orange500) }
+    public var iconInfo: Color { Color.dynamicColor(defaultColor: VendColors.blue600, darkModeColor: VendColors.blue500) }
+    public var iconNotification: Color { Color.dynamicColor(defaultColor: VendColors.white, darkModeColor: VendColors.white) }
     public var background: Color { Color.dynamicColor(defaultColor: VendColors.white, darkModeColor: VendColors.gray900) }
     public var backgroundHover: Color { Color.dynamicColor(defaultColor: VendColors.gray100, darkModeColor: VendColors.gray850) }
     public var backgroundActive: Color { Color.dynamicColor(defaultColor: VendColors.gray200, darkModeColor: VendColors.gray800) }
@@ -73,6 +97,8 @@ struct VendTokenProvider: TokenProvider {
     public var border: Color { Color.dynamicColor(defaultColor: VendColors.gray300, darkModeColor: VendColors.gray600) }
     public var borderHover: Color { Color.dynamicColor(defaultColor: VendColors.gray400, darkModeColor: VendColors.gray500) }
     public var borderActive: Color { Color.dynamicColor(defaultColor: VendColors.gray500, darkModeColor: VendColors.gray400) }
+    public var borderStrong: Color { Color.dynamicColor(defaultColor: VendColors.gray500, darkModeColor: VendColors.gray500) }
+    public var borderStrongHover: Color { Color.dynamicColor(defaultColor: VendColors.gray600, darkModeColor: VendColors.gray400) }
     public var borderDisabled: Color { Color.dynamicColor(defaultColor: VendColors.gray300, darkModeColor: VendColors.gray700) }
     public var borderSelected: Color { Color.dynamicColor(defaultColor: VendColors.gray900, darkModeColor: VendColors.white) }
     public var borderSelectedHover: Color { Color.dynamicColor(defaultColor: VendColors.gray800, darkModeColor: VendColors.gray100) }
@@ -112,30 +138,6 @@ struct VendTokenProvider: TokenProvider {
     public var borderInfoSubtleHover: Color { Color.dynamicColor(defaultColor: VendColors.blue400, darkModeColor: VendColors.blue600) }
     public var borderInfoSubtleActive: Color { Color.dynamicColor(defaultColor: VendColors.blue500, darkModeColor: VendColors.blue500) }
     public var borderFocus: Color { Color.dynamicColor(defaultColor: VendColors.blue400, darkModeColor: VendColors.blue300) }
-    public var icon: Color { Color.dynamicColor(defaultColor: VendColors.gray900, darkModeColor: VendColors.white) }
-    public var iconHover: Color { Color.dynamicColor(defaultColor: VendColors.gray800, darkModeColor: VendColors.gray100) }
-    public var iconActive: Color { Color.dynamicColor(defaultColor: VendColors.gray700, darkModeColor: VendColors.gray200) }
-    public var iconStatic: Color { Color.dynamicColor(defaultColor: VendColors.gray900, darkModeColor: VendColors.gray900) }
-    public var iconSelected: Color { Color.dynamicColor(defaultColor: VendColors.gray900, darkModeColor: VendColors.white) }
-    public var iconSelectedHover: Color { Color.dynamicColor(defaultColor: VendColors.gray800, darkModeColor: VendColors.gray100) }
-    public var iconSelectedActive: Color { Color.dynamicColor(defaultColor: VendColors.gray700, darkModeColor: VendColors.gray200) }
-    public var iconDisabled: Color { Color.dynamicColor(defaultColor: VendColors.gray300, darkModeColor: VendColors.gray600) }
-    public var iconSubtle: Color { Color.dynamicColor(defaultColor: VendColors.gray600, darkModeColor: VendColors.gray400) }
-    public var iconSubtleHover: Color { Color.dynamicColor(defaultColor: VendColors.gray700, darkModeColor: VendColors.gray300) }
-    public var iconSubtleActive: Color { Color.dynamicColor(defaultColor: VendColors.gray800, darkModeColor: VendColors.gray200) }
-    public var iconInverted: Color { Color.dynamicColor(defaultColor: VendColors.white, darkModeColor: VendColors.gray900) }
-    public var iconInvertedHover: Color { Color.dynamicColor(defaultColor: VendColors.gray100, darkModeColor: VendColors.gray850) }
-    public var iconInvertedActive: Color { Color.dynamicColor(defaultColor: VendColors.gray200, darkModeColor: VendColors.gray800) }
-    public var iconInvertedStatic: Color { Color.dynamicColor(defaultColor: VendColors.white, darkModeColor: VendColors.white) }
-    public var iconPrimary: Color { Color.dynamicColor(defaultColor: VendColors.gray900, darkModeColor: VendColors.white) }
-    public var iconSecondary: Color { Color.dynamicColor(defaultColor: VendColors.brown600, darkModeColor: VendColors.brown400) }
-    public var iconSecondaryHover: Color { Color.dynamicColor(defaultColor: VendColors.brown700, darkModeColor: VendColors.brown300) }
-    public var iconSecondaryActive: Color { Color.dynamicColor(defaultColor: VendColors.brown800, darkModeColor: VendColors.brown200) }
-    public var iconPositive: Color { Color.dynamicColor(defaultColor: VendColors.green600, darkModeColor: VendColors.green400) }
-    public var iconNegative: Color { Color.dynamicColor(defaultColor: VendColors.red600, darkModeColor: VendColors.red400) }
-    public var iconWarning: Color { Color.dynamicColor(defaultColor: VendColors.orange600, darkModeColor: VendColors.orange500) }
-    public var iconInfo: Color { Color.dynamicColor(defaultColor: VendColors.blue600, darkModeColor: VendColors.blue500) }
-    public var iconNotification: Color { Color.dynamicColor(defaultColor: VendColors.white, darkModeColor: VendColors.white) }
 }
 
 struct VendUITokenProvider: UITokenProvider {
@@ -150,6 +152,30 @@ struct VendUITokenProvider: UITokenProvider {
     public var textDisabled: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray300, darkModeColor: VendUIColors.gray500) }
     public var textNegative: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.red600, darkModeColor: VendUIColors.red400) }
     public var textPositive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.green600, darkModeColor: VendUIColors.green400) }
+    public var icon: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray900, darkModeColor: VendUIColors.white) }
+    public var iconHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray800, darkModeColor: VendUIColors.gray100) }
+    public var iconActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray700, darkModeColor: VendUIColors.gray200) }
+    public var iconStatic: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray900, darkModeColor: VendUIColors.gray900) }
+    public var iconSelected: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray900, darkModeColor: VendUIColors.white) }
+    public var iconSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray800, darkModeColor: VendUIColors.gray100) }
+    public var iconSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray700, darkModeColor: VendUIColors.gray200) }
+    public var iconDisabled: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray300, darkModeColor: VendUIColors.gray600) }
+    public var iconSubtle: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray600, darkModeColor: VendUIColors.gray400) }
+    public var iconSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray700, darkModeColor: VendUIColors.gray300) }
+    public var iconSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray800, darkModeColor: VendUIColors.gray200) }
+    public var iconInverted: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.white, darkModeColor: VendUIColors.gray900) }
+    public var iconInvertedHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray100, darkModeColor: VendUIColors.gray850) }
+    public var iconInvertedActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray200, darkModeColor: VendUIColors.gray800) }
+    public var iconInvertedStatic: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.white, darkModeColor: VendUIColors.white) }
+    public var iconPrimary: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray900, darkModeColor: VendUIColors.white) }
+    public var iconSecondary: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.brown600, darkModeColor: VendUIColors.brown400) }
+    public var iconSecondaryHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.brown700, darkModeColor: VendUIColors.brown300) }
+    public var iconSecondaryActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.brown800, darkModeColor: VendUIColors.brown200) }
+    public var iconPositive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.green600, darkModeColor: VendUIColors.green400) }
+    public var iconNegative: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.red600, darkModeColor: VendUIColors.red400) }
+    public var iconWarning: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.orange600, darkModeColor: VendUIColors.orange500) }
+    public var iconInfo: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.blue600, darkModeColor: VendUIColors.blue500) }
+    public var iconNotification: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.white, darkModeColor: VendUIColors.white) }
     public var background: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.white, darkModeColor: VendUIColors.gray900) }
     public var backgroundHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray100, darkModeColor: VendUIColors.gray850) }
     public var backgroundActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray200, darkModeColor: VendUIColors.gray800) }
@@ -210,6 +236,8 @@ struct VendUITokenProvider: UITokenProvider {
     public var border: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray300, darkModeColor: VendUIColors.gray600) }
     public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray400, darkModeColor: VendUIColors.gray500) }
     public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray500, darkModeColor: VendUIColors.gray400) }
+    public var borderStrong: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray500, darkModeColor: VendUIColors.gray500) }
+    public var borderStrongHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray600, darkModeColor: VendUIColors.gray400) }
     public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray300, darkModeColor: VendUIColors.gray700) }
     public var borderSelected: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray900, darkModeColor: VendUIColors.white) }
     public var borderSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray800, darkModeColor: VendUIColors.gray100) }
@@ -249,28 +277,4 @@ struct VendUITokenProvider: UITokenProvider {
     public var borderInfoSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.blue400, darkModeColor: VendUIColors.blue600) }
     public var borderInfoSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.blue500, darkModeColor: VendUIColors.blue500) }
     public var borderFocus: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.blue400, darkModeColor: VendUIColors.blue300) }
-    public var icon: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray900, darkModeColor: VendUIColors.white) }
-    public var iconHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray800, darkModeColor: VendUIColors.gray100) }
-    public var iconActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray700, darkModeColor: VendUIColors.gray200) }
-    public var iconStatic: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray900, darkModeColor: VendUIColors.gray900) }
-    public var iconSelected: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray900, darkModeColor: VendUIColors.white) }
-    public var iconSelectedHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray800, darkModeColor: VendUIColors.gray100) }
-    public var iconSelectedActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray700, darkModeColor: VendUIColors.gray200) }
-    public var iconDisabled: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray300, darkModeColor: VendUIColors.gray600) }
-    public var iconSubtle: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray600, darkModeColor: VendUIColors.gray400) }
-    public var iconSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray700, darkModeColor: VendUIColors.gray300) }
-    public var iconSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray800, darkModeColor: VendUIColors.gray200) }
-    public var iconInverted: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.white, darkModeColor: VendUIColors.gray900) }
-    public var iconInvertedHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray100, darkModeColor: VendUIColors.gray850) }
-    public var iconInvertedActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray200, darkModeColor: VendUIColors.gray800) }
-    public var iconInvertedStatic: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.white, darkModeColor: VendUIColors.white) }
-    public var iconPrimary: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray900, darkModeColor: VendUIColors.white) }
-    public var iconSecondary: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.brown600, darkModeColor: VendUIColors.brown400) }
-    public var iconSecondaryHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.brown700, darkModeColor: VendUIColors.brown300) }
-    public var iconSecondaryActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.brown800, darkModeColor: VendUIColors.brown200) }
-    public var iconPositive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.green600, darkModeColor: VendUIColors.green400) }
-    public var iconNegative: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.red600, darkModeColor: VendUIColors.red400) }
-    public var iconWarning: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.orange600, darkModeColor: VendUIColors.orange500) }
-    public var iconInfo: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.blue600, darkModeColor: VendUIColors.blue500) }
-    public var iconNotification: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.white, darkModeColor: VendUIColors.white) }
 }

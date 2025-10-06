@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Thu, 30 Jan 2025 13:44:32 GMT by https://github.com/warp-ds/tokens
+// Generated on Wed, 01 Oct 2025 07:49:52 GMT by https://github.com/warp-ds/tokens
 public protocol TokenProvider {
     var text: Color { get }
     var textSubtle: Color { get }
@@ -13,6 +13,30 @@ public protocol TokenProvider {
     var textDisabled: Color { get }
     var textNegative: Color { get }
     var textPositive: Color { get }
+    var icon: Color { get }
+    var iconHover: Color { get }
+    var iconActive: Color { get }
+    var iconStatic: Color { get }
+    var iconSelected: Color { get }
+    var iconSelectedHover: Color { get }
+    var iconSelectedActive: Color { get }
+    var iconDisabled: Color { get }
+    var iconSubtle: Color { get }
+    var iconSubtleHover: Color { get }
+    var iconSubtleActive: Color { get }
+    var iconInverted: Color { get }
+    var iconInvertedHover: Color { get }
+    var iconInvertedActive: Color { get }
+    var iconInvertedStatic: Color { get }
+    var iconPrimary: Color { get }
+    var iconSecondary: Color { get }
+    var iconSecondaryHover: Color { get }
+    var iconSecondaryActive: Color { get }
+    var iconPositive: Color { get }
+    var iconNegative: Color { get }
+    var iconWarning: Color { get }
+    var iconInfo: Color { get }
+    var iconNotification: Color { get }
     var background: Color { get }
     var backgroundHover: Color { get }
     var backgroundActive: Color { get }
@@ -73,6 +97,8 @@ public protocol TokenProvider {
     var border: Color { get }
     var borderHover: Color { get }
     var borderActive: Color { get }
+    var borderStrong: Color { get }
+    var borderStrongHover: Color { get }
     var borderDisabled: Color { get }
     var borderSelected: Color { get }
     var borderSelectedHover: Color { get }
@@ -112,30 +138,6 @@ public protocol TokenProvider {
     var borderInfoSubtleHover: Color { get }
     var borderInfoSubtleActive: Color { get }
     var borderFocus: Color { get }
-    var icon: Color { get }
-    var iconHover: Color { get }
-    var iconActive: Color { get }
-    var iconStatic: Color { get }
-    var iconSelected: Color { get }
-    var iconSelectedHover: Color { get }
-    var iconSelectedActive: Color { get }
-    var iconDisabled: Color { get }
-    var iconSubtle: Color { get }
-    var iconSubtleHover: Color { get }
-    var iconSubtleActive: Color { get }
-    var iconInverted: Color { get }
-    var iconInvertedHover: Color { get }
-    var iconInvertedActive: Color { get }
-    var iconInvertedStatic: Color { get }
-    var iconPrimary: Color { get }
-    var iconSecondary: Color { get }
-    var iconSecondaryHover: Color { get }
-    var iconSecondaryActive: Color { get }
-    var iconPositive: Color { get }
-    var iconNegative: Color { get }
-    var iconWarning: Color { get }
-    var iconInfo: Color { get }
-    var iconNotification: Color { get }
 }
 
 public protocol UITokenProvider {
@@ -150,6 +152,30 @@ public protocol UITokenProvider {
     var textDisabled: UIColor { get }
     var textNegative: UIColor { get }
     var textPositive: UIColor { get }
+    var icon: UIColor { get }
+    var iconHover: UIColor { get }
+    var iconActive: UIColor { get }
+    var iconStatic: UIColor { get }
+    var iconSelected: UIColor { get }
+    var iconSelectedHover: UIColor { get }
+    var iconSelectedActive: UIColor { get }
+    var iconDisabled: UIColor { get }
+    var iconSubtle: UIColor { get }
+    var iconSubtleHover: UIColor { get }
+    var iconSubtleActive: UIColor { get }
+    var iconInverted: UIColor { get }
+    var iconInvertedHover: UIColor { get }
+    var iconInvertedActive: UIColor { get }
+    var iconInvertedStatic: UIColor { get }
+    var iconPrimary: UIColor { get }
+    var iconSecondary: UIColor { get }
+    var iconSecondaryHover: UIColor { get }
+    var iconSecondaryActive: UIColor { get }
+    var iconPositive: UIColor { get }
+    var iconNegative: UIColor { get }
+    var iconWarning: UIColor { get }
+    var iconInfo: UIColor { get }
+    var iconNotification: UIColor { get }
     var background: UIColor { get }
     var backgroundHover: UIColor { get }
     var backgroundActive: UIColor { get }
@@ -210,6 +236,8 @@ public protocol UITokenProvider {
     var border: UIColor { get }
     var borderHover: UIColor { get }
     var borderActive: UIColor { get }
+    var borderStrong: UIColor { get }
+    var borderStrongHover: UIColor { get }
     var borderDisabled: UIColor { get }
     var borderSelected: UIColor { get }
     var borderSelectedHover: UIColor { get }
@@ -249,28 +277,4 @@ public protocol UITokenProvider {
     var borderInfoSubtleHover: UIColor { get }
     var borderInfoSubtleActive: UIColor { get }
     var borderFocus: UIColor { get }
-    var icon: UIColor { get }
-    var iconHover: UIColor { get }
-    var iconActive: UIColor { get }
-    var iconStatic: UIColor { get }
-    var iconSelected: UIColor { get }
-    var iconSelectedHover: UIColor { get }
-    var iconSelectedActive: UIColor { get }
-    var iconDisabled: UIColor { get }
-    var iconSubtle: UIColor { get }
-    var iconSubtleHover: UIColor { get }
-    var iconSubtleActive: UIColor { get }
-    var iconInverted: UIColor { get }
-    var iconInvertedHover: UIColor { get }
-    var iconInvertedActive: UIColor { get }
-    var iconInvertedStatic: UIColor { get }
-    var iconPrimary: UIColor { get }
-    var iconSecondary: UIColor { get }
-    var iconSecondaryHover: UIColor { get }
-    var iconSecondaryActive: UIColor { get }
-    var iconPositive: UIColor { get }
-    var iconNegative: UIColor { get }
-    var iconWarning: UIColor { get }
-    var iconInfo: UIColor { get }
-    var iconNotification: UIColor { get }
 }
