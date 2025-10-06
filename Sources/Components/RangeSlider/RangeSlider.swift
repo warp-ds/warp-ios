@@ -148,12 +148,14 @@ extension Warp {
         public var body: some View {
             mainBody
               .measureWidth($mainBodyWidth)
+              .padding(.horizontal, thumbDiameter - (2*16)) // Padding to accommodate thumb size
               .allowsHitTesting(enabled)
         }
 
         private var mainBody : some View {
             ZStack(alignment: .leading) {
                 trackView  // Gray background track
+                    .padding(.horizontal, -16)
                     .frame(height: 4)
 
                 filledTrackView(width: mainBodyWidth)  // Filled track
@@ -163,11 +165,11 @@ extension Warp {
                     // Left indicator
                     textIndicator(text: valueFormatter(bounds.lowerBound), alignment: .leading)
                     .measureWidth($leftIndicatorWidth)
-                    .offset(x: -(leftIndicatorWidth / 2), y: 18)
+                    .offset(x: -(leftIndicatorWidth / 2) - 12, y: 18)
 
                     // Right indicator
                     textIndicator(text: valueFormatter(bounds.upperBound), alignment: .trailing)
-                    .offset(x: mainBodyWidth - ((thumbDiameter / 2) - 4), y: 18)
+                    .offset(x: mainBodyWidth - ((thumbDiameter / 2) - 4 - 12), y: 18)
                 }
 
                 // Lower thumb
@@ -193,10 +195,19 @@ extension Warp {
         private func filledTrackView(width: CGFloat) -> some View {
             let lowerProgress = progress(for: range.lowerBound)
             let upperProgress = progress(for: range.upperBound)
+            let adjustedCapsuleWidth = CGFloat(upperProgress - lowerProgress) * width
+            let offset = CGFloat(lowerProgress) * width
+            let color = enabled ? filledTrackColor : disabledColor
             return Capsule()
-                .fill(enabled ? filledTrackColor : disabledColor)
-                .frame(width: CGFloat(upperProgress - lowerProgress) * width)
-                .offset(x: CGFloat(lowerProgress) * width)
+                .fill(color)
+                .frame(width: adjustedCapsuleWidth)
+                .offset(x: offset)
+                .overlay(
+                    Capsule()
+                    .fill(color)
+                    .frame(width: adjustedCapsuleWidth + 5)
+                    .offset(x: offset)
+                )
         }
 
         // Square thumb (slider handle)
@@ -221,7 +232,7 @@ extension Warp {
                   x: thumbOffset(
                       width: mainBodyWidth,
                       value: value
-                  ) - (thumbDiameter / 2)
+                  ) + (active == .lower ? (-(thumbDiameter - 8)) : -8)
               )
               .gesture(
                   DragGesture(minimumDistance: 0)
@@ -267,7 +278,14 @@ extension Warp {
                             return range.upperBound
                         }
                     }()
-                ) - tooltipWidth / 2,
+                ) - tooltipWidth / 2 + {
+                    switch activeThumb {
+                    case .lower, .none:
+                        return -14
+                    case .upper:
+                        return 14
+                    }
+                }(),
                 y: -thumbDiameter
             )
             .opacity(activeThumb == .none ? 0 : 1)
