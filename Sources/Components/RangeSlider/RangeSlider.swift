@@ -1,0 +1,391 @@
+import SwiftUI
+
+extension Warp {
+    /// A customizable range slider component to adjust a range of values within a given range.
+    ///
+    /// The range slider allows for setting the minimum and maximum values with a defined step interval or by selecting from an array of discrete values.
+    ///
+    /// **Usage:**
+    /// ***Example 1: Using with a range of Double values***
+    /// ```swift
+    /// @State private var sliderRange = 30.0...100.0
+    ///
+    /// Warp.RangeSlider(
+    ///   range: $sliderRange,
+    ///   bounds: 0...100,
+    ///   showRange: true
+    /// )
+    /// ```
+    /// ***Example 2: Using with an array of discrete values***
+    /// ```swift
+    /// @State private var selectedItems = ["Banana", "Date"]
+    /// let items = ["Apple", "Banana", "Cherry", "Date", "Fig", "Grape"]
+    ///
+    /// Warp.RangeSlider(
+    ///  selectedItems: $selectedItems,
+    /// items: items,
+    /// showRange: true
+    /// )
+    /// ```
+    /// - Note: The component is designed to be flexible and can be adapted for various use cases, including selecting ranges of dates, predefined categories, or any other non-continuous values.
+    public struct RangeSlider: View {
+        
+        public typealias Element = Double // Could be generic, just in case...
+        
+        // Constants for styling
+        private let thumbDiameter: CGFloat = 28 + 16 // 16 for the active border
+        private let trackColor = Warp.Token.backgroundDisabledSubtle
+        private let filledTrackColor = Warp.Token.backgroundPrimary
+        private let thumbColor = Warp.Token.backgroundPrimary
+        private let thumbBorderColor = Warp.Token.backgroundDisabled.opacity(0.4)
+        private let thumbActiveColor = Warp.Token.backgroundPrimaryActive
+        private let textIndicatorColor = Warp.Token.textSubtle
+        private let disabledColor = Warp.Token.backgroundDisabled
+
+        @Binding var range: ClosedRange<Element>  // Binding range to update the slider range
+        let bounds: ClosedRange<Element>  // Defines the bounds for the slider
+        let step: Element  // Step value for the slider
+        let showTooltips: Bool  // Whether to show tooltips above thumbs
+        let showRange: Bool  // Whether to show min/max range indicators
+        let enabled: Bool  // Whether the slider is enabled or disabled
+        let valueFormatter: ((Element) -> String) // Describe given value
+
+        @State private var mainBodyWidth: CGFloat = 0
+        private enum ActiveThumb {
+            case lower, upper, none
+        }
+        @State private var activeThumb: ActiveThumb = .none
+        @State private var tooltipWidth: CGFloat = 0
+        @State private var leftIndicatorWidth: CGFloat = 0
+
+        /// The range slider allows for setting the minimum and maximum values with a defined step interval
+        ///
+        /// - Parameters:
+        ///   - range: A `Binding` value representing the current range of the slider.
+        ///   - bounds: The minimum and maximum values for the slider, defined as a `ClosedRange<Double>`.
+        ///   - showTooltips: A Boolean value that determines whether to show tooltips above the thumbs. Defaults to `true`.
+        ///   - showRange: A Boolean value that determines whether to show min/max range indicators. Defaults to `false`.
+        ///   - enabled: A Boolean value that determines whether the slider is enabled or disabled. Defaults to `true`.
+        ///   - valueFormatter: A closure that formats the displayed value. Defaults to a simple string conversion.
+        ///
+        /// - Warning: The initial range should be within the provided bounds, otherwise the behavior is undefined.
+        public init(
+            range: Binding<ClosedRange<Element>>,
+            bounds: ClosedRange<Element>,
+            step: Element = 1.0,
+            showTooltips: Bool = true,
+            showRange: Bool = false,
+            enabled: Bool = true,
+            valueFormatter: ((Element) -> String)? = nil
+        ) {
+            self._range = range
+            self.bounds = bounds
+            self.step = step
+            self.showTooltips = showTooltips
+            self.showRange = showRange
+            self.enabled = enabled
+            self.valueFormatter = valueFormatter ?? { "\($0)" }
+        }
+
+        /// The range slider allows for setting the minimum and maximum values by selecting from an array of discrete values.
+        /// This is useful for scenarios like selecting a range of dates, predefined categories, or any other non-continuous values.
+        ///
+        /// - Parameters:
+        ///   - selectedItems: A `Binding` value representing the currently selected items in the slider range.
+        ///   - items: An array of discrete values from which the user can select a range.
+        ///   - showTooltips: A Boolean value that determines whether to show tooltips above the thumbs. Defaults to `true`.
+        ///   - showRange: A Boolean value that determines whether to show min/max range indicators. Defaults to `false`.
+        ///   - enabled: A Boolean value that determines whether the slider is enabled or disabled. Defaults to `true`.
+        ///   - valueFormat: A closure that formats the displayed value. Defaults to a simple string conversion.
+        ///
+        /// - Note: The `Array.Element` type must conform to `LosslessStringConvertible` and `Equatable` to ensure proper conversion and comparison.
+        /// - Warning: The initial selectedItems should contain at least one element from the items array, otherwise the behavior is undefined.
+        public init<ArrayElement: LosslessStringConvertible & Equatable>(
+            selectedItems: Binding<Array<ArrayElement>>,
+            items: Array<ArrayElement>,
+            showTooltips: Bool = true,
+            showRange: Bool = false,
+            enabled: Bool = true,
+            valueFormat: ((ArrayElement) -> String)? = nil
+        ) {
+            let closedRangeBinding = Binding<ClosedRange<Double>>(
+              get: {
+                  let values = selectedItems.wrappedValue
+                  // For instance, map first two elements to a ClosedRange safely
+                  guard let first = values.first else { return 0...0 }
+                  guard let last = values.last else {
+                      let index = items.firstIndex(of: first) ?? 0
+                      return Double(index)...Double(index)
+                  }
+                  // Return the range based on the indices of the selected items in the original array
+                  let lowerIndex = items.firstIndex(of: first) ?? 0
+                  let upperIndex = items.firstIndex(of: last) ?? 0
+                  return Double(lowerIndex)...Double(upperIndex)
+              },
+              set: { newRange in
+                  // Update the array elements based on the new range
+                  let slice = items[Int(newRange.lowerBound)...Int(newRange.upperBound)]
+                  selectedItems.wrappedValue = Array(slice)
+              }
+            )
+            self._range = closedRangeBinding
+            self.bounds = Double(items.indices.startIndex)...Double(items.indices.endIndex - 1)
+            self.step = 1.0
+            self.showTooltips = showTooltips
+            self.showRange = showRange
+            self.enabled = enabled
+            self.valueFormatter = { index in
+                let intIndex = Int(index.rounded())
+                let element = items[intIndex]
+                if let valueFormat {
+                    return valueFormat(element)
+                } else {
+                    return String(describing: element)
+                }
+            }
+        }
+
+        public var body: some View {
+            mainBody
+              .measureWidth($mainBodyWidth)
+              .padding(.horizontal, thumbDiameter - (2*16)) // Padding to accommodate thumb size
+              .allowsHitTesting(enabled)
+        }
+
+        private var mainBody : some View {
+            ZStack(alignment: .leading) {
+                trackView  // Gray background track
+                    .padding(.horizontal, -16)
+                    .frame(height: 4)
+
+                filledTrackView(width: mainBodyWidth)  // Filled track
+                    .frame(height: 6)
+
+                if showRange {
+                    // Left indicator
+                    textIndicator(text: valueFormatter(bounds.lowerBound), alignment: .leading)
+                    .measureWidth($leftIndicatorWidth)
+                    .offset(x: -(leftIndicatorWidth / 2) - 12, y: 18)
+
+                    // Right indicator
+                    textIndicator(text: valueFormatter(bounds.upperBound), alignment: .trailing)
+                    .offset(x: mainBodyWidth - ((thumbDiameter / 2) - 4 - 12), y: 18)
+                }
+
+                // Lower thumb
+                thumbView(active: .lower, value: range.lowerBound)
+
+                // Upper thumb
+                thumbView(active: .upper, value: range.upperBound)
+
+                if showTooltips {
+                    // Tooltip above the active thumb
+                    tooltipView(totalWidth: mainBodyWidth)
+                }
+            }
+        }
+
+        /// Background track (gray line for incomplete part)
+        private var trackView: some View {
+            Capsule()
+                .fill(trackColor)
+        }
+
+        /// Filled track (colorful line for filled part)
+        private func filledTrackView(width: CGFloat) -> some View {
+            let lowerProgress = progress(for: range.lowerBound)
+            let upperProgress = progress(for: range.upperBound)
+            let adjustedCapsuleWidth = CGFloat(upperProgress - lowerProgress) * width
+            let offset = CGFloat(lowerProgress) * width
+            let color = enabled ? filledTrackColor : disabledColor
+            return Capsule()
+                .fill(color)
+                .frame(width: adjustedCapsuleWidth)
+                .offset(x: offset)
+                .overlay(
+                    Capsule()
+                    .fill(color)
+                    .frame(width: adjustedCapsuleWidth + 5)
+                    .offset(x: offset)
+                )
+        }
+
+        // Square thumb (slider handle)
+        private func thumbView(active: ActiveThumb, value: Element) -> some View {
+            ZStack {
+                Circle()
+                    .fill(activeThumb == active ? thumbBorderColor : .clear)
+                    .frame(width: thumbDiameter, height: thumbDiameter)
+                Circle()
+                    .fill(
+                        {
+                            guard enabled else { return disabledColor }
+                            return activeThumb == active ? thumbActiveColor : thumbColor
+                        }()
+                    )
+                    .frame(
+                        width: thumbDiameter - 16,
+                        height: thumbDiameter - 16
+                    )
+            }
+              .offset(
+                  x: thumbOffset(
+                      width: mainBodyWidth,
+                      value: value
+                  ) + (active == .lower ? (-(thumbDiameter - 8)) : -8)
+              )
+              .gesture(
+                  DragGesture(minimumDistance: 0)
+                    .onChanged { dragValue in
+                        updateValue(
+                            dragValue: dragValue,
+                            width: mainBodyWidth,
+                            isLowerThumb: active != .upper
+                        )
+                        activeThumb = active
+                    }
+                    .onEnded { _ in
+                        activeThumb = .none
+                    }
+              )
+        }
+
+        /// Warp Tooltip view above the thumb
+        private func tooltipView(totalWidth: CGFloat) -> some View {
+            Warp.Tooltip(
+                title: valueFormatter(
+                    {
+                        switch activeThumb {
+                        case .lower, .none:
+                            return range.lowerBound
+                        case .upper:
+                            return range.upperBound
+                        }
+                    }()
+                ),
+                arrowEdge: .bottom
+            )
+            .frame(height: 24)
+            .measureWidth($tooltipWidth)
+            .offset(
+                x: thumbOffset(
+                    width: totalWidth,
+                    value: {
+                        switch activeThumb {
+                        case .lower, .none:
+                            return range.lowerBound
+                        case .upper:
+                            return range.upperBound
+                        }
+                    }()
+                ) - tooltipWidth / 2 + {
+                    switch activeThumb {
+                    case .lower, .none:
+                        return -14
+                    case .upper:
+                        return 14
+                    }
+                }(),
+                y: -thumbDiameter
+            )
+            .opacity(activeThumb == .none ? 0 : 1)
+        }
+
+        /// Text indicator view for lower and upper bounds
+        private func textIndicator(text: String, alignment: HorizontalAlignment) -> some View {
+            VStack(alignment: alignment, spacing: 0) {
+                Capsule()
+                    .fill(SwiftUI.Color.clear)
+                    .padding(.top, 8)
+                    .frame(width: 4, height: 20)
+
+                Text(text, style: .caption, color: enabled ? textIndicatorColor : disabledColor)
+            }
+        }
+
+        /// Calculates thumb offset based on current value
+        private func thumbOffset(width: CGFloat, value: Element) -> CGFloat {
+            let progress = progress(for: value)
+            return CGFloat(progress) * width
+        }
+
+        /// Calculates the progress of a value within the bounds [0, 1]
+        private func progress(for value: Element) -> Double {
+            let rangeSpan = bounds.upperBound - bounds.lowerBound
+            if rangeSpan == 0 {
+                return 0
+            } else {
+                let progress = (value - bounds.lowerBound) / rangeSpan
+                return Double(min(max(progress, 0), 1))
+            }
+        }
+
+        /// Updates the slider range based on thumb drag
+        private func updateValue(
+            dragValue: DragGesture.Value,
+            width: CGFloat,
+            isLowerThumb: Bool
+        ) {
+            let dragPercentage = min(max(0, dragValue.location.x / width), 1)  // Clamp between 0 and 1
+
+            let rangeSpan = bounds.upperBound - bounds.lowerBound
+            let rawValue =
+                bounds.lowerBound + Element(dragPercentage) * rangeSpan
+
+            // Snap rawValue to the nearest step
+            let closestStepValue = (rawValue / step).rounded() * step
+            let clampedStepValue = min(max(closestStepValue, bounds.lowerBound), bounds.upperBound)
+
+            if isLowerThumb {
+                range = ClosedRange(
+                    uncheckedBounds: (
+                        lower: min(clampedStepValue, range.upperBound),
+                        upper: range.upperBound
+                    )
+                )
+            } else {
+                range = ClosedRange(
+                    uncheckedBounds: (
+                        lower: range.lowerBound,
+                        upper: max(clampedStepValue, range.lowerBound)
+                    )
+                )
+            }
+        }
+    }
+}
+
+extension View {
+    // Helper method to dynamically save actual component width
+    func measureWidth(_ width: Binding<CGFloat>) -> some View {
+        background(
+            GeometryReader { geometry in
+                Color.clear
+                    .onAppear {
+                        width.wrappedValue = geometry.size.width
+                    }
+                    .onChange(of: geometry.size.width) { newWidth in
+                        width.wrappedValue = newWidth
+                    }
+            }
+        )
+    }
+}
+
+/// A wrapper view for preview that manages the @State property and prints the value when the seeker is dropped
+private struct RangeSliderPreviewWrapper: View {
+    @State private var sliderRange = 30.0...100.0
+
+    var body: some View {
+        Warp.RangeSlider(
+            range: $sliderRange,
+            bounds: -0...100,
+            showRange: true
+        )
+        .padding()
+    }
+}
+
+#Preview {
+    RangeSliderPreviewWrapper()
+}
