@@ -4,10 +4,10 @@ import SwiftUI
 @testable import Warp
 
 @Suite @MainActor
-struct SliderSnapshotTests {
+struct RangeSliderSnapshotTests {
 
     @Test(arguments: Warp.Brand.allCases)
-    func snapshotSliders(brand: Warp.Brand) {
+    func snapshotRangeSliders(brand: Warp.Brand) {
         let snapshotName = "\(brand.description)"
         // Set the theme to the current brand
         Warp.Theme = brand
@@ -15,11 +15,11 @@ struct SliderSnapshotTests {
         let combinedView = VStack {
             Spacer(minLength: 40)
             VStack {
-                Text("Slider with integers")
+                Text("RangeSlider with integers")
                   .font(.headline)
-                Warp.Slider(
-                      value: .constant(10),
-                      range: 0...20,
+                Warp.RangeSlider(
+                      range: .constant(20.0...80.0),
+                      bounds: 0.0...100.0,
                       step: 1.0,
                       showRange: true
                   )
@@ -29,12 +29,12 @@ struct SliderSnapshotTests {
 
             // With list of strings
             VStack {
-                Text("Slider with strings")
+                Text("RangeSlider with strings")
                   .font(.headline)
                 let items = ["One", "Two", "Three", "Four", "Five"]
-                let selectedItems = Binding.constant("Three")
-                Warp.Slider(
-                      selectedItem: selectedItems,
+                let selectedItems = Binding.constant(["Two", "Four"])
+                Warp.RangeSlider(
+                      selectedItems: selectedItems,
                       items: items,
                       showRange: true
                   )
@@ -44,11 +44,11 @@ struct SliderSnapshotTests {
 
             // With text indicators
             VStack {
-                Text("Slider with disabled indicators")
+                Text("RangeSlider with disabled indicators")
                   .font(.headline)
-                Warp.Slider(
-                      value: .constant(10),
-                      range: 0...20,
+                Warp.RangeSlider(
+                      range: .constant(30.0...70.0),
+                      bounds: 0.0...100.0,
                       step: 1.0
                   )
                   .padding()
@@ -57,11 +57,11 @@ struct SliderSnapshotTests {
 
             // Disabled state
             VStack {
-                Text("Disabled Slider")
+                Text("Disabled RangeSlider")
                   .font(.headline)
-                Warp.Slider(
-                      value: .constant(10),
-                      range: 0...20,
+                Warp.RangeSlider(
+                      range: .constant(40.0...60.0),
+                      bounds: 0.0...100.0,
                       step: 1.0,
                       enabled: false
                   )

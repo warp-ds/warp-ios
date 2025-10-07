@@ -7,6 +7,11 @@ struct SliderView: View {
     @State var maxValue = "100.0" // Maximum value input by user
     @State var stepValue = "1.0" // Step value input by user
     @State var precision = "2" // Precision for displayed slider value
+
+    @State var selectedItem = "1950" // Selected item for string-based slider
+    let items = stride(from: 1910, through: 2020, by: 10).map {
+        "\($0)"
+    }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -31,6 +36,55 @@ struct SliderView: View {
                 Text("Slider")
             })
             .padding(.bottom)
+
+            // String-based Slider
+            GroupBox(content: {
+                VStack {
+                    Text("Selected: \(selectedItem)")
+                    Warp.Slider(
+                          selectedItem: $selectedItem,
+                          items: items
+                    )
+                    .padding()
+                }
+            }, label: {
+                Text("Slider with Strings")
+            })
+              .padding(.bottom)
+
+            // Range slider with indicators
+            GroupBox(content: {
+                VStack {
+                    Text("From: \(items.first!) to \(items.last!)")
+                    // Warp Slider that dynamically updates based on user input
+                    Warp.Slider(
+                          selectedItem: $selectedItem,
+                          items: items,
+                          showRange: true
+                    )
+                    .padding()
+                }
+            }, label: {
+                Text("Slider with indicators")
+            })
+              .padding(.bottom)
+
+            // Disabled Slider
+            GroupBox(content: {
+                VStack {
+                    Text("Disabled Slider")
+                    Warp.Slider(
+                          value: $sliderValue,
+                          range: (Double(minValue) ?? 0.0)...(Double(maxValue) ?? 100.0),
+                          step: Double(stepValue) ?? 1.0,
+                          enabled: false
+                    )
+                    .padding()
+                }
+            }, label: {
+                Text("Disabled Slider")
+            })
+              .padding(.bottom)
 
             GroupBox(content: {
                 HStack {

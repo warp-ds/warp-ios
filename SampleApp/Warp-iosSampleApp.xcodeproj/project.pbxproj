@@ -183,6 +183,12 @@
 		9ABE19F02DCB55DC00AD37CA /* TypographyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */; };
 		9ABE19F12DCB55DC00AD37CA /* TypographyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */; };
 		9ABE19F22DCB55DC00AD37CA /* TypographyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */; };
+		9E097EC32E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
+		9E097EC42E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
+		9E097EC52E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
+		9E097EC62E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
+		9E097EC72E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
+		9E097EC82E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
 		9E54AC6E2E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
 		9E54AC6F2E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
 		9E54AC702E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
@@ -351,6 +357,7 @@
 		82F7B0552D0B00140015D48F /* ComponentColorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentColorsView.swift; sourceTree = "<group>"; };
 		82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandIconsView.swift; sourceTree = "<group>"; };
 		9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyUIView.swift; sourceTree = "<group>"; };
+		9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderView.swift; sourceTree = "<group>"; };
 		9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		9E54F07A2E40B82E008BDFB9 /* WarpSnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpSnapshotTests.xctestplan; sourceTree = "<group>"; };
 		9E54F07B2E40BD9B008BDFB9 /* WarpTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpTests.xctestplan; sourceTree = "<group>"; };
@@ -567,6 +574,7 @@
 		82FF12F82C80FC1200CC2110 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */,
 				9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */,
 				349D0E122B62D67A00AAB421 /* AlertView.swift */,
 				828E7D442B61239100869C58 /* BadgeView.swift */,
@@ -887,6 +895,7 @@
 				82E350832D08926100B2DBDA /* LogoView.swift in Sources */,
 				825516D32CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				B286EDFC2C33EACF00D25DCC /* StepIndicatorView.swift in Sources */,
+				9E097EC32E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
 				508AB09F2CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				00BC50DC2C2C0AD0002C4FF0 /* ModalView.swift in Sources */,
 				2E1ADF502C2561A700DFEE06 /* BadgeView.swift in Sources */,
@@ -936,6 +945,7 @@
 				82E350822D08926100B2DBDA /* LogoView.swift in Sources */,
 				825516D12CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				820A85EE2C6CEB0C006D35A0 /* StepIndicatorView.swift in Sources */,
+				9E097EC72E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
 				508AB0A22CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				820A85EF2C6CEB0C006D35A0 /* ModalView.swift in Sources */,
 				820A85F02C6CEB0C006D35A0 /* BadgeView.swift in Sources */,
@@ -985,6 +995,7 @@
 				82E350852D08926100B2DBDA /* LogoView.swift in Sources */,
 				825516D22CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				820A862A2C6D4388006D35A0 /* BadgeView.swift in Sources */,
+				9E097EC52E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
 				508AB0A12CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				820A862B2C6D4388006D35A0 /* ModalView.swift in Sources */,
 				820A862C2C6D4388006D35A0 /* ExpandableView.swift in Sources */,
@@ -1034,6 +1045,7 @@
 				82E350842D08926100B2DBDA /* LogoView.swift in Sources */,
 				825516D42CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				828E7D462B61239100869C58 /* BadgeView.swift in Sources */,
+				9E097EC62E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
 				508AB0A02CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				00BC50DB2C2C050D002C4FF0 /* ModalView.swift in Sources */,
 				B238A26F2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
@@ -1083,6 +1095,7 @@
 				9E71496C2E1BF28900674698 /* LogoView.swift in Sources */,
 				9E71496D2E1BF28900674698 /* TaxonomyIconsView.swift in Sources */,
 				9E71496E2E1BF28900674698 /* StepIndicatorView.swift in Sources */,
+				9E097EC82E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
 				9E71496F2E1BF28900674698 /* PageIndicatorView.swift in Sources */,
 				9E7149702E1BF28900674698 /* ModalView.swift in Sources */,
 				9E7149712E1BF28900674698 /* BadgeView.swift in Sources */,
@@ -1132,6 +1145,7 @@
 				9EFC481A2E4219940048E4E7 /* LogoView.swift in Sources */,
 				9EFC481B2E4219940048E4E7 /* TaxonomyIconsView.swift in Sources */,
 				9EFC481C2E4219940048E4E7 /* BadgeView.swift in Sources */,
+				9E097EC42E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
 				9EFC481D2E4219940048E4E7 /* PageIndicatorView.swift in Sources */,
 				9EFC481E2E4219940048E4E7 /* ModalView.swift in Sources */,
 				9EFC481F2E4219940048E4E7 /* ExpandableView.swift in Sources */,
