@@ -199,7 +199,7 @@ extension Warp {
             }
               .offset(
                   x: thumbOffset(
-                      width: mainBodyWidth,
+                      width: mainBodyWidth
                   ) - (thumbDiameter / 2)
               )
               .gesture(
@@ -242,7 +242,7 @@ extension Warp {
               .measureWidth($tooltipWidth)
               .offset(
                   x: thumbOffset(
-                      width: totalWidth,
+                      width: totalWidth
                   ) - tooltipWidth / 2,
                   y: -thumbDiameter
               )
