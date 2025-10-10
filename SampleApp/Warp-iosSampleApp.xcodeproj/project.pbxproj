@@ -241,6 +241,12 @@
 		9E7149932E1BF28900674698 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 820A860B2C6CEC30006D35A0 /* Preview Assets.xcassets */; };
 		9E71499F2E1BF65500674698 /* Warp_iosVend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E71499D2E1BF5E300674698 /* Warp_iosVend.swift */; };
 		9E7149A02E1E6D8F00674698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E71499B2E1BF5E300674698 /* Assets.xcassets */; };
+		9EF55F842E991DDD000842A8 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF55F832E991DDD000842A8 /* DividerView.swift */; };
+		9EF55F852E991DDD000842A8 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF55F832E991DDD000842A8 /* DividerView.swift */; };
+		9EF55F862E991DDD000842A8 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF55F832E991DDD000842A8 /* DividerView.swift */; };
+		9EF55F872E991DDD000842A8 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF55F832E991DDD000842A8 /* DividerView.swift */; };
+		9EF55F882E991DDD000842A8 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF55F832E991DDD000842A8 /* DividerView.swift */; };
+		9EF55F892E991DDD000842A8 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF55F832E991DDD000842A8 /* DividerView.swift */; };
 		9EFC48132E4219940048E4E7 /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9A00C2C7EF79C0053A961 /* RadioView.swift */; };
 		9EFC48142E4219940048E4E7 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506939DF2CB52EF000AA631F /* SliderView.swift */; };
 		9EFC48152E4219940048E4E7 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
@@ -366,6 +372,7 @@
 		9E71499B2E1BF5E300674698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E71499C2E1BF5E300674698 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E71499D2E1BF5E300674698 /* Warp_iosVend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosVend.swift; sourceTree = "<group>"; };
+		9EF55F832E991DDD000842A8 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		9EFC48462E4219940048E4E7 /* WarpDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarpDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFC48482E4359F50048E4E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9EFC48492E435A8A0048E4E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -574,6 +581,7 @@
 		82FF12F82C80FC1200CC2110 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9EF55F832E991DDD000842A8 /* DividerView.swift */,
 				9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */,
 				9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */,
 				349D0E122B62D67A00AAB421 /* AlertView.swift */,
@@ -907,6 +915,7 @@
 				9E54AC6F2E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				507344152CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDF2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
+				9EF55F872E991DDD000842A8 /* DividerView.swift in Sources */,
 				2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */,
 				82E098852C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				8280953F2C9C794900472CB5 /* IconView.swift in Sources */,
@@ -957,6 +966,7 @@
 				9E54AC702E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				507344132CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDE2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
+				9EF55F882E991DDD000842A8 /* DividerView.swift in Sources */,
 				820A85F62C6CEB0C006D35A0 /* SemanticTokensView.swift in Sources */,
 				82E098862C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				8280953D2C9C794900472CB5 /* IconView.swift in Sources */,
@@ -1007,6 +1017,7 @@
 				9E54AC712E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				507344122CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDC2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
+				9EF55F852E991DDD000842A8 /* DividerView.swift in Sources */,
 				820A86332C6D4388006D35A0 /* SemanticTokensView.swift in Sources */,
 				82E098842C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				828095402C9C794900472CB5 /* IconView.swift in Sources */,
@@ -1057,6 +1068,7 @@
 				9E54AC732E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				507344142CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDD2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
+				9EF55F862E991DDD000842A8 /* DividerView.swift in Sources */,
 				82635D082BFE1CD800F7FA6F /* SpinnerView.swift in Sources */,
 				82E098832C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				8280953E2C9C794900472CB5 /* IconView.swift in Sources */,
@@ -1107,6 +1119,7 @@
 				9E54AC722E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				9E7149772E1BF28900674698 /* TextAreaView.swift in Sources */,
 				9E7149782E1BF28900674698 /* BrandIconsView.swift in Sources */,
+				9EF55F842E991DDD000842A8 /* DividerView.swift in Sources */,
 				9E7149792E1BF28900674698 /* SemanticTokensView.swift in Sources */,
 				9E71497A2E1BF28900674698 /* CheckboxView.swift in Sources */,
 				9E71497B2E1BF28900674698 /* IconView.swift in Sources */,
@@ -1157,6 +1170,7 @@
 				9E54AC6E2E4CA9C200F9F052 /* DatePickerView.swift in Sources */,
 				9EFC48252E4219940048E4E7 /* TextAreaView.swift in Sources */,
 				9EFC48262E4219940048E4E7 /* BrandIconsView.swift in Sources */,
+				9EF55F892E991DDD000842A8 /* DividerView.swift in Sources */,
 				9EFC48272E4219940048E4E7 /* SemanticTokensView.swift in Sources */,
 				9EFC48282E4219940048E4E7 /* CheckboxView.swift in Sources */,
 				9EFC48292E4219940048E4E7 /* IconView.swift in Sources */,
