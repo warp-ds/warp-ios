@@ -2,23 +2,61 @@ import SwiftUI
 
 extension Warp {
 
+    /// The Select component allows users to choose one option from a dropdown list.
+    /// It supports various customization options including labels, prefixes, suffixes, and styles.
+    /// 
+    /// **Usage:**
+    /// ```swift
+    /// Warp.Select(
+    ///     selectedOption: $selectedOption,
+    ///     options: options,
+    ///     placeholder: "Select an option",
+    ///     title: "Select Option",
+    ///     additionalInformation: "Optional",
+    ///     tooltipContent: AnyView(Image(systemName: "info.circle")),
+    ///     prefix: "kr",
+    ///     suffix: "kr",
+    ///     style: .default,
+    ///     helpText: "This is a Help text."
+    /// )
+    /// ```
+    /// Warning: The options array should not be empty to ensure proper functionality.
     public struct Select: View {
+
+        enum PickerStyle {
+            case automatic
+            case menu
+            case wheel
+        }
 
         /// Object responsible for providing colors in different environments and variants.
         private let colorProvider: ColorProvider = Warp.Color
 
-        @Binding var selectedOption: Warp.Select.SelectorOption?
-        let options: [Warp.Select.SelectorOption]
-        let title: String
-        let additionalInformation: String?
-        let tooltipContent: AnyView?
-        let leftIcon: Warp.Icon?
-        let prefix: String?
-        let placeholder: String
-        let suffix: String?
-        let style: Warp.TextFieldStyle
-        let helpText: String?
+        @Binding private var selectedOption: Warp.Select.SelectorOption?
+        private let options: [Warp.Select.SelectorOption]
+        private let title: String
+        private let additionalInformation: String?
+        private let tooltipContent: AnyView?
+        private let prefix: String?
+        private let placeholder: String
+        private let suffix: String?
+        private let style: Warp.TextFieldStyle
+        private let helpText: String?
+        private let pickerStyle: PickerStyle
 
+        /// Creates a Select component with various customization options.
+        /// - Parameters:
+        ///  - selectedOption: Binding to the currently selected option.
+        ///  - options: Array of options to display in the select dropdown.
+        ///  - placeholder: Placeholder text when no option is selected.
+        ///  - title: Label text displayed above the select field.
+        ///  - additionalInformation: Optional additional information displayed next to the label.
+        ///  - tooltipContent: Optional view to display as a tooltip next to the label.
+        ///  - leftIcon: Optional icon to display on the left side of the select field.
+        ///  - prefix: Optional text to display as a prefix inside the select field.
+        ///  - suffix: Optional text to display as a suffix inside the select field.
+        ///  - style: Visual style of the select field (default, disabled, readOnly,error). Default is `.default`.
+        ///  - helpText: Optional help text displayed below the select field.
         public init(
             selectedOption: Binding<Warp.Select.SelectorOption?>,
             options: [Warp.Select.SelectorOption],
@@ -36,12 +74,12 @@ extension Warp {
             self.title = title
             self.additionalInformation = additionalInformation
             self.tooltipContent = tooltipContent
-            self.leftIcon = nil
             self.prefix = prefix
             self.placeholder = placeholder
             self.suffix = suffix
             self.style = style
             self.helpText = helpText
+            self.pickerStyle = .automatic
         }
 
         @State private var textInputWidth: CGFloat = 0
@@ -79,14 +117,15 @@ extension Warp {
             )
             .disableEditing(true)
         }
-
+        
+        @ViewBuilder
         private var nativePicker: some View {
-            Picker("Select an option", selection: Binding<String>(
-                get: { selectedOption?.id ?? options.first!.id },
+            let picker = Picker("Select an option", selection: Binding<String>(
+                get: { selectedOption?.id ?? options.first?.id ?? "" },
                 set: { newValue in
                     selectedOption = options.first { $0.id == newValue }
                 }
-            ), content: {
+            )) {
                 ForEach(options, id: \.id) { option in
                     SwiftUI.Text(option.title)
                       .tag(option.id)
@@ -94,7 +133,15 @@ extension Warp {
                       .foregroundColor(textColor)
                 }
             }
-            )
+
+            switch pickerStyle {
+            case .automatic:
+                picker.pickerStyle(.automatic)
+            case .menu:
+                picker.pickerStyle(.menu)
+            case .wheel:
+                picker.pickerStyle(.wheel)
+            }
         }
 
         /// Determines the text color based on the style and focus state.
