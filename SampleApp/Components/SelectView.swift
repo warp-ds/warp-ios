@@ -6,7 +6,7 @@ struct SelectView: View {
     @State private var labelTitle = "Select Option"
     @State private var labelAdditionalInfo = "Optional"
     @State private var showPrefix = false
-    @State private var showTooltipImage = true
+    @State private var showTooltipImage = false
     @State private var selectedOption: Warp.Select.SelectorOption? = nil
     @State private var options = [
         Warp.Select.SelectorOption(id: "1", title: "Option 1"),
