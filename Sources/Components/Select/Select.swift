@@ -12,12 +12,9 @@ extension Warp {
     ///     options: options,
     ///     placeholder: "Select an option",
     ///     title: "Select Option",
-    ///     additionalInformation: "Optional",
-    ///     tooltipContent: AnyView(Image(systemName: "info.circle")),
-    ///     prefix: "kr",
-    ///     suffix: "kr",
+    ///     additionalInformation: "Additional info",
     ///     style: .default,
-    ///     helpText: "This is a Help text."
+    ///     helpText: "This field is required."
     /// )
     /// ```
     /// Warning: The options array should not be empty to ensure proper functionality.
@@ -37,9 +34,9 @@ extension Warp {
         private let title: String
         private let additionalInformation: String?
         private let tooltipContent: AnyView?
-        private let prefix: String?
+        private let prefix: String? = nil
         private let placeholder: String
-        private let suffix: String?
+        private let suffix: String? = nil
         private let style: Warp.TextFieldStyle
         private let helpText: String?
         private let pickerStyle: PickerStyle
@@ -52,9 +49,6 @@ extension Warp {
         ///  - title: Label text displayed above the select field.
         ///  - additionalInformation: Optional additional information displayed next to the label.
         ///  - tooltipContent: Optional view to display as a tooltip next to the label.
-        ///  - leftIcon: Optional icon to display on the left side of the select field.
-        ///  - prefix: Optional text to display as a prefix inside the select field.
-        ///  - suffix: Optional text to display as a suffix inside the select field.
         ///  - style: Visual style of the select field (default, disabled, readOnly,error). Default is `.default`.
         ///  - helpText: Optional help text displayed below the select field.
         public init(
@@ -64,8 +58,6 @@ extension Warp {
             title: String = "",
             additionalInformation: String? = nil,
             tooltipContent: AnyView? = nil,
-            prefix: String? = nil,
-            suffix: String? = nil,
             style: Warp.TextFieldStyle = .default,
             helpText: String? = nil
         ) {
@@ -74,9 +66,7 @@ extension Warp {
             self.title = title
             self.additionalInformation = additionalInformation
             self.tooltipContent = tooltipContent
-            self.prefix = prefix
             self.placeholder = placeholder
-            self.suffix = suffix
             self.style = style
             self.helpText = helpText
             self.pickerStyle = .automatic

@@ -29,8 +29,6 @@ struct SelectView: View {
                     title: labelTitle,
                     additionalInformation: labelAdditionalInfo,
                     tooltipContent: showTooltipImage ? createTooltipView : nil,
-                    prefix: showPrefix ? "kr" : nil,
-                    suffix: showSuffix ? "kr" : nil,
                     style: selectStyle,
                     helpText: helpTextValue
                 )

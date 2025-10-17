@@ -26,7 +26,6 @@ struct SelectSnapshotTests {
                 placeholder: "Select an option",
                 title: "\(style.rawValue.capitalized) style",
                 additionalInformation: "Additional info",
-                tooltipContent: createTooltipView,
                 style: style,
                 helpText: "This is a Help text."
             )
@@ -41,9 +40,5 @@ struct SelectSnapshotTests {
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
         assertSnapshot(of: selectsInColumnView, as: .warpImage(compressionQuality: .medium), named: snapshotName)
-    }
-
-    private var createTooltipView: AnyView {
-        AnyView(Warp.Tooltip(title: "Sample tooltip", arrowEdge: .leading))
     }
 }
