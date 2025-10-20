@@ -151,6 +151,10 @@ extension Warp {
             }
             .frame(minHeight: self.minHeight)
             .modifier(BorderModifier(isFocused: isFocused, style: style, cornerRadius: cornerRadius, colorProvider: colorProvider, borderColor: borderColor))
+            .onTapGesture {
+                guard style != .disabled, style != .readOnly else { return }
+                isFocused = true
+            }
             .background(backgroundColor)
         }
         

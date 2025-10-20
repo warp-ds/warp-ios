@@ -182,16 +182,16 @@ extension Warp {
                             style: .body,
                             color: colorProvider.token.textPlaceholder
                         )
-                        .padding(.vertical, Warp.Spacing.spacing150)
+                          .padding(.vertical, Warp.Spacing.spacing150)
                     }
                     SwiftUI.TextField(text, text: $text)
-                        .allowsHitTesting(!disableEditing)
-                        .disabled(style == .disabled || style == .readOnly)
-                        .foregroundColor(textColor)
-                        .font(from: Warp.Typography.body)
-                        .clearTextEditorBackground()
-                        .focused($isFocused)
-                        .padding(.vertical, Warp.Spacing.spacing150)
+                      .allowsHitTesting(!disableEditing)
+                      .disabled(style == .disabled || style == .readOnly)
+                      .foregroundColor(textColor)
+                      .font(from: Warp.Typography.body)
+                      .clearTextEditorBackground()
+                      .focused($isFocused)
+                      .padding(.vertical, Warp.Spacing.spacing150)
                 }
                 if let suffix {
                     Text(suffix, style: .detail)
@@ -206,6 +206,10 @@ extension Warp {
             }
             .padding(.horizontal, horizontalPadding)
             .modifier(BorderModifier(isFocused: isFocused, style: style, cornerRadius: cornerRadius, colorProvider: colorProvider, borderColor: borderColor))
+            .onTapGesture {
+                guard !disableEditing, style != .disabled, style != .readOnly else { return }
+                isFocused = true
+            }
             .background(backgroundColor)
         }
 
