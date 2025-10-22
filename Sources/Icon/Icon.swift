@@ -250,6 +250,18 @@ extension Warp {
         case shrink
         case suitcaseTrolley
         case tShirt
+        case archiveBox
+        case clockCountdown
+        case cookie
+        case fileArrowDown
+        case moon
+        case sidebarChevronRight
+        case calendarBlank
+        case code
+        case deliveryKey
+        case globe
+        case sidebarChevronLeft
+        case sun
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         ///
@@ -535,6 +547,18 @@ extension Warp {
             case .shrink: return Warp.Strings.iconShrink.localized
             case .suitcaseTrolley: return Warp.Strings.iconSuitcaseTrolley.localized
             case .tShirt: return Warp.Strings.iconTShirt.localized
+            case .archiveBox: return Warp.Strings.iconArchiveBox.localized
+            case .clockCountdown: return Warp.Strings.iconClockCountdown.localized
+            case .cookie: return Warp.Strings.iconCookie.localized
+            case .fileArrowDown: return Warp.Strings.iconFileArrowDown.localized
+            case .moon: return Warp.Strings.iconMoon.localized
+            case .sidebarChevronRight: return Warp.Strings.iconSidebarChevronRight.localized
+            case .calendarBlank: return Warp.Strings.iconCalendarBlank.localized
+            case .code: return Warp.Strings.iconCode.localized
+            case .deliveryKey: return Warp.Strings.iconDeliveryKey.localized
+            case .globe: return Warp.Strings.iconGlobe.localized
+            case .sidebarChevronLeft: return Warp.Strings.iconSidebarChevronLeft.localized
+            case .sun: return Warp.Strings.iconSun.localized
             }
         }
     }
