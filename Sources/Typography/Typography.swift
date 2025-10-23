@@ -136,10 +136,7 @@ extension Warp.Typography {
         case .dba:
             return createFont(from: DbaBoldFont(size: size, style: fontStyle))
         case .blocket:
-            if self == .display {
-                return createFont(from: BlocketDisplayFont(size: size, style: fontStyle))
-            }
-            return createFont(from: BlocketBoldFont(size: size, style: fontStyle))
+            return createFont(from: BlocketMediumFont(size: size, style: fontStyle))
         case .vend:
             return createFont(from: VendBoldFont(size: size, style: fontStyle))
         case .neutral:
@@ -175,10 +172,7 @@ extension Warp.Typography {
         case .dba:
             return createUIFont(from: DbaBoldFont(size: size, style: fontStyle))
         case .blocket:
-            if self == .display {
-                return createUIFont(from: BlocketDisplayFont(size: size, style: fontStyle))
-            }
-            return createUIFont(from: BlocketBoldFont(size: size, style: fontStyle))
+            return createUIFont(from: BlocketMediumFont(size: size, style: fontStyle))
         case .vend:
             return createUIFont(from: VendBoldFont(size: size, style: fontStyle))
         case .neutral:

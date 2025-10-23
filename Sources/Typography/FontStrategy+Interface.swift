@@ -123,26 +123,9 @@ struct DbaRegularFont: FontStrategyInterface {
 
 // MARK: - Blocket Fonts
 
-/// A display font strategy for the `Blocket` brand, typically used for larger titles.
-struct BlocketDisplayFont: FontStrategyInterface {
-    let font: Warp.Font = .blocketDisplay
-    let size: CGFloat
-    let style: Font.TextStyle
-    
-    /// Initializes a new `BlocketDisplayFont` with the specified size and text style.
-    ///
-    /// - Parameters:
-    ///   - size: The font size.
-    ///   - style: The SwiftUI text style.
-    init(size: CGFloat, style: Font.TextStyle) {
-        self.size = size
-        self.style = style
-    }
-}
-
 /// A bold font strategy for the `Blocket` brand.
-struct BlocketBoldFont: FontStrategyInterface {
-    let font: Warp.Font = .blocketBold
+struct BlocketMediumFont: FontStrategyInterface {
+    let font: Warp.Font = .blocketMedium
     let size: CGFloat
     let style: Font.TextStyle
     
