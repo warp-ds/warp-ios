@@ -48,6 +48,14 @@ struct SelectView: View {
                     Warp.TextField(title: "Additional Information", text: $labelAdditionalInfo)
                     Divider()
 
+                    // Toggle for showing the tooltip image
+                    HStack {
+                        Text("Show Tooltip Image")
+                        Spacer()
+                        Warp.Switch(isOn: $showTooltipImage.animation(.bouncy))
+                    }
+                    Divider()
+
                     // Select style picker
                     VStack(alignment: .leading) {
                         Text("Select Style")

@@ -170,7 +170,7 @@ extension Warp {
         private var textFieldView: some View {
             HStack(spacing: Warp.Spacing.spacing100) {
                 if let leftIcon {
-                    Warp.IconView(leftIcon, size: .default)
+                    Warp.IconView(leftIcon, size: .small)
                 }
                 if let prefix {
                     Text(prefix, style: .detail)
@@ -200,7 +200,7 @@ extension Warp {
                     SwiftUI.Button {
                         rightIconAction()
                     } label: {
-                        Warp.IconView(rightIcon, size: .default)
+                        Warp.IconView(rightIcon, size: .small)
                     }
                 }
             }
@@ -275,10 +275,14 @@ private struct BorderModifier: ViewModifier {
             Group {
                 if style != .readOnly {
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .stroke(isFocused ? colorProvider.token.borderFocus : borderColor, lineWidth: 1)
+                        .stroke(isFocused ? colorProvider.token.borderFocus : borderColor, lineWidth: borderWidth)
                 }
             }
         )
+    }
+
+    private var borderWidth: CGFloat {
+        isFocused ? Warp.Border.borderWidth25 : Warp.Border.borderWidth12
     }
 }
 
