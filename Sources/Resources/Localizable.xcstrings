@@ -649,6 +649,18 @@
         }
       }
     },
+    "icon.title.archiveBox" : {
+      "comment" : "A11y title for archive box icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File with an arrow pointing down"
+          }
+        }
+      }
+    },
     "icon.title.archway" : {
       "comment" : "A11y title for archway icon",
       "extractionState" : "manual",
@@ -1801,6 +1813,18 @@
         }
       }
     },
+    "icon.title.calendarBlank" : {
+      "comment" : "A11y title for blank calendar icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blank calendar"
+          }
+        }
+      }
+    },
     "icon.title.calendarPlus" : {
       "comment" : "A11y title for calendar plus icon",
       "extractionState" : "manual",
@@ -2701,6 +2725,18 @@
         }
       }
     },
+    "icon.title.clockCountdown" : {
+      "comment" : "A11y title for clock countdown icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clock counting down"
+          }
+        }
+      }
+    },
     "icon.title.close" : {
       "comment" : "A11y title for close icon",
       "extractionState" : "manual",
@@ -2733,6 +2769,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kryss"
+          }
+        }
+      }
+    },
+    "icon.title.code" : {
+      "comment" : "A11y title for code icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chevron left and right with a slash in between"
           }
         }
       }
@@ -2841,6 +2889,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Konfetti som sprutar ut ur en strut"
+          }
+        }
+      }
+    },
+    "icon.title.cookie" : {
+      "comment" : "A11y title for cookie icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chocolate chip cookie with two bite marks"
           }
         }
       }
@@ -2985,6 +3045,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hand som håller en liten låda"
+          }
+        }
+      }
+    },
+    "icon.title.deliveryKey" : {
+      "comment" : "A11y title for delivery key icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hand giving a key"
           }
         }
       }
@@ -3889,6 +3961,18 @@
         }
       }
     },
+    "icon.title.fileArrowDown" : {
+      "comment" : "A11y title for file arrow down icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File with an arrow pointing down"
+          }
+        }
+      }
+    },
     "icon.title.filter" : {
       "comment" : "A11y title for filter icon",
       "extractionState" : "manual",
@@ -4209,6 +4293,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Manuell växellåda"
+          }
+        }
+      }
+    },
+    "icon.title.globe" : {
+      "comment" : "A11y title for globe icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Globe"
           }
         }
       }
@@ -5721,6 +5817,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sedelbunt"
+          }
+        }
+      }
+    },
+    "icon.title.moon" : {
+      "comment" : "A11y title for moon icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moon"
           }
         }
       }
@@ -7381,6 +7489,30 @@
         }
       }
     },
+    "icon.title.sidebarChevronLeft" : {
+      "comment" : "A11y title for sidebar chevron left icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sidebar with a chevron pointing left"
+          }
+        }
+      }
+    },
+    "icon.title.sidebarChevronRight" : {
+      "comment" : "A11y title for sidebar chevron right icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sidebar with a chevron pointing right"
+          }
+        }
+      }
+    },
     "icon.title.singleCylinder" : {
       "comment" : "A11y title for single cylinder icon",
       "extractionState" : "manual",
@@ -8097,6 +8229,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Resväska på en plattformsvagn"
+          }
+        }
+      }
+    },
+    "icon.title.sun" : {
+      "comment" : "A11y title for sun icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sun"
           }
         }
       }
@@ -9973,6 +10117,42 @@
         }
       }
     },
+    "taxonomy.icon.title.geometricShapes" : {
+      "comment" : "A11y title for geometric shapes icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fire geometriske former i et gitter"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Four geometrics shapes in a grid"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neljä geometrista kuviota ruudukossa"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fire geometriske former i et rutenett"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fyra geometriska former i rutnät"
+          }
+        }
+      }
+    },
     "taxonomy.icon.title.guitar" : {
       "comment" : "Title for guitar icon",
       "extractionState" : "manual",
@@ -10797,42 +10977,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vas"
-          }
-        }
-      }
-    },
-    "taxonomy.icon.title.geometricShapes" : {
-      "comment" : "A11y title for geometric shapes icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fire geometriske former i et gitter"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Four geometrics shapes in a grid"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neljä geometrista kuviota ruudukossa"
-          }
-        },
-        "nb-NO" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fire geometriske former i et rutenett"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fyra geometriska former i rutnät"
           }
         }
       }
