@@ -30,7 +30,6 @@ extension Warp {
         case dbaRegular
         
         // MARK: - Blocket Fonts
-        case blocketDisplay
         case blocketBold
         case blocketMedium
         case blocketRegular
@@ -66,7 +65,6 @@ extension Warp {
             case .dbaExtraBold: return "Proxima Nova Extrabold"
             case .dbaThin: return "Proxima Nova Thin"
             case .dbaRegular: return "ProximaNova-Regular"
-            case .blocketDisplay: return "Blocket-Display"
             case .blocketBold: return "BlocketSans-Bold"
             case .blocketMedium: return "BlocketSans-Medium"
             case .blocketRegular: return "BlocketSans-Regular"
@@ -100,7 +98,6 @@ extension Warp {
             case .dbaExtraBold: return "ProximaNova-Extrabld"
             case .dbaThin: return "ProximaNovaT-Thin"
             case .dbaRegular: return "ProximaNova-Regular"
-            case .blocketDisplay: return "Blocket-Display"
             case .blocketBold: return "BlocketSans-Bold"
             case .blocketMedium: return "BlocketSans-Medium"
             case .blocketRegular: return "BlocketSans-Regular"
@@ -124,7 +121,7 @@ extension Warp {
             case .dba:
                 return [.dbaAltBold, .dbaAltLight, .dbaAltThin, .dbaBlack, .dbaBold, .dbaExtraBold, .dbaThin, .dbaRegular]
             case .blocket:
-                return [.blocketDisplay, .blocketBold, .blocketMedium, .blocketRegular]
+                return [.blocketBold, .blocketMedium, .blocketRegular]
             case .vend:
                 return [.vendRegular, .vendBold]
             case .neutral:
