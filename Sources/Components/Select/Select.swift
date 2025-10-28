@@ -32,10 +32,6 @@ extension Warp {
         private let style: Warp.TextFieldStyle
         private let helpText: String?
 
-        // MARK: - Constants
-        private let prefix: String? = nil
-        private let suffix: String? = nil
-
         /// Creates a Select component with various customization options.
         /// - Parameters:
         ///  - selectedOption: Binding to the currently selected option.
@@ -102,13 +98,15 @@ extension Warp {
                 title: title,
                 additionalInformation: additionalInformation,
                 tooltipContent: tooltipContent,
-                prefix: prefix,
+                prefix: nil,
                 text: Binding(
-                    get: { selectedOption.title },
+                    get: {
+                        selectedOption.id == Warp.Select.SelectorOption.placeholderId ? "" : selectedOption.title
+                    },
                     set: { _ in }
                 ),
                 placeholder: placeholder,
-                suffix: suffix,
+                suffix: nil,
                 rightIcon: style != .readOnly ? .chevronDown : nil,
                 style: style,
                 helpText: helpText
