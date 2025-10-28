@@ -23,11 +23,12 @@ extension Warp {
         /// Object responsible for providing colors in different environments and variants.
         private let colorProvider: ColorProvider = Warp.Color
 
-        @Binding private var selectedOption: Warp.Select.SelectorOption
+        @Binding private var selectedOption: Warp.Select.SelectorOption?
         private let options: [Warp.Select.SelectorOption]
         private let title: String
         private let additionalInformation: String?
         private let tooltipContent: AnyView?
+        private let tooltipInfoAction: (() -> Void)?
         private let placeholder: String
         private let style: Warp.TextFieldStyle
         private let helpText: String?
@@ -35,11 +36,12 @@ extension Warp {
         /// Creates a Select component with various customization options.
         /// - Parameters:
         ///  - selectedOption: Binding to the currently selected option.
-        ///  - options: Array of options to display in the select dropdown.
+        ///  - options: Array of options to display in the select dropdown (should not be empty).
         ///  - placeholder: Placeholder text when no option is selected.
         ///  - title: Label text displayed above the select field.
         ///  - additionalInformation: Optional additional information displayed next to the label.
         ///  - tooltipContent: Optional view to display as a tooltip next to the label.
+        ///  - tooltipInfoAction: An optional action for tooltip info
         ///  - style: Visual style of the select field (default, disabled, readOnly,error). Default is `.default`.
         ///  - helpText: Optional help text displayed below the select field.
         public init(
@@ -49,25 +51,17 @@ extension Warp {
             title: String = "",
             additionalInformation: String? = nil,
             tooltipContent: AnyView? = nil,
+            tooltipInfoAction: (() -> Void)? = nil,
             style: Warp.TextFieldStyle = .default,
             helpText: String? = nil
         ) {
-            self._selectedOption = Binding<Warp.Select.SelectorOption>(
-                get: {
-                    selectedOption.wrappedValue ?? Warp.Select.SelectorOption(placeholder: placeholder)
-                },
-                set: { newOption in
-                    guard newOption.id != Warp.Select.SelectorOption.placeholderId else {
-                        selectedOption.wrappedValue = nil
-                        return
-                    }
-                    selectedOption.wrappedValue = newOption
-                }
-            )
-            self.options = [Warp.Select.SelectorOption(placeholder: placeholder)] + options
+            self._selectedOption = selectedOption
+            assert(!options.isEmpty, "Warp.Select options array should not be empty.")
+            self.options = options
             self.title = title
             self.additionalInformation = additionalInformation
             self.tooltipContent = tooltipContent
+            self.tooltipInfoAction = tooltipInfoAction
             self.placeholder = placeholder
             self.style = style
             self.helpText = helpText
@@ -82,10 +76,9 @@ extension Warp {
               .overlay {
                   VStack {
                       nativePicker
+                        .scaleEffect(x: (textInputWidth / (pickerWidth)) * 1.175, y: 1.1)
                         .measureWidth($pickerWidth)
-                        .scaleEffect(x: ((textInputWidth / pickerWidth) * 1.2) * 2, y: 1.1)
                         .offset(y: title.isEmpty ? -10 : 0)
-                        .offset(x: -(textInputWidth/2) + Warp.Spacing.spacing150)
                         .disabled(style == .disabled || style == .readOnly)
                         .colorMultiply(.clear)
                   }
@@ -100,9 +93,7 @@ extension Warp {
                 tooltipContent: tooltipContent,
                 prefix: nil,
                 text: Binding(
-                    get: {
-                        selectedOption.id == Warp.Select.SelectorOption.placeholderId ? "" : selectedOption.title
-                    },
+                    get: { selectedOption?.title ?? "" },
                     set: { _ in }
                 ),
                 placeholder: placeholder,
@@ -111,15 +102,16 @@ extension Warp {
                 style: style,
                 helpText: helpText
             )
+            .addTooltipInfoAction(tooltipInfoAction)
             .disableEditing(true)
         }
         
         @ViewBuilder
         private var nativePicker: some View {
             let picker = Picker("Select an option", selection: Binding<String>(
-                get: { selectedOption.id },
+                get: { selectedOption?.id ?? options.first?.id ?? SelectorOption.empty.id },
                 set: { newValue in
-                    selectedOption = options.first { $0.id == newValue } ?? .init(placeholder: placeholder)
+                    selectedOption = options.first { $0.id == newValue }
                 }
             )) {
                 ForEach(options, id: \.id) { option in
@@ -127,7 +119,6 @@ extension Warp {
                         .tag(option.id)
                 }
             }
-
             picker.pickerStyle(.menu)
         }
 

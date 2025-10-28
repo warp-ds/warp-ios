@@ -18,6 +18,8 @@ struct SelectView: View {
     @State private var selectStyle: Warp.TextFieldStyle = .default
     @State private var placeholder = "Select an option..."
 
+    @State private var presentInfoPopover: Bool = false
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             // Select display with dynamic label and help text
@@ -28,10 +30,20 @@ struct SelectView: View {
                     placeholder: placeholder,
                     title: labelTitle,
                     additionalInformation: labelAdditionalInfo,
-                    tooltipContent: showTooltipImage ? createTooltipView : nil,
+                    tooltipInfoAction: showTooltipImage ? {
+                        presentInfoPopover.toggle()
+                    } : nil,
                     style: selectStyle,
                     helpText: helpTextValue
                 )
+                .sheet(isPresented: $presentInfoPopover) {
+                    if #available(iOS 16.0, *) {
+                        createTooltipTextView
+                            .presentationDetents([.medium, .large])
+                    } else {
+                        createTooltipTextView
+                    }
+                }
             }, label: {
                 Text("Select")
             })
@@ -81,9 +93,14 @@ struct SelectView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    // Tooltip view creation
-    private var createTooltipView: AnyView {
-        AnyView(Warp.Tooltip(title: "Sample tooltip", arrowEdge: .leading))
+    private var createTooltipTextView: some View {
+        VStack {
+            Spacer()
+            Warp.Text("Some info", style: .title1)
+            Warp.Text("This is a popover additional info or list of options with explanations", style: .body)
+            Spacer()
+        }
+          .padding()
     }
 }
 

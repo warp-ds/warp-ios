@@ -54,6 +54,9 @@ extension Warp {
         /// An optional view to display when the tooltip icon is tapped.
         private let tooltipContent: AnyView?
 
+        /// An optional action for tooltip info
+        private var tooltipInfoAction: (() -> Void)?
+
         /// Text to display when the text field is empty.
         private let placeholder: String
 
@@ -131,7 +134,12 @@ extension Warp {
         public var body: some View {
             VStack(alignment: .leading, spacing: Warp.Spacing.spacing50) {
                 if !title.isEmpty {
-                    Warp.Label(title: title, additionalInformation: additionalInformation, tooltipContent: tooltipContent)
+                    Warp.Label(
+                        title: title,
+                        additionalInformation: additionalInformation,
+                        tooltipContent: tooltipContent,
+                        tooltipInfoAction: tooltipInfoAction
+                    )
                 }
 
                 textFieldView
@@ -147,6 +155,12 @@ extension Warp {
         func disableEditing(_ disable: Bool) -> Self {
             var copy = self
             copy.disableEditing = disable
+            return copy
+        }
+
+        func addTooltipInfoAction(_ action:(() -> Void)?) -> Self {
+            var copy = self
+            copy.tooltipInfoAction = action
             return copy
         }
 
