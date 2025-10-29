@@ -38,6 +38,9 @@ extension Warp {
         /// An optional view to display when the tooltip icon is tapped.
         private let tooltipContent: AnyView?
 
+        /// An optional action for tooltip info
+        private var tooltipInfoAction: (() -> Void)?
+
         
         // MARK: - Initialization
 
@@ -50,11 +53,13 @@ extension Warp {
         init(
             title: String,
             additionalInformation: String? = nil,
-            tooltipContent: AnyView? = nil
+            tooltipContent: AnyView? = nil,
+            tooltipInfoAction: (() -> Void)? = nil
         ) {
             self.title = title
             self.additionalInformation = additionalInformation
             self.tooltipContent = tooltipContent
+            self.tooltipInfoAction = tooltipInfoAction
         }
 
         // MARK: - Body
@@ -90,7 +95,7 @@ extension Warp {
         /// View displaying the tooltip icon and handling its interaction.
         @ViewBuilder
         private var toolTipView: some View {
-            if let tooltipContent = tooltipContent {
+            if let tooltipContent {
                 Warp.IconView(.info, size: .small, color: colorProvider.token.iconSubtle)
                     .onTapGesture {
                         withAnimation {
@@ -106,6 +111,11 @@ extension Warp {
                             }
                         }
                 }
+            } else if let tooltipInfoAction {
+                Warp.IconView(.info, size: .small, color: colorProvider.token.iconSubtle)
+                    .onTapGesture {
+                        tooltipInfoAction()
+                    }
             }
         }
     }

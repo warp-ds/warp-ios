@@ -226,10 +226,14 @@ private struct BorderModifier: ViewModifier {
             Group {
                 if style != .readOnly {
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .stroke(isFocused ? colorProvider.token.borderFocus : borderColor, lineWidth: 1)
+                        .stroke(isFocused ? colorProvider.token.borderFocus : borderColor, lineWidth: borderWidth)
                 }
             }
         )
+    }
+
+    private var borderWidth: CGFloat {
+        isFocused ? Warp.Border.borderWidth25 : Warp.Border.borderWidth12
     }
 }
 
