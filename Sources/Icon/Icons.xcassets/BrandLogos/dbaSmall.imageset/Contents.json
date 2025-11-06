@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "dbaSmall.svg",
+      "filename" : "DBA-small.svg",
       "idiom" : "universal"
     },
     {
@@ -11,12 +11,15 @@
           "value" : "dark"
         }
       ],
-      "filename" : "dbaSmall-inverted.svg",
+      "filename" : "DBA-inverted-small.svg",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
   }
 }

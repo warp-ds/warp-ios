@@ -693,7 +693,7 @@ extension Warp {
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         public var body: some View {
-            SwiftUI.Image(rawValue, bundle: .module) // Load the image from the asset catalog
+            SwiftUI.Image(assetName, bundle: .module) // Load the image from the asset catalog
                 .renderingMode(.original) // Ensure original rendering mode for vector images
                 .resizable()
                 .accessibilityLabel(localization)
@@ -704,12 +704,16 @@ extension Warp {
         /// - Returns: A `UIImage` object corresponding to the icon.
         public var uiImage: UIImage {
             // Load the image from the asset catalog
-            guard let image = UIImage(named: rawValue, in: .module, compatibleWith: nil) else {
+            guard let image = UIImage(named: assetName, in: .module, compatibleWith: nil) else {
                 // Handle the error (e.g., log it) if image loading fails
                 return UIImage()
             }
             image.accessibilityLabel = localization
             return image.withRenderingMode(.alwaysOriginal)
+        }
+
+        private var assetName: String {
+            rawValue + "-icon"
         }
 
         var localization: String {
@@ -730,13 +734,17 @@ extension Warp {
     ///
     /// Provides both SwiftUI `Image` and UIKit `UIImage` representations for each icon.
     public enum BrandLogo: CaseIterable, View, Hashable {
+        case autovex(LogoSize)
         case bilbasen(LogoSize)
         case blocket(LogoSize)
         case dba(LogoSize)
         case finn(LogoSize)
+        case netttbil(LogoSize)
         case oikotie(LogoSize)
-        case schibsted(LogoSize)
+        case qasa(LogoSize)
         case tori(LogoSize)
+        case vend(LogoSize)
+        case vendPro(LogoSize)
 
         /// Enum representing the size of a `LogoView`.
         public enum LogoSize {
@@ -767,6 +775,8 @@ extension Warp {
         /// The name of the asset associated with the brand logo.
         public var assetName: String {
             switch self {
+            case .autovex(let size):
+                size == .default ? "autovex" : "autovexSmall"
             case .bilbasen(let size):
                 size == .default ? "bilbasen" : "bilbasenSmall"
             case .blocket(let size):
@@ -775,28 +785,40 @@ extension Warp {
                 size == .default ? "dba" : "dbaSmall"
             case .finn(let size):
                 size == .default ? "finn" : "finnSmall"
+            case .netttbil(let size):
+                size == .default ? "nettbil" : "nettbilSmall"
             case .oikotie(let size):
                 size == .default ? "oikotie" : "oikotieSmall"
-            case .schibsted(let size):
-                size == .default ? "schibsted" : "schibstedSmall"
+            case .qasa(let size):
+                size == .default ? "qasa" : "qasaSmall"
             case .tori(let size):
                 size == .default ? "tori" : "toriSmall"
+            case .vend(let size):
+                size == .default ? "vend" : "vendSmall"
+            case .vendPro(let size):
+                "vendPro" // VendPro only has one size
             }
         }
 
         var localization: String {
             switch self {
+            case .autovex: return Warp.Strings.brandLogoAutovex.localized
             case .bilbasen: return Warp.Strings.brandLogoBilbasen.localized
             case .blocket: return Warp.Strings.brandLogoBlocket.localized
             case .dba: return Warp.Strings.brandLogoDba.localized
             case .finn: return Warp.Strings.brandLogoFinn.localized
+            case .netttbil: return Warp.Strings.brandLogoNettbil.localized
             case .oikotie: return Warp.Strings.brandLogoOikotie.localized
-            case .schibsted: return Warp.Strings.brandLogoSchibsted.localized
+            case .qasa: return Warp.Strings.brandLogoQasa.localized
             case .tori: return Warp.Strings.brandLogoTori.localized
+            case .vend: return Warp.Strings.brandLogoVend.localized
+            case .vendPro: return Warp.Strings.brandLogoVendPro.localized
             }
         }
 
-        public static var allCases = [Warp.BrandLogo.bilbasen(.default),
+        public static var allCases = [Warp.BrandLogo.autovex(.default),
+                                      Warp.BrandLogo.autovex(.small),
+                                      Warp.BrandLogo.bilbasen(.default),
                                       Warp.BrandLogo.bilbasen(.small),
                                       Warp.BrandLogo.blocket(.default),
                                       Warp.BrandLogo.blocket(.small),
@@ -804,11 +826,17 @@ extension Warp {
                                       Warp.BrandLogo.dba(.small),
                                       Warp.BrandLogo.finn(.default),
                                       Warp.BrandLogo.finn(.small),
+                                      Warp.BrandLogo.netttbil(.default),
+                                      Warp.BrandLogo.netttbil(.small),
                                       Warp.BrandLogo.oikotie(.default),
                                       Warp.BrandLogo.oikotie(.small),
-                                      Warp.BrandLogo.schibsted(.default),
-                                      Warp.BrandLogo.schibsted(.small),
+                                      Warp.BrandLogo.qasa(.default),
+                                      Warp.BrandLogo.qasa(.small),
                                       Warp.BrandLogo.tori(.default),
-                                      Warp.BrandLogo.tori(.small)]
+                                      Warp.BrandLogo.tori(.small),
+                                      Warp.BrandLogo.vend(.default),
+                                      Warp.BrandLogo.vend(.small),
+                                      Warp.BrandLogo.vendPro(.default)
+        ]
     }
 }
