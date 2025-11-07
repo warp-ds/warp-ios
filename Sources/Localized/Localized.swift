@@ -291,13 +291,17 @@ extension Warp {
         case brandIconRemppatori = "brand.icon.title.remppatori"
         case brandIconQasa = "brand.icon.title.qasa"
 
+        case brandLogoAutovex = "brand.logo.title.autovex"
         case brandLogoBilbasen = "brand.logo.title.bilbasen"
         case brandLogoBlocket = "brand.logo.title.blocket"
         case brandLogoDba = "brand.logo.title.dba"
         case brandLogoFinn = "brand.logo.title.finn"
+        case brandLogoNettbil = "brand.logo.title.nettbil"
         case brandLogoOikotie = "brand.logo.title.oikotie"
-        case brandLogoSchibsted = "brand.logo.title.schibsted"
+        case brandLogoQasa = "brand.logo.title.qasa"
         case brandLogoTori = "brand.logo.title.tori"
+        case brandLogoVend = "brand.logo.title.vend"
+        case brandLogoVendPro = "brand.logo.title.vendPro"
 
         var localized: String {
             self.rawValue.localized

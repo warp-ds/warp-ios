@@ -253,6 +253,66 @@
         }
       }
     },
+    "brand.logo.title.autovex" : {
+          "comment" : "A11y title for Autovex logo",
+          "extractionState" : "manual",
+          "localizations" : {
+            "en" : {
+              "stringUnit" : {
+                "state" : "translated",
+                "value" : "Autovex logo"
+              }
+            }
+          }
+        },
+    "brand.logo.title.nettbil" : {
+          "comment" : "A11y title for Nettbil logo",
+          "extractionState" : "manual",
+          "localizations" : {
+            "en" : {
+              "stringUnit" : {
+                "state" : "translated",
+                "value" : "Nettbil logo"
+              }
+            }
+          }
+        },
+    "brand.logo.title.qasa" : {
+          "comment" : "A11y title for Qasa logo",
+          "extractionState" : "manual",
+          "localizations" : {
+            "en" : {
+              "stringUnit" : {
+                "state" : "translated",
+                "value" : "Qasa logo"
+              }
+            }
+          }
+        },
+    "brand.logo.title.vend" : {
+          "comment" : "A11y title for Vend logo",
+          "extractionState" : "manual",
+          "localizations" : {
+            "en" : {
+              "stringUnit" : {
+                "state" : "translated",
+                "value" : "Vend logo"
+              }
+            }
+          }
+        },
+    "brand.logo.title.vendPro" : {
+          "comment" : "A11y title for Vend Pro logo",
+          "extractionState" : "manual",
+          "localizations" : {
+            "en" : {
+              "stringUnit" : {
+                "state" : "translated",
+                "value" : "Vend Pro logo"
+              }
+            }
+          }
+        },
     "brand.logo.title.blocket" : {
       "comment" : "A11y title for Blocket logo",
       "extractionState" : "manual",

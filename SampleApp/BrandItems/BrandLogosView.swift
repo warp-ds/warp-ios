@@ -9,7 +9,8 @@ struct BrandLogosView: View {
             HStack {
                 logo
                 Warp.Text(logo.assetName, style: .body) // Display the name of the logo
-                    .padding(.leading, Warp.Spacing.spacing100)
+                  .frame(maxWidth: .infinity, alignment: .trailing)
+                  .padding(.leading, Warp.Spacing.spacing100)
             }
         }
         .navigationBarTitleDisplayMode(.inline)

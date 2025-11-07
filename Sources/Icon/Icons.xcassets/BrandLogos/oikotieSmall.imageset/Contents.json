@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "oikotieSmall.svg",
+      "filename" : "Oikotie-small.svg",
       "idiom" : "universal"
     },
     {
@@ -11,12 +11,15 @@
           "value" : "dark"
         }
       ],
-      "filename" : "oikotieSmall-inverted.svg",
+      "filename" : "Oikotie-inverted-small.svg",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
   }
 }
