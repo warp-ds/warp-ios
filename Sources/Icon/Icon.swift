@@ -262,6 +262,11 @@ extension Warp {
         case globe
         case sidebarChevronLeft
         case sun
+        case shovel
+        case listNumbers
+        case textHOne
+        case gamingController
+
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
         ///
@@ -559,6 +564,10 @@ extension Warp {
             case .globe: return Warp.Strings.iconGlobe.localized
             case .sidebarChevronLeft: return Warp.Strings.iconSidebarChevronLeft.localized
             case .sun: return Warp.Strings.iconSun.localized
+            case .shovel: return Warp.Strings.iconShovel.localized
+            case .listNumbers: return Warp.Strings.iconListNumbers.localized
+            case .textHOne: return Warp.Strings.iconTextHOne.localized
+            case .gamingController: return Warp.Strings.iconGamingController.localized
             }
         }
     }
