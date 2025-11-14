@@ -257,6 +257,10 @@ extension Warp {
         case iconGlobe = "icon.title.globe"
         case iconSidebarChevronLeft = "icon.title.sidebarChevronLeft"
         case iconSun = "icon.title.sun"
+        case iconShovel = "icon.title.shovel"
+        case iconListNumbers = "icon.title.listNumbers"
+        case iconTextHOne = "icon.title.textHOne"
+        case iconGamingController = "icon.title.gamingController"
 
         case taxonomyIconPlaneTakeOff = "taxonomy.icon.title.planeTakeOff"
         case taxonomyIconAirplaneBed = "taxonomy.icon.title.airplaneBed"

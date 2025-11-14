@@ -8593,6 +8593,54 @@
         }
       }
     },
+        "icon.title.shovel" : {
+          "comment" : "A11y title for shovel icon",
+          "extractionState" : "manual",
+          "localizations" : {
+            "en" : {
+              "stringUnit" : {
+                "state" : "translated",
+                "value" : "Shovel"
+              }
+            }
+          }
+        },
+        "icon.title.listNumbers" : {
+          "comment" : "A11y title for numbered list icon",
+          "extractionState" : "manual",
+          "localizations" : {
+            "en" : {
+              "stringUnit" : {
+                "state" : "translated",
+                "value" : "Numbered list"
+              }
+            }
+          }
+        },
+        "icon.title.textHOne" : {
+          "comment" : "A11y title for heading 1 text icon",
+          "extractionState" : "manual",
+          "localizations" : {
+            "en" : {
+              "stringUnit" : {
+                "state" : "translated",
+                "value" : "Heading 1 text"
+              }
+            }
+          }
+        },
+        "icon.title.gamingController" : {
+          "comment" : "A11y title for gaming controller icon",
+          "extractionState" : "manual",
+          "localizations" : {
+            "en" : {
+              "stringUnit" : {
+                "state" : "translated",
+                "value" : "Gaming Controller"
+              }
+            }
+          }
+        },
     "icon.title.support" : {
       "comment" : "A11y title for success icon",
       "extractionState" : "manual",
