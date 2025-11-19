@@ -1,23 +1,24 @@
 import SwiftUI
 
-/// A reusable ViewModifier for presenting a StateView inside a sheet.
+/// A reusable ViewModifier for presenting any StateView-based view inside a sheet.
 @available(iOS 16.0, *)
-public struct StateViewSheetModifier: ViewModifier {
+public struct StateViewSheetModifier<StateViewContent: View>: ViewModifier {
+
     @Binding var isPresented: Bool
-    let viewModel: () -> StateViewModel
+    let stateView: () -> StateViewContent
     var detents: Set<PresentationDetent>
     var showsDragIndicator: Visibility
     var onDismiss: (() -> Void)?
 
     public init(
         isPresented: Binding<Bool>,
-        viewModel: @escaping () -> StateViewModel,
+        stateView: @escaping () -> StateViewContent,
         detents: Set<PresentationDetent> = [.medium, .large],
         showsDragIndicator: Visibility = .visible,
-        onDismiss: ( () -> Void)? = nil
+        onDismiss: (() -> Void)? = nil
     ) {
         self._isPresented = isPresented
-        self.viewModel = viewModel
+        self.stateView = stateView
         self.detents = detents
         self.showsDragIndicator = showsDragIndicator
         self.onDismiss = onDismiss
@@ -25,27 +26,29 @@ public struct StateViewSheetModifier: ViewModifier {
 
     public func body(content: Content) -> some View {
         content
-            .sheet(isPresented: $isPresented, onDismiss: { onDismiss?() }, content: {
-                StateView(viewModel: viewModel())
-                    .presentationDetents(detents)
-                    .presentationDragIndicator(showsDragIndicator)
-            })
+          .sheet(isPresented: $isPresented, onDismiss: { onDismiss?() }, content: {
+              stateView()
+                .presentationDetents(detents)
+                .presentationDragIndicator(showsDragIndicator)
+          })
     }
 }
 
 @available(iOS 16.0, *)
 public extension View {
-    func stateViewSheet(
+    func stateViewSheet<StateViewContent: View>(
         isPresented: Binding<Bool>,
-        viewModel: @escaping () -> StateViewModel,
+        stateView: @escaping () -> StateViewContent,
+        detents: Set<PresentationDetent> = [.medium, .large],
+        showsDragIndicator: Visibility = .visible,
         onDismiss: (() -> Void)? = nil
     ) -> some View {
         modifier(
             StateViewSheetModifier(
                 isPresented: isPresented,
-                viewModel: viewModel,
-                detents: [.medium, .large],
-                showsDragIndicator: .visible,
+                stateView: stateView,
+                detents: detents,
+                showsDragIndicator: showsDragIndicator,
                 onDismiss: onDismiss
             )
         )
