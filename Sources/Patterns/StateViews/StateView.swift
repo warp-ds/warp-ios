@@ -10,6 +10,11 @@ public struct StateView: View {
     public struct StateButton {
         let title: String
         let action: () -> Void
+
+        public init(title: String, action: @escaping () -> Void) {
+            self.title = title
+            self.action = action
+        }
     }
 
     private let image: StateImage?
@@ -114,7 +119,6 @@ public struct StateView: View {
         }
         .padding(Warp.Spacing.spacing400)
         .frame(maxWidth: 420) // Constrain width on large screens (like iPad)
-        .frame(maxWidth: .infinity, alignment: .center) // Center horizontally
     }
 }
 

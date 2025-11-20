@@ -189,6 +189,12 @@
 		9E097EC62E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
 		9E097EC72E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
 		9E097EC82E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
+		9E2F67782ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
+		9E2F67792ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
+		9E2F677A2ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
+		9E2F677B2ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
+		9E2F677C2ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
+		9E2F677D2ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
 		9E54AC6E2E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
 		9E54AC6F2E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
 		9E54AC702E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
@@ -370,6 +376,7 @@
 		82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandIconsView.swift; sourceTree = "<group>"; };
 		9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyUIView.swift; sourceTree = "<group>"; };
 		9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderView.swift; sourceTree = "<group>"; };
+		9E2F67772ECF62D200B48276 /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		9E54F07A2E40B82E008BDFB9 /* WarpSnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpSnapshotTests.xctestplan; sourceTree = "<group>"; };
 		9E54F07B2E40BD9B008BDFB9 /* WarpTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpTests.xctestplan; sourceTree = "<group>"; };
@@ -588,6 +595,7 @@
 		82FF12F82C80FC1200CC2110 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9E2F67772ECF62D200B48276 /* StateView.swift */,
 				9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */,
 				9EF55F832E991DDD000842A8 /* DividerView.swift */,
 				9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */,
@@ -943,6 +951,7 @@
 				2E1ADF5A2C2561A700DFEE06 /* BoxView.swift in Sources */,
 				2E1ADF5B2C2561A700DFEE06 /* ButtonView.swift in Sources */,
 				2E1ADF5C2C2561A700DFEE06 /* ToastView.swift in Sources */,
+				9E2F677B2ECF62D200B48276 /* StateView.swift in Sources */,
 				82F7B0482D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B3A2CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				2E1ADF5D2C2561A700DFEE06 /* ContentView.swift in Sources */,
@@ -995,6 +1004,7 @@
 				820A85FB2C6CEB0C006D35A0 /* BoxView.swift in Sources */,
 				820A85FC2C6CEB0C006D35A0 /* ButtonView.swift in Sources */,
 				820A85FD2C6CEB0C006D35A0 /* ToastView.swift in Sources */,
+				9E2F67792ECF62D200B48276 /* StateView.swift in Sources */,
 				82F7B0492D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B382CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				820A85FE2C6CEB0C006D35A0 /* ContentView.swift in Sources */,
@@ -1047,6 +1057,7 @@
 				820A86382C6D4388006D35A0 /* ButtonView.swift in Sources */,
 				820A86392C6D4388006D35A0 /* ToastView.swift in Sources */,
 				820A863A2C6D4388006D35A0 /* ContentView.swift in Sources */,
+				9E2F677C2ECF62D200B48276 /* StateView.swift in Sources */,
 				82F7B0472D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B392CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				82BF22262C6A15F900DDF06E /* TooltipView.swift in Sources */,
@@ -1099,6 +1110,7 @@
 				341B20E92B751C250068FF43 /* BoxView.swift in Sources */,
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				B2922A6F2B68E7F200A3E9F4 /* ToastView.swift in Sources */,
+				9E2F67782ECF62D200B48276 /* StateView.swift in Sources */,
 				82F7B04A2D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B3B2CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				82355B122A8CD1120023EB11 /* ContentView.swift in Sources */,
@@ -1151,6 +1163,7 @@
 				9E7149882E1BF28900674698 /* BoxView.swift in Sources */,
 				9E7149892E1BF28900674698 /* ButtonView.swift in Sources */,
 				9E71498A2E1BF28900674698 /* ToastView.swift in Sources */,
+				9E2F677A2ECF62D200B48276 /* StateView.swift in Sources */,
 				9E71498B2E1BF28900674698 /* PrimitiveColorsView.swift in Sources */,
 				9E71498C2E1BF28900674698 /* ButtonGroupView.swift in Sources */,
 				9E71498D2E1BF28900674698 /* ContentView.swift in Sources */,
@@ -1203,6 +1216,7 @@
 				9EFC48362E4219940048E4E7 /* ButtonView.swift in Sources */,
 				9EFC48372E4219940048E4E7 /* ToastView.swift in Sources */,
 				9EFC48382E4219940048E4E7 /* ContentView.swift in Sources */,
+				9E2F677D2ECF62D200B48276 /* StateView.swift in Sources */,
 				9EFC48392E4219940048E4E7 /* PrimitiveColorsView.swift in Sources */,
 				9EFC483A2E4219940048E4E7 /* ButtonGroupView.swift in Sources */,
 				9EFC483B2E4219940048E4E7 /* TooltipView.swift in Sources */,
