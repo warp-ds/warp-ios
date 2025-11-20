@@ -217,6 +217,42 @@
         }
       }
     },
+    "brand.logo.title.autovex" : {
+      "comment" : "A11y title for Autovex logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autovex-logo"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autovex logo"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autovex logo"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autovex logo"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autovex logo"
+          }
+        }
+      }
+    },
     "brand.logo.title.bilbasen" : {
       "comment" : "A11y title for Bilbasen logo",
       "extractionState" : "manual",
@@ -253,66 +289,6 @@
         }
       }
     },
-    "brand.logo.title.autovex" : {
-          "comment" : "A11y title for Autovex logo",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Autovex logo"
-              }
-            }
-          }
-        },
-    "brand.logo.title.nettbil" : {
-          "comment" : "A11y title for Nettbil logo",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Nettbil logo"
-              }
-            }
-          }
-        },
-    "brand.logo.title.qasa" : {
-          "comment" : "A11y title for Qasa logo",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Qasa logo"
-              }
-            }
-          }
-        },
-    "brand.logo.title.vend" : {
-          "comment" : "A11y title for Vend logo",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Vend logo"
-              }
-            }
-          }
-        },
-    "brand.logo.title.vendPro" : {
-          "comment" : "A11y title for Vend Pro logo",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Vend Pro logo"
-              }
-            }
-          }
-        },
     "brand.logo.title.blocket" : {
       "comment" : "A11y title for Blocket logo",
       "extractionState" : "manual",
@@ -421,6 +397,42 @@
         }
       }
     },
+    "brand.logo.title.nettbil" : {
+      "comment" : "A11y title for Nettbil logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettbil"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettbil logo"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettbil"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettbil mørkt ikon"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettbil"
+          }
+        }
+      }
+    },
     "brand.logo.title.oikotie" : {
       "comment" : "A11y title for Oikotie logo",
       "extractionState" : "manual",
@@ -453,6 +465,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oikotie-logga"
+          }
+        }
+      }
+    },
+    "brand.logo.title.qasa" : {
+      "comment" : "A11y title for Qasa logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qasa-logo"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qasa logo"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qasa logo"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qasa-logo"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qasa-logotyp"
           }
         }
       }
@@ -525,6 +573,78 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tori-logga"
+          }
+        }
+      }
+    },
+    "brand.logo.title.vend" : {
+      "comment" : "A11y title for Vend logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend logo"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend logo"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend logo"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend-logo"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend-logotyp"
+          }
+        }
+      }
+    },
+    "brand.logo.title.vendPro" : {
+      "comment" : "A11y title for Vend Pro logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend Pro logo"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend Pro logo"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend Pro logo"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend—Pro-logo"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend-Pro-logotyp"
           }
         }
       }
@@ -4345,6 +4465,42 @@
         }
       }
     },
+    "icon.title.gamingController" : {
+      "comment" : "A11y title for gaming controller icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spilcontroller"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gaming Controller"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peliohjain"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spillkontroll"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spelkontroll"
+          }
+        }
+      }
+    },
     "icon.title.gasDiesel" : {
       "comment" : "A11y title for gas diesel icon",
       "extractionState" : "manual",
@@ -5565,6 +5721,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kvadrat med pil som pekar uppåt åt höger"
+          }
+        }
+      }
+    },
+    "icon.title.listNumbers" : {
+      "comment" : "A11y title for numbered list icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nummereret liste"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numbered list"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numeroitu luettelo"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nummerert liste"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numrerad lista"
           }
         }
       }
@@ -7693,6 +7885,42 @@
         }
       }
     },
+    "icon.title.shovel" : {
+      "comment" : "A11y title for shovel icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skovl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shovel"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lapio"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spade"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spade"
+          }
+        }
+      }
+    },
     "icon.title.shower" : {
       "comment" : "A11y title for shower icon",
       "extractionState" : "manual",
@@ -8593,54 +8821,6 @@
         }
       }
     },
-        "icon.title.shovel" : {
-          "comment" : "A11y title for shovel icon",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Shovel"
-              }
-            }
-          }
-        },
-        "icon.title.listNumbers" : {
-          "comment" : "A11y title for numbered list icon",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Numbered list"
-              }
-            }
-          }
-        },
-        "icon.title.textHOne" : {
-          "comment" : "A11y title for heading 1 text icon",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Heading 1 text"
-              }
-            }
-          }
-        },
-        "icon.title.gamingController" : {
-          "comment" : "A11y title for gaming controller icon",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Gaming Controller"
-              }
-            }
-          }
-        },
     "icon.title.support" : {
       "comment" : "A11y title for success icon",
       "extractionState" : "manual",
@@ -8817,6 +8997,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fet text"
+          }
+        }
+      }
+    },
+    "icon.title.textHOne" : {
+      "comment" : "A11y title for heading 1 text icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overskrift 1 tekst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heading 1 text"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otsikon 1 teksti"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overskrift 1"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rubrik 1 text"
           }
         }
       }
