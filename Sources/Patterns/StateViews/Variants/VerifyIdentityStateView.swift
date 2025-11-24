@@ -2,24 +2,30 @@ import SwiftUI
 
 public struct VerifyIdentityStateView: View {
 
+    let eidProvider: String
     let verifyAction: (@Sendable () -> Void)
 
-    public init(verifyAction: @Sendable @escaping () -> Void) {
+    public init(
+        eidProvider: String,
+        verifyAction: @Sendable @escaping () -> Void
+    ) {
+        self.eidProvider = eidProvider
         self.verifyAction = verifyAction
     }
 
     public var body: some View {
+        let actionTitle = Warp.Strings.patternStateVerifyIdentityAction.localized.replacingOccurrences(of: "{eid_provider}", with: eidProvider)
         StateView(
             image: .icon(.verification),
-            title: "Please verify yourself",
-            description: "Before you make contact, you need to verify yourself. We do this so that the other person can be confident in who they are talking to.",
-            actionButton: .init(title: "Verify using BankID", action: verifyAction)
+            title: Warp.Strings.patternStateVerifyIdentityTitle.localized,
+            description: Warp.Strings.patternStateVerifyIdentityDescription.localized,
+            actionButton: .init(title: actionTitle, action: verifyAction)
         )
     }
 }
 
 #Preview {
-    VerifyIdentityStateView(verifyAction: {
+    VerifyIdentityStateView(eidProvider: "BankID", verifyAction: {
         print("Verify Action") // swiftlint:disable:this no_print
     })
 }

@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct FailToLoadStateView: View {
+public struct NoNetworkStateView: View {
 
     let retryAction: (@Sendable () -> Void)
 
@@ -10,16 +10,16 @@ public struct FailToLoadStateView: View {
 
     public var body: some View {
         StateView(
-            image: .icon(.smileySad),
-            title: Warp.Strings.patternStateFailToLoadTitle.localized,
-            description: Warp.Strings.patternStateFailToLoadDescription.localized,
+            image: .icon(.wifi),
+            title: Warp.Strings.patternStateNoNetworkConnectionTitle.localized,
+            description: Warp.Strings.patternStateNoNetworkConnectionDescription.localized,
             actionButton: .init(title:  Warp.Strings.patternStatRetryAction.localized, action: retryAction)
         )
     }
 }
 
 #Preview {
-    FailToLoadStateView(retryAction: {
+    NoNetworkStateView(retryAction: {
         print("Retry Action") // swiftlint:disable:this no_print
     })
 }

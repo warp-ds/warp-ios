@@ -16,11 +16,11 @@ public struct LoginStateView: View {
     public var body: some View {
         StateView(
             image: .icon(.user),
-            title: "The marketplace of possibilities",
-            description: "Log in to send messages, save favourites and searches. You'll also receive handy notifications for what's important to you.",
-            actionButton: .init(title: "Log in", action: loginAction),
-            secondaryButton: .init(title: "Create an account", action: createAccountAction),
-            showVendEndorsement: true
+            title: Warp.Strings.patternStateLoginTitle.localized,
+            description: Warp.Strings.patternStateLoginDescription.localized,
+            actionButton: .init(title: Warp.Strings.patternStateLoginAction.localized, action: loginAction),
+            quietButton: .init(title: Warp.Strings.patternStateLoginCreateAccountAction.localized, action: createAccountAction),
+            showLogo: true
         )
     }
 }

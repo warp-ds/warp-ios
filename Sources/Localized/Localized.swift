@@ -307,6 +307,24 @@ extension Warp {
         case brandLogoVend = "brand.logo.title.vend"
         case brandLogoVendPro = "brand.logo.title.vendPro"
 
+        case patternStateFailToLoadTitle = "pattern.state.failToLoad.title"
+        case patternStateFailToLoadDescription = "pattern.state.failToLoad.description"
+        case patternStatRetryAction = "pattern.state.retryAction"
+        case patternStateLoadingDescription = "pattern.state.loading.description"
+        case patternStateLoginTitle = "pattern.state.login.title"
+        case patternStateLoginDescription = "pattern.state.login.description"
+        case patternStateLoginAction = "pattern.state.login.loginAction"
+        case patternStateLoginCreateAccountAction = "pattern.state.login.createAccountAction"
+        case patternStateNoSearchResultsTitle = "pattern.state.noSearchResults.title"
+        case patternStateNoSearchResultsDescription = "pattern.state.noSearchResults.description"
+        case patternStateNoSearchResultsSaveSearchAction = "pattern.state.noSearchResults.saveSearchAction"
+        case patternStateNoSearchResultsClearFiltersAction = "pattern.state.noSearchResults.clearFiltersAction"
+        case patternStateNoNetworkConnectionTitle = "pattern.noNetworkConnection.title"
+        case patternStateNoNetworkConnectionDescription = "pattern.noNetworkConnection.description"
+        case patternStateVerifyIdentityTitle = "pattern.state.verifyIdentity.title"
+        case patternStateVerifyIdentityDescription = "pattern.state.verifyIdentity.description"
+        case patternStateVerifyIdentityAction = "pattern.state.verifyIdentity.action"
+
         var localized: String {
             self.rawValue.localized
         }

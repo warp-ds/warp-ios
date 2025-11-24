@@ -23,8 +23,8 @@ public struct StateView: View {
     private let title: String
     private let description: String?
     private let actionButton: StateButton?
-    private let secondaryButton: StateButton?
-    private let showVendEndorsement: Bool
+    private let quietButton: StateButton?
+    private let showLogo: Bool
 
     public init(
         image: StateImage? = nil,
@@ -33,8 +33,8 @@ public struct StateView: View {
         title: String,
         description: String? = nil,
         actionButton: StateButton? = nil,
-        secondaryButton: StateButton? = nil,
-        showVendEndorsement: Bool = false
+        quietButton: StateButton? = nil,
+        showLogo: Bool = false
     ) {
         self.image = image
         self.tintColor = tintColor
@@ -42,8 +42,8 @@ public struct StateView: View {
         self.title = title
         self.description = description
         self.actionButton = actionButton
-        self.secondaryButton = secondaryButton
-        self.showVendEndorsement = showVendEndorsement
+        self.quietButton = quietButton
+        self.showLogo = showLogo
     }
 
     @ViewBuilder
@@ -88,10 +88,10 @@ public struct StateView: View {
                     type: .primary
                 )
             }
-            if let secondaryButton {
+            if let quietButton {
                 Warp.Button(
-                    title: secondaryButton.title,
-                    action: secondaryButton.action,
+                    title: quietButton.title,
+                    action: quietButton.action,
                     type: .quiet
                 )
             }
@@ -99,13 +99,8 @@ public struct StateView: View {
     }
 
     private var endorsementView: some View {
-        VStack(alignment: .center, spacing: 6) {
-            Text("A part of")
-                .font(.system(size: 17, weight: .bold))
-              .foregroundColor(Color(hex: "#7A2822"))
-            Warp.BrandLogo.vend(.default)
-                .frame(height: 16)
-        }
+        Warp.BrandLogo.vend(.default)
+          .frame(height: 16)
     }
 
     public var body: some View {
@@ -113,12 +108,13 @@ public struct StateView: View {
             imageView
             textSectionView
             buttonSectionView
-            if showVendEndorsement {
+            if showLogo {
                 endorsementView
             }
         }
         .padding(Warp.Spacing.spacing400)
         .frame(maxWidth: 420) // Constrain width on large screens (like iPad)
+        .frame(maxHeight: .infinity, alignment: .center)
     }
 }
 
@@ -130,9 +126,9 @@ public struct StateView: View {
         actionButton: .init(title: "Call To Action") {
             print("Primary Action") // swiftlint:disable:this no_print
         },
-        secondaryButton: .init(title: "Secondary Button") {
+        quietButton: .init(title: "Secondary Button") {
             print("Secodalry Action") // swiftlint:disable:this no_print
         },
-        showVendEndorsement: true
+        showLogo: true
     )
 }

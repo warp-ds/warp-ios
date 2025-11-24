@@ -63,11 +63,7 @@ struct StateViewDemo: View {
             }
               .navigationTitle("Demo Launcher")
               .sheet(isPresented: $isModalPresented) {
-                  ScrollView(showsIndicators: false) {
                       createStateView()
-                        .padding()
-                  }
-                    .padding(.horizontal, 20)
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationTitle("StateView Demo")
               }
@@ -90,36 +86,33 @@ struct StateViewDemo: View {
                 title: title,
                 description: description,
                 actionButton: .init(title: primaryButtonTitle, action: {}),
-                secondaryButton: showSecondaryButton ? .init(title: secondaryButtonTitle, action: {}) : nil,
-                showVendEndorsement: showVendEndorsement
+                quietButton: showSecondaryButton ? .init(title: secondaryButtonTitle, action: {}) : nil,
+                showLogo: showVendEndorsement
             )
-        case .pageNotFound:
-            PageNotFoundStateView(brandName: title)
+        case .noNetwork:
+            NoNetworkStateView(retryAction: {})
         case .failToLoad:
             FailToLoadStateView(retryAction: {})
         case .verifyIdentity:
-            VerifyIdentityStateView(verifyAction: {})
+            VerifyIdentityStateView(eidProvider: title, verifyAction: {})
         case .noSearchResults:
             NoSearchResultsStateView(saveSearchAction: {}, clearFiltersAction: {})
         case .login:
             LoginStateView(loginAction: {}, createAccountAction: {})
         case .loading:
-            LoadingStateView(description: description)
-        case .empty:
-            EmptyStateView(title: title, description: description)
+            LoadingStateView()
         }
     }
 }
 
 enum StateViewVariant: String, CaseIterable {
     case stateView
-    case pageNotFound
+    case noNetwork
     case failToLoad
     case verifyIdentity
     case noSearchResults
     case login
     case loading
-    case empty
 }
 
 #Preview {

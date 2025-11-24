@@ -217,6 +217,18 @@
         }
       }
     },
+    "brand.logo.title.autovex" : {
+      "comment" : "A11y title for Autovex logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autovex logo"
+          }
+        }
+      }
+    },
     "brand.logo.title.bilbasen" : {
       "comment" : "A11y title for Bilbasen logo",
       "extractionState" : "manual",
@@ -253,66 +265,6 @@
         }
       }
     },
-    "brand.logo.title.autovex" : {
-          "comment" : "A11y title for Autovex logo",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Autovex logo"
-              }
-            }
-          }
-        },
-    "brand.logo.title.nettbil" : {
-          "comment" : "A11y title for Nettbil logo",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Nettbil logo"
-              }
-            }
-          }
-        },
-    "brand.logo.title.qasa" : {
-          "comment" : "A11y title for Qasa logo",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Qasa logo"
-              }
-            }
-          }
-        },
-    "brand.logo.title.vend" : {
-          "comment" : "A11y title for Vend logo",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Vend logo"
-              }
-            }
-          }
-        },
-    "brand.logo.title.vendPro" : {
-          "comment" : "A11y title for Vend Pro logo",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Vend Pro logo"
-              }
-            }
-          }
-        },
     "brand.logo.title.blocket" : {
       "comment" : "A11y title for Blocket logo",
       "extractionState" : "manual",
@@ -421,6 +373,18 @@
         }
       }
     },
+    "brand.logo.title.nettbil" : {
+      "comment" : "A11y title for Nettbil logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettbil logo"
+          }
+        }
+      }
+    },
     "brand.logo.title.oikotie" : {
       "comment" : "A11y title for Oikotie logo",
       "extractionState" : "manual",
@@ -453,6 +417,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oikotie-logga"
+          }
+        }
+      }
+    },
+    "brand.logo.title.qasa" : {
+      "comment" : "A11y title for Qasa logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qasa logo"
           }
         }
       }
@@ -525,6 +501,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tori-logga"
+          }
+        }
+      }
+    },
+    "brand.logo.title.vend" : {
+      "comment" : "A11y title for Vend logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend logo"
+          }
+        }
+      }
+    },
+    "brand.logo.title.vendPro" : {
+      "comment" : "A11y title for Vend Pro logo",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vend Pro logo"
           }
         }
       }
@@ -4345,6 +4345,18 @@
         }
       }
     },
+    "icon.title.gamingController" : {
+      "comment" : "A11y title for gaming controller icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gaming Controller"
+          }
+        }
+      }
+    },
     "icon.title.gasDiesel" : {
       "comment" : "A11y title for gas diesel icon",
       "extractionState" : "manual",
@@ -5565,6 +5577,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kvadrat med pil som pekar uppåt åt höger"
+          }
+        }
+      }
+    },
+    "icon.title.listNumbers" : {
+      "comment" : "A11y title for numbered list icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Numbered list"
           }
         }
       }
@@ -7693,6 +7717,18 @@
         }
       }
     },
+    "icon.title.shovel" : {
+      "comment" : "A11y title for shovel icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shovel"
+          }
+        }
+      }
+    },
     "icon.title.shower" : {
       "comment" : "A11y title for shower icon",
       "extractionState" : "manual",
@@ -8593,54 +8629,6 @@
         }
       }
     },
-        "icon.title.shovel" : {
-          "comment" : "A11y title for shovel icon",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Shovel"
-              }
-            }
-          }
-        },
-        "icon.title.listNumbers" : {
-          "comment" : "A11y title for numbered list icon",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Numbered list"
-              }
-            }
-          }
-        },
-        "icon.title.textHOne" : {
-          "comment" : "A11y title for heading 1 text icon",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Heading 1 text"
-              }
-            }
-          }
-        },
-        "icon.title.gamingController" : {
-          "comment" : "A11y title for gaming controller icon",
-          "extractionState" : "manual",
-          "localizations" : {
-            "en" : {
-              "stringUnit" : {
-                "state" : "translated",
-                "value" : "Gaming Controller"
-              }
-            }
-          }
-        },
     "icon.title.support" : {
       "comment" : "A11y title for success icon",
       "extractionState" : "manual",
@@ -8817,6 +8805,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fet text"
+          }
+        }
+      }
+    },
+    "icon.title.textHOne" : {
+      "comment" : "A11y title for heading 1 text icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heading 1 text"
           }
         }
       }
@@ -9933,6 +9933,426 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "YouTube-logotyp"
+          }
+        }
+      }
+    },
+    "pattern.noNetworkConnection.description" : {
+      "comment" : "Description for no network connection state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi kan ikke kommunikere med serveren. Tjek, om du er tilsluttet wi-fi eller har adgang til mobildata."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We're not able to communicate with the server. Check your wireless or mobile connection."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palvelimeen ei saada yhteyttä. Tarkista, että olet yhteydessä langattomaan verkkoon tai mobiilidataan."
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi får ikke kontaktet serveren. Sjekk at du er koblet til trådløst nett eller mobildata."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi kunde inte kommunicera med servern. Kontrollera din anslutning."
+          }
+        }
+      }
+    },
+    "pattern.noNetworkConnection.title" : {
+      "comment" : "Title for no network connection state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline?"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yhteysongelmia?"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frakoblet?"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inte ansluten?"
+          }
+        }
+      }
+    },
+    "pattern.state.failToLoad.description" : {
+      "comment" : "Description for fail to load state view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prøv igen om lidt, eller få mere information fra kundeservice."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn’t load this content. Try again in a little while, or get more information from customer support."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yritä uudelleen hetken kuluttua tai kysy lisätietoja asiakaspalvelusta."
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prøv igjen om litt, eller få mer informasjon hos kundeservice."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Försök igen om en liten stund, eller få mer information från kundservice."
+          }
+        }
+      }
+    },
+    "pattern.state.failToLoad.title" : {
+      "comment" : "Description of error page",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beklager, noget gik galt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorry, something went wrong."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jotain meni pieleen."
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beklager, nå er det rusk i maskineriet."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Äsch, något gick fel."
+          }
+        }
+      }
+    },
+    "pattern.state.loading.description" : {
+      "comment" : "Description for loading state view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please wait..."
+          }
+        }
+      }
+    },
+    "pattern.state.login.createAccountAction" : {
+      "comment" : "Title for create account secondary button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opret en konto"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create an account"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luo tili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opprett en konto"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skapa konto"
+          }
+        }
+      }
+    },
+    "pattern.state.login.description" : {
+      "comment" : "Description for login state view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log ind for at sende beskeder, gemme favoritter og annonceagenter. Du vil også modtage nyttige notifikationer omkring det som er vigtigt for dig."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in to send messages, save favourites and searches. You'll also receive handy notifications for what's important to you."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kirjautuneena voit lähettää viestejä, tallentaa hakuvahteja ja lisätä suosikkeja. Saat myös ilmoituksia sinulle tärkeistä asioista."
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logg inn for å sende meldinger, lagre favoritter og søk. Du får også nyttige varsler for hva som er viktig for deg."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logga in för att skicka meddelanden, spara favoriter och skapa bevakningar. Du får också praktiska notiser om det som är viktigt för dig."
+          }
+        }
+      }
+    },
+    "pattern.state.login.loginAction" : {
+      "comment" : "Title for login action button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log ind"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kirjaudu sisään"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logg inn"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logga in"
+          }
+        }
+      }
+    },
+    "pattern.state.login.title" : {
+      "comment" : "Title for login state view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mulighedernes markedsplads"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The marketplace of possibilities"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaikille hyvät kaupat"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mulighetenes marked"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möjliheternas marknadsplats"
+          }
+        }
+      }
+    },
+    "pattern.state.noSearchResults.clearFiltersAction" : {
+      "comment" : "Title for clear filters secondary button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear filters"
+          }
+        }
+      }
+    },
+    "pattern.state.noSearchResults.description" : {
+      "comment" : "Description for no search results state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We can’t find the product you’re looking for – it may already have been sold. Would you like to be notified when there are new results for this search?"
+          }
+        }
+      }
+    },
+    "pattern.state.noSearchResults.saveSearchAction" : {
+      "comment" : "Title for save search action button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save search"
+          }
+        }
+      }
+    },
+    "pattern.state.noSearchResults.title" : {
+      "comment" : "Title for no search results state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Well, this place is empty"
+          }
+        }
+      }
+    },
+    "pattern.state.retryAction" : {
+      "comment" : "Title for retry action button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prøv igen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yritä uudelleen"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prøv igjen"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Försök igen"
+          }
+        }
+      }
+    },
+    "pattern.state.verifyIdentity.action" : {
+      "comment" : "Title for verify action button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verify using {eid_provider}"
+          }
+        }
+      }
+    },
+    "pattern.state.verifyIdentity.description" : {
+      "comment" : "Description for verify identity state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Before you make contact, you need to verify yourself. We do this so that the other person can be confident in who they are talking to."
+          }
+        }
+      }
+    },
+    "pattern.state.verifyIdentity.title" : {
+      "comment" : "Title for verify identity state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please verify yourself"
           }
         }
       }

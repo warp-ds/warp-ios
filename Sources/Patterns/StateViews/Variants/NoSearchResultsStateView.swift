@@ -16,10 +16,10 @@ public struct NoSearchResultsStateView: View {
     public var body: some View {
         StateView(
             image: .icon(.search),
-            title: "Well, this place is empty",
-            description: "We can’t find the product you’re looking for – it may already have been sold. Would you like to be notified when there are new results for this search?",
-            actionButton: .init(title: "Save search", action: saveSearchAction),
-            secondaryButton: .init(title: "Clear filters", action: clearFiltersAction)
+            title: Warp.Strings.patternStateNoSearchResultsTitle.localized,
+            description: Warp.Strings.patternStateNoSearchResultsDescription.localized,
+            actionButton: .init(title: Warp.Strings.patternStateNoSearchResultsSaveSearchAction.localized, action: saveSearchAction),
+            quietButton: .init(title: Warp.Strings.patternStateNoSearchResultsClearFiltersAction.localized, action: clearFiltersAction)
         )
     }
 }
