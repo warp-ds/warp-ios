@@ -20,7 +20,7 @@ public struct FailToLoadStateView: View, StateViewConfigurable {
     /// - Parameter retryAction: A closure called when the retry button is pressed.
     public init(retryAction: @Sendable @escaping () -> Void) {
         configuration = StateViewConfiguration(
-            image: .icon(.smileySad),
+            image: .icon(.smileyNeutral),
             title: Warp.Strings.patternStateFailToLoadTitle.localized,
             description: Warp.Strings.patternStateFailToLoadDescription.localized,
             actionButton: .init(title:  Warp.Strings.patternStatRetryAction.localized, action: retryAction)

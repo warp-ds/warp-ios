@@ -10028,31 +10028,31 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beklager, noget gik galt."
+            "value" : "Beklager, noget gik galt"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sorry, something went wrong."
+            "value" : "Sorry, something went wrong"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jotain meni pieleen."
+            "value" : "Jotain meni pieleen"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beklager, nå er det rusk i maskineriet."
+            "value" : "Beklager, nå er det rusk i maskineriet"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Äsch, något gick fel."
+            "value" : "Äsch, något gick fel"
           }
         }
       }

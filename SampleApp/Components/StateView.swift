@@ -3,6 +3,9 @@ import Warp
 
 struct StateViewDemo: View {
     @State private var selectedVariant: StateViewVariant = .stateView
+    @State private var showStateImage: Bool = false
+    @State private var useIllustration: Bool = false
+    @State private var selectedIcon: Warp.Icon = .activeAds
     @State private var title: String = "Default Title"
     @State private var description: String = "Default Description"
     @State private var showVendEndorsement: Bool = false
@@ -31,6 +34,19 @@ struct StateViewDemo: View {
                         .padding(.vertical)
                         
                         Divider()
+                        createToggle(binding: $showStateImage, text: "Show state image")
+                        if showStateImage {
+                            createToggle(binding: $useIllustration, text: "Use illustration")
+                            if !useIllustration {
+                                Picker("Select an icon", selection: $selectedIcon) {
+                                    ForEach(Warp.Icon.allCases, id: \.self) { icon in
+                                        Text(icon.rawValue) // Display icon names in picker
+                                    }
+                                }
+                                  .pickerStyle(WheelPickerStyle()) // Wheel picker style for better UX
+                            }
+                        }
+                        Divider()
                         VStack(alignment: .leading) {
                             Warp.Text("Title", style: .bodyStrong)
                             Warp.TextField(text: $title)
@@ -40,8 +56,7 @@ struct StateViewDemo: View {
                             Warp.Text("Description", style: .bodyStrong)
                             Warp.TextField(text: $description)
                         }
-                        Divider()
-                        createToggle(binding: $showVendEndorsement, text: "Show Vend Endorsement")
+
                         Divider()
                         VStack(alignment: .leading) {
                             Warp.Text("Primary Button Title", style: .bodyStrong)
@@ -56,6 +71,8 @@ struct StateViewDemo: View {
                                 Warp.TextField(text: $secondaryButtonTitle)
                             }
                         }
+                        Divider()
+                        createToggle(binding: $showVendEndorsement, text: "Show Vend tagline")
                     } label: {
                         Text("Modify StateView")
                     }
@@ -83,6 +100,14 @@ struct StateViewDemo: View {
         switch selectedVariant {
         case .stateView:
             StateView(
+                image: { () -> StateView.StateImage? in
+                    guard showStateImage else { return nil }
+                    if useIllustration {
+                        return .illustration(Image("ExampleIllustration"))
+                    } else  {
+                        return .icon(selectedIcon)
+                    }
+                }(),
                 title: title,
                 description: description,
                 actionButton: .init(title: primaryButtonTitle, action: {}),
