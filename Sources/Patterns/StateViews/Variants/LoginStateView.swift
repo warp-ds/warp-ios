@@ -1,9 +1,29 @@
 import SwiftUI
 
+/// A login state view that presents a user icon, localized title and description,
+/// along with primary and secondary action buttons for login and account creation, styled for WARP.
+/// This view also displays the brand logo.
+///
+/// **Usage:**
+/// ```
+/// LoginStateView(
+///    loginAction: {
+///       print("Login tapped")
+///    },
+///    createAccountAction: {
+///       print("Create Account tapped")
+///    }
+/// )
+/// ```
 public struct LoginStateView: View, StateViewConfigurable {
 
     public var configuration: StateViewConfiguration
 
+    /// Initializes a `LoginStateView` with provided actions for login and creating an account.
+    ///
+    /// - Parameters:
+    ///   - loginAction: Closure called on login button tap.
+    ///   - createAccountAction: Closure called on create account button tap.
     public init(
         loginAction: @Sendable @escaping () -> Void,
         createAccountAction: @Sendable @escaping () -> Void

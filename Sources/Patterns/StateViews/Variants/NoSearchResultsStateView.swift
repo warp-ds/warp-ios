@@ -1,9 +1,30 @@
 import SwiftUI
 
+
+/// A no search results state view that displays a search icon, localized title and description,
+/// along with action buttons to save the search or clear filters, styled for WARP.
+///
+/// **Usage:**
+/// ```
+/// NoSearchResultsStateView(
+///    saveSearchAction: {
+///       print("Save Search tapped")
+///    },
+///    clearFiltersAction: {
+///       print("Clear Filters tapped")
+///    }
+/// )
+/// ```
 public struct NoSearchResultsStateView: View, StateViewConfigurable {
 
     public var configuration: StateViewConfiguration
 
+
+    /// Initializes a `NoSearchResultsStateView` with button action closures.
+    ///
+    /// - Parameters:
+    ///   - saveSearchAction: Closure called on save search button tap.
+    ///   - clearFiltersAction: Closure called on clear filters button tap.
     public init(
         saveSearchAction: @Sendable @escaping () -> Void,
         clearFiltersAction: @Sendable @escaping () -> Void

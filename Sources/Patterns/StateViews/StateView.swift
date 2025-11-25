@@ -1,16 +1,43 @@
 import SwiftUI
 
+/// A versatile state view component that displays a visual state representation with optional image, title, description, and buttons, styled for WARP.
+/// The component supports either an icon or illustration image, optional tint color, customizable accessibility description for the image, primary and secondary action buttons, and an optional brand logo endorsement.
+///
+/// **Usage:**
+/// ```
+/// StateView(
+///    image: .icon(.check),
+///    tintColor: .blue,
+///    imageContentDescription: "Check icon",
+///    title: "Operation Successful",
+///    description: "Your changes have been saved.",
+///    actionButton: StateView.StateButton(title: "Retry") {
+///       print("Retry tapped")
+///    },
+///    quietButton: StateView.StateButton(title: "Cancel") {
+///       print("Cancel tapped")
+///    },
+///    showLogo: true
+/// )
+/// ```
 public struct StateView: View {
 
+    /// Represents the types of images supported in the state view: either an icon from Warp.Icon or a custom illustration image.
     public enum StateImage {
         case icon(Warp.Icon)
         case illustration(Image)
     }
 
+    /// Encapsulates a button with a title and an action closure to be used in the state view for user interaction.
     public struct StateButton {
         let title: String
         let action: () -> Void
 
+        /// Creates a state button with a title and action.
+        ///
+        /// - Parameters:
+        ///   - title: The text to display on the button.
+        ///   - action: The action to perform when the button is pressed.
         public init(title: String, action: @escaping () -> Void) {
             self.title = title
             self.action = action
@@ -26,6 +53,17 @@ public struct StateView: View {
     private let quietButton: StateButton?
     private let showLogo: Bool
 
+    /// Initializes a `StateView` with the provided configuration parameters.
+    ///
+    /// - Parameters:
+    ///   - image: An optional state image, either icon or illustration.
+    ///   - tintColor: An optional tint color applied to the illustration.
+    ///   - imageContentDescription: An optional accessibility description for the illustration.
+    ///   - title: The title text to be displayed.
+    ///   - description: An optional description text below the title.
+    ///   - actionButton: An optional primary action button.
+    ///   - quietButton: An optional secondary quiet action button.
+    ///   - showLogo: Whether to display the brand logo endorsement.
     public init(
         image: StateImage? = nil,
         tintColor: Color? = nil,
@@ -138,7 +176,7 @@ public struct StateView: View {
             print("Primary Action") // swiftlint:disable:this no_print
         },
         quietButton: .init(title: "Secondary Button") {
-            print("Secodalry Action") // swiftlint:disable:this no_print
+            print("Secondary Action") // swiftlint:disable:this no_print
         },
         showLogo: true
     )

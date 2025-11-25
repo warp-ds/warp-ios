@@ -1,5 +1,11 @@
 import SwiftUI
 
+/// A simple loading state showing a spinner and a localized loading description text, styled for WARP.
+///
+/// **Usage:**
+/// ```
+/// LoadingStateView()
+/// ```
 public struct LoadingStateView: View {
 
     public init() {}
