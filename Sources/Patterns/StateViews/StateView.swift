@@ -148,8 +148,20 @@ public struct StateView: View {
     }
 
     private var endorsementView: some View {
-        Warp.BrandLogo.vend(.default)
-          .frame(height: 16)
+        var logoName = "VendLogoTagLine"
+        switch Warp.Theme {
+        case .finn, .blocket:
+            logoName.append("NO_SE")
+        case .tori:
+            logoName.append("FI")
+        case .dba:
+            logoName.append("DA")
+        case .vend, .neutral:
+            logoName.append("EN")
+        }
+        return Image.warpIcon(named: logoName)
+          .resizable()
+          .frame(width: 72, height: 38)
     }
 
     public var body: some View {
