@@ -1,20 +1,20 @@
 import SwiftUI
 
-public struct NoNetworkStateView: View {
+public struct NoNetworkStateView: View, StateViewConfigurable {
 
-    let retryAction: (@Sendable () -> Void)
+    public var configuration: StateViewConfiguration
 
     public init(retryAction: @Sendable @escaping () -> Void) {
-        self.retryAction = retryAction
-    }
-
-    public var body: some View {
-        StateView(
+        configuration = StateViewConfiguration(
             image: .icon(.wifi),
             title: Warp.Strings.patternStateNoNetworkConnectionTitle.localized,
             description: Warp.Strings.patternStateNoNetworkConnectionDescription.localized,
             actionButton: .init(title:  Warp.Strings.patternStatRetryAction.localized, action: retryAction)
         )
+    }
+
+    public var body: some View {
+        StateView(configuration: configuration)
     }
 }
 

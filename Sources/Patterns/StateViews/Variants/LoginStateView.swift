@@ -1,20 +1,14 @@
 import SwiftUI
 
-public struct LoginStateView: View {
+public struct LoginStateView: View, StateViewConfigurable {
 
-    let loginAction: (@Sendable () -> Void)
-    let createAccountAction: (@Sendable () -> Void)
+    public var configuration: StateViewConfiguration
 
     public init(
         loginAction: @Sendable @escaping () -> Void,
         createAccountAction: @Sendable @escaping () -> Void
     ) {
-        self.loginAction = loginAction
-        self.createAccountAction = createAccountAction
-    }
-
-    public var body: some View {
-        StateView(
+        configuration = StateViewConfiguration(
             image: .icon(.user),
             title: Warp.Strings.patternStateLoginTitle.localized,
             description: Warp.Strings.patternStateLoginDescription.localized,
@@ -22,6 +16,10 @@ public struct LoginStateView: View {
             quietButton: .init(title: Warp.Strings.patternStateLoginCreateAccountAction.localized, action: createAccountAction),
             showLogo: true
         )
+    }
+
+    public var body: some View {
+        StateView(configuration: configuration)
     }
 }
 

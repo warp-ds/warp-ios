@@ -1,26 +1,26 @@
 import SwiftUI
 
-public struct VerifyIdentityStateView: View {
+public struct VerifyIdentityStateView: View, StateViewConfigurable {
 
-    let eidProvider: String
-    let verifyAction: (@Sendable () -> Void)
+    public var configuration: StateViewConfiguration
 
     public init(
         eidProvider: String,
         verifyAction: @Sendable @escaping () -> Void
     ) {
-        self.eidProvider = eidProvider
-        self.verifyAction = verifyAction
-    }
-
-    public var body: some View {
-        let actionTitle = Warp.Strings.patternStateVerifyIdentityAction.localized.replacingOccurrences(of: "{eid_provider}", with: eidProvider)
-        StateView(
+        configuration = StateViewConfiguration(
             image: .icon(.verification),
             title: Warp.Strings.patternStateVerifyIdentityTitle.localized,
             description: Warp.Strings.patternStateVerifyIdentityDescription.localized,
-            actionButton: .init(title: actionTitle, action: verifyAction)
+            actionButton: .init(
+                title: Warp.Strings.patternStateVerifyIdentityAction.localized.replacingOccurrences(of: "{eid_provider}", with: eidProvider),
+                action: verifyAction
+            )
         )
+    }
+
+    public var body: some View {
+        StateView(configuration: configuration)
     }
 }
 

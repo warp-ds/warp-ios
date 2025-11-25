@@ -46,6 +46,17 @@ public struct StateView: View {
         self.showLogo = showLogo
     }
 
+    init(configuration: StateViewConfiguration) {
+        self.image = configuration.image
+        self.tintColor = configuration.tintColor
+        self.imageContentDescription = configuration.imageContentDescription
+        self.title = configuration.title
+        self.description = configuration.description
+        self.actionButton = configuration.actionButton
+        self.quietButton = configuration.quietButton
+        self.showLogo = configuration.showLogo
+    }
+
     @ViewBuilder
     private var imageView: some View {
         switch image {

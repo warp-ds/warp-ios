@@ -1,20 +1,20 @@
 import SwiftUI
 
-public struct FailToLoadStateView: View {
+public struct FailToLoadStateView: View, StateViewConfigurable {
 
-    let retryAction: (@Sendable () -> Void)
+    public var configuration: StateViewConfiguration
 
     public init(retryAction: @Sendable @escaping () -> Void) {
-        self.retryAction = retryAction
-    }
-
-    public var body: some View {
-        StateView(
+        configuration = StateViewConfiguration(
             image: .icon(.smileySad),
             title: Warp.Strings.patternStateFailToLoadTitle.localized,
             description: Warp.Strings.patternStateFailToLoadDescription.localized,
             actionButton: .init(title:  Warp.Strings.patternStatRetryAction.localized, action: retryAction)
         )
+    }
+
+    public var body: some View {
+        StateView(configuration: configuration)
     }
 }
 
