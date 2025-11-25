@@ -118,12 +118,13 @@ public struct StateView: View {
     private var textSectionView: some View {
         VStack(alignment: .center, spacing: Warp.Spacing.spacing50) {
             Warp.Text(title, style: .title3)
-                .multilineTextAlignment(.center)
+              .lineLimit(2)
+              .multilineTextAlignment(.center)
 
             if let description {
                 Warp.Text(description, style: .body)
-                    .lineLimit(nil) // Allow unlimited lines
-                    .multilineTextAlignment(.center)
+                  .lineLimit(nil) // Allow unlimited lines
+                  .multilineTextAlignment(.center)
             }
         }
     }
