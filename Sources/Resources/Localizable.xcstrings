@@ -10013,34 +10013,10 @@
       "comment" : "Description for fail to load state view",
       "extractionState" : "manual",
       "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prøv igen om lidt, eller få mere information fra kundeservice."
-          }
-        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We couldn’t load this content. Try again in a little while, or get more information from customer support."
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yritä uudelleen hetken kuluttua tai kysy lisätietoja asiakaspalvelusta."
-          }
-        },
-        "nb-NO" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prøv igjen om litt, eller få mer informasjon hos kundeservice."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Försök igen om en liten stund, eller få mer information från kundservice."
+            "value" : "We couldn’t load this content right now. Try again in a little while, or get more information from customer support."
           }
         }
       }
