@@ -14,6 +14,17 @@ public extension StateViewConfigurable {
         return copy
     }
 
+    /// Changes the dimensions of the icon/illustration displayed in the state view.
+    /// - Parameters:
+    ///   - imageWidth: The new icon size/illustration width.
+    ///   - imageHeight: The new illustration height.
+    func override(imageWidth: CGFloat? = nil, imageHeight: CGFloat? = nil) -> Self {
+        var copy = self
+        copy.configuration.imageWidth = imageWidth
+        copy.configuration.imageHeight = imageHeight
+        return copy
+    }
+
     /// Changes the tint color applied to the image.
     /// - Parameter tintColor: The new tint color.
     func override(tintColor: Color) -> Self {

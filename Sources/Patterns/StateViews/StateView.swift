@@ -44,19 +44,14 @@ public struct StateView: View {
         }
     }
 
-    private let image: StateImage?
-    private let tintColor: Color?
-    private let imageContentDescription: String?
-    private let title: String
-    private let description: String?
-    private let actionButton: StateButton?
-    private let quietButton: StateButton?
-    private let showLogo: Bool
+    private let configuration: StateViewConfiguration
 
     /// Initializes a `StateView` with the provided configuration parameters.
     ///
     /// - Parameters:
     ///   - image: An optional state image, either icon or illustration.
+    ///   - imageWidth: An optional width for the image(overrides default icon size/illustration width, not recommended).
+    ///   - imageHeight: An optional height for the image (overrides default illustration height, not recommended).
     ///   - tintColor: An optional tint color applied to the illustration.
     ///   - imageContentDescription: An optional accessibility description for the illustration.
     ///   - title: The title text to be displayed.
@@ -66,6 +61,8 @@ public struct StateView: View {
     ///   - showLogo: Whether to display the brand logo endorsement.
     public init(
         image: StateImage? = nil,
+        imageWidth: CGFloat? = nil,
+        imageHeight: CGFloat? = nil,
         tintColor: Color? = nil,
         imageContentDescription: String? = nil,
         title: String,
@@ -74,54 +71,51 @@ public struct StateView: View {
         quietButton: StateButton? = nil,
         showLogo: Bool = false
     ) {
-        self.image = image
-        self.tintColor = tintColor
-        self.imageContentDescription = imageContentDescription
-        self.title = title
-        self.description = description
-        self.actionButton = actionButton
-        self.quietButton = quietButton
-        self.showLogo = showLogo
+        configuration = StateViewConfiguration(
+            image: image,
+            imageWidth: imageWidth,
+            imageHeight: imageHeight,
+            tintColor: tintColor,
+            imageContentDescription: imageContentDescription,
+            title: title,
+            description: description,
+            actionButton: actionButton,
+            quietButton: quietButton,
+            showLogo: showLogo
+        )
     }
 
     init(configuration: StateViewConfiguration) {
-        self.image = configuration.image
-        self.tintColor = configuration.tintColor
-        self.imageContentDescription = configuration.imageContentDescription
-        self.title = configuration.title
-        self.description = configuration.description
-        self.actionButton = configuration.actionButton
-        self.quietButton = configuration.quietButton
-        self.showLogo = configuration.showLogo
+        self.configuration = configuration
     }
 
     @ViewBuilder
     private var imageView: some View {
-        switch image {
+        switch configuration.image {
         case .none:
             EmptyView()
         case .icon(let icon):
             Warp.IconView(
                 icon,
-                size: .custom(64),
+                size: .custom(configuration.imageWidth ?? 64),
                 color: Warp.Token.iconPrimary
             )
         case .illustration(let illustration):
             illustration
                 .resizable()
                 .scaledToFit()
-                .frame(width: 200, height: 200)
-                .accessibilityLabel(imageContentDescription ?? "")
+                .frame(width: configuration.imageWidth ?? 200, height: configuration.imageHeight ?? 200)
+                .accessibilityLabel(configuration.imageContentDescription ?? "")
         }
     }
 
     private var textSectionView: some View {
         VStack(alignment: .center, spacing: Warp.Spacing.spacing50) {
-            Warp.Text(title, style: .title3)
+            Warp.Text(configuration.title, style: .title3)
               .lineLimit(2)
               .multilineTextAlignment(.center)
 
-            if let description {
+            if let description = configuration.description {
                 Warp.Text(description, style: .body)
                   .lineLimit(nil) // Allow unlimited lines
                   .multilineTextAlignment(.center)
@@ -131,14 +125,14 @@ public struct StateView: View {
 
     private var buttonSectionView: some View {
         VStack(spacing: Warp.Spacing.spacing150) {
-            if let actionButton {
+            if let actionButton = configuration.actionButton {
                 Warp.Button(
                     title: actionButton.title,
                     action: actionButton.action,
                     type: .primary
                 )
             }
-            if let quietButton {
+            if let quietButton = configuration.quietButton {
                 Warp.Button(
                     title: quietButton.title,
                     action: quietButton.action,
@@ -170,7 +164,7 @@ public struct StateView: View {
             imageView
             textSectionView
             buttonSectionView
-            if showLogo {
+            if configuration.showLogo {
                 endorsementView
             }
         }

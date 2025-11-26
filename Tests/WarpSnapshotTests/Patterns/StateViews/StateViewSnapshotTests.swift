@@ -34,6 +34,31 @@ struct StateViewSnapshotTests {
     }
 
     @Test(arguments: combine(userInterfaceStyles, devices))
+    func snapshotStateViewSizeOverrided(style: UIUserInterfaceStyle, device: ViewImageConfig) {
+        let snapshotName = snapshotName(for: style, device: device)
+
+        Warp.Theme = .finn
+
+        let stateView = StateView(
+            image: .icon(.check),
+            imageWidth: 150,
+            title: "An unexpected error occured right now please retry",
+            description: "Description description description you have to try",
+            actionButton: .init(title: "Call To Action") {
+                print("Primary Action") // swiftlint:disable:this no_print
+            },
+            quietButton: .init(title: "Secondary Button") {
+                print("Secondary Action") // swiftlint:disable:this no_print
+            },
+            showLogo: true
+        )
+          .padding()
+          .frame(width: device.size!.width)
+
+        assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
+    }
+
+    @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotFailToLoadStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
         

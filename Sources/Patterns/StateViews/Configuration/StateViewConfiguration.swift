@@ -2,6 +2,8 @@ import SwiftUI
 
 public struct StateViewConfiguration {
     var image: StateView.StateImage?
+    var imageWidth: CGFloat?
+    var imageHeight: CGFloat?
     var tintColor: Color?
     var imageContentDescription: String?
     var title: String
@@ -12,6 +14,8 @@ public struct StateViewConfiguration {
 
     init(
         image: StateView.StateImage? = nil,
+        imageWidth: CGFloat? = nil,
+        imageHeight: CGFloat? = nil,
         tintColor: Color? = nil,
         imageContentDescription: String? = nil,
         title: String,
@@ -21,6 +25,8 @@ public struct StateViewConfiguration {
         showLogo: Bool = false
     ) {
         self.image = image
+        self.imageWidth = imageWidth
+        self.imageHeight = imageHeight
         self.tintColor = tintColor
         self.imageContentDescription = imageContentDescription
         self.title = title
