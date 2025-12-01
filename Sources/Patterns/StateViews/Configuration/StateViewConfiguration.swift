@@ -12,7 +12,7 @@ public struct StateViewConfiguration {
     var quietButton: StateView.StateButton?
     var showLogo: Bool
 
-    init(
+    public init(
         image: StateView.StateImage? = nil,
         imageWidth: CGFloat? = nil,
         imageHeight: CGFloat? = nil,

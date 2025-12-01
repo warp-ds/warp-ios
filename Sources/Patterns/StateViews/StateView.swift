@@ -85,7 +85,7 @@ public struct StateView: View {
         )
     }
 
-    init(configuration: StateViewConfiguration) {
+    public init(configuration: StateViewConfiguration) {
         self.configuration = configuration
     }
 
