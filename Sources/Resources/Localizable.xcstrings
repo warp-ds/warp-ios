@@ -8,7 +8,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Autovex logo"
+            "value" : "Autovex-logo"
           }
         },
         "en" : {
@@ -32,7 +32,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Autovex logo"
+            "value" : "Autovex-logo"
           }
         }
       }
@@ -242,13 +242,13 @@
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Autovex logo"
+            "value" : "Autovex-logo"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Autovex logo"
+            "value" : "Autovex-logtyp"
           }
         }
       }
@@ -284,7 +284,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bilbasen-logga"
+            "value" : "Bilbasen-logotyp"
           }
         }
       }
@@ -320,7 +320,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Blocket-logga"
+            "value" : "Blocket-logotyp"
           }
         }
       }
@@ -356,7 +356,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "DBA-logga"
+            "value" : "DBA-logotyp"
           }
         }
       }
@@ -392,7 +392,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Finn-logga"
+            "value" : "Finn-logotyp"
           }
         }
       }
@@ -404,7 +404,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nettbil"
+            "value" : "Nettbil-logo"
           }
         },
         "en" : {
@@ -416,19 +416,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nettbil"
+            "value" : "Nettbil logo"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nettbil mørkt ikon"
+            "value" : "Nettbil-logo"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nettbil"
+            "value" : "Nettbil-logotyp"
           }
         }
       }
@@ -464,7 +464,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oikotie-logga"
+            "value" : "Oikotie-logotyp"
           }
         }
       }
@@ -536,7 +536,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Schibsted-logga"
+            "value" : "Schibsted-logotyp"
           }
         }
       }
@@ -572,7 +572,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tori-logga"
+            "value" : "Tori-logotyp"
           }
         }
       }
@@ -584,7 +584,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vend logo"
+            "value" : "Vend-logo"
           }
         },
         "en" : {
@@ -620,7 +620,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vend Pro logo"
+            "value" : "Vend pro-logo"
           }
         },
         "en" : {
@@ -638,13 +638,13 @@
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vend—Pro-logo"
+            "value" : "Vend Pro-logo"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vend-Pro-logotyp"
+            "value" : "Vend Pro-logotyp"
           }
         }
       }
@@ -4472,7 +4472,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spilcontroller"
+            "value" : "Gaming-controller"
           }
         },
         "en" : {
@@ -10149,6 +10149,618 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "YouTube-logotyp"
+          }
+        }
+      }
+    },
+    "pattern.noNetworkConnection.description" : {
+      "comment" : "Description for no network connection state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi kan ikke kommunikere med serveren. Tjek om du er tilsluttet wi-fi eller har adgang til mobildata."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We're not able to communicate with the server. Check your wireless or mobile connection."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palvelimeen ei saada yhteyttä. Tarkista, että olet yhteydessä langattomaan verkkoon tai mobiilidataan."
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi får ikke kontaktet serveren. Sjekk at du er koblet til trådløst nett eller mobildata."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi kunde inte kommunicera med servern. Kontrollera din anslutning."
+          }
+        }
+      }
+    },
+    "pattern.noNetworkConnection.title" : {
+      "comment" : "Title for no network connection state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline?"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yhteysongelmia?"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frakoblet?"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inte ansluten?"
+          }
+        }
+      }
+    },
+    "pattern.state.failToLoad.description" : {
+      "comment" : "Description for fail to load state view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi kan ikke indlæse indholdet lige nu. Prøv igen om lidt, eller få hjælp af kundeservice."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn’t load this content right now. Try again in a little while, or get more information from customer support."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sisältöä ei voitu juuri nyt ladata. Yritä uudelleen hetken kuluttua tai kysy lisätietoja asiakaspalvelusta."
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi fikk ikke til å laste dette innholdet akkurat nå. Prøv igjen senere, eller få mer informasjon fra kundeservice."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Det gick inte att ladda detta innehåll just nu. Försök igen om en liten stund eller kontakta kundservice för mer information."
+          }
+        }
+      }
+    },
+    "pattern.state.failToLoad.title" : {
+      "comment" : "Description of error page",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beklager, noget gik galt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorry, something went wrong"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valitettavasti jotain meni pieleen"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beklager, noe gikk galt"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Äsch, något gick fel"
+          }
+        }
+      }
+    },
+    "pattern.state.loading.description" : {
+      "comment" : "Description for loading state view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent et øjeblik..."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please wait..."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odota hetki..."
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vent litt..."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vänta ..."
+          }
+        }
+      }
+    },
+    "pattern.state.login.createAccountAction" : {
+      "comment" : "Title for create account secondary button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opret en konto"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create an account"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luo tili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opprett en konto"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skapa konto"
+          }
+        }
+      }
+    },
+    "pattern.state.login.description" : {
+      "comment" : "Description for login state view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log ind for at sende beskeder, gemme favoritter og annonceagenter. Du vil også modtage nyttige notifikationer omkring det, som er vigtigt for dig."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in to send messages, save favourites and searches. You'll also receive handy notifications for what's important to you."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kirjautuneena voit lähettää viestejä, tallentaa hakuvahteja ja lisätä suosikkeja. Saat myös notifikaatioita sinulle tärkeistä asioista."
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logg inn for å sende meldinger, lagre favoritter og søk. Du får også nyttige varsler om hva som er viktig for deg."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logga in för att skicka meddelanden, spara favoriter och skapa bevakningar. Du får också hjälpsamma notiser om relevant information."
+          }
+        }
+      }
+    },
+    "pattern.state.login.loginAction" : {
+      "comment" : "Title for login action button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log ind"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kirjaudu sisään"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logg inn"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logga in"
+          }
+        }
+      }
+    },
+    "pattern.state.login.title" : {
+      "comment" : "Title for login state view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mulighedernes markedsplads"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The marketplace of possibilities"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaikille hyvät kaupat"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mulighetenes marked"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hela Sveriges Marknadsplats"
+          }
+        }
+      }
+    },
+    "pattern.state.noSearchResults.clearFiltersAction" : {
+      "comment" : "Title for clear filters secondary button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luk filtre"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear filters"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tyhjennä suodattimet"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tøm filtre"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rensa filter"
+          }
+        }
+      }
+    },
+    "pattern.state.noSearchResults.description" : {
+      "comment" : "Description for no search results state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi kan ikke finde produktet du søger, det kan være blevet solgt. Ønsker du at få besked, når lignende varer kommer til salg?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We can’t find the product you’re looking for – it may already have been sold. Would you like to be notified when there are new results for this search?"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etsimääsi tuotetta ei löydy – se saattaa jo myyty. Haluatko tiedon, kun tähän hakuun tulee uusia osumia?"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi finner ikke produktet du leter etter – det kan allerede være solgt. Vil du bli varslet når det er nye treff for dette søket?"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi hittar inte varan du letar efter – den kanske redan har blivit såld. Vill du få en notis när det finns nya träffar på den här sökningen?"
+          }
+        }
+      }
+    },
+    "pattern.state.noSearchResults.saveSearchAction" : {
+      "comment" : "Title for save search action button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opret annonceagent"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save search"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tallenna hakuvahti"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lagre søk"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skapa bevakning"
+          }
+        }
+      }
+    },
+    "pattern.state.noSearchResults.title" : {
+      "comment" : "Title for no search results state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tja… her er der godt nok tomt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Well, this place is empty"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ei hakutuloksia"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oj, her var det tomt"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oj, här var det tomt"
+          }
+        }
+      }
+    },
+    "pattern.state.retryAction" : {
+      "comment" : "Title for retry action button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prøv igen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yritä uudelleen"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prøv igjen"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Försök igen"
+          }
+        }
+      }
+    },
+    "pattern.state.verifyIdentity.action" : {
+      "comment" : "Title for verify action button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valider med {eid_provider}"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verify using {eid_provider}"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunnistaudu palvelun {eid_provider} kautta"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifiser med {eid_provider}"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifiera med {eid_provider}"
+          }
+        }
+      }
+    },
+    "pattern.state.verifyIdentity.description" : {
+      "comment" : "Description for verify identity state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Før du kontakter nogen, skal du validere din konto. Det er nødvendigt, så personen i den anden ende ved, hvem de taler med."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Before you make contact, you need to verify yourself. We do this so that the other person can be confident in who they are talking to."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sinun täytyy tunnistautua ennen yhteydenottoa. Tällä varmistetaan, että vastapuoli tietää, kenen kanssa hän on tekemässä kaupat."
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Før du tar kontakt, må du verifisere kontoen din. Vi gjør dette slik at personen i andre enden kan være trygg på personen vedkommende snakker med."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Innan du kontaktar någon behöver du verifiera din identitet. Detta låter den andra personen känna sig säker på vem de pratar med."
+          }
+        }
+      }
+    },
+    "pattern.state.verifyIdentity.title" : {
+      "comment" : "Title for verify identity state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valider din identitet"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please verify yourself"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunnistaudu"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifiser identiteten din"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifiera din identitet"
           }
         }
       }
