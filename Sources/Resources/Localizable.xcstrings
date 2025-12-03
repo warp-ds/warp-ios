@@ -10676,7 +10676,7 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tunnistaudu palvelun {eid_provider} kautta"
+            "value" : "Tunnistaudu"
           }
         },
         "nb-NO" : {
