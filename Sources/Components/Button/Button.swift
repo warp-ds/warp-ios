@@ -34,6 +34,8 @@ extension Warp {
         /// Object that will provide needed colors.
         private let colorProvider: ColorProvider = Warp.Color
 
+        private var isMultilineAndCentered: Bool = false
+
         public static func == (lhs: Button, rhs: Button) -> Bool {
             lhs.title == rhs.title &&
             lhs.type == rhs.type &&
@@ -93,6 +95,12 @@ extension Warp {
             )
         }
 
+        func makeMultilineAndCentered() -> Warp.Button {
+            var copy = self
+            copy.isMultilineAndCentered = true
+            return copy
+        }
+
         private var buttonView: some View {
             HStack {
                 createFillerViewIfNeeded()
@@ -117,8 +125,15 @@ extension Warp {
             }
         }
 
+        @ViewBuilder
         private var titleView: some View {
-            SwiftUI.Text(title)
+            if isMultilineAndCentered {
+                SwiftUI.Text(title)
+                    .lineLimit(nil)
+                    .multilineTextAlignment(.center)
+            } else {
+                SwiftUI.Text(title)
+            }
         }
 
         @ViewBuilder

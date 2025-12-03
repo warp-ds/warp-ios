@@ -116,9 +116,24 @@ public struct StateView: View {
               .multilineTextAlignment(.center)
 
             if let description = configuration.description {
-                Warp.Text(description, style: .body)
-                  .lineLimit(nil) // Allow unlimited lines
-                  .multilineTextAlignment(.center)
+                if #available(iOS 16.4, *) { // Make it scrollable if content is too long
+                    Warp.Text(description, style: .body)
+                      .lineLimit(nil) // Allow unlimited lines
+                      .multilineTextAlignment(.center)
+                      .colorMultiply(.clear)
+                      .overlay {
+                          ScrollView(.vertical) {
+                              Warp.Text(description, style: .body)
+                                .lineLimit(nil) // Allow unlimited lines
+                                .multilineTextAlignment(.center)
+                          }
+                            .scrollBounceBehavior(.basedOnSize)
+                      }
+                } else {
+                    Warp.Text(description, style: .body)
+                      .lineLimit(nil) // Allow unlimited lines
+                      .multilineTextAlignment(.center)
+                }
             }
         }
     }
@@ -131,6 +146,7 @@ public struct StateView: View {
                     action: actionButton.action,
                     type: .primary
                 )
+                  .makeMultilineAndCentered()
             }
             if let quietButton = configuration.quietButton {
                 Warp.Button(
@@ -138,6 +154,7 @@ public struct StateView: View {
                     action: quietButton.action,
                     type: .quiet
                 )
+                .makeMultilineAndCentered()
             }
         }
     }
@@ -178,7 +195,7 @@ public struct StateView: View {
     StateView(
         image: .icon(.check),
         title: "An unexpected error occured right now please retry",
-        description: "Description description description you have to try",
+        description: "Description description description you have to try. Description description description you have to try. Description description description you have to try",
         actionButton: .init(title: "Call To Action") {
             print("Primary Action") // swiftlint:disable:this no_print
         },
