@@ -36,6 +36,11 @@ struct ContentView: View {
                     row("Brand Icons", destination: BrandIconsView())
                     row("Brand Logos", destination: BrandLogosView())
 
+                    Warp.Text("Warp Patterns", style: .title3)
+                    Divider()
+
+                    row("State views", destination: StateViewDemo())
+
                     Warp.Text("Warp Components", style: .title3)
                     Divider()
 
