@@ -25,6 +25,7 @@ extension Warp.Callout {
         private let arrowWidth: Double
         private let cornerRadius: Double
         private let edge: Edge
+        private let arrowAnchor: Anchor<CGRect>.Source?
 
         var insetAmount = 0.0
 
@@ -32,12 +33,14 @@ extension Warp.Callout {
             arrowHeight: Double,
             arrowWidth: Double,
             cornerRadius: Double,
-            edge: Edge
+            edge: Edge,
+            arrowAnchor: Anchor<CGRect>.Source?
         ) {
             self.arrowHeight = arrowHeight
             self.arrowWidth = arrowWidth
             self.cornerRadius = cornerRadius
             self.edge = edge
+            self.arrowAnchor = arrowAnchor
         }
 
         func path(in rect: CGRect) -> Path {

@@ -36,6 +36,8 @@ extension Warp {
         /// Edge where to draw the arrow, default value is `.top`
         private var arrowEdge: Edge
 
+        private let arrowAnchor: Anchor<CGRect>.Source?
+
         /// Corner radius,
         private let cornerRadius: Double
 
@@ -52,12 +54,14 @@ extension Warp {
             size: CalloutSize = .default,
             type: CalloutType = .inline,
             title: String,
-            arrowEdge: Edge = .top
+            arrowEdge: Edge = .top,
+            arrowAnchor: Anchor<CGRect>.Source? = nil
         ) {
             self.size = size
             self.type = type
             self.title = title
             self.arrowEdge = arrowEdge
+            self.arrowAnchor = arrowAnchor
             self.cornerRadius = size.cornerRadius
         }
 
@@ -124,7 +128,8 @@ extension Warp {
                     arrowHeight: arrowHeight,
                     arrowWidth: arrowWidth,
                     cornerRadius: cornerRadius,
-                    edge: arrowEdge
+                    edge: arrowEdge,
+                    arrowAnchor: arrowAnchor
                 )
                 .strokeBorder(colorProvider.calloutBorder, lineWidth: 2)
             }
