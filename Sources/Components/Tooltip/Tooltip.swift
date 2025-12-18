@@ -64,7 +64,8 @@ extension Warp {
                 arrowHeight: arrowHeight,
                 arrowWidth: arrowWidth,
                 cornerRadius: cornerRadius,
-                edge: arrowEdge
+                edge: arrowEdge,
+                arrowAnchor: nil
             )
             .inset(by: 1)
             .fill(colorProvider.tooltipBackgroundStatic)
