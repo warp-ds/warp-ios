@@ -25,7 +25,7 @@ extension Warp.Callout {
         private let arrowWidth: Double
         private let cornerRadius: Double
         private let edge: Edge
-        private let arrowAnchor: CGRect?
+        private let arrowOffset: CGFloat?
 
         var insetAmount = 0.0
 
@@ -34,13 +34,13 @@ extension Warp.Callout {
             arrowWidth: Double,
             cornerRadius: Double,
             edge: Edge,
-            arrowAnchor: CGRect?
+            arrowOffset: CGFloat?
         ) {
             self.arrowHeight = arrowHeight
             self.arrowWidth = arrowWidth
             self.cornerRadius = cornerRadius
             self.edge = edge
-            self.arrowAnchor = arrowAnchor
+            self.arrowOffset = arrowOffset
         }
 
         func path(in rect: CGRect) -> Path {
@@ -142,14 +142,20 @@ extension Warp.Callout {
             }
         }
 
-        private func calculateArrowOffset(for rect: CGRect) -> CGFloat {
-            guard let arrowAnchor else {
-                return 0 // Default position (centered)
+        private func calculateArrowOffset(for rect: CGRect) -> CGFloat? {
+            guard let arrowOffset else {
+                return nil
             }
 
-            let anchorPosition = arrowAnchor.origin.x
-            let rectMidX = rect.midX
-            return anchorPosition - rectMidX
+            let maxOffset: CGFloat
+            switch edge {
+            case .top, .bottom:
+                maxOffset = rect.width - arrowWidth
+            case .leading, .trailing:
+                maxOffset = rect.height - arrowWidth
+            }
+
+            return max(cornerRadius + arrowWidth / 2 + 1, min(arrowOffset, maxOffset))
         }
 
         private func horizontalCalloutPath(
@@ -158,10 +164,11 @@ extension Warp.Callout {
             topRight: Corner,
             bottomRight: Corner,
             bottomLeft: Corner,
-            arrowOffset: CGFloat
+            arrowOffset: CGFloat?
         ) -> Path {
             Path { path in
                 let halfArrowWidth = arrowWidth / 2
+                let adjustedArrowOffset = rect.minX + (arrowOffset ?? (rect.width - arrowWidth) / 2)
 
                 // start in topleft corner
                 path.move(
@@ -174,11 +181,11 @@ extension Warp.Callout {
                 // edge up
                 path.addArc(
                     tangent1End: .init(
-                        x: rect.midX - halfArrowWidth + arrowOffset,
+                        x: adjustedArrowOffset - halfArrowWidth,
                         y: rect.minY + (arrowHeight + insetAmount)
                     ),
                     tangent2End: .init(
-                        x: rect.midX - (halfArrowWidth / 2) + arrowOffset,
+                        x: adjustedArrowOffset - (halfArrowWidth / 2),
                         y: rect.minY + ((arrowHeight / 2) + insetAmount)
                     ),
                     radius: cornerRadius / 4
@@ -187,11 +194,11 @@ extension Warp.Callout {
                 // over top
                 path.addArc(
                     tangent1End: .init(
-                        x: rect.midX + arrowOffset,
+                        x: adjustedArrowOffset,
                         y: rect.minY + insetAmount
                     ),
                     tangent2End: .init(
-                        x: rect.midX + (halfArrowWidth / 2) + arrowOffset,
+                        x: adjustedArrowOffset + (halfArrowWidth / 2),
                         y: rect.minY + ((arrowHeight / 2) + insetAmount)
                     ),
                     radius: cornerRadius / 2
@@ -200,11 +207,11 @@ extension Warp.Callout {
                 // edge down
                 path.addArc(
                     tangent1End: .init(
-                        x: rect.midX + halfArrowWidth + arrowOffset,
+                        x: adjustedArrowOffset + halfArrowWidth,
                         y: rect.minY + (arrowHeight + insetAmount)
                     ),
                     tangent2End: .init(
-                        x: rect.midX + arrowWidth + arrowOffset,
+                        x: adjustedArrowOffset + arrowWidth,
                         y: rect.minY + (arrowHeight + insetAmount)
                     ),
                     radius: cornerRadius / 4
@@ -254,10 +261,11 @@ extension Warp.Callout {
             topRight: Corner,
             bottomRight: Corner,
             bottomLeft: Corner,
-            arrowOffset: CGFloat
+            arrowOffset: CGFloat?
         ) -> Path {
             Path { path in
                 let halfArrowWidth = arrowWidth / 2
+                let adjustedArrowOffset = rect.minY + (arrowOffset ?? rect.height / 2)
 
                 // start in topleft corner
                 path.move(
@@ -298,11 +306,11 @@ extension Warp.Callout {
                 path.addArc(
                     tangent1End: .init(
                         x: rect.minX + arrowHeight + insetAmount,
-                        y: rect.midY + (halfArrowWidth - 1) + arrowOffset
+                        y: adjustedArrowOffset + (halfArrowWidth - 1)
                     ),
                     tangent2End: .init(
                         x: rect.minX + ((arrowHeight / 2) + insetAmount),
-                        y: rect.midY + (halfArrowWidth / 2) + arrowOffset
+                        y: adjustedArrowOffset + (halfArrowWidth / 2)
                     ),
                     radius: cornerRadius / 4
                 )
@@ -311,11 +319,11 @@ extension Warp.Callout {
                 path.addArc(
                     tangent1End: .init(
                         x: rect.minX + insetAmount,
-                        y: rect.midY + arrowOffset
+                        y: adjustedArrowOffset
                     ),
                     tangent2End: .init(
                         x: rect.minX + ((arrowHeight / 2) + insetAmount),
-                        y: rect.midY - (halfArrowWidth / 2) + arrowOffset
+                        y: adjustedArrowOffset - (halfArrowWidth / 2)
                     ),
                     radius: cornerRadius / 2
                 )
@@ -324,11 +332,11 @@ extension Warp.Callout {
                 path.addArc(
                     tangent1End: .init(
                         x: rect.minX + arrowHeight + insetAmount,
-                        y: rect.midY - (halfArrowWidth - 1) + arrowOffset
+                        y: adjustedArrowOffset - (halfArrowWidth - 1)
                     ),
                     tangent2End: .init(
                         x: rect.minX + arrowHeight + insetAmount,
-                        y: rect.midY - arrowWidth + arrowOffset
+                        y: adjustedArrowOffset - arrowWidth
                     ),
                     radius: cornerRadius / 4
                 )

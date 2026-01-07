@@ -15,6 +15,7 @@ extension Warp {
      - an `arrowWidth`, if you don't provide this, the default value is 18px
      - an `arrowEdge` where you want the Callout to appear from
      - a `cornerRadius`, if you don't provide this, the default value is 8px
+     - an optional `arrowOffset` to adjust the position of the arrow from the top/leading edge
      */
     public struct Callout: View {
         /// Size of callout
@@ -36,7 +37,8 @@ extension Warp {
         /// Edge where to draw the arrow, default value is `.top`
         private var arrowEdge: Edge
 
-        private let arrowAnchor: CGRect?
+        /// Custom arrow offset from top/leading edge
+        private let arrowOffset: CGFloat?
 
         /// Corner radius,
         private let cornerRadius: Double
@@ -49,19 +51,20 @@ extension Warp {
          - Parameter type:  Type of callout, default is `.inline`
          - Parameter title: String to display in the `Callout`
          - Parameter arrowEdge: Edge where to draw the arrow, default value is `.top`
+         - Parameter arrowOffset: Custom arrow offset from top/leading edge
          */
         public init(
             size: CalloutSize = .default,
             type: CalloutType = .inline,
             title: String,
             arrowEdge: Edge = .top,
-            arrowAnchor: CGRect? = nil
+            arrowOffset: CGFloat? = nil
         ) {
             self.size = size
             self.type = type
             self.title = title
             self.arrowEdge = arrowEdge
-            self.arrowAnchor = arrowAnchor
+            self.arrowOffset = arrowOffset
             self.cornerRadius = size.cornerRadius
         }
 
@@ -120,7 +123,7 @@ extension Warp {
                 arrowWidth: arrowWidth,
                 cornerRadius: cornerRadius,
                 edge: arrowEdge,
-                arrowAnchor: arrowAnchor
+                arrowOffset: arrowOffset
             )
             .inset(by: 1)
             .fill(colorProvider.calloutBackground)
@@ -130,7 +133,7 @@ extension Warp {
                     arrowWidth: arrowWidth,
                     cornerRadius: cornerRadius,
                     edge: arrowEdge,
-                    arrowAnchor: arrowAnchor
+                    arrowOffset: arrowOffset
                 )
                 .strokeBorder(colorProvider.calloutBorder, lineWidth: 2)
             }

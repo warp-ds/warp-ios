@@ -19,6 +19,9 @@ extension Warp {
         
         /// Edge where to draw the arrow, default value is `.top`
         private var arrowEdge: Edge
+
+        /// Custom arrow offset from top/leading edge
+        private var arrowOffset: CGFloat?
         
         /// Object responsible for providing colors in different environments and variants.
         private let colorProvider: ColorProvider = Warp.Color
@@ -31,13 +34,16 @@ extension Warp {
         /**
          - Parameter title: String to display in the `Tooltip`
          - Parameter arrowEdge: Edge where to draw the arrow, default value is `.top`
+         - Parameter arrowOffset: Optional arrow offset from top/leading edge
          */
         public init(
             title: String,
-            arrowEdge: Edge = .top
+            arrowEdge: Edge = .top,
+            arrowOffset: CGFloat? = nil
         ) {
             self.title = title
             self.arrowEdge = arrowEdge
+            self.arrowOffset = arrowOffset
         }
         
         public var body: some View {
@@ -65,7 +71,7 @@ extension Warp {
                 arrowWidth: arrowWidth,
                 cornerRadius: cornerRadius,
                 edge: arrowEdge,
-                arrowAnchor: nil
+                arrowOffset: arrowOffset
             )
             .inset(by: 1)
             .fill(colorProvider.tooltipBackgroundStatic)
