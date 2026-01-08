@@ -6157,6 +6157,30 @@
         }
       }
     },
+    "icon.title.microphone" : {
+      "comment" : "A11y title for microphone icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Microphone"
+          }
+        }
+      }
+    },
+    "icon.title.microphoneSlash" : {
+      "comment" : "A11y title for muted microphone icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muted microphone"
+          }
+        }
+      }
+    },
     "icon.title.minus" : {
       "comment" : "A11y title for minus icon",
       "extractionState" : "manual",
@@ -9285,6 +9309,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Två stadshus"
+          }
+        }
+      }
+    },
+    "icon.title.translate" : {
+      "comment" : "A11y title for symbol representing translation between languages icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbol representing translation between languages"
           }
         }
       }
