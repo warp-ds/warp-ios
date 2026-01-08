@@ -266,6 +266,9 @@ extension Warp {
         case listNumbers
         case textHOne
         case gamingController
+        case microphoneSlash
+        case microphone
+        case translate
 
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
@@ -568,6 +571,9 @@ extension Warp {
             case .listNumbers: return Warp.Strings.iconListNumbers.localized
             case .textHOne: return Warp.Strings.iconTextHOne.localized
             case .gamingController: return Warp.Strings.iconGamingController.localized
+            case .microphoneSlash: return Warp.Strings.iconMicrophoneSlash.localized
+            case .microphone: return Warp.Strings.iconMicrophone.localized
+            case .translate: return Warp.Strings.iconTranslate.localized
             }
         }
     }
