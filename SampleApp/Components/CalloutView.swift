@@ -101,6 +101,29 @@ struct CalloutView: View {
                 }
                 Divider()
             }
+
+            VStack(alignment: .leading) {
+                Text("Multiline Callout with Arrow Offset")
+                    .font(.headline)
+
+                Warp.Callout(
+                    size: showDefault ? .default : .small,
+                    title: "This is a multiline callout.\nIt demonstrates the use of an arrow offset.\nIt demonstrates the use of an arrow offset.\nIt demonstrates the use of an arrow offset.\nIt demonstrates the use of an arrow offset.\nIt demonstrates the use of an arrow offset.",
+                    arrowEdge: .leading,
+                    arrowOffset: 100
+                )
+                .padding(.vertical)
+
+                Warp.Callout(
+                      size: showDefault ? .default : .small,
+                      title: "This is a multiline callout.\nIt demonstrates the use of an arrow offset.",
+                      arrowEdge: .top,
+                      arrowOffset: 100
+                  )
+                  .padding(.vertical)
+
+                Divider()
+            }
         }
     }
 
