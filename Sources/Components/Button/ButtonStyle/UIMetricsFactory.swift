@@ -46,10 +46,12 @@ extension Warp.Button {
 
         /// Button corner radius based on current type.
         var cornerRadius: CGFloat {
-            if type.isUtilityRelatedButton {
+            // TODO: Refactor when brand theme tokens are more flexible.
+            if Warp.Theme == .vend {
+                return 999 // full rounding for vend theme
+            } else if type.isUtilityRelatedButton {
                 return 4
             }
-            
             return 8
         }
         
