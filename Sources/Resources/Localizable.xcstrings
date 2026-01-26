@@ -6697,6 +6697,18 @@
         }
       }
     },
+    "icon.title.phoneHandset" : {
+      "comment" : "A11y title for Phone handset icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone handset"
+          }
+        }
+      }
+    },
     "icon.title.phoneScratched" : {
       "comment" : "A11y title for phone scratched icon",
       "extractionState" : "manual",
@@ -7665,6 +7677,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hus med värmevågor"
+          }
+        }
+      }
+    },
+    "icon.title.scale" : {
+      "comment" : "A11y title for scale icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scale"
           }
         }
       }
