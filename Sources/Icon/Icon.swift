@@ -269,6 +269,8 @@ extension Warp {
         case microphoneSlash
         case microphone
         case translate
+        case scale
+        case phoneHandset
 
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
@@ -574,6 +576,8 @@ extension Warp {
             case .microphoneSlash: return Warp.Strings.iconMicrophoneSlash.localized
             case .microphone: return Warp.Strings.iconMicrophone.localized
             case .translate: return Warp.Strings.iconTranslate.localized
+            case .scale: return Warp.Strings.iconScale.localized
+            case .phoneHandset: return Warp.Strings.iconPhoneHandset.localized
             }
         }
     }
