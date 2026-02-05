@@ -112,28 +112,13 @@ public struct StateView: View {
     private var textSectionView: some View {
         VStack(alignment: .center, spacing: Warp.Spacing.spacing50) {
             Warp.Text(configuration.title, style: .title3)
-              .lineLimit(2)
+              .lineLimit(nil)
               .multilineTextAlignment(.center)
 
             if let description = configuration.description {
-                if #available(iOS 16.4, *) { // Make it scrollable if content is too long
-                    Warp.Text(description, style: .body)
-                      .lineLimit(nil) // Allow unlimited lines
-                      .multilineTextAlignment(.center)
-                      .colorMultiply(.clear)
-                      .overlay {
-                          ScrollView(.vertical) {
-                              Warp.Text(description, style: .body)
-                                .lineLimit(nil) // Allow unlimited lines
-                                .multilineTextAlignment(.center)
-                          }
-                            .scrollBounceBehavior(.basedOnSize)
-                      }
-                } else {
-                    Warp.Text(description, style: .body)
-                      .lineLimit(nil) // Allow unlimited lines
-                      .multilineTextAlignment(.center)
-                }
+                Warp.Text(description, style: .body)
+                  .lineLimit(nil) // Allow unlimited lines
+                  .multilineTextAlignment(.center)
             }
         }
     }
@@ -177,17 +162,19 @@ public struct StateView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .center, spacing: Warp.Spacing.spacing300) {
-            imageView
-            textSectionView
-            buttonSectionView
-            if configuration.showLogo {
-                endorsementView
+        ScrollView {
+            VStack(alignment: .center, spacing: Warp.Spacing.spacing300) {
+                imageView
+                textSectionView
+                buttonSectionView
+                if configuration.showLogo {
+                    endorsementView
+                }
             }
+              .padding(Warp.Spacing.spacing400)
+              .frame(maxHeight: .infinity, alignment: .center)
         }
-        .padding(Warp.Spacing.spacing400)
-        .frame(maxWidth: 420) // Constrain width on large screens (like iPad)
-        .frame(maxHeight: .infinity, alignment: .center)
+          .scrollBounceBasedOnSize()
     }
 }
 
