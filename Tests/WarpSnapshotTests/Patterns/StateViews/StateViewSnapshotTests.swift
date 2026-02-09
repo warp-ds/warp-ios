@@ -28,7 +28,7 @@ struct StateViewSnapshotTests {
             showLogo: true
         )
           .padding()
-          .frame(width: device.size!.width)
+          .frame(width: device.size!.width, height: device.size!.height)
 
         assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
@@ -53,7 +53,7 @@ struct StateViewSnapshotTests {
             showLogo: true
         )
           .padding()
-          .frame(width: device.size!.width)
+          .frame(width: device.size!.width, height: device.size!.height)
 
         assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
@@ -66,7 +66,7 @@ struct StateViewSnapshotTests {
 
         let stateView = FailToLoadStateView(retryAction: {})
           .padding()
-          .frame(width: device.size!.width)
+          .frame(width: device.size!.width, height: device.size!.height)
 
         assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
@@ -79,7 +79,7 @@ struct StateViewSnapshotTests {
 
         let stateView = LoadingStateView()
           .padding()
-          .frame(width: device.size!.width)
+          .frame(width: device.size!.width, height: device.size!.height)
 
         assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
@@ -92,7 +92,7 @@ struct StateViewSnapshotTests {
 
         let stateView = LoginStateView(loginAction: {}, createAccountAction: {})
           .padding()
-          .frame(width: device.size!.width)
+          .frame(width: device.size!.width, height: device.size!.height)
 
         assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
@@ -105,7 +105,7 @@ struct StateViewSnapshotTests {
 
         let stateView = NoNetworkStateView(retryAction: {})
           .padding()
-          .frame(width: device.size!.width)
+          .frame(width: device.size!.width, height: device.size!.height)
 
         assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
@@ -118,7 +118,7 @@ struct StateViewSnapshotTests {
 
         let stateView = NoSearchResultsStateView(saveSearchAction: {}, clearFiltersAction: {})
           .padding()
-          .frame(width: device.size!.width)
+          .frame(width: device.size!.width, height: device.size!.height)
 
         assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
@@ -131,7 +131,7 @@ struct StateViewSnapshotTests {
 
         let stateView = VerifyIdentityStateView(eidProvider: "BankID", verifyAction: {})
           .padding()
-          .frame(width: device.size!.width)
+          .frame(width: device.size!.width, height: device.size!.height)
 
         assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
