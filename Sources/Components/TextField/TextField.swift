@@ -72,6 +72,9 @@ extension Warp {
         /// An optional `Warp.Icon` displayed on the right side of the text field.
         private let rightIcon: Warp.Icon?
 
+        /// The accessibility label for the right icon button. Used for VoiceOver.
+        private let rightIconAccessibilityLabel: String?
+
         /// An optional action for right icon
         private let rightIconAction: () -> Void?
 
@@ -98,6 +101,7 @@ extension Warp {
         ///   - placeholder: Text to display when the text field is empty.
         ///   - suffix: An optional string displayed after the text input.
         ///   - rightIcon: An optional `Warp.Icon` displayed on the right side of the text field.
+        ///   - rightIconAccessibilityLabel: The accessibility label for the right icon button.
         ///   - rightIconAction: An optional action for the right icon.
         ///   - style: The style of the text field. Defaults to `.default`.
         ///   - helpText: Optional `String` to display below the text field.
@@ -111,6 +115,7 @@ extension Warp {
             placeholder: String = "",
             suffix: String? = nil,
             rightIcon: Warp.Icon? = nil,
+            rightIconAccessibilityLabel: String? = nil,
             rightIconAction: @escaping () -> Void? = { nil },
             style: Warp.TextFieldStyle = .default,
             helpText: String? = nil
@@ -124,6 +129,7 @@ extension Warp {
             self.placeholder = placeholder
             self.suffix = suffix
             self.rightIcon = rightIcon
+            self.rightIconAccessibilityLabel = rightIconAccessibilityLabel
             self.rightIconAction = rightIconAction
             self.style = style
             self.helpText = helpText
@@ -216,6 +222,8 @@ extension Warp {
                     } label: {
                         Warp.IconView(rightIcon, size: .small)
                     }
+                    .accessibilityAddTraits(.isButton)
+                    .accessibilityLabel(rightIconAccessibilityLabel ?? rightIcon.localization)
                 }
             }
             .padding(.horizontal, horizontalPadding)
