@@ -9481,6 +9481,18 @@
         }
       }
     },
+    "icon.title.tray" : {
+      "comment" : "A11y title for tray icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tray"
+          }
+        }
+      }
+    },
     "icon.title.tree" : {
       "comment" : "Title for tree icon",
       "extractionState" : "manual",

@@ -267,6 +267,7 @@ extension Warp {
         case iconScale = "icon.title.scale"
         case iconPhoneHandset = "icon.title.phoneHandset"
         case iconJacket = "icon.title.jacket"
+        case iconTray = "icon.title.tray"
 
         case taxonomyIconPlaneTakeOff = "taxonomy.icon.title.planeTakeOff"
         case taxonomyIconAirplaneBed = "taxonomy.icon.title.airplaneBed"
