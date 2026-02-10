@@ -271,6 +271,7 @@ extension Warp {
         case translate
         case scale
         case phoneHandset
+        case jacket
 
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
@@ -578,6 +579,7 @@ extension Warp {
             case .translate: return Warp.Strings.iconTranslate.localized
             case .scale: return Warp.Strings.iconScale.localized
             case .phoneHandset: return Warp.Strings.iconPhoneHandset.localized
+            case .jacket: return Warp.Strings.iconJacket.localized
             }
         }
     }
