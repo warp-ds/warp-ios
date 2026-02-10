@@ -5329,6 +5329,18 @@
         }
       }
     },
+    "icon.title.jacket" : {
+      "comment" : "A11y title for jacket icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jacket"
+          }
+        }
+      }
+    },
     "icon.title.jetski" : {
       "comment" : "A11y title for jetski icon",
       "extractionState" : "manual",
