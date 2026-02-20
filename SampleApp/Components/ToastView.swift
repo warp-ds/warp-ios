@@ -6,6 +6,7 @@ struct ToastView: View {
     @State var toastStyle: Warp.ToastStyle = .success
     @State var toastEdge: Warp.ToastEdge = .top
     @State var toastDuration: Warp.Toast.Duration = .short
+    @State var showCloseButton: Bool = true
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -83,6 +84,16 @@ struct ToastView: View {
 
                 Divider()
 
+                Text("Show close button")
+                    .font(.headline)
+
+                Toggle(isOn: $showCloseButton) {
+                    Text("Show close button on toast")
+                }
+                  .padding()
+
+                Divider()
+
                 Spacer()
             }
         }
@@ -92,6 +103,7 @@ struct ToastView: View {
             title: "Here's a toast of type \(toastStyle.description) located at the \(toastEdge.description) edge",
             edge: toastEdge,
             duration: toastDuration,
+            showCloseButton: showCloseButton,
             isPresented: $toastIsPresented
         )
         .navigationBarTitleDisplayMode(.inline)

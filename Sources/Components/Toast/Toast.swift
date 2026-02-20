@@ -37,11 +37,14 @@ extension Warp {
         /// Object responsible for providing colors in different environments and variants.
         let colorProvider: ColorProvider = Warp.Color
 
+        private let showCloseButton: Bool
+
         /**
          - Parameter style: The `ToastStyle` of the `Toast`
          - Parameter title: String to display in the `Toast`
          - Parameter toastEdge: The `ToastEdge` on where to present the `Toast`
          - Parameter duration: Duration for which the `Toast` will be displayed, default is `.short`
+         - Parameter showCloseButton: Whether to show close button on the `Toast`, default is `true`
          - Parameter isPresented: Is the `Toast` presented or not
          */
         public init(
@@ -49,12 +52,14 @@ extension Warp {
             title: String,
             toastEdge: Warp.ToastEdge,
             duration: Duration = .short,
+            showCloseButton: Bool = true,
             isPresented: Binding<Bool>
         ) {
             self.style = style
             self.title = title
             self.toastEdge = toastEdge
             self.duration = duration
+            self.showCloseButton = showCloseButton
             self._isPresented = isPresented
         }
 
@@ -92,7 +97,9 @@ extension Warp {
 
                 Spacer()
 
-                Warp.IconView(.close, size: .small)
+                if showCloseButton || duration == .infinite {
+                    Warp.IconView(.close, size: .small)
+                }
             }
             .padding(16)
         }
