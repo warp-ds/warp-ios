@@ -13,20 +13,10 @@ extension Warp {
 
         // MARK: - Tori Fonts
         case toriBold
-        case toriBoldItalic
-        case toriItalic
-        case toriMedium
-        case toriMediumItalic
         case toriRegular
         
         // MARK: - DBA Fonts
-        case dbaAltBold
-        case dbaAltLight
-        case dbaAltThin
-        case dbaBlack
         case dbaBold
-        case dbaExtraBold
-        case dbaThin
         case dbaRegular
         
         // MARK: - Blocket Fonts
@@ -52,24 +42,12 @@ extension Warp {
             case .finnLightItalic: return "finntype_light_italic"
             case .finnMedium: return "finntype_medium"
             case .toriBold: return "torisans_bold"
-            case .toriBoldItalic: return "torisans_bolditalic"
-            case .toriItalic: return "torisans_italic"
-            case .toriMedium: return "torisans_medium"
-            case .toriMediumItalic: return "torisans_mediumitalic"
             case .toriRegular: return "torisans_regular"
-            case .dbaAltBold: return "Proxima Nova Alt Bold"
-            case .dbaAltLight: return "Proxima Nova Alt Light"
-            case .dbaAltThin: return "Proxima Nova Alt Thin"
-            case .dbaBlack: return "Proxima Nova Black"
-            case .dbaBold: return "Proxima Nova Bold"
-            case .dbaExtraBold: return "Proxima Nova Extrabold"
-            case .dbaThin: return "Proxima Nova Thin"
-            case .dbaRegular: return "ProximaNova-Regular"
             case .blocketBold: return "BlocketSans-Bold"
             case .blocketMedium: return "BlocketSans-Medium"
             case .blocketRegular: return "BlocketSans-Regular"
-            case .vendRegular: return "VendSansText-Regular"
-            case .vendBold: return "VendSansText-Bold"
+            case .vendRegular, .dbaRegular: return "VendSansText-Regular" // Vend and DBA share the same font files but use different names for registration.
+            case .vendBold, .dbaBold: return "VendSansText-Bold" // Vend and DBA share the same font files but use different names for registration.
             case .neutralRegular: return "Inter-Regular"
             case .neutralSemiBold: return "Inter-SemiBold"
             }
@@ -85,24 +63,12 @@ extension Warp {
             case .finnLightItalic: return "FINNType-LightItalic"
             case .finnMedium: return "FINNType-Medium"
             case .toriBold: return "ToriSans-Bold"
-            case .toriBoldItalic: return "ToriSans-BoldItalic"
-            case .toriItalic: return "ToriSans-Italic"
-            case .toriMedium: return "ToriSans-Medium"
-            case .toriMediumItalic: return "ToriSans-MediumItalic"
             case .toriRegular: return "ToriSans-Regular"
-            case .dbaAltBold: return "ProximaNovaA-Bold"
-            case .dbaAltLight: return "ProximaNovaA-Light"
-            case .dbaAltThin: return "ProximaNovaA-Thin"
-            case .dbaBlack: return "ProximaNova-Black"
-            case .dbaBold: return "ProximaNova-Bold"
-            case .dbaExtraBold: return "ProximaNova-Extrabld"
-            case .dbaThin: return "ProximaNovaT-Thin"
-            case .dbaRegular: return "ProximaNova-Regular"
             case .blocketBold: return "BlocketSans-Bold"
             case .blocketMedium: return "BlocketSans-Medium"
             case .blocketRegular: return "BlocketSans-Regular"
-            case .vendRegular: return "VendSansText-Regular"
-            case .vendBold: return "VendSansText-Bold"
+            case .vendRegular, .dbaRegular: return "VendSansText-Regular" // Vend and DBA share the same font files but use different names for registration.
+            case .vendBold, .dbaBold: return "VendSansText-Bold" // Vend and DBA share the same font files but use different names for registration.
             case .neutralRegular: return "Inter-Regular"
             case .neutralSemiBold: return "Inter-SemiBold"
             }
@@ -117,9 +83,9 @@ extension Warp {
             case .finn:
                 return [.finnLight, .finnLightItalic, .finnMedium]
             case .tori:
-                return [.toriBold, .toriBoldItalic, .toriItalic, .toriMedium, .toriMediumItalic, .toriRegular]
+                return [.toriBold, .toriRegular]
             case .dba:
-                return [.dbaAltBold, .dbaAltLight, .dbaAltThin, .dbaBlack, .dbaBold, .dbaExtraBold, .dbaThin, .dbaRegular]
+                return [.dbaBold, .dbaRegular]
             case .blocket:
                 return [.blocketBold, .blocketMedium, .blocketRegular]
             case .vend:
