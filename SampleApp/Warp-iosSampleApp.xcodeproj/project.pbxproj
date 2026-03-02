@@ -247,6 +247,18 @@
 		9E7149932E1BF28900674698 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 820A860B2C6CEC30006D35A0 /* Preview Assets.xcassets */; };
 		9E71499F2E1BF65500674698 /* Warp_iosVend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E71499D2E1BF5E300674698 /* Warp_iosVend.swift */; };
 		9E7149A02E1E6D8F00674698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E71499B2E1BF5E300674698 /* Assets.xcassets */; };
+		9E768E262F5094B900652B2B /* NavigationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E242F5094B900652B2B /* NavigationDemoView.swift */; };
+		9E768E272F5094B900652B2B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E232F5094B900652B2B /* Navigation.swift */; };
+		9E768E282F5094B900652B2B /* NavigationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E242F5094B900652B2B /* NavigationDemoView.swift */; };
+		9E768E292F5094B900652B2B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E232F5094B900652B2B /* Navigation.swift */; };
+		9E768E2A2F5094B900652B2B /* NavigationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E242F5094B900652B2B /* NavigationDemoView.swift */; };
+		9E768E2B2F5094B900652B2B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E232F5094B900652B2B /* Navigation.swift */; };
+		9E768E2C2F5094B900652B2B /* NavigationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E242F5094B900652B2B /* NavigationDemoView.swift */; };
+		9E768E2D2F5094B900652B2B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E232F5094B900652B2B /* Navigation.swift */; };
+		9E768E2E2F5094B900652B2B /* NavigationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E242F5094B900652B2B /* NavigationDemoView.swift */; };
+		9E768E2F2F5094B900652B2B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E232F5094B900652B2B /* Navigation.swift */; };
+		9E768E302F5094B900652B2B /* NavigationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E242F5094B900652B2B /* NavigationDemoView.swift */; };
+		9E768E312F5094B900652B2B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E232F5094B900652B2B /* Navigation.swift */; };
 		9EE8EBDA2E9FC9A90088AFD9 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */; };
 		9EE8EBDB2E9FC9A90088AFD9 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */; };
 		9EE8EBDC2E9FC9A90088AFD9 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */; };
@@ -385,6 +397,8 @@
 		9E71499B2E1BF5E300674698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E71499C2E1BF5E300674698 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E71499D2E1BF5E300674698 /* Warp_iosVend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosVend.swift; sourceTree = "<group>"; };
+		9E768E232F5094B900652B2B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		9E768E242F5094B900652B2B /* NavigationDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDemoView.swift; sourceTree = "<group>"; };
 		9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		9EF55F832E991DDD000842A8 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		9EFC48462E4219940048E4E7 /* WarpDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarpDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -595,6 +609,7 @@
 		82FF12F82C80FC1200CC2110 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9E768E252F5094B900652B2B /* Native */,
 				9E2F67772ECF62D200B48276 /* StateView.swift */,
 				9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */,
 				9EF55F832E991DDD000842A8 /* DividerView.swift */,
@@ -649,6 +664,15 @@
 				9E71499D2E1BF5E300674698 /* Warp_iosVend.swift */,
 			);
 			path = Vend;
+			sourceTree = "<group>";
+		};
+		9E768E252F5094B900652B2B /* Native */ = {
+			isa = PBXGroup;
+			children = (
+				9E768E232F5094B900652B2B /* Navigation.swift */,
+				9E768E242F5094B900652B2B /* NavigationDemoView.swift */,
+			);
+			path = Native;
 			sourceTree = "<group>";
 		};
 		9EFC48472E4359DE0048E4E7 /* WarpDemo */ = {
@@ -940,6 +964,8 @@
 				82F7B04F2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */,
 				2E1ADF572C2561A700DFEE06 /* PillView.swift in Sources */,
 				2E1ADF582C2561A700DFEE06 /* ShadowView.swift in Sources */,
+				9E768E262F5094B900652B2B /* NavigationDemoView.swift in Sources */,
+				9E768E272F5094B900652B2B /* Navigation.swift in Sources */,
 				508AB09B2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0562D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				9ABE19F02DCB55DC00AD37CA /* TypographyUIView.swift in Sources */,
@@ -993,6 +1019,8 @@
 				82F7B04D2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */,
 				820A85F82C6CEB0C006D35A0 /* ShadowView.swift in Sources */,
 				820A864B2C6DFAAE006D35A0 /* TooltipView.swift in Sources */,
+				9E768E2C2F5094B900652B2B /* NavigationDemoView.swift in Sources */,
+				9E768E2D2F5094B900652B2B /* Navigation.swift in Sources */,
 				508AB09A2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0572D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				9ABE19F12DCB55DC00AD37CA /* TypographyUIView.swift in Sources */,
@@ -1046,6 +1074,8 @@
 				82F7B04E2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */,
 				820A86492C6D43CE006D35A0 /* Warp_iosFinn.swift in Sources */,
 				820A86352C6D4388006D35A0 /* ShadowView.swift in Sources */,
+				9E768E282F5094B900652B2B /* NavigationDemoView.swift in Sources */,
+				9E768E292F5094B900652B2B /* Navigation.swift in Sources */,
 				508AB09C2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0592D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				9ABE19F22DCB55DC00AD37CA /* TypographyUIView.swift in Sources */,
@@ -1099,6 +1129,8 @@
 				82F7B04C2D0AF1B90015D48F /* DatavizColorsView.swift in Sources */,
 				8251E8CB2B4E8B7D00106720 /* SemanticTokensView.swift in Sources */,
 				82838CF22B62B35400E3C495 /* PillView.swift in Sources */,
+				9E768E2E2F5094B900652B2B /* NavigationDemoView.swift in Sources */,
+				9E768E2F2F5094B900652B2B /* Navigation.swift in Sources */,
 				508AB09D2CCFCCB500C03CC5 /* SwitchView.swift in Sources */,
 				82F7B0582D0B00150015D48F /* ComponentColorsView.swift in Sources */,
 				9ABE19EF2DCB55DC00AD37CA /* TypographyUIView.swift in Sources */,
@@ -1152,6 +1184,8 @@
 				9E71497E2E1BF28900674698 /* DatavizColorsView.swift in Sources */,
 				9E71497F2E1BF28900674698 /* ShadowView.swift in Sources */,
 				9E7149802E1BF28900674698 /* TooltipView.swift in Sources */,
+				9E768E302F5094B900652B2B /* NavigationDemoView.swift in Sources */,
+				9E768E312F5094B900652B2B /* Navigation.swift in Sources */,
 				9E7149812E1BF28900674698 /* SwitchView.swift in Sources */,
 				9E7149822E1BF28900674698 /* ComponentColorsView.swift in Sources */,
 				9E7149832E1BF28900674698 /* TypographyUIView.swift in Sources */,
@@ -1205,6 +1239,8 @@
 				9EFC482C2E4219940048E4E7 /* DatavizColorsView.swift in Sources */,
 				9EFC48522E435B2C0048E4E7 /* Warp_iosDemo.swift in Sources */,
 				9EFC482E2E4219940048E4E7 /* ShadowView.swift in Sources */,
+				9E768E2A2F5094B900652B2B /* NavigationDemoView.swift in Sources */,
+				9E768E2B2F5094B900652B2B /* Navigation.swift in Sources */,
 				9EFC482F2E4219940048E4E7 /* SwitchView.swift in Sources */,
 				9EFC48302E4219940048E4E7 /* ComponentColorsView.swift in Sources */,
 				9EFC48312E4219940048E4E7 /* TypographyUIView.swift in Sources */,
@@ -1727,7 +1763,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1765,7 +1801,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
