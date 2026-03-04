@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Wed, 01 Oct 2025 07:49:52 GMT by https://github.com/warp-ds/tokens
+// Generated on Wed, 04 Mar 2026 08:12:23 GMT by https://github.com/warp-ds/tokens
 struct NeutralTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: NeutralColors.gray900, darkModeColor: NeutralColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: NeutralColors.gray600, darkModeColor: NeutralColors.gray400) }
@@ -83,7 +83,7 @@ struct NeutralTokenProvider: TokenProvider {
     public var backgroundInfoSubtleHover: Color { Color.dynamicColor(defaultColor: NeutralColors.blue100, darkModeColor: NeutralColors.blue800) }
     public var backgroundInfoSubtleActive: Color { Color.dynamicColor(defaultColor: NeutralColors.blue200, darkModeColor: NeutralColors.blue700) }
     public var backgroundTransparent0: Color { Color.dynamicColor(defaultColor: NeutralColors.transparent, darkModeColor: NeutralColors.transparent) }
-    public var backgroundNotification: Color { Color.dynamicColor(defaultColor: NeutralColors.red600, darkModeColor: NeutralColors.red500) }
+    public var backgroundNotification: Color { Color.dynamicColor(defaultColor: NeutralColors.red600, darkModeColor: NeutralColors.red400) }
     public var surfaceSunken: Color { Color.dynamicColor(defaultColor: NeutralColors.gray50, darkModeColor: NeutralColors.gray950) }
     public var surfaceElevated100: Color { Color.dynamicColor(defaultColor: NeutralColors.white, darkModeColor: NeutralColors.gray850) }
     public var surfaceElevated100Hover: Color { Color.dynamicColor(defaultColor: NeutralColors.gray100, darkModeColor: NeutralColors.gray800) }
@@ -94,9 +94,9 @@ struct NeutralTokenProvider: TokenProvider {
     public var surfaceElevated300: Color { Color.dynamicColor(defaultColor: NeutralColors.white, darkModeColor: NeutralColors.gray750) }
     public var surfaceElevated300Hover: Color { Color.dynamicColor(defaultColor: NeutralColors.gray100, darkModeColor: NeutralColors.gray700) }
     public var surfaceElevated300Active: Color { Color.dynamicColor(defaultColor: NeutralColors.gray200, darkModeColor: NeutralColors.gray600) }
-    public var border: Color { Color.dynamicColor(defaultColor: NeutralColors.gray300, darkModeColor: NeutralColors.gray600) }
-    public var borderHover: Color { Color.dynamicColor(defaultColor: NeutralColors.gray400, darkModeColor: NeutralColors.gray500) }
-    public var borderActive: Color { Color.dynamicColor(defaultColor: NeutralColors.gray500, darkModeColor: NeutralColors.gray400) }
+    public var border: Color { Color.dynamicColor(defaultColor: NeutralColors.gray200, darkModeColor: NeutralColors.gray700) }
+    public var borderHover: Color { Color.dynamicColor(defaultColor: NeutralColors.gray300, darkModeColor: NeutralColors.gray600) }
+    public var borderActive: Color { Color.dynamicColor(defaultColor: NeutralColors.gray400, darkModeColor: NeutralColors.gray500) }
     public var borderStrong: Color { Color.dynamicColor(defaultColor: NeutralColors.gray500, darkModeColor: NeutralColors.gray500) }
     public var borderStrongHover: Color { Color.dynamicColor(defaultColor: NeutralColors.gray600, darkModeColor: NeutralColors.gray400) }
     public var borderDisabled: Color { Color.dynamicColor(defaultColor: NeutralColors.gray300, darkModeColor: NeutralColors.gray700) }
@@ -222,7 +222,7 @@ struct NeutralUITokenProvider: UITokenProvider {
     public var backgroundInfoSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.blue100, darkModeColor: NeutralUIColors.blue800) }
     public var backgroundInfoSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.blue200, darkModeColor: NeutralUIColors.blue700) }
     public var backgroundTransparent0: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.transparent, darkModeColor: NeutralUIColors.transparent) }
-    public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.red600, darkModeColor: NeutralUIColors.red500) }
+    public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.red600, darkModeColor: NeutralUIColors.red400) }
     public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray50, darkModeColor: NeutralUIColors.gray950) }
     public var surfaceElevated100: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.white, darkModeColor: NeutralUIColors.gray850) }
     public var surfaceElevated100Hover: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray100, darkModeColor: NeutralUIColors.gray800) }
@@ -233,9 +233,9 @@ struct NeutralUITokenProvider: UITokenProvider {
     public var surfaceElevated300: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.white, darkModeColor: NeutralUIColors.gray750) }
     public var surfaceElevated300Hover: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray100, darkModeColor: NeutralUIColors.gray700) }
     public var surfaceElevated300Active: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray200, darkModeColor: NeutralUIColors.gray600) }
-    public var border: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray300, darkModeColor: NeutralUIColors.gray600) }
-    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray400, darkModeColor: NeutralUIColors.gray500) }
-    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray500, darkModeColor: NeutralUIColors.gray400) }
+    public var border: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray200, darkModeColor: NeutralUIColors.gray700) }
+    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray300, darkModeColor: NeutralUIColors.gray600) }
+    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray400, darkModeColor: NeutralUIColors.gray500) }
     public var borderStrong: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray500, darkModeColor: NeutralUIColors.gray500) }
     public var borderStrongHover: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray600, darkModeColor: NeutralUIColors.gray400) }
     public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: NeutralUIColors.gray300, darkModeColor: NeutralUIColors.gray700) }

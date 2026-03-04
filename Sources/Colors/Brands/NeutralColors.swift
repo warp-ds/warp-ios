@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Wed, 17 Sep 2025 11:33:38 GMT by https://github.com/warp-ds/tokens
+// Generated on Wed, 04 Mar 2026 08:12:23 GMT by https://github.com/warp-ds/tokens
 struct NeutralColors {
     static let gray50 = Color(hex: "#f6f6f6")
     static let gray100 = Color(hex: "#f0f0f2")
