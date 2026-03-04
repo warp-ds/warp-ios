@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Fri, 19 Sep 2025 11:07:54 GMT by https://github.com/warp-ds/tokens
+// Generated on Wed, 04 Mar 2026 08:12:23 GMT by https://github.com/warp-ds/tokens
 public struct ColorProvider {
     public let token: TokenProvider
     
