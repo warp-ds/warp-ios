@@ -2,7 +2,7 @@ import CoreFoundation
 
 extension Warp {
     /// A collection of constants for border radius and width values used in the Warp design system.
-    public enum Border {
+    public enum Border: Sendable {
         // MARK: - Border Radius
 
         /// Border radius of 2 points. Typically used for very small rounded corners.

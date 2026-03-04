@@ -6,7 +6,7 @@ public enum Warp {
     // MARK: - Brand Enum
 
     /// Enumeration representing different brands supported by the Warp design system.
-    public enum Brand: CustomStringConvertible, CaseIterable {
+    public enum Brand: CustomStringConvertible, CaseIterable, Sendable {
         /// Represents the `Finn` brand theme.
         case finn
         /// Represents the `Tori` brand theme.

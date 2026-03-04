@@ -4,7 +4,7 @@ import struct SwiftUI.Font
 /// A protocol defining the interface for font strategies within the Warp design system.
 ///
 /// This protocol is used to abstract font properties such as font type, size, and style for each brand.
-protocol FontStrategyInterface {
+protocol FontStrategyInterface: Sendable {
     /// The font used for this strategy.
     var font: Warp.Font { get }
     /// The size of the font.
