@@ -5,58 +5,43 @@ struct NavigationDemoView: View {
 
     @State var primaryCounter: UInt = 0
     @State var defaultCounter: UInt = 0
+    @State var defaultTitleCounter: UInt = 0
+
+    private func counterView(title: String, counter: Binding<UInt>) -> some View {
+        HStack {
+            Text(title)
+              .font(.headline)
+            Spacer()
+            Button(action: {
+                guard counter.wrappedValue > 0 else { return }
+                counter.wrappedValue -= 1
+            }) {
+                Image(systemName: "minus.circle")
+            }
+            Text(String(counter.wrappedValue))
+              .font(.body)
+              .frame(width: 40, alignment: .center)
+            Button(action: {
+                counter.wrappedValue += 1
+            }) {
+                Image(systemName: "plus.circle")
+            }
+        }
+          .padding()
+    }
 
     var body: some View {
         NavigationStack {
             VStack {
                 Button("Go to Custom Navigation View") {
-                    // Trigger navigation to the new view
                     navigateToCustomView()
                 }
                   .buttonStyle(.borderedProminent)
                   .padding()
 
-                HStack {
-                    Text("Primary Style")
-                      .font(.headline)
-                    Spacer()
-                    Button(action: {
-                        guard primaryCounter > 0 else { return }
-                        primaryCounter -= 1
-                    }) {
-                        Image(systemName: "minus.circle")
-                    }
-                    Text(String(primaryCounter))
-                      .font(.body)
-                      .frame(width: 40, alignment: .center)
-                    Button(action: {
-                        primaryCounter += 1
-                    }) {
-                        Image(systemName: "plus.circle")
-                    }
-                }
-                  .padding()
-
-                HStack {
-                    Text("Default Style")
-                      .font(.headline)
-                    Spacer()
-                    Button(action: {
-                        guard defaultCounter > 0 else { return }
-                        defaultCounter -= 1
-                    }) {
-                        Image(systemName: "minus.circle")
-                    }
-                    Text(String(defaultCounter))
-                      .font(.body)
-                      .frame(width: 40, alignment: .center)
-                    Button(action: {
-                        defaultCounter += 1
-                    }) {
-                        Image(systemName: "plus.circle")
-                    }
-                }
-                  .padding()
+                counterView(title: "Primary Style", counter: $primaryCounter)
+                counterView(title: "Default Style", counter: $defaultCounter)
+                counterView(title: "Default with title Style", counter: $defaultTitleCounter)
             }
               .navigationTitle("Navigation setup")
         }
@@ -82,7 +67,38 @@ struct NavigationDemoView: View {
             )
               .warpNavigationBarButton(style: .primary)
         }
-        return primaryButtons
+        let defaultButtons = (0..<defaultCounter).flatMap { _ -> [UIBarButtonItem] in
+            if #available(iOS 26.0, *) {
+                [UIBarButtonItem(
+                    image: Warp.Icon.allCases.randomElement()?.uiImage,
+                    style: .plain,
+                    target: self,
+                    action: nil
+                )
+                    .warpNavigationBarButton(),
+                 UIBarButtonItem.fixedSpace()
+                ]
+            } else {
+                []
+            }
+        }
+        let defaultTitleButtons = (0..<defaultTitleCounter).flatMap { _ -> [UIBarButtonItem] in
+            if #available(iOS 26.0, *) {
+                [UIBarButtonItem(
+                    title: "Foo",
+                    style: .plain,
+                    target: self,
+                    action: nil
+                )
+                  .warpNavigationBarButton(style: .default),
+                    UIBarButtonItem.fixedSpace()
+                ]
+            } else {
+                []
+            }
+        }
+
+        return  primaryButtons + defaultButtons + defaultTitleButtons
     }
 }
 
@@ -90,12 +106,12 @@ struct CustomNavigationView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                ForEach(1...50, id: \.self) { index in
+                ForEach(1...25, id: \.self) { index in
                     Text("Lorem ipsum row \(index)")
                       .font(.body)
                       .padding()
                       .frame(maxWidth: .infinity, alignment: .leading)
-                      .background(Color(UIColor.systemGray6))
+                      .background(Color(UIColor.black))
                       .cornerRadius(8)
                 }
             }
@@ -107,8 +123,7 @@ struct CustomNavigationView: View {
           }) {
               Image(systemName: "xmark")
           }
-            .warpNavigationBarButton()
-          )
+            .warpNavigationBarButton())
 
     }
 
