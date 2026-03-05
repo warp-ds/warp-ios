@@ -16,7 +16,7 @@ import SwiftUI
 ///   - leading: Applies a border to the leading (left) edge.
 ///   - trailing: Applies a border to the trailing (right) edge.
 ///   - all: Applies borders to all four edges.
-public struct BorderOptions: OptionSet {
+public struct BorderOptions: OptionSet, Sendable {
     public let rawValue: Int
     
     public init(rawValue: Int) {

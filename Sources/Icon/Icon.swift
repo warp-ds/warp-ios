@@ -770,7 +770,7 @@ extension Warp {
         case vendPro(LogoSize)
 
         /// Enum representing the size of a `LogoView`.
-        public enum LogoSize {
+        public enum LogoSize: Sendable {
             case small
             case `default`
         }

@@ -5,7 +5,7 @@ extension Warp {
     ///
     /// Each case corresponds to a specific font used by different brands (e.g., `finn`, `tori`, `dba`, `blocket`), and each font has
     /// associated file names and font names that are used for registration and application in the design system.
-    enum Font: CaseIterable {
+    enum Font: CaseIterable, Sendable {
         // MARK: - Finn Fonts
         case finnLight
         case finnLightItalic
