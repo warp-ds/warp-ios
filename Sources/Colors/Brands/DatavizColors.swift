@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Thu, 30 Jan 2025 13:44:32 GMT by https://github.com/warp-ds/tokens
+// Generated on Wed, 04 Mar 2026 08:12:23 GMT by https://github.com/warp-ds/tokens
 struct DatavizColors {
     static let blue50 = Color(hex: "#d6edff")
     static let blue100 = Color(hex: "#b4defd")

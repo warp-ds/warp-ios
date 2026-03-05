@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Wed, 01 Oct 2025 07:49:52 GMT by https://github.com/warp-ds/tokens
+// Generated on Wed, 04 Mar 2026 08:12:23 GMT by https://github.com/warp-ds/tokens
 struct ToriTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: ToriColors.gray900, darkModeColor: ToriColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: ToriColors.gray600, darkModeColor: ToriColors.gray400) }
@@ -83,7 +83,7 @@ struct ToriTokenProvider: TokenProvider {
     public var backgroundInfoSubtleHover: Color { Color.dynamicColor(defaultColor: ToriColors.blue100, darkModeColor: ToriColors.blue800) }
     public var backgroundInfoSubtleActive: Color { Color.dynamicColor(defaultColor: ToriColors.blue200, darkModeColor: ToriColors.blue700) }
     public var backgroundTransparent0: Color { Color.dynamicColor(defaultColor: ToriColors.transparent, darkModeColor: ToriColors.transparent) }
-    public var backgroundNotification: Color { Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon500) }
+    public var backgroundNotification: Color { Color.dynamicColor(defaultColor: ToriColors.watermelon600, darkModeColor: ToriColors.watermelon400) }
     public var surfaceSunken: Color { Color.dynamicColor(defaultColor: ToriColors.gray50, darkModeColor: ToriColors.gray950) }
     public var surfaceElevated100: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.gray850) }
     public var surfaceElevated100Hover: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray800) }
@@ -94,9 +94,9 @@ struct ToriTokenProvider: TokenProvider {
     public var surfaceElevated300: Color { Color.dynamicColor(defaultColor: ToriColors.white, darkModeColor: ToriColors.gray750) }
     public var surfaceElevated300Hover: Color { Color.dynamicColor(defaultColor: ToriColors.gray100, darkModeColor: ToriColors.gray700) }
     public var surfaceElevated300Active: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray600) }
-    public var border: Color { Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray600) }
-    public var borderHover: Color { Color.dynamicColor(defaultColor: ToriColors.gray400, darkModeColor: ToriColors.gray500) }
-    public var borderActive: Color { Color.dynamicColor(defaultColor: ToriColors.gray500, darkModeColor: ToriColors.gray400) }
+    public var border: Color { Color.dynamicColor(defaultColor: ToriColors.gray200, darkModeColor: ToriColors.gray700) }
+    public var borderHover: Color { Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray600) }
+    public var borderActive: Color { Color.dynamicColor(defaultColor: ToriColors.gray400, darkModeColor: ToriColors.gray500) }
     public var borderStrong: Color { Color.dynamicColor(defaultColor: ToriColors.gray500, darkModeColor: ToriColors.gray500) }
     public var borderStrongHover: Color { Color.dynamicColor(defaultColor: ToriColors.gray600, darkModeColor: ToriColors.gray400) }
     public var borderDisabled: Color { Color.dynamicColor(defaultColor: ToriColors.gray300, darkModeColor: ToriColors.gray700) }
@@ -222,7 +222,7 @@ struct ToriUITokenProvider: UITokenProvider {
     public var backgroundInfoSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blue100, darkModeColor: ToriUIColors.blue800) }
     public var backgroundInfoSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.blue200, darkModeColor: ToriUIColors.blue700) }
     public var backgroundTransparent0: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.transparent, darkModeColor: ToriUIColors.transparent) }
-    public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon600, darkModeColor: ToriUIColors.watermelon500) }
+    public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.watermelon600, darkModeColor: ToriUIColors.watermelon400) }
     public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray50, darkModeColor: ToriUIColors.gray950) }
     public var surfaceElevated100: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.white, darkModeColor: ToriUIColors.gray850) }
     public var surfaceElevated100Hover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray800) }
@@ -233,9 +233,9 @@ struct ToriUITokenProvider: UITokenProvider {
     public var surfaceElevated300: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.white, darkModeColor: ToriUIColors.gray750) }
     public var surfaceElevated300Hover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray100, darkModeColor: ToriUIColors.gray700) }
     public var surfaceElevated300Active: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray600) }
-    public var border: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray600) }
-    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray400, darkModeColor: ToriUIColors.gray500) }
-    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray500, darkModeColor: ToriUIColors.gray400) }
+    public var border: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray200, darkModeColor: ToriUIColors.gray700) }
+    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray600) }
+    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray400, darkModeColor: ToriUIColors.gray500) }
     public var borderStrong: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray500, darkModeColor: ToriUIColors.gray500) }
     public var borderStrongHover: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray600, darkModeColor: ToriUIColors.gray400) }
     public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: ToriUIColors.gray300, darkModeColor: ToriUIColors.gray700) }

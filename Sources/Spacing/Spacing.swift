@@ -5,7 +5,7 @@ extension Warp {
     ///
     /// Each spacing value corresponds to a specific amount of separation between UI elements, measured in points.
     /// These constants help maintain consistent spacing across the application.
-    public enum Spacing {
+    public enum Spacing: Sendable {
         /// Separation of 2 points. Typically used for very small gaps between elements.
         public static let spacing25: CGFloat = 2
         /// Separation of 4 points. Suitable for small gaps between UI components.

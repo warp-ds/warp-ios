@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Tue, 06 Jan 2026 08:48:49 GMT by https://github.com/warp-ds/tokens
+// Generated on Wed, 04 Mar 2026 08:12:23 GMT by https://github.com/warp-ds/tokens
 struct DbaTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: DbaColors.gray900, darkModeColor: DbaColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: DbaColors.gray600, darkModeColor: DbaColors.gray400) }
@@ -83,7 +83,7 @@ struct DbaTokenProvider: TokenProvider {
     public var backgroundInfoSubtleHover: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue100, darkModeColor: DbaColors.jeanblue800) }
     public var backgroundInfoSubtleActive: Color { Color.dynamicColor(defaultColor: DbaColors.jeanblue200, darkModeColor: DbaColors.phthaloblue700) }
     public var backgroundTransparent0: Color { Color.dynamicColor(defaultColor: DbaColors.transparent, darkModeColor: DbaColors.transparent) }
-    public var backgroundNotification: Color { Color.dynamicColor(defaultColor: DbaColors.red600, darkModeColor: DbaColors.red500) }
+    public var backgroundNotification: Color { Color.dynamicColor(defaultColor: DbaColors.red600, darkModeColor: DbaColors.red400) }
     public var surfaceSunken: Color { Color.dynamicColor(defaultColor: DbaColors.gray50, darkModeColor: DbaColors.gray950) }
     public var surfaceElevated100: Color { Color.dynamicColor(defaultColor: DbaColors.white, darkModeColor: DbaColors.gray850) }
     public var surfaceElevated100Hover: Color { Color.dynamicColor(defaultColor: DbaColors.gray100, darkModeColor: DbaColors.gray800) }
@@ -94,9 +94,9 @@ struct DbaTokenProvider: TokenProvider {
     public var surfaceElevated300: Color { Color.dynamicColor(defaultColor: DbaColors.white, darkModeColor: DbaColors.gray750) }
     public var surfaceElevated300Hover: Color { Color.dynamicColor(defaultColor: DbaColors.gray100, darkModeColor: DbaColors.gray700) }
     public var surfaceElevated300Active: Color { Color.dynamicColor(defaultColor: DbaColors.gray200, darkModeColor: DbaColors.gray600) }
-    public var border: Color { Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray600) }
-    public var borderHover: Color { Color.dynamicColor(defaultColor: DbaColors.gray400, darkModeColor: DbaColors.gray500) }
-    public var borderActive: Color { Color.dynamicColor(defaultColor: DbaColors.gray500, darkModeColor: DbaColors.gray400) }
+    public var border: Color { Color.dynamicColor(defaultColor: DbaColors.gray200, darkModeColor: DbaColors.gray700) }
+    public var borderHover: Color { Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray600) }
+    public var borderActive: Color { Color.dynamicColor(defaultColor: DbaColors.gray400, darkModeColor: DbaColors.gray500) }
     public var borderStrong: Color { Color.dynamicColor(defaultColor: DbaColors.gray500, darkModeColor: DbaColors.gray500) }
     public var borderStrongHover: Color { Color.dynamicColor(defaultColor: DbaColors.gray600, darkModeColor: DbaColors.gray400) }
     public var borderDisabled: Color { Color.dynamicColor(defaultColor: DbaColors.gray300, darkModeColor: DbaColors.gray700) }
@@ -222,7 +222,7 @@ struct DbaUITokenProvider: UITokenProvider {
     public var backgroundInfoSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue100, darkModeColor: DbaUIColors.jeanblue800) }
     public var backgroundInfoSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.jeanblue200, darkModeColor: DbaUIColors.phthaloblue700) }
     public var backgroundTransparent0: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.transparent, darkModeColor: DbaUIColors.transparent) }
-    public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.red600, darkModeColor: DbaUIColors.red500) }
+    public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.red600, darkModeColor: DbaUIColors.red400) }
     public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray50, darkModeColor: DbaUIColors.gray950) }
     public var surfaceElevated100: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.white, darkModeColor: DbaUIColors.gray850) }
     public var surfaceElevated100Hover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray100, darkModeColor: DbaUIColors.gray800) }
@@ -233,9 +233,9 @@ struct DbaUITokenProvider: UITokenProvider {
     public var surfaceElevated300: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.white, darkModeColor: DbaUIColors.gray750) }
     public var surfaceElevated300Hover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray100, darkModeColor: DbaUIColors.gray700) }
     public var surfaceElevated300Active: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray200, darkModeColor: DbaUIColors.gray600) }
-    public var border: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray600) }
-    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray400, darkModeColor: DbaUIColors.gray500) }
-    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray500, darkModeColor: DbaUIColors.gray400) }
+    public var border: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray200, darkModeColor: DbaUIColors.gray700) }
+    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray600) }
+    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray400, darkModeColor: DbaUIColors.gray500) }
     public var borderStrong: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray500, darkModeColor: DbaUIColors.gray500) }
     public var borderStrongHover: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray600, darkModeColor: DbaUIColors.gray400) }
     public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: DbaUIColors.gray300, darkModeColor: DbaUIColors.gray700) }

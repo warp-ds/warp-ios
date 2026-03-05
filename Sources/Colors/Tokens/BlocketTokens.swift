@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Wed, 01 Oct 2025 07:49:52 GMT by https://github.com/warp-ds/tokens
+// Generated on Wed, 04 Mar 2026 08:12:23 GMT by https://github.com/warp-ds/tokens
 struct BlocketTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: BlocketColors.gray900, darkModeColor: BlocketColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: BlocketColors.gray600, darkModeColor: BlocketColors.gray400) }
@@ -83,7 +83,7 @@ struct BlocketTokenProvider: TokenProvider {
     public var backgroundInfoSubtleHover: Color { Color.dynamicColor(defaultColor: BlocketColors.blue100, darkModeColor: BlocketColors.blue800) }
     public var backgroundInfoSubtleActive: Color { Color.dynamicColor(defaultColor: BlocketColors.blue200, darkModeColor: BlocketColors.blue700) }
     public var backgroundTransparent0: Color { Color.dynamicColor(defaultColor: BlocketColors.transparent, darkModeColor: BlocketColors.transparent) }
-    public var backgroundNotification: Color { Color.dynamicColor(defaultColor: BlocketColors.red600, darkModeColor: BlocketColors.red500) }
+    public var backgroundNotification: Color { Color.dynamicColor(defaultColor: BlocketColors.red600, darkModeColor: BlocketColors.red400) }
     public var surfaceSunken: Color { Color.dynamicColor(defaultColor: BlocketColors.gray50, darkModeColor: BlocketColors.gray950) }
     public var surfaceElevated100: Color { Color.dynamicColor(defaultColor: BlocketColors.white, darkModeColor: BlocketColors.gray850) }
     public var surfaceElevated100Hover: Color { Color.dynamicColor(defaultColor: BlocketColors.gray100, darkModeColor: BlocketColors.gray800) }
@@ -94,9 +94,9 @@ struct BlocketTokenProvider: TokenProvider {
     public var surfaceElevated300: Color { Color.dynamicColor(defaultColor: BlocketColors.white, darkModeColor: BlocketColors.gray750) }
     public var surfaceElevated300Hover: Color { Color.dynamicColor(defaultColor: BlocketColors.gray100, darkModeColor: BlocketColors.gray700) }
     public var surfaceElevated300Active: Color { Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray600) }
-    public var border: Color { Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray600) }
-    public var borderHover: Color { Color.dynamicColor(defaultColor: BlocketColors.gray400, darkModeColor: BlocketColors.gray500) }
-    public var borderActive: Color { Color.dynamicColor(defaultColor: BlocketColors.gray500, darkModeColor: BlocketColors.gray400) }
+    public var border: Color { Color.dynamicColor(defaultColor: BlocketColors.gray200, darkModeColor: BlocketColors.gray700) }
+    public var borderHover: Color { Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray600) }
+    public var borderActive: Color { Color.dynamicColor(defaultColor: BlocketColors.gray400, darkModeColor: BlocketColors.gray500) }
     public var borderStrong: Color { Color.dynamicColor(defaultColor: BlocketColors.gray500, darkModeColor: BlocketColors.gray500) }
     public var borderStrongHover: Color { Color.dynamicColor(defaultColor: BlocketColors.gray600, darkModeColor: BlocketColors.gray400) }
     public var borderDisabled: Color { Color.dynamicColor(defaultColor: BlocketColors.gray300, darkModeColor: BlocketColors.gray700) }
@@ -222,7 +222,7 @@ struct BlocketUITokenProvider: UITokenProvider {
     public var backgroundInfoSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.blue100, darkModeColor: BlocketUIColors.blue800) }
     public var backgroundInfoSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.blue200, darkModeColor: BlocketUIColors.blue700) }
     public var backgroundTransparent0: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.transparent, darkModeColor: BlocketUIColors.transparent) }
-    public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.red600, darkModeColor: BlocketUIColors.red500) }
+    public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.red600, darkModeColor: BlocketUIColors.red400) }
     public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray50, darkModeColor: BlocketUIColors.gray950) }
     public var surfaceElevated100: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.white, darkModeColor: BlocketUIColors.gray850) }
     public var surfaceElevated100Hover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray100, darkModeColor: BlocketUIColors.gray800) }
@@ -233,9 +233,9 @@ struct BlocketUITokenProvider: UITokenProvider {
     public var surfaceElevated300: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.white, darkModeColor: BlocketUIColors.gray750) }
     public var surfaceElevated300Hover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray100, darkModeColor: BlocketUIColors.gray700) }
     public var surfaceElevated300Active: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray600) }
-    public var border: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray600) }
-    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray400, darkModeColor: BlocketUIColors.gray500) }
-    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray500, darkModeColor: BlocketUIColors.gray400) }
+    public var border: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray200, darkModeColor: BlocketUIColors.gray700) }
+    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray600) }
+    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray400, darkModeColor: BlocketUIColors.gray500) }
     public var borderStrong: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray500, darkModeColor: BlocketUIColors.gray500) }
     public var borderStrongHover: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray600, darkModeColor: BlocketUIColors.gray400) }
     public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: BlocketUIColors.gray300, darkModeColor: BlocketUIColors.gray700) }

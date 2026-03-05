@@ -5,7 +5,7 @@ extension Warp {
     ///
     /// Each case corresponds to a specific text style, ranging from large display styles to smaller detail styles.
     /// Fonts for these styles can be retrieved for both `SwiftUI` and `UIKit` using the appropriate methods.
-    public enum Typography: CaseIterable {
+    public enum Typography: CaseIterable, Sendable {
         case display
         case title1
         case title2

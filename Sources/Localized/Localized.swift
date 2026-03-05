@@ -1,7 +1,7 @@
 import Foundation
 
 extension Warp {
-    enum Strings: String {
+    enum Strings: String, Sendable {
         case iconActiveAds = "icon.title.activeAds"
         case iconAds = "icon.title.ads"
         case iconAirCon = "icon.title.airCon"

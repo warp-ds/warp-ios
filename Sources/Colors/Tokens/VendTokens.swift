@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Generated on Wed, 01 Oct 2025 07:49:52 GMT by https://github.com/warp-ds/tokens
+// Generated on Wed, 04 Mar 2026 08:12:23 GMT by https://github.com/warp-ds/tokens
 struct VendTokenProvider: TokenProvider {
     public var text: Color { Color.dynamicColor(defaultColor: VendColors.gray900, darkModeColor: VendColors.white) }
     public var textSubtle: Color { Color.dynamicColor(defaultColor: VendColors.gray600, darkModeColor: VendColors.gray400) }
@@ -83,7 +83,7 @@ struct VendTokenProvider: TokenProvider {
     public var backgroundInfoSubtleHover: Color { Color.dynamicColor(defaultColor: VendColors.blue100, darkModeColor: VendColors.blue800) }
     public var backgroundInfoSubtleActive: Color { Color.dynamicColor(defaultColor: VendColors.blue200, darkModeColor: VendColors.blue700) }
     public var backgroundTransparent0: Color { Color.dynamicColor(defaultColor: VendColors.transparent, darkModeColor: VendColors.transparent) }
-    public var backgroundNotification: Color { Color.dynamicColor(defaultColor: VendColors.red600, darkModeColor: VendColors.red500) }
+    public var backgroundNotification: Color { Color.dynamicColor(defaultColor: VendColors.red600, darkModeColor: VendColors.red400) }
     public var surfaceSunken: Color { Color.dynamicColor(defaultColor: VendColors.gray50, darkModeColor: VendColors.gray950) }
     public var surfaceElevated100: Color { Color.dynamicColor(defaultColor: VendColors.white, darkModeColor: VendColors.gray850) }
     public var surfaceElevated100Hover: Color { Color.dynamicColor(defaultColor: VendColors.gray100, darkModeColor: VendColors.gray800) }
@@ -94,9 +94,9 @@ struct VendTokenProvider: TokenProvider {
     public var surfaceElevated300: Color { Color.dynamicColor(defaultColor: VendColors.white, darkModeColor: VendColors.gray750) }
     public var surfaceElevated300Hover: Color { Color.dynamicColor(defaultColor: VendColors.gray100, darkModeColor: VendColors.gray700) }
     public var surfaceElevated300Active: Color { Color.dynamicColor(defaultColor: VendColors.gray200, darkModeColor: VendColors.gray600) }
-    public var border: Color { Color.dynamicColor(defaultColor: VendColors.gray300, darkModeColor: VendColors.gray600) }
-    public var borderHover: Color { Color.dynamicColor(defaultColor: VendColors.gray400, darkModeColor: VendColors.gray500) }
-    public var borderActive: Color { Color.dynamicColor(defaultColor: VendColors.gray500, darkModeColor: VendColors.gray400) }
+    public var border: Color { Color.dynamicColor(defaultColor: VendColors.gray200, darkModeColor: VendColors.gray700) }
+    public var borderHover: Color { Color.dynamicColor(defaultColor: VendColors.gray300, darkModeColor: VendColors.gray600) }
+    public var borderActive: Color { Color.dynamicColor(defaultColor: VendColors.gray400, darkModeColor: VendColors.gray500) }
     public var borderStrong: Color { Color.dynamicColor(defaultColor: VendColors.gray500, darkModeColor: VendColors.gray500) }
     public var borderStrongHover: Color { Color.dynamicColor(defaultColor: VendColors.gray600, darkModeColor: VendColors.gray400) }
     public var borderDisabled: Color { Color.dynamicColor(defaultColor: VendColors.gray300, darkModeColor: VendColors.gray700) }
@@ -222,7 +222,7 @@ struct VendUITokenProvider: UITokenProvider {
     public var backgroundInfoSubtleHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.blue100, darkModeColor: VendUIColors.blue800) }
     public var backgroundInfoSubtleActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.blue200, darkModeColor: VendUIColors.blue700) }
     public var backgroundTransparent0: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.transparent, darkModeColor: VendUIColors.transparent) }
-    public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.red600, darkModeColor: VendUIColors.red500) }
+    public var backgroundNotification: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.red600, darkModeColor: VendUIColors.red400) }
     public var surfaceSunken: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray50, darkModeColor: VendUIColors.gray950) }
     public var surfaceElevated100: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.white, darkModeColor: VendUIColors.gray850) }
     public var surfaceElevated100Hover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray100, darkModeColor: VendUIColors.gray800) }
@@ -233,9 +233,9 @@ struct VendUITokenProvider: UITokenProvider {
     public var surfaceElevated300: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.white, darkModeColor: VendUIColors.gray750) }
     public var surfaceElevated300Hover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray100, darkModeColor: VendUIColors.gray700) }
     public var surfaceElevated300Active: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray200, darkModeColor: VendUIColors.gray600) }
-    public var border: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray300, darkModeColor: VendUIColors.gray600) }
-    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray400, darkModeColor: VendUIColors.gray500) }
-    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray500, darkModeColor: VendUIColors.gray400) }
+    public var border: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray200, darkModeColor: VendUIColors.gray700) }
+    public var borderHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray300, darkModeColor: VendUIColors.gray600) }
+    public var borderActive: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray400, darkModeColor: VendUIColors.gray500) }
     public var borderStrong: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray500, darkModeColor: VendUIColors.gray500) }
     public var borderStrongHover: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray600, darkModeColor: VendUIColors.gray400) }
     public var borderDisabled: UIColor { UIColor.dynamicColor(defaultColor: VendUIColors.gray300, darkModeColor: VendUIColors.gray700) }

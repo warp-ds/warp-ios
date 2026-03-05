@@ -5,7 +5,7 @@ extension Warp {
     ///
     /// Each shadow size consists of two shadow layers, each with its own opacity, blur radius, and offset. These shadows
     /// provide visual depth to UI components.
-    public enum Shadow: CaseIterable {
+    public enum Shadow: CaseIterable, Sendable {
         case small, medium, large, xLarge
         
         /// The name of the shadow size for reference.
