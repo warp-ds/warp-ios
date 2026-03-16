@@ -10405,6 +10405,102 @@
         }
       }
     },
+    "icon.title.pause" : {
+      "comment" : "A11y title for pause icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause"
+          }
+        }
+      }
+    },
+    "icon.title.coatHanger" : {
+      "comment" : "A11y title for coat hanger icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coat hanger"
+          }
+        }
+      }
+    },
+    "icon.title.circlePause" : {
+      "comment" : "A11y title for circle pause icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause"
+          }
+        }
+      }
+    },
+    "icon.title.circlePlay" : {
+      "comment" : "A11y title for circle play icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play"
+          }
+        }
+      }
+    },
+    "icon.title.printer" : {
+      "comment" : "A11y title for printer icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Printer"
+          }
+        }
+      }
+    },
+    "icon.title.stop" : {
+      "comment" : "A11y title for stop icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
+    },
+    "icon.title.circleStop" : {
+      "comment" : "A11y title for circle stop icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
+    },
+    "icon.title.shareIOS" : {
+      "comment" : "A11y title for share iOS icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upward arrow emerging from a square"
+          }
+        }
+      }
+    },
     "pattern.noNetworkConnection.description" : {
       "comment" : "Description for no network connection state",
       "extractionState" : "manual",
