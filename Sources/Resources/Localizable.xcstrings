@@ -2792,7 +2792,7 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tauko"
+            "value" : "Keskeytä"
           }
         },
         "nb-NO" : {
@@ -2834,7 +2834,7 @@
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spill"
+            "value" : "Spill av"
           }
         },
         "sv" : {
@@ -2948,7 +2948,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stoppa"
+            "value" : "Stopp"
           }
         }
       }
@@ -3140,7 +3140,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tøjstang"
+            "value" : "Tøjbøjle"
           }
         },
         "en" : {
@@ -3152,13 +3152,13 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vaatehenski"
+            "value" : "Henkari"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bøye"
+            "value" : "Kleshenger"
           }
         },
         "sv" : {
@@ -6824,7 +6824,7 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tauko"
+            "value" : "Keskeytä"
           }
         },
         "nb-NO" : {
@@ -8180,7 +8180,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pil der peger opad fra firkant"
+            "value" : "Pil, der peger opad fra en firkant"
           }
         },
         "en" : {
@@ -8192,7 +8192,7 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ylempänä oleva nuoli neliöstä"
+            "value" : "Neliöstä ylöspäin lähtevä nuoli"
           }
         },
         "nb-NO" : {
@@ -8204,7 +8204,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uppåtpil från fyrkant"
+            "value" : "Uppåtpil från kvadrat"
           }
         }
       }
@@ -9032,7 +9032,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stoppa"
+            "value" : "Stopp"
           }
         }
       }
