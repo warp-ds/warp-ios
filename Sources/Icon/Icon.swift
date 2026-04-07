@@ -273,6 +273,14 @@ extension Warp {
         case phoneHandset
         case jacket
         case tray
+        case pause
+        case coatHanger
+        case circlePause
+        case circlePlay
+        case printer
+        case stop
+        case circleStop
+        case shareIOS
 
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
@@ -582,6 +590,14 @@ extension Warp {
             case .phoneHandset: return Warp.Strings.iconPhoneHandset.localized
             case .jacket: return Warp.Strings.iconJacket.localized
             case .tray: return Warp.Strings.iconTray.localized
+            case .pause: return Warp.Strings.iconPause.localized
+            case .coatHanger: return Warp.Strings.iconCoatHanger.localized
+            case .circlePause: return Warp.Strings.iconCirclePause.localized
+            case .circlePlay: return Warp.Strings.iconCirclePlay.localized
+            case .printer: return Warp.Strings.iconPrinter.localized
+            case .stop: return Warp.Strings.iconStop.localized
+            case .circleStop: return Warp.Strings.iconCircleStop.localized
+            case .shareIOS: return Warp.Strings.iconShareIOS.localized
             }
         }
     }
