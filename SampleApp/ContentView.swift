@@ -16,9 +16,6 @@ struct ContentView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
-                .onChange(of: selectedTheme) { newValue in
-                    Warp.Theme = selectedTheme
-                }
                 #endif
                 LazyVStack (alignment: .leading) {
                     Warp.Text("Brand Specific Items", style: .title3)
@@ -83,13 +80,25 @@ struct ContentView: View {
             }
             .navigationTitle(Bundle.main.applicationName)
         }
+        .warpTheme(selectedTheme)
     }
     
     private func row(_ title: String, destination: some View) -> some View {
+        RowView(title: title, destination: destination)
+    }
+}
+
+/// Individual row view for navigation links with theme-aware styling
+private struct RowView<Destination: View>: View {
+    let title: String
+    let destination: Destination
+    @Environment(\.warpTheme) private var theme
+
+    var body: some View {
         NavigationLink(destination: destination) {
             VStack(alignment: .leading) {
                 Warp.Text(title, style: .title4)
-                    .foregroundColor(Warp.Token.textLink)
+                    .foregroundColor(ColorProvider(theme: theme).token.textLink)
                     .padding()
                 Divider()
             }

@@ -108,16 +108,22 @@ public enum Warp {
     ///
     /// This computed property returns an instance of a `ColorProvider` initialized with the current theme tokens.
     /// It facilitates easy access to brand-specific colors that are used throughout the design system.
+    ///
+    /// - Warning: This uses the global `Warp.Theme` variable. Consider using `ColorProvider(theme:)` with `@Environment(\.warpTheme)` instead.
+    @available(*, deprecated, message: "Use @Environment(\\.warpTheme) and ColorProvider(theme:) instead of global Warp.Color")
     public static var Color: ColorProvider {
-        ColorProvider(token: Warp.Token)
+        ColorProvider(theme: Warp.Theme)
     }
-    
+
     /// Provides `UIColor` values based on the current theme UITokens.
     ///
     /// This computed property returns an instance of a `UIColorProvider` initialized with the current theme UITokens.
     /// It facilitates easy access to brand-specific UIColors that are used throughout the design system.
+    ///
+    /// - Warning: This uses the global `Warp.Theme` variable. Consider using `UIColorProvider(theme:)` with `@Environment(\.warpTheme)` instead.
+    @available(*, deprecated, message: "Use @Environment(\\.warpTheme) and UIColorProvider(theme:) instead of global Warp.UIColor")
     public static var UIColor: UIColorProvider {
-        UIColorProvider(token: Warp.UIToken)
+        UIColorProvider(theme: Warp.Theme)
     }
 
     // MARK: - Dataviz Token Providers

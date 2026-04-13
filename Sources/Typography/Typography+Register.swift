@@ -2,16 +2,29 @@ import Foundation
 import UIKit
 
 extension Warp.Typography {
-    /// Registers custom fonts associated with the current theme.
+    /// Registers custom fonts for a specific theme.
+    ///
+    /// This method attempts to register each custom font for the specified theme.
+    /// If any font registration fails, the error is thrown, and font registration stops.
+    ///
+    /// - Parameter theme: The brand theme whose fonts should be registered
+    /// - Throws: A `Warp.FontRegistrationError` if the registration of any font fails.
+    public static func registerFonts(for theme: Warp.Brand) throws {
+        try Warp.Font.fonts(for: theme).forEach {
+            try registerFont($0)
+        }
+    }
+
+    /// Registers custom fonts associated with the current global theme.
     ///
     /// This method attempts to register each custom font defined in `Warp.Font.fontForTheme`.
     /// If any font registration fails, the error is thrown, and font registration stops.
     ///
+    /// - Warning: This uses the global `Warp.Theme` variable. Consider using `registerFonts(for:)` with an explicit theme instead.
     /// - Throws: A `Warp.FontRegistrationError` if the registration of any font fails.
+    @available(*, deprecated, message: "Use registerFonts(for:) with explicit theme parameter instead of global Warp.Theme")
     public static func registerFonts() throws {
-        try Warp.Font.fontForTheme.forEach {
-            try registerFont($0)
-        }
+        try registerFonts(for: Warp.Theme)
     }
 
     /// Registers a custom font.

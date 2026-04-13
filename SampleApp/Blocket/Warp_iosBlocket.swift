@@ -6,13 +6,15 @@ import FirebaseCore
 struct Wrap_iosBlocket: App {
 
     init() {
-        Warp.Theme = .blocket
+        // Register fonts for the Blocket theme
+        try? Warp.Typography.registerFonts(for: .blocket)
         FirebaseApp.configure()
     }
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .warpTheme(.blocket)
         }
     }
 }

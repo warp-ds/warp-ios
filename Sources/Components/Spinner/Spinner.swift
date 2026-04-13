@@ -48,25 +48,23 @@ extension Warp {
                     .frame(width: size.value, height: size.value)
                     .foregroundColor(colorProvider.token.borderPrimary)
                     .onAppear() {
-                        DispatchQueue.main.async {
-                            withAnimation(Animation
-                                .linear(duration: duration)
-                                .repeatForever(autoreverses: false)) {
-                                    self.isCircleRotating.toggle()
-                                }
-                            withAnimation(Animation
-                                .linear(duration: duration)
-                                .delay(0.5)
-                                .repeatForever(autoreverses: true)) {
-                                    self.animateStart.toggle()
-                                }
-                            withAnimation(Animation
-                                .linear(duration: duration)
-                                .delay(1)
-                                .repeatForever(autoreverses: true)) {
-                                    self.animateEnd.toggle()
-                                }
-                        }
+                        withAnimation(Animation
+                            .linear(duration: duration)
+                            .repeatForever(autoreverses: false)) {
+                                self.isCircleRotating.toggle()
+                            }
+                        withAnimation(Animation
+                            .linear(duration: duration)
+                            .delay(0.5)
+                            .repeatForever(autoreverses: true)) {
+                                self.animateStart.toggle()
+                            }
+                        withAnimation(Animation
+                            .linear(duration: duration)
+                            .delay(1)
+                            .repeatForever(autoreverses: true)) {
+                                self.animateEnd.toggle()
+                            }
                     }
             }
         }

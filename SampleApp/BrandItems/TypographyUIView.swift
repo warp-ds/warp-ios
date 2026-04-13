@@ -2,6 +2,7 @@ import UIKit
 import SwiftUI
 import Warp
 
+@MainActor
 class UITypographyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class UITypographyViewController: UIViewController {
     }
 }
 
+@MainActor
 struct TypographyUIView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         return UITypographyViewController()
