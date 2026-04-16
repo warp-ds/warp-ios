@@ -34,8 +34,13 @@ extension Warp {
         /// Binding to a boolean value that allows the toast to control dismissal
         @Binding public var isPresented: Bool
 
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object responsible for providing colors in different environments and variants.
-        let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         private let showCloseButton: Bool
 

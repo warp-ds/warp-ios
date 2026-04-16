@@ -14,15 +14,21 @@ extension Warp {
         @State private var isCircleRotating = true
         @State private var animateStart = false
         @State private var animateEnd = true
-        
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        /// Object responsible for providing colors in different environments and variants.
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
+
         /// Size of the spinner
         private let size: SpinnerSize
         /// Duration of animation
         private let duration: CGFloat
         /// Line width of the spinner
         private let lineWidth: CGFloat
-        /// Object that will provide needed colors.
-        private let colorProvider: ColorProvider = Warp.Color
         
         public init(
             size: SpinnerSize = .default,

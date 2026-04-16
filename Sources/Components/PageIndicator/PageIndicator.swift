@@ -25,9 +25,14 @@ extension Warp {
         
         /// Binding to an integer representing the currently selected page.
         @Binding private var selectedPage: Int
-        
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         // MARK: - Initialization
         

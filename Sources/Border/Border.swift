@@ -8,7 +8,8 @@ extension Warp {
         /// Border radius of 2 points. Typically used for very small rounded corners.
         public static let borderRadius25: CGFloat = 2
         /// Border radius of 4 points. A slightly larger rounded corner for small elements.
-        public static let borderRadius50: CGFloat = 4
+        public static let
+            borderRadius50: CGFloat = 4
         /// Border radius of 8 points. Suitable for medium-sized elements with rounded corners.
         public static let borderRadius100: CGFloat = 8
         /// Border radius of 16 points. Ideal for larger elements or prominent rounded corners.

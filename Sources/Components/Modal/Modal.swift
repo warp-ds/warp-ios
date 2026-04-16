@@ -30,9 +30,14 @@ extension Warp {
         
         /// A binding to control the visibility of the modal.
         @Binding var isPresented: Bool
-        
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         // MARK: - Initializer
         

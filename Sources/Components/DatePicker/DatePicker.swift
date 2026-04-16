@@ -21,6 +21,9 @@ extension Warp {
         /// The range of selectable dates.
         private let range: DatePickerRange?
 
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Initializes a `DatePicker` with a binding to the selected date.
         ///
         /// **Usage:**
@@ -83,7 +86,7 @@ extension Warp {
         public var body: some View {
             nativeDatePicker
             .datePickerStyle(.graphical)
-            .accentColor(Warp.Token.backgroundPrimary)
+            .accentColor(theme.token.backgroundPrimary)
         }
 
         private var nativeDatePicker: some View {

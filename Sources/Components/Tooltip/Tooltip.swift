@@ -22,10 +22,15 @@ extension Warp {
 
         /// Custom arrow offset from top/leading edge
         private var arrowOffset: CGFloat?
-        
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider = Warp.Color
-        
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
+
         /// Constants to create the view
         private let arrowHeight: CGFloat = 8
         private let arrowWidth: CGFloat = 18

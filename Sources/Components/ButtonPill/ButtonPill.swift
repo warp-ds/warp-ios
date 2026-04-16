@@ -8,7 +8,13 @@ extension Warp {
         private let type: ButtonPillType
         @State private var state: ButtonPillState = .default
         @Binding private var selected: Bool
-        private let colorProvider: ColorProvider = Warp.Color
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         /// Initializes a `ButtonPill` with a given type and selected state.
         /// - Parameters:
