@@ -17,25 +17,34 @@ extension Warp {
         private let text: String
         /// The style applied to the text, determining its typography and appearance.
         private let style: Warp.TextStyle
-        /// The foreground style of the text, which can be a solid color, gradient, or other shape style.
-        private let foregroundStyle: AnyShapeStyle
-        /// Provides color tokens for the Warp design system.
-        private let colorProvider: ColorProvider = Warp.Color
+        /// The optional color for the text.
+        private let color: Color?
+        /// The optional custom foreground style for the text.
+        private let customForegroundStyle: AnyShapeStyle?
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        /// Object responsible for providing colors in different environments and variants.
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         /// Initializes a Warp.Text view with specific text, style, and a single color.
         ///
         /// - Parameters:
         ///   - text: The text content to display.
         ///   - style: The text style, defined by `Warp.TextStyle`, which determines typography and size.
-        ///   - color: A solid color for the text. Defaults to `Warp.Token.text`.
+        ///   - color: An optional solid color for the text. Defaults to nil, which uses the theme's default text color.
         public init(
             _ text: String,
             style: Warp.TextStyle,
-            color: Color = Warp.Token.text
+            color: Color? = nil
         ) {
             self.text = text
             self.style = style
-            self.foregroundStyle = AnyShapeStyle(color)
+            self.color = color
+            self.customForegroundStyle = nil
         }
 
         /// Initializes a Warp.Text view with specific text, style, and a custom foreground style.
@@ -51,13 +60,22 @@ extension Warp {
         ) {
             self.text = text
             self.style = style
-            self.foregroundStyle = foregroundStyle
+            self.color = nil
+            self.customForegroundStyle = foregroundStyle
         }
 
         public var body: some View {
-            SwiftUI.Text(text)
+            let resolvedStyle: AnyShapeStyle
+            if let customForegroundStyle {
+                resolvedStyle = customForegroundStyle
+            } else {
+                let resolvedColor = color ?? theme.token.text
+                resolvedStyle = AnyShapeStyle(resolvedColor)
+            }
+
+            return SwiftUI.Text(text)
                 .font(from: style.asTypography)
-                .foregroundStyle(foregroundStyle)
+                .foregroundStyle(resolvedStyle)
         }
     }
 }
