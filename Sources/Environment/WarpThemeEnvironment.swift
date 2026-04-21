@@ -7,7 +7,7 @@ import SwiftUI
 /// This replaces the global `Warp.Theme` variable with a proper environment-based system
 /// that is Swift 6 concurrency-safe and testable.
 struct WarpThemeKey: EnvironmentKey {
-    static let defaultValue: Warp.Brand = .finn
+    static let defaultValue: Warp.Brand = Warp.Theme // Default to the global theme for backward compatibility, remove in future versions
 }
 
 extension EnvironmentValues {
