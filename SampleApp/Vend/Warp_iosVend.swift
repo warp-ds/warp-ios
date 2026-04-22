@@ -7,7 +7,7 @@ struct Wrap_iosVend: App {
 
     init() {
         // Register fonts for the Vend theme
-        try? Warp.Typography.registerFonts(for: .vend)
+        try! Warp.Typography.registerFonts(for: .vend)
         FirebaseApp.configure()
     }
 

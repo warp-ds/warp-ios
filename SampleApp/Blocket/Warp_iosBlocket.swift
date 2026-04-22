@@ -7,7 +7,7 @@ struct Wrap_iosBlocket: App {
 
     init() {
         // Register fonts for the Blocket theme
-        try? Warp.Typography.registerFonts(for: .blocket)
+        try! Warp.Typography.registerFonts(for: .blocket)
         FirebaseApp.configure()
     }
 

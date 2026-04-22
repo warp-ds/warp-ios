@@ -6,15 +6,17 @@ import FirebaseCore
 struct Wrap_iosDemo: App {
 
     init() {
-        // Register fonts for the demo theme (using Finn by default)
-        try? Warp.Typography.registerFonts(for: .finn)
+        // Register all brand fonts for dynamic theme switching
+        for theme in Warp.Theme.allCases {
+            try! Warp.Typography.registerFonts(for: theme)
+        }
         FirebaseApp.configure()
     }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .warpTheme(.finn)
+                .warpTheme(.finn) // Set default theme to Finn, but can be switched dynamically in the app
         }
     }
 }

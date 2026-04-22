@@ -7,7 +7,7 @@ struct Wrap_iosFinn: App {
 
     init() {
         // Register fonts for the Finn theme
-        try? Warp.Typography.registerFonts(for: .finn)
+        try! Warp.Typography.registerFonts(for: .finn)
         FirebaseApp.configure()
     }
 

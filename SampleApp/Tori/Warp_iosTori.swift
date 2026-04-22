@@ -7,7 +7,7 @@ struct Wrap_iosTori: App {
 
     init() {
         // Register fonts for the Tori theme
-        try? Warp.Typography.registerFonts(for: .tori)
+        try! Warp.Typography.registerFonts(for: .tori)
         FirebaseApp.configure()
     }
 
