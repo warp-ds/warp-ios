@@ -7,7 +7,7 @@ struct Wrap_iosDemo: App {
 
     init() {
         // Register all brand fonts for dynamic theme switching
-        for theme in Warp.Theme.allCases {
+        for theme in Warp.Brand.allCases {
             try! Warp.Typography.registerFonts(for: theme)
         }
         FirebaseApp.configure()

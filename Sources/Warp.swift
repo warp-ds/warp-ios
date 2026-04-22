@@ -172,7 +172,6 @@ public enum Warp {
     /// It facilitates easy access to brand-specific colors that are used throughout the design system.
     ///
     /// - Warning: This uses the global `Warp.Theme` variable. Consider using `ColorProvider(theme:)` with `@Environment(\.warpTheme)` instead.
-    @available(*, deprecated, message: "Use @Environment(\\.warpTheme) and ColorProvider(theme:) instead of global Warp.Color")
     public static var Color: ColorProvider {
         ColorProvider(theme: Warp.Theme)
     }
@@ -183,7 +182,6 @@ public enum Warp {
     /// It facilitates easy access to brand-specific UIColors that are used throughout the design system.
     ///
     /// - Warning: This uses the global `Warp.Theme` variable. Consider using `UIColorProvider(theme:)` with `@Environment(\.warpTheme)` instead.
-    @available(*, deprecated, message: "Use @Environment(\\.warpTheme) and UIColorProvider(theme:) instead of global Warp.UIColor")
     public static var UIColor: UIColorProvider {
         UIColorProvider(theme: Warp.Theme)
     }

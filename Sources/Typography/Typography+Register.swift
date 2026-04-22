@@ -22,7 +22,6 @@ extension Warp.Typography {
     ///
     /// - Warning: This uses the global `Warp.Theme` variable. Consider using `registerFonts(for:)` with an explicit theme instead.
     /// - Throws: A `Warp.FontRegistrationError` if the registration of any font fails.
-    @available(*, deprecated, message: "Use registerFonts(for:) with explicit theme parameter instead of global Warp.Theme")
     public static func registerFonts() throws {
         try registerFonts(for: Warp.Theme)
     }

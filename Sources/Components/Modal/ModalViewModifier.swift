@@ -79,7 +79,7 @@ extension Warp {
                     .disabled(isPresented)
                     .fullScreenCover(isPresented: $isPresented) {
                         warpModalOverlay()
-                            .background(TransparentBackground())
+                          .presentationBackground(.clear)
                     }
                     .transaction { transaction in
                         transaction.disablesAnimations = true
@@ -111,31 +111,6 @@ extension Warp {
                 .edgesIgnoringSafeArea(.all)
                 .ignoresSafeArea(edges: .all)
             }
-        }
-    }
-}
-
-/// A workaround to make fullScreenCover backgrounds transparent on iOS 15.
-///
-/// iOS 16.4+ can use `.presentationBackground(.clear)` instead.
-/// This UIKit-based approach walks the view hierarchy to clear the hosting controller's background.
-///
-/// - Note: This is a known limitation of `.fullScreenCover` in iOS 15, where SwiftUI doesn't provide
-///   a native way to make the presentation background transparent.
-@MainActor
-struct TransparentBackground: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIView {
-        return UIView()
-    }
-
-    func updateUIView(_ uiView: UIView, context: Context) {
-        // Clear the background after the view is in the hierarchy.
-        // The superview hierarchy is: UIView -> UITransitionView -> UIHostingController.view
-        DispatchQueue.main.async {
-            guard let superview = uiView.superview?.superview else {
-                return
-            }
-            superview.backgroundColor = .clear
         }
     }
 }
