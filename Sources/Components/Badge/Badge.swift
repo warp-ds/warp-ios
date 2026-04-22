@@ -34,9 +34,14 @@ extension Warp {
         
         /// The corner positioning of the badge.
         private let position: Warp.BadgePosition
-        
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// The object responsible for providing colors to the badge based on the current environment or theme.
-        private let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         /// Initializes a `Badge` with the given text, optional icon, style, and position.
         ///

@@ -46,6 +46,14 @@ public struct StateView: View {
 
     private let configuration: StateViewConfiguration
 
+    /// The current theme from the environment.
+    @Environment(\.warpTheme) private var theme
+
+    /// Object responsible for providing colors in different environments and variants.
+    private var colorProvider: ColorProvider {
+        theme.colors
+    }
+
     /// Initializes a `StateView` with the provided configuration parameters.
     ///
     /// - Parameters:
@@ -98,7 +106,7 @@ public struct StateView: View {
             Warp.IconView(
                 icon,
                 size: .custom(configuration.imageWidth ?? 64),
-                color: Warp.Token.iconPrimary
+                color: theme.token.iconPrimary
             )
         case .illustration(let illustration):
             illustration

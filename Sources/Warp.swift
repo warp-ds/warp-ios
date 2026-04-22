@@ -36,6 +36,68 @@ public enum Warp {
                 return "Neutral"
             }
         }
+
+        // MARK: - Provider Access
+
+        /// Color provider for SwiftUI colors
+        var colors: ColorProvider {
+            ColorProvider(theme: self)
+        }
+
+        /// Color provider for UIKit colors
+        var uiColors: UIColorProvider {
+            UIColorProvider(theme: self)
+        }
+
+        /// Semantic token provider for SwiftUI
+        var token: TokenProvider {
+            switch self {
+            case .finn: return FinnTokenProvider()
+            case .tori: return ToriTokenProvider()
+            case .dba: return DbaTokenProvider()
+            case .blocket: return BlocketTokenProvider()
+            case .vend: return VendTokenProvider()
+            case .neutral: return NeutralTokenProvider()
+            }
+        }
+
+        /// Semantic token provider for UIKit
+        var uiToken: UITokenProvider {
+            switch self {
+            case .finn: return FinnUITokenProvider()
+            case .tori: return ToriUITokenProvider()
+            case .dba: return DbaUITokenProvider()
+            case .blocket: return BlocketUITokenProvider()
+            case .vend: return VendUITokenProvider()
+            case .neutral: return NeutralUITokenProvider()
+            }
+        }
+
+        /// Data visualization token provider
+        var datavizToken: DatavizTokenProvider {
+            DatavizTokenProvider()
+        }
+
+        /// Data visualization UIColor token provider
+        var datavizUIToken: DatavizUITokenProvider {
+            DatavizUITokenProvider()
+        }
+
+        /// Typography provider for this brand
+        var typography: Warp.Typography.Type {
+            Warp.Typography.self
+        }
+
+        /// Fonts for this brand
+        var fonts: [Warp.Font] {
+            Warp.Font.fonts(for: self)
+        }
+
+        /// Register fonts for this brand
+        /// - Throws: FontRegistrationError if font registration fails
+        public func registerFonts() throws {
+            try Warp.Typography.registerFonts(for: self)
+        }
     }
     
     // MARK: - Theme Property
@@ -108,16 +170,20 @@ public enum Warp {
     ///
     /// This computed property returns an instance of a `ColorProvider` initialized with the current theme tokens.
     /// It facilitates easy access to brand-specific colors that are used throughout the design system.
+    ///
+    /// - Warning: This uses the global `Warp.Theme` variable. Consider using `ColorProvider(theme:)` with `@Environment(\.warpTheme)` instead.
     public static var Color: ColorProvider {
-        ColorProvider(token: Warp.Token)
+        ColorProvider(theme: Warp.Theme)
     }
-    
+
     /// Provides `UIColor` values based on the current theme UITokens.
     ///
     /// This computed property returns an instance of a `UIColorProvider` initialized with the current theme UITokens.
     /// It facilitates easy access to brand-specific UIColors that are used throughout the design system.
+    ///
+    /// - Warning: This uses the global `Warp.Theme` variable. Consider using `UIColorProvider(theme:)` with `@Environment(\.warpTheme)` instead.
     public static var UIColor: UIColorProvider {
-        UIColorProvider(token: Warp.UIToken)
+        UIColorProvider(theme: Warp.Theme)
     }
 
     // MARK: - Dataviz Token Providers

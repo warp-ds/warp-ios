@@ -81,4 +81,11 @@ struct WarpTests {
             #expect(type(of: actualUIColorProvider.token ) == type(of: expectedProvider))
         }
     }
+
+    @Test(arguments: Warp.Brand.allCases)
+    func testFontsAreRegisteredForTheme(brand: Warp.Brand) throws {
+        Warp.Theme = brand
+        let typography = Warp.Typography.self
+        try typography.registerFonts(for: brand)
+    }
 }

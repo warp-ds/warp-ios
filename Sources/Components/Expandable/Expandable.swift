@@ -34,7 +34,12 @@ extension Warp {
         let style: Warp.ExpandableStyle
         let isAnimated: Bool
 
-        let colorProvider: ColorProvider = Warp.Color
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         public init(
             style: Warp.ExpandableStyle,
@@ -130,7 +135,13 @@ public extension Warp {
      */
     struct ExpandableStringWrapperView: View {
         let subtitle: String
-        let colorProvider: ColorProvider = Warp.Color
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         public var body: some View {
             VStack(spacing: 0) {

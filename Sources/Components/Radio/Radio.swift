@@ -23,8 +23,14 @@ extension Warp {
         var extraContent: AnyView?
         /// A closure that is executed when the radio button is tapped.
         var action: () -> Void
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object that will provide needed colors.
-        private let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         /// Initializes a new `Radio`.
         ///

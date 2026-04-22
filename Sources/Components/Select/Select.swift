@@ -20,10 +20,15 @@ extension Warp {
     /// Warning: The options array should not be empty to ensure proper functionality.
     public struct Select: View {
 
-        /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider = Warp.Color
-
         @Binding private var selectedOption: Warp.Select.SelectorOption?
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        /// Object responsible for providing colors in different environments and variants.
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         private let options: [Warp.Select.SelectorOption]
         private let title: String
         private let additionalInformation: String?

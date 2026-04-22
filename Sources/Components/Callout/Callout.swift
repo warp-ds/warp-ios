@@ -43,8 +43,13 @@ extension Warp {
         /// Corner radius,
         private let cornerRadius: Double
 
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         /**
          - Parameter size: Size of callout, default value is `.default`

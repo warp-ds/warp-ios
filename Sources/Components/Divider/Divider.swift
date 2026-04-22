@@ -13,8 +13,15 @@ extension Warp {
     /// Warp.Divider(orientation: .vertical, style: .dashed)
     /// ```
     public struct Divider: View {
-        // MARK: - WARP Style      
-        let color = Warp.Token.border
+        // MARK: - WARP Style
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        private var color: Color {
+            theme.token.border
+        }
+
         let thickness: CGFloat = Warp.Border.borderWidth12
 
         /// Orientation for the divider: horizontal or vertical.

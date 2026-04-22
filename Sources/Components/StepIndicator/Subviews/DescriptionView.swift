@@ -6,19 +6,24 @@ extension Warp.StepIndicator {
         let description: String
         let layoutOrientation: LayoutOrientation
         let progress: Warp.StepIndicatorItem.Progress
-        let colorProvider: ColorProvider
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        /// Object responsible for providing colors in different environments and variants.
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         init(
             step: Warp.StepIndicatorItem,
-            layoutOrientation: LayoutOrientation,
-            colorProvider: ColorProvider = Warp.Color
+            layoutOrientation: LayoutOrientation
         ) {
             self.init(
                 title: step.title,
                 description: step.description,
                 layoutOrientation: layoutOrientation,
-                progress: step.progress,
-                colorProvider: colorProvider
+                progress: step.progress
             )
         }
 
@@ -26,14 +31,12 @@ extension Warp.StepIndicator {
             title: String,
             description: String,
             layoutOrientation: LayoutOrientation,
-            progress: Warp.StepIndicatorItem.Progress,
-            colorProvider: ColorProvider = Warp.Color
+            progress: Warp.StepIndicatorItem.Progress
         ) {
             self.title = title
             self.description = description
             self.layoutOrientation = layoutOrientation
             self.progress = progress
-            self.colorProvider = colorProvider
         }
 
         var body: some View {

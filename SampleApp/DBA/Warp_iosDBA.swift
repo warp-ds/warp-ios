@@ -6,13 +6,15 @@ import FirebaseCore
 struct Wrap_iosDBA: App {
 
     init() {
-        Warp.Theme = .dba
+        // Register fonts for the DBA theme
+        try! Warp.Typography.registerFonts(for: .dba)
         FirebaseApp.configure()
     }
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .warpTheme(.dba)
         }
     }
 }

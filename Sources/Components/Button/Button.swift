@@ -31,8 +31,13 @@ extension Warp {
         /// Flag indicating whether this view is loading.
         private let isLoading: Bool
 
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object that will provide needed colors.
-        private let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         private var isMultilineAndCentered: Bool = false
 

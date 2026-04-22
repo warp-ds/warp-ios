@@ -13,7 +13,14 @@ extension Warp {
         public let tabs: [TabItem]
         @Binding private var selectedIndex: Int
         private let isScrollable: Bool
-        private let colorProvider: ColorProvider = Warp.Color
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        /// Object responsible for providing colors in different environments and variants.
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         /// Initializes the Tabs view with an array of tabs and a binding for the selected index.
         ///

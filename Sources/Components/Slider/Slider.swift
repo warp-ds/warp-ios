@@ -22,13 +22,37 @@ extension Warp {
         // Constants for styling
         private let thumbDiameter: CGFloat = 28 + 16 // 16 for the active border
         private let cornerRadius = Warp.Border.borderRadius50
-        private let trackColor = Warp.Token.backgroundDisabledSubtle
-        private let filledTrackColor = Warp.Token.backgroundPrimary
-        private let thumbColor = Warp.Token.backgroundPrimary
-        private let thumbBorderColor = Warp.Token.backgroundDisabled.opacity(0.4)
-        private let thumbActiveColor = Warp.Token.backgroundPrimaryActive
-        private let textIndicatorColor = Warp.Token.textSubtle
-        private let disabledColor = Warp.Token.backgroundDisabled
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        private var trackColor: Color {
+            theme.token.backgroundDisabledSubtle
+        }
+
+        private var filledTrackColor: Color {
+            theme.token.backgroundPrimary
+        }
+
+        private var thumbColor: Color {
+            theme.token.backgroundPrimary
+        }
+
+        private var thumbBorderColor: Color {
+            theme.token.backgroundDisabled.opacity(0.4)
+        }
+
+        private var thumbActiveColor: Color {
+            theme.token.backgroundPrimaryActive
+        }
+
+        private var textIndicatorColor: Color {
+            theme.token.textSubtle
+        }
+
+        private var disabledColor: Color {
+            theme.token.backgroundDisabled
+        }
 
         @Binding var value: Double // Binding value to update the slider value
         let range: ClosedRange<Double> // Defines the range for the slider

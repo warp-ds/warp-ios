@@ -834,7 +834,7 @@ extension Warp {
                 size == .default ? "tori" : "toriSmall"
             case .vend(let size):
                 size == .default ? "vend" : "vendSmall"
-            case .vendPro(let size):
+            case .vendPro(_):
                 "vendPro" // VendPro only has one size
             }
         }

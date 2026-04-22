@@ -79,7 +79,7 @@ extension Warp {
                     .disabled(isPresented)
                     .fullScreenCover(isPresented: $isPresented) {
                         warpModalOverlay()
-                            .background(TransparentBackground())
+                          .presentationBackground(.clear)
                     }
                     .transaction { transaction in
                         transaction.disablesAnimations = true
@@ -113,18 +113,6 @@ extension Warp {
             }
         }
     }
-}
-
-struct TransparentBackground: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIView {
-        let view = UIView()
-        DispatchQueue.main.async {
-            view.superview?.superview?.backgroundColor = .clear
-        }
-        return view
-    }
-    
-    func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
 public extension View {

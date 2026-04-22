@@ -29,9 +29,14 @@ extension Warp {
     public struct TextArea: View {
         
         // MARK: - Properties
-        
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         /// The corner radius for the text area border.
         private let cornerRadius = Warp.Border.borderRadius50

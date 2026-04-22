@@ -23,11 +23,16 @@ extension Warp {
 
         // MARK: - Properties
 
-        /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider = Warp.Color
-
         /// State variable to manage the presentation of the tooltip content.
         @State private var isTooltipPresented: Bool = false
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        /// Object responsible for providing colors in different environments and variants.
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         /// The main title text to display.
         private let title: String
