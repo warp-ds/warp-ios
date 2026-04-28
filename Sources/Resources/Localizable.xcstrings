@@ -908,7 +908,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidevisning af et terrænkøretøj"
+            "value" : "Et terrængående køretøj set fra siden"
           }
         },
         "en" : {
@@ -920,19 +920,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maastoajoneuvon sivukuva"
+            "value" : "Mönkijän sivuprofiili"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidebilde av et terrengkjøretøy"
+            "value" : "En ATV sett fra siden"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidovy av ett terrängfordon"
+            "value" : "En ATV från sidan"
           }
         }
       }
@@ -1844,7 +1844,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidevisning af en bulldozer"
+            "value" : "Bulldozer set fra siden"
           }
         },
         "en" : {
@@ -1856,19 +1856,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Puskutraktorin sivukuva"
+            "value" : "Puskutraktorin sivuprofiili"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidebilde av en bulldoser"
+            "value" : "En bulldoser sett fra siden"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidovy av en bulldozer"
+            "value" : "En bulldozer från sidan"
           }
         }
       }
@@ -2276,7 +2276,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidevisning af en campingvogn"
+            "value" : "Campingvogn på slæb set fra siden"
           }
         },
         "en" : {
@@ -2288,19 +2288,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hinattavan asuntovaunun sivukuva"
+            "value" : "Asuntovaunun sivuprofiili"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidebilde av en campingvogn"
+            "value" : "En campingvogn sett fra siden"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidovy av en släpvagn"
+            "value" : "En husvagn från sidan"
           }
         }
       }
@@ -5228,7 +5228,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidevisning af en mejetærsker"
+            "value" : "Mejetærsker set fra siden"
           }
         },
         "en" : {
@@ -5240,19 +5240,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Puimurin sivukuva"
+            "value" : "Leikkuupuimurin sivuprofiili"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidebilde av en skurtresker"
+            "value" : "En tresker sett fra siden"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidovy av en skördetröska"
+            "value" : "En trösta från sidan"
           }
         }
       }
@@ -6668,7 +6668,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidevisning af en knallert"
+            "value" : "Knallert set fra siden"
           }
         },
         "en" : {
@@ -6680,19 +6680,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mopon sivukuva"
+            "value" : "Mopon sivuprofiili"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidebilde av en moped"
+            "value" : "En moped sett fra siden"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidovy av en moped"
+            "value" : "En moped från sidan"
           }
         }
       }
@@ -8108,7 +8108,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidevisning af en autocamper"
+            "value" : "Autocamper set fra siden"
           }
         },
         "en" : {
@@ -8120,19 +8120,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matkailuauton sivukuva"
+            "value" : "Asuntoauton sivuprofiili"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidebilde av en bobil"
+            "value" : "En bobil sett fra siden"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidovy av en husbil"
+            "value" : "En husbil från sidan"
           }
         }
       }
@@ -8936,7 +8936,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidevisning af en snescooter"
+            "value" : "Snescooter set fra siden"
           }
         },
         "en" : {
@@ -8948,19 +8948,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moottorikelkan sivukuva"
+            "value" : "Moottorikelkan sivuprofiili"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidebilde av en snøscooter"
+            "value" : "En snøscooter sett fra siden"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidovy av en snöskoter"
+            "value" : "En snöskoter från sidan"
           }
         }
       }
@@ -10268,7 +10268,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidevisning af en lastbil"
+            "value" : "Kassevogn set fra siden"
           }
         },
         "en" : {
@@ -10280,19 +10280,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kuorma-auton sivukuva"
+            "value" : "Kuorma-auton sivuprofiili"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidebilde av en varebil"
+            "value" : "En skapbil sett fra siden"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sidovy av en skåpbil"
+            "value" : "En skåpbil från sidan"
           }
         }
       }
