@@ -170,19 +170,27 @@ public struct StateView: View {
     }
 
     public var body: some View {
-        ScrollView {
-            VStack(alignment: .center, spacing: Warp.Spacing.spacing300) {
-                imageView
-                textSectionView
-                buttonSectionView
-                if configuration.showLogo {
-                    endorsementView
-                }
+        ViewThatFits(in: .vertical) {
+            content
+                .frame(maxHeight: .infinity, alignment: .center)
+            
+            ScrollView {
+                content
             }
-              .padding(Warp.Spacing.spacing400)
-              .frame(maxHeight: .infinity, alignment: .center)
+             .scrollBounceBasedOnSize()
         }
-          .scrollBounceBasedOnSize()
+    }
+
+    private var content: some View {
+        VStack(alignment: .center, spacing: Warp.Spacing.spacing300) {
+            imageView
+            textSectionView
+            buttonSectionView
+            if configuration.showLogo {
+                endorsementView
+            }
+        }
+          .padding(Warp.Spacing.spacing400)
     }
 }
 
