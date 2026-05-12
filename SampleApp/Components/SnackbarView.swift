@@ -1,0 +1,141 @@
+import SwiftUI
+import Warp
+
+typealias SnackbarType = Warp.Snackbar.`Type`
+
+struct SnackbarView: View {
+    @State var snackbarIsPresented: Bool = true
+    @State var snackbarType: Warp.Snackbar.`Type` = .success
+    @State var snackbarDuration: Warp.Snackbar.Duration = .short
+    @State var showCloseButton: Bool = true
+
+    var body: some View {
+        ScrollView(showsIndicators: false) {
+
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Text("Snackbar View Demo")
+                        .font(.title)
+
+                    Spacer()
+                }
+
+                Text("Playground")
+                    .font(.title2)
+                Text("Experiment with Snackbar Style and Snackbar Edge to see the variants")
+
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Right now the snackbar is ") +
+                        Text(snackbarStatus)
+                            .bold()
+
+                        Spacer()
+                    }
+
+                    if(snackbarIsPresented) {
+                        Text("You can tap the snackbar to dismiss it")
+                    } else {
+                        Button(action: {
+                            snackbarIsPresented = true
+                        }, label: {
+                            Text("Tap me to show the snackbar again")
+                                .frame(maxWidth: .infinity)
+                        })
+                        .buttonStyle(.borderedProminent)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.secondary)
+                .cornerRadius(8)
+
+                Text("Snackbar Type")
+                    .font(.headline)
+                Picker("Snackbar Type:", selection: $snackbarType) {
+                    ForEach(SnackbarType.allCases, id: \.self) { currentType in
+                        Text(currentType.description)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                Divider()
+
+                Text("Snackbar duration")
+                        .font(.headline)
+
+                Picker("Snackbar duration:", selection: $snackbarDuration) {
+                    ForEach(Warp.Snackbar.Duration.demoCases, id: \.self) { currentDuration in
+                        Text(currentDuration.description)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                Divider()
+
+                Text("Show close button")
+                    .font(.headline)
+
+                Toggle(isOn: $showCloseButton) {
+                    Text("Show close button on snackbar")
+                }
+                  .padding()
+
+                Divider()
+
+                Spacer()
+            }
+        }
+        .padding()
+        .warpSnackbar(
+            type: snackbarType,
+            title: "Here's a snackbar of type \(snackbarType.description)",
+            duration: snackbarDuration,
+            showCloseButton: showCloseButton,
+            isPresented: $snackbarIsPresented
+        )
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Snackbar")
+    }
+
+    private var snackbarStatus: String {
+        snackbarIsPresented ? "visible" : "not visible"
+    }
+}
+
+fileprivate extension Warp.Snackbar.`Type` {
+    var description: String {
+        switch self {
+        case .error:
+            "error"
+        case .success:
+            "success"
+        case .warning:
+            "warning"
+        }
+    }
+}
+
+
+fileprivate extension Warp.Snackbar.Duration {
+    static var demoCases: [Warp.Snackbar.Duration] {
+        [.short, .long, .infinite]
+    }
+
+    var description: String {
+        switch self {
+        case .short:
+            "Short (5 seconds)"
+        case .long:
+            "Long (10 seconds)"
+        case .infinite:
+            "Infinite"
+        case .custom(let interval):
+            "custom (\(interval) seconds)"
+        }
+    }
+}
+
+#Preview {
+    SnackbarView()
+}
