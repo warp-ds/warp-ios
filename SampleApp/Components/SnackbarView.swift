@@ -8,6 +8,14 @@ struct SnackbarView: View {
     @State var snackbarType: Warp.Snackbar.`Type` = .success
     @State var snackbarDuration: Warp.Snackbar.Duration = .short
     @State var showCloseButton: Bool = true
+    @State var actionMode: ActionMode = .none
+    @State var actionMessage: String = ""
+
+    enum ActionMode: String, CaseIterable {
+        case none = "None"
+        case inline = "Inline Action"
+        case long = "Long Action"
+    }
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -83,16 +91,32 @@ struct SnackbarView: View {
 
                 Divider()
 
+                Text("Action Button Mode")
+                    .font(.headline)
+
+                Picker("Action Mode:", selection: $actionMode) {
+                    ForEach(ActionMode.allCases, id: \.self) { mode in
+                        Text(mode.rawValue).tag(mode)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                Divider()
+
                 Spacer()
             }
         }
         .padding()
-        .warpSnackbar(
-            type: snackbarType,
-            title: "Here's a snackbar of type \(snackbarType.description)",
-            duration: snackbarDuration,
-            showCloseButton: showCloseButton,
-            isPresented: $snackbarIsPresented
+        .modifier(
+            SnackbarConditionalModifier(
+                type: snackbarType,
+                title: "Here's a snackbar of type \(snackbarType.description)",
+                actionMode: actionMode,
+                action: snackbarAction,
+                duration: snackbarDuration,
+                showCloseButton: showCloseButton,
+                isPresented: $snackbarIsPresented
+            )
         )
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Snackbar")
@@ -100,6 +124,53 @@ struct SnackbarView: View {
 
     private var snackbarStatus: String {
         snackbarIsPresented ? "visible" : "not visible"
+    }
+
+    private var snackbarAction: Warp.Snackbar.Action? {
+        actionMode != .none ? Warp.Snackbar.Action(title: "Undo") {
+            actionMessage = "Action button tapped!"
+        } : nil
+    }
+}
+
+struct SnackbarConditionalModifier: ViewModifier {
+    let type: Warp.Snackbar.`Type`
+    let title: String
+    let actionMode: SnackbarView.ActionMode
+    let action: Warp.Snackbar.Action?
+    let duration: Warp.Snackbar.Duration
+    let showCloseButton: Bool
+    @Binding var isPresented: Bool
+
+    func body(content: Content) -> some View {
+        switch actionMode {
+        case .none:
+            content.warpSnackbar(
+                type: type,
+                title: title,
+                duration: duration,
+                showCloseButton: showCloseButton,
+                isPresented: $isPresented
+            )
+        case .inline:
+            content.warpSnackbar(
+                type: type,
+                title: title,
+                action: action,
+                duration: duration,
+                showCloseButton: showCloseButton,
+                isPresented: $isPresented
+            )
+        case .long:
+            content.warpSnackbar(
+                type: type,
+                title: title,
+                longAction: action,
+                duration: duration,
+                showCloseButton: showCloseButton,
+                isPresented: $isPresented
+            )
+        }
     }
 }
 

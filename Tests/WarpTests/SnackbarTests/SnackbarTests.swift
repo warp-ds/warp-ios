@@ -18,6 +18,7 @@ struct SnackbarTests {
             .warpSnackbar(
                 type: .success,
                 title: "This is a snackbar message",
+                action: nil,
                 duration: .custom(interval: dissapearAfterTime),
                 isPresented: isPresented
             )

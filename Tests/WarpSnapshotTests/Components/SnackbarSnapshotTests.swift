@@ -28,6 +28,7 @@ struct SnackbarSnapshotTests {
             .warpSnackbar(
                 type: type,
                 title: "Here's a snackbar of type \(type.description)",
+                action: nil,
                 duration: .infinite,
                 showCloseButton: showCloseButton,
                 isPresented: .constant(true)
