@@ -45,9 +45,10 @@ struct SnackbarSnapshotTests {
 private extension Warp.Snackbar.Type {
     var description: String {
         switch self {
-        case .success: return "Success"
-        case .error: return "Error"
+        case .positive: return "Positive"
+        case .negative: return "Negative"
         case .warning: return "Warning"
+        case .neutral: return "Neutral"
         }
     }
 }

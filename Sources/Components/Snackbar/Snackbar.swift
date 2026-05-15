@@ -197,7 +197,7 @@ extension Warp {
 
         private var iconAndTitle: some View {
             HStack(spacing: 0) {
-                Warp.IconView(type.icon, size: .default, color: type.iconColor(from: colorProvider))
+                Warp.PaletteIconView(type.icon, size: .default, color: type.iconColor(from: colorProvider))
 
                 Text(title, style: .body, color: type.textColor(from: colorProvider))
                     .padding(.leading, 8)
@@ -236,31 +236,35 @@ extension Warp.Snackbar.`Type` {
 
     fileprivate func iconColor(from colorProvider: ColorProvider) -> Color {
         switch self {
-        case .error:
-            colorProvider.token.iconNegative
-        case .success:
+        case .positive:
             colorProvider.token.iconPositive
         case .warning:
             colorProvider.token.iconWarning
+        case .negative:
+            colorProvider.token.iconNegative
+        case .neutral:
+            colorProvider.token.iconInfo
         }
     }
 
     fileprivate var icon: Warp.Icon {
         switch self {
-        case .error:
-            return .error
-        case .success:
-            return .success
+        case .positive:
+            return .successFilled
         case .warning:
-            return .warning
+            return .warningFilled
+        case .negative:
+            return .errorFilled
+        case .neutral:
+            return .infoFilled
         }
     }
 }
 
 #Preview {
     Warp.Snackbar(
-        type: .success,
-        title: "This is a success snackbar",
+        type: .positive,
+        title: "This is a positive snackbar",
         isPresented: .constant(true)
     )
     .warpTheme(.finn)

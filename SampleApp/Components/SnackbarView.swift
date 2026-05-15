@@ -5,7 +5,7 @@ typealias SnackbarType = Warp.Snackbar.`Type`
 
 struct SnackbarView: View {
     @State var snackbarIsPresented: Bool = true
-    @State var snackbarType: Warp.Snackbar.`Type` = .success
+    @State var snackbarType: Warp.Snackbar.`Type` = .positive
     @State var snackbarDuration: Warp.Snackbar.Duration = .short
     @State var showCloseButton: Bool = true
     @State var actionMode: ActionMode = .none
@@ -177,12 +177,14 @@ struct SnackbarConditionalModifier: ViewModifier {
 fileprivate extension Warp.Snackbar.`Type` {
     var description: String {
         switch self {
-        case .error:
-            "error"
-        case .success:
-            "success"
+        case .positive:
+            "positive"
         case .warning:
             "warning"
+        case .negative:
+            "negative"
+        case .neutral:
+            "neutral"
         }
     }
 }

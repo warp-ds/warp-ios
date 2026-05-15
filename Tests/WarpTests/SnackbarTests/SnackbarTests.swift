@@ -16,7 +16,7 @@ struct SnackbarTests {
 
         let snackbar = EmptyView()
             .warpSnackbar(
-                type: .success,
+                type: .positive,
                 title: "This is a snackbar message",
                 action: nil,
                 duration: .custom(interval: dissapearAfterTime),

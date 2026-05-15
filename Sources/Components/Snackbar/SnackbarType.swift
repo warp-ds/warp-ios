@@ -1,16 +1,18 @@
 import Foundation
 
 extension Warp.Snackbar {
-    
+
     public enum `Type`: Equatable, CaseIterable {
-        /// Disruptive message describes a critical, fatal error that affects action. Example: Internal server error
-        case error
+        /// Positive message. Example: Item added
+        case positive
 
-        /// Positive message, which describes successful action. Example: Item added
-        case success
-
-        /// Non-critical message, which describes unsuccessful action. Example: Internet disconnected
+        /// Warning message. Example: Internet disconnected
         case warning
+
+        /// Negative message. Example: Internal server error
+        case negative
+
+        /// Neutral message. Example: Generic information
+        case neutral
     }
-    
 }
