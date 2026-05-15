@@ -2,7 +2,7 @@ import SwiftUI
 
 extension Warp {
     struct SnackbarViewModifier: ViewModifier {
-        let type: Warp.Snackbar.`Type`
+        let type: Warp.SnackbarType
         let title: String
         let action: Warp.Snackbar.Action?
         let longAction: Warp.Snackbar.Action?
@@ -52,7 +52,7 @@ extension Warp {
 
 public extension View {
     func warpSnackbar(
-        type: Warp.Snackbar.`Type`,
+        type: Warp.SnackbarType,
         title: String,
         action: Warp.Snackbar.Action? = nil,
         duration: Warp.Snackbar.Duration = .short,
@@ -73,7 +73,7 @@ public extension View {
     }
 
     func warpSnackbar(
-        type: Warp.Snackbar.`Type`,
+        type: Warp.SnackbarType,
         title: String,
         longAction: Warp.Snackbar.Action?,
         duration: Warp.Snackbar.Duration = .short,

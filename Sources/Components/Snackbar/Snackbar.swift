@@ -30,7 +30,7 @@ extension Warp {
         }
 
         /// Preferred type of snackbar
-        let type: Snackbar.`Type`
+        let type: SnackbarType
 
         /// Text that will be shown in snackbar
         let title: String
@@ -61,7 +61,7 @@ extension Warp {
          - Parameter isPresented: Is the `Snackbar` presented or not
          */
         public init(
-            type: Snackbar.`Type`,
+            type: SnackbarType,
             title: String,
             duration: Duration = .short,
             showCloseButton: Bool = true,
@@ -84,7 +84,7 @@ extension Warp {
          - Parameter isPresented: Is the `Snackbar` presented or not
          */
         public init(
-            type: Snackbar.`Type`,
+            type: SnackbarType,
             title: String,
             action: Action?,
             duration: Duration = .short,
@@ -108,7 +108,7 @@ extension Warp {
          - Parameter isPresented: Is the `Snackbar` presented or not
          */
         public init(
-            type: Snackbar.`Type`,
+            type: SnackbarType,
             title: String,
             longAction: Action?,
             duration: Duration = .short,
@@ -221,7 +221,7 @@ extension Warp {
     }
 }
 
-extension Warp.Snackbar.`Type` {
+extension Warp.SnackbarType {
     fileprivate func backgroundColor(from colorProvider: ColorProvider) -> Color {
         colorProvider.tooltipBackgroundStatic
     }

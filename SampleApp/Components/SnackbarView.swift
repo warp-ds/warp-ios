@@ -1,11 +1,9 @@
 import SwiftUI
 import Warp
 
-typealias SnackbarType = Warp.Snackbar.`Type`
-
 struct SnackbarView: View {
     @State var snackbarIsPresented: Bool = true
-    @State var snackbarType: Warp.Snackbar.`Type` = .positive
+    @State var snackbarType: Warp.SnackbarType = .positive
     @State var snackbarDuration: Warp.Snackbar.Duration = .short
     @State var showCloseButton: Bool = true
     @State var actionMode: ActionMode = .none
@@ -61,7 +59,7 @@ struct SnackbarView: View {
                 Text("Snackbar Type")
                     .font(.headline)
                 Picker("Snackbar Type:", selection: $snackbarType) {
-                    ForEach(SnackbarType.allCases, id: \.self) { currentType in
+                    ForEach(Warp.SnackbarType.allCases, id: \.self) { currentType in
                         Text(currentType.description)
                     }
                 }
@@ -134,7 +132,7 @@ struct SnackbarView: View {
 }
 
 struct SnackbarConditionalModifier: ViewModifier {
-    let type: Warp.Snackbar.`Type`
+    let type: Warp.SnackbarType
     let title: String
     let actionMode: SnackbarView.ActionMode
     let action: Warp.Snackbar.Action?
@@ -174,7 +172,7 @@ struct SnackbarConditionalModifier: ViewModifier {
     }
 }
 
-fileprivate extension Warp.Snackbar.`Type` {
+fileprivate extension Warp.SnackbarType {
     var description: String {
         switch self {
         case .positive:

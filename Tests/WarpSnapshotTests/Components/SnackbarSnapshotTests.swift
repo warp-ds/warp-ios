@@ -6,33 +6,74 @@ import SwiftUI
 @Suite @MainActor
 struct SnackbarSnapshotTests {
 
-    static let snackbarStyles = Warp.Snackbar.`Type`.allCases
+    static let snackbarStyles = Warp.SnackbarType.allCases
     static let showCloseButtonOptions = [true, false]
+    static let actionModes: [ActionMode] = [.none, .inline, .long]
     static let allArgumentsCombined = combine(
         Warp.Brand.allCases,
         snackbarStyles,
-        showCloseButtonOptions
+        showCloseButtonOptions,
+        actionModes
     )
 
+    enum ActionMode {
+        case none
+        case inline
+        case long
+    }
+
     @Test(arguments: Self.allArgumentsCombined)
-    func snapshotAllSnackbars(brand: Warp.Brand, type: Warp.Snackbar.Type, showCloseButton: Bool) {
+    func snapshotAllSnackbars(brand: Warp.Brand, type: Warp.SnackbarType, showCloseButton: Bool, actionMode: ActionMode) {
         let snapshotName = [
             ".\(brand.description)",
-            "\(type.description)Style"
+            "\(type.description)Style",
+            actionMode.description
         ].compactMap { $0 }.joined(separator: ".")
 
         // Set the theme to the current brand
         Warp.Theme = brand
 
-        let snackbarView = EmptyView()
-            .warpSnackbar(
-                type: type,
-                title: "Here's a snackbar of type \(type.description)",
-                action: nil,
-                duration: .infinite,
-                showCloseButton: showCloseButton,
-                isPresented: .constant(true)
+        let action = Warp.Snackbar.Action(title: "Action") {}
+
+        let snackbarView: AnyView
+        switch actionMode {
+        case .none:
+            snackbarView = AnyView(
+                EmptyView()
+                    .warpSnackbar(
+                        type: type,
+                        title: "Here's a snackbar of type \(type.description)",
+                        action: nil,
+                        duration: .infinite,
+                        showCloseButton: showCloseButton,
+                        isPresented: .constant(true)
+                    )
             )
+        case .inline:
+            snackbarView = AnyView(
+                EmptyView()
+                    .warpSnackbar(
+                        type: type,
+                        title: "Here's a snackbar of type \(type.description)",
+                        action: action,
+                        duration: .infinite,
+                        showCloseButton: showCloseButton,
+                        isPresented: .constant(true)
+                    )
+            )
+        case .long:
+            snackbarView = AnyView(
+                EmptyView()
+                    .warpSnackbar(
+                        type: type,
+                        title: "Here's a snackbar of type \(type.description)",
+                        longAction: action,
+                        duration: .infinite,
+                        showCloseButton: showCloseButton,
+                        isPresented: .constant(true)
+                    )
+            )
+        }
 
         assertSnapshot(
             of: snackbarView,
@@ -42,7 +83,17 @@ struct SnackbarSnapshotTests {
     }
 }
 
-private extension Warp.Snackbar.Type {
+private extension SnackbarSnapshotTests.ActionMode {
+    var description: String {
+        switch self {
+        case .none: return "NoAction"
+        case .inline: return "InlineAction"
+        case .long: return "LongAction"
+        }
+    }
+}
+
+private extension Warp.SnackbarType {
     var description: String {
         switch self {
         case .positive: return "Positive"

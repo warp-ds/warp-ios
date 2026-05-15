@@ -1,8 +1,8 @@
 import Foundation
 
-extension Warp.Snackbar {
+extension Warp {
 
-    public enum `Type`: Equatable, CaseIterable {
+    public enum SnackbarType: Equatable, CaseIterable {
         /// Positive message. Example: Item added
         case positive
 
