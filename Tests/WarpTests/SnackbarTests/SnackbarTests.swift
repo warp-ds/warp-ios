@@ -29,11 +29,3 @@ struct SnackbarTests {
         #expect(isPresented.wrappedValue == false, "Snackbar should disappear after \(dissapearAfterTime) seconds")
     }
 }
-
-extension Task where Success == Never, Failure == Never {
-
-    static func sleep(timeInterval: TimeInterval) async throws {
-        let nanoseconds = UInt64(timeInterval * 1_000_000_000)
-        try await Task.sleep(nanoseconds: nanoseconds)
-    }
-}
