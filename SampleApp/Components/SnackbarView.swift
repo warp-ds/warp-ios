@@ -8,6 +8,7 @@ struct SnackbarView: View {
     @State var showCloseButton: Bool = true
     @State var actionMode: ActionMode = .none
     @State var actionMessage: String = ""
+    @State var customText: String = ""
 
     enum ActionMode: String, CaseIterable {
         case none = "None"
@@ -101,6 +102,13 @@ struct SnackbarView: View {
 
                 Divider()
 
+                Text("Custom Text")
+                    .font(.headline)
+
+                TextField("Enter custom snackbar text", text: $customText)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+
                 Spacer()
             }
         }
@@ -108,7 +116,7 @@ struct SnackbarView: View {
         .modifier(
             SnackbarConditionalModifier(
                 type: snackbarType,
-                title: "Here's a snackbar of type \(snackbarType.description)",
+                title: snackbarTitle,
                 actionMode: actionMode,
                 action: snackbarAction,
                 duration: snackbarDuration,
@@ -122,6 +130,10 @@ struct SnackbarView: View {
 
     private var snackbarStatus: String {
         snackbarIsPresented ? "visible" : "not visible"
+    }
+
+    private var snackbarTitle: String {
+        customText.isEmpty ? "Here's a snackbar of type \(snackbarType.description)" : customText
     }
 
     private var snackbarAction: Warp.Snackbar.Action? {

@@ -5,61 +5,86 @@ extension Warp {
 
     private static let snackbarCornerRadius: Double = 24
 
-    /**
-        A snackbar is a message, which provides quick, at-a-glance feedback on the outcome of an action.
-
-        **When to use**
-
-        The Snackbar is best used for short success, warning, and error messages to confirm an action.
-
-         To use the iOS `Snackbar` View you need to provide it with
-        - a `Snackbar.Type` (can be `.error`, `.success` or `.warning`)
-        - a `title`
-        - a Binding to a boolean value allowing the `Snackbar` to dismiss
-     */
+    /// A snackbar is a message that provides quick, at-a-glance feedback on the outcome of an action.
+    ///
+    /// The Snackbar is best used for short success, warning, and error messages to confirm an action.
+    /// Snackbars appear temporarily at the bottom of the screen and can optionally include an action button.
+    ///
+    /// **Usage:**
+    ///
+    /// ```swift
+    /// Warp.Snackbar(
+    ///     type: .positive,
+    ///     title: "Item successfully added",
+    ///     isPresented: $showSnackbar
+    /// )
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - type: The `SnackbarType` determining the visual style (`.positive`, `.warning`, `.negative`, or `.neutral`).
+    ///   - title: The message text to display.
+    ///   - duration: How long the snackbar remains visible. Defaults to `.short`.
+    ///   - showCloseButton: Whether to show a close button. Defaults to `true`.
+    ///   - isPresented: A binding that controls the snackbar's visibility.
     public struct Snackbar: View {
 
+        /// Represents an action button that can be displayed in the snackbar.
         public struct Action {
+            /// The title displayed on the action button.
             let title: String
+
+            /// The closure executed when the action button is tapped.
             let handler: () -> Void
 
+            /// Initializes a snackbar action.
+            /// - Parameters:
+            ///   - title: The text displayed on the action button.
+            ///   - handler: The closure to execute when the button is tapped.
             public init(title: String, handler: @escaping () -> Void) {
                 self.title = title
                 self.handler = handler
             }
         }
 
-        /// Preferred type of snackbar
+        /// The visual style of the snackbar.
         let type: SnackbarType
 
-        /// Text that will be shown in snackbar
+        /// The message text displayed in the snackbar.
         let title: String
 
-        /// Duration for which the snackbar will be displayed
+        /// The duration for which the snackbar will be displayed.
         let duration: Duration
 
-        /// Binding to a boolean value that allows the snackbar to control dismissal
+        /// A binding that controls whether the snackbar is presented.
         @Binding public var isPresented: Bool
 
         /// The current theme from the environment.
         @Environment(\.warpTheme) private var theme
+
+        /// The horizontal size class for detecting orientation (portrait vs landscape).
+        @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
         /// Object responsible for providing colors in different environments and variants.
         private var colorProvider: ColorProvider {
             theme.colors
         }
 
+        /// Optional inline action button.
         private let action: Action?
+
+        /// Optional long action button displayed below the message.
         private let longAction: Action?
+
+        /// Whether to show a close button.
         private let showCloseButton: Bool
-        
-        /**
-         - Parameter type: The `Snackbar.Type` of the `Snackbar`
-         - Parameter title: String to display in the `Snackbar`
-         - Parameter duration: Duration for which the `Snackbar` will be displayed, default is `.short`
-         - Parameter showCloseButton: Whether to show close button on the `Snackbar`, default is `true`
-         - Parameter isPresented: Is the `Snackbar` presented or not
-         */
+
+        /// Initializes a basic snackbar without an action button.
+        /// - Parameters:
+        ///   - type: The visual style of the snackbar.
+        ///   - title: The message text to display.
+        ///   - duration: How long the snackbar remains visible. Defaults to `.short`.
+        ///   - showCloseButton: Whether to show a close button. Defaults to `true`.
+        ///   - isPresented: A binding controlling the snackbar's visibility.
         public init(
             type: SnackbarType,
             title: String,
@@ -76,13 +101,14 @@ extension Warp {
             self._isPresented = isPresented
         }
 
-        /**
-         - Parameter type: The `Snackbar.Type` of the `Snackbar`
-         - Parameter title: String to display in the `Snackbar`
-         - Parameter duration: Duration for which the `Snackbar` will be displayed, default is `.short`
-         - Parameter showCloseButton: Whether to show close button on the `Snackbar`, default is `true`
-         - Parameter isPresented: Is the `Snackbar` presented or not
-         */
+        /// Initializes a snackbar with an inline action button.
+        /// - Parameters:
+        ///   - type: The visual style of the snackbar.
+        ///   - title: The message text to display.
+        ///   - action: An optional action button displayed inline with the message.
+        ///   - duration: How long the snackbar remains visible. Defaults to `.short`.
+        ///   - showCloseButton: Whether to show a close button. Defaults to `true`.
+        ///   - isPresented: A binding controlling the snackbar's visibility.
         public init(
             type: SnackbarType,
             title: String,
@@ -100,13 +126,14 @@ extension Warp {
             self._isPresented = isPresented
         }
 
-        /**
-         - Parameter type: The `Snackbar.Type` of the `Snackbar`
-         - Parameter title: String to display in the `Snackbar`
-         - Parameter duration: Duration for which the `Snackbar` will be displayed, default is `.short`
-         - Parameter showCloseButton: Whether to show close button on the `Snackbar`, default is `true`
-         - Parameter isPresented: Is the `Snackbar` presented or not
-         */
+        /// Initializes a snackbar with a long action button displayed below the message.
+        /// - Parameters:
+        ///   - type: The visual style of the snackbar.
+        ///   - title: The message text to display.
+        ///   - longAction: An optional action button displayed below the message for longer action titles.
+        ///   - duration: How long the snackbar remains visible. Defaults to `.short`.
+        ///   - showCloseButton: Whether to show a close button. Defaults to `true`.
+        ///   - isPresented: A binding controlling the snackbar's visibility.
         public init(
             type: SnackbarType,
             title: String,
@@ -132,7 +159,7 @@ extension Warp {
                     actionContentView
                 }
             }
-            .frame(maxWidth: 420)
+            .frame(maxWidth: horizontalSizeClass == .regular ? .infinity : 420)
             .background(type.backgroundColor(from: colorProvider).opacity(0.9))
             .cornerRadius(snackbarCornerRadius)
             .background(
