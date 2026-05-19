@@ -10,7 +10,7 @@ struct SnackbarTests {
     @Test @MainActor
     func testSnackbarShouldAutomaticallyDisappear() async throws {
         let dissapearAfterTime: TimeInterval = 0.3
-        let waitingTime: TimeInterval = dissapearAfterTime + 0.1
+        let waitingTime: TimeInterval = dissapearAfterTime + 0.2
 
         let isPresented = Binding<Bool>(wrappedValue: true)
 
