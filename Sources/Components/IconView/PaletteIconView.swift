@@ -71,7 +71,7 @@ extension Warp.PaletteIconView {
     /// - Parameter color: The custom color to apply to the icon.
     /// - Returns: A new `IconView` with the updated color.
     public func foregroundColor(_ color: Color) -> Self {
-        Warp.PaletteIconView(icon, size: size, color: color)
+        Warp.PaletteIconView(icon, size: size, paletteColor: paletteColor, color: color)
     }
 }
 
