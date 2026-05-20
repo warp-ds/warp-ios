@@ -22,7 +22,7 @@ extension Warp.Snackbar {
             case .long:
                 20_000_000_000 // 20 seconds
             case .infinite:
-                6_000_000_000_000
+                UInt64.max
             case .custom(let interval):
                 UInt64(interval * 1_000_000_000) // Convert time interval to nanoseconds
             }

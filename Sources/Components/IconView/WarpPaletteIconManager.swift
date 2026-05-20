@@ -29,7 +29,7 @@ final class WarpPaletteIconManager {
         tolerance: Float = 0.15
     ) -> UIImage? {
 
-        let cacheKey = "\(icon.assetName)_\(size.value)x\(size.value)_\(newColor.hashValue)" as NSString
+        let cacheKey = "\(icon.assetName)_\(size.value)x\(size.value)_\(targetColor.hexString)_\(newColor.hexString)_\(tolerance)" as NSString
         if let cachedImage = cache.object(forKey: cacheKey) {
             return cachedImage
         }

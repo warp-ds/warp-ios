@@ -173,14 +173,21 @@ extension Warp {
             )
             .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
             .task {
+                // Do not start the timer if the duration is infinite, allowing the snackbar to stay until manually dismissed
+                guard duration != .infinite else {
+                    return
+                }
+
                 do {
                     try await Task.sleep(nanoseconds: duration.timeInNanoseconds)
-                    isPresented.toggle()
+                    withAnimation {
+                        isPresented = false
+                    }
                 } catch {} // Handle cancellation if needed
             }
             .onTapGesture {
                 withAnimation {
-                    isPresented.toggle()
+                    isPresented = false
                 }
             }
         }
@@ -241,7 +248,13 @@ extension Warp {
         private var closeButton: some View {
             Group {
                 if showCloseButton || duration == .infinite {
-                    Warp.IconView(.close, size: .small, color: colorProvider.token.iconInvertedStatic)
+                    SwiftUI.Button(action: {
+                        withAnimation {
+                            isPresented = false
+                        }
+                    }) {
+                        Warp.IconView(.close, size: .small, color: colorProvider.token.iconInvertedStatic)
+                    }
                 }
             }
         }
@@ -250,10 +263,6 @@ extension Warp {
 
 extension Warp.SnackbarType {
     fileprivate func backgroundColor(from colorProvider: ColorProvider) -> Color {
-        colorProvider.tooltipBackgroundStatic
-    }
-
-    fileprivate func subtleBorderColor(from colorProvider: ColorProvider) -> Color {
         colorProvider.tooltipBackgroundStatic
     }
 

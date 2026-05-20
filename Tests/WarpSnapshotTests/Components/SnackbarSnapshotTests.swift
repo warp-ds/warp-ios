@@ -27,6 +27,7 @@ struct SnackbarSnapshotTests {
         let snapshotName = [
             ".\(brand.description)",
             "\(type.description)Style",
+            "ShowCloseButton\(showCloseButton.description.capitalized)",
             actionMode.description
         ].compactMap { $0 }.joined(separator: ".")
 
@@ -44,7 +45,7 @@ struct SnackbarSnapshotTests {
                         type: type,
                         title: "Here's a snackbar of type \(type.description)",
                         action: nil,
-                        duration: .infinite,
+                        duration: .long,
                         showCloseButton: showCloseButton,
                         isPresented: .constant(true)
                     )
@@ -56,7 +57,7 @@ struct SnackbarSnapshotTests {
                         type: type,
                         title: "Here's a snackbar of type \(type.description)",
                         action: action,
-                        duration: .infinite,
+                        duration: .long,
                         showCloseButton: showCloseButton,
                         isPresented: .constant(true)
                     )
@@ -68,7 +69,7 @@ struct SnackbarSnapshotTests {
                         type: type,
                         title: "Here's a snackbar of type \(type.description)",
                         longAction: action,
-                        duration: .infinite,
+                        duration: .long,
                         showCloseButton: showCloseButton,
                         isPresented: .constant(true)
                     )
