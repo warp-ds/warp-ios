@@ -5185,6 +5185,42 @@
         }
       }
     },
+    "icon.title.heartFilled" : {
+      "comment" : "A11y title for heart filled icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hjerte"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heart"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sydän"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hjerte"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hjärta"
+          }
+        }
+      }
+    },
     "icon.title.heartRate" : {
       "comment" : "A11y title for heart rate icon",
       "extractionState" : "manual",
