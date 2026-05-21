@@ -10,6 +10,10 @@ extension Warp {
     /// The Snackbar is best used for short success, warning, and error messages to confirm an action.
     /// Snackbars appear temporarily at the bottom of the screen and can optionally include an action button.
     ///
+    /// **Duration Behavior:**
+    /// When an action button is provided, the snackbar enforces a minimum duration of `.long` (10 seconds)
+    /// to give users adequate time to read the message and tap the action button.
+    ///
     /// **Usage:**
     ///
     /// ```swift
@@ -106,7 +110,7 @@ extension Warp {
         ///   - type: The visual style of the snackbar.
         ///   - title: The message text to display.
         ///   - action: An optional action button displayed inline with the message.
-        ///   - duration: How long the snackbar remains visible. Defaults to `.short`.
+        ///   - duration: How long the snackbar remains visible. Defaults to `.short`. When an action is provided, a minimum duration of `.long` (10 seconds) is enforced.
         ///   - showCloseButton: Whether to show a close button. Defaults to `true`.
         ///   - isPresented: A binding controlling the snackbar's visibility.
         public init(
@@ -131,7 +135,7 @@ extension Warp {
         ///   - type: The visual style of the snackbar.
         ///   - title: The message text to display.
         ///   - longAction: An optional action button displayed below the message for longer action titles.
-        ///   - duration: How long the snackbar remains visible. Defaults to `.short`.
+        ///   - duration: How long the snackbar remains visible. Defaults to `.short`. When an action is provided, a minimum duration of `.long` (10 seconds) is enforced.
         ///   - showCloseButton: Whether to show a close button. Defaults to `true`.
         ///   - isPresented: A binding controlling the snackbar's visibility.
         public init(
@@ -178,8 +182,17 @@ extension Warp {
                     return
                 }
 
+                // Enforce minimum duration of .long (10 seconds) when an action is provided
+                let effectiveDuration: UInt64 = {
+                    let hasAction = action != nil || longAction != nil
+                    let minimumDuration = Duration.long.timeInNanoseconds
+                    return hasAction && duration.timeInNanoseconds < minimumDuration
+                        ? minimumDuration
+                        : duration.timeInNanoseconds
+                }()
+                
                 do {
-                    try await Task.sleep(nanoseconds: duration.timeInNanoseconds)
+                    try await Task.sleep(nanoseconds: effectiveDuration)
                     withAnimation {
                         isPresented = false
                     }

@@ -75,6 +75,7 @@ public extension View {
     ///
     /// Use this modifier to show temporary feedback messages that appear at the bottom of your view.
     /// The snackbar automatically dismisses after the specified duration and can include an action button.
+    /// When an action is provided, a minimum duration of `.long` (10 seconds) is enforced.
     ///
     /// **Usage:**
     ///
@@ -92,7 +93,7 @@ public extension View {
     ///   - type: The visual style of the snackbar.
     ///   - title: The message text to display.
     ///   - action: An optional action button displayed inline with the message. Defaults to `nil`.
-    ///   - duration: How long the snackbar remains visible. Defaults to `.short`.
+    ///   - duration: How long the snackbar remains visible. Defaults to `.short`. When an action is provided, a minimum duration of `.long` (10 seconds) is enforced.
     ///   - showCloseButton: Whether to show a close button. Defaults to `true`.
     ///   - isPresented: A binding controlling the snackbar's visibility.
     /// - Returns: A view with the snackbar overlay applied.
@@ -120,7 +121,7 @@ public extension View {
     /// Displays a snackbar overlay at the bottom of the view with a long action button.
     ///
     /// Use this variant when the action button text is longer and needs to be displayed
-    /// below the message instead of inline.
+    /// below the message instead of inline. When an action is provided, a minimum duration of `.long` (10 seconds) is enforced.
     ///
     /// **Usage:**
     ///
@@ -138,7 +139,7 @@ public extension View {
     ///   - type: The visual style of the snackbar.
     ///   - title: The message text to display.
     ///   - longAction: An optional action button displayed below the message for longer action titles.
-    ///   - duration: How long the snackbar remains visible. Defaults to `.short`.
+    ///   - duration: How long the snackbar remains visible. Defaults to `.short`. When an action is provided, a minimum duration of `.long` (10 seconds) is enforced.
     ///   - showCloseButton: Whether to show a close button. Defaults to `true`.
     ///   - isPresented: A binding controlling the snackbar's visibility.
     /// - Returns: A view with the snackbar overlay applied.
