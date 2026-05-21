@@ -3,6 +3,7 @@ import SwiftUI
 
 extension Warp {
 
+    /// - Todo: Replace with proper token Liquid Glass when available
     private static let snackbarCornerRadius: Double = 24
 
     /// A snackbar is a message that provides quick, at-a-glance feedback on the outcome of an action.
@@ -190,7 +191,7 @@ extension Warp {
                         ? minimumDuration
                         : duration.timeInNanoseconds
                 }()
-                
+
                 do {
                     try await Task.sleep(nanoseconds: effectiveDuration)
                     withAnimation {
@@ -247,7 +248,7 @@ extension Warp {
                 Warp.PaletteIconView(type.icon, size: .default, color: type.iconColor(from: colorProvider))
 
                 Text(title, style: .body, color: type.textColor(from: colorProvider))
-                    .padding(.leading, 8)
+                    .padding(.leading, Warp.Spacing.spacing100)
             }
         }
 
