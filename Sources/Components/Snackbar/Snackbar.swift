@@ -239,7 +239,12 @@ extension Warp {
         }
 
         private func actionButton(for action: Action) -> some View {
-            SwiftUI.Button(action: action.handler) {
+            SwiftUI.Button(action: {
+                action.handler()
+                withAnimation {
+                    isPresented = false
+                }
+            }) {
                 Text(action.title, style: .bodyStrong)
                     .foregroundColor(type.textColor(from: colorProvider))
             }

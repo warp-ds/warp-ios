@@ -8,7 +8,7 @@ extension Warp.Snackbar {
         /// Default is 5 seconds.
         case short
         /// Long duration, typically used for more significant messages that require user attention.
-        /// Default is 20 seconds.
+        /// Default is 10 seconds.
         case long
         /// Infinite duration, typically used for messages that require user interaction to dismiss.
         case infinite
@@ -20,7 +20,7 @@ extension Warp.Snackbar {
             case .short:
                 5_000_000_000 // 5 seconds
             case .long:
-                20_000_000_000 // 20 seconds
+                10_000_000_000 // 10 seconds
             case .infinite:
                 UInt64.max
             case .custom(let interval):
