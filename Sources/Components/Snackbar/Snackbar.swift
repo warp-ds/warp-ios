@@ -66,9 +66,6 @@ extension Warp {
         /// The current theme from the environment.
         @Environment(\.warpTheme) private var theme
 
-        /// The horizontal size class for detecting orientation (portrait vs landscape).
-        @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-
         /// Object responsible for providing colors in different environments and variants.
         private var colorProvider: ColorProvider {
             theme.colors
@@ -164,7 +161,7 @@ extension Warp {
                     actionContentView
                 }
             }
-            .frame(maxWidth: horizontalSizeClass == .regular ? .infinity : 420)
+            .frame(maxWidth: 500)
             .background(type.backgroundColor(from: colorProvider).opacity(0.9))
             .cornerRadius(snackbarCornerRadius)
             .background(
