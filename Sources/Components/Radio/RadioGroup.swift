@@ -30,8 +30,14 @@ extension Warp {
         var axis: Axis.Set
         /// A closure that will be triggered when an option is selected, providing the old and new selection.
         var onSelection: ((Option, Option) -> Void)?
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object that will provide needed colors.
-        private let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         /// Initializes a new `RadioGroup`.
         ///

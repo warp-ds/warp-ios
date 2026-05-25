@@ -2,6 +2,7 @@ import UIKit
 import SwiftUI
 import Warp
 
+@MainActor
 class UIShadowViewController: UIViewController {
     private let segmentedControl: UISegmentedControl = {
         let items = Warp.Shadow.allCases.map { $0.name }
@@ -82,6 +83,7 @@ class UIShadowViewController: UIViewController {
     }
 }
 
+@MainActor
 struct ShadowUIView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         return UIShadowViewController()

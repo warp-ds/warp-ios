@@ -75,11 +75,12 @@ extension Warp {
         }
         
         // MARK: - Fonts for Themes
-        /// Returns an array of fonts that should be registered based on the current theme.
+        /// Returns an array of fonts that should be registered for a given theme.
         ///
-        /// This property selects the appropriate fonts based on the active `Warp.Theme`.
-        static var fontForTheme: [Font] {
-            switch Theme {
+        /// - Parameter theme: The brand theme to get fonts for
+        /// - Returns: Array of fonts for the specified theme
+        static func fonts(for theme: Warp.Brand) -> [Font] {
+            switch theme {
             case .finn:
                 return [.finnLight, .finnLightItalic, .finnMedium]
             case .tori:
@@ -93,6 +94,14 @@ extension Warp {
             case .neutral:
                 return [.neutralRegular, .neutralSemiBold]
             }
+        }
+
+        /// Returns an array of fonts that should be registered based on the current global theme.
+        ///
+        /// - Warning: This uses the global `Warp.Theme` variable. Consider using `fonts(for:)` with an explicit theme instead.
+        @available(*, deprecated, message: "Use fonts(for:) with explicit theme parameter instead of global Warp.Theme")
+        static var fontForTheme: [Font] {
+            fonts(for: Warp.Theme)
         }
     }
 }

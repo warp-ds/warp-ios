@@ -8,7 +8,13 @@ extension Warp {
         private let type: ButtonPillType
         @State private var state: ButtonPillState = .default
         @Binding private var selected: Bool
-        private let colorProvider: ColorProvider = Warp.Color
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         /// Initializes a `ButtonPill` with a given type and selected state.
         /// - Parameters:
@@ -38,16 +44,9 @@ extension Warp {
             .onLongPressGesture(
                 minimumDuration: 0,
                 pressing: { inProgress in
-//                    withAnimation(.easeIn(duration: 0.1)) {
-                        if inProgress {
-//                            state = .active
-                        } else {
-//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//                                state = .default
-//                            }
-                            selected.toggle()
-                        }
-//                    }
+                    if !inProgress {
+                        selected.toggle()
+                    }
                 },
                 perform: {}
             )

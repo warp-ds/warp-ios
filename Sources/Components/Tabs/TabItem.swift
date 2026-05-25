@@ -21,7 +21,14 @@ extension Warp {
         let title: String
         let icon: Warp.Icon?
         let isSelected: Bool
-        private let colorProvider: ColorProvider = Warp.Color
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        /// Object responsible for providing colors in different environments and variants.
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         public var body: some View {
             HStack(alignment: .center, spacing: Warp.Spacing.spacing100) {

@@ -46,6 +46,14 @@ public struct StateView: View {
 
     private let configuration: StateViewConfiguration
 
+    /// The current theme from the environment.
+    @Environment(\.warpTheme) private var theme
+
+    /// Object responsible for providing colors in different environments and variants.
+    private var colorProvider: ColorProvider {
+        theme.colors
+    }
+
     /// Initializes a `StateView` with the provided configuration parameters.
     ///
     /// - Parameters:
@@ -98,7 +106,7 @@ public struct StateView: View {
             Warp.IconView(
                 icon,
                 size: .custom(configuration.imageWidth ?? 64),
-                color: Warp.Token.iconPrimary
+                color: theme.token.iconPrimary
             )
         case .illustration(let illustration):
             illustration
@@ -162,19 +170,27 @@ public struct StateView: View {
     }
 
     public var body: some View {
-        ScrollView {
-            VStack(alignment: .center, spacing: Warp.Spacing.spacing300) {
-                imageView
-                textSectionView
-                buttonSectionView
-                if configuration.showLogo {
-                    endorsementView
-                }
+        ViewThatFits(in: .vertical) {
+            content
+                .frame(maxHeight: .infinity, alignment: .center)
+            
+            ScrollView {
+                content
             }
-              .padding(Warp.Spacing.spacing400)
-              .frame(maxHeight: .infinity, alignment: .center)
+             .scrollBounceBasedOnSize()
         }
-          .scrollBounceBasedOnSize()
+    }
+
+    private var content: some View {
+        VStack(alignment: .center, spacing: Warp.Spacing.spacing300) {
+            imageView
+            textSectionView
+            buttonSectionView
+            if configuration.showLogo {
+                endorsementView
+            }
+        }
+          .padding(Warp.Spacing.spacing400)
     }
 }
 

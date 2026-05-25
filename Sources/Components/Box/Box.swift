@@ -31,8 +31,13 @@ extension Warp {
         /// Passing `nil` will skip adding button view.
         let buttonProvider: Warp.Button?
 
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object responsible for providing colors in different environments and variants.
-        let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         public static func == (lhs: Box, rhs: Box) -> Bool {
             let styleComparison = lhs.style == rhs.style
@@ -177,7 +182,7 @@ extension Warp {
                                 style: .caption,
                                 color: colorProvider.token.textLink
                             )
-                            .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
+                            .modifier(UnderlinedLinkModifier())
                             
                             Spacer()
                         }
@@ -189,10 +194,7 @@ extension Warp {
         }
         
         private var buttonsView: some View {
-            ButtonView(
-                buttonProvider: buttonProvider,
-                colorProvider: colorProvider
-            )
+            ButtonView(buttonProvider: buttonProvider)
         }
     }
 }
@@ -239,26 +241,20 @@ private struct AccessibilityButtonActionBuilder: ViewModifier {
 private struct ButtonView: View, Hashable {
     let buttonProvider: Warp.Button
 
-    let colorProvider: ColorProvider
-    
     static func == (lhs: ButtonView, rhs: ButtonView) -> Bool {
         lhs.buttonProvider == rhs.buttonProvider
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(buttonProvider)
     }
-    
-    init?(
-        buttonProvider: Warp.Button?,
-        colorProvider: ColorProvider
-    ) {
+
+    init?(buttonProvider: Warp.Button?) {
         guard let buttonProvider else {
             return nil
         }
-        
+
         self.buttonProvider = buttonProvider
-        self.colorProvider = colorProvider
     }
     
     var body: some View {
@@ -271,10 +267,10 @@ private struct ButtonView: View, Hashable {
 }
 
 private struct UnderlinedLinkModifier: ViewModifier {
-    let colorProvider: ColorProvider
-    
+    @Environment(\.warpTheme) private var theme
+
     private var linkColor: Color {
-        colorProvider.token.textLink
+        theme.colors.token.textLink
     }
     
     func body(content: Content) -> some View {

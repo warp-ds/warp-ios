@@ -15,8 +15,14 @@ extension Warp {
         @Binding public var buttons: [(title: String, isSelected: Bool)]
         public let onSelectionChange: (([(String, Bool)]) -> Void)?
         public let singleSelect: Bool
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         /// Initializes the ButtonGroup view with an array of buttons, selection mode, and a selection change handler.
         ///

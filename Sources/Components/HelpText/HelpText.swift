@@ -19,14 +19,19 @@ extension Warp {
 
         // MARK: - Properties
 
-        /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider = Warp.Color
-
         /// The text to display.
         private let text: String
 
         /// The style to apply to the text.
         private let style: Warp.HelpTextStyle
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        /// Object responsible for providing colors in different environments and variants.
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         // MARK: - Initialization
 

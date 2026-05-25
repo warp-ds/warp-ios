@@ -19,13 +19,18 @@ extension Warp {
     public struct Switch: View {
         
         // MARK: - Properties
-        
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object responsible for providing colors in different environments and variants.
-        private let colorProvider: ColorProvider = Warp.Color
-        
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
+
         /// Binding to a Boolean value indicating whether the switch is on or off.
         @Binding private var isOn: Bool
-        
+
         /// The state of the switch.
         private let state: Warp.SwitchState
         

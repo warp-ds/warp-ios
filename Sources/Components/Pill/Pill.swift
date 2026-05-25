@@ -25,8 +25,14 @@ extension Warp {
         private let iconContentDescription: String?
         /// Pill style.
         private let style: Warp.PillStyle
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object that will provide needed colors.
-        private let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         public init(
             text: String,

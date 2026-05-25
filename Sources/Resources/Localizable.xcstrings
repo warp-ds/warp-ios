@@ -901,6 +901,42 @@
         }
       }
     },
+    "icon.title.atv" : {
+      "comment" : "A11y title for ATV icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Et terrængående køretøj set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of an all-terrain vehicle"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mönkijän sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En ATV sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En ATV från sidan"
+          }
+        }
+      }
+    },
     "icon.title.arrowDown" : {
       "comment" : "A11y title for arrow down icon",
       "extractionState" : "manual",
@@ -1801,6 +1837,42 @@
         }
       }
     },
+    "icon.title.bulldozer" : {
+      "comment" : "A11y title for bulldozer icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bulldozer set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of a bulldozer"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puskutraktorin sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En bulldoser sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En bulldozer från sidan"
+          }
+        }
+      }
+    },
     "icon.title.bulb" : {
       "comment" : "A11y title for bulb icon",
       "extractionState" : "manual",
@@ -2193,6 +2265,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bil"
+          }
+        }
+      }
+    },
+    "icon.title.caravan" : {
+      "comment" : "A11y title for caravan icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campingvogn på slæb set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of a towed caravan"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asuntovaunun sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En campingvogn sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En husvagn från sidan"
           }
         }
       }
@@ -5113,6 +5221,42 @@
         }
       }
     },
+    "icon.title.harvester" : {
+      "comment" : "A11y title for harvester icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mejetærsker set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of a harvester"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leikkuupuimurin sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En tresker sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En trösta från sidan"
+          }
+        }
+      }
+    },
     "icon.title.hiking" : {
       "comment" : "A11y title for hiking icon",
       "extractionState" : "manual",
@@ -6513,6 +6657,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sedelbunt"
+          }
+        }
+      }
+    },
+    "icon.title.moped" : {
+      "comment" : "A11y title for moped icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Knallert set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of a moped"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mopon sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En moped sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En moped från sidan"
           }
         }
       }
@@ -7921,6 +8101,42 @@
         }
       }
     },
+    "icon.title.rv" : {
+      "comment" : "A11y title for RV icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autocamper set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of a motorhome"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asuntoauton sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En bobil sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En husbil från sidan"
+          }
+        }
+      }
+    },
     "icon.title.sauna" : {
       "comment" : "A11y title for sauna icon",
       "extractionState" : "manual",
@@ -8709,6 +8925,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ledset ansikte"
+          }
+        }
+      }
+    },
+    "icon.title.snowmobile" : {
+      "comment" : "A11y title for snowmobile icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snescooter set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of a snowmobile"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moottorikelkan sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En snøscooter sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En snöskoter från sidan"
           }
         }
       }
@@ -10005,6 +10257,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "T-shirt"
+          }
+        }
+      }
+    },
+    "icon.title.truck" : {
+      "comment" : "A11y title for truck icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kassevogn set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of a box truck"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kuorma-auton sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En skapbil sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En skåpbil från sidan"
           }
         }
       }

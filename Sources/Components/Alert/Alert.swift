@@ -32,9 +32,14 @@ extension Warp {
         /// A tuple that provides a title and action for creating a secondary button below the link.
         /// Passing `nil` will skip adding the secondary button.
         private let secondaryButtonProvider: ButtonConstructor?
-        
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
         /// Object responsible for providing colors across different environments and variants.
-        private let colorProvider: ColorProvider = Warp.Color
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
         
         /// Hashing implementation for the `Alert` structure, ensuring proper usage in collections.
         public func hash(into hasher: inout Hasher) {
@@ -194,7 +199,7 @@ extension Warp {
                                 style: .body,
                                 color: colorProvider.token.textLink
                             )
-                            .modifier(UnderlinedLinkModifier(colorProvider: colorProvider))
+                            .modifier(UnderlinedLinkModifier())
                             Spacer()
                         }
                     }
@@ -208,8 +213,7 @@ extension Warp {
         private var buttonsView: some View {
             ButtonsView(
                 primaryButtonProvider: primaryButtonProvider,
-                secondaryButtonProvider: secondaryButtonProvider,
-                colorProvider: colorProvider
+                secondaryButtonProvider: secondaryButtonProvider
             )
         }
     }
@@ -219,9 +223,7 @@ private struct ButtonsView: View, Hashable {
     let primaryButtonProvider: Warp.Alert.ButtonConstructor?
     
     let secondaryButtonProvider: Warp.Alert.ButtonConstructor?
-    
-    let colorProvider: ColorProvider
-    
+        
     static func == (lhs: ButtonsView, rhs: ButtonsView) -> Bool {
         let primaryComparison: Bool
         
@@ -270,8 +272,7 @@ private struct ButtonsView: View, Hashable {
     
     init?(
         primaryButtonProvider: Warp.Alert.ButtonConstructor?,
-        secondaryButtonProvider: Warp.Alert.ButtonConstructor?,
-        colorProvider: ColorProvider
+        secondaryButtonProvider: Warp.Alert.ButtonConstructor?
     ) {
         if primaryButtonProvider == nil, secondaryButtonProvider == nil {
             return nil
@@ -279,7 +280,6 @@ private struct ButtonsView: View, Hashable {
         
         self.primaryButtonProvider = primaryButtonProvider
         self.secondaryButtonProvider = secondaryButtonProvider
-        self.colorProvider = colorProvider
     }
     
     var body: some View {
@@ -367,10 +367,10 @@ private struct AccessibilityButtonActionBuilder: ViewModifier {
 }
 
 private struct UnderlinedLinkModifier: ViewModifier {
-    let colorProvider: ColorProvider
-    
+    @Environment(\.warpTheme) private var theme
+
     private var linkColor: Color {
-        colorProvider.token.textLink
+        theme.colors.token.textLink
     }
     
     func body(content: Content) -> some View {

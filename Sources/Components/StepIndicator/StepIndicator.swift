@@ -14,7 +14,6 @@ extension Warp {
 
         - A `Warp.StepIndicator.LayoutOrientation`. **Optional:** _default is `.vertical` if none is specified_.
         - An array of `Warp.StepIndicatorItem`s.
-        - A `ColorProvider`. **Optional:** _default is read from `Warp.Color` if none is specified_.
 
      */
     public struct StepIndicator: View {
@@ -26,7 +25,13 @@ extension Warp {
 
         let layoutOrientation: LayoutOrientation
 
-        let colorProvider: ColorProvider = Warp.Color
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        /// Object responsible for providing colors in different environments and variants.
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
 
         private let orderedSteps: [StepIndicatorModel.OrderedStepIndicatorItem]
 

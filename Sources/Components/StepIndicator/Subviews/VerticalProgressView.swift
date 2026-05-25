@@ -2,17 +2,22 @@ import SwiftUI
 
 extension Warp.StepIndicator {
     struct VerticalProgressView: View {
-        let colorProvider: ColorProvider
         let progress: Warp.StepIndicatorItem.Progress
         let stepPosition: Warp.StepIndicatorItem.Position
         let lineWidth: Double = 2
-        
+
+        /// The current theme from the environment.
+        @Environment(\.warpTheme) private var theme
+
+        /// Object responsible for providing colors in different environments and variants.
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
+
         init(
-            colorProvider: ColorProvider = Warp.Color,
             progress: Warp.StepIndicatorItem.Progress,
             stepPosition: Warp.StepIndicatorItem.Position
         ) {
-            self.colorProvider = colorProvider
             self.progress = progress
             self.stepPosition = stepPosition
         }
@@ -54,6 +59,7 @@ extension Warp.StepIndicator {
                     LineBuilder.line(
                         for: nextProgress,
                         ownProgress: progress,
+                        colorProvider: colorProvider,
                         orientation: .vertical
                     )
                 } else {
@@ -63,6 +69,7 @@ extension Warp.StepIndicator {
                 LineBuilder.line(
                     for: nextProgress,
                     ownProgress: progress,
+                    colorProvider: colorProvider,
                     orientation: .vertical
                 )
             case .last:
