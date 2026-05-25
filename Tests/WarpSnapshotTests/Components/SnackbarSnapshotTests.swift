@@ -100,6 +100,7 @@ private extension Warp.SnackbarType {
         case .positive: return "Positive"
         case .negative: return "Negative"
         case .warning: return "Warning"
+        case .info: return "Info"
         case .neutral: return "Neutral"
         }
     }

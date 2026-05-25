@@ -26,7 +26,7 @@ extension Warp {
     /// ```
     ///
     /// - Parameters:
-    ///   - type: The `SnackbarType` determining the visual style (`.positive`, `.warning`, `.negative`, or `.neutral`).
+    ///   - type: The `SnackbarType` determining the visual style (`.positive`, `.warning`, `.negative`, `.info`, or `.neutral` for text-only).
     ///   - title: The message text to display.
     ///   - duration: How long the snackbar remains visible. Defaults to `.short`.
     ///   - showCloseButton: Whether to show a close button. Defaults to `true`.
@@ -162,7 +162,7 @@ extension Warp {
                 }
             }
             .frame(maxWidth: 500)
-            .background(type.backgroundColor(from: colorProvider).opacity(0.9))
+            .background(type.backgroundColor(from: colorProvider).opacity(0.72))
             .cornerRadius(snackbarCornerRadius)
             .background(
                 RoundedRectangle(cornerRadius: snackbarCornerRadius)
@@ -216,7 +216,7 @@ extension Warp {
 
                 closeButton
             }
-            .padding(Warp.Spacing.spacing200)
+            .padding(Warp.Spacing.spacing150)
         }
 
         private var longActionContentView: some View {
@@ -237,15 +237,20 @@ extension Warp {
                     }
                 }
             }
-            .padding(Warp.Spacing.spacing200)
+            .padding(Warp.Spacing.spacing150)
         }
 
         private var iconAndTitle: some View {
             HStack(spacing: 0) {
-                Warp.PaletteIconView(type.icon, size: .default, color: type.iconColor(from: colorProvider))
+                if type.hasIcon {
+                    Warp.PaletteIconView(type.icon, size: .default, color: type.iconColor(from: colorProvider))
 
-                Text(title, style: .body, color: type.textColor(from: colorProvider))
-                    .padding(.leading, Warp.Spacing.spacing100)
+                    Text(title, style: .body, color: type.textColor(from: colorProvider))
+                        .padding(.leading, Warp.Spacing.spacing100)
+                } else {
+                    Text(title, style: .body, color: type.textColor(from: colorProvider))
+                        .padding(.leading, Warp.Spacing.spacing50)
+                }
             }
         }
 
@@ -269,7 +274,7 @@ extension Warp {
                             isPresented = false
                         }
                     }) {
-                        Warp.IconView(.close, size: .small, color: colorProvider.token.iconInvertedStatic)
+                        Warp.IconView(.close, size: .default, color: colorProvider.token.iconInvertedStatic)
                     }
                 }
             }
@@ -286,6 +291,15 @@ extension Warp.SnackbarType {
         colorProvider.token.textInvertedStatic
     }
 
+    fileprivate var hasIcon: Bool {
+        switch self {
+        case .neutral:
+            return false
+        case .positive, .warning, .negative, .info:
+            return true
+        }
+    }
+
     fileprivate func iconColor(from colorProvider: ColorProvider) -> Color {
         switch self {
         case .positive:
@@ -294,8 +308,10 @@ extension Warp.SnackbarType {
             colorProvider.token.iconWarning
         case .negative:
             colorProvider.token.iconNegative
-        case .neutral:
+        case .info:
             colorProvider.token.iconInfo
+        case .neutral:
+            colorProvider.token.icon
         }
     }
 
@@ -307,8 +323,10 @@ extension Warp.SnackbarType {
             return .warningFilled
         case .negative:
             return .errorFilled
-        case .neutral:
+        case .info:
             return .infoFilled
+        case .neutral:
+            return .info
         }
     }
 }

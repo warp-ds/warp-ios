@@ -193,6 +193,8 @@ fileprivate extension Warp.SnackbarType {
             "warning"
         case .negative:
             "negative"
+        case .info:
+            "info"
         case .neutral:
             "neutral"
         }

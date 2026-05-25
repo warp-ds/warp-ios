@@ -12,7 +12,10 @@ extension Warp {
         /// Negative message. Example: Internal server error
         case negative
 
-        /// Neutral message. Example: Generic information
+        /// Info message. Example: Generic information
+        case info
+
+        /// Neutral message without icon. Example: Generic information
         case neutral
     }
 }
