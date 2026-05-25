@@ -161,7 +161,7 @@ extension Warp {
                     actionContentView
                 }
             }
-            .frame(maxWidth: 500)
+            .frame(maxWidth: 480)
             .background(type.backgroundColor(from: colorProvider).opacity(0.72))
             .cornerRadius(snackbarCornerRadius)
             .background(
