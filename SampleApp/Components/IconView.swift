@@ -5,7 +5,7 @@ struct IconView: View {
     @State private var selectedIcon: Warp.Icon = .activeAds // Default selected icon
     @State private var selectedSize: Warp.IconSize = .default // Default size
     @State private var customSize: Double = 50 // Default custom size for the slider
-    @State private var selectedColor: Color = Warp.Color.token.icon // Default color
+    @State private var selectedColor: Color = Warp.Token.icon // Default color
     
     private let icons = Warp.Icon.allCases // Get all icons
     private let sizes = Warp.IconSize.allCases // Add custom size option
