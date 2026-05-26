@@ -54,6 +54,7 @@ extension Warp {
                           isPresented: $isPresented
                       )
                       .padding(.horizontal, horizontalPadding)
+                      .safeAreaPadding(.bottom)
                 } else {
                     Warp.Snackbar(
                           type: type,
@@ -64,6 +65,7 @@ extension Warp {
                           isPresented: $isPresented
                       )
                       .padding(.horizontal, horizontalPadding)
+                      .safeAreaPadding(.bottom)
                 }
             }
         }
