@@ -1,7 +1,3 @@
-//
-// Created by Łukasz Śliwa on 26/02/2026.
-//
-
 import UIKit
 
 extension UINavigationBar {
