@@ -2,17 +2,35 @@ import SwiftUI
 
 extension Button {
 
+    /// Styling options for buttons displayed in a navigation bar.
     public enum WarpBarButtonStyle {
-        /// Default style for navigation bar buttons, using Warp's icon color and body typography.
+        /// Default style for navigation bar buttons.
+        /// Uses Warp's icon color for text and body typography. Suitable for secondary or action buttons.
         case `default`
-        /// Primary style for navigation bar buttons, using Warp's primary style and Apple prominent glass style.
+
+        /// Primary style for navigation bar buttons.
+        /// Uses Warp's primary background color with Apple's glass prominent button style (iOS 26+).
+        /// Suitable for primary actions that require visual emphasis.
         case primary
     }
 
-    /// Applies Warp design style to the button, making it suitable for use in a navigation bar.
+    /// Applies Warp design style to a button, making it suitable for use in a navigation bar.
+    ///
+    /// This modifier styles the button with the appropriate colors, fonts, and effects for navigation bar placement.
+    /// On iOS 26+, the primary style uses the `.glassProminent` button style for a liquid glass appearance.
+    /// On earlier iOS versions, the styling is applied without glass effects.
+    ///
+    /// **Usage:**
+    ///
+    /// ```swift
+    /// Button(action: { /* action */ }) {
+    ///     Label("Save", systemImage: "checkmark")
+    /// }
+    /// .warpNavigationBarButton(style: .primary)
+    /// ```
     ///
     /// - Parameter style: The style to apply to the button. Defaults to `.default`.
-    /// - Returns: Itself
+    /// - Returns: A button with Warp navigation bar styling applied.
     public func warpNavigationBarButton(style: WarpBarButtonStyle = .default) -> some View {
         if #available(iOS 26.0, *) {
             return Group {
