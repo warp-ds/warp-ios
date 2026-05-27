@@ -109,6 +109,7 @@ extension Warp {
         case iconGrill = "icon.title.grill"
         case iconHeadset = "icon.title.headset"
         case iconHeart = "icon.title.heart"
+        case iconHeartFilled = "icon.title.heartFilled"
         case iconHeartRate = "icon.title.heartRate"
         case iconHarvester = "icon.title.harvester"
         case iconHiking = "icon.title.hiking"
