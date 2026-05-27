@@ -208,13 +208,14 @@ extension Warp {
                 iconAndTitle
 
                 Spacer()
+                
+                HStack(spacing: Warp.Spacing.spacing200) {
+                    if let action = action {
+                        actionButton(for: action)
+                    }
 
-                if let action = action {
-                    actionButton(for: action)
-                        .padding(.trailing, Warp.Spacing.spacing100)
+                    closeButton
                 }
-
-                closeButton
             }
             .padding(Warp.Spacing.spacing150)
         }
@@ -228,7 +229,7 @@ extension Warp {
                 }
 
                 if let longAction {
-                    HStack(spacing: Warp.Spacing.spacing150) {
+                    HStack(spacing: Warp.Spacing.spacing200) {
                         Spacer()
 
                         actionButton(for: longAction)
@@ -241,16 +242,12 @@ extension Warp {
         }
 
         private var iconAndTitle: some View {
-            HStack(spacing: 0) {
+            HStack(spacing: Warp.Spacing.spacing150) {
                 if type.hasIcon {
                     Warp.PaletteIconView(type.icon, size: .default, color: type.iconColor(from: colorProvider))
-
-                    Text(title, style: .body, color: type.textColor(from: colorProvider))
-                        .padding(.leading, Warp.Spacing.spacing100)
-                } else {
-                    Text(title, style: .body, color: type.textColor(from: colorProvider))
-                        .padding(.leading, Warp.Spacing.spacing50)
                 }
+                
+                Text(title, style: .body, color: type.textColor(from: colorProvider))
             }
         }
 
@@ -261,7 +258,7 @@ extension Warp {
                     isPresented = false
                 }
             }) {
-                Text(action.title, style: .bodyStrong)
+                Text(action.title, style: .title5)
                     .foregroundColor(type.textColor(from: colorProvider))
             }
         }
