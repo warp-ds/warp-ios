@@ -3,8 +3,8 @@ import Warp
 
 struct TextView: View {
     @State private var useGradient = false
-    @State private var firstColor = Warp.Color.token.text
-    @State private var secondColor = Warp.Color.token.textNegative
+    @State private var firstColor = Warp.Token.text
+    @State private var secondColor = Warp.Token.textNegative
 
     var body: some View {
         GroupBox {

@@ -3,8 +3,8 @@ import SwiftUI
 // Generated on Wed, 04 Mar 2026 08:12:23 GMT by https://github.com/warp-ds/tokens
 // NOTE: Generator should be updated to accept theme parameter instead of using Warp.Theme global
 public struct ColorProvider {
-    public let token: TokenProvider
-    public let theme: Warp.Brand
+    let token: TokenProvider
+    let theme: Warp.Brand
 
     /// Initialize ColorProvider with a specific theme
     /// - Parameter theme: The brand theme to use
@@ -331,8 +331,8 @@ public struct ColorProvider {
 }
 
 public struct UIColorProvider {
-    public let token: UITokenProvider
-    public let theme: Warp.Brand
+    let token: UITokenProvider
+    let theme: Warp.Brand
 
     /// Initialize UIColorProvider with a specific theme
     /// - Parameter theme: The brand theme to use
