@@ -137,9 +137,11 @@ struct SnackbarView: View {
     }
 
     private var snackbarAction: Warp.Snackbar.Action? {
-        actionMode != .none ? Warp.Snackbar.Action(title: "Undo") {
+        guard actionMode != .none else { return nil }
+        let actionTitle = actionMode == .long ? "Long action" : "Action"
+        return Warp.Snackbar.Action(title: actionTitle) {
             actionMessage = "Action button tapped!"
-        } : nil
+        }
     }
 }
 
