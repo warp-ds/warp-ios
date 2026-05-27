@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 /// `SwiftUI` Button style that will transform button label view to `Warp` design view style.
-public struct WarpButtonStyle: ButtonStyle {
+public struct WarpButtonStyle<S: Shape>: ButtonStyle {
     /// Object responsible for creating color, based on`ButtonType`,  button state.
     private let colorFactory: Warp.Button.ColorFactory
     
@@ -14,12 +14,16 @@ public struct WarpButtonStyle: ButtonStyle {
 
     private let isLoading: Bool
 
+    /// The shape used for button background and border.
+    private let shape: S
+
     public init(
         type: Warp.ButtonType,
         size: Warp.ButtonSize,
         colorProvider: ColorProvider,
         isEnabled: Bool,
-        isLoading: Bool
+        isLoading: Bool,
+        shape: S
     ) {
         colorFactory = Warp.Button.ColorFactory(
             for: type,
@@ -38,6 +42,7 @@ public struct WarpButtonStyle: ButtonStyle {
         typographyFactory = Warp.Button.TypographyFactory(for: type, size: size)
 
         self.isLoading = isLoading
+        self.shape = shape
     }
 
     public func makeBody(configuration: Configuration) -> some View {
@@ -52,7 +57,8 @@ public struct WarpButtonStyle: ButtonStyle {
             colorFactory: colorFactory,
             metricsFactory: metricsFactory,
             isPressed: isPressed,
-            isLoading: isLoading
+            isLoading: isLoading,
+            shape: shape
         )
 
         return configuration
@@ -66,8 +72,11 @@ public struct WarpButtonStyle: ButtonStyle {
 }
 
 /// Syntactic sugar to ease using warp button style.
-public extension ButtonStyle where Self == WarpButtonStyle {
-    /// Button style that will transform button label view to `Warp` design style view.
+public extension ButtonStyle where Self == WarpButtonStyle<RoundedRectangle> {
+    /// Button style that will transform button label view to `Warp` design style view with a RoundedRectangle shape.
+    ///
+    /// This convenience method uses the default RoundedRectangle shape with corner radius from the metrics factory.
+    /// For custom shapes, use `warp(type:size:colorProvider:isEnabled:isLoading:shape:)`.
     static func warp(
         type: Warp.ButtonType,
         size: Warp.ButtonSize,
@@ -75,12 +84,68 @@ public extension ButtonStyle where Self == WarpButtonStyle {
         isEnabled: Bool,
         isLoading: Bool
     ) -> Self {
+        let metricsFactory = Warp.Button.UIMetricsFactory(
+            type: type,
+            size: size,
+            isEnabled: isEnabled,
+            isLoading: isLoading
+        )
+
         return WarpButtonStyle(
             type: type,
             size: size,
             colorProvider: colorProvider,
             isEnabled: isEnabled,
-            isLoading: isLoading
+            isLoading: isLoading,
+            shape: RoundedRectangle(cornerRadius: metricsFactory.cornerRadius)
+        )
+    }
+}
+
+public extension ButtonStyle {
+    /// Button style that will transform button label view to `Warp` design style view with a custom shape.
+    ///
+    /// Use this method when you need a custom button shape instead of the default RoundedRectangle.
+    ///
+    /// **Usage:**
+    ///
+    /// ```swift
+    /// Button("Custom") {
+    ///     // action
+    /// }
+    /// .buttonStyle(.warp(
+    ///     type: .primary,
+    ///     size: .big,
+    ///     colorProvider: colorProvider,
+    ///     isEnabled: true,
+    ///     isLoading: false,
+    ///     shape: Capsule()
+    /// ))
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - type: The button type defining the visual style.
+    ///   - size: The button size.
+    ///   - colorProvider: The color provider for theming.
+    ///   - isEnabled: Whether the button is enabled.
+    ///   - isLoading: Whether the button is in loading state.
+    ///   - shape: The shape to use for the button background and border.
+    /// - Returns: A configured WarpButtonStyle with the specified shape.
+    static func warp<S: Shape>(
+        type: Warp.ButtonType,
+        size: Warp.ButtonSize,
+        colorProvider: ColorProvider,
+        isEnabled: Bool,
+        isLoading: Bool,
+        shape: S
+    ) -> WarpButtonStyle<S> {
+        return WarpButtonStyle(
+            type: type,
+            size: size,
+            colorProvider: colorProvider,
+            isEnabled: isEnabled,
+            isLoading: isLoading,
+            shape: shape
         )
     }
 }
@@ -107,7 +172,7 @@ private struct TypographyModifiers: ViewModifier {
     }
 }
 
-private struct UIModifiers: ViewModifier {
+private struct UIModifiers<S: Shape>: ViewModifier {
     let colorFactory: Warp.Button.ColorFactory
 
     let metricsFactory: Warp.Button.UIMetricsFactory
@@ -115,6 +180,8 @@ private struct UIModifiers: ViewModifier {
     let isPressed: Bool
 
     let isLoading: Bool
+
+    let shape: S
 
     func body(content: Content) -> some View {
         let backgroundColor = colorFactory.makeBackgroundColor(
@@ -133,7 +200,7 @@ private struct UIModifiers: ViewModifier {
             .padding(.horizontal, metricsFactory.horizontalPadding)
             .background(backgroundColor)
             .overlay(overlayView)
-            .cornerRadius(metricsFactory.cornerRadius)
+            .clipShape(shape)
     }
 
     private var patternedOpaqueView: some View {
@@ -145,11 +212,10 @@ private struct UIModifiers: ViewModifier {
     private func createOverlayView(isPressed: Bool) -> some View {
         let borderColor = colorFactory.makeBorderColor(isPressed: isPressed)
 
-        return RoundedRectangle(cornerRadius: metricsFactory.cornerRadius)
+        return shape
             .stroke(
                 borderColor,
                 lineWidth: metricsFactory.borderWidth
             )
-
     }
 }
