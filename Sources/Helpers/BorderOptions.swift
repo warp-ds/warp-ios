@@ -56,7 +56,7 @@ extension View {
     ///   - width: The thickness of the border. Defaults to `1`.
     ///   - sides: A `BorderOptions` option set specifying the sides where the border should be applied.
     /// - Returns: A view with borders on the specified sides.
-    public func border(_ color: Color = Warp.Color.token.border, width: CGFloat = 1, sides: BorderOptions) -> some View {
+    public func border(_ color: Color = Warp.Token.border, width: CGFloat = 1, sides: BorderOptions) -> some View {
         overlay(
             VStack(spacing: 0) {
                 // Add a border on the top side if specified
