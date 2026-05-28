@@ -3,18 +3,19 @@ import SwiftUI
 
 struct ShadowView: View {
     private let colorProvider: ColorProvider = Warp.Color
+    private let tokenProvider: TokenProvider = Warp.Token
     @State private var shadow = Warp.Shadow.small
 
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
                 ZStack(alignment: .bottom) {
-                    colorProvider.token.surfaceElevated100
+                    tokenProvider.surfaceElevated100
                     Warp.Text("surfaceElevated100", style: .caption)
                         .padding(.bottom)
                 }
                 ZStack(alignment: .top) {
-                    colorProvider.token.surfaceSunken
+                    tokenProvider.surfaceSunken
                     Warp.Text("surfaceSunken", style: .caption)
                         .padding(.top)
                 }
@@ -53,7 +54,7 @@ private struct ShadowButtonStyle: ButtonStyle {
         return configuration.label
             .background {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(Warp.Color.token.surfaceElevated200)
+                    .fill(Warp.Token.surfaceElevated200)
                     .addShadow(shadow, isPressed: configuration.isPressed)
             }
     }

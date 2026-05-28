@@ -99,7 +99,7 @@ private struct RowView<Destination: View>: View {
         NavigationLink(destination: destination) {
             VStack(alignment: .leading) {
                 Warp.Text(title, style: .title4)
-                    .foregroundColor(ColorProvider(theme: theme).token.textLink)
+                    .foregroundColor(Warp.Token.textLink)
                     .padding()
                 Divider()
             }

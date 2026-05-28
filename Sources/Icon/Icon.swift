@@ -115,6 +115,7 @@ extension Warp {
         case grill
         case headset
         case heart
+        case heartFilled
         case heartRate
         case harvester
         case hiking
@@ -451,6 +452,7 @@ extension Warp {
             case .grill: return Warp.Strings.iconGrill.localized
             case .headset: return Warp.Strings.iconHeadset.localized
             case .heart: return Warp.Strings.iconHeart.localized
+            case .heartFilled: return Warp.Strings.iconHeartFilled.localized
             case .heartRate: return Warp.Strings.iconHeartRate.localized
             case .harvester: return Warp.Strings.iconHarvester.localized
             case .hiking: return Warp.Strings.iconHiking.localized
