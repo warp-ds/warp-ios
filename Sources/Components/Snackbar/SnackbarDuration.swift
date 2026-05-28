@@ -5,7 +5,7 @@ extension Warp.Snackbar {
     /// Enum representing defined duration of a snackbar message.
     public enum Duration: Hashable {
         /// Short duration, typically used for quick feedback messages.
-        /// Default is 5 seconds.
+        /// Default is 4 seconds.
         case short
         /// Long duration, typically used for more significant messages that require user attention.
         /// Default is 10 seconds.
@@ -18,7 +18,7 @@ extension Warp.Snackbar {
         var timeInNanoseconds: UInt64 {
             switch self {
             case .short:
-                5_000_000_000 // 5 seconds
+                4_000_000_000 // 4 seconds
             case .long:
                 10_000_000_000 // 10 seconds
             case .infinite:
