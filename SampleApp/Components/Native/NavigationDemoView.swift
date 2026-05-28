@@ -3,10 +3,11 @@ import Warp
 
 struct NavigationDemoView: View {
 
-    struct ButtonStyleState {
-        var counter: UInt = 0
+    struct ButtonConfig: Identifiable {
+        let id = UUID()
+        var style: UIBarButtonItem.WarpBarButtonStyle = .default
         var display: ButtonDisplay = .icon
-        var text: String = ""
+        var text: String = "Button"
         var icon: Warp.Icon = .shareIOS
     }
 
@@ -15,37 +16,7 @@ struct NavigationDemoView: View {
         case text = "Text"
     }
 
-    @State var primary = ButtonStyleState(counter: 0, display: .icon, text: "Primary", icon: .shareIOS)
-    @State var `default` = ButtonStyleState(counter: 0, display: .icon, text: "Default", icon: .arrowRight)
-    @State var defaultTitle = ButtonStyleState(counter: 0, display: .text, text: "Save", icon: .shareIOS)
-
-    private func counterControl(counter: Binding<UInt>) -> some View {
-        HStack {
-            Button(action: {
-                guard counter.wrappedValue > 0 else { return }
-                counter.wrappedValue -= 1
-            }) {
-                Image(systemName: "minus.circle")
-            }
-            .disabled(counter.wrappedValue == 0)
-
-            Stepper("", value: counter)
-                .labelsHidden()
-
-            Button(action: {
-                counter.wrappedValue += 1
-            }) {
-                Image(systemName: "plus.circle")
-            }
-
-            Spacer()
-
-            Text("\(counter.wrappedValue)")
-                .font(.body)
-                .fontWeight(.semibold)
-                .frame(width: 30, alignment: .center)
-        }
-    }
+    @State private var buttons: [ButtonConfig] = []
 
     private func iconMenuButton(icon: Binding<Warp.Icon>) -> some View {
         Menu {
@@ -84,89 +55,58 @@ struct NavigationDemoView: View {
                 }
             }
 
-            Section("Primary Style Button") {
-                counterControl(counter: $primary.counter)
+            Section {
+                ForEach($buttons) { $button in
+                    VStack(alignment: .leading, spacing: 8) {
+                        Picker("Style", selection: $button.style) {
+                            Text("Default").tag(UIBarButtonItem.WarpBarButtonStyle.default)
+                            Text("Primary").tag(UIBarButtonItem.WarpBarButtonStyle.primary)
+                        }
+                        .pickerStyle(.segmented)
 
-                Picker("Display", selection: $primary.display) {
-                    ForEach(ButtonDisplay.allCases, id: \.self) { displayOption in
-                        Text(displayOption.rawValue).tag(displayOption)
+                        Picker("Display", selection: $button.display) {
+                            ForEach(ButtonDisplay.allCases, id: \.self) { option in
+                                Text(option.rawValue).tag(option)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+
+                        if button.display == .text {
+                            HStack {
+                                Text("Edit:")
+                                    .foregroundColor(.secondary)
+                                TextField("Button text", text: $button.text)
+                            }
+                            .transition(.opacity.combined(with: .move(edge: .top)))
+                        } else {
+                            HStack {
+                                Text("Icon")
+                                Spacer()
+                                iconMenuButton(icon: $button.icon)
+                            }
+                            .transition(.opacity.combined(with: .move(edge: .top)))
+                        }
                     }
+                    .animation(.easeInOut(duration: 0.2), value: button.display)
+                    .padding(.vertical, 4)
                 }
-                .pickerStyle(.segmented)
-
-                if primary.display == .text {
-                    HStack {
-                        Text("Edit:")
-                            .foregroundColor(.secondary)
-                        TextField("Button text", text: $primary.text)
-                    }
-                    .transition(.opacity.combined(with: .move(edge: .top)))
-                } else {
-                    HStack {
-                        Text("Icon")
-                        Spacer()
-                        iconMenuButton(icon: $primary.icon)
-                    }
-                    .transition(.opacity.combined(with: .move(edge: .top)))
-                }
-            }
-            .animation(.easeInOut(duration: 0.2), value: primary.display)
-
-            Section("Default Style Button") {
-                counterControl(counter: $default.counter)
-
-                Picker("Display", selection: $default.display) {
-                    ForEach(ButtonDisplay.allCases, id: \.self) { displayOption in
-                        Text(displayOption.rawValue).tag(displayOption)
-                    }
-                }
-                .pickerStyle(.segmented)
-
-                if `default`.display == .text {
-                    HStack {
-                        Text("Edit:")
-                            .foregroundColor(.secondary)
-                        TextField("Button text", text: $default.text)
-                    }
-                    .transition(.opacity.combined(with: .move(edge: .top)))
-                } else {
-                    HStack {
-                        Text("Icon")
-                        Spacer()
-                        iconMenuButton(icon: $default.icon)
-                    }
-                    .transition(.opacity.combined(with: .move(edge: .top)))
+                .onMove { buttons.move(fromOffsets: $0, toOffset: $1) }
+                .onDelete { buttons.remove(atOffsets: $0) }
+            } header: {
+                HStack {
+                    Text("Navigation bar buttons: (\(buttons.count))")
+                    Spacer()
+                    EditButton()
                 }
             }
-            .animation(.easeInOut(duration: 0.2), value: `default`.display)
 
-            Section("Default with Title Style") {
-                counterControl(counter: $defaultTitle.counter)
-
-                Picker("Display", selection: $defaultTitle.display) {
-                    ForEach(ButtonDisplay.allCases, id: \.self) { displayOption in
-                        Text(displayOption.rawValue).tag(displayOption)
+            Section {
+                Button("Add navbar button") {
+                    withAnimation {
+                        buttons.append(ButtonConfig())
                     }
-                }
-                .pickerStyle(.segmented)
-
-                if defaultTitle.display == .text {
-                    HStack {
-                        Text("Edit:")
-                            .foregroundColor(.secondary)
-                        TextField("Button text", text: $defaultTitle.text)
-                    }
-                    .transition(.opacity.combined(with: .move(edge: .top)))
-                } else {
-                    HStack {
-                        Text("Icon")
-                        Spacer()
-                        iconMenuButton(icon: $defaultTitle.icon)
-                    }
-                    .transition(.opacity.combined(with: .move(edge: .top)))
                 }
             }
-            .animation(.easeInOut(duration: 0.2), value: defaultTitle.display)
         }
         .navigationTitle("Navigation setup")
     }
@@ -179,7 +119,7 @@ struct NavigationDemoView: View {
         navigationController.warpLiquidGlassStyle()
         navigationController.modalPresentationStyle = .fullScreen
 
-        let items = createPrimaryBarButtonItems()
+        let items = createBarButtonItems()
         if !items.isEmpty {
             hostingController.navigationItem.rightBarButtonItems = items
         }
@@ -190,38 +130,29 @@ struct NavigationDemoView: View {
         }
     }
 
-    private func createPrimaryBarButtonItems() -> [UIBarButtonItem] {
-        let primaryButtons = (0..<primary.counter).map { _ in
-            createBarButtonItem(style: .primary, state: primary)
-        }
-        let defaultCounter = `default`.counter
-        let defaultButtons = (0..<defaultCounter).flatMap { _ -> [UIBarButtonItem] in
-            if #available(iOS 26.0, *) {
-                [createBarButtonItem(style: .default, state: `default`),
-                 UIBarButtonItem.fixedSpace()
-                ]
-            } else {
-                []
-            }
-        }
-        let defaultTitleButtons = (0..<defaultTitle.counter).flatMap { _ -> [UIBarButtonItem] in
-            if #available(iOS 26.0, *) {
-                [createBarButtonItem(style: .default, state: defaultTitle),
-                 UIBarButtonItem.fixedSpace()
-                ]
-            } else {
-                []
-            }
-        }
+    private func createBarButtonItems() -> [UIBarButtonItem] {
+        var items: [UIBarButtonItem] = []
+        for (index, config) in buttons.enumerated() {
+            let item = createBarButtonItem(style: config.style, config: config)
+            items.append(item)
 
-        return primaryButtons + defaultButtons + defaultTitleButtons
+            if #available(iOS 26.0, *) {
+                if config.style != .primary {
+                    let nextIndex = index + 1
+                    if nextIndex < buttons.count && buttons[nextIndex].style != .primary {
+                        items.append(UIBarButtonItem.fixedSpace())
+                    }
+                }
+            }
+        }
+        return items
     }
 
-    private func createBarButtonItem(style: UIBarButtonItem.WarpBarButtonStyle, state: ButtonStyleState) -> UIBarButtonItem {
-        switch state.display {
+    private func createBarButtonItem(style: UIBarButtonItem.WarpBarButtonStyle, config: ButtonConfig) -> UIBarButtonItem {
+        switch config.display {
         case .icon:
             return UIBarButtonItem(
-                image: state.icon.uiImage,
+                image: config.icon.uiImage,
                 style: .plain,
                 target: self,
                 action: nil
@@ -230,7 +161,7 @@ struct NavigationDemoView: View {
 
         case .text:
             return UIBarButtonItem(
-                title: state.text,
+                title: config.text,
                 style: .plain,
                 target: self,
                 action: nil
