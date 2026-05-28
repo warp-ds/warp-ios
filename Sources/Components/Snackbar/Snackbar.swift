@@ -217,7 +217,8 @@ extension Warp {
                     closeButton
                 }
             }
-            .padding(Warp.Spacing.spacing150)
+              .frame(minHeight: IconSize.default.value) // Ensure the content area is at least as tall as the icon for proper vertical alignment
+              .padding(Warp.Spacing.spacing150)
         }
 
         private var longActionContentView: some View {
@@ -227,6 +228,7 @@ extension Warp {
 
                     Spacer()
                 }
+                  .frame(minHeight: IconSize.default.value) // Ensure the content area is at least as tall as the icon for proper vertical alignment
 
                 if let longAction {
                     HStack(spacing: Warp.Spacing.spacing200) {
@@ -236,6 +238,7 @@ extension Warp {
 
                         closeButton
                     }
+                      .frame(minHeight: IconSize.default.value) // Ensure the content area is at least as tall as the icon for proper vertical alignment
                 }
             }
             .padding(Warp.Spacing.spacing150)
@@ -247,7 +250,8 @@ extension Warp {
                     Warp.PaletteIconView(type.icon, size: .default, color: type.iconColor(from: colorProvider))
                 }
                 
-                Text(title, style: .body, color: type.textColor(from: colorProvider))
+                Text(title, style: .caption, color: type.textColor(from: colorProvider))
+                  .padding(.leading, type.hasIcon ? 0: Warp.Spacing.spacing50) // Add left padding to the title when there is no icon to maintain consistent spacing
             }
         }
 
