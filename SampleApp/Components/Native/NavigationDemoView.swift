@@ -3,102 +3,240 @@ import Warp
 
 struct NavigationDemoView: View {
 
-    @State var primaryCounter: UInt = 0
-    @State var defaultCounter: UInt = 0
-    @State var defaultTitleCounter: UInt = 0
+    struct ButtonStyleState {
+        var counter: UInt = 0
+        var display: ButtonDisplay = .icon
+        var text: String = ""
+        var icon: Warp.Icon = .shareIOS
+    }
 
-    private func counterView(title: String, counter: Binding<UInt>) -> some View {
+    enum ButtonDisplay: String, CaseIterable {
+        case icon = "Icon"
+        case text = "Text"
+    }
+
+    @State var primary = ButtonStyleState(counter: 0, display: .icon, text: "Primary", icon: .shareIOS)
+    @State var `default` = ButtonStyleState(counter: 0, display: .icon, text: "Default", icon: .arrowRight)
+    @State var defaultTitle = ButtonStyleState(counter: 0, display: .text, text: "Save", icon: .shareIOS)
+
+    private func counterControl(counter: Binding<UInt>) -> some View {
         HStack {
-            Text(title)
-              .font(.headline)
-            Spacer()
             Button(action: {
                 guard counter.wrappedValue > 0 else { return }
                 counter.wrappedValue -= 1
             }) {
                 Image(systemName: "minus.circle")
             }
-            Text(String(counter.wrappedValue))
-              .font(.body)
-              .frame(width: 40, alignment: .center)
+            .disabled(counter.wrappedValue == 0)
+
+            Stepper("", value: counter)
+                .labelsHidden()
+
             Button(action: {
                 counter.wrappedValue += 1
             }) {
                 Image(systemName: "plus.circle")
             }
+
+            Spacer()
+
+            Text("\(counter.wrappedValue)")
+                .font(.body)
+                .fontWeight(.semibold)
+                .frame(width: 30, alignment: .center)
         }
-          .padding()
+    }
+
+    private func iconMenuButton(icon: Binding<Warp.Icon>) -> some View {
+        Menu {
+            ForEach(Warp.Icon.allCases, id: \.self) { iconOption in
+                Button(action: {
+                    icon.wrappedValue = iconOption
+                }) {
+                    HStack {
+                        Image(uiImage: iconOption.uiImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                        Text(String(describing: iconOption))
+                            .lineLimit(1)
+                    }
+                }
+            }
+        } label: {
+            HStack {
+                Image(uiImage: icon.wrappedValue.uiImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                Text(String(describing: icon.wrappedValue))
+                    .lineLimit(1)
+                    .truncationMode(.middle)
+            }
+        }
     }
 
     var body: some View {
-        NavigationStack {
-            VStack {
+        Form {
+            Section("Demo") {
                 Button("Go to Custom Navigation View") {
                     navigateToCustomView()
                 }
-                  .buttonStyle(.borderedProminent)
-                  .padding()
-
-                counterView(title: "Primary Style", counter: $primaryCounter)
-                counterView(title: "Default Style", counter: $defaultCounter)
-                counterView(title: "Default with title Style", counter: $defaultTitleCounter)
             }
-              .navigationTitle("Navigation setup")
+
+            Section("Primary Style Button") {
+                counterControl(counter: $primary.counter)
+
+                Picker("Display", selection: $primary.display) {
+                    ForEach(ButtonDisplay.allCases, id: \.self) { displayOption in
+                        Text(displayOption.rawValue).tag(displayOption)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                if primary.display == .text {
+                    HStack {
+                        Text("Edit:")
+                            .foregroundColor(.secondary)
+                        TextField("Button text", text: $primary.text)
+                    }
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                } else {
+                    HStack {
+                        Text("Icon")
+                        Spacer()
+                        iconMenuButton(icon: $primary.icon)
+                    }
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                }
+            }
+            .animation(.easeInOut(duration: 0.2), value: primary.display)
+
+            Section("Default Style Button") {
+                counterControl(counter: $default.counter)
+
+                Picker("Display", selection: $default.display) {
+                    ForEach(ButtonDisplay.allCases, id: \.self) { displayOption in
+                        Text(displayOption.rawValue).tag(displayOption)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                if `default`.display == .text {
+                    HStack {
+                        Text("Edit:")
+                            .foregroundColor(.secondary)
+                        TextField("Button text", text: $default.text)
+                    }
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                } else {
+                    HStack {
+                        Text("Icon")
+                        Spacer()
+                        iconMenuButton(icon: $default.icon)
+                    }
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                }
+            }
+            .animation(.easeInOut(duration: 0.2), value: `default`.display)
+
+            Section("Default with Title Style") {
+                counterControl(counter: $defaultTitle.counter)
+
+                Picker("Display", selection: $defaultTitle.display) {
+                    ForEach(ButtonDisplay.allCases, id: \.self) { displayOption in
+                        Text(displayOption.rawValue).tag(displayOption)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                if defaultTitle.display == .text {
+                    HStack {
+                        Text("Edit:")
+                            .foregroundColor(.secondary)
+                        TextField("Button text", text: $defaultTitle.text)
+                    }
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                } else {
+                    HStack {
+                        Text("Icon")
+                        Spacer()
+                        iconMenuButton(icon: $defaultTitle.icon)
+                    }
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                }
+            }
+            .animation(.easeInOut(duration: 0.2), value: defaultTitle.display)
         }
+        .navigationTitle("Navigation setup")
     }
 
     private func navigateToCustomView() {
         let customView = CustomNavigationView()
-        let navigationWrapper = NavigationControllerWrapper(content: {
-            customView
-        }, rightBarButtonItems: createPrimaryBarButtonItems())
-        if let navigationController = UIApplication.shared.windows.first?.rootViewController {
-            navigationController.present(UIHostingController(rootView: navigationWrapper), animated: true)
+        let hostingController = UIHostingController(rootView: customView)
+
+        let navigationController = UINavigationController(rootViewController: hostingController)
+        navigationController.warpLiquidGlassStyle()
+        navigationController.modalPresentationStyle = .fullScreen
+
+        let items = createPrimaryBarButtonItems()
+        if !items.isEmpty {
+            hostingController.navigationItem.rightBarButtonItems = items
+        }
+
+        if let window = UIApplication.shared.windows.first,
+           let rootViewController = window.rootViewController {
+            rootViewController.present(navigationController, animated: true)
         }
     }
 
     private func createPrimaryBarButtonItems() -> [UIBarButtonItem] {
-        let primaryButtons = (0..<primaryCounter).map { _ in
-            UIBarButtonItem(
-                image: Warp.Icon.allCases.randomElement()?.uiImage,
-                style: .plain,
-                target: self,
-                action: nil
-            )
-              .warpNavigationBarButton(style: .primary)
+        let primaryButtons = (0..<primary.counter).map { _ in
+            createBarButtonItem(style: .primary, state: primary)
         }
+        let defaultCounter = `default`.counter
         let defaultButtons = (0..<defaultCounter).flatMap { _ -> [UIBarButtonItem] in
             if #available(iOS 26.0, *) {
-                [UIBarButtonItem(
-                    image: Warp.Icon.allCases.randomElement()?.uiImage,
-                    style: .plain,
-                    target: self,
-                    action: nil
-                )
-                    .warpNavigationBarButton(),
+                [createBarButtonItem(style: .default, state: `default`),
                  UIBarButtonItem.fixedSpace()
                 ]
             } else {
                 []
             }
         }
-        let defaultTitleButtons = (0..<defaultTitleCounter).flatMap { _ -> [UIBarButtonItem] in
+        let defaultTitleButtons = (0..<defaultTitle.counter).flatMap { _ -> [UIBarButtonItem] in
             if #available(iOS 26.0, *) {
-                [UIBarButtonItem(
-                    title: "Foo",
-                    style: .plain,
-                    target: self,
-                    action: nil
-                )
-                  .warpNavigationBarButton(style: .default),
-                    UIBarButtonItem.fixedSpace()
+                [createBarButtonItem(style: .default, state: defaultTitle),
+                 UIBarButtonItem.fixedSpace()
                 ]
             } else {
                 []
             }
         }
 
-        return  primaryButtons + defaultButtons + defaultTitleButtons
+        return primaryButtons + defaultButtons + defaultTitleButtons
+    }
+
+    private func createBarButtonItem(style: UIBarButtonItem.WarpBarButtonStyle, state: ButtonStyleState) -> UIBarButtonItem {
+        switch state.display {
+        case .icon:
+            return UIBarButtonItem(
+                image: state.icon.uiImage,
+                style: .plain,
+                target: self,
+                action: nil
+            )
+            .warpNavigationBarButton(style: style)
+
+        case .text:
+            return UIBarButtonItem(
+                title: state.text,
+                style: .plain,
+                target: self,
+                action: nil
+            )
+            .warpNavigationBarButton(style: style)
+        }
     }
 }
 
@@ -115,19 +253,14 @@ struct CustomNavigationView: View {
                       .cornerRadius(8)
                 }
             }
-              .padding()
+            .padding()
         }
-          .navigationTitle("Custom View")
-          .navigationBarItems(leading: Button(action: {
-              dismissView()
-          }) {
-              Image(systemName: "xmark")
-          }
-            .warpNavigationBarButton())
-
-    }
-
-    private func dismissView() {
-        UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
+        .navigationTitle("Custom View")
+        .navigationBarItems(leading: Button(action: {
+            UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true)
+        }) {
+            Image(systemName: "xmark")
+        }
+        .warpNavigationBarButton())
     }
 }
