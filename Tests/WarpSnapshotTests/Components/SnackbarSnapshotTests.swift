@@ -102,6 +102,7 @@ private extension Warp.SnackbarType {
         case .warning: return "Warning"
         case .info: return "Info"
         case .neutral: return "Neutral"
+        case .neutralIcon(let icon): return "NeutralIcon\(String(describing: icon).capitalized)"
         }
     }
 }

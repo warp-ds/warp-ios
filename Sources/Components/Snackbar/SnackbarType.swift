@@ -2,7 +2,7 @@ import Foundation
 
 extension Warp {
 
-    public enum SnackbarType: Equatable, CaseIterable {
+    public enum SnackbarType: Equatable, Hashable {
         /// Positive message. Example: Item added
         case positive
 
@@ -17,5 +17,14 @@ extension Warp {
 
         /// Neutral message without icon. Example: Generic information
         case neutral
+
+        /// Neutral message with custom icon. Example: Generic information with custom icon
+        case neutralIcon(Warp.Icon)
+    }
+}
+
+extension Warp.SnackbarType: CaseIterable {
+    public static var allCases: [Warp.SnackbarType] {
+        [.positive, .warning, .negative, .info, .neutral, .neutralIcon(.info)]
     }
 }

@@ -26,7 +26,7 @@ extension Warp {
     /// ```
     ///
     /// - Parameters:
-    ///   - type: The `SnackbarType` determining the visual style (`.positive`, `.warning`, `.negative`, `.info`, or `.neutral` for text-only).
+    ///   - type: The `SnackbarType` determining the visual style (`.positive`, `.warning`, `.negative`, `.info`, `.neutral` without icon, or `.neutralIcon(_)` with a custom icon).
     ///   - title: The message text to display.
     ///   - duration: How long the snackbar remains visible. Defaults to `.short`.
     ///   - showCloseButton: Whether to show a close button. Defaults to `true`.
@@ -247,7 +247,11 @@ extension Warp {
         private var iconAndTitle: some View {
             HStack(spacing: Warp.Spacing.spacing150) {
                 if type.hasIcon {
-                    Warp.PaletteIconView(type.icon, size: .default, color: type.iconColor(from: colorProvider))
+                    if case .neutralIcon(let customIcon) = type { // Neutral icon isn't a palette icon, so we need to handle it separately
+                        Warp.IconView(customIcon, size: .default, color: type.iconColor(from: colorProvider))
+                    } else {
+                        Warp.PaletteIconView(type.icon, size: .default, color: type.iconColor(from: colorProvider))
+                    }
                 }
                 
                 Text(title, style: .caption, color: type.textColor(from: colorProvider))
@@ -296,7 +300,7 @@ extension Warp.SnackbarType {
         switch self {
         case .neutral:
             return false
-        case .positive, .warning, .negative, .info:
+        case .positive, .warning, .negative, .info, .neutralIcon:
             return true
         }
     }
@@ -313,6 +317,8 @@ extension Warp.SnackbarType {
             colorProvider.token.iconInfo
         case .neutral:
             colorProvider.token.icon
+        case .neutralIcon:
+            colorProvider.token.iconInvertedStatic
         }
     }
 
@@ -328,6 +334,8 @@ extension Warp.SnackbarType {
             return .infoFilled
         case .neutral:
             return .info
+        case .neutralIcon(let customIcon):
+            return customIcon
         }
     }
 }

@@ -4,6 +4,7 @@ import Warp
 struct SnackbarView: View {
     @State var snackbarIsPresented: Bool = true
     @State var snackbarType: Warp.SnackbarType = .positive
+    @State var neutralIconCustom: Warp.Icon = .info
     @State var snackbarDuration: Warp.Snackbar.Duration = .short
     @State var showCloseButton: Bool = true
     @State var actionMode: ActionMode = .none
@@ -65,6 +66,20 @@ struct SnackbarView: View {
                     }
                 }
                 .pickerStyle(.segmented)
+                .onChange(of: snackbarType) { oldValue, newValue in
+                    if case .neutralIcon = newValue {
+                        snackbarType = .neutralIcon(neutralIconCustom)
+                    }
+                }
+
+                if case .neutralIcon = snackbarType {
+                    HStack {
+                        Text("Icon")
+                        Spacer()
+                        iconMenuButton(icon: $neutralIconCustom)
+                    }
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                }
 
                 Divider()
 
@@ -143,6 +158,36 @@ struct SnackbarView: View {
             actionMessage = "Action button tapped!"
         }
     }
+
+    private func iconMenuButton(icon: Binding<Warp.Icon>) -> some View {
+        Menu {
+            ForEach(Warp.Icon.allCases, id: \.self) { iconOption in
+                Button(action: {
+                    icon.wrappedValue = iconOption
+                    snackbarType = .neutralIcon(iconOption)
+                }) {
+                    HStack {
+                        Image(uiImage: iconOption.uiImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                        Text(String(describing: iconOption))
+                            .lineLimit(1)
+                    }
+                }
+            }
+        } label: {
+            HStack {
+                Image(uiImage: icon.wrappedValue.uiImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                Text(String(describing: icon.wrappedValue))
+                    .lineLimit(1)
+                    .truncationMode(.middle)
+            }
+        }
+    }
 }
 
 struct SnackbarConditionalModifier: ViewModifier {
@@ -199,6 +244,8 @@ fileprivate extension Warp.SnackbarType {
             "info"
         case .neutral:
             "neutral"
+        case .neutralIcon(let icon):
+            "neutralIcon(\(icon))"
         }
     }
 }
@@ -212,7 +259,7 @@ fileprivate extension Warp.Snackbar.Duration {
     var description: String {
         switch self {
         case .short:
-            "Short (5 seconds)"
+            "Short (4 seconds)"
         case .long:
             "Long (10 seconds)"
         case .infinite:
