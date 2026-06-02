@@ -793,6 +793,42 @@
         }
       }
     },
+    "icon.title.anchor" : {
+      "comment" : "A11y title for anchor icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anker"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anchor"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ankkuri"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anker"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ankare"
+          }
+        }
+      }
+    },
     "icon.title.animalPaw" : {
       "comment" : "A11y title for animal paw icon",
       "extractionState" : "manual",
@@ -897,42 +933,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Valvgång"
-          }
-        }
-      }
-    },
-    "icon.title.atv" : {
-      "comment" : "A11y title for ATV icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Et terrængående køretøj set fra siden"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Side view of an all-terrain vehicle"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mönkijän sivuprofiili"
-          }
-        },
-        "nb-NO" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En ATV sett fra siden"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En ATV från sidan"
           }
         }
       }
@@ -1077,6 +1077,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pil som pekar uppåt"
+          }
+        }
+      }
+    },
+    "icon.title.atv" : {
+      "comment" : "A11y title for ATV icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Et terrængående køretøj set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of an all-terrain vehicle"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mönkijän sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En ATV sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En ATV från sidan"
           }
         }
       }
@@ -1837,42 +1873,6 @@
         }
       }
     },
-    "icon.title.bulldozer" : {
-      "comment" : "A11y title for bulldozer icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bulldozer set fra siden"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Side view of a bulldozer"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Puskutraktorin sivuprofiili"
-          }
-        },
-        "nb-NO" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En bulldoser sett fra siden"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En bulldozer från sidan"
-          }
-        }
-      }
-    },
     "icon.title.bulb" : {
       "comment" : "A11y title for bulb icon",
       "extractionState" : "manual",
@@ -1905,6 +1905,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Glödlampa"
+          }
+        }
+      }
+    },
+    "icon.title.bulldozer" : {
+      "comment" : "A11y title for bulldozer icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bulldozer set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of a bulldozer"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puskutraktorin sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En bulldoser sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En bulldozer från sidan"
           }
         }
       }
@@ -2445,6 +2481,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En bild vänd åt höger"
+          }
+        }
+      }
+    },
+    "icon.title.chainsaw" : {
+      "comment" : "A11y title for chainsaw icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motorsav"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chainsaw"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ketjusaha"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motorsag"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motorsåg"
           }
         }
       }
@@ -4501,6 +4573,42 @@
         }
       }
     },
+    "icon.title.file" : {
+      "comment" : "A11y title for file icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fil"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiedosto"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fil"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fil"
+          }
+        }
+      }
+    },
     "icon.title.fileAdd" : {
       "comment" : "A11y title for file add icon",
       "extractionState" : "manual",
@@ -4569,6 +4677,78 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fil med pil som pekar ner"
+          }
+        }
+      }
+    },
+    "icon.title.filePdf" : {
+      "comment" : "A11y title for filePdf icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF-fil"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF file"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF-tiedosto"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF-fil"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PDF-fil"
+          }
+        }
+      }
+    },
+    "icon.title.fileText" : {
+      "comment" : "A11y title for fileText icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekstfil"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text file"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekstitiedosto"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekstfil"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Textfil"
           }
         }
       }
@@ -5113,6 +5293,42 @@
         }
       }
     },
+    "icon.title.harvester" : {
+      "comment" : "A11y title for harvester icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mejetærsker set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of a harvester"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leikkuupuimurin sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En tresker sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En trösta från sidan"
+          }
+        }
+      }
+    },
     "icon.title.headset" : {
       "comment" : "A11y title for headset icon",
       "extractionState" : "manual",
@@ -5253,42 +5469,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hjärta med pulsindikator"
-          }
-        }
-      }
-    },
-    "icon.title.harvester" : {
-      "comment" : "A11y title for harvester icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mejetærsker set fra siden"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Side view of a harvester"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Leikkuupuimurin sivuprofiili"
-          }
-        },
-        "nb-NO" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En tresker sett fra siden"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En trösta från sidan"
           }
         }
       }
@@ -6265,6 +6445,42 @@
         }
       }
     },
+    "icon.title.lowSpeedVehicle" : {
+      "comment" : "A11y title for lowSpeedVehicle icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langsomt køretøj"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Low speed vehicle"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matalaista ajoneuvoa"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sakte kjøretøy"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Långsamt fordon"
+          }
+        }
+      }
+    },
     "icon.title.luggage" : {
       "comment" : "A11y title for luggage icon",
       "extractionState" : "manual",
@@ -6697,42 +6913,6 @@
         }
       }
     },
-    "icon.title.moped" : {
-      "comment" : "A11y title for moped icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Knallert set fra siden"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Side view of a moped"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mopon sivuprofiili"
-          }
-        },
-        "nb-NO" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En moped sett fra siden"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En moped från sidan"
-          }
-        }
-      }
-    },
     "icon.title.moon" : {
       "comment" : "A11y title for moon icon",
       "extractionState" : "manual",
@@ -6765,6 +6945,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Måne"
+          }
+        }
+      }
+    },
+    "icon.title.moped" : {
+      "comment" : "A11y title for moped icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Knallert set fra siden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side view of a moped"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mopon sivuprofiili"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En moped sett fra siden"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En moped från sidan"
           }
         }
       }
@@ -10045,6 +10261,42 @@
         }
       }
     },
+    "icon.title.trailer" : {
+      "comment" : "A11y title for trailer icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trailer"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trailer"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perävaunu"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tilhenger"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Släpvagn"
+          }
+        }
+      }
+    },
     "icon.title.translate" : {
       "comment" : "A11y title for symbol representing translation between languages icon",
       "extractionState" : "manual",
@@ -10261,42 +10513,6 @@
         }
       }
     },
-    "icon.title.tShirt" : {
-      "comment" : "A11y title for T-shirt icon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "T-shirt"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "T shirt"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "T-paita"
-          }
-        },
-        "nb-NO" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "T-skjorte"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "T-shirt"
-          }
-        }
-      }
-    },
     "icon.title.truck" : {
       "comment" : "A11y title for truck icon",
       "extractionState" : "manual",
@@ -10329,6 +10545,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En skåpbil från sidan"
+          }
+        }
+      }
+    },
+    "icon.title.tShirt" : {
+      "comment" : "A11y title for T-shirt icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T-shirt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T shirt"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T-paita"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T-skjorte"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T-shirt"
           }
         }
       }
