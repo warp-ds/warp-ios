@@ -2,6 +2,7 @@ import Foundation
 
 extension Warp {
     enum Strings: String, Sendable {
+        case iconAnchor = "icon.title.anchor"
         case iconActiveAds = "icon.title.activeAds"
         case iconAds = "icon.title.ads"
         case iconAirCon = "icon.title.airCon"
@@ -44,6 +45,7 @@ extension Warp {
         case iconCalendar = "icon.title.calendar"
         case iconCamera = "icon.title.camera"
         case iconCancel = "icon.title.cancel"
+        case iconChainsaw = "icon.title.chainsaw"
         case iconCar = "icon.title.car"
         case iconCaravan = "icon.title.caravan"
         case iconCarLeft = "icon.title.carLeft"
@@ -93,6 +95,9 @@ extension Warp {
         case iconEyeOff = "icon.title.eyeOff"
         case iconEyeOn = "icon.title.eyeOn"
         case iconFacebook = "icon.title.facebook"
+        case iconFile = "icon.title.file"
+        case iconFilePdf = "icon.title.filePdf"
+        case iconFileText = "icon.title.fileText"
         case iconFarm = "icon.title.farm"
         case iconFileAdd = "icon.title.fileAdd"
         case iconFilter = "icon.title.filter"
@@ -136,6 +141,7 @@ extension Warp {
         case iconListSort = "icon.title.listSort"
         case iconLockShield = "icon.title.lockShield"
         case iconLogout = "icon.title.logout"
+        case iconLowSpeedVehicle = "icon.title.lowSpeedVehicle"
         case iconMail = "icon.title.mail"
         case iconMailbox = "icon.title.mailbox"
         case iconGearManual = "icon.title.gearManual"
@@ -219,6 +225,7 @@ extension Warp {
         case iconTextItalic = "icon.title.textItalic"
         case iconTextStrikethrough = "icon.title.textStrikethrough"
         case iconTextUnderline = "icon.title.textUnderline"
+        case iconTrailer = "icon.title.trailer"
         case iconTheater = "icon.title.theater"
         case iconThreeSixty = "icon.title.threeSixty"
         case iconTownHouse = "icon.title.townHouse"

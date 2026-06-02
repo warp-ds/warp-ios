@@ -12,6 +12,7 @@ extension Warp {
         case airCon
         case allWheelDrive
         case animalPaw
+        case anchor
         case archway
         case atv
         case arrowDown
@@ -49,6 +50,7 @@ extension Warp {
         case calendar
         case camera
         case cancel
+        case chainsaw
         case car
         case caravan
         case carLeft
@@ -98,6 +100,9 @@ extension Warp {
         case eyeOff
         case eyeOn
         case facebook
+        case file
+        case filePdf
+        case fileText
         case farm
         case fileAdd
         case filter
@@ -141,6 +146,7 @@ extension Warp {
         case listSort
         case lockShield
         case logout
+        case lowSpeedVehicle
         case mail
         case mailbox
         case gearManual
@@ -221,6 +227,7 @@ extension Warp {
         case tag
         case taskList
         case textBold
+        case trailer
         case textItalic
         case textStrikethrough
         case textUnderline
@@ -332,6 +339,7 @@ extension Warp {
 
         var localization: String {
             switch self {
+            case .anchor: return Warp.Strings.iconAnchor.localized
             case .activeAds: return Warp.Strings.iconActiveAds.localized
             case .ads: return Warp.Strings.iconAds.localized
             case .tractor: return Warp.Strings.taxonomyIconTractor.localized
@@ -375,6 +383,7 @@ extension Warp {
             case .calendar: return Warp.Strings.iconCalendar.localized
             case .camera: return Warp.Strings.iconCamera.localized
             case .cancel: return Warp.Strings.iconCancel.localized
+            case .chainsaw: return Warp.Strings.iconChainsaw.localized
             case .car: return Warp.Strings.iconCar.localized
             case .caravan: return Warp.Strings.iconCaravan.localized
             case .carLeft: return Warp.Strings.iconCarLeft.localized
@@ -424,6 +433,9 @@ extension Warp {
             case .eyeOff: return Warp.Strings.iconEyeOff.localized
             case .eyeOn: return Warp.Strings.iconEyeOn.localized
             case .facebook: return Warp.Strings.iconFacebook.localized
+            case .file: return Warp.Strings.iconFile.localized
+            case .filePdf: return Warp.Strings.iconFilePdf.localized
+            case .fileText: return Warp.Strings.iconFileText.localized
             case .farm: return Warp.Strings.iconFarm.localized
             case .fileAdd: return Warp.Strings.iconFileAdd.localized
             case .filter: return Warp.Strings.iconFilter.localized
@@ -467,6 +479,7 @@ extension Warp {
             case .listSort: return Warp.Strings.iconListSort.localized
             case .lockShield: return Warp.Strings.iconLockShield.localized
             case .logout: return Warp.Strings.iconLogout.localized
+            case .lowSpeedVehicle: return Warp.Strings.iconLowSpeedVehicle.localized
             case .mail: return Warp.Strings.iconMail.localized
             case .mailbox: return Warp.Strings.iconMailbox.localized
             case .gearManual: return Warp.Strings.iconGearManual.localized
@@ -550,6 +563,7 @@ extension Warp {
             case .textItalic: return Warp.Strings.iconTextItalic.localized
             case .textStrikethrough: return Warp.Strings.iconTextStrikethrough.localized
             case .textUnderline: return Warp.Strings.iconTextUnderline.localized
+            case .trailer: return Warp.Strings.iconTrailer.localized
             case .theater: return Warp.Strings.iconTheater.localized
             case .threeSixty: return Warp.Strings.iconThreeSixty.localized
             case .townHouse: return Warp.Strings.iconTownHouse.localized
