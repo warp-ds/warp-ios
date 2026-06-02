@@ -24,10 +24,20 @@ extension UINavigationBar {
     public static func warpLiquidGlassStyle() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
+        appearance.largeTitleTextAttributes = [
+            .foregroundColor: Warp.UIColor.token.text,
+            .font: Warp.Typography.title1.uiFont
+        ]
         appearance.titleTextAttributes = [
             .foregroundColor: Warp.UIColor.token.text,
             .font: Warp.Typography.title4.uiFont
         ]
+        if #available(iOS 26.0, *) {
+            appearance.subtitleTextAttributes = [
+                .foregroundColor: Warp.UIColor.token.textSubtle,
+                .font: Warp.Typography.title6.uiFont
+            ]
+        }
 
         let backImage = Warp.Icon.arrowLeft.uiImage
         appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
@@ -65,10 +75,20 @@ extension UINavigationBar {
     public func warpLiquidGlassStyle() {
         let appearance = UINavigationBar.appearance().standardAppearance.copy()
         appearance.configureWithTransparentBackground()
+        appearance.largeTitleTextAttributes = [
+            .foregroundColor: Warp.UIColor.token.text,
+            .font: Warp.Typography.title1.uiFont
+        ]
         appearance.titleTextAttributes = [
             .foregroundColor: Warp.UIColor.token.text,
             .font:  Warp.Typography.title4.uiFont
         ]
+        if #available(iOS 26.0, *) {
+            appearance.subtitleTextAttributes = [
+                .foregroundColor: Warp.UIColor.token.textSubtle,
+                .font: Warp.Typography.title6.uiFont
+            ]
+        }
         standardAppearance = appearance
         compactAppearance = appearance
         scrollEdgeAppearance = appearance

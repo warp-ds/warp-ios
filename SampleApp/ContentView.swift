@@ -16,6 +16,10 @@ struct ContentView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
+                .onChange(of: selectedTheme) { oldTheme, newTheme in
+                    Warp.Theme = newTheme
+                    UINavigationBar.warpLiquidGlassStyle()
+                }
                 #endif
                 LazyVStack (alignment: .leading) {
                     Warp.Text("Brand Specific Items", style: .title3)
@@ -84,6 +88,9 @@ struct ContentView: View {
                 .padding()
             }
             .navigationTitle(Bundle.main.applicationName)
+            .onAppear {
+                UINavigationBar.warpLiquidGlassStyle()
+            }
         }
         .warpTheme(selectedTheme)
     }

@@ -9,6 +9,7 @@ struct NavigationDemoView: View {
         var display: ButtonDisplay = .icon
         var text: String = "Button"
         var icon: Warp.Icon = .shareIOS
+        var group: Int = 0
     }
 
     enum ButtonDisplay: String, CaseIterable {
@@ -17,6 +18,13 @@ struct NavigationDemoView: View {
     }
 
     @State private var buttons: [ButtonConfig] = []
+    @State private var navigationTitle: String = "Custom View"
+    @State private var navigationSubtitle: String = ""
+    @State private var showLargeTitle: Bool = true
+
+    private var uniqueGroups: Int {
+        Set(buttons.map { $0.group }).count
+    }
 
     private func iconMenuButton(icon: Binding<Warp.Icon>) -> some View {
         Menu {
@@ -55,9 +63,27 @@ struct NavigationDemoView: View {
                 }
             }
 
+            Section("Navigation Title & Subtitle") {
+                TextFieldWithClear(label: "Title:", text: $navigationTitle)
+                TextFieldWithClear(label: "Subtitle:", text: $navigationSubtitle)
+                Toggle("Show Large Title", isOn: $showLargeTitle)
+            }
+
             Section {
                 ForEach($buttons) { $button in
                     VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Text("Group:")
+                                .foregroundColor(.secondary)
+                            Picker("Group", selection: $button.group) {
+                                ForEach(0..<5) { groupNumber in
+                                    Text("\(groupNumber)").tag(groupNumber)
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                            .labelsHidden()
+                        }
+
                         Picker("Style", selection: $button.style) {
                             Text("Default").tag(UIBarButtonItem.WarpBarButtonStyle.default)
                             Text("Primary").tag(UIBarButtonItem.WarpBarButtonStyle.primary)
@@ -73,9 +99,7 @@ struct NavigationDemoView: View {
 
                         if button.display == .text {
                             HStack {
-                                Text("Edit:")
-                                    .foregroundColor(.secondary)
-                                TextField("Button text", text: $button.text)
+                                TextFieldWithClear(label: "Edit:", text: $button.text)
                             }
                             .transition(.opacity.combined(with: .move(edge: .top)))
                         } else {
@@ -94,7 +118,7 @@ struct NavigationDemoView: View {
                 .onDelete { buttons.remove(atOffsets: $0) }
             } header: {
                 HStack {
-                    Text("Navigation bar buttons: (\(buttons.count))")
+                    Text("Buttons: \(buttons.count) | Groups: \(uniqueGroups)")
                     Spacer()
                     EditButton()
                 }
@@ -114,8 +138,16 @@ struct NavigationDemoView: View {
     private func navigateToCustomView() {
         let customView = CustomNavigationView()
         let hostingController = UIHostingController(rootView: customView)
+        hostingController.navigationItem.title = navigationTitle
+        hostingController.navigationItem.largeTitleDisplayMode = showLargeTitle ? .always : .never
+        if !navigationSubtitle.isEmpty {
+            if #available(iOS 26.0, *) {
+                hostingController.navigationItem.subtitle = navigationSubtitle
+            }
+        }
 
         let navigationController = UINavigationController(rootViewController: hostingController)
+        navigationController.navigationBar.prefersLargeTitles = showLargeTitle
         navigationController.warpLiquidGlassStyle()
         navigationController.modalPresentationStyle = .fullScreen
 
@@ -132,18 +164,20 @@ struct NavigationDemoView: View {
 
     private func createBarButtonItems() -> [UIBarButtonItem] {
         var items: [UIBarButtonItem] = []
-        for (index, config) in buttons.enumerated() {
-            let item = createBarButtonItem(style: config.style, config: config)
-            items.append(item)
+        var lastGroup: Int? = nil
 
-            if #available(iOS 26.0, *) {
-                if config.style != .primary {
-                    let nextIndex = index + 1
-                    if nextIndex < buttons.count && buttons[nextIndex].style != .primary {
-                        items.append(UIBarButtonItem.fixedSpace())
-                    }
+        for config in buttons {
+            // Add group spacing when group changes
+            if let previousGroup = lastGroup, previousGroup != config.group {
+                if #available(iOS 26.0, *) {
+                    // Add fixed spaces for visual group separation
+                    items.append(UIBarButtonItem.fixedSpace())
                 }
             }
+
+            let item = createBarButtonItem(style: config.style, config: config)
+            items.append(item)
+            lastGroup = config.group
         }
         return items
     }
@@ -186,12 +220,30 @@ struct CustomNavigationView: View {
             }
             .padding()
         }
-        .navigationTitle("Custom View")
         .navigationBarItems(leading: Button(action: {
             UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true)
         }) {
             Image(systemName: "xmark")
         }
         .warpNavigationBarButton())
+    }
+}
+
+private struct TextFieldWithClear: View {
+    let label: String
+    @Binding var text: String
+
+    var body: some View {
+        HStack {
+            Text(label)
+              .foregroundColor(.secondary)
+            TextField("", text: $text)
+            if !text.isEmpty {
+                Button(action: { text = "" }) {
+                    Image(systemName: "xmark.circle.fill")
+                      .foregroundColor(.secondary)
+                }
+            }
+        }
     }
 }
