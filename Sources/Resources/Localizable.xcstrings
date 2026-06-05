@@ -2504,7 +2504,7 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ketjusaha"
+            "value" : "Moottorisaha"
           }
         },
         "nb-NO" : {
@@ -4712,7 +4712,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "PDF-fil"
+            "value" : "Pdf-fil"
           }
         }
       }
@@ -6452,7 +6452,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Langsomt køretøj"
+            "value" : "Lavhastighedskøretøj"
           }
         },
         "en" : {
@@ -6464,19 +6464,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matalaista ajoneuvoa"
+            "value" : "Hidas ajoneuvo"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sakte kjøretøy"
+            "value" : "Kjøretøy med lav fart"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Långsamt fordon"
+            "value" : "Låghastighetsfordon"
           }
         }
       }
@@ -10280,13 +10280,13 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Perävaunu"
+            "value" : "Traileri"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tilhenger"
+            "value" : "Trailer"
           }
         },
         "sv" : {
