@@ -63,6 +63,9 @@ extension Warp {
         /// A binding that controls whether the snackbar is presented.
         @Binding public var isPresented: Bool
 
+        /// Accessibility focus state for VoiceOver.
+        @AccessibilityFocusState private var isFocused: Bool
+
         /// The current theme from the environment.
         @Environment(\.warpTheme) private var theme
 
@@ -174,6 +177,12 @@ extension Warp {
                     .stroke(SwiftUI.Color.white.opacity(0.15), lineWidth: 1)
             )
             .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
+            .accessibilityFocused($isFocused)
+            .onChange(of: isPresented) { oldValue, newValue in
+                if newValue {
+                    isFocused = true
+                }
+            }
             .task {
                 // Do not start the timer if the duration is infinite, allowing the snackbar to stay until manually dismissed
                 guard duration != .infinite else {
