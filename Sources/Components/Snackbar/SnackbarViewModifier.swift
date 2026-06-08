@@ -30,8 +30,6 @@ extension Warp {
 
         /// A binding that controls whether the snackbar is presented.
         @Binding var isPresented: Bool
-        
-        @AccessibilityFocusState var isFocused: Bool
 
         public func body(content: Content) -> some View {
             content
@@ -43,7 +41,6 @@ extension Warp {
                 .animation(.default, value: isPresented)
                 .onChange(of: isPresented) { _, newValue in
                     guard newValue else { return }
-                    isFocused = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                         var parts = [title]
                         if let actionTitle = action?.title ?? longAction?.title {
@@ -68,7 +65,6 @@ extension Warp {
                       )
                       .padding(.horizontal, horizontalPadding)
                       .safeAreaPadding(.bottom)
-                      .accessibilityFocused($isFocused)
                 } else {
                     Warp.Snackbar(
                           type: type,
@@ -80,7 +76,6 @@ extension Warp {
                       )
                       .padding(.horizontal, horizontalPadding)
                       .safeAreaPadding(.bottom)
-                      .accessibilityFocused($isFocused)
                 }
             }
         }

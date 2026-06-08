@@ -2,7 +2,7 @@ import SwiftUI
 import Warp
 
 struct SnackbarView: View {
-    @State var snackbarIsPresented: Bool = true
+    @State var snackbarIsPresented: Bool = false
     @State var snackbarType: Warp.SnackbarType = .positive
     @State var neutralIconCustom: Warp.Icon = .info
     @State var snackbarDuration: Warp.Snackbar.Duration = .short
