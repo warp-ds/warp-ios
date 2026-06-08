@@ -95,6 +95,7 @@ extension Warp {
         case engine
         case engineBelt
         case error
+        case errorFilled
         case exchange
         case expand
         case eyeOff
@@ -131,6 +132,7 @@ extension Warp {
         case housePerson
         case image
         case info
+        case infoFilled
         case instagram
         case jetski
         case key
@@ -221,6 +223,7 @@ extension Warp {
         case store
         case stove
         case success
+        case successFilled
         case suitcase
         case support
         case swimming
@@ -249,6 +252,7 @@ extension Warp {
         case verification
         case wallet
         case warning
+        case warningFilled
         case warranty
         case waterPitcher
         case weight
@@ -316,6 +320,13 @@ extension Warp {
                 .resizable()
         }
 
+        /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog, without applying template rendering mode.
+        var rawUIImage: UIImage? {
+            let image = UIImage(named: assetName, in: .module, compatibleWith: nil)
+            image?.accessibilityLabel = localization
+            return image?.withRenderingMode(.alwaysOriginal)
+        }
+
         /// Returns a `UIImage` for the corresponding icon, loaded from the asset catalog.
         ///
         /// - Returns: A `UIImage` object corresponding to the icon.
@@ -333,7 +344,7 @@ extension Warp {
         ///
         /// This converts the enum case name (in camelCase) to the format used by asset names in the asset catalog.
         /// - Returns: The name of the asset in the asset catalog as `String`.
-        private var assetName: String {
+        var assetName: String {
             return rawValue.prefix(1).capitalized + rawValue.dropFirst() // CapitalizedCamelCase asset name
         }
 
@@ -428,6 +439,7 @@ extension Warp {
             case .engine: return Warp.Strings.iconEngine.localized
             case .engineBelt: return Warp.Strings.iconEngineBelt.localized
             case .error: return Warp.Strings.iconError.localized
+            case .errorFilled: return Warp.Strings.iconErrorFilled.localized
             case .exchange: return Warp.Strings.iconExchange.localized
             case .expand: return Warp.Strings.iconExpand.localized
             case .eyeOff: return Warp.Strings.iconEyeOff.localized
@@ -464,6 +476,7 @@ extension Warp {
             case .housePerson: return Warp.Strings.iconHousePerson.localized
             case .image: return Warp.Strings.iconImage.localized
             case .info: return Warp.Strings.iconInfo.localized
+            case .infoFilled: return Warp.Strings.iconInfoFilled.localized
             case .instagram: return Warp.Strings.iconInstagram.localized
             case .jetski: return Warp.Strings.iconJetski.localized
             case .key: return Warp.Strings.iconKey.localized
@@ -554,6 +567,7 @@ extension Warp {
             case .store: return Warp.Strings.iconStore.localized
             case .stove: return Warp.Strings.iconStove.localized
             case .success: return Warp.Strings.iconSuccess.localized
+            case .successFilled: return Warp.Strings.iconSuccessFilled.localized
             case .suitcase: return Warp.Strings.iconSuitcase.localized
             case .support: return Warp.Strings.iconSupport.localized
             case .swimming: return Warp.Strings.iconSwimming.localized
@@ -582,6 +596,7 @@ extension Warp {
             case .verification: return Warp.Strings.iconVerification.localized
             case .wallet: return Warp.Strings.iconWallet.localized
             case .warning: return Warp.Strings.iconWarning.localized
+            case .warningFilled: return Warp.Strings.iconWarningFilled.localized
             case .warranty: return Warp.Strings.iconWarranty.localized
             case .waterPitcher: return Warp.Strings.iconWaterPitcher.localized
             case .weight: return Warp.Strings.iconWeight.localized

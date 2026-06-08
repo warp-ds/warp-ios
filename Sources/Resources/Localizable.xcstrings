@@ -4357,6 +4357,42 @@
         }
       }
     },
+    "icon.title.error-filled" : {
+      "comment" : "A11y title for error filled icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udråbstegn i ottekant"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exclamation mark inside an octagon"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huutomerkki kahdeksankulmion sisällä"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utropstegn inne i åttekant"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utropstecken inuti oktagon"
+          }
+        }
+      }
+    },
     "icon.title.exchange" : {
       "comment" : "A11y title for exchange icon",
       "extractionState" : "manual",
@@ -5793,6 +5829,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Informationscirkel"
+          }
+        }
+      }
+    },
+    "icon.title.info-filled" : {
+      "comment" : "A11y title for info filled icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cirkel med bogstavet i indeni"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circle with letter i inside"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ympyrä, jonka sisällä on kirjain i"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sirkel med bokstaven i inni"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cirkel med bokstaven i inuti"
           }
         }
       }
@@ -9685,6 +9757,42 @@
         }
       }
     },
+    "icon.title.success-filled" : {
+      "comment" : "A11y title for success filled icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cirkel med flueben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circle with checkmark"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ympyrä, jonka sisällä on valintamerkki"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sirkel med sjekkmerke"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cirkel med bock"
+          }
+        }
+      }
+    },
     "icon.title.suitcase" : {
       "comment" : "A11y title for success icon",
       "extractionState" : "manual",
@@ -10911,6 +11019,42 @@
     },
     "icon.title.warning" : {
       "comment" : "A11y title for warning icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advarselstrekant med et udråbstegn"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warning triangle with exclamation point"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varoituskolmio, jonka sisällä on huutomerkki"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varseltrekant med utropstegn"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varningstriangel med utropstecken"
+          }
+        }
+      }
+    },
+    "icon.title.warning-filled" : {
+      "comment" : "A11y title for warning filled icon",
       "extractionState" : "manual",
       "localizations" : {
         "da" : {
