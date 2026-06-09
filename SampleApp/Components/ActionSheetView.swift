@@ -1,71 +1,110 @@
 import SwiftUI
 import Warp
 
+private struct ActionConfig: Identifiable {
+    let id = UUID()
+    var title: String
+    var style: Warp.ActionSheet.Style
+}
+
 struct ActionSheetView: View {
     @State private var title = "Choose an action"
     @State private var message = ""
     @State private var showActionSheet = false
-    @State private var hasDestructiveAction = true
+    @State private var actions: [ActionConfig] = [
+        .init(title: "Share", style: .default),
+        .init(title: "Copy link", style: .default),
+        .init(title: "Delete", style: .destructive)
+    ]
     @State private var lastAction = ""
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(alignment: .leading, spacing: Warp.Spacing.spacing200) {
-                if !lastAction.isEmpty {
-                    Warp.Alert(
-                        style: .info,
-                        title: "Last action",
-                        subtitle: lastAction
-                    )
-                }
-
+        Form {
+            Section("Demo") {
                 Warp.Button(
                     title: "Show Action Sheet",
                     action: { showActionSheet = true },
                     fullWidth: true
                 )
+               .warpActionSheet(
+                  title: title,
+                  message: message.isEmpty ? nil : message,
+                  actions: buildWarpActions(),
+                  isPresented: $showActionSheet
+               )
+            }
 
-                GroupBox {
-                    VStack(alignment: .leading) {
-                        Warp.Text("Title", style: .bodyStrong)
-                        Warp.TextField(text: $title)
-                        Divider()
-
-                        Warp.Text("Message (optional)", style: .bodyStrong)
-                        Warp.TextField(text: $message)
-                        Divider()
-
-                        Toggle(isOn: $hasDestructiveAction) {
-                            Warp.Text("Include destructive action", style: .body)
-                        }
-                    }
-                } label: {
-                    Warp.Text("Configuration", style: .title5)
+            if !lastAction.isEmpty {
+                Section("Last action") {
+                    Warp.Alert(
+                        style: .info,
+                        title: "Selected",
+                        subtitle: lastAction
+                    )
                 }
             }
-            .padding(.horizontal)
+
+            Section("Configuration") {
+                HStack {
+                    Warp.Text("Title:", style: .body)
+                        .foregroundColor(.secondary)
+                    Warp.TextField(text: $title)
+                }
+
+                HStack {
+                    Warp.Text("Message:", style: .body)
+                        .foregroundColor(.secondary)
+                    Warp.TextField(text: $message)
+                }
+            }
+
+            Section {
+                ForEach($actions) { $action in
+                    VStack(alignment: .leading, spacing: Warp.Spacing.spacing100) {
+                        HStack {
+                            Warp.Text("Title:", style: .body)
+                                .foregroundColor(.secondary)
+                            Warp.TextField(text: $action.title)
+                        }
+
+                        Picker("Style", selection: $action.style) {
+                            Warp.Text("Default", style: .body).tag(Warp.ActionSheet.Style.default)
+                            Warp.Text("Destructive", style: .body).tag(Warp.ActionSheet.Style.destructive)
+                        }
+                        .pickerStyle(.segmented)
+                    }
+                    .padding(.vertical, Warp.Spacing.spacing50)
+                }
+                .onMove { actions.move(fromOffsets: $0, toOffset: $1) }
+                .onDelete { actions.remove(atOffsets: $0) }
+            } header: {
+                HStack {
+                    Warp.Text("Actions: \(actions.count)", style: .body)
+                    Spacer()
+                    EditButton()
+                }
+            }
+
+            Section {
+                Button("Add action") {
+                    withAnimation {
+                        actions.append(.init(title: "New action", style: .default))
+                    }
+                }
+            }
         }
         .navigationTitle("ActionSheet")
         .navigationBarTitleDisplayMode(.inline)
-        .warpActionSheet(
-            title: title,
-            message: message.isEmpty ? nil : message,
-            actions: buildActions(),
-            isPresented: $showActionSheet
-        )
     }
 
-    private func buildActions() -> [Warp.ActionSheet.Action] {
-        var actions: [Warp.ActionSheet.Action] = [
-            .init(title: "Share") { lastAction = "Share" },
-            .init(title: "Copy link") { lastAction = "Copy link" },
-            .init(title: "Save to favorites") { lastAction = "Save to favorites" }
-        ]
-        if hasDestructiveAction {
-            actions.append(
-                .init(title: "Delete", style: .destructive) { lastAction = "Delete" }
-            )
+    private func buildWarpActions() -> [Warp.ActionSheet.Action] {
+        actions.map { config in
+            Warp.ActionSheet.Action(
+                title: config.title,
+                style: config.style
+            ) {
+                lastAction = config.title
+            }
         }
-        return actions
     }
 }
