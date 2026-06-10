@@ -4364,7 +4364,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Udråbstegn i ottekant"
+            "value" : "Udråbstegn inden i en ottekant"
           }
         },
         "en" : {
@@ -4376,13 +4376,13 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Huutomerkki kahdeksankulmion sisällä"
+            "value" : "Kahdeksankulmio, jonka sisällä on huutomerkki"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Utropstegn inne i åttekant"
+            "value" : "Utropstegn inni en åttekant"
           }
         },
         "sv" : {
@@ -5840,7 +5840,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cirkel med bogstavet i indeni"
+            "value" : "Cirkel med bogstavet \"i\" inden i"
           }
         },
         "en" : {
@@ -5852,7 +5852,7 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ympyrä, jonka sisällä on kirjain i"
+            "value" : "Ympyrä, jonka sisällä on i-kirjain"
           }
         },
         "nb-NO" : {
@@ -5864,7 +5864,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cirkel med bokstaven i inuti"
+            "value" : "Cirkel med bokstaven I inuti"
           }
         }
       }
@@ -9782,7 +9782,7 @@
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sirkel med sjekkmerke"
+            "value" : "Sirkel med hakemerke"
           }
         },
         "sv" : {
@@ -11060,7 +11060,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Advarselstrekant med et udråbstegn"
+            "value" : "Advarselstrekant med udråbstegn"
           }
         },
         "en" : {
