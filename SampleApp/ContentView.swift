@@ -40,7 +40,8 @@ struct ContentView: View {
                     Warp.Text("Native Components", style: .title3)
                     Divider()
 
-                    row("Navigation View", destination: NavigationDemoView())
+                    row("NavigationView (UIKit)", destination: NavigationDemoView())
+                    row("NavigationView (SwiftUI)", destination: ToolbarDemoView())
 
                     Warp.Text("Warp Patterns", style: .title3)
                     Divider()
