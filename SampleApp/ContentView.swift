@@ -75,6 +75,7 @@ struct ContentView: View {
                     row("Select", destination: SelectView())
                     row("Spinner", destination: SpinnerView())
                     row("StepIndicator", destination: StepIndicatorView())
+                    row("Snackbar", destination: SnackbarView())
                     row("Switch", destination: SwitchView())
                     row("Tabs", destination: TabsView())
                     row("Text", destination: TextView())

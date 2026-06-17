@@ -189,6 +189,12 @@
 		9E097EC62E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
 		9E097EC72E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
 		9E097EC82E8AA7B30007DF09 /* RangeSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */; };
+		9E1C1A322FB3544F002A4AF4 /* SnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C1A312FB3544F002A4AF4 /* SnackbarView.swift */; };
+		9E1C1A332FB3544F002A4AF4 /* SnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C1A312FB3544F002A4AF4 /* SnackbarView.swift */; };
+		9E1C1A342FB3544F002A4AF4 /* SnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C1A312FB3544F002A4AF4 /* SnackbarView.swift */; };
+		9E1C1A352FB3544F002A4AF4 /* SnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C1A312FB3544F002A4AF4 /* SnackbarView.swift */; };
+		9E1C1A362FB3544F002A4AF4 /* SnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C1A312FB3544F002A4AF4 /* SnackbarView.swift */; };
+		9E1C1A372FB3544F002A4AF4 /* SnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C1A312FB3544F002A4AF4 /* SnackbarView.swift */; };
 		9E2F67782ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
 		9E2F67792ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
 		9E2F677A2ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
@@ -382,6 +388,7 @@
 		82FE9FDB2CC7B214002906F9 /* BrandIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandIconsView.swift; sourceTree = "<group>"; };
 		9ABE19EE2DCB55D900AD37CA /* TypographyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyUIView.swift; sourceTree = "<group>"; };
 		9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderView.swift; sourceTree = "<group>"; };
+		9E1C1A312FB3544F002A4AF4 /* SnackbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarView.swift; sourceTree = "<group>"; };
 		9E2F67772ECF62D200B48276 /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		9E54F07A2E40B82E008BDFB9 /* WarpSnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpSnapshotTests.xctestplan; sourceTree = "<group>"; };
@@ -603,6 +610,7 @@
 			isa = PBXGroup;
 			children = (
 				9E768E252F5094B900652B2B /* Native */,
+				9E1C1A312FB3544F002A4AF4 /* SnackbarView.swift */,
 				9E2F67772ECF62D200B48276 /* StateView.swift */,
 				9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */,
 				9EF55F832E991DDD000842A8 /* DividerView.swift */,
@@ -963,6 +971,7 @@
 				82F7B0542D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				9EE8EBDC2E9FC9A90088AFD9 /* SelectView.swift in Sources */,
 				2E1ADF592C2561A700DFEE06 /* AlertView.swift in Sources */,
+				9E1C1A352FB3544F002A4AF4 /* SnackbarView.swift in Sources */,
 				B238A2702C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
 				825FBF4F2CEF431B0052761F /* ButtonPillView.swift in Sources */,
 				2E1ADF5A2C2561A700DFEE06 /* BoxView.swift in Sources */,
@@ -1017,6 +1026,7 @@
 				82F7B0522D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				9EE8EBDA2E9FC9A90088AFD9 /* SelectView.swift in Sources */,
 				820A85F92C6CEB0C006D35A0 /* AlertView.swift in Sources */,
+				9E1C1A342FB3544F002A4AF4 /* SnackbarView.swift in Sources */,
 				820A85FA2C6CEB0C006D35A0 /* ExpandableView.swift in Sources */,
 				825FBF522CEF431B0052761F /* ButtonPillView.swift in Sources */,
 				820A85FB2C6CEB0C006D35A0 /* BoxView.swift in Sources */,
@@ -1071,6 +1081,7 @@
 				82F7B0512D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				9EE8EBDE2E9FC9A90088AFD9 /* SelectView.swift in Sources */,
 				820A86362C6D4388006D35A0 /* AlertView.swift in Sources */,
+				9E1C1A362FB3544F002A4AF4 /* SnackbarView.swift in Sources */,
 				820A86372C6D4388006D35A0 /* BoxView.swift in Sources */,
 				825FBF502CEF431B0052761F /* ButtonPillView.swift in Sources */,
 				820A86382C6D4388006D35A0 /* ButtonView.swift in Sources */,
@@ -1125,6 +1136,7 @@
 				82F7B0532D0AF26A0015D48F /* DatavizTokensView.swift in Sources */,
 				9EE8EBDD2E9FC9A90088AFD9 /* SelectView.swift in Sources */,
 				8213D0B02B9078D700FCA310 /* ShadowView.swift in Sources */,
+				9E1C1A372FB3544F002A4AF4 /* SnackbarView.swift in Sources */,
 				349D0E142B62D67E00AAB421 /* AlertView.swift in Sources */,
 				825FBF512CEF431B0052761F /* ButtonPillView.swift in Sources */,
 				341B20E92B751C250068FF43 /* BoxView.swift in Sources */,
@@ -1179,6 +1191,7 @@
 				9E7149842E1BF28900674698 /* DatavizTokensView.swift in Sources */,
 				9EE8EBDB2E9FC9A90088AFD9 /* SelectView.swift in Sources */,
 				9E7149852E1BF28900674698 /* AlertView.swift in Sources */,
+				9E1C1A322FB3544F002A4AF4 /* SnackbarView.swift in Sources */,
 				9E7149862E1BF28900674698 /* ExpandableView.swift in Sources */,
 				9E7149872E1BF28900674698 /* ButtonPillView.swift in Sources */,
 				9E7149882E1BF28900674698 /* BoxView.swift in Sources */,
@@ -1233,6 +1246,7 @@
 				9EFC48322E4219940048E4E7 /* DatavizTokensView.swift in Sources */,
 				9EE8EBDF2E9FC9A90088AFD9 /* SelectView.swift in Sources */,
 				9EFC48332E4219940048E4E7 /* AlertView.swift in Sources */,
+				9E1C1A332FB3544F002A4AF4 /* SnackbarView.swift in Sources */,
 				9EFC48342E4219940048E4E7 /* BoxView.swift in Sources */,
 				9EFC48352E4219940048E4E7 /* ButtonPillView.swift in Sources */,
 				9EFC48362E4219940048E4E7 /* ButtonView.swift in Sources */,
