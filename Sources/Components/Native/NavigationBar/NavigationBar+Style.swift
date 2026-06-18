@@ -39,7 +39,7 @@ extension UINavigationBar {
             ]
         }
 
-        let backImage = Warp.Icon.arrowLeft.uiImage
+        let backImage = Warp.Icon.chevronLeft.uiImage
         appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
 
         let plainButtonAppearance = UIBarButtonItemAppearance(style: .plain)
@@ -112,5 +112,7 @@ extension UINavigationController {
     /// ```
     public func warpLiquidGlassStyle() {
         navigationBar.warpLiquidGlassStyle()
+        // Ensure the content extends under the navigation bar for liquid glass effect
+        extendedLayoutIncludesOpaqueBars = true
     }
 }
