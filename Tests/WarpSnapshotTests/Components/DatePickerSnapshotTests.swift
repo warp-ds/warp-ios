@@ -41,4 +41,20 @@ struct DatePickerSnapshotTests {
 
         assertSnapshot(of: datePickerView, as: .warpImage, named: snapshotName)
     }
+
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotInlineDatePickerWithTime(brand: Warp.Brand) {
+        let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
+        let fixedDate = Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 15, hour: 9, minute: 41))!
+
+        let datePickerView = Warp.DatePicker(
+            date: .constant(fixedDate),
+            displayedComponents: [.date, .hourAndMinute]
+        )
+        .padding()
+        .frame(width: ViewImageConfig.iPhone13.size!.width)
+
+        assertSnapshot(of: datePickerView, as: .warpImage, named: snapshotName)
+    }
 }

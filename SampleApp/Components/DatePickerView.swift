@@ -4,6 +4,7 @@ import SwiftUI
 struct DatePickerView: View {
 
     @State private var selectedDate = Date()
+    @State private var showTimePicker = false
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -23,7 +24,7 @@ struct DatePickerView: View {
             }, label: {
                 Text("Dialog Date Picker")
             })
-            
+
             // Ranged WARP date picker
             GroupBox(content: {
                 VStack {
@@ -46,15 +47,22 @@ struct DatePickerView: View {
 
             // WARP inline datepicker
             GroupBox(content: {
+                Toggle("Show Time Picker", isOn: $showTimePicker)
+            }, label: {
+                Text("Options")
+            })
+
+            GroupBox(content: {
                 VStack {
                     Warp.DatePicker(
-                        date: $selectedDate
+                        date: $selectedDate,
+                        displayedComponents: showTimePicker ? [.date, .hourAndMinute] : [.date]
                     )
                     .padding()
 
                     HStack {
                         Spacer()
-                        Text("Selected date: \(formattedDate(selectedDate))")
+                        Text("Selected date: \(formattedDate(selectedDate, includeTime: showTimePicker))")
                         Spacer()
                     }
                 }
@@ -68,9 +76,10 @@ struct DatePickerView: View {
 
     }
 
-    private func formattedDate(_ date: Date) -> String {
+    private func formattedDate(_ date: Date, includeTime: Bool = false) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
+        formatter.timeStyle = includeTime ? .short : .none
         return formatter.string(from: date)
     }
 }
