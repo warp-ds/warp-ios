@@ -2,13 +2,15 @@ import UIKit
 
 extension UINavigationBar {
 
-    /// Applies Warp design style globally to all navigation bars, making them suitable for use with liquid glass layouts.
+    /// Applies Warp design style globally to all navigation bars with Liquid Glass styling (iOS 26+).
     ///
     /// This static method configures the global appearance of all UINavigationBar instances with:
     /// - Transparent background to allow liquid glass effects to show through
-    /// - Title text styled with Warp's text color and title4 typography
-    /// - Back arrow styled with Warp's arrowLeft icon
+    /// - Title and subtitle text styled with Warp typography and colors
+    /// - Back arrow styled with Warp's chevronLeft icon
     /// - Bar button items styled with Warp's text and icon colors
+    ///
+    /// **Availability:** iOS 26+. On earlier versions, this method does nothing.
     ///
     /// Call this once during app launch to apply Warp styling to all navigation bars globally.
     /// For per-instance styling, use the instance method on UINavigationBar or the convenience method on UINavigationController.
@@ -22,6 +24,8 @@ extension UINavigationBar {
     /// }
     /// ```
     public static func warpLiquidGlassStyle() {
+        guard #available(iOS 26.0, *) else { return }
+
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.largeTitleTextAttributes = [
@@ -32,12 +36,10 @@ extension UINavigationBar {
             .foregroundColor: Warp.UIColor.token.text,
             .font: Warp.Typography.title4.uiFont
         ]
-        if #available(iOS 26.0, *) {
-            appearance.subtitleTextAttributes = [
-                .foregroundColor: Warp.UIColor.token.textSubtle,
-                .font: Warp.Typography.title6.uiFont
-            ]
-        }
+        appearance.subtitleTextAttributes = [
+            .foregroundColor: Warp.UIColor.token.textSubtle,
+            .font: Warp.Typography.title6.uiFont
+        ]
 
         let backImage = Warp.Icon.chevronLeft.uiImage
         appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
@@ -57,12 +59,14 @@ extension UINavigationBar {
         UINavigationBar.appearance().tintColor = tint
     }
 
-    /// Applies Warp design style to an individual navigation bar instance, making it suitable for use with liquid glass layouts.
+    /// Applies Warp design style to an individual navigation bar instance with Liquid Glass styling (iOS 26+).
     ///
     /// This instance method configures the appearance of a specific UINavigationBar with:
     /// - Transparent background to allow liquid glass effects to show through
-    /// - Title text styled with Warp's text color and title4 typography
+    /// - Title and subtitle text styled with Warp typography and colors
     /// - Applied to standard, compact, and scroll edge appearances
+    ///
+    /// **Availability:** iOS 26+. On earlier versions, this method does nothing.
     ///
     /// For simpler per-instance styling, prefer using the convenience method on UINavigationController.
     ///
@@ -73,6 +77,8 @@ extension UINavigationBar {
     /// navigationBar.warpLiquidGlassStyle()
     /// ```
     public func warpLiquidGlassStyle() {
+        guard #available(iOS 26.0, *) else { return }
+
         let appearance = UINavigationBar.appearance().standardAppearance.copy()
         appearance.configureWithTransparentBackground()
         appearance.largeTitleTextAttributes = [
@@ -83,12 +89,10 @@ extension UINavigationBar {
             .foregroundColor: Warp.UIColor.token.text,
             .font:  Warp.Typography.title4.uiFont
         ]
-        if #available(iOS 26.0, *) {
-            appearance.subtitleTextAttributes = [
-                .foregroundColor: Warp.UIColor.token.textSubtle,
-                .font: Warp.Typography.title6.uiFont
-            ]
-        }
+        appearance.subtitleTextAttributes = [
+            .foregroundColor: Warp.UIColor.token.textSubtle,
+            .font: Warp.Typography.title6.uiFont
+        ]
         standardAppearance = appearance
         compactAppearance = appearance
         scrollEdgeAppearance = appearance
@@ -97,12 +101,15 @@ extension UINavigationBar {
 
 extension UINavigationController {
 
-    /// Applies Warp design style to the navigation controller's navigation bar, making it suitable for use with liquid glass layouts.
+    /// Applies Warp design style to the navigation controller's navigation bar with Liquid Glass styling (iOS 26+).
     ///
     /// This convenience method applies Warp styling to the navigation controller's navigation bar with:
     /// - Transparent background to allow liquid glass effects to show through
-    /// - Title text styled with Warp's text color and title4 typography
+    /// - Title and subtitle text styled with Warp typography and colors
+    /// - Extended layout to allow content beneath navigation bar
     /// - Applied to standard, compact, and scroll edge appearances
+    ///
+    /// **Availability:** iOS 26+. On earlier versions, this method does nothing.
     ///
     /// **Usage:**
     ///
@@ -111,6 +118,8 @@ extension UINavigationController {
     /// navigationController.warpLiquidGlassStyle()
     /// ```
     public func warpLiquidGlassStyle() {
+        guard #available(iOS 26.0, *) else { return }
+
         navigationBar.warpLiquidGlassStyle()
         // Ensure the content extends under the navigation bar for liquid glass effect
         extendedLayoutIncludesOpaqueBars = true
