@@ -2,27 +2,27 @@ import SwiftUI
 
 extension Warp {
 
-    /// A Warp wrapper around the native iOS action sheet (confirmation dialog).
+    /// A Warp wrapper around the native iOS confirmation dialog.
     ///
-    /// `ActionSheet` provides data models for configuring a native action sheet
-    /// with Warp-typed actions. Use the `.warpActionSheet()` view modifier to present it.
+    /// `ConfirmationDialog` provides data models for configuring a native confirmation dialog
+    /// with Warp-typed actions. Use the `.warpConfirmationDialog()` view modifier to present it.
     ///
     /// **Usage:**
     ///
     /// ```swift
-    /// .warpActionSheet(
+    /// .warpConfirmationDialog(
     ///     title: "Delete item?",
     ///     message: "This action cannot be undone.",
     ///     actions: [
-    ///         Warp.ActionSheet.Action(title: "Delete", style: .destructive) { /* handle */ },
-    ///         Warp.ActionSheet.Action(title: "Archive") { /* handle */ }
+    ///         Warp.ConfirmationDialog.Action(title: "Delete", style: .destructive) { /* handle */ },
+    ///         Warp.ConfirmationDialog.Action(title: "Archive") { /* handle */ }
     ///     ],
-    ///     isPresented: $showActionSheet
+    ///     isPresented: $showDialog
     /// )
     /// ```
-    public struct ActionSheet {
+    public struct ConfirmationDialog {
 
-        /// An individual action button in the action sheet.
+        /// An individual action button in the confirmation dialog.
         public struct Action: Identifiable {
             public let id = UUID()
 
@@ -35,7 +35,7 @@ extension Warp {
             /// The closure executed when the action button is tapped.
             public let handler: () -> Void
 
-            /// Initializes an action sheet action.
+            /// Initializes a confirmation dialog action.
             /// - Parameters:
             ///   - title: The text displayed on the action button.
             ///   - style: The visual style. Defaults to `.default`.
@@ -47,7 +47,7 @@ extension Warp {
             }
         }
 
-        /// The visual style for an action sheet button.
+        /// The visual style for a confirmation dialog button.
         public enum Style {
             /// A standard action button.
             case `default`

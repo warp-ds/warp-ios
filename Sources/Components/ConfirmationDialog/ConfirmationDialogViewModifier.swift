@@ -2,11 +2,11 @@ import SwiftUI
 
 extension Warp {
 
-    /// A view modifier that presents a native action sheet (confirmation dialog) with Warp-typed actions.
-    struct ActionSheetViewModifier: ViewModifier {
+    /// A view modifier that presents a native confirmation dialog with Warp-typed actions.
+    struct ConfirmationDialogViewModifier: ViewModifier {
         let title: String
         let message: String?
-        let actions: [Warp.ActionSheet.Action]
+        let actions: [Warp.ConfirmationDialog.Action]
         @Binding var isPresented: Bool
 
         @Environment(\.warpTheme) private var theme
@@ -39,40 +39,40 @@ extension Warp {
 
 public extension View {
 
-    /// Presents a Warp-styled action sheet (native confirmation dialog).
+    /// Presents a Warp-styled confirmation dialog.
     ///
-    /// The action sheet appears as a native iOS confirmation dialog at the bottom of the screen.
+    /// The confirmation dialog appears as a native iOS confirmation dialog at the bottom of the screen.
     /// A cancel button is automatically provided by the system.
     ///
     /// **Usage:**
     ///
     /// ```swift
     /// Text("Content")
-    ///     .warpActionSheet(
+    ///     .warpConfirmationDialog(
     ///         title: "Choose an action",
     ///         message: "Select what you'd like to do.",
     ///         actions: [
-    ///             Warp.ActionSheet.Action(title: "Share") { /* handle share */ },
-    ///             Warp.ActionSheet.Action(title: "Delete", style: .destructive) { /* handle delete */ }
+    ///             Warp.ConfirmationDialog.Action(title: "Share") { /* handle share */ },
+    ///             Warp.ConfirmationDialog.Action(title: "Delete", style: .destructive) { /* handle delete */ }
     ///         ],
-    ///         isPresented: $showSheet
+    ///         isPresented: $showDialog
     ///     )
     /// ```
     ///
     /// - Parameters:
-    ///   - title: The title displayed at the top of the action sheet.
+    ///   - title: The title displayed at the top of the confirmation dialog.
     ///   - message: An optional message displayed below the title.
     ///   - actions: An array of actions to display as buttons.
-    ///   - isPresented: A binding controlling the action sheet's visibility.
-    /// - Returns: A view with the action sheet modifier applied.
-    func warpActionSheet(
+    ///   - isPresented: A binding controlling the confirmation dialog's visibility.
+    /// - Returns: A view with the confirmation dialog modifier applied.
+    func warpConfirmationDialog(
         title: String,
         message: String? = nil,
-        actions: [Warp.ActionSheet.Action],
+        actions: [Warp.ConfirmationDialog.Action],
         isPresented: Binding<Bool>
     ) -> some View {
         self.modifier(
-            Warp.ActionSheetViewModifier(
+            Warp.ConfirmationDialogViewModifier(
                 title: title,
                 message: message,
                 actions: actions,

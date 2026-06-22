@@ -4,13 +4,13 @@ import Warp
 private struct ActionConfig: Identifiable {
     let id = UUID()
     var title: String
-    var style: Warp.ActionSheet.Style
+    var style: Warp.ConfirmationDialog.Style
 }
 
-struct ActionSheetView: View {
+struct ConfirmationDialogView: View {
     @State private var title = "Choose an action"
     @State private var message = ""
-    @State private var showActionSheet = false
+    @State private var showDialog = false
     @State private var actions: [ActionConfig] = [
         .init(title: "Share", style: .default),
         .init(title: "Copy link", style: .default),
@@ -22,15 +22,15 @@ struct ActionSheetView: View {
         Form {
             Section("Demo") {
                 Warp.Button(
-                    title: "Show Action Sheet",
-                    action: { showActionSheet = true },
+                    title: "Show Confirmation Dialog",
+                    action: { showDialog = true },
                     fullWidth: true
                 )
-               .warpActionSheet(
+               .warpConfirmationDialog(
                   title: title,
                   message: message.isEmpty ? nil : message,
                   actions: buildWarpActions(),
-                  isPresented: $showActionSheet
+                  isPresented: $showDialog
                )
             }
 
@@ -68,8 +68,8 @@ struct ActionSheetView: View {
                         }
 
                         Picker("Style", selection: $action.style) {
-                            Warp.Text("Default", style: .body).tag(Warp.ActionSheet.Style.default)
-                            Warp.Text("Destructive", style: .body).tag(Warp.ActionSheet.Style.destructive)
+                            Warp.Text("Default", style: .body).tag(Warp.ConfirmationDialog.Style.default)
+                            Warp.Text("Destructive", style: .body).tag(Warp.ConfirmationDialog.Style.destructive)
                         }
                         .pickerStyle(.segmented)
                     }
@@ -93,13 +93,13 @@ struct ActionSheetView: View {
                 }
             }
         }
-        .navigationTitle("ActionSheet")
+        .navigationTitle("Confirmation Dialog")
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private func buildWarpActions() -> [Warp.ActionSheet.Action] {
+    private func buildWarpActions() -> [Warp.ConfirmationDialog.Action] {
         actions.map { config in
-            Warp.ActionSheet.Action(
+            Warp.ConfirmationDialog.Action(
                 title: config.title,
                 style: config.style
             ) {

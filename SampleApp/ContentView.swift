@@ -41,7 +41,7 @@ struct ContentView: View {
                     Warp.Text("Warp Components", style: .title3)
                     Divider()
 
-                    row("ActionSheet", destination: ActionSheetView())
+                    row("Confirmation Dialog", destination: ConfirmationDialogView())
                     row("Alert", destination: AlertView())
                     row("Badge", destination: BadgeView())
                     row("Box", destination: BoxView())
