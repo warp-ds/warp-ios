@@ -17,12 +17,19 @@ extension Warp {
 
         func body(content: Content) -> some View {
             content
-                .confirmationDialog(title, isPresented: $isPresented, titleVisibility: .visible) {
+                .confirmationDialog(
+                    SwiftUI.Text(title)
+                        .font(Warp.Typography.title4.font)
+                        .foregroundStyle(Warp.Token.text),
+                    isPresented: $isPresented,
+                    titleVisibility: .visible
+                ) {
                     ForEach(actions) { action in
                         SwiftUI.Button(role: action.style.buttonRole) {
                             action.handler()
                         } label: {
                             SwiftUI.Text(action.title)
+                                .font(Warp.Typography.title4.font)
                                 .foregroundStyle(action.style == .destructive
                                     ? Warp.Token.textNegative
                                     : Warp.Token.text)
@@ -31,6 +38,8 @@ extension Warp {
                 } message: {
                     if let message {
                         SwiftUI.Text(message)
+                            .font(Warp.Typography.body.font)
+                            .foregroundStyle(Warp.Token.text)
                     }
                 }
         }
