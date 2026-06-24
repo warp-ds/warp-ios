@@ -18,9 +18,7 @@ extension Warp {
         func body(content: Content) -> some View {
             content
                 .confirmationDialog(
-                    SwiftUI.Text(title)
-                        .font(Warp.Typography.title4.font)
-                        .foregroundStyle(Warp.Token.text),
+                    SwiftUI.Text(title),
                     isPresented: $isPresented,
                     titleVisibility: .visible
                 ) {
@@ -38,8 +36,6 @@ extension Warp {
                 } message: {
                     if let message {
                         SwiftUI.Text(message)
-                            .font(Warp.Typography.body.font)
-                            .foregroundStyle(Warp.Token.text)
                     }
                 }
         }
