@@ -47,7 +47,7 @@ extension UINavigationBar {
         let plainButtonAppearance = UIBarButtonItemAppearance(style: .plain)
         plainButtonAppearance.normal.titleTextAttributes = [
             .foregroundColor: Warp.UIColor.token.text,
-            .font: Warp.Typography.title4.uiFont
+            .font: Warp.Typography.body.uiFont
         ]
         appearance.buttonAppearance = plainButtonAppearance
 

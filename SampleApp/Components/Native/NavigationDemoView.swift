@@ -5,7 +5,7 @@ struct NavigationDemoView: View {
 
     struct ButtonConfig: Identifiable {
         let id = UUID()
-        var style: UIBarButtonItem.WarpBarButtonStyle = .default
+        var style: Warp.NavigationBarButtonStyle = .default
         var display: ButtonDisplay = .icon
         var text: String = "Button"
         var icon: Warp.Icon = .shareIOS
@@ -85,8 +85,8 @@ struct NavigationDemoView: View {
                         }
 
                         Picker("Style", selection: $button.style) {
-                            Text("Default").tag(UIBarButtonItem.WarpBarButtonStyle.default)
-                            Text("Primary").tag(UIBarButtonItem.WarpBarButtonStyle.primary)
+                            Text("Default").tag(Warp.NavigationBarButtonStyle.default)
+                            Text("Primary").tag(Warp.NavigationBarButtonStyle.primary)
                         }
                         .pickerStyle(.segmented)
 
@@ -182,7 +182,7 @@ struct NavigationDemoView: View {
         return items
     }
 
-    private func createBarButtonItem(style: UIBarButtonItem.WarpBarButtonStyle, config: ButtonConfig) -> UIBarButtonItem {
+    private func createBarButtonItem(style: Warp.NavigationBarButtonStyle, config: ButtonConfig) -> UIBarButtonItem {
         switch config.display {
         case .icon:
             return UIBarButtonItem(

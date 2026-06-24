@@ -5,7 +5,7 @@ struct ToolbarDemoView: View {
 
     struct ToolbarItemConfig: Identifiable {
         let id = UUID()
-        var style: Warp.ToolbarItemStyle
+        var style: Warp.NavigationBarButtonStyle
         var display: ItemDisplay
         var icon: Warp.Icon
         var text: String
@@ -73,8 +73,8 @@ struct ToolbarDemoView: View {
                         }
 
                         Picker("Style", selection: $item.style) {
-                            Text("Default").tag(Warp.ToolbarItemStyle.default)
-                            Text("Primary").tag(Warp.ToolbarItemStyle.primary)
+                            Text("Default").tag(Warp.NavigationBarButtonStyle.default)
+                            Text("Primary").tag(Warp.NavigationBarButtonStyle.primary)
                         }
                         .pickerStyle(.segmented)
 

@@ -1,18 +1,6 @@
 import SwiftUI
 
 extension Warp {
-    /// Styling options for toolbar items displayed in a navigation bar.
-    public enum ToolbarItemStyle {
-        /// Default style for navigation bar toolbar items.
-        /// Uses Warp's icon color for text and body typography. Suitable for secondary or action buttons.
-        case `default`
-
-        /// Primary style for navigation bar toolbar items.
-        /// Uses Warp's primary button styling with iOS 26+ prominent appearance (glass effect).
-        /// Suitable for primary actions that require visual emphasis.
-        case primary
-    }
-
     /// A Warp-styled toolbar item for use in navigation bars.
     ///
     /// This struct provides a consistent, theme-aware toolbar item that automatically applies
@@ -63,7 +51,7 @@ extension Warp {
         let title: String?
         let icon: Warp.Icon?
         let placement: ToolbarItemPlacement
-        let style: ToolbarItemStyle
+        let style: NavigationBarButtonStyle
         let action: () -> Void
 
         /// Creates a Warp toolbar item with optional title and icon.
@@ -78,7 +66,7 @@ extension Warp {
             title: String? = nil,
             icon: Warp.Icon? = nil,
             placement: ToolbarItemPlacement = .automatic,
-            style: ToolbarItemStyle = .default,
+            style: NavigationBarButtonStyle = .default,
             action: @escaping () -> Void
         ) {
             self.title = title
@@ -104,7 +92,7 @@ extension Warp {
 private struct WarpToolbarButton: View {
     let title: String?
     let icon: Warp.Icon?
-    let style: Warp.ToolbarItemStyle
+    let style: Warp.NavigationBarButtonStyle
     let action: () -> Void
 
     @Environment(\.warpTheme) private var theme
