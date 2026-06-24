@@ -8,44 +8,6 @@ struct DatePickerView: View {
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            // WARP date picker
-            GroupBox(content: {
-                VStack {
-                    Warp.TextField(
-                        text: Binding(
-                            get: { formattedDate(selectedDate) },
-                            set: { _ in }
-                        ),
-                        placeholder: "Select a date",
-                        rightIcon: .calendar
-                    )
-                    .warpDatePicker(date: $selectedDate)
-                }
-            }, label: {
-                Text("Dialog Date Picker")
-            })
-
-            // Ranged WARP date picker
-            GroupBox(content: {
-                VStack {
-                    Warp.TextField(
-                        text: Binding(
-                          get: { formattedDate(selectedDate) },
-                          set: { _ in }
-                        ),
-                        placeholder: "Select a date",
-                        rightIcon: .calendar
-                      )
-                    .warpDatePicker(
-                        date: $selectedDate,
-                        range: Calendar.current.date(byAdding: .day, value: -7, to: Date())!...Calendar.current.date(byAdding: .day, value: 7, to: Date())!
-                    )
-                }
-            }, label: {
-                Text("Ranged Dialog Date Picker")
-            })
-
-            // WARP inline datepicker
             GroupBox(content: {
                 Toggle("Show Time Picker", isOn: $showTimePicker)
             }, label: {
@@ -54,10 +16,14 @@ struct DatePickerView: View {
 
             GroupBox(content: {
                 VStack {
-                    Warp.DatePicker(
-                        date: $selectedDate,
+                    DatePicker(
+                        "",
+                        selection: $selectedDate,
                         displayedComponents: showTimePicker ? [.date, .hourAndMinute] : [.date]
                     )
+                    .warpStyle()
+                    .datePickerStyle(.graphical)
+                    .labelsHidden()
                     .padding()
 
                     HStack {
@@ -67,7 +33,59 @@ struct DatePickerView: View {
                     }
                 }
             }, label: {
-                Text("Inline Date Picker")
+                Text("Graphical Date Picker")
+            })
+
+            GroupBox(content: {
+                VStack {
+                    DatePicker(
+                        "",
+                        selection: $selectedDate,
+                        in: Calendar.current.date(byAdding: .day, value: -7, to: Date())!...Calendar.current.date(byAdding: .day, value: 7, to: Date())!,
+                        displayedComponents: showTimePicker ? [.date, .hourAndMinute] : [.date]
+                    )
+                    .warpStyle()
+                    .datePickerStyle(.graphical)
+                    .labelsHidden()
+                    .padding()
+
+                    HStack {
+                        Spacer()
+                        Text("Selected date: \(formattedDate(selectedDate, includeTime: showTimePicker))")
+                        Spacer()
+                    }
+                }
+            }, label: {
+                Text("Ranged Graphical Date Picker")
+            })
+
+            GroupBox(content: {
+                HStack {
+                    Text("Date")
+                    Spacer()
+                    DatePicker(
+                        "",
+                        selection: $selectedDate,
+                        displayedComponents: showTimePicker ? [.date, .hourAndMinute] : [.date]
+                    )
+                    .warpStyle()
+                    .labelsHidden()
+                }
+            }, label: {
+                Text("Compact Date Picker")
+            })
+
+            GroupBox(content: {
+                DatePicker(
+                    "",
+                    selection: $selectedDate,
+                    displayedComponents: showTimePicker ? [.date, .hourAndMinute] : [.date]
+                )
+                .warpStyle()
+                .datePickerStyle(.wheel)
+                .labelsHidden()
+            }, label: {
+                Text("Wheel Date Picker")
             })
         }
         .padding()
