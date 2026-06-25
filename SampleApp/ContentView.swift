@@ -75,6 +75,11 @@ struct ContentView: View {
                     row("Toast", destination: ToastView())
                     row("Tooltip", destination: TooltipView())
 
+                    Warp.Text("Native Components", style: .title3)
+                    Divider()
+
+                    row("Bottom nav / Tab Bar", destination: TabBarDemoView())
+
                     Warp.Text("\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))", style: .caption)
                 }
                 .padding()
