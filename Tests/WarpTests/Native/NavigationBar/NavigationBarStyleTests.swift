@@ -3,6 +3,7 @@ import UIKit
 @testable import Warp
 
 @Suite(.serialized) // Serialized because we're testing global appearance state
+@MainActor
 struct NavigationBarStyleTests {
 
     @Test
@@ -37,7 +38,8 @@ struct NavigationBarStyleTests {
 
         // Verify large title text color
         if let foregroundColor = attributes[.foregroundColor] as? UIColor {
-            #expect(foregroundColor == Warp.UIColor.token.text)
+            let traitCollection = UITraitCollection(userInterfaceStyle: .light)
+            #expect(foregroundColor.resolvedColor(with: traitCollection) == Warp.UIColor.token.text.resolvedColor(with: traitCollection))
         }
 
         // Verify large title font
@@ -61,7 +63,8 @@ struct NavigationBarStyleTests {
 
         // Verify title text color
         if let foregroundColor = attributes[.foregroundColor] as? UIColor {
-            #expect(foregroundColor == Warp.UIColor.token.text)
+            let traitCollection = UITraitCollection(userInterfaceStyle: .light)
+            #expect(foregroundColor.resolvedColor(with: traitCollection) == Warp.UIColor.token.text.resolvedColor(with: traitCollection))
         }
 
         // Verify title font
@@ -85,7 +88,8 @@ struct NavigationBarStyleTests {
 
         // Verify subtitle text color
         if let foregroundColor = attributes[.foregroundColor] as? UIColor {
-            #expect(foregroundColor == Warp.UIColor.token.textSubtle)
+            let traitCollection = UITraitCollection(userInterfaceStyle: .light)
+            #expect(foregroundColor.resolvedColor(with: traitCollection) == Warp.UIColor.token.textSubtle.resolvedColor(with: traitCollection))
         }
 
         // Verify subtitle font
@@ -127,7 +131,8 @@ struct NavigationBarStyleTests {
 
         // Verify button text color
         if let foregroundColor = normalAttributes[.foregroundColor] as? UIColor {
-            #expect(foregroundColor == Warp.UIColor.token.text)
+            let traitCollection = UITraitCollection(userInterfaceStyle: .light)
+            #expect(foregroundColor.resolvedColor(with: traitCollection) == Warp.UIColor.token.text.resolvedColor(with: traitCollection))
         }
 
         // Verify button font
@@ -149,7 +154,8 @@ struct NavigationBarStyleTests {
         let tintColor = UINavigationBar.appearance().tintColor
         let expectedTint = Warp.UIColor.token.icon
 
-        #expect(tintColor == expectedTint)
+        let traitCollection = UITraitCollection(userInterfaceStyle: .light)
+        #expect(tintColor?.resolvedColor(with: traitCollection) == expectedTint.resolvedColor(with: traitCollection))
     }
 
     @Test
