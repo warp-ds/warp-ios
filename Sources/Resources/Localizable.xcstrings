@@ -1,6 +1,20 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "warp.tabBarBadge.newNotification" : {
+      "comment" : "VoiceOver value for a tab bar badge indicating a new notification (dot).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "new notification" } }
+      }
+    },
+    "warp.tabBarBadge.unreadCount" : {
+      "comment" : "VoiceOver value for a tab bar badge showing an unread count. %lld is the count.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%lld unread" } }
+      }
+    },
     "brand.icon.title.autovex" : {
       "comment" : "A11y title for Autovex icon",
       "extractionState" : "manual",
