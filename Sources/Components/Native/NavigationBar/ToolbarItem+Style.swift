@@ -106,25 +106,33 @@ private struct WarpToolbarButton: View {
             switch style {
             case .default:
                 SwiftUI.Button(action: action) {
-                    buttonContent
+                    buttonContent()
                 }
                 .tint(colorProvider.token.icon)
             case .primary:
-                SwiftUI.Button(action: action) {
-                    buttonContent
+                if #available(iOS 26.0, *) {
+                    SwiftUI.Button(action: action) {
+                        buttonContent(iconColor: colorProvider.token.iconInverted)
+                    }
+                    .buttonStyle(.glassProminent)
+                    .tint(colorProvider.buttonPrimaryBackground)
+                } else {
+                    SwiftUI.Button(action: action) {
+                        buttonContent()
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(colorProvider.buttonPrimaryBackground)
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(colorProvider.buttonPrimaryBackground)
             }
         }
         .buttonBorderShape(.capsule)
     }
 
     @ViewBuilder
-    private var buttonContent: some View {
+    private func buttonContent(iconColor: Color? = nil) -> some View {
         HStack(spacing: Warp.Spacing.spacing100) {
             if let icon {
-                Warp.IconView(icon, size: .default)
+                Warp.IconView(icon, size: .default, color: iconColor)
             }
             if let title {
                 Warp.Text(title, style: .body)
