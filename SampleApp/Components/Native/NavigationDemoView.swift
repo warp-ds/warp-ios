@@ -1,6 +1,7 @@
 import SwiftUI
 import Warp
 
+@available(iOS 26.0, *)
 struct NavigationDemoView: View {
 
     struct ButtonConfig: Identifiable {
@@ -141,9 +142,7 @@ struct NavigationDemoView: View {
         hostingController.navigationItem.title = navigationTitle
         hostingController.navigationItem.largeTitleDisplayMode = showLargeTitle ? .always : .never
         if !navigationSubtitle.isEmpty {
-            if #available(iOS 26.0, *) {
-                hostingController.navigationItem.subtitle = navigationSubtitle
-            }
+            hostingController.navigationItem.subtitle = navigationSubtitle
         }
 
         let navigationController = UINavigationController(rootViewController: hostingController)
@@ -169,10 +168,8 @@ struct NavigationDemoView: View {
         for config in buttons {
             // Add group spacing when group changes
             if let previousGroup = lastGroup, previousGroup != config.group {
-                if #available(iOS 26.0, *) {
-                    // Add fixed spaces for visual group separation
-                    items.append(UIBarButtonItem.fixedSpace())
-                }
+                // Add fixed spaces for visual group separation
+                items.append(UIBarButtonItem.fixedSpace())
             }
 
             let item = createBarButtonItem(style: config.style, config: config)
@@ -205,6 +202,7 @@ struct NavigationDemoView: View {
     }
 }
 
+@available(iOS 26.0, *)
 struct CustomNavigationView: View {
     var body: some View {
         ScrollView {

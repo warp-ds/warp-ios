@@ -104,8 +104,10 @@ struct ContentView: View {
                     Warp.Text("Native Components", style: .title3)
                     Divider()
 
-                    row("NavigationView (UIKit)", destination: NavigationDemoView())
-                    row("NavigationView (SwiftUI)", destination: ToolbarDemoView())
+                    if #available(iOS 26.0, *) {
+                        row("NavigationView (UIKit)", destination: NavigationDemoView())
+                        row("NavigationView (SwiftUI)", destination: ToolbarDemoView())
+                    }
 
                     if !filteredPatternItems.isEmpty {
                         Warp.Text("Warp Patterns", style: .title3)

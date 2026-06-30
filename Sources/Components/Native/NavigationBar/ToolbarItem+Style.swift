@@ -4,8 +4,10 @@ extension Warp {
     /// A Warp-styled toolbar item for use in navigation bars.
     ///
     /// This struct provides a consistent, theme-aware toolbar item that automatically applies
-    /// Warp design tokens for typography, colors, and styling. On iOS 26+, the primary style
-    /// uses prominent button appearance with glass effect.
+    /// Warp design tokens for typography, colors, and styling. The primary style
+    /// uses prominent button appearance with Liquid Glass effect.
+    ///
+    /// **Availability:** iOS 26+.
     ///
     /// **Usage:**
     ///
@@ -47,6 +49,7 @@ extension Warp {
     ///     }
     /// }
     /// ```
+    @available(iOS 26.0, *)
     public struct ToolbarItem: ToolbarContent {
         let title: String?
         let icon: Warp.Icon?
@@ -89,6 +92,7 @@ extension Warp {
     }
 }
 
+@available(iOS 26.0, *)
 private struct WarpToolbarButton: View {
     let title: String?
     let icon: Warp.Icon?
@@ -110,32 +114,27 @@ private struct WarpToolbarButton: View {
                 }
                 .tint(colorProvider.token.icon)
             case .primary:
-                if #available(iOS 26.0, *) {
-                    SwiftUI.Button(action: action) {
-                        buttonContent(iconColor: colorProvider.token.iconInverted)
-                    }
-                    .buttonStyle(.glassProminent)
-                    .tint(colorProvider.buttonPrimaryBackground)
-                } else {
-                    SwiftUI.Button(action: action) {
-                        buttonContent()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(colorProvider.buttonPrimaryBackground)
+                SwiftUI.Button(action: action) {
+                    buttonContent(
+                        iconColor: colorProvider.token.iconInverted,
+                        textColor: colorProvider.token.textInverted
+                    )
                 }
+                .buttonStyle(.glassProminent)
+                .tint(colorProvider.buttonPrimaryBackground)
             }
         }
         .buttonBorderShape(.capsule)
     }
 
     @ViewBuilder
-    private func buttonContent(iconColor: Color? = nil) -> some View {
+    private func buttonContent(iconColor: Color? = nil, textColor: Color? = nil) -> some View {
         HStack(spacing: Warp.Spacing.spacing100) {
             if let icon {
                 Warp.IconView(icon, size: .default, color: iconColor)
             }
             if let title {
-                Warp.Text(title, style: .body)
+                Warp.Text(title, style: .body, color: textColor)
             }
         }
     }

@@ -29,6 +29,7 @@ extension UIBarButtonItem {
 
         switch style {
         case .default:
+            self.style = .plain
             tintColor = tint
             setTitleTextAttributes([
                 .foregroundColor: Warp.UIColor.token.text,

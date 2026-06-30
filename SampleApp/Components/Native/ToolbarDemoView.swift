@@ -1,6 +1,7 @@
 import SwiftUI
 import Warp
 
+@available(iOS 26.0, *)
 struct ToolbarDemoView: View {
 
     struct ToolbarItemConfig: Identifiable {
@@ -160,6 +161,7 @@ struct ToolbarDemoView: View {
     }
 }
 
+@available(iOS 26.0, *)
 private struct ToolbarCustomView: View {
     let title: String
     let subtitle: String
