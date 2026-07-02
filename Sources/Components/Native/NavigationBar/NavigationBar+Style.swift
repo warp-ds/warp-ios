@@ -1,5 +1,49 @@
 import UIKit
 
+@available(iOS 26.0, *)
+private extension UINavigationBarAppearance {
+    
+    static func warpNavigationBarLiquidGlass() -> UINavigationBarAppearance {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.largeTitleTextAttributes = [
+            .foregroundColor: Warp.UIColor.token.text,
+            .font: Warp.Typography.title1.uiFont
+        ]
+        appearance.titleTextAttributes = [
+            .foregroundColor: Warp.UIColor.token.text,
+            .font: Warp.Typography.title4.uiFont
+        ]
+        appearance.subtitleTextAttributes = [
+            .foregroundColor: Warp.UIColor.token.textSubtle,
+            .font: Warp.Typography.title6.uiFont
+        ]
+        
+        let backImage = Warp.Icon.chevronLeft.uiImage
+        appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
+        
+        let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
+        buttonAppearance.normal.titleTextAttributes = [
+            .foregroundColor: Warp.UIColor.token.text,
+            .font: Warp.Typography.body.uiFont
+        ]
+        appearance.buttonAppearance = buttonAppearance
+        
+        let prominentButtonAppearance = UIBarButtonItemAppearance(style: .prominent)
+        let prominentButtonAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: Warp.UIColor.token.textInverted,
+            .font: Warp.Typography.title4.uiFont
+        ]
+        prominentButtonAppearance.normal.titleTextAttributes = prominentButtonAttributes
+        prominentButtonAppearance.highlighted.titleTextAttributes = prominentButtonAttributes
+        prominentButtonAppearance.disabled.titleTextAttributes = prominentButtonAttributes
+        prominentButtonAppearance.focused.titleTextAttributes = prominentButtonAttributes
+        appearance.prominentButtonAppearance = prominentButtonAppearance
+        
+        return appearance
+    }
+}
+
 extension UINavigationBar {
 
     /// Applies Warp design style globally to all navigation bars with Liquid Glass styling (iOS 26+).
@@ -26,37 +70,12 @@ extension UINavigationBar {
     public static func warpLiquidGlassStyle() {
         guard #available(iOS 26.0, *) else { return }
 
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.largeTitleTextAttributes = [
-            .foregroundColor: Warp.UIColor.token.text,
-            .font: Warp.Typography.title1.uiFont
-        ]
-        appearance.titleTextAttributes = [
-            .foregroundColor: Warp.UIColor.token.text,
-            .font: Warp.Typography.title4.uiFont
-        ]
-        appearance.subtitleTextAttributes = [
-            .foregroundColor: Warp.UIColor.token.textSubtle,
-            .font: Warp.Typography.title6.uiFont
-        ]
-
-        let backImage = Warp.Icon.chevronLeft.uiImage
-        appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
-
-        let plainButtonAppearance = UIBarButtonItemAppearance(style: .plain)
-        plainButtonAppearance.normal.titleTextAttributes = [
-            .foregroundColor: Warp.UIColor.token.text,
-            .font: Warp.Typography.body.uiFont
-        ]
-        appearance.buttonAppearance = plainButtonAppearance
-
+        let appearance = UINavigationBarAppearance.warpNavigationBarLiquidGlass()
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
-
-        let tint = Warp.UIColor.token.icon
-        UINavigationBar.appearance().tintColor = tint
+        UINavigationBar.appearance().tintColor = Warp.UIColor.token.icon
+        UINavigationBar.appearance().isTranslucent = false
     }
 
     /// Applies Warp design style to an individual navigation bar instance with Liquid Glass styling (iOS 26+).
@@ -79,20 +98,7 @@ extension UINavigationBar {
     public func warpLiquidGlassStyle() {
         guard #available(iOS 26.0, *) else { return }
 
-        let appearance = UINavigationBar.appearance().standardAppearance.copy()
-        appearance.configureWithTransparentBackground()
-        appearance.largeTitleTextAttributes = [
-            .foregroundColor: Warp.UIColor.token.text,
-            .font: Warp.Typography.title1.uiFont
-        ]
-        appearance.titleTextAttributes = [
-            .foregroundColor: Warp.UIColor.token.text,
-            .font:  Warp.Typography.title4.uiFont
-        ]
-        appearance.subtitleTextAttributes = [
-            .foregroundColor: Warp.UIColor.token.textSubtle,
-            .font: Warp.Typography.title6.uiFont
-        ]
+        let appearance = UINavigationBarAppearance.warpNavigationBarLiquidGlass()
         standardAppearance = appearance
         compactAppearance = appearance
         scrollEdgeAppearance = appearance
@@ -123,5 +129,54 @@ extension UINavigationController {
         navigationBar.warpLiquidGlassStyle()
         // Ensure the content extends under the navigation bar for liquid glass effect
         extendedLayoutIncludesOpaqueBars = true
+    }
+}
+
+@available(iOS 26.0, *)
+extension UINavigationItem {
+
+    /// Applies Warp Liquid Glass appearance to this navigation item.
+    ///
+    /// Sets `standardAppearance`, `compactAppearance`, and `scrollEdgeAppearance` with
+    /// transparent background and Warp typography/color tokens.
+    public func warpLiquidGlassStyle() {
+        let appearance = UINavigationBarAppearance.warpNavigationBarLiquidGlass()
+        standardAppearance = appearance
+        compactAppearance = appearance
+        scrollEdgeAppearance = appearance
+    }
+}
+
+extension UIViewController {
+
+    /// Applies Warp Liquid Glass navigation bar styling to this view controller (iOS 26+).
+    ///
+    /// Resolves the navigation context, applies `warpLiquidGlassStyle()` to the target view
+    /// controller's `navigationItem`, and sets `extendedLayoutIncludesOpaqueBars = true` on
+    /// the navigation controller if one is found.
+    ///
+    /// On earlier OS versions this method does nothing.
+    @available(iOS 26.0, *)
+    public func warpNavigationBarStyle() {
+        let targetVC = resolveNavigationContext()
+        targetVC.navigationItem.warpLiquidGlassStyle()
+        targetVC.extendedLayoutIncludesOpaqueBars = true
+    }
+
+    /// Traverses the parent hierarchy to find the view controller directly owned by a navigation controller.
+    private func resolveNavigationContext() -> UIViewController {
+        if parent == nil || parent is UINavigationController {
+            return self
+        }
+
+        var currentParent = parent
+        while let parent = currentParent {
+            if parent.parent == nil || parent.parent is UINavigationController {
+                return parent
+            }
+            currentParent = parent.parent
+        }
+
+        return self
     }
 }

@@ -44,11 +44,11 @@ extension UIBarButtonItem {
             tintColor = primaryTint
             setTitleTextAttributes([
                 .foregroundColor: Warp.UIColor.token.text,
-                .font: Warp.Typography.body.uiFont
+                .font: Warp.Typography.title4.uiFont
             ], for: .normal)
             setTitleTextAttributes([
                 .foregroundColor: Warp.UIColor.token.text,
-                .font: Warp.Typography.body.uiFont
+                .font: Warp.Typography.title4.uiFont
             ], for: .highlighted)
         }
 

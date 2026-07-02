@@ -32,7 +32,7 @@ extension Button {
                 self
                   .buttonStyle(.glassProminent)
                   .tint(Warp.Color.buttonPrimaryBackground)
-                  .font(Warp.Typography.body.font)
+                  .font(Warp.Typography.title4.font)
             }
         }
     }
