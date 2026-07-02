@@ -139,7 +139,7 @@ struct UIBarButtonItemStyleTests {
 
         // Verify font
         if let font = attributes?[.font] as? UIFont {
-            #expect(font == Warp.Typography.body.uiFont)
+            #expect(font == Warp.Typography.title4.uiFont)
         }
     }
 
@@ -166,7 +166,7 @@ struct UIBarButtonItemStyleTests {
 
         // Verify font
         if let font = attributes?[.font] as? UIFont {
-            #expect(font == Warp.Typography.body.uiFont)
+            #expect(font == Warp.Typography.title4.uiFont)
         }
     }
 
