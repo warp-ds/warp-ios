@@ -82,6 +82,10 @@ struct ContentView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
+                .onChange(of: selectedTheme) { oldTheme, newTheme in
+                    Warp.Theme = newTheme
+                    UINavigationBar.warpLiquidGlassStyle()
+                }
                 #endif
                 LazyVStack (alignment: .leading) {
                     let filteredBrandItems = brandItems.filter { matches($0.0) }
@@ -95,6 +99,14 @@ struct ContentView: View {
                         ForEach(filteredBrandItems, id: \.0) { title, destination in
                             row(title, destination: destination)
                         }
+                    }
+
+                    Warp.Text("Native Components", style: .title3)
+                    Divider()
+
+                    if #available(iOS 26.0, *) {
+                        row("NavigationView (UIKit)", destination: NavigationDemoView())
+                        row("NavigationView (SwiftUI)", destination: ToolbarDemoView())
                     }
 
                     if !filteredPatternItems.isEmpty {
@@ -121,6 +133,9 @@ struct ContentView: View {
             }
             .navigationTitle(Bundle.main.applicationName)
             .searchable(text: $searchText, prompt: "Search components")
+            .onAppear {
+                UINavigationBar.warpLiquidGlassStyle()
+            }
         }
         .warpTheme(selectedTheme)
     }
