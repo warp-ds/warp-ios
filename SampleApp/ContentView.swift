@@ -39,7 +39,6 @@ struct ContentView: View {
             ("ButtonPill", ButtonPillView()),
             ("Callout", CalloutView()),
             ("Checkbox", CheckboxView()),
-            ("Confirmation Dialog", ConfirmationDialogView()),
             ("DatePicker", DatePickerView()),
             ("Divider", DividerView()),
             ("Expandable", ExpandableView()),
@@ -104,6 +103,8 @@ struct ContentView: View {
                     Warp.Text("Native Components", style: .title3)
                     Divider()
 
+                    row("Alert (Native)", destination: AlertDialogView())
+                    row("Confirmation Dialog", destination: ConfirmationDialogView())
                     if #available(iOS 26.0, *) {
                         row("NavigationView (UIKit)", destination: NavigationDemoView())
                         row("NavigationView (SwiftUI)", destination: ToolbarDemoView())
