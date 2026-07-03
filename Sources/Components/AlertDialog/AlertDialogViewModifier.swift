@@ -46,7 +46,7 @@ public extension View {
     ///
     /// ```swift
     /// Text("Content")
-    ///     .warpAlertDialog(
+    ///     .warpAlert(
     ///         title: "Delete item?",
     ///         message: "This action cannot be undone.",
     ///         actions: [
@@ -63,7 +63,7 @@ public extension View {
     ///   - actions: An array of actions to display as buttons.
     ///   - isPresented: A binding controlling the alert dialog's visibility.
     /// - Returns: A view with the alert dialog modifier applied.
-    func warpAlertDialog(
+    func warpAlert(
         title: String,
         message: String? = nil,
         actions: [Warp.AlertDialog.Action],

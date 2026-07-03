@@ -19,11 +19,11 @@ struct AlertDialogView: View {
         Form {
             Section("Demo") {
                 Warp.Button(
-                    title: "Show Alert Dialog",
+                    title: "Show Alert",
                     action: { showAlert = true },
                     fullWidth: true
                 )
-                .warpAlertDialog(
+                .warpAlert(
                     title: title,
                     message: message.isEmpty ? nil : message,
                     actions: buildWarpActions(),
@@ -81,7 +81,7 @@ struct AlertDialogView: View {
                 }
             }
         }
-        .navigationTitle("Alert Dialog")
+        .navigationTitle("Alert (Native)")
         .navigationBarTitleDisplayMode(.inline)
     }
 
