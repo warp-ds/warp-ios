@@ -22,6 +22,20 @@ struct ContentView: View {
         ]
     }
 
+    private var nativeItems: [(String, any View)] {
+        var items: [(String, any View)] = [
+            ("Alert (Native)", AlertDialogView()),
+            ("Confirmation Dialog", ConfirmationDialogView())
+        ]
+        if #available(iOS 26.0, *) {
+            items += [
+                ("NavigationView (UIKit)", NavigationDemoView()),
+                ("NavigationView (SwiftUI)", ToolbarDemoView())
+            ]
+        }
+        return items
+    }
+
     private var patternItems: [(String, any View)] {
         [
             ("State views", StateViewDemo())
@@ -88,6 +102,7 @@ struct ContentView: View {
                 #endif
                 LazyVStack (alignment: .leading) {
                     let filteredBrandItems = brandItems.filter { matches($0.0) }
+                    let filteredNativeItems = nativeItems.filter { matches($0.0) }
                     let filteredPatternItems = patternItems.filter { matches($0.0) }
                     let filteredComponentItems = componentItems.filter { matches($0.0) }
 
@@ -103,11 +118,8 @@ struct ContentView: View {
                     Warp.Text("Native Components", style: .title3)
                     Divider()
 
-                    row("Alert (Native)", destination: AlertDialogView())
-                    row("Confirmation Dialog", destination: ConfirmationDialogView())
-                    if #available(iOS 26.0, *) {
-                        row("NavigationView (UIKit)", destination: NavigationDemoView())
-                        row("NavigationView (SwiftUI)", destination: ToolbarDemoView())
+                    ForEach(filteredNativeItems, id: \.0) { title, destination in
+                        row(title, destination: destination)
                     }
 
                     if !filteredPatternItems.isEmpty {

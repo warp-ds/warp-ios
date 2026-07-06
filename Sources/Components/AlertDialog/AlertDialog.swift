@@ -5,12 +5,12 @@ extension Warp {
     /// A Warp wrapper around the native iOS alert dialog.
     ///
     /// `AlertDialog` provides data models for configuring a native alert dialog
-    /// with Warp-typed actions. Use the `.warpAlertDialog()` view modifier to present it.
+    /// with Warp-typed actions. Use the `.warpAlert()` view modifier to present it.
     ///
     /// **Usage:**
     ///
     /// ```swift
-    /// .warpAlertDialog(
+    /// .warpAlert(
     ///     title: "Delete item?",
     ///     message: "This action cannot be undone.",
     ///     actions: [

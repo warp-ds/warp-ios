@@ -10,6 +10,12 @@ extension Warp {
         @Binding var isPresented: Bool
         let extraContent: ExtraContent
 
+        @Environment(\.warpTheme) private var theme
+
+        private var colorProvider: ColorProvider {
+            theme.colors
+        }
+
         func body(content: Content) -> some View {
             content
                 .alert(
@@ -21,11 +27,13 @@ extension Warp {
                         SwiftUI.Button(role: action.style.buttonRole) {
                             action.handler()
                         } label: {
+                            // Note: iOS .alert() ignores font/foregroundStyle on button labels —
+                            // styling is fully system-controlled. Kept for future API alignment.
                             SwiftUI.Text(action.title)
                                 .font(Warp.Typography.title4.font)
                                 .foregroundStyle(action.style == .destructive
-                                    ? Warp.Token.textNegative
-                                    : Warp.Token.text)
+                                    ? colorProvider.token.textNegative
+                                    : colorProvider.token.text)
                         }
                     }
                 } message: {
