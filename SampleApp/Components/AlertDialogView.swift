@@ -11,10 +11,13 @@ struct AlertDialogView: View {
     @State private var title = "Are you sure?"
     @State private var message = ""
     @State private var showAlert = false
+    @State private var showTextField = false
+    @State private var inputText = ""
     @State private var actions: [ActionConfig] = [
         .init(title: "Delete", style: .destructive),
         .init(title: "Cancel", style: .cancel)
     ]
+
     var body: some View {
         Form {
             Section("Demo") {
@@ -28,7 +31,11 @@ struct AlertDialogView: View {
                     message: message.isEmpty ? nil : message,
                     actions: buildWarpActions(),
                     isPresented: $showAlert
-                )
+                ) {
+                    if showTextField {
+                        TextField("Input", text: $inputText)
+                    }
+                }
             }
 
             Section("Configuration") {
@@ -43,6 +50,8 @@ struct AlertDialogView: View {
                         .foregroundColor(.secondary)
                     Warp.TextField(text: $message)
                 }
+
+                Toggle("Show text field", isOn: $showTextField)
             }
 
             Section {
