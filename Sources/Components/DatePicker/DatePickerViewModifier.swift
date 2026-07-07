@@ -64,54 +64,22 @@ public extension View {
 
     /// A view modifier that adds a dialog style WARP date picker to the view.
     /// Note: Applying this modifier will intercept all touch events on the view.
-    /// **Usage:**
-    /// ```swift
-    /// Warp.TextField(
-    ///     text: Binding(
-    ///         get: { formattedDate(selectedDate) },
-    ///         set: { _ in }
-    ///     ),
-    ///     placeholder: "Select a date",
-    ///     rightIcon: .calendar
-    /// )
-    /// .warpDatePicker(date: $selectedDate)
-    /// ```
-    ///
-    /// - Parameters:
-    ///   - date: A binding to the selected date.
+    @available(*, deprecated, message: "Use a native DatePicker with .warpStyle() instead")
     func warpDatePicker(date: Binding<Date>) -> some View {
         modifier(Warp.DatePickerViewModifier(date: date, range: nil))
     }
 
-    /// A view modifier that adds a dialog style WARP date picker to the view with a closed range.
-    /// Note: Applying this modifier will intercept all touch events on the view.
-    /// **Usage:** See `warpDatePicker(date:)` for examples.
-    ///
-    /// - Parameters:
-    ///   - date: A binding to the selected date.
-    ///   - range: A closed range of dates that the user can select from.
+    @available(*, deprecated, message: "Use a native DatePicker with .warpStyle() instead")
     func warpDatePicker(date: Binding<Date>, range: ClosedRange<Date>) -> some View {
         modifier(Warp.DatePickerViewModifier(date: date, range: .closed(range)))
     }
 
-    /// A view modifier that adds a dialog style WARP date picker to the view with a partial range from a specific date.
-    /// Note: Applying this modifier will intercept all touch events on the view.
-    /// **Usage:** See `warpDatePicker(date:)` for examples.
-    ///
-    /// - Parameters:
-    ///   - date: A binding to the selected date.
-    ///   - range: A partial range of dates that the user can select from, starting from a specific date.
+    @available(*, deprecated, message: "Use a native DatePicker with .warpStyle() instead")
     func warpDatePicker(date: Binding<Date>, range: PartialRangeFrom<Date>) -> some View {
         modifier(Warp.DatePickerViewModifier(date: date, range: .from(range)))
     }
 
-    /// A view modifier that adds a dialog style WARP date picker to the view with a partial range through a specific date.
-    /// Note: Applying this modifier will intercept all touch events on the view.
-    /// **Usage:** See `warpDatePicker(date:)` for examples.
-    ///
-    /// - Parameters:
-    ///   - date: A binding to the selected date.
-    ///   - range: A partial range of dates that the user can select from, up to a specific date.
+    @available(*, deprecated, message: "Use a native DatePicker with .warpStyle() instead")
     func warpDatePicker(date: Binding<Date>, range: PartialRangeThrough<Date>) -> some View {
         modifier(Warp.DatePickerViewModifier(date: date, range: .to(range)))
     }
