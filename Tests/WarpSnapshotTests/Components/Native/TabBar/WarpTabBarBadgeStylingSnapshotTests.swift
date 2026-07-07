@@ -11,8 +11,19 @@ struct WarpTabBarBadgeStylingSnapshotTests {
     /// brand-red background + Warp-font + textInvertedStatic styling per brand.
     @Test(arguments: Warp.Brand.allCases)
     func snapshotStyledTabBar(brand: Warp.Brand) {
+        let previousTheme = Warp.Theme
         Warp.Theme = brand
         UITabBar.warpConfigureAppearanceProxy()
+
+        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 320, height: 200))
+
+        defer {
+            window.rootViewController = nil
+            window.isHidden = true
+            UITabBar.appearance().standardAppearance = UITabBarAppearance()
+            UITabBarItem.appearance().badgeColor = nil
+            Warp.Theme = previousTheme
+        }
 
         let messages = UIViewController()
         messages.tabBarItem = UITabBarItem(title: "Messages", image: UIImage(systemName: "message.fill"), tag: 0)
@@ -26,7 +37,6 @@ struct WarpTabBarBadgeStylingSnapshotTests {
         controller.viewControllers = [messages, alerts]
         controller.tabBar.warpStyle()
 
-        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 320, height: 200))
         window.rootViewController = controller
         window.makeKeyAndVisible()
         controller.view.layoutIfNeeded()
