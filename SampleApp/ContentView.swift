@@ -25,6 +25,7 @@ struct ContentView: View {
     private var nativeItems: [(String, any View)] {
         var items: [(String, any View)] = [
             ("Alert (Native)", AlertDialogView()),
+            ("Bottom nav / Tab Bar", TabBarDemoView()),
             ("Confirmation Dialog", ConfirmationDialogView())
         ]
         if #available(iOS 26.0, *) {
@@ -33,7 +34,7 @@ struct ContentView: View {
                 ("NavigationView (SwiftUI)", ToolbarDemoView())
             ]
         }
-        return items
+        return items.sorted { $0.0 < $1.0 }
     }
 
     private var patternItems: [(String, any View)] {
@@ -100,7 +101,7 @@ struct ContentView: View {
                     UINavigationBar.warpLiquidGlassStyle()
                 }
                 #endif
-                LazyVStack (alignment: .leading) {
+                LazyVStack(alignment: .leading) {
                     let filteredBrandItems = brandItems.filter { matches($0.0) }
                     let filteredNativeItems = nativeItems.filter { matches($0.0) }
                     let filteredPatternItems = patternItems.filter { matches($0.0) }
@@ -115,11 +116,13 @@ struct ContentView: View {
                         }
                     }
 
-                    Warp.Text("Native Components", style: .title3)
-                    Divider()
+                    if !filteredNativeItems.isEmpty {
+                        Warp.Text("Native Components", style: .title3)
+                        Divider()
 
-                    ForEach(filteredNativeItems, id: \.0) { title, destination in
-                        row(title, destination: destination)
+                        ForEach(filteredNativeItems, id: \.0) { title, destination in
+                            row(title, destination: destination)
+                        }
                     }
 
                     if !filteredPatternItems.isEmpty {
@@ -152,7 +155,7 @@ struct ContentView: View {
         }
         .warpTheme(selectedTheme)
     }
-    
+
     private func row(_ title: String, destination: any View) -> some View {
         RowView(title: title, destination: AnyView(destination))
     }
