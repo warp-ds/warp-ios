@@ -25,7 +25,8 @@ struct ContentView: View {
     private var nativeItems: [(String, any View)] {
         var items: [(String, any View)] = [
             ("Bottom nav / Tab Bar", TabBarDemoView()),
-            ("Confirmation Dialog", ConfirmationDialogView())
+            ("Confirmation Dialog", ConfirmationDialogView()),
+            ("Menu / Context Menu", MenuDemoView())
         ]
         if #available(iOS 26.0, *) {
             items += [
