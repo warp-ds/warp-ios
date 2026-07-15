@@ -2,82 +2,88 @@ import SwiftUI
 import Warp
 
 struct MenuDemoView: View {
-    @State private var lastAction: String = "None"
-    @State private var selectedStyle: Warp.MenuButtonStyle = .default
-    @State private var selectedIcon: Warp.Icon = .share
-    @State private var showIconPicker = false
+
+    struct ItemConfig: Identifiable {
+        let id = UUID()
+        var title: String = "Item"
+        var icon: Warp.Icon = .share
+        var showIcon: Bool = true
+        var isDestructive: Bool = false
+    }
+
+    @State private var items: [ItemConfig] = []
+    @State private var menuStyle: Warp.MenuButtonStyle = .default
+    @State private var menuLabel: String = "Options"
 
     var body: some View {
         Form {
-            Section("Last Action") {
-                Warp.Text(lastAction, style: .body)
-                    .foregroundColor(Warp.Token.textSubtle)
-            }
-
-            Section("Menu Button Styles") {
-                HStack(spacing: 12) {
-                    Warp.Text("Default:", style: .bodyStrong)
+            Section("Demo") {
+                HStack {
+                    Text("Menu")
                     Spacer()
-                    Menu("Options") {
-                        menuItems
+                    Menu(menuLabel) {
+                        ForEach(items) { item in
+                            Warp.MenuItem(
+                                item.title,
+                                icon: item.showIcon ? item.icon : nil,
+                                role: item.isDestructive ? .destructive : nil
+                            ) {}
+                        }
                     }
-                    .warpMenuButton(style: .default)
+                    .warpMenuButton(style: menuStyle)
                 }
 
-                HStack(spacing: 12) {
-                    Warp.Text("Primary:", style: .bodyStrong)
-                    Spacer()
-                    Menu("Actions") {
-                        menuItems
-                    }
-                    .warpMenuButton(style: .primary)
-                }
-
-                HStack(spacing: 12) {
-                    Warp.Text("Destructive:", style: .bodyStrong)
-                    Spacer()
-                    Menu("Danger zone") {
-                        menuItems
-                    }
-                    .warpMenuButton(style: .destructive)
-                }
-            }
-
-            Section("Menu with Warp Icons") {
-                HStack(spacing: 12) {
-                    Warp.Text("Icon label:", style: .bodyStrong)
-                    Spacer()
-                    Menu {
-                        menuItemsWithIcons
-                    } label: {
-                        Label("More", systemImage: "ellipsis.circle")
-                    }
-                    .warpMenuButton()
-                }
-            }
-
-            Section("Context Menu (long press card)") {
                 contextMenuCard
             }
 
-            Section("Icon Picker Menu") {
-                HStack {
-                    Warp.Text("Selected icon:", style: .bodyStrong)
-                    Spacer()
-                    Menu {
-                        ForEach(iconPickerOptions, id: \.self) { icon in
-                            Warp.MenuItem(String(describing: icon), icon: icon) {
-                                selectedIcon = icon
-                                record("Selected icon: \(icon)")
+            Section("Menu Label") {
+                TextFieldWithClear(label: "Label:", text: $menuLabel)
+
+                Picker("Style", selection: $menuStyle) {
+                    Text("Default").tag(Warp.MenuButtonStyle.default)
+                    Text("Primary").tag(Warp.MenuButtonStyle.primary)
+                    Text("Destructive").tag(Warp.MenuButtonStyle.destructive)
+                }
+                .pickerStyle(.segmented)
+            }
+
+            Section {
+                ForEach($items) { $item in
+                    VStack(alignment: .leading, spacing: 8) {
+                        TextFieldWithClear(label: "Title:", text: $item.title)
+
+                        Toggle("Show Icon", isOn: $item.showIcon)
+
+                        if item.showIcon {
+                            HStack {
+                                Text("Icon")
+                                    .foregroundColor(.secondary)
+                                Spacer()
+                                iconMenuButton(icon: $item.icon)
                             }
+                            .transition(.opacity.combined(with: .move(edge: .top)))
                         }
-                    } label: {
-                        HStack(spacing: 6) {
-                            Warp.IconView(selectedIcon, size: .default)
-                            Warp.Text(String(describing: selectedIcon), style: .body)
-                        }
+
+                        Toggle("Destructive", isOn: $item.isDestructive)
                     }
-                    .warpMenuButton()
+                    .animation(.easeInOut(duration: 0.2), value: item.showIcon)
+                    .padding(.vertical, 4)
+                }
+                .onMove { items.move(fromOffsets: $0, toOffset: $1) }
+                .onDelete { items.remove(atOffsets: $0) }
+            } header: {
+                HStack {
+                    Text("Items: \(items.count)")
+                    Spacer()
+                    EditButton()
+                }
+            }
+
+            Section {
+                Button("Add menu item") {
+                    withAnimation {
+                        items.append(ItemConfig())
+                    }
                 }
             }
         }
@@ -85,56 +91,79 @@ struct MenuDemoView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    // MARK: - Menu Content
-
-    @ViewBuilder
-    private var menuItems: some View {
-        Warp.MenuItem("Edit") { record("Edit tapped") }
-        Warp.MenuItem("Bookmark") { record("Bookmark tapped") }
-        Warp.MenuItem("Delete", role: .destructive) { record("Delete tapped") }
-    }
-
-    @ViewBuilder
-    private var menuItemsWithIcons: some View {
-        Warp.MenuItem("Share", icon: .share) { record("Share tapped") }
-        Warp.MenuItem("Bookmark", icon: .bookmark) { record("Bookmark tapped") }
-        Warp.MenuItem("Edit", icon: .edit) { record("Edit tapped") }
-        Warp.MenuItem("Copy", icon: .copy) { record("Copy tapped") }
-        Divider()
-        Warp.MenuItem("Archive", icon: .archiveBox) { record("Archive tapped") }
-        Warp.MenuItem("Delete", icon: .heartRate, role: .destructive) { record("Delete tapped") }
-    }
-
     // MARK: - Context Menu Card
 
     private var contextMenuCard: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Warp.Text("Long-press to open context menu", style: .bodyStrong)
-            Warp.Text("This card supports context menu with Warp icons", style: .detail)
-                .foregroundColor(Warp.Token.textSubtle)
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Context menu (long press)")
+                .font(Warp.Typography.bodyStrong.font)
+            Text("Uses same items as menu above")
+                .font(Warp.Typography.detail.font)
+                .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(Warp.Token.surfaceElevated100)
+        .background(Color(UIColor.secondarySystemGroupedBackground))
         .cornerRadius(8)
         .contextMenu {
-            Warp.MenuItem("Share", icon: .share) { record("Context: Share") }
-            Warp.MenuItem("Bookmark", icon: .bookmark) { record("Context: Bookmark") }
-            Warp.MenuItem("Add to favourites", icon: .heartFilled) { record("Context: Favourite") }
-            Divider()
-            Warp.MenuItem("Report", icon: .warningFilled) { record("Context: Report") }
-            Warp.MenuItem("Delete", icon: .heartRate, role: .destructive) { record("Context: Delete") }
+            ForEach(items) { item in
+                Warp.MenuItem(
+                    item.title,
+                    icon: item.showIcon ? item.icon : nil,
+                    role: item.isDestructive ? .destructive : nil
+                ) {}
+            }
         }
     }
 
-    // MARK: - Helpers
+    // MARK: - Icon Picker
 
-    private let iconPickerOptions: [Warp.Icon] = [
-        .share, .bookmark, .edit, .copy, .heart, .heartFilled, .archiveBox, .shareIOS, .starFull, .starEmpty
-    ]
+    private func iconMenuButton(icon: Binding<Warp.Icon>) -> some View {
+        Menu {
+            ForEach(Warp.Icon.allCases, id: \.self) { iconOption in
+                Button(action: {
+                    icon.wrappedValue = iconOption
+                }) {
+                    HStack {
+                        Image(uiImage: iconOption.uiImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                        Text(String(describing: iconOption))
+                            .lineLimit(1)
+                    }
+                }
+            }
+        } label: {
+            HStack {
+                Image(uiImage: icon.wrappedValue.uiImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                Text(String(describing: icon.wrappedValue))
+                    .lineLimit(1)
+                    .truncationMode(.middle)
+            }
+        }
+    }
+}
 
-    private func record(_ action: String) {
-        lastAction = action
+private struct TextFieldWithClear: View {
+    let label: String
+    @Binding var text: String
+
+    var body: some View {
+        HStack {
+            Text(label)
+                .foregroundColor(.secondary)
+            TextField("", text: $text)
+            if !text.isEmpty {
+                Button(action: { text = "" }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
     }
 }
 
