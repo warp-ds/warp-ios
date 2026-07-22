@@ -210,6 +210,12 @@
 		9E1C20452FD6F46E002A4AF4 /* ConfirmationDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C20412FD6F46E002A4AF4 /* ConfirmationDialogView.swift */; };
 		9E1C20462FD6F46E002A4AF4 /* ConfirmationDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C20412FD6F46E002A4AF4 /* ConfirmationDialogView.swift */; };
 		9E1C20472FD6F46E002A4AF4 /* ConfirmationDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1C20412FD6F46E002A4AF4 /* ConfirmationDialogView.swift */; };
+		9E28292B2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E28292A2FF7AF2A0003FE03 /* AlertDialogView.swift */; };
+		9E28292C2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E28292A2FF7AF2A0003FE03 /* AlertDialogView.swift */; };
+		9E28292D2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E28292A2FF7AF2A0003FE03 /* AlertDialogView.swift */; };
+		9E28292E2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E28292A2FF7AF2A0003FE03 /* AlertDialogView.swift */; };
+		9E28292F2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E28292A2FF7AF2A0003FE03 /* AlertDialogView.swift */; };
+		9E2829302FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E28292A2FF7AF2A0003FE03 /* AlertDialogView.swift */; };
 		9E2F67782ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
 		9E2F67792ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
 		9E2F677A2ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
@@ -415,6 +421,7 @@
 		9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderView.swift; sourceTree = "<group>"; };
 		9E1C1A312FB3544F002A4AF4 /* SnackbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarView.swift; sourceTree = "<group>"; };
 		9E1C20412FD6F46E002A4AF4 /* ConfirmationDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationDialogView.swift; sourceTree = "<group>"; };
+		9E28292A2FF7AF2A0003FE03 /* AlertDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogView.swift; sourceTree = "<group>"; };
 		9E2F67772ECF62D200B48276 /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		9E54F07A2E40B82E008BDFB9 /* WarpSnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpSnapshotTests.xctestplan; sourceTree = "<group>"; };
@@ -637,6 +644,7 @@
 		82FF12F82C80FC1200CC2110 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9E28292A2FF7AF2A0003FE03 /* AlertDialogView.swift */,
 				9E768E252F5094B900652B2B /* Native */,
 				9E1C20412FD6F46E002A4AF4 /* ConfirmationDialogView.swift */,
 				9E1C1A312FB3544F002A4AF4 /* SnackbarView.swift */,
@@ -982,6 +990,7 @@
 				82E3507D2D08915F00B2DBDA /* BrandLogosView.swift in Sources */,
 				2E1ADF722C2561D200DFEE06 /* Warp_iosDBA.swift in Sources */,
 				82E350832D08926100B2DBDA /* LogoView.swift in Sources */,
+				9E2829302FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */,
 				825516D32CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				B286EDFC2C33EACF00D25DCC /* StepIndicatorView.swift in Sources */,
 				9E097EC32E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
@@ -1041,6 +1050,7 @@
 				82E350802D08915F00B2DBDA /* BrandLogosView.swift in Sources */,
 				820A86142C6CEC30006D35A0 /* Warp_iosBlocket.swift in Sources */,
 				82E350822D08926100B2DBDA /* LogoView.swift in Sources */,
+				9E28292B2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */,
 				825516D12CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				820A85EE2C6CEB0C006D35A0 /* StepIndicatorView.swift in Sources */,
 				9E097EC72E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
@@ -1100,6 +1110,7 @@
 				82E3507E2D08915F00B2DBDA /* BrandLogosView.swift in Sources */,
 				820A86292C6D4388006D35A0 /* StepIndicatorView.swift in Sources */,
 				82E350852D08926100B2DBDA /* LogoView.swift in Sources */,
+				9E28292E2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */,
 				825516D22CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				820A862A2C6D4388006D35A0 /* BadgeView.swift in Sources */,
 				9E097EC52E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
@@ -1159,6 +1170,7 @@
 				82E3507F2D08915F00B2DBDA /* BrandLogosView.swift in Sources */,
 				B295AC3B2C22F93D004C77BB /* StepIndicatorView.swift in Sources */,
 				82E350842D08926100B2DBDA /* LogoView.swift in Sources */,
+				9E28292F2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */,
 				825516D42CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				828E7D462B61239100869C58 /* BadgeView.swift in Sources */,
 				9E097EC62E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
@@ -1218,6 +1230,7 @@
 				9E7149692E1BF28900674698 /* TabsView.swift in Sources */,
 				9E71496A2E1BF28900674698 /* BrandLogosView.swift in Sources */,
 				9E71496C2E1BF28900674698 /* LogoView.swift in Sources */,
+				9E28292C2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */,
 				9E71496D2E1BF28900674698 /* TaxonomyIconsView.swift in Sources */,
 				9E71496E2E1BF28900674698 /* StepIndicatorView.swift in Sources */,
 				9E097EC82E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
@@ -1277,6 +1290,7 @@
 				9EFC48182E4219940048E4E7 /* BrandLogosView.swift in Sources */,
 				9EFC48192E4219940048E4E7 /* StepIndicatorView.swift in Sources */,
 				9EFC481A2E4219940048E4E7 /* LogoView.swift in Sources */,
+				9E28292D2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */,
 				9EFC481B2E4219940048E4E7 /* TaxonomyIconsView.swift in Sources */,
 				9EFC481C2E4219940048E4E7 /* BadgeView.swift in Sources */,
 				9E097EC42E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
