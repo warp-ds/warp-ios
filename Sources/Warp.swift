@@ -51,14 +51,7 @@ public enum Warp {
 
         /// Semantic token provider for SwiftUI
         var token: TokenProvider {
-            switch self {
-            case .finn: return FinnTokenProvider()
-            case .tori: return ToriTokenProvider()
-            case .dba: return DbaTokenProvider()
-            case .blocket: return BlocketTokenProvider()
-            case .vend: return VendTokenProvider()
-            case .neutral: return NeutralTokenProvider()
-            }
+            TokenProviderFactory.make(for: self)
         }
 
         /// Semantic token provider for UIKit
@@ -127,20 +120,7 @@ public enum Warp {
     /// This computed property returns an instance of a token provider specific to the currently set theme.
     /// The token provider defines color tokens used throughout the application.
     public static var Token: TokenProvider {
-        switch Theme {
-        case .finn:
-            return FinnTokenProvider()
-        case .tori:
-            return ToriTokenProvider()
-        case .dba:
-            return DbaTokenProvider()
-        case .blocket:
-            return BlocketTokenProvider()
-        case .vend:
-            return VendTokenProvider()
-        case .neutral:
-            return NeutralTokenProvider()
-        }
+        TokenProviderFactory.make(for: Theme)
     }
     
     /// Provides UIToken values based on the current theme.
