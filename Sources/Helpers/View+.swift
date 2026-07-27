@@ -10,7 +10,7 @@ extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         ModifiedContent(content: self, modifier: CornerRadiusStyle(radius: radius, corners: corners))
     }
-    
+
     /// Converts the SwiftUI `View` into a corresponding `UIView`.
     ///
     /// This is useful for embedding SwiftUI views within UIKit environments.
@@ -22,46 +22,65 @@ extension View {
         vc.view.backgroundColor = .clear
         return vc.view
     }
-    
+
     /// Applies a card-like background to the view with customizable color and corner radius.
     ///
-    /// This modifier adds a background to the view using a rounded rectangle with a shadow effect.
-    /// The default color is `Warp.Token.surfaceElevated200`, and the corner radius is set to
-    /// `Warp.Spacing.spacing200`, but both can be customized.
-    ///
     /// - Parameters:
-    ///   - color: The color to be used for the background. Defaults to `Warp.Token.surfaceElevated200`.
+    ///   - color: The color to be used for the background. Defaults to `token.surfaceElevated200` from the environment theme.
     ///   - cornerRadius: The radius of the rounded corners. Defaults to `Warp.Spacing.spacing200`.
     ///   - isPressed: A value indicating whether the view is currently in a pressed state and should update its shadow accordingly. Defaults to `false`.
     /// - Returns: A view with the applied card-like background and shadow.
     public func withCardBackground(
-        _ color: Color = Warp.Token.surfaceElevated200,
+        _ color: Color? = nil,
         cornerRadius: CGFloat = Warp.Spacing.spacing200,
         isPressed: Bool = false
     ) -> some View {
-        self.background {
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .fill(color)
-                .addShadow(.small, isPressed: isPressed)
-        }
+        modifier(CardBackgroundModifier(color: color, cornerRadius: cornerRadius, isPressed: isPressed))
     }
-    
+
     /// Applies a background suitable for a bottom sheet with rounded top corners and a large shadow.
     ///
-    /// This modifier adds a background with customizable color and rounded top corners,
-    /// mimicking a bottom sheet appearance. It also applies a large shadow effect and ignores
-    /// the safe area to extend the view fully.
-    ///
     /// - Parameters:
-    ///   - color: The background color for the bottom sheet. Defaults to `Warp.Token.surfaceElevated100`.
+    ///   - color: The background color for the bottom sheet. Defaults to `token.surfaceElevated100` from the environment theme.
     ///   - cornerRadius: The radius for the rounded top corners. Defaults to `Warp.Spacing.spacing200`.
     /// - Returns: A view with the applied bottom sheet background, rounded top corners, and shadow.
     public func withBottomSheetBackground(
-        _ color: Color = Warp.Token.surfaceElevated100,
+        _ color: Color? = nil,
         cornerRadius: CGFloat = Warp.Spacing.spacing200
     ) -> some View {
-        self.background {
-            color
+        modifier(BottomSheetBackgroundModifier(color: color, cornerRadius: cornerRadius))
+    }
+}
+
+private struct CardBackgroundModifier: ViewModifier {
+    @Environment(\.warpTheme) private var theme
+
+    private var token: TokenProvider { theme.token }
+
+    let color: Color?
+    let cornerRadius: CGFloat
+    let isPressed: Bool
+
+    func body(content: Content) -> some View {
+        content.background {
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .fill(color ?? token.surfaceElevated200)
+                .addShadow(.small, isPressed: isPressed)
+        }
+    }
+}
+
+private struct BottomSheetBackgroundModifier: ViewModifier {
+    @Environment(\.warpTheme) private var theme
+
+    private var token: TokenProvider { theme.token }
+
+    let color: Color?
+    let cornerRadius: CGFloat
+
+    func body(content: Content) -> some View {
+        content.background {
+            (color ?? token.surfaceElevated100)
                 .cornerRadius(cornerRadius, corners: [.topLeft, .topRight])
                 .ignoresSafeArea(.all)
                 .addShadow(.large)

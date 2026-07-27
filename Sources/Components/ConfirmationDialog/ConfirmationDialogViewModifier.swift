@@ -15,6 +15,10 @@ extension Warp {
             theme.colors
         }
 
+        private var token: TokenProvider {
+            theme.token
+        }
+
         func body(content: Content) -> some View {
             content
                 .confirmationDialog(
@@ -29,8 +33,8 @@ extension Warp {
                             SwiftUI.Text(action.title)
                                 .font(Warp.Typography.title4.font)
                                 .foregroundStyle(action.style == .destructive
-                                    ? Warp.Token.textNegative
-                                    : Warp.Token.text)
+                                    ? token.textNegative
+                                    : token.text)
                         }
                     }
                 } message: {
