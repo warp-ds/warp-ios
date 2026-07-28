@@ -13,6 +13,8 @@ Icons are sourced from: https://github.com/warp-ds/elements
 
 Web icon location: `warp-ds/elements/components/icons/src/`
 
+> **Note:** Verify this path is current — the elements repo may restructure over time.
+
 ## Import Process
 
 ### 1. Download SVG from Web Repository
@@ -71,11 +73,13 @@ public enum Icon: String, CaseIterable {
 }
 ```
 
-### 4. Add Accessibility Title Mapping
+> **Note:** `Icon` conforms to `CaseIterable` — new cases appear automatically in all places that iterate `Icon.allCases` (SampleApp icon list, tests). No manual wiring needed.
 
-In the same file, add the localized title mapping:
+### 4. Add Accessibility Localization Mapping
+
+In the same file, add the localized accessibility mapping:
 ```swift
-public var title: String {
+var localization: String {
     switch self {
     // ... existing mappings
     case .{camelCaseName}: return Warp.Strings.icon{PascalCaseName}.localized
@@ -87,6 +91,8 @@ Example:
 ```swift
 case .activeAds: return Warp.Strings.iconActiveAds.localized
 ```
+
+> **Note:** `Warp.Strings` is a manually maintained enum in `Sources/Localized/Localized.swift` that maps Swift identifiers to string keys in `Localizable.xcstrings`. Add a new case there alongside the translation entry in Step 5.
 
 ### 5. Add Translations
 
@@ -202,7 +208,8 @@ xcodebuild test -scheme WarpTests -destination 'platform=iOS Simulator,name=iPho
 - [ ] Create .imageset folder in RegularIcons/
 - [ ] Add SVG and Contents.json to .imageset
 - [ ] Add enum case to Icon.swift (camelCase)
-- [ ] Add title mapping in Icon.swift
+- [ ] Add localization mapping in Icon.swift
+- [ ] Add `Warp.Strings` case to `Sources/Localized/Localized.swift`
 - [ ] Add translations to Localizable.xcstrings (icon.title.{camelCase})
 - [ ] Verify all 5 languages have translations
 - [ ] **Run icon unit tests** (WarpTests/IconTests)
