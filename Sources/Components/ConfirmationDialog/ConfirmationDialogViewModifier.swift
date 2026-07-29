@@ -11,10 +11,6 @@ extension Warp {
 
         @Environment(\.warpTheme) private var theme
 
-        private var colorProvider: ColorProvider {
-            theme.colors
-        }
-
         private var token: TokenProvider {
             theme.token
         }
