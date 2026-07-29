@@ -32,7 +32,8 @@ public struct WarpButtonStyle: ButtonStyle {
             type: type,
             size: size,
             isEnabled: isEnabled,
-            isLoading: isLoading
+            isLoading: isLoading,
+            theme: colorProvider.theme
         )
 
         typographyFactory = Warp.Button.TypographyFactory(for: type, size: size)

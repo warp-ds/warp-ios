@@ -1,5 +1,29 @@
 import SwiftUI
 
+@available(iOS 26.0, *)
+private struct WarpNavigationBarButtonModifier: ViewModifier {
+    @Environment(\.warpTheme) private var theme
+
+    private var token: TokenProvider { theme.token }
+    private var colors: ColorProvider { theme.colors }
+
+    let style: Warp.NavigationBarButtonStyle
+
+    func body(content: Content) -> some View {
+        switch style {
+        case .default:
+            content
+                .tint(token.icon)
+                .font(Warp.Typography.body.font)
+        case .primary:
+            content
+                .buttonStyle(.glassProminent)
+                .tint(colors.buttonPrimaryBackground)
+                .font(Warp.Typography.title4.font)
+        }
+    }
+}
+
 extension Button {
 
     /// Applies Warp design style to a button with Liquid Glass styling.
@@ -22,18 +46,6 @@ extension Button {
     /// - Returns: A button with Warp navigation bar styling applied.
     @available(iOS 26.0, *)
     public func warpNavigationBarButton(style: Warp.NavigationBarButtonStyle = .default) -> some View {
-        Group {
-            switch style {
-            case .default:
-                self
-                  .tint(Warp.Color.token.icon)
-                  .font(Warp.Typography.body.font)
-            case .primary:
-                self
-                  .buttonStyle(.glassProminent)
-                  .tint(Warp.Color.buttonPrimaryBackground)
-                  .font(Warp.Typography.title4.font)
-            }
-        }
+        modifier(WarpNavigationBarButtonModifier(style: style))
     }
 }

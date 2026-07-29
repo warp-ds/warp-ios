@@ -49,8 +49,14 @@ public enum Warp {
             UIColorProvider(theme: self)
         }
 
-        /// Semantic token provider for SwiftUI
-        var token: TokenProvider {
+        /// Semantic SwiftUI color token provider for this brand.
+        ///
+        /// Prefer reading this through `@Environment(\.warpTheme)` in SwiftUI views:
+        /// ```swift
+        /// @Environment(\.warpTheme) private var theme
+        /// private var token: TokenProvider { theme.token }
+        /// ```
+        public var token: TokenProvider {
             switch self {
             case .finn: return FinnTokenProvider()
             case .tori: return ToriTokenProvider()
@@ -61,8 +67,14 @@ public enum Warp {
             }
         }
 
-        /// Semantic token provider for UIKit
-        var uiToken: UITokenProvider {
+        /// Semantic UIKit color token provider for this brand.
+        ///
+        /// Prefer reading this through `@Environment(\.warpTheme)` in SwiftUI views:
+        /// ```swift
+        /// @Environment(\.warpTheme) private var theme
+        /// private var uiToken: UITokenProvider { theme.uiToken }
+        /// ```
+        public var uiToken: UITokenProvider {
             switch self {
             case .finn: return FinnUITokenProvider()
             case .tori: return ToriUITokenProvider()
@@ -127,41 +139,15 @@ public enum Warp {
     /// This computed property returns an instance of a token provider specific to the currently set theme.
     /// The token provider defines color tokens used throughout the application.
     public static var Token: TokenProvider {
-        switch Theme {
-        case .finn:
-            return FinnTokenProvider()
-        case .tori:
-            return ToriTokenProvider()
-        case .dba:
-            return DbaTokenProvider()
-        case .blocket:
-            return BlocketTokenProvider()
-        case .vend:
-            return VendTokenProvider()
-        case .neutral:
-            return NeutralTokenProvider()
-        }
+        Theme.token
     }
-    
+
     /// Provides UIToken values based on the current theme.
     ///
     /// This computed property returns an instance of a UIToken provider specific to the currently set theme.
     /// The token provider defines UIColor tokens used throughout the application.
     public static var UIToken: UITokenProvider {
-        switch Theme {
-        case .finn:
-            return FinnUITokenProvider()
-        case .tori:
-            return ToriUITokenProvider()
-        case .dba:
-            return DbaUITokenProvider()
-        case .blocket:
-            return BlocketUITokenProvider()
-        case .vend:
-            return VendUITokenProvider()
-        case .neutral:
-            return NeutralUITokenProvider()
-        }
+        Theme.uiToken
     }
     
     // MARK: - Color Providers
