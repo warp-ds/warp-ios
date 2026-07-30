@@ -5,14 +5,72 @@
       "comment" : "VoiceOver value for a tab bar badge indicating a new notification (dot).",
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "new notification" } }
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ny notifikation"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "new notification"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "uusi notifikaatio"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nytt varsel"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ny notis"
+          }
+        }
       }
     },
     "warp.tabBarBadge.unreadCount" : {
       "comment" : "VoiceOver value for a tab bar badge showing an unread count. %lld is the count.",
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "%lld unread" } }
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld ulæste"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld unread"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld lukematonta"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld uleste"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld olästa"
+          }
+        }
       }
     },
     "brand.icon.title.autovex" : {
