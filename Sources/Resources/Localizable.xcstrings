@@ -7489,6 +7489,42 @@
         }
       }
     },
+    "icon.title.phoneIncoming" : {
+      "comment" : "A11y title for Phone incoming icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonrør med en pil ovenfor til højre, der peger ned mod det"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone handset with an arrow above it to the right pointing down at it"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puhelimen luuri, jonka yläpuolella on oikealla nuoli, joka osoittaa alas kohti sitä"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonrør med en pil over det til høyre som peker ned mot det"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonlur med en pil ovanför den till höger som pekar nedåt mot den"
+          }
+        }
+      }
+    },
     "icon.title.phoneHandset" : {
       "comment" : "A11y title for Phone handset icon",
       "extractionState" : "manual",
@@ -7521,6 +7557,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Telefonlur"
+          }
+        }
+      }
+    },
+    "icon.title.phoneX" : {
+      "comment" : "A11y title for Phone X icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonrør med et X ovenfor til højre"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone handset with an X above it to the right"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puhelimen luuri, jonka yläpuolella on oikealla X"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonrør med et X over det til høyre"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonlur med ett X ovanför den till höger"
           }
         }
       }
