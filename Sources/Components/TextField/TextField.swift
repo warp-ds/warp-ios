@@ -41,6 +41,8 @@ extension Warp {
             theme.colors
         }
 
+        private var fonts: [Warp.Font] { theme.fonts }
+
         /// The corner radius for the text field border.
         private let cornerRadius = Warp.Border.borderRadius50
 

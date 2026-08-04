@@ -10,7 +10,7 @@ extension Warp.Typography {
     /// - Parameter theme: The brand theme whose fonts should be registered
     /// - Throws: A `Warp.FontRegistrationError` if the registration of any font fails.
     public static func registerFonts(for theme: Warp.Brand) throws {
-        try Warp.Font.fonts(for: theme).forEach {
+        try theme.fonts.forEach {
             try registerFont($0)
         }
     }

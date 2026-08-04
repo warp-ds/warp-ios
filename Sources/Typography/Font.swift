@@ -5,7 +5,7 @@ extension Warp {
     ///
     /// Each case corresponds to a specific font used by different brands (e.g., `finn`, `tori`, `dba`, `blocket`), and each font has
     /// associated file names and font names that are used for registration and application in the design system.
-    enum Font: CaseIterable, Sendable {
+    public enum Font: CaseIterable, Sendable {
         // MARK: - Finn Fonts
         case finnLight
         case finnLightItalic
@@ -101,7 +101,7 @@ extension Warp {
         /// - Warning: This uses the global `Warp.Theme` variable. Consider using `fonts(for:)` with an explicit theme instead.
         @available(*, deprecated, message: "Use fonts(for:) with explicit theme parameter instead of global Warp.Theme")
         static var fontForTheme: [Font] {
-            fonts(for: Warp.Theme)
+            Warp.Theme.fonts
         }
     }
 }

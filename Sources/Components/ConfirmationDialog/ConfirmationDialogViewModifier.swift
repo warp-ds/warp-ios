@@ -15,6 +15,8 @@ extension Warp {
             theme.token
         }
 
+        private var fonts: [Warp.Font] { theme.fonts }
+
         func body(content: Content) -> some View {
             content
                 .confirmationDialog(

@@ -16,6 +16,8 @@ extension Warp {
             theme.colors
         }
 
+        private var fonts: [Warp.Font] { theme.fonts }
+
         func body(content: Content) -> some View {
             content
                 .alert(

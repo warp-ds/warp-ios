@@ -100,8 +100,14 @@ public enum Warp {
             Warp.Typography.self
         }
 
-        /// Fonts for this brand
-        var fonts: [Warp.Font] {
+        /// Fonts associated with this brand, used for font registration.
+        ///
+        /// Prefer reading this through `@Environment(\.warpTheme)` in SwiftUI views:
+        /// ```swift
+        /// @Environment(\.warpTheme) private var theme
+        /// private var fonts: [Warp.Font] { theme.fonts }
+        /// ```
+        public var fonts: [Warp.Font] {
             Warp.Font.fonts(for: self)
         }
 
