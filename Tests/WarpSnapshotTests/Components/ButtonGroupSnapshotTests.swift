@@ -9,9 +9,6 @@ struct ButtonGroupSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllButtonGroups(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
-        Warp.Theme = brand
-
         let columnView = VStack {
             Text("Single select")
             Warp.ButtonGroup(
@@ -26,7 +23,7 @@ struct ButtonGroupSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: columnView, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: columnView.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
 
     private func createOptions(multiSelect: Bool) -> [(title: String, isSelected: Bool)] {

@@ -11,8 +11,6 @@ struct SelectSnapshotTests {
     @Test(.disabled("Disabled due to diffrences between ImageSnapshotRenderer and device look"),arguments: Warp.Brand.allCases)
     func snapshotAllSelects(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        Warp.Theme = brand
-
         let options = [
             Warp.Select.SelectorOption(id: "1", title: "Option 1"),
             Warp.Select.SelectorOption(id: "2", title: "Option 2"),
@@ -39,6 +37,6 @@ struct SelectSnapshotTests {
         .padding(8)
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: selectsInColumnView, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: selectsInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
 }

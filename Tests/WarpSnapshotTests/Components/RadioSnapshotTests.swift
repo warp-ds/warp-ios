@@ -22,20 +22,17 @@ struct RadioSnapshotTests {
             "\(axis.description)",
         ].joined(separator: ".")
 
-        // Set the theme to the current brand
-        Warp.Theme = brand
-
         let options = [
             ExampleOption(title: "Option 1", isSelected: .constant(false)),
             ExampleOption(
                 title: "Option 2",
                 isSelected: .constant(true),
-                extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary))
+                extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(brand.token.iconPrimary))
             ),
             ExampleOption(
                 title: style == .disabled ? "Option disabled" : "Option 3",
                 isSelected: .constant(false),
-                extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(style == .disabled ? Warp.Token.textDisabled : Warp.Token.textSubtle))
+                extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(style == .disabled ? brand.token.textDisabled : brand.token.textSubtle))
             )
         ]
 
@@ -52,7 +49,7 @@ struct RadioSnapshotTests {
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
         assertSnapshot(
-            of: radioView,
+            of: radioView.warpTheme(brand),
             as: .warpImage(compressionQuality: .medium),
             named: snapshotName
         )

@@ -10,9 +10,6 @@ struct DividerSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotDivider(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
-        Warp.Theme = brand
-
         let dividerView = VStack(spacing: 40) {
             Text(brand.description)
               .font(.headline)
@@ -37,6 +34,6 @@ struct DividerSnapshotTests {
           .padding()
           .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: dividerView, as: .warpImage, named: snapshotName)
+        assertSnapshot(of: dividerView.warpTheme(brand), as: .warpImage, named: snapshotName)
     }
 }

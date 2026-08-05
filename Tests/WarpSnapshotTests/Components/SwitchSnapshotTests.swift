@@ -9,9 +9,6 @@ struct SwitchSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllSwitches(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
-        Warp.Theme = brand
-
         let switches = [
             Warp.Switch(isOn: .constant(true), state: .default),
             Warp.Switch(isOn: .constant(false), state: .default),
@@ -29,6 +26,6 @@ struct SwitchSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: switchesInColumnView, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: switchesInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
 }

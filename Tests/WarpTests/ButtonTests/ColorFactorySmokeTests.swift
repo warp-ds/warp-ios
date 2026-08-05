@@ -5,11 +5,12 @@ import SwiftUI
 @available(iOS 17.0, *) // resolve(in:) color method supported from iOS 17.0
 final class ColorFactorySmokeTests: XCTestCase {
     private typealias ColorFactory = Warp.Button.ColorFactory
-    
+
+    private let theme: Warp.Brand = .finn
+    private var colorProvider: ColorProvider { ColorProvider(theme: theme) }
+
     func testForegroundColor_Parameterized_ShouldBeEqual() throws {
         let environment = EnvironmentValues()
-        
-        let colorProvider = Warp.Color
         let disabledTextColor = colorProvider.token.textInverted
         
         let mockButtonVariants: [ButtonVariant] = [
@@ -128,7 +129,6 @@ final class ColorFactorySmokeTests: XCTestCase {
     func testBackgroundColor_Parameterized_ShouldBeEqual() throws {
         let environment = EnvironmentValues()
         
-        let colorProvider = Warp.Color
         let disabledBackgroundColor = colorProvider.token.backgroundDisabled
         let loadingBackgroundColor = colorProvider.token.backgroundTransparent0
         
@@ -304,7 +304,6 @@ final class ColorFactorySmokeTests: XCTestCase {
     func testBorderColor_Parameterized_ShouldBeEqual() throws {
         let environment = EnvironmentValues()
         
-        let colorProvider = Warp.Color
         let disabledBorderColor = colorProvider.token.backgroundTransparent0
         let loadingBorderColor = colorProvider.token.backgroundTransparent0
         

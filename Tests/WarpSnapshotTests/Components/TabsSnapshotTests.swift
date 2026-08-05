@@ -22,9 +22,6 @@ struct TabsSnapshotTests {
             hasIcons ? "Icon" : nil
         ].compactMap { $0 }.joined(separator: ".")
 
-        // Set the theme to the current brand
-        Warp.Theme = brand
-
         let tabItems = [
             Warp.TabItem(title: "Tab 1", icon: .listSort),
             Warp.TabItem(title: "Longer Tab Title", icon: .listSort),
@@ -41,6 +38,6 @@ struct TabsSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: tabs, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: tabs.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
 }

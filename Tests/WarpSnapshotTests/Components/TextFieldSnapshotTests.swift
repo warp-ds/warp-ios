@@ -11,9 +11,6 @@ struct TextFieldSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllTextFields(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
-        Warp.Theme = brand
-
         let textFields = Self.textFieldStyles.map { style in
             Warp.TextField(
                 title: "\(style.rawValue.capitalized) style",
@@ -39,7 +36,7 @@ struct TextFieldSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: textFieldsInColumnView, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: textFieldsInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
 
     private var createTooltipView: AnyView {

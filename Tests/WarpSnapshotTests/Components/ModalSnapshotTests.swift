@@ -32,9 +32,6 @@ struct ModalSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllModalsInColumn(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
-        Warp.Theme = brand
-
         let modalViews = Self.allArgumentsCombined.map { subtitle, primaryButton, secondaryButton, hasCloseButton in
             Warp.Modal(
                 title: "Title",
@@ -56,6 +53,6 @@ struct ModalSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: modalsInColumnView, as: .warpImage(compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: modalsInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .high), named: snapshotName)
     }
 }

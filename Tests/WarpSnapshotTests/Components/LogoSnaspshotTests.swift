@@ -11,9 +11,6 @@ struct LogoSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllLogos(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
-        Warp.Theme = brand
-
         let logoViews = logos.map { logo in
             Warp.Logo(for: logo)
         }
@@ -30,6 +27,6 @@ struct LogoSnapshotTests {
             }
         }
 
-        assertSnapshot(of: allLogosInColumnView, as: .warpImage(compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: allLogosInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .high), named: snapshotName)
     }
 }

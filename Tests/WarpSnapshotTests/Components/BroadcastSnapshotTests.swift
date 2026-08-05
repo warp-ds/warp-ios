@@ -22,9 +22,6 @@ struct BroadcastSnapshotTests {
             isDismissable ? "Dismissable" : nil,
         ].compactMap { $0 }.joined(separator: ".")
 
-        // Set the theme to the current brand
-        Warp.Theme = brand
-
         let broadCast = EmptyView()
             .warpBroadcast(
                 text: "Here's a broadcast located at the \(edge.description) edge",
@@ -33,7 +30,7 @@ struct BroadcastSnapshotTests {
             )
 
         assertSnapshot(
-            of: broadCast,
+            of: broadCast.warpTheme(brand),
             as: .warpImage(layout: .device(config: .iPhone13) ,compressionQuality: .high),
             named: snapshotName
         )

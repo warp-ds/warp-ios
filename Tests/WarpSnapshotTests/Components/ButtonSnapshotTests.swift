@@ -35,9 +35,6 @@ struct ButtonSnapshotTests {
             ".\(brand.description)",
             "\(buttonType.description)"
         ].compactMap { $0 }.joined(separator: ".")
-        // Set the theme to the current brand
-        Warp.Theme = brand
-
         let configurations = combine(
             Self.buttonSizes,
             Self.leadingIconProvider,
@@ -80,7 +77,7 @@ struct ButtonSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13ProMax.size!.width)
 
-        assertSnapshot(of: buttonsInColumnView, as: .warpImage(compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: buttonsInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .high), named: snapshotName)
     }
 }
 

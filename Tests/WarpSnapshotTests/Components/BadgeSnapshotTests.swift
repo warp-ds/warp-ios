@@ -14,8 +14,6 @@ struct BadgeSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func testBadgeSnapshots(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
-        Warp.Theme = brand
         let badgeViews = Self.allArgumentsCombined.map { (icon, variant, position) in
             Warp.Badge(
                 text: "\(variant.rawValue) - \(position.rawValue)",
@@ -34,7 +32,7 @@ struct BadgeSnapshotTests {
                 // Set width to match iPhone 13 size
                 .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: badgesInColumnView, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: badgesInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
     
 }

@@ -22,9 +22,6 @@ struct CalloutSnapshotTests {
             isDismissable ? "Dismissable" : nil,
         ].compactMap { $0 }.joined(separator: ".")
 
-        // Set the theme to the current brand
-        Warp.Theme = brand
-
         let calloutsInColumnView = VStack(alignment: .leading) {
             inlineViews(size: size)
             popoverViews(size: size, isDismissable: isDismissable)
@@ -33,7 +30,7 @@ struct CalloutSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: calloutsInColumnView, as: .warpImage(compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: calloutsInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .high), named: snapshotName)
     }
 
     private func inlineViews(size: Warp.CalloutSize) -> some View {
