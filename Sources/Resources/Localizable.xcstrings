@@ -7496,7 +7496,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Telefonrør med en pil ovenfor til højre, der peger ned mod det"
+            "value" : "Mobilholder med en pil øverst til højre, der peger ned mod den"
           }
         },
         "en" : {
@@ -7508,19 +7508,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Puhelimen luuri, jonka yläpuolella on oikealla nuoli, joka osoittaa alas kohti sitä"
+            "value" : "Puhelin, jonka yläoikealla on puhelimeen osoittava nuoli"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Telefonrør med en pil over det til høyre som peker ned mot det"
+            "value" : "Et telefonrør med en pil til høyre over det som peker ned mot det"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Telefonlur med en pil ovanför den till höger som pekar nedåt mot den"
+            "value" : "Telefonlur med en pil ovanför den som pekar ned mot luren"
           }
         }
       }
@@ -7568,7 +7568,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Telefonrør med et X ovenfor til højre"
+            "value" : "Mobilholder med et X øverst til højre"
           }
         },
         "en" : {
@@ -7580,13 +7580,13 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Puhelimen luuri, jonka yläpuolella on oikealla X"
+            "value" : "Puhelin, jonka yläoikealla on X"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Telefonrør med et X over det til høyre"
+            "value" : "Et telefonrør med en X over seg til høyre"
           }
         },
         "sv" : {
