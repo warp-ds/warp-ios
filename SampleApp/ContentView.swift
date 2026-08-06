@@ -24,6 +24,7 @@ struct ContentView: View {
 
     private var nativeItems: [(String, any View)] {
         var items: [(String, any View)] = [
+            ("Alert (Native)", AlertDialogView()),
             ("Bottom nav / Tab Bar", TabBarDemoView()),
             ("Confirmation Dialog", ConfirmationDialogView()),
             ("Menu / Context Menu", MenuDemoView())

@@ -291,6 +291,8 @@ extension Warp {
         case translate
         case scale
         case phoneHandset
+        case phoneIncoming
+        case phoneX
         case jacket
         case tray
         case pause
@@ -635,6 +637,8 @@ extension Warp {
             case .translate: return Warp.Strings.iconTranslate.localized
             case .scale: return Warp.Strings.iconScale.localized
             case .phoneHandset: return Warp.Strings.iconPhoneHandset.localized
+            case .phoneIncoming: return Warp.Strings.iconPhoneIncoming.localized
+            case .phoneX: return Warp.Strings.iconPhoneX.localized
             case .jacket: return Warp.Strings.iconJacket.localized
             case .tray: return Warp.Strings.iconTray.localized
             case .pause: return Warp.Strings.iconPause.localized

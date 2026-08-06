@@ -5,14 +5,72 @@
       "comment" : "VoiceOver value for a tab bar badge indicating a new notification (dot).",
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "new notification" } }
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ny notifikation"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "new notification"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "uusi notifikaatio"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nytt varsel"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ny notis"
+          }
+        }
       }
     },
     "warp.tabBarBadge.unreadCount" : {
       "comment" : "VoiceOver value for a tab bar badge showing an unread count. %lld is the count.",
       "extractionState" : "manual",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "%lld unread" } }
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld ulæste"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld unread"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld lukematonta"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld uleste"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld olästa"
+          }
+        }
       }
     },
     "brand.icon.title.autovex" : {
@@ -7431,6 +7489,42 @@
         }
       }
     },
+    "icon.title.phoneIncoming" : {
+      "comment" : "A11y title for Phone incoming icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonrør med en pil ovenfor til højre, der peger ned mod det"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone handset with an arrow above it to the right pointing down at it"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puhelimen luuri, jonka yläpuolella on oikealla nuoli, joka osoittaa alas kohti sitä"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonrør med en pil over det til høyre som peker ned mot det"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonlur med en pil ovanför den till höger som pekar nedåt mot den"
+          }
+        }
+      }
+    },
     "icon.title.phoneHandset" : {
       "comment" : "A11y title for Phone handset icon",
       "extractionState" : "manual",
@@ -7463,6 +7557,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Telefonlur"
+          }
+        }
+      }
+    },
+    "icon.title.phoneX" : {
+      "comment" : "A11y title for Phone X icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonrør med et X ovenfor til højre"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone handset with an X above it to the right"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puhelimen luuri, jonka yläpuolella on oikealla X"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonrør med et X over det til høyre"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonlur med ett X ovanför den till höger"
           }
         }
       }

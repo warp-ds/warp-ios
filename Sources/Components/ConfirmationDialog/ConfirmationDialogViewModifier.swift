@@ -11,8 +11,8 @@ extension Warp {
 
         @Environment(\.warpTheme) private var theme
 
-        private var colorProvider: ColorProvider {
-            theme.colors
+        private var token: TokenProvider {
+            theme.token
         }
 
         func body(content: Content) -> some View {
@@ -29,8 +29,8 @@ extension Warp {
                             SwiftUI.Text(action.title)
                                 .font(Warp.Typography.title4.font)
                                 .foregroundStyle(action.style == .destructive
-                                    ? Warp.Token.textNegative
-                                    : Warp.Token.text)
+                                    ? token.textNegative
+                                    : token.text)
                         }
                     }
                 } message: {

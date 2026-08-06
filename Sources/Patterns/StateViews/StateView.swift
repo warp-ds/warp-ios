@@ -154,7 +154,7 @@ public struct StateView: View {
 
     private var endorsementView: some View {
         var logoName = "VendLogoTagLine"
-        switch Warp.Theme {
+        switch theme {
         case .finn, .blocket:
             logoName.append("NO_SE")
         case .tori:

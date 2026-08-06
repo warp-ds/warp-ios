@@ -16,11 +16,14 @@ extension Warp.Button {
         /// Flag describing is button is in loading state.
         private let isLoading: Bool
 
-        init(type: Warp.ButtonType, size: Warp.ButtonSize, isEnabled: Bool, isLoading: Bool) {
+        private let theme: Warp.Brand
+
+        init(type: Warp.ButtonType, size: Warp.ButtonSize, isEnabled: Bool, isLoading: Bool, theme: Warp.Brand) {
             self.type = type
             self.size = size
             self.isEnabled = isEnabled
             self.isLoading = isLoading
+            self.theme = theme
         }
         
         /// Button shadow.
@@ -47,7 +50,7 @@ extension Warp.Button {
         /// Button corner radius based on current type.
         var cornerRadius: CGFloat {
             // TODO: Refactor when brand theme tokens are more flexible.
-            if Warp.Theme == .vend {
+            if theme == .vend {
                 return 999 // full rounding for vend theme
             } else if type.isUtilityRelatedButton {
                 return 4

@@ -50,7 +50,8 @@ final class MetricsFactorySmokeTests: XCTestCase {
                 type: variant.type,
                 size: variant.size,
                 isEnabled: variant.isEnabled,
-                isLoading: false
+                isLoading: false,
+                theme: .finn
             )
             
             XCTAssertEqual(sut.borderWidth, variant.expectation)
@@ -103,7 +104,8 @@ final class MetricsFactorySmokeTests: XCTestCase {
                 type: variant.type,
                 size: variant.size,
                 isEnabled: variant.isEnabled,
-                isLoading: false
+                isLoading: false,
+                theme: .finn
             )
             
             XCTAssertEqual(sut.cornerRadius, variant.expectation)
@@ -194,7 +196,8 @@ final class MetricsFactorySmokeTests: XCTestCase {
                 type: variant.type,
                 size: variant.size,
                 isEnabled: variant.isEnabled,
-                isLoading: false
+                isLoading: false,
+                theme: .finn
             )
             
             XCTAssertEqual(sut.verticalPadding, variant.expectation)
@@ -285,7 +288,8 @@ final class MetricsFactorySmokeTests: XCTestCase {
                 type: variant.type,
                 size: variant.size,
                 isEnabled: variant.isEnabled,
-                isLoading: false
+                isLoading: false,
+                theme: .finn
             )
             
             XCTAssertEqual(sut.horizontalPadding, variant.expectation)

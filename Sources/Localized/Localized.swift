@@ -286,6 +286,8 @@ extension Warp {
         case iconTranslate = "icon.title.translate"
         case iconScale = "icon.title.scale"
         case iconPhoneHandset = "icon.title.phoneHandset"
+        case iconPhoneIncoming = "icon.title.phoneIncoming"
+        case iconPhoneX = "icon.title.phoneX"
         case iconJacket = "icon.title.jacket"
         case iconTray = "icon.title.tray"
         case iconPause = "icon.title.pause"
