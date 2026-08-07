@@ -13,12 +13,12 @@ struct MenuSnapshotTests {
         Warp.Theme = brand
 
         let view = VStack(alignment: .leading, spacing: 16) {
-            ForEach([Warp.MenuButtonStyle.default, .primary, .destructive], id: \.label) { style in
+            ForEach([Warp.MenuButtonStyle.default, .destructive], id: \.label) { style in
                 GroupBox(style.label) {
-                    Menu("Open menu") {
-                        Warp.MenuItem("Share", icon: .share) {}
-                        Warp.MenuItem("Bookmark", icon: .bookmark) {}
-                        Warp.MenuItem("Delete", role: .destructive) {}
+                    SwiftUI.Menu("Open menu") {
+                        Warp.MenuButton("Share", icon: .share) {}
+                        Warp.MenuButton("Bookmark", icon: .bookmark) {}
+                        Warp.MenuButton("Delete", style: .destructive) {}
                     }
                     .warpMenuButton(style: style)
                 }
@@ -30,7 +30,7 @@ struct MenuSnapshotTests {
         assertSnapshot(of: view, as: .warpImage(), named: ".\(brand.description)")
     }
 
-    // MARK: - MenuItem variants
+    // MARK: - MenuButton variants
 
     @Test(arguments: Warp.Brand.allCases)
     func snapshotMenuItems(brand: Warp.Brand) {
@@ -39,25 +39,25 @@ struct MenuSnapshotTests {
         let view = VStack(alignment: .leading, spacing: 16) {
             GroupBox("Text only") {
                 VStack(alignment: .leading, spacing: 4) {
-                    Warp.MenuItem("Edit") {}
-                    Warp.MenuItem("Bookmark") {}
-                    Warp.MenuItem("Archive") {}
+                    Warp.MenuButton("Edit") {}
+                    Warp.MenuButton("Bookmark") {}
+                    Warp.MenuButton("Archive") {}
                 }
             }
 
             GroupBox("With Warp icon") {
                 VStack(alignment: .leading, spacing: 4) {
-                    Warp.MenuItem("Share", icon: .share) {}
-                    Warp.MenuItem("Bookmark", icon: .bookmark) {}
-                    Warp.MenuItem("Edit", icon: .edit) {}
-                    Warp.MenuItem("Copy", icon: .copy) {}
+                    Warp.MenuButton("Share", icon: .share) {}
+                    Warp.MenuButton("Bookmark", icon: .bookmark) {}
+                    Warp.MenuButton("Edit", icon: .edit) {}
+                    Warp.MenuButton("Copy", icon: .copy) {}
                 }
             }
 
             GroupBox("Destructive") {
                 VStack(alignment: .leading, spacing: 4) {
-                    Warp.MenuItem("Delete", role: .destructive) {}
-                    Warp.MenuItem("Remove", icon: .heartRate, role: .destructive) {}
+                    Warp.MenuButton("Delete", style: .destructive) {}
+                    Warp.MenuButton("Remove", icon: .heartRate, style: .destructive) {}
                 }
             }
         }
@@ -74,7 +74,6 @@ private extension Warp.MenuButtonStyle {
     var label: String {
         switch self {
         case .default: return "Default"
-        case .primary: return "Primary"
         case .destructive: return "Destructive"
         }
     }
