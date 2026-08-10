@@ -13,7 +13,7 @@ extension View {
     ///     Warp.MenuButton("Share", icon: .shareIOS) { share() }
     ///     Warp.MenuButton("Delete", icon: .delete, style: .destructive) { delete() }
     /// }
-    /// .warpMenuButton(style: .primary)
+    /// .warpMenuButton(style: .default)
     /// ```
     ///
     /// - Parameter style: The visual style to apply. Defaults to `.default`.
@@ -24,17 +24,19 @@ extension View {
 }
 
 private struct WarpMenuButtonModifier: ViewModifier {
+    @Environment(\.warpTheme) private var theme
     let style: Warp.MenuButtonStyle
 
     func body(content: Content) -> some View {
+        let token = theme.token
         switch style {
         case .default:
             content
-                .tint(Warp.Color.token.icon)
+                .tint(token.icon)
                 .font(Warp.Typography.body.font)
         case .destructive:
             content
-                .tint(Warp.Color.token.iconNegative)
+                .tint(token.iconNegative)
                 .font(Warp.Typography.body.font)
         }
     }
@@ -59,6 +61,8 @@ extension Warp {
     /// }
     /// ```
     public struct MenuButton: View {
+        @Environment(\.warpTheme) private var theme
+
         let title: String
         let icon: Warp.Icon?
         let style: Warp.MenuButtonStyle
@@ -85,7 +89,7 @@ extension Warp {
 
         public var body: some View {
             SwiftUI.Button(role: style.buttonRole, action: action) {
-                warpMenuItemLabel(title: title, icon: icon, style: style)
+                warpMenuItemLabel(title: title, icon: icon, style: style, token: theme.token)
             }
         }
     }
@@ -107,6 +111,8 @@ extension Warp {
     /// }
     /// ```
     public struct Menu<Content: View>: View {
+        @Environment(\.warpTheme) private var theme
+
         let title: String
         let icon: Warp.Icon?
         let content: Content
@@ -131,19 +137,19 @@ extension Warp {
             SwiftUI.Menu {
                 content
             } label: {
-                warpMenuItemLabel(title: title, icon: icon, style: .default)
+                warpMenuItemLabel(title: title, icon: icon, style: .default, token: theme.token)
             }
         }
     }
 }
 
 @ViewBuilder
-private func warpMenuItemLabel(title: String, icon: Warp.Icon?, style: Warp.MenuButtonStyle) -> some View {
+private func warpMenuItemLabel(title: String, icon: Warp.Icon?, style: Warp.MenuButtonStyle, token: TokenProvider) -> some View {
     SwiftUI.Label {
         SwiftUI.Text(title)
     } icon: {
         if let icon {
-            Warp.IconView(icon, size: .small, color: style.iconColor)
+            Warp.IconView(icon, size: .small, color: style.iconColor(token: token))
         }
     }
 }
@@ -156,10 +162,10 @@ private extension Warp.MenuButtonStyle {
         }
     }
 
-    var iconColor: Color {
+    func iconColor(token: TokenProvider) -> Color {
         switch self {
-        case .default: Color(Warp.Color.token.icon)
-        case .destructive: Color(Warp.Color.token.iconNegative)
+        case .default: Color(token.icon)
+        case .destructive: Color(token.iconNegative)
         }
     }
 }
