@@ -120,9 +120,11 @@ public final class GlassSegmentedControl: UIView {
 
     // MARK: - Layout
 
+    private static let pillBottomPadding: CGFloat = 3
+
     public override var intrinsicContentSize: CGSize {
         usesGlassSegments
-            ? CGSize(width: UIView.noIntrinsicMetric, height: segmentedControl.intrinsicContentSize.height)
+            ? CGSize(width: UIView.noIntrinsicMetric, height: segmentedControl.intrinsicContentSize.height + Self.pillBottomPadding)
             : scrollableTabView.intrinsicContentSize
     }
 
@@ -158,9 +160,8 @@ public final class GlassSegmentedControl: UIView {
             segmentedControl.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             segmentedControl.widthAnchor.constraint(greaterThanOrEqualTo: scrollView.frameLayoutGuide.widthAnchor),
-            segmentedControl.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
 
-            scrollView.contentLayoutGuide.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor),
+            scrollView.contentLayoutGuide.heightAnchor.constraint(equalTo: segmentedControl.heightAnchor),
         ])
     }
 
@@ -189,6 +190,8 @@ public final class GlassSegmentedControl: UIView {
                 self?.scrollToSegment(at: selectedIndex, animated: false)
             }
         }
+
+        invalidateIntrinsicContentSize()
     }
 
     // MARK: - Pre-iOS 26 configuration
