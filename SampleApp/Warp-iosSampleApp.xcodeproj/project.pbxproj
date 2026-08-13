@@ -228,6 +228,12 @@
 		9E54AC712E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
 		9E54AC722E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
 		9E54AC732E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
+		9E5A030D302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A030C302DD8F100D3C2E7 /* SegmentedControlDemoView.swift */; };
+		9E5A030E302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A030C302DD8F100D3C2E7 /* SegmentedControlDemoView.swift */; };
+		9E5A030F302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A030C302DD8F100D3C2E7 /* SegmentedControlDemoView.swift */; };
+		9E5A0310302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A030C302DD8F100D3C2E7 /* SegmentedControlDemoView.swift */; };
+		9E5A0311302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A030C302DD8F100D3C2E7 /* SegmentedControlDemoView.swift */; };
+		9E5A0312302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A030C302DD8F100D3C2E7 /* SegmentedControlDemoView.swift */; };
 		9E6C50C930051A5500FB3040 /* TabBarDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6C50C830051A5500FB3040 /* TabBarDemoView.swift */; };
 		9E6C50CA30051A5500FB3040 /* MenuDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6C50C630051A5500FB3040 /* MenuDemoView.swift */; };
 		9E6C50CB30051A5500FB3040 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6C50C730051A5500FB3040 /* TabBar.swift */; };
@@ -444,6 +450,7 @@
 		9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		9E54F07A2E40B82E008BDFB9 /* WarpSnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpSnapshotTests.xctestplan; sourceTree = "<group>"; };
 		9E54F07B2E40BD9B008BDFB9 /* WarpTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpTests.xctestplan; sourceTree = "<group>"; };
+		9E5A030C302DD8F100D3C2E7 /* SegmentedControlDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlDemoView.swift; sourceTree = "<group>"; };
 		9E6C50C630051A5500FB3040 /* MenuDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDemoView.swift; sourceTree = "<group>"; };
 		9E6C50C730051A5500FB3040 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		9E6C50C830051A5500FB3040 /* TabBarDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDemoView.swift; sourceTree = "<group>"; };
@@ -729,6 +736,7 @@
 		9E768E252F5094B900652B2B /* Native */ = {
 			isa = PBXGroup;
 			children = (
+				9E5A030C302DD8F100D3C2E7 /* SegmentedControlDemoView.swift */,
 				9E6C50C630051A5500FB3040 /* MenuDemoView.swift */,
 				9E6C50C730051A5500FB3040 /* TabBar.swift */,
 				9E6C50C830051A5500FB3040 /* TabBarDemoView.swift */,
@@ -1020,6 +1028,7 @@
 				508AB09F2CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				00BC50DC2C2C0AD0002C4FF0 /* ModalView.swift in Sources */,
 				2E1ADF502C2561A700DFEE06 /* BadgeView.swift in Sources */,
+				9E5A0310302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */,
 				82BF22272C6A15F900DDF06E /* TooltipView.swift in Sources */,
 				2E1ADF522C2561A700DFEE06 /* BroadcastView.swift in Sources */,
 				2E1ADF532C2561A700DFEE06 /* CalloutView.swift in Sources */,
@@ -1083,6 +1092,7 @@
 				508AB0A22CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				820A85EF2C6CEB0C006D35A0 /* ModalView.swift in Sources */,
 				820A85F02C6CEB0C006D35A0 /* BadgeView.swift in Sources */,
+				9E5A030F302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */,
 				820A85F12C6CEB0C006D35A0 /* BroadcastView.swift in Sources */,
 				820A85F22C6CEB0C006D35A0 /* CalloutView.swift in Sources */,
 				820A85F32C6CEB0C006D35A0 /* ShadowUIView.swift in Sources */,
@@ -1146,6 +1156,7 @@
 				508AB0A12CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				820A862B2C6D4388006D35A0 /* ModalView.swift in Sources */,
 				820A862C2C6D4388006D35A0 /* ExpandableView.swift in Sources */,
+				9E5A030E302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */,
 				820A862E2C6D4388006D35A0 /* BroadcastView.swift in Sources */,
 				820A862F2C6D4388006D35A0 /* ShadowUIView.swift in Sources */,
 				820A86302C6D4388006D35A0 /* CalloutView.swift in Sources */,
@@ -1209,6 +1220,7 @@
 				508AB0A02CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				00BC50DB2C2C050D002C4FF0 /* ModalView.swift in Sources */,
 				B238A26F2C2EB60A00CD1CAC /* ExpandableView.swift in Sources */,
+				9E5A030D302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */,
 				82BF22252C6A15F900DDF06E /* TooltipView.swift in Sources */,
 				82355B112A8CD0C10023EB11 /* Warp_iosTori.swift in Sources */,
 				82C7E6F62B7B883200760C08 /* BroadcastView.swift in Sources */,
@@ -1272,6 +1284,7 @@
 				9E71496F2E1BF28900674698 /* PageIndicatorView.swift in Sources */,
 				9E7149702E1BF28900674698 /* ModalView.swift in Sources */,
 				9E7149712E1BF28900674698 /* BadgeView.swift in Sources */,
+				9E5A0311302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */,
 				9E7149722E1BF28900674698 /* BroadcastView.swift in Sources */,
 				9E7149732E1BF28900674698 /* CalloutView.swift in Sources */,
 				9E7149742E1BF28900674698 /* ShadowUIView.swift in Sources */,
@@ -1335,6 +1348,7 @@
 				9EFC481D2E4219940048E4E7 /* PageIndicatorView.swift in Sources */,
 				9EFC481E2E4219940048E4E7 /* ModalView.swift in Sources */,
 				9EFC481F2E4219940048E4E7 /* ExpandableView.swift in Sources */,
+				9E5A0312302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */,
 				9EFC48202E4219940048E4E7 /* BroadcastView.swift in Sources */,
 				9EFC48212E4219940048E4E7 /* ShadowUIView.swift in Sources */,
 				9EFC48222E4219940048E4E7 /* CalloutView.swift in Sources */,

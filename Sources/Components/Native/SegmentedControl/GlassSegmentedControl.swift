@@ -64,8 +64,8 @@ public final class GlassSegmentedControl: UIView {
         control.translatesAutoresizingMaskIntoConstraints = false
         control.apportionsSegmentWidthsByContent = true
         let font = Warp.Typography.captionStrong.uiFont
-        control.setTitleTextAttributes([.font: font, .foregroundColor: UIColor.text], for: .normal)
-        control.setTitleTextAttributes([.font: font, .foregroundColor: UIColor.text], for: .selected)
+        control.setTitleTextAttributes([.font: font, .foregroundColor: Warp.UIToken.text], for: .normal)
+        control.setTitleTextAttributes([.font: font, .foregroundColor: Warp.UIToken.text], for: .selected)
         control.addTarget(self, action: #selector(segmentChanged), for: .valueChanged)
         return control
     }()
@@ -73,8 +73,12 @@ public final class GlassSegmentedControl: UIView {
     // MARK: - Pre-iOS 26
 
     private lazy var scrollableTabView: ScrollableTabView = {
-        let view = ScrollableTabView(withAutoLayout: true)
-        view.delegate = self
+        let view = ScrollableTabView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.onSelect = { [weak self] identifier in
+            guard let self else { return }
+            delegate?.glassSegmentedControl(self, didSelectItemWithIdentifier: identifier)
+        }
         return view
     }()
 
@@ -116,6 +120,12 @@ public final class GlassSegmentedControl: UIView {
 
     // MARK: - Layout
 
+    public override var intrinsicContentSize: CGSize {
+        usesGlassSegments
+            ? CGSize(width: UIView.noIntrinsicMetric, height: segmentedControl.intrinsicContentSize.height)
+            : scrollableTabView.intrinsicContentSize
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         if usesGlassSegments {
@@ -144,7 +154,6 @@ public final class GlassSegmentedControl: UIView {
             glassContainer.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -Warp.Spacing.spacing200),
             glassContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            segmentedControl.heightAnchor.constraint(equalToConstant: 44),
             segmentedControl.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             segmentedControl.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
@@ -185,9 +194,7 @@ public final class GlassSegmentedControl: UIView {
     // MARK: - Pre-iOS 26 configuration
 
     private func configureScrollableTabView(selectedIdentifier: String?) {
-        let tabItems = items.map { ScrollableTabViewModel.Item(identifier: $0.identifier, title: $0.title) }
-        let viewModel = ScrollableTabViewModel(selectedIdentifier: selectedIdentifier, items: tabItems)
-        scrollableTabView.configure(with: viewModel)
+        scrollableTabView.configure(items: items, selectedIdentifier: selectedIdentifier)
     }
 
     // MARK: - Private methods
@@ -213,14 +220,6 @@ public final class GlassSegmentedControl: UIView {
 
         scrollToSegment(at: index, animated: true)
         delegate?.glassSegmentedControl(self, didSelectItemWithIdentifier: items[index].identifier)
-    }
-}
-
-// MARK: - ScrollableTabViewDelegate
-
-extension GlassSegmentedControl: ScrollableTabViewDelegate {
-    public func scrollableTabViewDidTapItem(_ sidescrollableView: ScrollableTabView, item: ScrollableTabViewModel.Item) {
-        delegate?.glassSegmentedControl(self, didSelectItemWithIdentifier: item.identifier)
     }
 }
 
