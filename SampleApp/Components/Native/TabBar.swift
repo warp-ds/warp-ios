@@ -26,7 +26,7 @@ struct WarpTabBarControllerWrapper: UIViewControllerRepresentable {
             guard let item else { continue }
             switch badges[index] {
             case .count(let value): item.warpSetBadge(count: value)
-            case .dot:              item.warpSetBadgeDot()
+            case .dot:              item.warpSetPresenceBadge()
             case .none:             item.warpClearBadge()
             }
         }

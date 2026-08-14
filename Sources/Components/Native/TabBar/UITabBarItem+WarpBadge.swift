@@ -16,11 +16,16 @@ public extension UITabBarItem {
         accessibilityValue = String.localizedStringWithFormat(format, count)
     }
 
-    /// Sets a dot/presence badge (rendered as the bullet "•"), Warp-styled.
-    func warpSetBadgeDot() {
-        badgeValue = "•"
+    /// Sets a solid filled presence badge — uses a space glyph so no character renders inside the pill.
+    func warpSetPresenceBadge() {
+        badgeValue = " "
         applyWarpBadgeAppearance()
         accessibilityValue = NSLocalizedString("warp.tabBarBadge.newNotification", bundle: .module, comment: "")
+    }
+
+    @available(*, deprecated, renamed: "warpSetPresenceBadge")
+    func warpSetBadgeDot() {
+        warpSetPresenceBadge()
     }
 
     /// Removes any badge from this tab item (clears value + accessibility).
