@@ -42,10 +42,10 @@ struct UITabBarItemWarpBadgeTests {
     }
 
     @Test
-    func setBadgeDotShowsBullet() {
+    func setPresenceBadgeShowsSolidBadge() {
         let item = UITabBarItem()
-        item.warpSetBadgeDot()
-        #expect(item.badgeValue == "•")
+        item.warpSetPresenceBadge()
+        #expect(item.badgeValue == " ")
     }
 
     @Test
@@ -112,7 +112,7 @@ struct UITabBarItemWarpBadgeTests {
         item.warpSetBadge(count: 3)
         #expect(item.accessibilityValue == "3 unread")
 
-        item.warpSetBadgeDot()
+        item.warpSetPresenceBadge()
         #expect(item.accessibilityValue == "new notification")
 
         item.warpClearBadge()
