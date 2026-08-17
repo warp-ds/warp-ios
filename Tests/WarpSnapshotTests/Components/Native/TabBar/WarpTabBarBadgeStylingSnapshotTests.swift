@@ -31,7 +31,7 @@ struct WarpTabBarBadgeStylingSnapshotTests {
 
         let alerts = UIViewController()
         alerts.tabBarItem = UITabBarItem(title: "Alerts", image: UIImage(systemName: "bell.fill"), tag: 1)
-        alerts.tabBarItem.warpSetBadgeDot()
+        alerts.tabBarItem.warpSetPresenceBadge()
 
         let controller = UITabBarController()
         controller.viewControllers = [messages, alerts]
