@@ -6,8 +6,9 @@ struct SheetDemoView: View {
     @State private var title: String = "Sheet Title"
     @State private var subtitle: String = ""
     @State private var sheetStyle: Warp.SheetStyle = .medium
+    @State private var dragIndicator: Visibility = .visible
+    @State private var backgroundOption: BackgroundOption = .automatic
     @State private var useLargeTitle: Bool = false
-    @State private var showBackButton: Bool = true
     @State private var showActionButton: Bool = true
     @State private var actionIcon: Warp.Icon = .edit
     @State private var showSheet: Bool = false
@@ -26,13 +27,26 @@ struct SheetDemoView: View {
                     Text("Full Screen").tag(Warp.SheetStyle.fullScreen)
                 }
                 .pickerStyle(.segmented)
+
+                Picker("Grabber", selection: $dragIndicator) {
+                    Text("Visible").tag(Visibility.visible)
+                    Text("Hidden").tag(Visibility.hidden)
+                    Text("Automatic").tag(Visibility.automatic)
+                }
+                .pickerStyle(.segmented)
+
+                Picker("Background", selection: $backgroundOption) {
+                    ForEach(BackgroundOption.allCases, id: \.self) { option in
+                        Text(option.label).tag(option)
+                    }
+                }
+                .pickerStyle(.segmented)
             }
 
             Section("Navigation Bar") {
                 TextFieldWithClear(label: "Title:", text: $title)
                 TextFieldWithClear(label: "Subtitle:", text: $subtitle)
                 Toggle("Large Title", isOn: $useLargeTitle)
-                Toggle("Back Button", isOn: $showBackButton)
                 Toggle("Action Button", isOn: $showActionButton)
                 if showActionButton {
                     HStack {
@@ -49,14 +63,16 @@ struct SheetDemoView: View {
             SheetContentView(
                 title: title,
                 subtitle: subtitle,
-                sheetStyle: sheetStyle,
                 useLargeTitle: useLargeTitle,
-                showBackButton: showBackButton,
                 showActionButton: showActionButton,
                 actionIcon: actionIcon,
                 isPresented: $showSheet
             )
-            .warpSheetStyle(sheetStyle)
+            .warpSheetStyle(
+                sheetStyle,
+                dragIndicator: dragIndicator,
+                background: backgroundOption.background
+            )
         }
     }
 
@@ -90,35 +106,50 @@ struct SheetDemoView: View {
     }
 }
 
+private enum BackgroundOption: CaseIterable {
+    case automatic
+    case surface
+    case color
+    case none
+
+    var label: String {
+        switch self {
+        case .automatic: "Auto"
+        case .surface: "Surface"
+        case .color: "Color"
+        case .none: "None"
+        }
+    }
+
+    var background: Warp.SheetBackground {
+        switch self {
+        case .automatic: .automatic
+        case .surface: .surface
+        case .color: .color(Warp.Token.backgroundInfoSubtle)
+        case .none: .none
+        }
+    }
+}
+
 private struct SheetContentView: View {
 
     let title: String
     let subtitle: String
-    let sheetStyle: Warp.SheetStyle
     let useLargeTitle: Bool
-    let showBackButton: Bool
     let showActionButton: Bool
     let actionIcon: Warp.Icon
     @Binding var isPresented: Bool
-
-    @State private var showNestedSheet: Bool = false
-    @State private var nestedDepth: Int = 1
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: Warp.Spacing.spacing200) {
                     ForEach(1...25, id: \.self) { index in
-                        Button {
-                            nestedDepth = index
-                            showNestedSheet = true
-                        } label: {
-                            Warp.Text("Content row \(index) — tap for nested sheet", style: .body)
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(Color(UIColor.systemGray6))
-                                .cornerRadius(Warp.Spacing.spacing100)
-                        }
+                        Warp.Text("Content row \(index)", style: .body)
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(Color(UIColor.systemGray6))
+                            .cornerRadius(Warp.Spacing.spacing100)
                     }
                 }
                 .padding()
@@ -132,16 +163,9 @@ private struct SheetContentView: View {
                     view
                 }
             }
+            // Close is trailing, and the leading slot is left free for a back button, per the
+            // Warp modal spec: https://warp-ds.github.io/docs/components/modal/usage
             .toolbar {
-                if showBackButton {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            isPresented = false
-                        } label: {
-                            Warp.IconView(.chevronLeft, size: .default)
-                        }
-                    }
-                }
                 if showActionButton {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
@@ -150,60 +174,14 @@ private struct SheetContentView: View {
                         }
                     }
                 }
-            }
-            .sheet(isPresented: $showNestedSheet) {
-                NestedSheetView(depth: nestedDepth, actionIcon: actionIcon)
-                    .warpSheetStyle(.medium)
-            }
-        }
-    }
-}
-
-private struct NestedSheetView: View {
-
-    let depth: Int
-    let actionIcon: Warp.Icon
-
-    @Environment(\.dismiss) private var dismiss
-    @State private var showNextSheet: Bool = false
-
-    var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: Warp.Spacing.spacing200) {
-                    ForEach(1...10, id: \.self) { index in
-                        Button {
-                            showNextSheet = true
-                        } label: {
-                            Warp.Text("Nested row \(index) — tap for another sheet", style: .body)
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(Color(UIColor.systemGray6))
-                                .cornerRadius(Warp.Spacing.spacing100)
-                        }
-                    }
-                }
-                .padding()
-            }
-            .navigationTitle("Sheet (level \(depth + 1))")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Warp.IconView(.chevronLeft, size: .default)
-                    }
-                }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {} label: {
-                        Warp.IconView(actionIcon, size: .default)
+                    Button {
+                        isPresented = false
+                    } label: {
+                        Warp.IconView(.close, size: .default)
                     }
+                    .accessibilityLabel("Close")
                 }
-            }
-            .sheet(isPresented: $showNextSheet) {
-                NestedSheetView(depth: depth + 1, actionIcon: actionIcon)
-                    .warpSheetStyle(.medium)
             }
         }
     }
