@@ -47,12 +47,18 @@ extension Warp {
 
         public func updateUIView(_ uiView: GlassSegmentedControl, context: Context) {
             context.coordinator.parent = self
+            let coordinator = context.coordinator
+            guard items != coordinator.lastItems || selectedIdentifier != coordinator.lastSelectedIdentifier else { return }
+            coordinator.lastItems = items
+            coordinator.lastSelectedIdentifier = selectedIdentifier
             uiView.configure(items: items, selectedIdentifier: selectedIdentifier)
         }
 
         @MainActor
         public final class Coordinator: NSObject, GlassSegmentedControlDelegate {
             var parent: SegmentedControl
+            var lastItems: [Item] = []
+            var lastSelectedIdentifier: String? = nil
 
             init(parent: SegmentedControl) {
                 self.parent = parent
@@ -62,6 +68,7 @@ extension Warp {
                 _ control: GlassSegmentedControl,
                 didSelectItemWithIdentifier identifier: String
             ) {
+                lastSelectedIdentifier = identifier
                 parent.selectedIdentifier = identifier
             }
         }
