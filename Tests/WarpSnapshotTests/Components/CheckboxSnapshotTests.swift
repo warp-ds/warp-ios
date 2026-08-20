@@ -21,6 +21,7 @@ struct CheckboxSnapshotTests {
             "\(style.description)Style",
             "\(axis.description)",
         ].joined(separator: ".")
+        Warp.Theme = brand
 
         let options = [
             ExampleOption(title: "Option 1", isSelected: .constant(false)),

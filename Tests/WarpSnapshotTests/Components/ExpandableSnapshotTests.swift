@@ -16,6 +16,7 @@ struct ExpandableSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllExpandableInColumn(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let expandableViews = Self.allArgumentsCombined.map { style, isExpanded in
             Warp.Expandable(
                 style: style,

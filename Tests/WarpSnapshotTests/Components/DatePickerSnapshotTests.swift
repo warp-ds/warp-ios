@@ -10,6 +10,7 @@ struct DatePickerSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotInlineDatePicker(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let fixedDate = Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 15))!
 
         let datePickerView = DatePicker(
@@ -29,6 +30,7 @@ struct DatePickerSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotInlineRangedDatePicker(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let fixedDate = Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 15))!
 
         let datePickerView = DatePicker(
@@ -49,6 +51,7 @@ struct DatePickerSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotInlineDatePickerWithTime(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let fixedDate = Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 15, hour: 9, minute: 41))!
 
         let datePickerView = DatePicker(

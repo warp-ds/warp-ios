@@ -36,6 +36,7 @@ struct StepIndicatorSnapshotTests {
             ".\(brand.description)",
             "\(orientation.description)",
         ].compactMap { $0 }.joined(separator: ".")
+        Warp.Theme = brand
         let stepModel = try Warp.StepIndicatorModel(from: stepsModelItems)
         let stepIndicator = Warp.StepIndicator(
             layoutOrientation: orientation,

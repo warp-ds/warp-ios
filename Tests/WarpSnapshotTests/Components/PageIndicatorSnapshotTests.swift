@@ -9,6 +9,7 @@ struct PageIndicatorSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllPageIndicators(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let pageIndicator = Warp.PageIndicator(
             pageCount: 4,
             selectedPage: .constant(0)

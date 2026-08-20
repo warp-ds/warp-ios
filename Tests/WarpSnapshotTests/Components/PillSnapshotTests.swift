@@ -11,6 +11,7 @@ struct PillSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllPillsInColumn(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let pillViews = Self.pillStyles.map { pillStyle in
             createView(for: pillStyle)
         }

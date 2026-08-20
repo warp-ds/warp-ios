@@ -35,6 +35,7 @@ struct ButtonSnapshotTests {
             ".\(brand.description)",
             "\(buttonType.description)"
         ].compactMap { $0 }.joined(separator: ".")
+        Warp.Theme = brand
         let configurations = combine(
             Self.buttonSizes,
             Self.leadingIconProvider,

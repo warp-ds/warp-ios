@@ -9,6 +9,7 @@ struct IconSnapshotTests {
     @Test
     func snapshotRegularIcons() {
         let brand = Warp.Brand.vend
+        Warp.Theme = brand
         let icons = Warp.Icon.allCases
 
         let allIconsInRowView = VStack(alignment: .leading) {

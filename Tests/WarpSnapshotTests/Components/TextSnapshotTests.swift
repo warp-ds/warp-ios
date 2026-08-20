@@ -11,6 +11,7 @@ struct TextSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotTextVariants(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let textViews = Self.textVariants.map { variant in
             Warp.Text(String(describing: variant).capitalized, style: variant)
                 .padding()

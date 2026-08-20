@@ -6,7 +6,6 @@ private struct WarpNavigationBarButtonModifier: ViewModifier {
 
     private var token: TokenProvider { theme.token }
     private var colors: ColorProvider { theme.colors }
-    private var fonts: [Warp.Font] { theme.fonts }
 
     let style: Warp.NavigationBarButtonStyle
 

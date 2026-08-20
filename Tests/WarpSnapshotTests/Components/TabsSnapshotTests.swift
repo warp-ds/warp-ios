@@ -21,6 +21,7 @@ struct TabsSnapshotTests {
             isScrollable ? "Scrollable" : nil,
             hasIcons ? "Icon" : nil
         ].compactMap { $0 }.joined(separator: ".")
+        Warp.Theme = brand
 
         let tabItems = [
             Warp.TabItem(title: "Tab 1", icon: .listSort),

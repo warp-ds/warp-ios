@@ -11,6 +11,7 @@ struct TooltipSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllTooltips(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let tooltips = Self.tooltipEdges.map { edge in
             Warp.Tooltip(
                 title: "Tooltip at \(edge.description) edge",

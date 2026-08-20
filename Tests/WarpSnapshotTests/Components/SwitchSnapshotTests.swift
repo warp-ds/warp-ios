@@ -9,6 +9,7 @@ struct SwitchSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllSwitches(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let switches = [
             Warp.Switch(isOn: .constant(true), state: .default),
             Warp.Switch(isOn: .constant(false), state: .default),

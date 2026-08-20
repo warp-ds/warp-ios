@@ -42,6 +42,7 @@ struct AlertSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllAlertsInColumn(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let alertViews = Self.allArgumentsCombined.map { (style, title, subtitle, link, primary, secondary) in
             Warp.Alert(
                 style: style,

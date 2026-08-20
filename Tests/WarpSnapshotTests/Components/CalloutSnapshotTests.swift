@@ -21,6 +21,7 @@ struct CalloutSnapshotTests {
             ".\(size.description)Size",
             isDismissable ? "Dismissable" : nil,
         ].compactMap { $0 }.joined(separator: ".")
+        Warp.Theme = brand
 
         let calloutsInColumnView = VStack(alignment: .leading) {
             inlineViews(size: size)

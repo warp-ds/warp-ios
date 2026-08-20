@@ -14,6 +14,7 @@ struct BadgeSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func testBadgeSnapshots(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let badgeViews = Self.allArgumentsCombined.map { (icon, variant, position) in
             Warp.Badge(
                 text: "\(variant.rawValue) - \(position.rawValue)",

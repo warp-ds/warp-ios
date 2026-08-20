@@ -9,6 +9,7 @@ struct RangeSliderSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotRangeSliders(brand: Warp.Brand) {
         let snapshotName = "\(brand.description)"
+        Warp.Theme = brand
         let combinedView = VStack {
             Spacer(minLength: 40)
             VStack {

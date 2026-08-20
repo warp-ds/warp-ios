@@ -11,6 +11,7 @@ struct LogoSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllLogos(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let logoViews = logos.map { logo in
             Warp.Logo(for: logo)
         }

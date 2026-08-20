@@ -11,6 +11,7 @@ struct TextAreaSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllTextAreas(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let textAreas = Self.textAreaStyles.map { style in
             Warp.TextArea(
                 title:"\(style.rawValue.capitalized) style",

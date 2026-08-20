@@ -30,6 +30,7 @@ struct SnackbarSnapshotTests {
             "ShowCloseButton\(showCloseButton.description.capitalized)",
             actionMode.description
         ].compactMap { $0 }.joined(separator: ".")
+        Warp.Theme = brand
 
         let action = Warp.Snackbar.Action(title: "Action") {}
 

@@ -21,6 +21,7 @@ struct BroadcastSnapshotTests {
             "\(edge.description)Edge",
             isDismissable ? "Dismissable" : nil,
         ].compactMap { $0 }.joined(separator: ".")
+        Warp.Theme = brand
 
         let broadCast = EmptyView()
             .warpBroadcast(

@@ -10,6 +10,7 @@ struct DividerSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotDivider(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let dividerView = VStack(spacing: 40) {
             Text(brand.description)
               .font(.headline)

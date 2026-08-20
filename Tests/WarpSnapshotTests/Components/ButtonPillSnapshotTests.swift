@@ -15,6 +15,7 @@ struct ButtonPillSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllButtonPills(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let configurations = combine(
             Self.buttonPillTypes,
             Self.isSelectedProvider

@@ -11,6 +11,7 @@ struct TextFieldSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllTextFields(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
+        Warp.Theme = brand
         let textFields = Self.textFieldStyles.map { style in
             Warp.TextField(
                 title: "\(style.rawValue.capitalized) style",

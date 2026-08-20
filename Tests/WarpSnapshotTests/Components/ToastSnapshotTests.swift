@@ -23,6 +23,7 @@ struct ToastSnapshotTests {
             "\(style.description)Style",
             "\(edge.description)Edge"
         ].compactMap { $0 }.joined(separator: ".")
+        Warp.Theme = brand
 
         let toastView = EmptyView()
             .warpToast(
