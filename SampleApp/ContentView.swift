@@ -26,7 +26,8 @@ struct ContentView: View {
         var items: [(String, any View)] = [
             ("Alert (Native)", AlertDialogView()),
             ("Bottom nav / Tab Bar", TabBarDemoView()),
-            ("Confirmation Dialog", ConfirmationDialogView())
+            ("Confirmation Dialog", ConfirmationDialogView()),
+            ("Menu / Context Menu", MenuDemoView())
         ]
         if #available(iOS 26.0, *) {
             items += [
