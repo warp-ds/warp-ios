@@ -12,6 +12,7 @@ struct StateViewSnapshotTests {
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
+        Warp.Theme = .finn
 
         let stateView = StateView(
             image: .icon(.check),
@@ -34,6 +35,7 @@ struct StateViewSnapshotTests {
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotStateViewSizeOverrided(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
+        Warp.Theme = .finn
 
         let stateView = StateView(
             image: .icon(.check),
@@ -57,6 +59,7 @@ struct StateViewSnapshotTests {
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotFailToLoadStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
+        Warp.Theme = .finn
         
         let stateView = FailToLoadStateView(retryAction: {})
           .padding()
@@ -68,6 +71,7 @@ struct StateViewSnapshotTests {
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotLoadingStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
+        Warp.Theme = .finn
         
         let stateView = LoadingStateView()
           .padding()
@@ -79,6 +83,7 @@ struct StateViewSnapshotTests {
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotLoginStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
+        Warp.Theme = .finn
         
         let stateView = LoginStateView(loginAction: {}, createAccountAction: {})
           .padding()
@@ -90,6 +95,7 @@ struct StateViewSnapshotTests {
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotNoNetworkStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
+        Warp.Theme = .finn
         
         let stateView = NoNetworkStateView(retryAction: {})
           .padding()
@@ -101,6 +107,7 @@ struct StateViewSnapshotTests {
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotNoSearchResultsStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
+        Warp.Theme = .finn
         
         let stateView = NoSearchResultsStateView(saveSearchAction: {}, clearFiltersAction: {})
           .padding()
@@ -112,6 +119,7 @@ struct StateViewSnapshotTests {
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotVerifyIdentityStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
+        Warp.Theme = .finn
         
         let stateView = VerifyIdentityStateView(eidProvider: "BankID", verifyAction: {})
           .padding()
