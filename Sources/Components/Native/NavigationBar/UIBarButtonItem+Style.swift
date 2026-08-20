@@ -32,22 +32,18 @@ extension UIBarButtonItem {
             self.style = .plain
             tintColor = tint
             setTitleTextAttributes([
-                .foregroundColor: Warp.UIColor.token.text,
                 .font: Warp.Typography.body.uiFont
             ], for: .normal)
             setTitleTextAttributes([
-                .foregroundColor: Warp.UIColor.token.text,
                 .font: Warp.Typography.body.uiFont
             ], for: .highlighted)
         case .primary:
             self.style = .prominent
             tintColor = primaryTint
             setTitleTextAttributes([
-                .foregroundColor: Warp.UIColor.token.text,
                 .font: Warp.Typography.title4.uiFont
             ], for: .normal)
             setTitleTextAttributes([
-                .foregroundColor: Warp.UIColor.token.text,
                 .font: Warp.Typography.title4.uiFont
             ], for: .highlighted)
         }

@@ -24,14 +24,12 @@ private extension UINavigationBarAppearance {
         
         let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
         buttonAppearance.normal.titleTextAttributes = [
-            .foregroundColor: Warp.UIColor.token.text,
             .font: Warp.Typography.body.uiFont
         ]
         appearance.buttonAppearance = buttonAppearance
         
         let prominentButtonAppearance = UIBarButtonItemAppearance(style: .prominent)
         let prominentButtonAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: Warp.UIColor.token.textInverted,
             .font: Warp.Typography.title4.uiFont
         ]
         prominentButtonAppearance.normal.titleTextAttributes = prominentButtonAttributes
