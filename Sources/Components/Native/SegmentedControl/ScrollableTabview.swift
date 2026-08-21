@@ -62,14 +62,14 @@ final class ScrollableTabView: UIView {
         snap.appendItems(items, toSection: 0)
         dataSource.apply(snap)
 
-        if let id = selectedIdentifier,
-           let idx = items.firstIndex(where: { $0.identifier == id }) {
-            collectionView.selectItem(
-                at: IndexPath(item: idx, section: 0),
-                animated: false,
-                scrollPosition: .centeredHorizontally
-            )
+        let indexPath = selectedIdentifier.flatMap { id in
+            items.firstIndex(where: { $0.identifier == id }).map { IndexPath(item: $0, section: 0) }
         }
+        collectionView.selectItem(
+            at: indexPath,
+            animated: false,
+            scrollPosition: .centeredHorizontally
+        )
     }
 
     func updateShadow(using scrollView: UIScrollView, scrollViewParentView: UIView? = nil) {
