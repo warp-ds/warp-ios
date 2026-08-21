@@ -6,7 +6,7 @@ final class GlassControlContainer<Content: UIView>: UIView {
     private let effectView: UIVisualEffectView
     private let borderColor: UIColor
 
-    public init(
+    init(
         content: Content,
         cornerRadius: CGFloat,
         borderWidth: CGFloat,

@@ -10,7 +10,7 @@ final class ScrollableTabView: UIView {
         CGSize(width: UIView.noIntrinsicMetric, height: TabCell.cellHeight)
     }
 
-    private var items: [GlassSegmentedControl.Item] = []
+    private var items: [Warp.GlassSegmentedControl.Item] = []
     private lazy var dataSource = makeDataSource()
 
     private lazy var collectionView: UICollectionView = {
@@ -55,9 +55,9 @@ final class ScrollableTabView: UIView {
         layer.shadowPath = UIBezierPath(rect: rect).cgPath
     }
 
-    func configure(items: [GlassSegmentedControl.Item], selectedIdentifier: String?) {
+    func configure(items: [Warp.GlassSegmentedControl.Item], selectedIdentifier: String?) {
         self.items = items
-        var snap = NSDiffableDataSourceSnapshot<Int, GlassSegmentedControl.Item>()
+        var snap = NSDiffableDataSourceSnapshot<Int, Warp.GlassSegmentedControl.Item>()
         snap.appendSections([0])
         snap.appendItems(items, toSection: 0)
         dataSource.apply(snap)
@@ -94,7 +94,7 @@ final class ScrollableTabView: UIView {
 
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .continuous
-            section.interGroupSpacing = 32
+            section.interGroupSpacing = Warp.Spacing.spacing400
             section.contentInsets = NSDirectionalEdgeInsets(
                 top: 0, leading: Warp.Spacing.spacing200,
                 bottom: 0, trailing: Warp.Spacing.spacing200
@@ -103,7 +103,7 @@ final class ScrollableTabView: UIView {
         }
     }
 
-    private func makeDataSource() -> UICollectionViewDiffableDataSource<Int, GlassSegmentedControl.Item> {
+    private func makeDataSource() -> UICollectionViewDiffableDataSource<Int, Warp.GlassSegmentedControl.Item> {
         UICollectionViewDiffableDataSource(collectionView: collectionView) { cv, indexPath, item in
             let cell = cv.dequeueReusableCell(withReuseIdentifier: TabCell.reuseID, for: indexPath) as! TabCell
             cell.configure(title: item.title)
@@ -113,14 +113,9 @@ final class ScrollableTabView: UIView {
 }
 
 extension ScrollableTabView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        guard !(collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false),
-              indexPath.item < items.count else { return true }
-        onSelect?(items[indexPath.item].identifier)
-        return true
-    }
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard indexPath.item < items.count else { return }
+        onSelect?(items[indexPath.item].identifier)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }

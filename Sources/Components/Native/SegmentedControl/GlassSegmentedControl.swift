@@ -1,19 +1,20 @@
 import UIKit
 
-// MARK: - Delegate
+extension Warp {
+    // MARK: - Delegate
 
-@MainActor
-public protocol GlassSegmentedControlDelegate: AnyObject {
-    func glassSegmentedControl(
-        _ control: GlassSegmentedControl,
-        didSelectItemWithIdentifier identifier: String
-    )
-}
+    @MainActor
+    public protocol GlassSegmentedControlDelegate: AnyObject {
+        func glassSegmentedControl(
+            _ control: GlassSegmentedControl,
+            didSelectItemWithIdentifier identifier: String
+        )
+    }
 
-// MARK: - GlassSegmentedControl
+    // MARK: - GlassSegmentedControl
 
-@MainActor
-public final class GlassSegmentedControl: UIView {
+    @MainActor
+    public final class GlassSegmentedControl: UIView {
 
     // MARK: - Item
 
@@ -226,10 +227,11 @@ public final class GlassSegmentedControl: UIView {
     }
 }
 
-// MARK: - ControlScrollView
+    // MARK: - ControlScrollView
 
-private class ControlScrollView: UIScrollView {
-    override func touchesShouldCancel(in view: UIView) -> Bool {
-        true
+    private class ControlScrollView: UIScrollView {
+        override func touchesShouldCancel(in view: UIView) -> Bool {
+            true
+        }
     }
 }

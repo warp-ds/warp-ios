@@ -32,20 +32,20 @@ extension Warp {
             Coordinator(parent: self)
         }
 
-        public func makeUIView(context: Context) -> GlassSegmentedControl {
-            let control = GlassSegmentedControl()
+        public func makeUIView(context: Context) -> Warp.GlassSegmentedControl {
+            let control = Warp.GlassSegmentedControl()
             control.translatesAutoresizingMaskIntoConstraints = true
             control.delegate = context.coordinator
             return control
         }
 
-        public func sizeThatFits(_ proposal: ProposedViewSize, uiView: GlassSegmentedControl, context: Context) -> CGSize? {
+        public func sizeThatFits(_ proposal: ProposedViewSize, uiView: Warp.GlassSegmentedControl, context: Context) -> CGSize? {
             let height = uiView.intrinsicContentSize.height
             guard height != UIView.noIntrinsicMetric, height > 0 else { return nil }
             return CGSize(width: proposal.width ?? 0, height: height)
         }
 
-        public func updateUIView(_ uiView: GlassSegmentedControl, context: Context) {
+        public func updateUIView(_ uiView: Warp.GlassSegmentedControl, context: Context) {
             context.coordinator.parent = self
             let coordinator = context.coordinator
             guard items != coordinator.lastItems || selectedIdentifier != coordinator.lastSelectedIdentifier else { return }
@@ -55,7 +55,7 @@ extension Warp {
         }
 
         @MainActor
-        public final class Coordinator: NSObject, GlassSegmentedControlDelegate {
+        public final class Coordinator: NSObject, Warp.GlassSegmentedControlDelegate {
             var parent: SegmentedControl
             var lastItems: [Item] = []
             var lastSelectedIdentifier: String? = nil
@@ -65,7 +65,7 @@ extension Warp {
             }
 
             public func glassSegmentedControl(
-                _ control: GlassSegmentedControl,
+                _ control: Warp.GlassSegmentedControl,
                 didSelectItemWithIdentifier identifier: String
             ) {
                 lastSelectedIdentifier = identifier
