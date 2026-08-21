@@ -40,9 +40,11 @@ extension Warp {
         }
 
         public func sizeThatFits(_ proposal: ProposedViewSize, uiView: Warp.GlassSegmentedControl, context: Context) -> CGSize? {
-            let height = uiView.intrinsicContentSize.height
-            guard height != UIView.noIntrinsicMetric, height > 0 else { return nil }
-            return CGSize(width: proposal.width ?? 0, height: height)
+            let intrinsicSize = uiView.intrinsicContentSize
+            guard intrinsicSize.height != UIView.noIntrinsicMetric, intrinsicSize.height > 0 else { return nil }
+
+            guard let width = proposal.width else { return nil }
+            return CGSize(width: width, height: intrinsicSize.height)
         }
 
         public func updateUIView(_ uiView: Warp.GlassSegmentedControl, context: Context) {
@@ -89,7 +91,6 @@ extension Warp {
             ],
             selectedIdentifier: $selected
         )
-        .fixedSize(horizontal: false, vertical: true)
 
         Text("Selected: \(selected ?? "none")")
     }
