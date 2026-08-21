@@ -25,6 +25,7 @@ struct SegmentedControlDemoView: View {
                     items: items.map { .init(identifier: $0.identifier, title: $0.title) },
                     selectedIdentifier: $selectedIdentifier
                 )
+                .padding(.horizontal, Warp.Spacing.spacing200)
                 .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0))
 
                 if let selected = selectedIdentifier {

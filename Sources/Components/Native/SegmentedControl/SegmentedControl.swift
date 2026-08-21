@@ -91,6 +91,7 @@ extension Warp {
             ],
             selectedIdentifier: $selected
         )
+        .padding(.horizontal, Warp.Spacing.spacing200)
 
         Text("Selected: \(selected ?? "none")")
     }

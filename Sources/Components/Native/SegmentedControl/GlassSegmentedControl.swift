@@ -153,8 +153,8 @@ extension Warp {
 
         NSLayoutConstraint.activate([
             glassContainer.topAnchor.constraint(equalTo: topAnchor),
-            glassContainer.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Warp.Spacing.spacing200),
-            glassContainer.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -Warp.Spacing.spacing200),
+            glassContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
+            glassContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             glassContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             segmentedControl.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
