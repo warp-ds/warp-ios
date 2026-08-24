@@ -100,7 +100,9 @@ public enum Warp {
             Warp.Typography.self
         }
 
-        /// Fonts for this brand
+        /// Fonts associated with this brand, used for font registration.
+        ///
+        /// Use `Warp.Typography.registerFonts(for: brand)` to register fonts for a brand.
         var fonts: [Warp.Font] {
             Warp.Font.fonts(for: self)
         }

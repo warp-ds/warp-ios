@@ -101,7 +101,7 @@ extension Warp {
         /// - Warning: This uses the global `Warp.Theme` variable. Consider using `fonts(for:)` with an explicit theme instead.
         @available(*, deprecated, message: "Use fonts(for:) with explicit theme parameter instead of global Warp.Theme")
         static var fontForTheme: [Font] {
-            fonts(for: Warp.Theme)
+            Warp.Theme.fonts
         }
     }
 }

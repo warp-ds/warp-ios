@@ -11,7 +11,6 @@ struct PillSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllPillsInColumn(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
         Warp.Theme = brand
         let pillViews = Self.pillStyles.map { pillStyle in
             createView(for: pillStyle)
@@ -26,7 +25,7 @@ struct PillSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: pillsInColumnView, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: pillsInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
 
     private func createView(for style: Warp.PillStyle) -> some View {

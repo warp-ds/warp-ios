@@ -24,7 +24,7 @@ struct DatePickerSnapshotTests {
         .padding()
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: datePickerView, as: .warpImage, named: snapshotName)
+        assertSnapshot(of: datePickerView.warpTheme(brand), as: .warpImage, named: snapshotName)
     }
 
     @Test(arguments: Warp.Brand.allCases)
@@ -45,7 +45,7 @@ struct DatePickerSnapshotTests {
         .padding()
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: datePickerView, as: .warpImage, named: snapshotName)
+        assertSnapshot(of: datePickerView.warpTheme(brand), as: .warpImage, named: snapshotName)
     }
 
     @Test(arguments: Warp.Brand.allCases)
@@ -65,6 +65,6 @@ struct DatePickerSnapshotTests {
         .padding()
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: datePickerView, as: .warpImage, named: snapshotName)
+        assertSnapshot(of: datePickerView.warpTheme(brand), as: .warpImage, named: snapshotName)
     }
 }

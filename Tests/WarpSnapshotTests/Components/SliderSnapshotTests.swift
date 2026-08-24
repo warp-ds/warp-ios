@@ -9,9 +9,7 @@ struct SliderSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotSliders(brand: Warp.Brand) {
         let snapshotName = "\(brand.description)"
-        // Set the theme to the current brand
         Warp.Theme = brand
-
         let combinedView = VStack {
             Spacer(minLength: 40)
             VStack {
@@ -73,6 +71,6 @@ struct SliderSnapshotTests {
         }
           .padding()
 
-        assertSnapshot(of: combinedView, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: combinedView.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
 }

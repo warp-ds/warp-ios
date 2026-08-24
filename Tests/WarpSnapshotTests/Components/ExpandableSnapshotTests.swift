@@ -16,7 +16,6 @@ struct ExpandableSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllExpandableInColumn(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
         Warp.Theme = brand
         let expandableViews = Self.allArgumentsCombined.map { style, isExpanded in
             Warp.Expandable(
@@ -37,6 +36,6 @@ struct ExpandableSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: expandableInColumnView, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: expandableInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
 }

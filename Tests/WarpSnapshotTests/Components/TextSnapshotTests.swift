@@ -11,9 +11,7 @@ struct TextSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotTextVariants(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
         Warp.Theme = brand
-
         let textViews = Self.textVariants.map { variant in
             Warp.Text(String(describing: variant).capitalized, style: variant)
                 .padding()
@@ -28,6 +26,6 @@ struct TextSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: textViewsInColumn, as: .warpImage(compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: textViewsInColumn.warpTheme(brand), as: .warpImage(compressionQuality: .high), named: snapshotName)
     }
 }

@@ -21,8 +21,6 @@ struct CheckboxSnapshotTests {
             "\(style.description)Style",
             "\(axis.description)",
         ].joined(separator: ".")
-
-        // Set the theme to the current brand
         Warp.Theme = brand
 
         let options = [
@@ -30,12 +28,12 @@ struct CheckboxSnapshotTests {
             ExampleOption(
                 title: "Option 2",
                 isSelected: .constant(true),
-                extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(Warp.Token.iconPrimary))
+                extraContent: AnyView(Image(systemName: "star.fill").foregroundColor(brand.token.iconPrimary))
             ),
             ExampleOption(
                 title: style == .disabled ? "Option disabled" : "Option 3",
                 isSelected: .constant(false),
-                extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(style == .disabled ? Warp.Token.textDisabled : Warp.Token.textSubtle))
+                extraContent: AnyView(Text("Extra Info").font(Warp.Typography.body.font).foregroundColor(style == .disabled ? brand.token.textDisabled : brand.token.textSubtle))
             )
         ]
 
@@ -51,7 +49,7 @@ struct CheckboxSnapshotTests {
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
         assertSnapshot(
-            of: checkboxView,
+            of: checkboxView.warpTheme(brand),
             as: .warpImage(compressionQuality: .medium),
             named: snapshotName
         )

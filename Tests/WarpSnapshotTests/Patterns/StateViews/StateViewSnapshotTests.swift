@@ -12,7 +12,6 @@ struct StateViewSnapshotTests {
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
-
         Warp.Theme = .finn
 
         let stateView = StateView(
@@ -30,13 +29,12 @@ struct StateViewSnapshotTests {
           .padding()
           .frame(width: device.size!.width, height: device.size!.height)
 
-        assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: stateView.warpTheme(.finn), as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
 
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotStateViewSizeOverrided(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
-
         Warp.Theme = .finn
 
         let stateView = StateView(
@@ -55,85 +53,79 @@ struct StateViewSnapshotTests {
           .padding()
           .frame(width: device.size!.width, height: device.size!.height)
 
-        assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: stateView.warpTheme(.finn), as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
 
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotFailToLoadStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
-        
         Warp.Theme = .finn
-
+        
         let stateView = FailToLoadStateView(retryAction: {})
           .padding()
           .frame(width: device.size!.width, height: device.size!.height)
 
-        assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: stateView.warpTheme(.finn), as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
 
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotLoadingStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
-        
         Warp.Theme = .finn
-
+        
         let stateView = LoadingStateView()
           .padding()
           .frame(width: device.size!.width, height: device.size!.height)
 
-        assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: stateView.warpTheme(.finn), as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
 
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotLoginStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
-        
         Warp.Theme = .finn
-
+        
         let stateView = LoginStateView(loginAction: {}, createAccountAction: {})
           .padding()
           .frame(width: device.size!.width, height: device.size!.height)
 
-        assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: stateView.warpTheme(.finn), as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
 
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotNoNetworkStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
-        
         Warp.Theme = .finn
-
+        
         let stateView = NoNetworkStateView(retryAction: {})
           .padding()
           .frame(width: device.size!.width, height: device.size!.height)
 
-        assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: stateView.warpTheme(.finn), as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
 
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotNoSearchResultsStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
-        
         Warp.Theme = .finn
-
+        
         let stateView = NoSearchResultsStateView(saveSearchAction: {}, clearFiltersAction: {})
           .padding()
           .frame(width: device.size!.width, height: device.size!.height)
 
-        assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: stateView.warpTheme(.finn), as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
 
     @Test(arguments: combine(userInterfaceStyles, devices))
     func snapshotVerifyIdentityStateView(style: UIUserInterfaceStyle, device: ViewImageConfig) {
         let snapshotName = snapshotName(for: style, device: device)
-        
         Warp.Theme = .finn
-
+        
         let stateView = VerifyIdentityStateView(eidProvider: "BankID", verifyAction: {})
           .padding()
           .frame(width: device.size!.width, height: device.size!.height)
 
-        assertSnapshot(of: stateView, as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: stateView.warpTheme(.finn), as: .warpImage(traits: style.traits, compressionQuality: .high), named: snapshotName)
     }
 
     private func snapshotName(for style: UIUserInterfaceStyle, device: ViewImageConfig) -> String {

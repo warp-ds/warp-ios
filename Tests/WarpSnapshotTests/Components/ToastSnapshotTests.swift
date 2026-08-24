@@ -23,8 +23,6 @@ struct ToastSnapshotTests {
             "\(style.description)Style",
             "\(edge.description)Edge"
         ].compactMap { $0 }.joined(separator: ".")
-
-        // Set the theme to the current brand
         Warp.Theme = brand
 
         let toastView = EmptyView()
@@ -38,7 +36,7 @@ struct ToastSnapshotTests {
             )
 
         assertSnapshot(
-            of: toastView,
+            of: toastView.warpTheme(brand),
             as: .warpImage(layout: .device(config: .iPhone13), compressionQuality: .high),
             named: snapshotName
         )

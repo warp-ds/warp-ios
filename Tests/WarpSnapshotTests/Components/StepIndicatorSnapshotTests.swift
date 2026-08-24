@@ -36,9 +36,7 @@ struct StepIndicatorSnapshotTests {
             ".\(brand.description)",
             "\(orientation.description)",
         ].compactMap { $0 }.joined(separator: ".")
-        // Set the theme to the current brand
         Warp.Theme = brand
-
         let stepModel = try Warp.StepIndicatorModel(from: stepsModelItems)
         let stepIndicator = Warp.StepIndicator(
             layoutOrientation: orientation,
@@ -48,7 +46,7 @@ struct StepIndicatorSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width + (orientation == .horizontal ? 70 : 0)) // Adjust for horizontal
 
-        assertSnapshot(of: stepIndicator, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: stepIndicator.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
 }
 

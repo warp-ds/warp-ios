@@ -30,8 +30,6 @@ struct SnackbarSnapshotTests {
             "ShowCloseButton\(showCloseButton.description.capitalized)",
             actionMode.description
         ].compactMap { $0 }.joined(separator: ".")
-
-        // Set the theme to the current brand
         Warp.Theme = brand
 
         let action = Warp.Snackbar.Action(title: "Action") {}
@@ -77,7 +75,7 @@ struct SnackbarSnapshotTests {
         }
 
         assertSnapshot(
-            of: snackbarView,
+            of: snackbarView.warpTheme(brand),
             as: .warpImage(layout: .device(config: .iPhone13), compressionQuality: .high),
             named: snapshotName
         )

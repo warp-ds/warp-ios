@@ -11,9 +11,7 @@ struct TextAreaSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllTextAreas(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
         Warp.Theme = brand
-
         let textAreas = Self.textAreaStyles.map { style in
             Warp.TextArea(
                 title:"\(style.rawValue.capitalized) style",
@@ -36,7 +34,7 @@ struct TextAreaSnapshotTests {
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: textAreasInColumnView, as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: textAreasInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
     }
 
     private var createTooltipView: AnyView {

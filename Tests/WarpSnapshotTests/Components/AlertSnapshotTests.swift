@@ -42,7 +42,6 @@ struct AlertSnapshotTests {
     @Test(arguments: Warp.Brand.allCases)
     func snapshotAllAlertsInColumn(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
         Warp.Theme = brand
         let alertViews = Self.allArgumentsCombined.map { (style, title, subtitle, link, primary, secondary) in
             Warp.Alert(
@@ -64,7 +63,7 @@ struct AlertSnapshotTests {
             // Set width to match iPhone 13 size
             .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: alertsInColumnView, as: .warpImage(compressionQuality: .high), named: snapshotName)
+        assertSnapshot(of: alertsInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .high), named: snapshotName)
     }
 }
 

@@ -36,7 +36,6 @@ struct BoxSnapshotTests {
     )
     func snapshotAllBoxesInColumn(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
-        // Set the theme to the current brand
         Warp.Theme = brand
         let boxViews = Self.allArgumentsCombined.map { (style, badge, link, button) in
             Warp.Box(
@@ -63,6 +62,7 @@ struct BoxSnapshotTests {
             .padding(8)
             // Set width to match iPhone 13 size
             .frame(width: ViewImageConfig.iPhone13.size!.width)
+            .warpTheme(brand)
 
             assertSnapshot(of: boxesInColumnView, as: .warpImage(compressionQuality: .high), named: "\(snapshotName).part\(index)")
         }
