@@ -1,37 +1,8 @@
 import UIKit
 
-private extension UINavigationBarAppearance {
-
-    static func warpNavigationBarSolid() -> UINavigationBarAppearance {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = Warp.UIColor.token.surfaceElevated100
-        appearance.largeTitleTextAttributes = [
-            .foregroundColor: Warp.UIColor.token.text,
-            .font: Warp.Typography.title1.uiFont
-        ]
-        appearance.titleTextAttributes = [
-            .foregroundColor: Warp.UIColor.token.text,
-            .font: Warp.Typography.title4.uiFont
-        ]
-
-        let backImage = Warp.Icon.chevronLeft.uiImage
-        appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
-
-        let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
-        buttonAppearance.normal.titleTextAttributes = [
-            .foregroundColor: Warp.UIColor.token.text,
-            .font: Warp.Typography.body.uiFont
-        ]
-        appearance.buttonAppearance = buttonAppearance
-
-        return appearance
-    }
-}
-
 @available(iOS 26.0, *)
 private extension UINavigationBarAppearance {
-
+    
     static func warpNavigationBarLiquidGlass() -> UINavigationBarAppearance {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
@@ -68,51 +39,6 @@ private extension UINavigationBarAppearance {
         appearance.prominentButtonAppearance = prominentButtonAppearance
         
         return appearance
-    }
-}
-
-extension UINavigationBar {
-
-    /// Applies Warp design style globally to all navigation bars with a solid opaque background.
-    ///
-    /// This static method configures the global appearance of all UINavigationBar instances with:
-    /// - Opaque background using `surfaceElevated100`
-    /// - Title text styled with Warp typography and colors
-    /// - Back arrow styled with Warp's chevronLeft icon
-    /// - Bar button items styled with Warp's text colors
-    public static func warpSolidStyle() {
-        let appearance = UINavigationBarAppearance.warpNavigationBarSolid()
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().tintColor = Warp.UIColor.token.icon
-        UINavigationBar.appearance().isTranslucent = false
-    }
-
-    /// Applies Warp design style to an individual navigation bar instance with a solid opaque background.
-    public func warpSolidStyle() {
-        let appearance = UINavigationBarAppearance.warpNavigationBarSolid()
-        standardAppearance = appearance
-        compactAppearance = appearance
-        scrollEdgeAppearance = appearance
-    }
-
-    /// Applies Warp design style globally, automatically selecting Liquid Glass (iOS 26+) or solid appearance.
-    public static func warpStyle() {
-        if #available(iOS 26.0, *) {
-            warpLiquidGlassStyle()
-        } else {
-            warpSolidStyle()
-        }
-    }
-
-    /// Applies Warp design style to an individual navigation bar, automatically selecting Liquid Glass (iOS 26+) or solid appearance.
-    public func warpStyle() {
-        if #available(iOS 26.0, *) {
-            warpLiquidGlassStyle()
-        } else {
-            warpSolidStyle()
-        }
     }
 }
 
@@ -178,16 +104,6 @@ extension UINavigationBar {
 }
 
 extension UINavigationController {
-
-    /// Applies Warp design style to the navigation controller's navigation bar,
-    /// automatically selecting Liquid Glass (iOS 26+) or solid appearance.
-    public func warpStyle() {
-        if #available(iOS 26.0, *) {
-            warpLiquidGlassStyle()
-        } else {
-            navigationBar.warpSolidStyle()
-        }
-    }
 
     /// Applies Warp design style to the navigation controller's navigation bar with Liquid Glass styling (iOS 26+).
     ///
