@@ -14,7 +14,6 @@ struct ThemePreviewModifier: PreviewModifier {
     }
  }
 
-@available(iOS 18.0, *)
 public extension PreviewTrait where T == Preview.ViewTraits {
     /// Preview modifier that sets the Blocket Warp theme via environment.
     static let themeBlocket = PreviewTrait.modifier(ThemePreviewModifier(theme: .blocket))

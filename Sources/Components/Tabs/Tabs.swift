@@ -100,7 +100,6 @@ extension Warp {
     }
 }
 
-@available(iOS 17.0, *)
 #Preview {
     @Previewable @State var selectedIndex1 = 0
     @Previewable @State var selectedIndex2 = 0

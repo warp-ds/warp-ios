@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "warp-ios",
     platforms: [
-        .iOS(.v17)
+        .iOS("18.0")
     ],
     products: [
         .library(

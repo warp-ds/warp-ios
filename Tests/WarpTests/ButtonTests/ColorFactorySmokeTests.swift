@@ -2,7 +2,6 @@ import XCTest
 import SwiftUI
 @testable import Warp
 
-@available(iOS 17.0, *) // resolve(in:) color method supported from iOS 17.0
 final class ColorFactorySmokeTests: XCTestCase {
     private typealias ColorFactory = Warp.Button.ColorFactory
 
