@@ -28,7 +28,8 @@ struct ContentView: View {
             ("Bottom nav / Tab Bar", TabBarDemoView()),
             ("Confirmation Dialog", ConfirmationDialogView()),
             ("Menu / Context Menu", MenuDemoView()),
-            ("Segmented Control", SegmentedControlDemoView())
+            ("Segmented Control", SegmentedControlDemoView()),
+            ("Glass Capsule Segmented Control", GlassCapsuleSegmentedControlDemoView())
         ]
         if #available(iOS 26.0, *) {
             items += [

@@ -310,6 +310,12 @@
 		9E768E2C2F5094B900652B2B /* NavigationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E242F5094B900652B2B /* NavigationDemoView.swift */; };
 		9E768E2E2F5094B900652B2B /* NavigationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E242F5094B900652B2B /* NavigationDemoView.swift */; };
 		9E768E302F5094B900652B2B /* NavigationDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E768E242F5094B900652B2B /* NavigationDemoView.swift */; };
+		9EA3ED9030499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3ED8F30499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift */; };
+		9EA3ED9130499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3ED8F30499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift */; };
+		9EA3ED9230499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3ED8F30499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift */; };
+		9EA3ED9330499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3ED8F30499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift */; };
+		9EA3ED9430499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3ED8F30499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift */; };
+		9EA3ED9530499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3ED8F30499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift */; };
 		9EE8EBDA2E9FC9A90088AFD9 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */; };
 		9EE8EBDB2E9FC9A90088AFD9 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */; };
 		9EE8EBDC2E9FC9A90088AFD9 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */; };
@@ -461,6 +467,7 @@
 		9E71499C2E1BF5E300674698 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E71499D2E1BF5E300674698 /* Warp_iosVend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warp_iosVend.swift; sourceTree = "<group>"; };
 		9E768E242F5094B900652B2B /* NavigationDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDemoView.swift; sourceTree = "<group>"; };
+		9EA3ED8F30499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCapsuleSegmentedControlDemoView.swift; sourceTree = "<group>"; };
 		9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		9EF55F832E991DDD000842A8 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		9EFC48462E4219940048E4E7 /* WarpDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarpDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -736,6 +743,7 @@
 		9E768E252F5094B900652B2B /* Native */ = {
 			isa = PBXGroup;
 			children = (
+				9EA3ED8F30499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift */,
 				9E5A030C302DD8F100D3C2E7 /* SegmentedControlDemoView.swift */,
 				9E6C50C630051A5500FB3040 /* MenuDemoView.swift */,
 				9E6C50C730051A5500FB3040 /* TabBar.swift */,
@@ -1038,6 +1046,7 @@
 				507344152CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDF2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				9EF55F872E991DDD000842A8 /* DividerView.swift in Sources */,
+				9EA3ED9530499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */,
 				2E1ADF552C2561A700DFEE06 /* TextFieldView.swift in Sources */,
 				82E098852C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				8280953F2C9C794900472CB5 /* IconView.swift in Sources */,
@@ -1102,6 +1111,7 @@
 				507344132CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDE2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				9EF55F882E991DDD000842A8 /* DividerView.swift in Sources */,
+				9EA3ED9430499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */,
 				820A85F62C6CEB0C006D35A0 /* SemanticTokensView.swift in Sources */,
 				82E098862C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				8280953D2C9C794900472CB5 /* IconView.swift in Sources */,
@@ -1166,6 +1176,7 @@
 				507344122CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDC2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				9EF55F852E991DDD000842A8 /* DividerView.swift in Sources */,
+				9EA3ED9230499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */,
 				820A86332C6D4388006D35A0 /* SemanticTokensView.swift in Sources */,
 				82E098842C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				828095402C9C794900472CB5 /* IconView.swift in Sources */,
@@ -1230,6 +1241,7 @@
 				507344142CC0F0DF00928836 /* TextAreaView.swift in Sources */,
 				82FE9FDD2CC7B216002906F9 /* BrandIconsView.swift in Sources */,
 				9EF55F862E991DDD000842A8 /* DividerView.swift in Sources */,
+				9EA3ED9330499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */,
 				82635D082BFE1CD800F7FA6F /* SpinnerView.swift in Sources */,
 				82E098832C85AEFF00033535 /* CheckboxView.swift in Sources */,
 				8280953E2C9C794900472CB5 /* IconView.swift in Sources */,
@@ -1294,6 +1306,7 @@
 				9E7149772E1BF28900674698 /* TextAreaView.swift in Sources */,
 				9E7149782E1BF28900674698 /* BrandIconsView.swift in Sources */,
 				9EF55F842E991DDD000842A8 /* DividerView.swift in Sources */,
+				9EA3ED9030499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */,
 				9E7149792E1BF28900674698 /* SemanticTokensView.swift in Sources */,
 				9E71497A2E1BF28900674698 /* CheckboxView.swift in Sources */,
 				9E71497B2E1BF28900674698 /* IconView.swift in Sources */,
@@ -1358,6 +1371,7 @@
 				9EFC48252E4219940048E4E7 /* TextAreaView.swift in Sources */,
 				9EFC48262E4219940048E4E7 /* BrandIconsView.swift in Sources */,
 				9EF55F892E991DDD000842A8 /* DividerView.swift in Sources */,
+				9EA3ED9130499DB900614A74 /* GlassCapsuleSegmentedControlDemoView.swift in Sources */,
 				9EFC48272E4219940048E4E7 /* SemanticTokensView.swift in Sources */,
 				9EFC48282E4219940048E4E7 /* CheckboxView.swift in Sources */,
 				9EFC48292E4219940048E4E7 /* IconView.swift in Sources */,
