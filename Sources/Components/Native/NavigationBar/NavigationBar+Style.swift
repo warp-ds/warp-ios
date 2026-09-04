@@ -2,7 +2,7 @@ import UIKit
 
 @available(iOS 26.0, *)
 private extension UINavigationBarAppearance {
-    
+
     static func warpNavigationBarLiquidGlass() -> UINavigationBarAppearance {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
@@ -18,16 +18,16 @@ private extension UINavigationBarAppearance {
             .foregroundColor: Warp.UIColor.token.textSubtle,
             .font: Warp.Typography.title6.uiFont
         ]
-        
+
         let backImage = Warp.Icon.chevronLeft.uiImage
         appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
-        
+
         let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
         buttonAppearance.normal.titleTextAttributes = [
             .font: Warp.Typography.body.uiFont
         ]
         appearance.buttonAppearance = buttonAppearance
-        
+
         let prominentButtonAppearance = UIBarButtonItemAppearance(style: .prominent)
         let prominentButtonAttributes: [NSAttributedString.Key: Any] = [
             .font: Warp.Typography.title4.uiFont
@@ -37,128 +37,198 @@ private extension UINavigationBarAppearance {
         prominentButtonAppearance.disabled.titleTextAttributes = prominentButtonAttributes
         prominentButtonAppearance.focused.titleTextAttributes = prominentButtonAttributes
         appearance.prominentButtonAppearance = prominentButtonAppearance
-        
+
         return appearance
+    }
+}
+
+extension UINavigationBarAppearance {
+
+    /// The navigation bar appearance used below iOS 26, where Liquid Glass does not exist.
+    ///
+    /// This is a direct port of what NMP already ships from
+    /// `app-modules/Sources/UIAppearanceSetup/Appearance.swift`, so apps moving to the Warp API
+    /// keep the navigation bar they have today rather than getting a newly invented one. The
+    /// FinniversKit indirections it went through resolve to Warp tokens: `UIColor.background` and
+    /// `UIColor.text` forward to `Warp.UIToken`, `UIFont.title1` to `Warp.Typography.title1`,
+    /// `UIFont.body` to `Warp.Typography.body`, and `UIFont.bodyStrong` to
+    /// **`Warp.Typography.title4`**, not to `Warp.Typography.bodyStrong`.
+    ///
+    /// Internal rather than private so tests can assert on it from any OS. The public entry points
+    /// pick between this and the Liquid Glass appearance with `#available`, which would otherwise
+    /// make this branch unreachable from a suite running on iOS 26.
+    internal static func warpNavigationBarSolid() -> UINavigationBarAppearance {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = Warp.UIColor.token.background
+
+        appearance.titleTextAttributes = [
+            .foregroundColor: Warp.UIColor.token.text,
+            .font: Warp.Typography.title4.uiFont
+        ]
+
+        appearance.largeTitleTextAttributes = [
+            .foregroundColor: Warp.UIColor.token.text,
+            .font: Warp.Typography.title1.uiFont
+        ]
+
+        let plainButtonAppearance = UIBarButtonItemAppearance(style: .plain)
+        let plainButtonAttributes: [NSAttributedString.Key: Any] = [
+            .font: Warp.Typography.body.uiFont
+        ]
+        plainButtonAppearance.normal.titleTextAttributes = plainButtonAttributes
+        plainButtonAppearance.highlighted.titleTextAttributes = plainButtonAttributes
+        plainButtonAppearance.disabled.titleTextAttributes = plainButtonAttributes
+        plainButtonAppearance.focused.titleTextAttributes = plainButtonAttributes
+        appearance.buttonAppearance = plainButtonAppearance
+
+        // `prominentButtonAppearance` is the iOS 26 spelling; below it, prominence is `.done`.
+        let doneButtonAppearance = UIBarButtonItemAppearance(style: .done)
+        let doneButtonAttributes: [NSAttributedString.Key: Any] = [
+            .font: Warp.Typography.title4.uiFont
+        ]
+        doneButtonAppearance.normal.titleTextAttributes = doneButtonAttributes
+        doneButtonAppearance.highlighted.titleTextAttributes = doneButtonAttributes
+        doneButtonAppearance.disabled.titleTextAttributes = doneButtonAttributes
+        doneButtonAppearance.focused.titleTextAttributes = doneButtonAttributes
+        appearance.doneButtonAppearance = doneButtonAppearance
+
+        return appearance
+    }
+
+    /// The appearance for the running OS: Liquid Glass on iOS 26+, the solid appearance below.
+    static func warpNavigationBar() -> UINavigationBarAppearance {
+        if #available(iOS 26.0, *) {
+            return .warpNavigationBarLiquidGlass()
+        }
+        return .warpNavigationBarSolid()
     }
 }
 
 extension UINavigationBar {
 
-    /// Applies Warp design style globally to all navigation bars with Liquid Glass styling (iOS 26+).
+    /// Applies Warp navigation bar styling globally to every navigation bar.
     ///
-    /// This static method configures the global appearance of all UINavigationBar instances with:
-    /// - Transparent background to allow liquid glass effects to show through
-    /// - Title and subtitle text styled with Warp typography and colors
-    /// - Back arrow styled with Warp's chevronLeft icon
-    /// - Bar button items styled with Warp's text and icon colors
+    /// Resolves to the appearance for the running OS:
+    /// - **iOS 26+:** transparent background so Liquid Glass shows through, Warp typography and
+    ///   colours, Warp's chevronLeft back indicator, and a prominent button appearance.
+    /// - **iOS 18 to 25:** the opaque `background` token, Warp typography and colours, and a
+    ///   `.done` button appearance standing in for prominence.
     ///
-    /// **Availability:** iOS 26+. On earlier versions, this method does nothing.
-    ///
-    /// Call this once during app launch to apply Warp styling to all navigation bars globally.
-    /// For per-instance styling, use the instance method on UINavigationBar or the convenience method on UINavigationController.
+    /// Call this once during app launch. For per-instance styling use the instance method on
+    /// `UINavigationBar`, or the convenience method on `UINavigationController`.
     ///
     /// **Usage:**
     ///
     /// ```swift
     /// func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    ///     UINavigationBar.warpLiquidGlassStyle()
+    ///     UINavigationBar.warpStyle()
     ///     return true
     /// }
     /// ```
-    public static func warpLiquidGlassStyle() {
-        guard #available(iOS 26.0, *) else { return }
-
-        let appearance = UINavigationBarAppearance.warpNavigationBarLiquidGlass()
+    public static func warpStyle() {
+        let appearance = UINavigationBarAppearance.warpNavigationBar()
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().tintColor = Warp.UIColor.token.icon
         UINavigationBar.appearance().isTranslucent = false
+
+        if #available(iOS 26.0, *) {
+            UINavigationBar.appearance().tintColor = Warp.UIColor.token.icon
+        } else {
+            UINavigationBar.appearance().tintColor = Warp.UIColor.token.textLink
+        }
     }
 
-    /// Applies Warp design style to an individual navigation bar instance with Liquid Glass styling (iOS 26+).
+    /// Applies Warp navigation bar styling to this navigation bar instance.
     ///
-    /// This instance method configures the appearance of a specific UINavigationBar with:
-    /// - Transparent background to allow liquid glass effects to show through
-    /// - Title and subtitle text styled with Warp typography and colors
-    /// - Applied to standard, compact, and scroll edge appearances
-    ///
-    /// **Availability:** iOS 26+. On earlier versions, this method does nothing.
-    ///
-    /// For simpler per-instance styling, prefer using the convenience method on UINavigationController.
+    /// Resolves to the appearance for the running OS, as described on ``warpStyle()``.
     ///
     /// **Usage:**
     ///
     /// ```swift
     /// let navigationBar = UINavigationBar()
-    /// navigationBar.warpLiquidGlassStyle()
+    /// navigationBar.warpStyle()
     /// ```
-    public func warpLiquidGlassStyle() {
-        guard #available(iOS 26.0, *) else { return }
-
-        let appearance = UINavigationBarAppearance.warpNavigationBarLiquidGlass()
+    public func warpStyle() {
+        let appearance = UINavigationBarAppearance.warpNavigationBar()
         standardAppearance = appearance
         compactAppearance = appearance
         scrollEdgeAppearance = appearance
+    }
+
+    @available(*, deprecated, renamed: "warpStyle()", message: "warpLiquidGlassStyle() did nothing below iOS 26. warpStyle() applies the solid appearance there instead.")
+    public static func warpLiquidGlassStyle() {
+        warpStyle()
+    }
+
+    @available(*, deprecated, renamed: "warpStyle()", message: "warpLiquidGlassStyle() did nothing below iOS 26. warpStyle() applies the solid appearance there instead.")
+    public func warpLiquidGlassStyle() {
+        warpStyle()
     }
 }
 
 extension UINavigationController {
 
-    /// Applies Warp design style to the navigation controller's navigation bar with Liquid Glass styling (iOS 26+).
+    /// Applies Warp navigation bar styling to this navigation controller's navigation bar.
     ///
-    /// This convenience method applies Warp styling to the navigation controller's navigation bar with:
-    /// - Transparent background to allow liquid glass effects to show through
-    /// - Title and subtitle text styled with Warp typography and colors
-    /// - Extended layout to allow content beneath navigation bar
-    /// - Applied to standard, compact, and scroll edge appearances
-    ///
-    /// **Availability:** iOS 26+. On earlier versions, this method does nothing.
+    /// Resolves to the appearance for the running OS, as described on
+    /// ``UIKit/UINavigationBar/warpStyle()``. On iOS 26+ it additionally extends the layout under
+    /// the bar so Liquid Glass has content to refract; below 26 the bar is opaque, so it does not.
     ///
     /// **Usage:**
     ///
     /// ```swift
     /// let navigationController = UINavigationController()
-    /// navigationController.warpLiquidGlassStyle()
+    /// navigationController.warpStyle()
     /// ```
-    public func warpLiquidGlassStyle() {
-        guard #available(iOS 26.0, *) else { return }
+    public func warpStyle() {
+        navigationBar.warpStyle()
 
-        navigationBar.warpLiquidGlassStyle()
-        // Ensure the content extends under the navigation bar for liquid glass effect
-        extendedLayoutIncludesOpaqueBars = true
+        if #available(iOS 26.0, *) {
+            extendedLayoutIncludesOpaqueBars = true
+        }
+    }
+
+    @available(*, deprecated, renamed: "warpStyle()", message: "warpLiquidGlassStyle() did nothing below iOS 26. warpStyle() applies the solid appearance there instead.")
+    public func warpLiquidGlassStyle() {
+        warpStyle()
     }
 }
 
-@available(iOS 26.0, *)
 extension UINavigationItem {
 
-    /// Applies Warp Liquid Glass appearance to this navigation item.
+    /// Applies the Warp navigation bar appearance to this navigation item.
     ///
-    /// Sets `standardAppearance`, `compactAppearance`, and `scrollEdgeAppearance` with
-    /// transparent background and Warp typography/color tokens.
-    public func warpLiquidGlassStyle() {
-        let appearance = UINavigationBarAppearance.warpNavigationBarLiquidGlass()
+    /// Sets `standardAppearance`, `compactAppearance` and `scrollEdgeAppearance` to the appearance
+    /// for the running OS, as described on ``UIKit/UINavigationBar/warpStyle()``.
+    public func warpStyle() {
+        let appearance = UINavigationBarAppearance.warpNavigationBar()
         standardAppearance = appearance
         compactAppearance = appearance
         scrollEdgeAppearance = appearance
+    }
+
+    @available(iOS 26.0, *)
+    @available(*, deprecated, renamed: "warpStyle()", message: "warpStyle() is available on every supported OS version.")
+    public func warpLiquidGlassStyle() {
+        warpStyle()
     }
 }
 
 extension UIViewController {
 
-    /// Applies Warp Liquid Glass navigation bar styling to this view controller (iOS 26+).
+    /// Applies Warp navigation bar styling to this view controller.
     ///
-    /// Resolves the navigation context, applies `warpLiquidGlassStyle()` to the target view
-    /// controller's `navigationItem`, and sets `extendedLayoutIncludesOpaqueBars = true` on
-    /// the navigation controller if one is found.
-    ///
-    /// On earlier OS versions this method does nothing.
-    @available(iOS 26.0, *)
+    /// Resolves the navigation context, applies the appearance for the running OS to the target
+    /// view controller's `navigationItem`, and on iOS 26+ extends the layout under the bar so
+    /// Liquid Glass has content to refract.
     public func warpNavigationBarStyle() {
         let targetVC = resolveNavigationContext()
-        targetVC.navigationItem.warpLiquidGlassStyle()
-        targetVC.extendedLayoutIncludesOpaqueBars = true
+        targetVC.navigationItem.warpStyle()
+
+        if #available(iOS 26.0, *) {
+            targetVC.extendedLayoutIncludesOpaqueBars = true
+        }
     }
 
     /// Traverses the parent hierarchy to find the view controller directly owned by a navigation controller.

@@ -49,7 +49,6 @@ extension Warp {
     ///     }
     /// }
     /// ```
-    @available(iOS 26.0, *)
     public struct ToolbarItem: ToolbarContent {
         let title: String?
         let icon: Warp.Icon?
@@ -92,7 +91,6 @@ extension Warp {
     }
 }
 
-@available(iOS 26.0, *)
 private struct WarpToolbarButton: View {
     let title: String?
     let icon: Warp.Icon?
@@ -114,17 +112,29 @@ private struct WarpToolbarButton: View {
                 }
                 .tint(colorProvider.token.icon)
             case .primary:
-                SwiftUI.Button(action: action) {
-                    buttonContent(
-                        iconColor: colorProvider.token.iconInverted,
-                        textColor: colorProvider.token.textInverted
-                    )
-                }
-                .buttonStyle(.glassProminent)
-                .tint(colorProvider.buttonPrimaryBackground)
+                prominentButton
+                    .tint(colorProvider.buttonPrimaryBackground)
             }
         }
         .buttonBorderShape(.capsule)
+    }
+
+    /// `.glassProminent` is iOS 26 only. Below it, `.borderedProminent` is the closest thing the
+    /// system offers: same filled, tinted capsule, without the glass material.
+    @ViewBuilder
+    private var prominentButton: some View {
+        let content = SwiftUI.Button(action: action) {
+            buttonContent(
+                iconColor: colorProvider.token.iconInverted,
+                textColor: colorProvider.token.textInverted
+            )
+        }
+
+        if #available(iOS 26.0, *) {
+            content.buttonStyle(.glassProminent)
+        } else {
+            content.buttonStyle(.borderedProminent)
+        }
     }
 
     @ViewBuilder

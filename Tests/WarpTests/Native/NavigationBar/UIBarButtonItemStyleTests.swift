@@ -188,11 +188,14 @@ struct UIBarButtonItemStyleTests {
         #expect(result === barButtonItem)
     }
 
-    // MARK: - Backward Compatibility Tests
+    // MARK: - Cross-version behaviour
 
+    /// This used to assert the opposite: that below iOS 26 the modifier left the item untouched.
+    /// That was the bug, not the contract - the package supports iOS 18, so a Warp API that
+    /// silently does nothing there is broken. Now the item is styled on every supported version,
+    /// and only the prominence spelling differs.
     @Test
-    func shouldDoNothingOnPreiOS26() {
-        // Note: This test runs on all iOS versions to verify the availability guard works
+    func shouldStyleTheItemOnEveryOSVersion() {
         // Given
         let barButtonItem = UIBarButtonItem(title: "Test", style: .plain, target: nil, action: nil)
         let originalTintColor = barButtonItem.tintColor
@@ -200,13 +203,13 @@ struct UIBarButtonItemStyleTests {
         // When
         barButtonItem.warpNavigationBarButton(style: .primary)
 
-        // Then - on iOS < 26, nothing should change
+        // Then
+        #expect(barButtonItem.tintColor != originalTintColor)
+
         if #available(iOS 26.0, *) {
-            // On iOS 26+, tint color should be set
-            #expect(barButtonItem.tintColor != originalTintColor)
+            #expect(barButtonItem.style == .prominent)
         } else {
-            // On iOS < 26, tint color should remain unchanged
-            #expect(barButtonItem.tintColor == originalTintColor)
+            #expect(barButtonItem.style == .done)
         }
     }
 }
