@@ -298,6 +298,11 @@ extension Warp {
         case iconStop = "icon.title.stop"
         case iconCircleStop = "icon.title.circleStop"
         case iconShareIOS = "icon.title.shareIOS"
+        case iconBicycle = "icon.title.bicycle"
+        case iconGraduationCap = "icon.title.graduationCap"
+        case iconLockSimple = "icon.title.lockSimple"
+        case iconPersonSimpleWalk = "icon.title.personSimpleWalk"
+        case iconUmbrella = "icon.title.umbrella"
 
         case taxonomyIconPlaneTakeOff = "taxonomy.icon.title.planeTakeOff"
         case taxonomyIconAirplaneBed = "taxonomy.icon.title.airplaneBed"
