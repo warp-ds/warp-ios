@@ -6,7 +6,6 @@ import ViewInspector
 @Suite
 struct SnackbarTests {
 
-    @available(iOS 16.0, *)
     @Test @MainActor
     func testSnackbarShouldAutomaticallyDisappear() async throws {
         let dissapearAfterTime: TimeInterval = 0.3

@@ -6,7 +6,6 @@ import ViewInspector
 @Suite
 struct ToastTests {
 
-    @available(iOS 16.0, *)
     @Test @MainActor
     func testToastShouldAutomaticallyDisappear() async throws {
         let dissapearAfterTime: TimeInterval = 0.3

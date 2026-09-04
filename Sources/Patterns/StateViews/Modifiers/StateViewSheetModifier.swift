@@ -1,7 +1,6 @@
 import SwiftUI
 
 /// A reusable ViewModifier for presenting any StateView-based view inside a sheet.
-@available(iOS 16.0, *)
 public struct StateViewSheetModifier<StateViewContent: View>: ViewModifier {
 
     @Binding var isPresented: Bool
@@ -34,7 +33,6 @@ public struct StateViewSheetModifier<StateViewContent: View>: ViewModifier {
     }
 }
 
-@available(iOS 16.0, *)
 public extension View {
     func stateViewSheet<StateViewContent: View>(
         isPresented: Binding<Bool>,

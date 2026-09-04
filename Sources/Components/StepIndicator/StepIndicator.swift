@@ -46,12 +46,8 @@ extension Warp {
         public var body: some View {
             switch layoutOrientation {
             case .horizontal:
-                if #available(iOS 16.4, *) {
-                    horizontalScrollView
-                        .scrollBounceBehavior(.basedOnSize, axes: .horizontal)
-                } else {
-                    horizontalScrollView
-                }
+                horizontalScrollView
+                    .scrollBounceBehavior(.basedOnSize, axes: .horizontal)
             case .vertical:
                 VStack(spacing: -1) {
                     ForEach(orderedSteps) { step in
