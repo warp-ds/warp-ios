@@ -108,14 +108,14 @@ struct SheetDemoView: View {
 
 private enum BackgroundOption: CaseIterable {
     case automatic
-    case surface
+    case solid
     case color
     case none
 
     var label: String {
         switch self {
         case .automatic: "Auto"
-        case .surface: "Surface"
+        case .solid: "Solid"
         case .color: "Color"
         case .none: "None"
         }
@@ -124,7 +124,7 @@ private enum BackgroundOption: CaseIterable {
     var background: Warp.SheetBackground {
         switch self {
         case .automatic: .automatic
-        case .surface: .surface
+        case .solid: .solid
         case .color: .color(Warp.Token.backgroundInfoSubtle)
         case .none: .none
         }
