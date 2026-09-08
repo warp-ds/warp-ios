@@ -12,7 +12,7 @@ struct NavigationBarStyleTests {
             return // Skip test on iOS < 26
         }
         // When
-        UINavigationBar.warpLiquidGlassStyle()
+        UINavigationBar.warpStyle()
 
         // Then
         let appearance = UINavigationBar.appearance().standardAppearance
@@ -30,7 +30,7 @@ struct NavigationBarStyleTests {
         }
 
         // When
-        UINavigationBar.warpLiquidGlassStyle()
+        UINavigationBar.warpStyle()
 
         // Then
         let appearance = UINavigationBar.appearance().standardAppearance
@@ -55,7 +55,7 @@ struct NavigationBarStyleTests {
         }
 
         // When
-        UINavigationBar.warpLiquidGlassStyle()
+        UINavigationBar.warpStyle()
 
         // Then
         let appearance = UINavigationBar.appearance().standardAppearance
@@ -80,7 +80,7 @@ struct NavigationBarStyleTests {
         }
 
         // When
-        UINavigationBar.warpLiquidGlassStyle()
+        UINavigationBar.warpStyle()
 
         // Then
         let appearance = UINavigationBar.appearance().standardAppearance
@@ -105,7 +105,7 @@ struct NavigationBarStyleTests {
         }
 
         // When
-        UINavigationBar.warpLiquidGlassStyle()
+        UINavigationBar.warpStyle()
 
         // Then
         let appearance = UINavigationBar.appearance().standardAppearance
@@ -122,7 +122,7 @@ struct NavigationBarStyleTests {
         }
 
         // When
-        UINavigationBar.warpLiquidGlassStyle()
+        UINavigationBar.warpStyle()
 
         // Then
         let appearance = UINavigationBar.appearance().standardAppearance
@@ -148,7 +148,7 @@ struct NavigationBarStyleTests {
         }
 
         // When
-        UINavigationBar.warpLiquidGlassStyle()
+        UINavigationBar.warpStyle()
 
         // Then
         let tintColor = UINavigationBar.appearance().tintColor
@@ -165,7 +165,7 @@ struct NavigationBarStyleTests {
         }
 
         // When
-        UINavigationBar.warpLiquidGlassStyle()
+        UINavigationBar.warpStyle()
 
         // Then
         let appearance = UINavigationBar.appearance().compactAppearance
@@ -183,7 +183,7 @@ struct NavigationBarStyleTests {
         }
 
         // When
-        UINavigationBar.warpLiquidGlassStyle()
+        UINavigationBar.warpStyle()
 
         // Then
         let appearance = UINavigationBar.appearance().scrollEdgeAppearance
@@ -206,7 +206,7 @@ struct NavigationBarStyleTests {
         let navigationBar = UINavigationBar()
 
         // When
-        navigationBar.warpLiquidGlassStyle()
+        navigationBar.warpStyle()
 
         // Then
         let appearance = navigationBar.standardAppearance
@@ -227,7 +227,7 @@ struct NavigationBarStyleTests {
         let navigationBar = UINavigationBar()
 
         // When
-        navigationBar.warpLiquidGlassStyle()
+        navigationBar.warpStyle()
 
         // Then
         let appearance = navigationBar.standardAppearance
@@ -249,7 +249,7 @@ struct NavigationBarStyleTests {
         let navigationBar = UINavigationBar()
 
         // When
-        navigationBar.warpLiquidGlassStyle()
+        navigationBar.warpStyle()
 
         // Then
         let appearance = navigationBar.standardAppearance
@@ -271,7 +271,7 @@ struct NavigationBarStyleTests {
         let navigationBar = UINavigationBar()
 
         // When
-        navigationBar.warpLiquidGlassStyle()
+        navigationBar.warpStyle()
 
         // Then
         let appearance = navigationBar.standardAppearance
@@ -293,7 +293,7 @@ struct NavigationBarStyleTests {
         let navigationBar = UINavigationBar()
 
         // When
-        navigationBar.warpLiquidGlassStyle()
+        navigationBar.warpStyle()
 
         // Then
         let appearance = navigationBar.compactAppearance
@@ -314,7 +314,7 @@ struct NavigationBarStyleTests {
         let navigationBar = UINavigationBar()
 
         // When
-        navigationBar.warpLiquidGlassStyle()
+        navigationBar.warpStyle()
 
         // Then
         let appearance = navigationBar.scrollEdgeAppearance
@@ -337,7 +337,7 @@ struct NavigationBarStyleTests {
         let navigationController = UINavigationController()
 
         // When
-        navigationController.warpLiquidGlassStyle()
+        navigationController.warpStyle()
 
         // Then
         let appearance = navigationController.navigationBar.standardAppearance
@@ -358,7 +358,7 @@ struct NavigationBarStyleTests {
         let navigationController = UINavigationController()
 
         // When
-        navigationController.warpLiquidGlassStyle()
+        navigationController.warpStyle()
 
         // Then
         #expect(navigationController.extendedLayoutIncludesOpaqueBars == true)
@@ -374,7 +374,7 @@ struct NavigationBarStyleTests {
         let navigationController = UINavigationController()
 
         // When
-        navigationController.warpLiquidGlassStyle()
+        navigationController.warpStyle()
 
         // Then
         let appearance = navigationController.navigationBar.standardAppearance
