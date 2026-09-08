@@ -13,9 +13,65 @@ jobs:
 
     runs-on: macos-26
 
+    # Warp declares iOS 18 as its minimum (see PLATFORM_SUPPORT.md), so the floor is tested as
+    # well as the latest. Testing only the latest hides exactly the bugs the floor exists to
+    # prevent: an API can compile everywhere and silently do nothing below the newest OS.
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - ios-major: "18"
+            label: "minimum supported"
+          - ios-major: "26"
+            label: "latest"
+
+    name: iOS ${{ matrix.ios-major }} (${{ matrix.label }})
+
     steps:
     - uses: actions/checkout@v4
+
+    - name: Resolve an iOS ${{ matrix.ios-major }} simulator
+      id: sim
+      run: |
+        set -euo pipefail
+
+        find_udid() {
+          xcrun simctl list devices available -j \
+            | jq -r --arg v "${{ matrix.ios-major }}" \
+              '[.devices | to_entries[]
+                | select(.key | test("SimRuntime.iOS-" + $v + "-"))
+                | .value[] | select(.isAvailable)] | first | .udid // empty'
+        }
+
+        UDID="$(find_udid)"
+
+        # The runner image only ships the runtime bundled with its Xcode, so older ones have to
+        # be fetched. This is a multi-GB download, hence only when it is actually missing.
+        if [ -z "$UDID" ]; then
+          echo "No iOS ${{ matrix.ios-major }} runtime present, downloading it."
+          xcodebuild -downloadPlatform iOS -buildVersion ${{ matrix.ios-major }}
+          UDID="$(find_udid)"
+        fi
+
+        if [ -z "$UDID" ]; then
+          echo "::error::Could not find or install an iOS ${{ matrix.ios-major }} simulator runtime."
+          xcrun simctl list runtimes
+          exit 1
+        fi
+
+        echo "Using simulator $UDID"
+        echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+
+        # Boot it up front. The first test run against a cold simulator can report a phantom
+        # swift-testing failure that does not reproduce, so warm it rather than retrying failed
+        # runs, which would mask real ones.
+        xcrun simctl boot "$UDID" || true
+        xcrun simctl bootstatus "$UDID" -b
+
+    # A UDID rather than a device name: a bare `platform=iOS Simulator,name=...` destination can
+    # misresolve to a tvOS or visionOS device, and a name alone does not pin the OS version.
     - name: Build for iOS
-      run: xcodebuild -scheme warp-ios -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone Air' build
+      run: xcodebuild -scheme warp-ios -destination "id=${{ steps.sim.outputs.udid }}" build
+
     - name: Run tests
-      run: xcodebuild -scheme WarpTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone Air' test
+      run: xcodebuild -scheme WarpTests -destination "id=${{ steps.sim.outputs.udid }}" test
