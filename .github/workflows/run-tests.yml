@@ -79,8 +79,19 @@ jobs:
         # Boot it up front. The first test run against a cold simulator can report a phantom
         # swift-testing failure that does not reproduce, so warm it rather than retrying failed
         # runs, which would mask real ones.
+        #
+        # Bounded poll rather than `simctl bootstatus -b`, which waits forever and hung a job here
+        # until the workflow timeout. Warming is an optimisation, so give up quietly and let
+        # xcodebuild boot the simulator itself if this does not finish.
         xcrun simctl boot "$UDID" || true
-        xcrun simctl bootstatus "$UDID" -b
+        STATE="unknown"
+        for _ in $(seq 1 30); do
+          STATE="$(xcrun simctl list devices -j \
+            | jq -r --arg u "$UDID" '[.devices[][] | select(.udid==$u)] | first | .state // "unknown"')"
+          [ "$STATE" = "Booted" ] && break
+          sleep 2
+        done
+        echo "Simulator state after warm-up: $STATE"
 
     # A UDID rather than a device name: a bare `platform=iOS Simulator,name=...` destination can
     # misresolve to a tvOS or visionOS device, and a name alone does not pin the OS version.
