@@ -11,11 +11,92 @@ on:
 jobs:
   build:
 
-    runs-on: macos-26
+    # macos-15, not macos-26, and deliberately so. Warp declares iOS 18 as its minimum (see
+    # PLATFORM_SUPPORT.md), so the floor has to be tested as well as the latest, and the two are
+    # only both available here:
+    #
+    # - macos-26 ships iOS 26.2/26.4/26.5 runtimes and nothing older. An iOS 18 runtime cannot be
+    #   added either: `xcodebuild -downloadPlatform iOS` reports iOS 18 is not available.
+    # - macos-15 ships iOS 18.5/18.6 alongside iOS 26.x, so both legs run with no download.
+    #
+    # Building still needs an iOS 26 SDK, because the source references iOS 26 symbols such as
+    # `.glassProminent` and `UIBarButtonItem.Style.prominent`. macos-15 defaults to Xcode 16.4,
+    # which cannot compile those, so a 26.x toolchain is selected below.
+    runs-on: macos-15
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - ios-major: "18"
+            label: "minimum supported"
+          - ios-major: "26"
+            label: "latest"
+
+    name: iOS ${{ matrix.ios-major }} (${{ matrix.label }})
 
     steps:
     - uses: actions/checkout@v4
+
+    # Highest installed 26.x rather than a pinned point release, so an image update that swaps
+    # 26.3 for 26.4 does not break the build. Both matrix legs get the same toolchain, so a
+    # difference between them is attributable to the OS version rather than to the compiler.
+    - name: Select an Xcode 26 toolchain
+      run: |
+        set -euo pipefail
+        XCODE_APP="$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1)"
+        if [ -z "$XCODE_APP" ]; then
+          echo "::error::No Xcode 26.x found on this runner image."
+          ls -d /Applications/Xcode*.app
+          exit 1
+        fi
+        sudo xcode-select -s "$XCODE_APP"
+        xcodebuild -version
+
+    - name: Resolve an iOS ${{ matrix.ios-major }} simulator
+      id: sim
+      run: |
+        set -euo pipefail
+
+        UDID="$(xcrun simctl list devices available -j \
+          | jq -r --arg v "${{ matrix.ios-major }}" \
+            '[.devices | to_entries[]
+              | select(.key | test("SimRuntime.iOS-" + $v + "-"))
+              | .value[] | select(.isAvailable)] | first | .udid // empty')"
+
+        # Deliberately no download fallback. Runtimes that are absent from the image are also
+        # generally unavailable to `xcodebuild -downloadPlatform`, so failing here with the
+        # runtime list is more useful than a multi-GB download that cannot succeed.
+        if [ -z "$UDID" ]; then
+          echo "::error::No iOS ${{ matrix.ios-major }} runtime on this image. Runtimes available:"
+          xcrun simctl list runtimes
+          exit 1
+        fi
+
+        echo "Using simulator $UDID"
+        echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+
+        # Boot it up front. The first test run against a cold simulator can report a phantom
+        # swift-testing failure that does not reproduce, so warm it rather than retrying failed
+        # runs, which would mask real ones.
+        #
+        # Bounded poll rather than `simctl bootstatus -b`, which waits forever and hung a job here
+        # until the workflow timeout. Warming is an optimisation, so give up quietly and let
+        # xcodebuild boot the simulator itself if this does not finish.
+        xcrun simctl boot "$UDID" || true
+        STATE="unknown"
+        for _ in $(seq 1 30); do
+          STATE="$(xcrun simctl list devices -j \
+            | jq -r --arg u "$UDID" '[.devices[][] | select(.udid==$u)] | first | .state // "unknown"')"
+          [ "$STATE" = "Booted" ] && break
+          sleep 2
+        done
+        echo "Simulator state after warm-up: $STATE"
+
+    # A UDID rather than a device name: a bare `platform=iOS Simulator,name=...` destination can
+    # misresolve to a tvOS or visionOS device, and a name alone does not pin the OS version.
     - name: Build for iOS
-      run: xcodebuild -scheme warp-ios -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone Air' build
+      run: xcodebuild -scheme warp-ios -destination "id=${{ steps.sim.outputs.udid }}" build
+
     - name: Run tests
-      run: xcodebuild -scheme WarpTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone Air' test
+      run: xcodebuild -scheme WarpTests -destination "id=${{ steps.sim.outputs.udid }}" test
