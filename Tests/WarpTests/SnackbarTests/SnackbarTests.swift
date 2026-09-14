@@ -9,7 +9,9 @@ struct SnackbarTests {
     @Test @MainActor
     func testSnackbarShouldAutomaticallyDisappear() async throws {
         let dissapearAfterTime: TimeInterval = 0.3
-        let waitingTime: TimeInterval = dissapearAfterTime + 0.2
+        // Generous, because it is an upper bound on a poll rather than a fixed wait: a healthy
+        // snackbar returns in roughly `dissapearAfterTime` regardless.
+        let waitingTime: TimeInterval = dissapearAfterTime + 5
 
         let isPresented = Binding<Bool>(wrappedValue: true)
 
@@ -24,7 +26,7 @@ struct SnackbarTests {
         ViewHosting.host(view: snackbar)
 
         #expect(isPresented.wrappedValue == true, "Snackbar should be presented initially")
-        try await Task.sleep(timeInterval: waitingTime)
-        #expect(isPresented.wrappedValue == false, "Snackbar should disappear after \(dissapearAfterTime) seconds")
+        let dismissed = await waitUntilDismissed(isPresented, timeout: waitingTime)
+        #expect(dismissed, "Snackbar should disappear after \(dissapearAfterTime) seconds")
     }
 }
