@@ -2,9 +2,15 @@ import Testing
 import SwiftUI
 @testable import Warp
 
-@Suite(.serialized) // Serialized because we're reading the global `Warp.Theme` token provider.
+@Suite
 @MainActor
 struct SheetStyleModifierTests {
+
+    /// A fixed brand rather than the global `Warp.Theme`. These cases assert that a resolved
+    /// background matches the token they were handed, which holds for any brand, so reading the
+    /// global only coupled them to ambient state other suites can mutate. With that gone the
+    /// suite needs no `.serialized`.
+    private let token = Warp.Brand.finn.token
 
     /// Token colors are built with `Color.dynamicColor`, which mints a fresh provider-backed
     /// instance on every access, so two reads of the same token are never `==`. Comparing the
@@ -49,7 +55,7 @@ struct SheetStyleModifierTests {
     @Test
     func automaticBackgroundDefersToSystemForMediumWhenLiquidGlassIsAvailable() {
         let resolved = Warp.SheetBackground.automatic.resolvedColor(
-            token: Warp.Theme.token,
+            token: token,
             style: .medium,
             supportsLiquidGlass: true,
             nativeGlassEffectsEnabled: true
@@ -63,8 +69,6 @@ struct SheetStyleModifierTests {
     /// `#1c1c1e` and `surfaceElevated100` is `#26262b`.
     @Test
     func automaticBackgroundUsesTheTokenForFullScreenEvenWithLiquidGlass() {
-        let token = Warp.Theme.token
-
         let resolved = Warp.SheetBackground.automatic.resolvedColor(
             token: token,
             style: .fullScreen,
@@ -77,8 +81,6 @@ struct SheetStyleModifierTests {
 
     @Test(arguments: [Warp.SheetStyle.medium, .fullScreen])
     func automaticBackgroundFallsBackToTokenBelowLiquidGlass(style: Warp.SheetStyle) {
-        let token = Warp.Theme.token
-
         let resolved = Warp.SheetBackground.automatic.resolvedColor(
             token: token,
             style: style,
@@ -93,8 +95,6 @@ struct SheetStyleModifierTests {
     /// the opaque fallback even on an OS that supports glass.
     @Test
     func automaticBackgroundFallsBackToTokenWhenGlassEffectsAreDisabled() {
-        let token = Warp.Theme.token
-
         let resolved = Warp.SheetBackground.automatic.resolvedColor(
             token: token,
             style: .medium,
@@ -107,8 +107,6 @@ struct SheetStyleModifierTests {
 
     @Test(arguments: [Warp.SheetStyle.medium, .fullScreen])
     func solidBackgroundIsOpaqueRegardlessOfLiquidGlassSupport(style: Warp.SheetStyle) {
-        let token = Warp.Theme.token
-
         for supportsLiquidGlass in [true, false] {
             let resolved = Warp.SheetBackground.solid.resolvedColor(
                 token: token,
@@ -124,7 +122,7 @@ struct SheetStyleModifierTests {
     @Test
     func colorBackgroundUsesTheSuppliedColor() {
         let resolved = Warp.SheetBackground.color(.red).resolvedColor(
-            token: Warp.Theme.token,
+            token: token,
             style: .medium,
             supportsLiquidGlass: true,
             nativeGlassEffectsEnabled: true
@@ -136,7 +134,7 @@ struct SheetStyleModifierTests {
     @Test
     func noneBackgroundLeavesPresentationUnstyled() {
         let resolved = Warp.SheetBackground.none.resolvedColor(
-            token: Warp.Theme.token,
+            token: token,
             style: .fullScreen,
             supportsLiquidGlass: false,
             nativeGlassEffectsEnabled: false
@@ -147,14 +145,13 @@ struct SheetStyleModifierTests {
 
     // MARK: - Brand coverage
 
-    /// `surfaceElevated100` differs per brand, so the fallback must follow the active theme
+    /// `surfaceElevated100` differs per brand, so the fallback must follow the brand it is given
     /// rather than resolving to a single hard-coded color.
+    ///
+    /// No `Warp.Theme` mutation: `Brand.token` is a stateless per-brand provider, so the token
+    /// passed in fully determines the result and setting the global changed nothing here.
     @Test(arguments: Warp.Brand.allCases)
-    func opaqueFallbackFollowsActiveBrand(brand: Warp.Brand) {
-        let previousTheme = Warp.Theme
-        defer { Warp.Theme = previousTheme }
-        Warp.Theme = brand
-
+    func opaqueFallbackFollowsBrand(brand: Warp.Brand) {
         let resolved = Warp.SheetBackground.automatic.resolvedColor(
             token: brand.token,
             style: .medium,

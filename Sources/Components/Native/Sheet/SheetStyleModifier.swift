@@ -122,17 +122,10 @@ extension Warp {
                     background.resolvedColor(
                         token: token,
                         style: style,
-                        supportsLiquidGlass: Self.supportsLiquidGlass,
+                        supportsLiquidGlass: Warp.supportsLiquidGlass,
                         nativeGlassEffectsEnabled: nativeGlassEffectsEnabled
                     )
                 )
-        }
-
-        static var supportsLiquidGlass: Bool {
-            if #available(iOS 26.0, *) {
-                return true
-            }
-            return false
         }
     }
 }

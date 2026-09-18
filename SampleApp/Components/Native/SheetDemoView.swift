@@ -178,9 +178,10 @@ private struct SheetContentView: View {
                     Button {
                         isPresented = false
                     } label: {
+                        // No explicit accessibilityLabel: `Warp.Icon` already carries the
+                        // localized one, and hardcoding "Close" here overrode it with English.
                         Warp.IconView(.close, size: .default)
                     }
-                    .accessibilityLabel("Close")
                 }
             }
         }
