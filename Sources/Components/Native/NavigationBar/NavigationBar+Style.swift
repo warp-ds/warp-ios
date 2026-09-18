@@ -57,7 +57,7 @@ extension UINavigationBarAppearance {
     /// Internal rather than private so tests can assert on it from any OS. The public entry points
     /// pick between this and the Liquid Glass appearance with `#available`, which would otherwise
     /// make this branch unreachable from a suite running on iOS 26.
-    internal static func warpNavigationBarSolid() -> UINavigationBarAppearance {
+    static func warpNavigationBarSolid() -> UINavigationBarAppearance {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = Warp.UIColor.token.background
 
