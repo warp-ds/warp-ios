@@ -100,7 +100,7 @@ struct ContentView: View {
                 .padding(.horizontal)
                 .onChange(of: selectedTheme) { oldTheme, newTheme in
                     Warp.Theme = newTheme
-                    UINavigationBar.warpLiquidGlassStyle()
+                    UINavigationBar.warpStyle()
                 }
                 #endif
                 LazyVStack(alignment: .leading) {
@@ -152,7 +152,7 @@ struct ContentView: View {
             .navigationTitle(Bundle.main.applicationName)
             .searchable(text: $searchText, prompt: "Search components")
             .onAppear {
-                UINavigationBar.warpLiquidGlassStyle()
+                UINavigationBar.warpStyle()
             }
         }
         .warpTheme(selectedTheme)

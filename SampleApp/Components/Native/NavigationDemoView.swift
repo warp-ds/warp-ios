@@ -147,7 +147,7 @@ struct NavigationDemoView: View {
 
         let navigationController = UINavigationController(rootViewController: hostingController)
         navigationController.navigationBar.prefersLargeTitles = showLargeTitle
-        navigationController.warpLiquidGlassStyle()
+        navigationController.warpStyle()
         navigationController.modalPresentationStyle = .fullScreen
 
         let items = createBarButtonItems()
