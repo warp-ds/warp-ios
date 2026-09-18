@@ -49,7 +49,10 @@ jobs:
     - name: Select an Xcode 26 toolchain
       run: |
         set -euo pipefail
-        XCODE_APP="$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1)"
+        # `|| true` because a plain assignment inherits the substitution's exit status: with
+        # `pipefail`, a glob that matches nothing makes `ls` fail, and `set -e` would kill the
+        # script here rather than letting the diagnostic below run.
+        XCODE_APP="$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1 || true)"
         if [ -z "$XCODE_APP" ]; then
           echo "::error::No Xcode 26.x found on this runner image."
           ls -d /Applications/Xcode*.app
@@ -103,10 +106,14 @@ jobs:
     - name: Build for iOS
       run: xcodebuild -scheme warp-ios -destination "id=${{ steps.sim.outputs.udid }}" build
 
-    # The time allowance is the inner half of the pair with `timeout-minutes` above. The job
-    # timeout bounds the bill; this bounds the diagnosis, because a test that overruns its
-    # allowance fails by name and with a spindump of the stuck thread, where a job timeout just
-    # stops the machine mid-sentence. 180s is roughly 600x the whole XCTest run.
+    # Inner half of the pair with `timeout-minutes` above. The job timeout bounds the bill; these
+    # bound the diagnosis, because a test that overruns fails by name where a job timeout just
+    # stops the machine mid-sentence.
+    #
+    # The flags below only reach XCTest: they drive `XCTestCase.executionTimeAllowance`, and
+    # swift-testing ignores them. 180s is roughly 600x the whole XCTest half, which is the part
+    # that never sleeps. The suites that do wait on a timer are swift-testing, and carry their own
+    # `.timeLimit` trait instead - see ToastTests and SnackbarTests.
     - name: Run tests
       run: |
         xcodebuild -scheme WarpTests -destination "id=${{ steps.sim.outputs.udid }}" \
