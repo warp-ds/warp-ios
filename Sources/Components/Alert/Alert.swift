@@ -374,19 +374,8 @@ private struct UnderlinedLinkModifier: ViewModifier {
     }
     
     func body(content: Content) -> some View {
-        if #available(iOS 16.0, *) {
-            content
-                .underline(true, color: linkColor)
-        } else {
-            content
-                .background(lineBackground)
-        }
-    }
-    
-    private var lineBackground: some View {
-        linkColor
-            .frame(height: 1)
-            .offset(y: 8)
+        content
+            .underline(true, color: linkColor)
     }
 }
 

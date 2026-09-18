@@ -91,26 +91,15 @@ struct StepIndicatorView: View {
             )
 
             if let stepModel = stepModel {
-                if #available(iOS 16.0, *) {
-                    ScrollView {
-                        Warp.StepIndicator(
-                            layoutOrientation: orientation,
-                            stepModel: stepModel
-                        )
+                ScrollView {
+                    Warp.StepIndicator(
+                        layoutOrientation: orientation,
+                        stepModel: stepModel
+                    )
 
-                        Spacer()
-                    }
-                    .scrollDisabled(orientation == .horizontal)
-                } else {
-                    ScrollView {
-                        Warp.StepIndicator(
-                            layoutOrientation: orientation,
-                            stepModel: stepModel
-                        )
-
-                        Spacer()
-                    }
+                    Spacer()
                 }
+                .scrollDisabled(orientation == .horizontal)
             }
         }
         .padding()

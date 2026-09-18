@@ -319,11 +319,7 @@ private struct BorderModifier: ViewModifier {
 
 private struct ClearTextEditorBackgroundModifier: ViewModifier {
     func body(content: Content) -> some View {
-        if #available(iOS 16.0, *) {
-            content.scrollContentBackground(.hidden)
-        } else {
-            content
-        }
+        content.scrollContentBackground(.hidden)
     }
 }
 

@@ -37,12 +37,8 @@ struct SelectView: View {
                     helpText: helpTextValue
                 )
                 .sheet(isPresented: $presentInfoPopover) {
-                    if #available(iOS 16.0, *) {
-                        createTooltipTextView
-                            .presentationDetents([.medium, .large])
-                    } else {
-                        createTooltipTextView
-                    }
+                    createTooltipTextView
+                        .presentationDetents([.medium, .large])
                 }
             }, label: {
                 Text("Select")

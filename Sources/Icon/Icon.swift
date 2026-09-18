@@ -303,6 +303,11 @@ extension Warp {
         case stop
         case circleStop
         case shareIOS
+        case bicycle
+        case graduationCap
+        case lockSimple
+        case personSimpleWalk
+        case umbrella
 
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
@@ -649,6 +654,11 @@ extension Warp {
             case .stop: return Warp.Strings.iconStop.localized
             case .circleStop: return Warp.Strings.iconCircleStop.localized
             case .shareIOS: return Warp.Strings.iconShareIOS.localized
+            case .bicycle: return Warp.Strings.iconBicycle.localized
+            case .graduationCap: return Warp.Strings.iconGraduationCap.localized
+            case .lockSimple: return Warp.Strings.iconLockSimple.localized
+            case .personSimpleWalk: return Warp.Strings.iconPersonSimpleWalk.localized
+            case .umbrella: return Warp.Strings.iconUmbrella.localized
             }
         }
     }

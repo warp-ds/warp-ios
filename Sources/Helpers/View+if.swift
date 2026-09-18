@@ -63,12 +63,8 @@ extension View {
         }
     }
 
-    /// Applies scroll bounce behavior based on content size for iOS 16.4 and above.
-    @ViewBuilder func scrollBounceBasedOnSize() -> some View {
-        if #available(iOS 16.4, *) {
-            self.scrollBounceBehavior(.basedOnSize)
-        } else {
-            self  // No-op fallback
-        }
+    /// Applies scroll bounce behavior based on content size.
+    func scrollBounceBasedOnSize() -> some View {
+        scrollBounceBehavior(.basedOnSize)
     }
 }
