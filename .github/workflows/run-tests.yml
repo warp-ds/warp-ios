@@ -24,6 +24,11 @@ jobs:
     # which cannot compile those, so a 26.x toolchain is selected below.
     runs-on: macos-15
 
+    # A full leg takes about 7 minutes, so this is an outer safety net rather than a budget. It
+    # exists because on 2026-09-14 the iOS 26 leg wedged inside `xcodebuild test` and ran until
+    # GitHub's own 6-hour ceiling killed it, billing six hours of macOS runner time for nothing.
+    timeout-minutes: 25
+
     strategy:
       fail-fast: false
       matrix:
@@ -98,5 +103,13 @@ jobs:
     - name: Build for iOS
       run: xcodebuild -scheme warp-ios -destination "id=${{ steps.sim.outputs.udid }}" build
 
+    # The time allowance is the inner half of the pair with `timeout-minutes` above. The job
+    # timeout bounds the bill; this bounds the diagnosis, because a test that overruns its
+    # allowance fails by name and with a spindump of the stuck thread, where a job timeout just
+    # stops the machine mid-sentence. 180s is roughly 600x the whole XCTest run.
     - name: Run tests
-      run: xcodebuild -scheme WarpTests -destination "id=${{ steps.sim.outputs.udid }}" test
+      run: |
+        xcodebuild -scheme WarpTests -destination "id=${{ steps.sim.outputs.udid }}" \
+          -test-timeouts-enabled YES \
+          -default-test-execution-time-allowance 180 \
+          test
