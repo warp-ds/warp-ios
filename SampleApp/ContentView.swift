@@ -126,6 +126,7 @@ struct ContentView: View {
                             row(title, destination: destination)
                         }
                     }
+                    row("Sheet", destination: SheetDemoView())
 
                     if !filteredPatternItems.isEmpty {
                         Warp.Text("Warp Patterns", style: .title3)
