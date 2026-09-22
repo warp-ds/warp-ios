@@ -106,17 +106,37 @@ jobs:
     - name: Build for iOS
       run: xcodebuild -scheme warp-ios -destination "id=${{ steps.sim.outputs.udid }}" build
 
+    # Pays the cold-device cost of the first SwiftUI environment once, with timeouts OFF, before
+    # anything timed runs. See SimulatorWarmUpTests for the measurements; the short version is that
+    # the first `EnvironmentValues()` on a device that has never built one takes ~19s locally and
+    # has exceeded 180s on this runner, and the cost is per device rather than per process, so the
+    # `simctl boot` above cannot pay it.
+    #
+    # This step must stay unbounded. Killing it mid-warm-up is the actual failure mode we are fixing:
+    # the device cache is only written on completion, so a kill means the next process pays the full
+    # cost again, and xctest's restart-on-timeout turns that into a loop that eats the whole job.
+    - name: Warm the simulator's SwiftUI environment
+      run: |
+        xcodebuild -scheme WarpTests -destination "id=${{ steps.sim.outputs.udid }}" \
+          -only-testing:WarpTests/SimulatorWarmUpTests \
+          -test-timeouts-enabled NO \
+          test
+
     # Inner half of the pair with `timeout-minutes` above. The job timeout bounds the bill; these
     # bound the diagnosis, because a test that overruns fails by name where a job timeout just
     # stops the machine mid-sentence.
     #
     # The flags below only reach XCTest: they drive `XCTestCase.executionTimeAllowance`, and
-    # swift-testing ignores them. 180s is roughly 600x the whole XCTest half, which is the part
-    # that never sleeps. The suites that do wait on a timer are swift-testing, and carry their own
-    # `.timeLimit` trait instead - see ToastTests and SnackbarTests.
+    # swift-testing ignores them. The suites that wait on a timer are swift-testing and carry their
+    # own `.timeLimit` trait instead - see ToastTests and SnackbarTests.
+    #
+    # 600s rather than the previous 180s. The whole XCTest half runs in well under a second once the
+    # warm-up above has happened, so this is not a real bound on healthy work; it is deliberately
+    # above any plausible cold-start cost, because an allowance *below* that cost does not diagnose
+    # the hang, it multiplies it - each kill restarts the process, which pays the cost again.
     - name: Run tests
       run: |
         xcodebuild -scheme WarpTests -destination "id=${{ steps.sim.outputs.udid }}" \
           -test-timeouts-enabled YES \
-          -default-test-execution-time-allowance 180 \
+          -default-test-execution-time-allowance 600 \
           test
