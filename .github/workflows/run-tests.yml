@@ -155,7 +155,7 @@ jobs:
         # rather than being cut off mid-sentence.
         BOOT_BUDGET=90
         BUILD_BUDGET=240
-        PROBE_BUDGET=90
+        PROBE_BUDGET=30
         MAX_ATTEMPTS=3
 
         DIAG_DIR="$RUNNER_TEMP/simulator-diagnostics"
@@ -260,10 +260,17 @@ jobs:
           rm -f "$DONE"
 
           echo "::group::Probe attempt $ATTEMPT on $UDID"
+          # SCRATCH BRANCH ONLY - DO NOT MERGE. Forces attempts 1 and 2 to wedge so that the
+          # recovery path runs for real. `TEST_RUNNER_`-prefixed variables are forwarded by
+          # xcodebuild into the test process with the prefix stripped.
+          FORCE_ENV=""
+          [ "$ATTEMPT" -lt 3 ] && FORCE_ENV="TEST_RUNNER_WARP_PROBE_FORCE_HANG=1"
+          [ -n "$FORCE_ENV" ] && echo "DRILL: forcing this attempt to wedge"
+
           # The sentinel file rather than `kill -0` on the child: a finished-but-unreaped child is
           # still signalable, so liveness checks cannot tell "done" from "running".
           (
-            xcodebuild -scheme WarpTests -destination "id=$UDID" \
+            env $FORCE_ENV xcodebuild -scheme WarpTests -destination "id=$UDID" \
               -only-testing:WarpTests/SimulatorBootProbeTests \
               -test-timeouts-enabled NO \
               test > "$LOG" 2>&1

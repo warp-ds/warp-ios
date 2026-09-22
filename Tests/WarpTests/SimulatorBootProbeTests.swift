@@ -69,6 +69,13 @@ import SwiftUI
 final class SimulatorBootProbeTests: XCTestCase {
 
     func testFirstSwiftUIEnvironmentResolves() {
+        // SCRATCH BRANCH ONLY - DO NOT MERGE. Simulates the wedge so the workflow's recovery path
+        // (sample, kill, erase, create, boot, reinstall) can be exercised on a real runner without
+        // waiting for a real wedge to occur. Driven by TEST_RUNNER_WARP_PROBE_FORCE_HANG.
+        if ProcessInfo.processInfo.environment["WARP_PROBE_FORCE_HANG"] != nil {
+            Thread.sleep(forTimeInterval: 600)
+        }
+
         let environment = EnvironmentValues()
         // Consume the environment. An `EnvironmentValues()` that is never read gets elided, which
         // measures 0.047s and probes nothing - that dead-code trap produced one wrong diagnosis
