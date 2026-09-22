@@ -98,9 +98,8 @@ jobs:
         } >> "$GITHUB_OUTPUT"
 
         # Fire-and-forget, so the boot overlaps with the build step rather than blocking it. The
-        # probe step owns the device lifecycle and waits for `Booted` itself, so there is nothing
-        # to poll for here - and `simctl bootstatus -b`, which does wait, once hung a job until the
-        # workflow timeout.
+        # probe step owns the device lifecycle and waits for boot *completion* itself, under its own
+        # bound, so there is nothing to wait for here.
         xcrun simctl boot "$UDID" || true
 
     # A UDID rather than a device name: a bare `platform=iOS Simulator,name=...` destination can
@@ -136,15 +135,25 @@ jobs:
         DEVICE_TYPE="${{ steps.sim.outputs.device_type }}"
         RUNTIME="${{ steps.sim.outputs.runtime }}"
 
-        # Split budgets, because they bound different things. BUILD covers everything up to the
-        # test entering the runtime - an incremental WarpTests build plus install, measured at 40s
-        # (iOS 26) and 65s (iOS 18). PROBE covers only the test body, measured at 0.203s and 0.234s
-        # on healthy runners.
+        # Split budgets, because they bound different things. BOOT covers `simctl bootstatus`.
+        # BUILD covers everything from there to the test entering the runtime - an incremental
+        # WarpTests build plus install, measured at 40s (iOS 26) and 65s (iOS 18). PROBE covers only
+        # the test body, measured at 0.203s and 0.234s on healthy runners.
         #
-        # 90s rather than something nearer the measurement because the same test takes 12-20s on a
-        # developer Mac, varying run to run on one device with no warming trend, so the healthy cost
-        # is clearly host-dependent and a budget tuned to the runner alone would be brittle. 90s is
-        # still ~400x the observed CI cost and fails in a minute and a half instead of 25.
+        # PROBE is 90s rather than something nearer the measurement because the same test takes
+        # 5-20s on a developer Mac, varying run to run on one device with no warming trend, so the
+        # healthy cost is clearly host-dependent and a budget tuned to the runner alone would be
+        # brittle. It is still ~200x the observed CI cost and fails in 90s instead of 25 minutes.
+        #
+        # BUILD stays generous because a false trip there is expensive and pointless - it would
+        # erase a perfectly good device and rebuild. Reaching the runtime has measured 40s, 54s, 65s
+        # and 68s across both legs, so 240s is ~3.5x the worst seen. BOOT is tighter, because a
+        # `bootstatus` that is going to return at all returns in seconds.
+        #
+        # Worst case is 3 x (90 + 240 + 90 + recycle), which lands around 27 minutes including setup
+        # and the main build - inside `timeout-minutes: 30`, so the step always gets to report
+        # rather than being cut off mid-sentence.
+        BOOT_BUDGET=90
         BUILD_BUDGET=240
         PROBE_BUDGET=90
         MAX_ATTEMPTS=3
@@ -152,16 +161,44 @@ jobs:
         DIAG_DIR="$RUNNER_TEMP/simulator-diagnostics"
         mkdir -p "$DIAG_DIR"
 
+        # Waits for the boot to *complete*, not for the device state to read `Booted`.
+        # CoreSimulator reports `Booted` as soon as `launchd_sim` is up, which is well before the
+        # service set is running - and the service set is the whole problem here, because the first
+        # SwiftUI environment synchronously asks BoardServices for the application initialization
+        # context. A device that is `Booted` but not finished booting is exactly the state in which
+        # that request has nobody to answer it.
+        #
+        # `bootstatus` is bounded rather than trusted. The comment it replaces recorded that it
+        # "waits forever and hung a job here until the workflow timeout" - no run is cited, so treat
+        # that as a report rather than a measurement, but it is worth respecting either way, and it
+        # would be consistent with this same failure observed one layer earlier. A boot that will not
+        # finish is a boot worth throwing away, and finding that out here costs 90s instead of a
+        # build plus a probe cycle.
         ensure_booted() {
-          xcrun simctl boot "$1" >/dev/null 2>&1 || true
-          for _ in $(seq 1 45); do
-            STATE="$(xcrun simctl list devices -j \
-              | jq -r --arg u "$1" '[.devices[][] | select(.udid==$u)] | first | .state // "unknown"')"
-            [ "$STATE" = "Booted" ] && return 0
+          DEV="$1"
+          xcrun simctl boot "$DEV" >/dev/null 2>&1 || true
+
+          BOOT_DONE="$RUNNER_TEMP/bootstatus-done"
+          rm -f "$BOOT_DONE"
+          ( xcrun simctl bootstatus "$DEV" -b > "$DIAG_DIR/bootstatus-$DEV.txt" 2>&1; echo $? > "$BOOT_DONE" ) &
+
+          WAITED=0
+          while [ ! -f "$BOOT_DONE" ] && [ "$WAITED" -lt "$BOOT_BUDGET" ]; do
             sleep 2
+            WAITED=$((WAITED + 2))
           done
-          echo "::warning::Device $1 never reached Booted (last state: $STATE)"
-          return 1
+
+          if [ ! -f "$BOOT_DONE" ]; then
+            echo "::warning::$DEV did not finish booting within ${BOOT_BUDGET}s - treating the boot as bad."
+            pkill -f "simctl bootstatus" 2>/dev/null || true
+            return 1
+          fi
+          if [ "$(cat "$BOOT_DONE")" -ne 0 ]; then
+            echo "::warning::bootstatus reported failure for $DEV"
+            return 1
+          fi
+          echo "Boot completed in ${WAITED}s."
+          return 0
         }
 
         # `sample` is the only thing that answers "blocked on what" - it walks every thread of the
@@ -184,10 +221,39 @@ jobs:
           echo "::endgroup::"
         }
 
+        # Two different recoveries on purpose, so the logs say which one is sufficient. If erasing is
+        # always enough the bad state belongs to the device; if only a new device works it is deeper.
+        # Sets UDID for the next attempt.
+        recycle_device() {
+          if [ "$ATTEMPT" -eq 1 ]; then
+            echo "Recovery: shutdown and erase $UDID"
+            xcrun simctl shutdown "$UDID" >/dev/null 2>&1 || true
+            xcrun simctl erase "$UDID" >/dev/null 2>&1 || true
+          else
+            echo "Recovery: create a replacement device"
+            xcrun simctl shutdown "$UDID" >/dev/null 2>&1 || true
+            NEW_UDID="$(xcrun simctl create "warp-ci-probe-$ATTEMPT" "$DEVICE_TYPE" "$RUNTIME")"
+            if [ -n "$NEW_UDID" ]; then
+              UDID="$NEW_UDID"
+              echo "Replacement device $UDID"
+            else
+              echo "::warning::Could not create a replacement device; retrying on $UDID"
+            fi
+          fi
+        }
+
         ATTEMPT=0
         while [ "$ATTEMPT" -lt "$MAX_ATTEMPTS" ]; do
           ATTEMPT=$((ATTEMPT + 1))
-          ensure_booted "$UDID"
+
+          # A boot that never completes cannot answer the XPC request the probe is about to make, so
+          # there is nothing to learn from building and running against it. Recycle immediately.
+          if ! ensure_booted "$UDID"; then
+            capture_diagnostics "attempt-$ATTEMPT-boot"
+            [ "$ATTEMPT" -ge "$MAX_ATTEMPTS" ] && break
+            recycle_device
+            continue
+          fi
 
           LOG="$DIAG_DIR/attempt-$ATTEMPT-xcodebuild.log"
           DONE="$RUNNER_TEMP/probe-done-$ATTEMPT"
@@ -248,24 +314,7 @@ jobs:
           sleep 3
 
           [ "$ATTEMPT" -ge "$MAX_ATTEMPTS" ] && break
-
-          # Two different recoveries on purpose, so the logs say which one is sufficient. If erase
-          # is always enough the wedge is device state; if only a new device works it is deeper.
-          if [ "$ATTEMPT" -eq 1 ]; then
-            echo "Recovery: shutdown and erase $UDID"
-            xcrun simctl shutdown "$UDID" >/dev/null 2>&1 || true
-            xcrun simctl erase "$UDID" >/dev/null 2>&1 || true
-          else
-            echo "Recovery: create a replacement device"
-            xcrun simctl shutdown "$UDID" >/dev/null 2>&1 || true
-            NEW_UDID="$(xcrun simctl create "warp-ci-probe-$ATTEMPT" "$DEVICE_TYPE" "$RUNTIME")"
-            if [ -n "$NEW_UDID" ]; then
-              UDID="$NEW_UDID"
-              echo "Replacement device $UDID"
-            else
-              echo "::warning::Could not create a replacement device; retrying on $UDID"
-            fi
-          fi
+          recycle_device
         done
 
         echo "::error::The simulator boot probe wedged on all $MAX_ATTEMPTS attempts. Thread samples of the hung process are in the simulator-diagnostics artifact."
