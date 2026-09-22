@@ -27,7 +27,12 @@ jobs:
     # A full leg takes about 7 minutes, so this is an outer safety net rather than a budget. It
     # exists because on 2026-09-14 the iOS 26 leg wedged inside `xcodebuild test` and ran until
     # GitHub's own 6-hour ceiling killed it, billing six hours of macOS runner time for nothing.
-    timeout-minutes: 25
+    #
+    # 30 rather than 25 so that the boot probe's own budgets are what stop a wedge. Three probe
+    # attempts worst-case to ~25 minutes including setup and build, which 25 clipped - and a job
+    # killed at the timeout reports `cancelled` with no diagnosis, which is exactly what the probe
+    # exists to replace with a named failure and a thread sample.
+    timeout-minutes: 30
 
     strategy:
       fail-fast: false
@@ -66,61 +71,215 @@ jobs:
       run: |
         set -euo pipefail
 
-        UDID="$(xcrun simctl list devices available -j \
-          | jq -r --arg v "${{ matrix.ios-major }}" \
+        # The device type and runtime come out alongside the UDID because the boot probe below may
+        # have to throw this device away and create an equivalent one.
+        SIM="$(xcrun simctl list devices available -j \
+          | jq -c --arg v "${{ matrix.ios-major }}" \
             '[.devices | to_entries[]
               | select(.key | test("SimRuntime.iOS-" + $v + "-"))
-              | .value[] | select(.isAvailable)] | first | .udid // empty')"
+              | .key as $runtime | .value[] | select(.isAvailable)
+              | {udid, name, runtime: $runtime, deviceType: .deviceTypeIdentifier}] | first // empty')"
 
         # Deliberately no download fallback. Runtimes that are absent from the image are also
         # generally unavailable to `xcodebuild -downloadPlatform`, so failing here with the
         # runtime list is more useful than a multi-GB download that cannot succeed.
-        if [ -z "$UDID" ]; then
+        if [ -z "$SIM" ]; then
           echo "::error::No iOS ${{ matrix.ios-major }} runtime on this image. Runtimes available:"
           xcrun simctl list runtimes
           exit 1
         fi
 
-        echo "Using simulator $UDID"
-        echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+        UDID="$(jq -r '.udid' <<<"$SIM")"
+        echo "Using simulator $UDID ($(jq -r '.name' <<<"$SIM"), $(jq -r '.runtime' <<<"$SIM"))"
+        {
+          echo "udid=$UDID"
+          echo "device_type=$(jq -r '.deviceType' <<<"$SIM")"
+          echo "runtime=$(jq -r '.runtime' <<<"$SIM")"
+        } >> "$GITHUB_OUTPUT"
 
-        # Boot it up front. The first test run against a cold simulator can report a phantom
-        # swift-testing failure that does not reproduce, so warm it rather than retrying failed
-        # runs, which would mask real ones.
-        #
-        # Bounded poll rather than `simctl bootstatus -b`, which waits forever and hung a job here
-        # until the workflow timeout. Warming is an optimisation, so give up quietly and let
-        # xcodebuild boot the simulator itself if this does not finish.
+        # Fire-and-forget, so the boot overlaps with the build step rather than blocking it. The
+        # probe step owns the device lifecycle and waits for `Booted` itself, so there is nothing
+        # to poll for here - and `simctl bootstatus -b`, which does wait, once hung a job until the
+        # workflow timeout.
         xcrun simctl boot "$UDID" || true
-        STATE="unknown"
-        for _ in $(seq 1 30); do
-          STATE="$(xcrun simctl list devices -j \
-            | jq -r --arg u "$UDID" '[.devices[][] | select(.udid==$u)] | first | .state // "unknown"')"
-          [ "$STATE" = "Booted" ] && break
-          sleep 2
-        done
-        echo "Simulator state after warm-up: $STATE"
 
     # A UDID rather than a device name: a bare `platform=iOS Simulator,name=...` destination can
     # misresolve to a tvOS or visionOS device, and a name alone does not pin the OS version.
     - name: Build for iOS
       run: xcodebuild -scheme warp-ios -destination "id=${{ steps.sim.outputs.udid }}" build
 
-    # Pays the cold-device cost of the first SwiftUI environment once, with timeouts OFF, before
-    # anything timed runs. See SimulatorWarmUpTests for the measurements; the short version is that
-    # the first `EnvironmentValues()` on a device that has never built one takes ~19s locally and
-    # has exceeded 180s on this runner, and the cost is per device rather than per process, so the
-    # `simctl boot` above cannot pay it.
+    # Checks that this simulator boot can build a SwiftUI environment at all, before the real suite
+    # runs, and throws the device away if it cannot.
     #
-    # This step must stay unbounded. Killing it mid-warm-up is the actual failure mode we are fixing:
-    # the device cache is only written on completion, so a kill means the next process pays the full
-    # cost again, and xctest's restart-on-timeout turns that into a loop that eats the whole job.
-    - name: Warm the simulator's SwiftUI environment
+    # This replaces an earlier unbounded "warm-up" step built on the theory that the first
+    # `EnvironmentValues()` on a cold device has a large but finite cost (~19s locally). Run
+    # 35710643887 tested that unbounded and disproved it: the call never returned in 20m40s on iOS
+    # 26, while the identical call was 0.203s on an equally fresh iOS 26 device in run 35338773478
+    # and 0.234s on the iOS 18 leg of the same job. Roughly 0.2s or never is a hang, not a cache
+    # fill, so waiting it out cannot work - and waiting it out unbounded burns the entire job and
+    # prints nothing after `Test Case ... started.`
+    #
+    # Sampling the hung test host identified the call: `EnvironmentValues()` reaches
+    # `+[UIScreen initialize]`, which makes a synchronous, un-timed XPC round trip to the simulator's
+    # BoardServices daemon for the application initialization context. If that daemon answers you pay
+    # the round trip; if it does not, `xpc_connection_send_message_with_reply_sync` never returns. So
+    # a wedge belongs to the *boot*, which is why the recovery here is a different device rather than
+    # a longer wait. Full stack in SimulatorBootProbeTests.
+    - name: Probe the simulator boot
+      id: probe
       run: |
-        xcodebuild -scheme WarpTests -destination "id=${{ steps.sim.outputs.udid }}" \
-          -only-testing:WarpTests/SimulatorWarmUpTests \
-          -test-timeouts-enabled NO \
-          test
+        # Deliberately no `-e`: every failure below is handled, and an unhandled exit here would
+        # skip the diagnostics that are the whole point of the step.
+        set -uo pipefail
+
+        UDID="${{ steps.sim.outputs.udid }}"
+        DEVICE_TYPE="${{ steps.sim.outputs.device_type }}"
+        RUNTIME="${{ steps.sim.outputs.runtime }}"
+
+        # Split budgets, because they bound different things. BUILD covers everything up to the
+        # test entering the runtime - an incremental WarpTests build plus install, measured at 40s
+        # (iOS 26) and 65s (iOS 18). PROBE covers only the test body, measured at 0.203s and 0.234s
+        # on healthy runners.
+        #
+        # 90s rather than something nearer the measurement because the same test takes 12-20s on a
+        # developer Mac, varying run to run on one device with no warming trend, so the healthy cost
+        # is clearly host-dependent and a budget tuned to the runner alone would be brittle. 90s is
+        # still ~400x the observed CI cost and fails in a minute and a half instead of 25.
+        BUILD_BUDGET=240
+        PROBE_BUDGET=90
+        MAX_ATTEMPTS=3
+
+        DIAG_DIR="$RUNNER_TEMP/simulator-diagnostics"
+        mkdir -p "$DIAG_DIR"
+
+        ensure_booted() {
+          xcrun simctl boot "$1" >/dev/null 2>&1 || true
+          for _ in $(seq 1 45); do
+            STATE="$(xcrun simctl list devices -j \
+              | jq -r --arg u "$1" '[.devices[][] | select(.udid==$u)] | first | .state // "unknown"')"
+            [ "$STATE" = "Booted" ] && return 0
+            sleep 2
+          done
+          echo "::warning::Device $1 never reached Booted (last state: $STATE)"
+          return 1
+        }
+
+        # `sample` is the only thing that answers "blocked on what" - it walks every thread of the
+        # hung test host and needs no privileges for our own processes. This is what a future
+        # diagnosis will be built from, so capture it before anything is killed.
+        capture_diagnostics() {
+          TAG="$1"
+          echo "::group::Diagnostics for $TAG"
+          for NAME in xctest testmanagerd; do
+            for PID in $(pgrep -x "$NAME" 2>/dev/null || true); do
+              echo "sampling $NAME ($PID) for 3s"
+              /usr/bin/sample "$PID" 3 -file "$DIAG_DIR/$TAG-$NAME-$PID.txt" >/dev/null 2>&1 || true
+            done
+          done
+          ps -Ao pid,ppid,stat,etime,command \
+            | grep -E 'xctest|xcodebuild|testmanagerd|CoreSimulator|launchd_sim' \
+            | grep -v grep > "$DIAG_DIR/$TAG-ps.txt" 2>&1 || true
+          xcrun simctl list devices > "$DIAG_DIR/$TAG-devices.txt" 2>&1 || true
+          echo "captured: $(ls "$DIAG_DIR" | tr '\n' ' ')"
+          echo "::endgroup::"
+        }
+
+        ATTEMPT=0
+        while [ "$ATTEMPT" -lt "$MAX_ATTEMPTS" ]; do
+          ATTEMPT=$((ATTEMPT + 1))
+          ensure_booted "$UDID"
+
+          LOG="$DIAG_DIR/attempt-$ATTEMPT-xcodebuild.log"
+          DONE="$RUNNER_TEMP/probe-done-$ATTEMPT"
+          rm -f "$DONE"
+
+          echo "::group::Probe attempt $ATTEMPT on $UDID"
+          # The sentinel file rather than `kill -0` on the child: a finished-but-unreaped child is
+          # still signalable, so liveness checks cannot tell "done" from "running".
+          (
+            xcodebuild -scheme WarpTests -destination "id=$UDID" \
+              -only-testing:WarpTests/SimulatorBootProbeTests \
+              -test-timeouts-enabled NO \
+              test > "$LOG" 2>&1
+            echo $? > "$DONE"
+          ) &
+
+          ELAPSED=0
+          STARTED=0
+          DEADLINE="$BUILD_BUDGET"
+          while [ ! -f "$DONE" ] && [ "$ELAPSED" -lt "$DEADLINE" ]; do
+            sleep 2
+            ELAPSED=$((ELAPSED + 2))
+            if [ "$STARTED" -eq 0 ] \
+              && grep -qF "SimulatorBootProbeTests testFirstSwiftUIEnvironmentResolves]' started" "$LOG" 2>/dev/null; then
+              STARTED=1
+              DEADLINE=$((ELAPSED + PROBE_BUDGET))
+              echo "Test entered the runtime after ${ELAPSED}s; allowing ${PROBE_BUDGET}s to return."
+            fi
+          done
+
+          if [ -f "$DONE" ]; then
+            STATUS="$(cat "$DONE")"
+            tail -30 "$LOG"
+            echo "::endgroup::"
+            if [ "$STATUS" -eq 0 ]; then
+              echo "Boot probe passed on attempt $ATTEMPT in ${ELAPSED}s. Device $UDID is healthy."
+              echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            # A clean non-zero exit is a compile or assertion failure. Retrying it on a fresh
+            # device would turn a real, reproducible failure into flake.
+            echo "::error::Boot probe exited $STATUS. That is a build or test failure, not a wedge."
+            cat "$LOG"
+            exit "$STATUS"
+          fi
+
+          if [ "$STARTED" -eq 1 ]; then
+            echo "::warning::Probe test did not return within ${PROBE_BUDGET}s - this boot is wedged."
+          else
+            echo "::warning::Probe did not reach the runtime within ${BUILD_BUDGET}s - build or install is wedged."
+          fi
+          capture_diagnostics "attempt-$ATTEMPT"
+          tail -30 "$LOG" 2>/dev/null
+          echo "::endgroup::"
+
+          pkill -x xctest 2>/dev/null || true
+          pkill -f 'xcodebuild -scheme WarpTests' 2>/dev/null || true
+          sleep 3
+
+          [ "$ATTEMPT" -ge "$MAX_ATTEMPTS" ] && break
+
+          # Two different recoveries on purpose, so the logs say which one is sufficient. If erase
+          # is always enough the wedge is device state; if only a new device works it is deeper.
+          if [ "$ATTEMPT" -eq 1 ]; then
+            echo "Recovery: shutdown and erase $UDID"
+            xcrun simctl shutdown "$UDID" >/dev/null 2>&1 || true
+            xcrun simctl erase "$UDID" >/dev/null 2>&1 || true
+          else
+            echo "Recovery: create a replacement device"
+            xcrun simctl shutdown "$UDID" >/dev/null 2>&1 || true
+            NEW_UDID="$(xcrun simctl create "warp-ci-probe-$ATTEMPT" "$DEVICE_TYPE" "$RUNTIME")"
+            if [ -n "$NEW_UDID" ]; then
+              UDID="$NEW_UDID"
+              echo "Replacement device $UDID"
+            else
+              echo "::warning::Could not create a replacement device; retrying on $UDID"
+            fi
+          fi
+        done
+
+        echo "::error::The simulator boot probe wedged on all $MAX_ATTEMPTS attempts. Thread samples of the hung process are in the simulator-diagnostics artifact."
+        exit 1
+
+    # Always, because the samples are only interesting when the step above failed.
+    - name: Upload simulator diagnostics
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: simulator-diagnostics-ios-${{ matrix.ios-major }}
+        path: ${{ runner.temp }}/simulator-diagnostics
+        if-no-files-found: ignore
+        retention-days: 14
 
     # Inner half of the pair with `timeout-minutes` above. The job timeout bounds the bill; these
     # bound the diagnosis, because a test that overruns fails by name where a job timeout just
@@ -130,13 +289,16 @@ jobs:
     # swift-testing ignores them. The suites that wait on a timer are swift-testing and carry their
     # own `.timeLimit` trait instead - see ToastTests and SnackbarTests.
     #
-    # 600s rather than the previous 180s. The whole XCTest half runs in well under a second once the
-    # warm-up above has happened, so this is not a real bound on healthy work; it is deliberately
-    # above any plausible cold-start cost, because an allowance *below* that cost does not diagnose
-    # the hang, it multiplies it - each kill restarts the process, which pays the cost again.
+    # 120s. The whole XCTest half runs in well under a second, so this is not a bound on healthy
+    # work - it is how fast a wedge that slips past the probe gets a name attached to it. The
+    # earlier reasoning for raising this to 600s was that an allowance below the cold-start cost
+    # multiplies the failure; that rested on a cold-start cost which run 35710643887 showed does not
+    # exist, so the argument for a long allowance goes with it.
+    #
+    # The device comes from the probe step, not from `sim`: the probe may have replaced it.
     - name: Run tests
       run: |
-        xcodebuild -scheme WarpTests -destination "id=${{ steps.sim.outputs.udid }}" \
+        xcodebuild -scheme WarpTests -destination "id=${{ steps.probe.outputs.udid }}" \
           -test-timeouts-enabled YES \
-          -default-test-execution-time-allowance 600 \
+          -default-test-execution-time-allowance 120 \
           test
