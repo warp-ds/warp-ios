@@ -308,6 +308,27 @@ extension Warp {
         case lockSimple
         case personSimpleWalk
         case umbrella
+        case cardsThree
+        case chartBar
+        case chartPieSlice
+        case crosshair
+        case crownSimple
+        case devices
+        case fire
+        case flowArrow
+        case folderUser
+        case handWaving
+        case identificationCard
+        case mapPinSimpleArea
+        case puzzlePiece
+        case scan
+        case sealCheck
+        case shootingStar
+        case shuffle
+        case signpost
+        case target
+        case userSquare
+        case waveform
 
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
@@ -659,6 +680,27 @@ extension Warp {
             case .lockSimple: return Warp.Strings.iconLockSimple.localized
             case .personSimpleWalk: return Warp.Strings.iconPersonSimpleWalk.localized
             case .umbrella: return Warp.Strings.iconUmbrella.localized
+            case .cardsThree: return Warp.Strings.iconCardsThree.localized
+            case .chartBar: return Warp.Strings.iconChartBar.localized
+            case .chartPieSlice: return Warp.Strings.iconChartPieSlice.localized
+            case .crosshair: return Warp.Strings.iconCrosshair.localized
+            case .crownSimple: return Warp.Strings.iconCrownSimple.localized
+            case .devices: return Warp.Strings.iconDevices.localized
+            case .fire: return Warp.Strings.iconFire.localized
+            case .flowArrow: return Warp.Strings.iconFlowArrow.localized
+            case .folderUser: return Warp.Strings.iconFolderUser.localized
+            case .handWaving: return Warp.Strings.iconHandWaving.localized
+            case .identificationCard: return Warp.Strings.iconIdentificationCard.localized
+            case .mapPinSimpleArea: return Warp.Strings.iconMapPinSimpleArea.localized
+            case .puzzlePiece: return Warp.Strings.iconPuzzlePiece.localized
+            case .scan: return Warp.Strings.iconScan.localized
+            case .sealCheck: return Warp.Strings.iconSealCheck.localized
+            case .shootingStar: return Warp.Strings.iconShootingStar.localized
+            case .shuffle: return Warp.Strings.iconShuffle.localized
+            case .signpost: return Warp.Strings.iconSignpost.localized
+            case .target: return Warp.Strings.iconTarget.localized
+            case .userSquare: return Warp.Strings.iconUserSquare.localized
+            case .waveform: return Warp.Strings.iconWaveform.localized
             }
         }
     }
