@@ -135,28 +135,36 @@ jobs:
         DEVICE_TYPE="${{ steps.sim.outputs.device_type }}"
         RUNTIME="${{ steps.sim.outputs.runtime }}"
 
-        # Split budgets, because they bound different things. BOOT covers `simctl bootstatus`.
-        # BUILD covers everything from there to the test entering the runtime - an incremental
-        # WarpTests build plus install, measured at 40s (iOS 26) and 65s (iOS 18). PROBE covers only
-        # the test body, measured at 0.203s and 0.234s on healthy runners.
+        # Split budgets, because they bound different things. All three are calibrated against run
+        # 35718445968, a drill that forced the recovery path to run end to end on both legs.
         #
-        # PROBE is 90s rather than something nearer the measurement because the same test takes
-        # 5-20s on a developer Mac, varying run to run on one device with no warming trend, so the
-        # healthy cost is clearly host-dependent and a budget tuned to the runner alone would be
-        # brittle. It is still ~200x the observed CI cost and fails in 90s instead of 25 minutes.
+        # BOOT covers `simctl bootstatus`. Measured: 2s and 4s for a device already booting during
+        # the build step, 54s (iOS 18) and 74s (iOS 26) for a freshly created one, and >90s for an
+        # iOS 26 device that had just been erased. 180s, because the first version of this used 90s
+        # and that discarded a device which was merely booting slowly.
         #
-        # BUILD stays generous because a false trip there is expensive and pointless - it would
-        # erase a perfectly good device and rebuild. Reaching the runtime has measured 40s, 54s, 65s
-        # and 68s across both legs, so 240s is ~3.5x the worst seen. BOOT is tighter, because a
-        # `bootstatus` that is going to return at all returns in seconds.
+        # BUILD covers everything from there to the test entering the runtime. Measured at 58s, 84s,
+        # 106s, 112s and 120s - the high end is a replacement device, where the install is fresh.
+        # 300s, because a false trip here is expensive and pointless: it discards a healthy device
+        # and rebuilds for no reason.
         #
-        # Worst case is 3 x (90 + 240 + 90 + recycle), which lands around 27 minutes including setup
-        # and the main build - inside `timeout-minutes: 30`, so the step always gets to report
-        # rather than being cut off mid-sentence.
-        BOOT_BUDGET=90
-        BUILD_BUDGET=240
+        # PROBE covers only the test body, measured at 0.203s, 0.234s and 0.415s on CI. 90s rather
+        # than anything nearer that, because the same test takes 5-20s on a developer Mac, varying
+        # run to run on one device with no warming trend - so the healthy cost is clearly
+        # host-dependent, and a budget fitted to the runner alone would be brittle. Still ~200x the
+        # observed CI cost, and it fails in 90s instead of 25 minutes.
+        BOOT_BUDGET=180
+        BUILD_BUDGET=300
         PROBE_BUDGET=90
         MAX_ATTEMPTS=3
+
+        # A wall-clock bound on the whole step, checked before each attempt, so that the per-attempt
+        # budgets above can be tuned without anyone having to redo the arithmetic against
+        # `timeout-minutes`. Worst case is this plus one full attempt, which leaves several minutes
+        # of headroom - and the step reports rather than being cut off mid-sentence, which is the
+        # entire difference between this and the `cancelled` runs it replaces.
+        STEP_BUDGET=780
+        STEP_START=$SECONDS
 
         DIAG_DIR="$RUNNER_TEMP/simulator-diagnostics"
         mkdir -p "$DIAG_DIR"
@@ -221,29 +229,30 @@ jobs:
           echo "::endgroup::"
         }
 
-        # Two different recoveries on purpose, so the logs say which one is sufficient. If erasing is
-        # always enough the bad state belongs to the device; if only a new device works it is deeper.
-        # Sets UDID for the next attempt.
+        # Always a new device, never an erase. This started out as two strategies - erase first, then
+        # create - specifically so the logs would say which was sufficient. Run 35718445968 answered
+        # it: erase is the weaker of the two. It bought nothing on iOS 18 (54s to reboot, the same as
+        # a fresh device) and on iOS 26 the erased device did not finish booting at all, which cost a
+        # whole attempt. A new device worked on both legs. Sets UDID for the next attempt.
         recycle_device() {
-          if [ "$ATTEMPT" -eq 1 ]; then
-            echo "Recovery: shutdown and erase $UDID"
-            xcrun simctl shutdown "$UDID" >/dev/null 2>&1 || true
-            xcrun simctl erase "$UDID" >/dev/null 2>&1 || true
+          echo "Recovery: create a replacement device"
+          xcrun simctl shutdown "$UDID" >/dev/null 2>&1 || true
+          NEW_UDID="$(xcrun simctl create "warp-ci-probe-$ATTEMPT" "$DEVICE_TYPE" "$RUNTIME")"
+          if [ -n "$NEW_UDID" ]; then
+            UDID="$NEW_UDID"
+            echo "Replacement device $UDID"
           else
-            echo "Recovery: create a replacement device"
-            xcrun simctl shutdown "$UDID" >/dev/null 2>&1 || true
-            NEW_UDID="$(xcrun simctl create "warp-ci-probe-$ATTEMPT" "$DEVICE_TYPE" "$RUNTIME")"
-            if [ -n "$NEW_UDID" ]; then
-              UDID="$NEW_UDID"
-              echo "Replacement device $UDID"
-            else
-              echo "::warning::Could not create a replacement device; retrying on $UDID"
-            fi
+            echo "::warning::Could not create a replacement device; retrying on $UDID"
           fi
         }
 
         ATTEMPT=0
         while [ "$ATTEMPT" -lt "$MAX_ATTEMPTS" ]; do
+          SPENT=$((SECONDS - STEP_START))
+          if [ "$ATTEMPT" -gt 0 ] && [ "$SPENT" -ge "$STEP_BUDGET" ]; then
+            echo "::warning::${SPENT}s spent, at or past the ${STEP_BUDGET}s step budget - stopping after $ATTEMPT attempts rather than risking the job timeout."
+            break
+          fi
           ATTEMPT=$((ATTEMPT + 1))
 
           # A boot that never completes cannot answer the XPC request the probe is about to make, so
@@ -317,7 +326,7 @@ jobs:
           recycle_device
         done
 
-        echo "::error::The simulator boot probe wedged on all $MAX_ATTEMPTS attempts. Thread samples of the hung process are in the simulator-diagnostics artifact."
+        echo "::error::The simulator boot probe wedged on all $ATTEMPT attempts ($((SECONDS - STEP_START))s). Thread samples of the hung process are in the simulator-diagnostics artifact."
         exit 1
 
     # Always, because the samples are only interesting when the step above failed.
