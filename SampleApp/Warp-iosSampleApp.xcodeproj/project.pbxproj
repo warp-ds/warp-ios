@@ -222,6 +222,12 @@
 		9E2F677B2ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
 		9E2F677C2ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
 		9E2F677D2ECF62D200B48276 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F67772ECF62D200B48276 /* StateView.swift */; };
+		17E8153CCA510D9320C17A1B /* ColorVariantDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C5762CB5BA0B5FF1683B49 /* ColorVariantDemo.swift */; };
+		547A9882555BA4040C244261 /* ColorVariantDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C5762CB5BA0B5FF1683B49 /* ColorVariantDemo.swift */; };
+		92132072D1005CE9BA481BA7 /* ColorVariantDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C5762CB5BA0B5FF1683B49 /* ColorVariantDemo.swift */; };
+		ABE90B6F9DF6AE259D86142A /* ColorVariantDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C5762CB5BA0B5FF1683B49 /* ColorVariantDemo.swift */; };
+		EB583990278CE68E33ED4876 /* ColorVariantDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C5762CB5BA0B5FF1683B49 /* ColorVariantDemo.swift */; };
+		124EF9AC309CD0F5F9ED1151 /* ColorVariantDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C5762CB5BA0B5FF1683B49 /* ColorVariantDemo.swift */; };
 		9E54AC6E2E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
 		9E54AC6F2E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
 		9E54AC702E4CA9C200F9F052 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */; };
@@ -447,6 +453,7 @@
 		9E1C20412FD6F46E002A4AF4 /* ConfirmationDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationDialogView.swift; sourceTree = "<group>"; };
 		9E28292A2FF7AF2A0003FE03 /* AlertDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogView.swift; sourceTree = "<group>"; };
 		9E2F67772ECF62D200B48276 /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
+		E1C5762CB5BA0B5FF1683B49 /* ColorVariantDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorVariantDemo.swift; sourceTree = "<group>"; };
 		9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		9E54F07A2E40B82E008BDFB9 /* WarpSnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpSnapshotTests.xctestplan; sourceTree = "<group>"; };
 		9E54F07B2E40BD9B008BDFB9 /* WarpTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WarpTests.xctestplan; sourceTree = "<group>"; };
@@ -677,6 +684,7 @@
 				9E1C20412FD6F46E002A4AF4 /* ConfirmationDialogView.swift */,
 				9E1C1A312FB3544F002A4AF4 /* SnackbarView.swift */,
 				9E2F67772ECF62D200B48276 /* StateView.swift */,
+				E1C5762CB5BA0B5FF1683B49 /* ColorVariantDemo.swift */,
 				9EE8EBD92E9FC9A90088AFD9 /* SelectView.swift */,
 				9EF55F832E991DDD000842A8 /* DividerView.swift */,
 				9E097EC22E8AA7B30007DF09 /* RangeSliderView.swift */,
@@ -1065,6 +1073,7 @@
 				2E1ADF5B2C2561A700DFEE06 /* ButtonView.swift in Sources */,
 				2E1ADF5C2C2561A700DFEE06 /* ToastView.swift in Sources */,
 				9E2F677B2ECF62D200B48276 /* StateView.swift in Sources */,
+				ABE90B6F9DF6AE259D86142A /* ColorVariantDemo.swift in Sources */,
 				82F7B0482D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B3A2CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				2E1ADF5D2C2561A700DFEE06 /* ContentView.swift in Sources */,
@@ -1129,6 +1138,7 @@
 				820A85FC2C6CEB0C006D35A0 /* ButtonView.swift in Sources */,
 				820A85FD2C6CEB0C006D35A0 /* ToastView.swift in Sources */,
 				9E2F67792ECF62D200B48276 /* StateView.swift in Sources */,
+				547A9882555BA4040C244261 /* ColorVariantDemo.swift in Sources */,
 				82F7B0492D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B382CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				820A85FE2C6CEB0C006D35A0 /* ContentView.swift in Sources */,
@@ -1193,6 +1203,7 @@
 				820A86392C6D4388006D35A0 /* ToastView.swift in Sources */,
 				820A863A2C6D4388006D35A0 /* ContentView.swift in Sources */,
 				9E2F677C2ECF62D200B48276 /* StateView.swift in Sources */,
+				EB583990278CE68E33ED4876 /* ColorVariantDemo.swift in Sources */,
 				82F7B0472D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B392CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				82BF22262C6A15F900DDF06E /* TooltipView.swift in Sources */,
@@ -1257,6 +1268,7 @@
 				82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */,
 				B2922A6F2B68E7F200A3E9F4 /* ToastView.swift in Sources */,
 				9E2F67782ECF62D200B48276 /* StateView.swift in Sources */,
+				17E8153CCA510D9320C17A1B /* ColorVariantDemo.swift in Sources */,
 				82F7B04A2D0AF0B30015D48F /* PrimitiveColorsView.swift in Sources */,
 				821E8B3B2CE34E0600173F8E /* ButtonGroupView.swift in Sources */,
 				82355B122A8CD1120023EB11 /* ContentView.swift in Sources */,
@@ -1321,6 +1333,7 @@
 				9E7149892E1BF28900674698 /* ButtonView.swift in Sources */,
 				9E71498A2E1BF28900674698 /* ToastView.swift in Sources */,
 				9E2F677A2ECF62D200B48276 /* StateView.swift in Sources */,
+				92132072D1005CE9BA481BA7 /* ColorVariantDemo.swift in Sources */,
 				9E71498B2E1BF28900674698 /* PrimitiveColorsView.swift in Sources */,
 				9E71498C2E1BF28900674698 /* ButtonGroupView.swift in Sources */,
 				9E71498D2E1BF28900674698 /* ContentView.swift in Sources */,
@@ -1385,6 +1398,7 @@
 				9EFC48372E4219940048E4E7 /* ToastView.swift in Sources */,
 				9EFC48382E4219940048E4E7 /* ContentView.swift in Sources */,
 				9E2F677D2ECF62D200B48276 /* StateView.swift in Sources */,
+				124EF9AC309CD0F5F9ED1151 /* ColorVariantDemo.swift in Sources */,
 				9EFC48392E4219940048E4E7 /* PrimitiveColorsView.swift in Sources */,
 				9EFC483A2E4219940048E4E7 /* ButtonGroupView.swift in Sources */,
 				9EFC483B2E4219940048E4E7 /* TooltipView.swift in Sources */,
