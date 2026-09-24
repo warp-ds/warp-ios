@@ -14,8 +14,8 @@ struct WarpTabBarControllerWrapper: UIViewControllerRepresentable {
     var badges: [Int: DemoTabBadge]
 
     func makeUIViewController(context: Context) -> UITabBarController {
-        Warp.Theme = theme
-        return WarpStyledTabBarController(brand: theme)
+        Warp.Theme = theme.brand
+        return WarpStyledTabBarController(brand: theme.brand)
     }
 
     func updateUIViewController(_ uiViewController: UITabBarController, context: Context) {
