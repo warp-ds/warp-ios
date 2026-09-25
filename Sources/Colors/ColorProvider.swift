@@ -13,6 +13,13 @@ public struct ColorProvider {
         self.token = Self.tokenProvider(for: theme)
     }
 
+    /// Initialize with a theme and an explicit token provider, as `Warp.ColorVariant` does:
+    /// the brand is unchanged and the supplied tokens carry any overrides.
+    init(theme: Warp.Brand, token: TokenProvider) {
+        self.theme = theme
+        self.token = token
+    }
+
     /// Backwards compatibility initializer using token
     /// - Parameter token: The token provider (theme will be inferred from Warp.Theme global)
     @available(*, deprecated, message: "Use init(theme:) instead to avoid global state")
