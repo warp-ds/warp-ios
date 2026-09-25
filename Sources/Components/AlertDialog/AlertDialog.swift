@@ -58,11 +58,17 @@ extension Warp {
             /// A cancel button, displayed prominently by the system.
             case cancel
 
+            /// A primary action button, displayed with greater prominence than `.default`.
+            /// Achieved by assigning it the `defaultAction` keyboard shortcut, which the system
+            /// renders with bold styling in alert dialogs.
+            case primary
+
             var buttonRole: ButtonRole? {
                 switch self {
                 case .default: return nil
                 case .destructive: return .destructive
                 case .cancel: return .cancel
+                case .primary: return nil
                 }
             }
         }

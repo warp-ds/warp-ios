@@ -70,6 +70,7 @@ struct ConfirmationDialogView: View {
                         Picker("Style", selection: $action.style) {
                             Warp.Text("Default", style: .body).tag(Warp.ConfirmationDialog.Style.default)
                             Warp.Text("Destructive", style: .body).tag(Warp.ConfirmationDialog.Style.destructive)
+                            Warp.Text("Primary", style: .body).tag(Warp.ConfirmationDialog.Style.primary)
                         }
                         .pickerStyle(.segmented)
                     }

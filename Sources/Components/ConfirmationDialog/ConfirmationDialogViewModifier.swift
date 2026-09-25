@@ -23,21 +23,31 @@ extension Warp {
                     titleVisibility: .visible
                 ) {
                     ForEach(actions) { action in
-                        SwiftUI.Button(role: action.style.buttonRole) {
-                            action.handler()
-                        } label: {
-                            SwiftUI.Text(action.title)
-                                .font(Warp.Typography.title4.font)
-                                .foregroundStyle(action.style == .destructive
-                                    ? token.textNegative
-                                    : token.text)
-                        }
+                        confirmationButton(for: action)
                     }
                 } message: {
                     if let message {
                         SwiftUI.Text(message)
                     }
                 }
+        }
+
+        @ViewBuilder
+        private func confirmationButton(for action: Warp.ConfirmationDialog.Action) -> some View {
+            let button = SwiftUI.Button(role: action.style.buttonRole) {
+                action.handler()
+            } label: {
+                SwiftUI.Text(action.title)
+                    .font(Warp.Typography.title4.font)
+                    .foregroundStyle(action.style == .destructive
+                        ? token.textNegative
+                        : token.text)
+            }
+            if action.style == .primary {
+                button.keyboardShortcut(.defaultAction)
+            } else {
+                button
+            }
         }
     }
 }

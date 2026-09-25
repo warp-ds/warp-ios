@@ -55,10 +55,16 @@ extension Warp {
             /// A destructive action button, displayed in red by the system.
             case destructive
 
+            /// A primary action button, displayed with greater prominence than `.default`.
+            /// Achieved by assigning it the `defaultAction` keyboard shortcut, which the system
+            /// renders with bold styling in confirmation dialogs.
+            case primary
+
             var buttonRole: ButtonRole? {
                 switch self {
                 case .default: return nil
                 case .destructive: return .destructive
+                case .primary: return nil
                 }
             }
         }

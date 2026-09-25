@@ -24,23 +24,33 @@ extension Warp {
                 ) {
                     extraContent
                     ForEach(actions) { action in
-                        SwiftUI.Button(role: action.style.buttonRole) {
-                            action.handler()
-                        } label: {
-                            // Note: iOS .alert() ignores font/foregroundStyle on button labels —
-                            // styling is fully system-controlled. Kept for future API alignment.
-                            SwiftUI.Text(action.title)
-                                .font(Warp.Typography.title4.font)
-                                .foregroundStyle(action.style == .destructive
-                                    ? colorProvider.token.textNegative
-                                    : colorProvider.token.text)
-                        }
+                        alertButton(for: action)
                     }
                 } message: {
                     if let message {
                         SwiftUI.Text(message)
                     }
                 }
+        }
+
+        @ViewBuilder
+        private func alertButton(for action: Warp.AlertDialog.Action) -> some View {
+            // Note: iOS .alert() ignores font/foregroundStyle on button labels —
+            // styling is fully system-controlled. Kept for future API alignment.
+            let button = SwiftUI.Button(role: action.style.buttonRole) {
+                action.handler()
+            } label: {
+                SwiftUI.Text(action.title)
+                    .font(Warp.Typography.title4.font)
+                    .foregroundStyle(action.style == .destructive
+                        ? colorProvider.token.textNegative
+                        : colorProvider.token.text)
+            }
+            if action.style == .primary {
+                button.keyboardShortcut(.defaultAction)
+            } else {
+                button
+            }
         }
     }
 }
