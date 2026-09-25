@@ -83,9 +83,9 @@ extension Warp {
     VStack(spacing: 40) {
         Warp.SegmentedControl(
             items: [
-                .init(identifier: "a", title: "First"),
+                .init(identifier: "a", title: "First", badge: 4),
                 .init(identifier: "b", title: "Second"),
-                .init(identifier: "c", title: "Third tab"),
+                .init(identifier: "c", title: "Third tab", badge: 4),
                 .init(identifier: "d", title: "Fourth"),
                 .init(identifier: "e", title: "Fifth tab with long title"),
             ],
