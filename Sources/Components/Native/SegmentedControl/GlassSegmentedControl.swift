@@ -55,7 +55,7 @@ extension Warp {
         sv.showsVerticalScrollIndicator = false
         sv.alwaysBounceHorizontal = true
         sv.alwaysBounceVertical = false
-        sv.backgroundColor = .clear
+        sv.backgroundColor = Warp.UIToken.background
         sv.contentInsetAdjustmentBehavior = .never
         return sv
     }()
