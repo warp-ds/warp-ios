@@ -271,8 +271,8 @@ private final class TabCell: UICollectionViewCell {
         }
 
         if let title = titleLabel.text {
-            let badgeText = badge == 0 ? "" : (badge > 99 ? "99+" : "\(badge)")
-            accessibilityLabel = badgeText.isEmpty ? title : "\(title), \(badgeText)"
+            let badgeText = badge == 0 ? NSLocalizedString("New", comment: "") : (badge > 99 ? "99+" : "\(badge)")
+            accessibilityLabel = "\(title), \(badgeText)"
         }
     }
 

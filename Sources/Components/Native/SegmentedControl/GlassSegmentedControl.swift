@@ -140,6 +140,7 @@ extension Warp {
         super.layoutSubviews()
         if usesGlassSegments {
             glassContainer.layer.cornerRadius = glassContainer.bounds.height / 2
+            glassContainer.layoutIfNeeded()
             layoutBadges()
         }
     }
@@ -214,6 +215,14 @@ extension Warp {
             }
         }
 
+        for (index, item) in items.enumerated() {
+            guard let badge = item.badge else { continue }
+            let badgeText = badge == 0 ? NSLocalizedString("New", comment: "") : (badge > 99 ? "99+" : "\(badge)")
+            if let segmentView = segmentedControl.accessibilityElement(at: index) as? UIView {
+                segmentView.accessibilityLabel = "\(item.title), \(badgeText)"
+            }
+        }
+
         if let selectedIdentifier,
            let selectedIndex = items.firstIndex(where: { $0.identifier == selectedIdentifier }) {
             segmentedControl.selectedSegmentIndex = selectedIndex
@@ -241,6 +250,8 @@ extension Warp {
         for (index, item) in items.enumerated() {
             guard let badge = item.badge else { continue }
             let badgeView = BadgeView(badge: badge)
+            badgeView.isUserInteractionEnabled = false
+            badgeView.isAccessibilityElement = false
             badgeViewsByIndex[index] = badgeView
             glassContainer.addSubview(badgeView)
         }
@@ -268,9 +279,11 @@ extension Warp {
         }
 
         let remaining = totalWidth - explicitTotal
-        if autoTitleTotal > 0 {
+        let autoCount = (0..<count).filter { widths[$0] == 0 && $0 < cachedTitleWidths.count }.count
+        if autoCount > 0 {
+            let perSegmentPadding = (remaining - autoTitleTotal) / CGFloat(autoCount)
             for i in 0..<count where widths[i] == 0 && i < cachedTitleWidths.count {
-                widths[i] = remaining * cachedTitleWidths[i] / autoTitleTotal
+                widths[i] = cachedTitleWidths[i] + perSegmentPadding
             }
         }
 
@@ -302,9 +315,8 @@ extension Warp {
             let anchorInSelf = segmentedControl.convert(anchorPoint, to: glassContainer)
 
             let badgeSize = badgeView.cachedBadgeSize
-            let pillExcess = max(0, badgeSize.width - badgeSize.height)
             badgeView.frame = CGRect(
-                x: anchorInSelf.x + BadgeView.badgeSpacing - pillExcess / 2,
+                x: anchorInSelf.x + BadgeView.badgeSpacing,
                 y: anchorInSelf.y - badgeSize.height / 2,
                 width: badgeSize.width,
                 height: badgeSize.height
