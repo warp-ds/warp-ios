@@ -251,8 +251,8 @@ extension Warp {
         }
 
         for (index, item) in items.enumerated() {
-            guard let badge = item.badge else { continue }
-            let badgeText = badge == 0 ? NSLocalizedString("New", comment: "") : (badge > 99 ? "99+" : "\(badge)")
+            guard let badge = item.badge, badge > 0 else { continue }
+            let badgeText = badge > 99 ? "99+" : "\(badge)"
             if let segmentView = segmentedControl.accessibilityElement(at: index) as? UIView {
                 segmentView.accessibilityLabel = "\(item.title), \(badgeText)"
             }
