@@ -2,13 +2,12 @@ import UIKit
 
 extension UIBarButtonItem {
 
-    /// Applies Warp design style to a bar button item with Liquid Glass styling (iOS 26+).
+    /// Applies Warp design style to a bar button item for navigation bar placement.
     ///
-    /// This method styles the bar button item with the appropriate colors, fonts, and Liquid Glass effects
-    /// for navigation bar placement. The primary style uses the `.prominent` button item style for a glass appearance.
-    /// The method configures appearance for both normal and highlighted states.
-    ///
-    /// **Availability:** iOS 26+. On earlier versions, this method returns self unmodified.
+    /// Styles the item with Warp colors and fonts. The primary style is rendered with the
+    /// `.prominent` item style on iOS 26+, which gives it a glass appearance; below 26 that style
+    /// does not exist, so `.done` stands in for it, matching what NMP already ships through
+    /// `doneButtonAppearance`.
     ///
     /// **Usage:**
     ///
@@ -22,15 +21,10 @@ extension UIBarButtonItem {
     /// - Returns: Self to support method chaining.
     @discardableResult
     public func warpNavigationBarButton(style: Warp.NavigationBarButtonStyle = .default) -> Self {
-        guard #available(iOS 26.0, *) else { return self }
-
-        let tint = Warp.UIColor.token.icon
-        let primaryTint = Warp.UIColor.buttonPrimaryBackground
-
         switch style {
         case .default:
             self.style = .plain
-            tintColor = tint
+            tintColor = Warp.UIColor.token.icon
             setTitleTextAttributes([
                 .font: Warp.Typography.body.uiFont
             ], for: .normal)
@@ -38,8 +32,12 @@ extension UIBarButtonItem {
                 .font: Warp.Typography.body.uiFont
             ], for: .highlighted)
         case .primary:
-            self.style = .prominent
-            tintColor = primaryTint
+            if #available(iOS 26.0, *) {
+                self.style = .prominent
+            } else {
+                self.style = .done
+            }
+            tintColor = Warp.UIColor.buttonPrimaryBackground
             setTitleTextAttributes([
                 .font: Warp.Typography.title4.uiFont
             ], for: .normal)
