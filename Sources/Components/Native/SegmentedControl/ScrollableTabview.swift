@@ -48,15 +48,24 @@ final class ScrollableTabView: UIView {
 
     required init?(coder: NSCoder) { fatalError() }
 
+    private var lastLayoutWidth: CGFloat = 0
+
     override func layoutSubviews() {
         super.layoutSubviews()
         let r = Self.maxShadowRadius
         let rect = CGRect(x: 0, y: bounds.maxY - r, width: bounds.width, height: r)
         layer.shadowPath = UIBezierPath(rect: rect).cgPath
+
+        let width = collectionView.bounds.width
+        if width > 0 && width != lastLayoutWidth {
+            lastLayoutWidth = width
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
     }
 
     func configure(items: [Warp.GlassSegmentedControl.Item], selectedIdentifier: String?) {
         self.items = items
+        collectionView.collectionViewLayout.invalidateLayout()
         var snap = NSDiffableDataSourceSnapshot<Int, Warp.GlassSegmentedControl.Item>()
         snap.appendSections([0])
         snap.appendItems(items, toSection: 0)
@@ -85,20 +94,44 @@ final class ScrollableTabView: UIView {
     }
 
     private func makeLayout() -> UICollectionViewLayout {
-        UICollectionViewCompositionalLayout { _, _ in
+        UICollectionViewCompositionalLayout { [weak self] _, environment in
+            let leadingInset = Warp.Spacing.spacing200
+            let trailingInset = Warp.Spacing.spacing200
+            let spacing = Warp.Spacing.spacing400
+            let containerWidth = self.flatMap { $0.lastLayoutWidth > 0 ? $0.lastLayoutWidth : nil }
+                ?? environment.container.effectiveContentSize.width
+            let availableContent = containerWidth - leadingInset - trailingInset
+
+            let items = self?.items ?? []
+            let font = Warp.Typography.captionStrong.uiFont
+            var naturalTotal = CGFloat(max(0, items.count - 1)) * spacing
+            for item in items {
+                naturalTotal += ceil((item.title as NSString).size(withAttributes: [.font: font]).width)
+                if item.badge != nil { naturalTotal += 16 }
+            }
+
+            if !items.isEmpty && naturalTotal < availableContent {
+                let totalSpacing = CGFloat(max(0, items.count - 1)) * spacing
+                let itemWidth = max(0, (availableContent - totalSpacing) / CGFloat(items.count))
+                let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth), heightDimension: .fractionalHeight(1))
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth), heightDimension: .estimated(TabCell.cellHeight))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+                let section = NSCollectionLayoutSection(group: group)
+                section.orthogonalScrollingBehavior = .continuous
+                section.interGroupSpacing = spacing
+                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: leadingInset, bottom: 0, trailing: trailingInset)
+                return section
+            }
+
             let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(50), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
             let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(50), heightDimension: .estimated(TabCell.cellHeight))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .continuous
-            section.interGroupSpacing = Warp.Spacing.spacing400
-            section.contentInsets = NSDirectionalEdgeInsets(
-                top: 0, leading: Warp.Spacing.spacing200,
-                bottom: 0, trailing: Warp.Spacing.spacing200
-            )
+            section.interGroupSpacing = spacing
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: leadingInset, bottom: 0, trailing: trailingInset)
             return section
         }
     }

@@ -41,6 +41,8 @@ extension Warp {
     private let usesGlassSegments: Bool
     private var badgeViewsByIndex: [Int: BadgeView] = [:]
     private var cachedTitleWidths: [CGFloat] = []
+    private var naturalSegmentWidths: [CGFloat] = []
+    private static let segmentHorizontalPadding: CGFloat = 32
 
     // MARK: - iOS 26+
 
@@ -128,20 +130,45 @@ extension Warp {
 
     // MARK: - Layout
 
-    private static let pillBottomPadding: CGFloat = 3
+    private static let glassVerticalPadding: CGFloat = 3
 
     public override var intrinsicContentSize: CGSize {
         usesGlassSegments
-            ? CGSize(width: UIView.noIntrinsicMetric, height: segmentedControl.intrinsicContentSize.height + Self.pillBottomPadding)
+            ? CGSize(width: UIView.noIntrinsicMetric, height: segmentedControl.intrinsicContentSize.height + Self.glassVerticalPadding)
             : scrollableTabView.intrinsicContentSize
     }
 
     public override func layoutSubviews() {
         super.layoutSubviews()
         if usesGlassSegments {
+            stretchSegmentsIfNeeded()
             glassContainer.layer.cornerRadius = glassContainer.bounds.height / 2
             glassContainer.layoutIfNeeded()
             layoutBadges()
+        }
+    }
+
+    private func stretchSegmentsIfNeeded() {
+        let count = segmentedControl.numberOfSegments
+        guard count > 0, naturalSegmentWidths.count == count else { return }
+
+        let availableWidth = glassContainer.bounds.width
+        guard availableWidth > 0 else { return }
+
+        let naturalTotal = naturalSegmentWidths.reduce(0, +)
+
+        if naturalTotal < availableWidth {
+            let scale = availableWidth / naturalTotal
+            var assigned: CGFloat = 0
+            for i in 0..<count {
+                let w = i == count - 1 ? availableWidth - assigned : floor(naturalSegmentWidths[i] * scale)
+                segmentedControl.setWidth(w, forSegmentAt: i)
+                assigned += w
+            }
+        } else {
+            for i in 0..<count {
+                segmentedControl.setWidth(naturalSegmentWidths[i], forSegmentAt: i)
+            }
         }
     }
 
@@ -165,7 +192,7 @@ extension Warp {
             glassContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             glassContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            segmentedControl.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            segmentedControl.centerYAnchor.constraint(equalTo: scrollView.frameLayoutGuide.centerYAnchor),
             segmentedControl.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             segmentedControl.widthAnchor.constraint(greaterThanOrEqualTo: scrollView.frameLayoutGuide.widthAnchor),
@@ -194,6 +221,7 @@ extension Warp {
 
     private func configureSegmentedControl(selectedIdentifier: String?) {
         segmentedControl.removeAllSegments()
+        segmentedControl.apportionsSegmentWidthsByContent = false
         let font = Warp.Typography.captionStrong.uiFont
         let textAttributes: [NSAttributedString.Key: Any] = [.font: font]
 
@@ -201,17 +229,24 @@ extension Warp {
             ceil(($0.title as NSString).size(withAttributes: textAttributes).width)
         }
 
+        naturalSegmentWidths = []
         for (index, item) in items.enumerated() {
             segmentedControl.insertSegment(withTitle: item.title, at: index, animated: false)
 
+            let baseWidth = cachedTitleWidths[index] + Self.segmentHorizontalPadding
             if let badge = item.badge {
                 let badgeSize = BadgeView.sizeFor(badge: badge)
                 let extraSpace = BadgeView.badgeSpacing + badgeSize.width
-                segmentedControl.setWidth(cachedTitleWidths[index] + extraSpace + 24, forSegmentAt: index)
+                let w = baseWidth + extraSpace
+                segmentedControl.setWidth(w, forSegmentAt: index)
                 segmentedControl.setContentOffset(
                     CGSize(width: -extraSpace / 2, height: 0),
                     forSegmentAt: index
                 )
+                naturalSegmentWidths.append(w)
+            } else {
+                segmentedControl.setWidth(baseWidth, forSegmentAt: index)
+                naturalSegmentWidths.append(baseWidth)
             }
         }
 
@@ -259,54 +294,22 @@ extension Warp {
         setNeedsLayout()
     }
 
-    private func resolvedSegmentWidths() -> [CGFloat] {
-        let count = segmentedControl.numberOfSegments
-        guard count > 0 else { return [] }
-
-        let totalWidth = segmentedControl.bounds.width
-        var explicitTotal: CGFloat = 0
-        var autoTitleTotal: CGFloat = 0
-        var widths = [CGFloat](repeating: 0, count: count)
-
-        for i in 0..<count {
-            let w = segmentedControl.widthForSegment(at: i)
-            if w > 0 {
-                widths[i] = w
-                explicitTotal += w
-            } else if i < cachedTitleWidths.count {
-                autoTitleTotal += cachedTitleWidths[i]
-            }
-        }
-
-        let remaining = totalWidth - explicitTotal
-        let autoCount = (0..<count).filter { widths[$0] == 0 && $0 < cachedTitleWidths.count }.count
-        if autoCount > 0 {
-            let perSegmentPadding = (remaining - autoTitleTotal) / CGFloat(autoCount)
-            for i in 0..<count where widths[i] == 0 && i < cachedTitleWidths.count {
-                widths[i] = cachedTitleWidths[i] + perSegmentPadding
-            }
-        }
-
-        return widths
-    }
-
     private func layoutBadges() {
         let segmentCount = segmentedControl.numberOfSegments
         guard segmentCount > 0, !badgeViewsByIndex.isEmpty else { return }
 
         let controlHeight = segmentedControl.bounds.height
-        let widths = resolvedSegmentWidths()
 
         var leadingX: CGFloat = 0
         for index in 0..<segmentCount {
-            let actualWidth = index < widths.count ? widths[index] : 0
+            let segWidth = segmentedControl.widthForSegment(at: index)
 
             guard let badgeView = badgeViewsByIndex[index], index < cachedTitleWidths.count else {
-                leadingX += actualWidth
+                leadingX += segWidth
                 continue
             }
 
-            let segmentCenterX = leadingX + actualWidth / 2
+            let segmentCenterX = leadingX + segWidth / 2
             let contentOffset = segmentedControl.contentOffsetForSegment(at: index)
             let titleCenterX = segmentCenterX + contentOffset.width
             let titleTrailingX = titleCenterX + cachedTitleWidths[index] / 2
@@ -322,7 +325,7 @@ extension Warp {
                 height: badgeSize.height
             )
 
-            leadingX += actualWidth
+            leadingX += segWidth
         }
     }
 
@@ -336,9 +339,9 @@ extension Warp {
         let visibleWidth = scrollView.bounds.width
         guard totalWidth > visibleWidth else { return }
 
-        let widths = resolvedSegmentWidths()
-        let leadingX = widths.prefix(index).reduce(0, +)
-        let segmentCenter = leadingX + (index < widths.count ? widths[index] / 2 : 0)
+        var leadingX: CGFloat = 0
+        for i in 0..<index { leadingX += segmentedControl.widthForSegment(at: i) }
+        let segmentCenter = leadingX + segmentedControl.widthForSegment(at: index) / 2
         let maxOffset = totalWidth - visibleWidth
         let targetOffset = max(0, min(segmentCenter - visibleWidth / 2, maxOffset))
 
