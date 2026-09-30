@@ -43,20 +43,30 @@ final class ScrollableTabView: UIView {
 
         registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { [weak self] (_: Self, _: UITraitCollection) in
             self?.invalidateIntrinsicContentSize()
+            self?.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
 
     required init?(coder: NSCoder) { fatalError() }
+
+    private var lastLayoutWidth: CGFloat = 0
 
     override func layoutSubviews() {
         super.layoutSubviews()
         let r = Self.maxShadowRadius
         let rect = CGRect(x: 0, y: bounds.maxY - r, width: bounds.width, height: r)
         layer.shadowPath = UIBezierPath(rect: rect).cgPath
+
+        let width = collectionView.bounds.width
+        if width > 0 && width != lastLayoutWidth {
+            lastLayoutWidth = width
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
     }
 
     func configure(items: [Warp.GlassSegmentedControl.Item], selectedIdentifier: String?) {
         self.items = items
+        collectionView.collectionViewLayout.invalidateLayout()
         var snap = NSDiffableDataSourceSnapshot<Int, Warp.GlassSegmentedControl.Item>()
         snap.appendSections([0])
         snap.appendItems(items, toSection: 0)
@@ -85,20 +95,70 @@ final class ScrollableTabView: UIView {
     }
 
     private func makeLayout() -> UICollectionViewLayout {
-        UICollectionViewCompositionalLayout { _, _ in
+        UICollectionViewCompositionalLayout { [weak self] _, environment in
+            let leadingInset = Warp.Spacing.spacing200
+            let trailingInset = Warp.Spacing.spacing200
+            let spacing = Warp.Spacing.spacing400
+            let containerWidth = self.flatMap { $0.lastLayoutWidth > 0 ? $0.lastLayoutWidth : nil }
+                ?? environment.container.effectiveContentSize.width
+            let availableContent = containerWidth - leadingInset - trailingInset
+
+            let items = self?.items ?? []
+            let font = Warp.Typography.captionStrong.uiFont
+            let totalSpacing = CGFloat(max(0, items.count - 1)) * spacing
+
+            let naturalWidths: [CGFloat] = items.map { item in
+                var w = ceil((item.title as NSString).size(withAttributes: [.font: font]).width)
+                if let badge = item.badge {
+                    let badgeFont = UIFont.systemFont(ofSize: 10, weight: .bold)
+                    let badgePaddingH: CGFloat = 4
+                    let badgePaddingV: CGFloat = 2
+                    let badgeSpacing: CGFloat = 4
+                    let badgeDotSize: CGFloat = 8
+                    if badge == 0 {
+                        w += badgeSpacing + badgeDotSize
+                    } else {
+                        let text = badge > 99 ? "99+" : "\(badge)"
+                        let textSize = (text as NSString).size(withAttributes: [.font: badgeFont])
+                        let h = ceil(textSize.height) + badgePaddingV * 2
+                        w += badgeSpacing + max(ceil(textSize.width) + badgePaddingH * 2, h)
+                    }
+                }
+                return w
+            }
+
+            let naturalTotal = naturalWidths.reduce(0, +)
+
+            if !items.isEmpty && naturalTotal + totalSpacing <= availableContent {
+                // Items fit — give each its natural width plus an equal share of leftover space
+                let extra = availableContent - totalSpacing - naturalTotal
+                let extraPerItem = extra / CGFloat(items.count)
+                var finalWidths = naturalWidths.map { floor($0 + extraPerItem) }
+                // Assign floating-point remainder to last item so total fills exactly
+                let allocated = finalWidths.reduce(0, +) + totalSpacing
+                finalWidths[finalWidths.count - 1] += availableContent - allocated
+
+                let subitems: [NSCollectionLayoutItem] = finalWidths.map { width in
+                    NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .absolute(width), heightDimension: .fractionalHeight(1)))
+                }
+                let outerSize = NSCollectionLayoutSize(widthDimension: .absolute(availableContent), heightDimension: .estimated(TabCell.cellHeight))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: outerSize, subitems: subitems)
+                group.interItemSpacing = .fixed(spacing)
+                let section = NSCollectionLayoutSection(group: group)
+                section.orthogonalScrollingBehavior = .continuous
+                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: leadingInset, bottom: 0, trailing: trailingInset)
+                return section
+            }
+
             let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(50), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
             let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(50), heightDimension: .estimated(TabCell.cellHeight))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .continuous
-            section.interGroupSpacing = Warp.Spacing.spacing400
-            section.contentInsets = NSDirectionalEdgeInsets(
-                top: 0, leading: Warp.Spacing.spacing200,
-                bottom: 0, trailing: Warp.Spacing.spacing200
-            )
+            section.interGroupSpacing = spacing
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: leadingInset, bottom: 0, trailing: trailingInset)
             return section
         }
     }
@@ -106,7 +166,7 @@ final class ScrollableTabView: UIView {
     private func makeDataSource() -> UICollectionViewDiffableDataSource<Int, Warp.GlassSegmentedControl.Item> {
         UICollectionViewDiffableDataSource(collectionView: collectionView) { cv, indexPath, item in
             let cell = cv.dequeueReusableCell(withReuseIdentifier: TabCell.reuseID, for: indexPath) as! TabCell
-            cell.configure(title: item.title)
+            cell.configure(title: item.title, badge: item.badge)
             return cell
         }
     }
@@ -125,9 +185,15 @@ extension ScrollableTabView: UICollectionViewDelegate {
 private final class TabCell: UICollectionViewCell {
     static let reuseID = "TabCell"
 
-    private static let font = Warp.Typography.captionStrong.uiFont
+    private static var font: UIFont { Warp.Typography.captionStrong.uiFont }
     private static let indicatorHeight: CGFloat = 4
     private static let verticalPadding = Warp.Spacing.spacing100
+
+    private static let badgeDotSize: CGFloat = 8
+    private static let badgeFont = UIFont.systemFont(ofSize: 10, weight: .bold)
+    private static let badgePaddingH: CGFloat = 4
+    private static let badgePaddingV: CGFloat = 2
+    private static let badgeSpacing: CGFloat = 4
 
     static var cellHeight: CGFloat {
         let labelHeight = ceil(("I" as NSString).boundingRect(
@@ -160,24 +226,71 @@ private final class TabCell: UICollectionViewCell {
         return v
     }()
 
+    private let badgeContainer: UIView = {
+        let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = .systemRed
+        v.clipsToBounds = true
+        v.isHidden = true
+        return v
+    }()
+
+    private let badgeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = TabCell.badgeFont
+        label.textColor = .white
+        label.textAlignment = .center
+        return label
+    }()
+
+    private var badgeWidthConstraint: NSLayoutConstraint?
+    private var badgeHeightConstraint: NSLayoutConstraint?
+    private var titleTrailingNoBadge: NSLayoutConstraint!
+    private var badgeTrailingConstraint: NSLayoutConstraint!
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         isAccessibilityElement = true
         accessibilityTraits = [.button]
 
+        registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { [weak self] (_: TabCell, _: UITraitCollection) in
+            self?.titleLabel.font = TabCell.font
+        }
+
         contentView.addSubview(titleLabel)
         contentView.addSubview(indicator)
+        contentView.addSubview(badgeContainer)
+        badgeContainer.addSubview(badgeLabel)
 
         let vp = Self.verticalPadding
         let ih = Self.indicatorHeight
+
+        let bw = badgeContainer.widthAnchor.constraint(equalToConstant: Self.badgeDotSize)
+        let bh = badgeContainer.heightAnchor.constraint(equalToConstant: Self.badgeDotSize)
+        badgeWidthConstraint = bw
+        badgeHeightConstraint = bh
+
+        titleTrailingNoBadge = titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        badgeTrailingConstraint = badgeContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        titleTrailingNoBadge.isActive = true
+
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: vp),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -(vp + ih)),
 
-            indicator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            indicator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            badgeContainer.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: Self.badgeSpacing),
+            badgeContainer.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            bw, bh,
+
+            badgeLabel.topAnchor.constraint(equalTo: badgeContainer.topAnchor, constant: Self.badgePaddingV),
+            badgeLabel.bottomAnchor.constraint(equalTo: badgeContainer.bottomAnchor, constant: -Self.badgePaddingV),
+            badgeLabel.leadingAnchor.constraint(equalTo: badgeContainer.leadingAnchor, constant: Self.badgePaddingH),
+            badgeLabel.trailingAnchor.constraint(equalTo: badgeContainer.trailingAnchor, constant: -Self.badgePaddingH),
+
+            indicator.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            indicator.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             indicator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             indicator.heightAnchor.constraint(equalToConstant: ih),
         ])
@@ -185,10 +298,50 @@ private final class TabCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) { fatalError() }
 
-    func configure(title: String) {
+    func configure(title: String, badge: Int? = nil) {
         titleLabel.text = title
-        accessibilityLabel = title
+        configureBadge(badge)
         updateSelection(animated: false)
+    }
+
+    private func configureBadge(_ badge: Int?) {
+        guard let badge else {
+            badgeContainer.isHidden = true
+            titleTrailingNoBadge.isActive = true
+            badgeTrailingConstraint.isActive = false
+            accessibilityLabel = titleLabel.text
+            return
+        }
+
+        badgeContainer.isHidden = false
+        titleTrailingNoBadge.isActive = false
+        badgeTrailingConstraint.isActive = true
+
+        if badge == 0 {
+            badgeLabel.isHidden = true
+            badgeWidthConstraint?.constant = Self.badgeDotSize
+            badgeHeightConstraint?.constant = Self.badgeDotSize
+            badgeContainer.layer.cornerRadius = Self.badgeDotSize / 2
+        } else {
+            badgeLabel.isHidden = false
+            let text = badge > 99 ? "99+" : "\(badge)"
+            badgeLabel.text = text
+            let textSize = (text as NSString).size(withAttributes: [.font: Self.badgeFont])
+            let height = ceil(textSize.height) + Self.badgePaddingV * 2
+            let width = max(ceil(textSize.width) + Self.badgePaddingH * 2, height)
+            badgeWidthConstraint?.constant = width
+            badgeHeightConstraint?.constant = height
+            badgeContainer.layer.cornerRadius = height / 2
+        }
+
+        if let title = titleLabel.text {
+            if badge > 0 {
+                let badgeText = badge > 99 ? "99+" : "\(badge)"
+                accessibilityLabel = "\(title), \(badgeText)"
+            } else {
+                accessibilityLabel = title
+            }
+        }
     }
 
     private func updateSelection(animated: Bool) {
