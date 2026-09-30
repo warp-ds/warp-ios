@@ -8,11 +8,11 @@ It is not a checklist and there is no approval gate here.
 
 ## Minimum iOS version
 
-**iOS 18.** Declared in `Package.swift` and nowhere else.
+**iOS 18.** Declared in `Package.swift` and tested in CI. Change both in the same PR.
 
 Agreed at the iOS community meeting on **2026-09-02**. The floor tracks NMP's own minimum, which
 moved to iOS 18 in June 2026; Warp lagged at `.iOS(.v17)` until [#230](https://github.com/warp-ds/warp-ios/pull/230)
-on 2026-08-31.
+on 2026-09-01.
 
 Historically NMP raises its floor about 22 months after Apple ships a version, so expect iOS 26 to
 become the floor somewhere in 2027 rather than soon. Treat the pre-26 branch as roughly a year of
@@ -20,6 +20,19 @@ real usage, not a rounding error, but also not permanent.
 
 Before assuming a version is about to be dropped, check for an in-app sunset message for it in
 `ios-app`. One ships ahead of every drop.
+
+### How the floor is tested
+
+Since [#237](https://github.com/warp-ds/warp-ios/pull/237) on **2026-09-18**, every PR runs the
+tests twice: once on the minimum (iOS 18) and once on the latest (iOS 26). The matrix is in
+`.github/workflows/run-tests.yml`, and its `ios-major: "18"` leg is the second place the floor is
+written down. Raising the floor in `Package.swift` without moving that leg keeps testing a
+version Warp no longer supports.
+
+Both legs run on `macos-15`, because it is the only GitHub runner image with iOS 18 and iOS 26
+runtimes side by side. `macos-26` has no iOS 18 runtime and can't download one. When `macos-15`
+is retired, the minimum leg needs a new home or the floor has to move. The reasoning is in the
+comments at the top of the workflow.
 
 ## What "support" obliges
 
@@ -44,7 +57,8 @@ Prefer degrading. Reach for `@available` only when there is no meaningful fallba
 Check what the OS does before writing a fallback. Sheets are the worked example: iOS 26 already
 renders a `.medium` detent as Liquid Glass and turns the same sheet opaque once it reaches full
 height, with no API call. A hand-written version branch there fights the system rather than helping
-it. See `SheetStyleModifier.swift`.
+it. See `SheetStyleModifier.swift`, which landed with
+[#220](https://github.com/warp-ds/warp-ios/pull/220) (WARP-1410) on 2026-09-18.
 
 ## Designing for versions below iOS 26
 
@@ -70,7 +84,12 @@ month, and the branch has a known end date.
 - `GlassSegmentedControl` (`Sources/Components/Native/SegmentedControl/`) shipped with an
   `if #available(iOS 26, *)` split, an unspecced pre-26 branch, and snapshot tests across all six
   brands. It set this pattern before it was written down.
-- [WARP-1451](https://github.com/warp-ds/warp-ios/pull/235) applies it to the navigation bar.
+- WARP-1451 applies it to the navigation bar style modifiers. It landed on `main` directly as
+  `f8dba32` and `851f41b`; [#235](https://github.com/warp-ds/warp-ios/pull/235) holds the review
+  discussion and was closed on 2026-09-22 with nothing left to merge.
+- WARP-1410's sheet style modifiers ([#220](https://github.com/warp-ds/warp-ios/pull/220),
+  2026-09-18) apply the other half: no version branch at all, because iOS 26 already picks glass
+  or opaque per detent.
 
 ## Moving implementations into Warp
 
@@ -115,5 +134,5 @@ where the team wants Warp to own the behaviour outright.
 
 ---
 
-*Last reviewed 2026-09-08. Every claim above is dated; if a date looks old, verify before relying
+*Last reviewed 2026-09-30. Every claim above is dated; if a date looks old, verify before relying
 on it.*
