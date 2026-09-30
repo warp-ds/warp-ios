@@ -9056,7 +9056,7 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kolme päällekkäistä korttia"
+            "value" : "Kolmen kortin pino"
           }
         },
         "nb-NO" : {
@@ -9080,7 +9080,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Et søjlediagram med stigende søjler"
+            "value" : "Et søjlediagram i stigende rækkefølge"
           }
         },
         "en" : {
@@ -9092,19 +9092,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pylväskaavio nousevilla pylväillä"
+            "value" : "Noususuuntainen pylväsdiagrammi"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Et søylediagram med stigende søyler"
+            "value" : "Et stolpediagram med økende stolper"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ett stapeldiagram med stigande staplar"
+            "value" : "Ett stapeldiagram med stigane staplar"
           }
         }
       }
@@ -9116,7 +9116,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Et cirkeldiagram med en fremhævet sektor"
+            "value" : "Et lagkagediagram med et fremhævet stykke"
           }
         },
         "en" : {
@@ -9128,19 +9128,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ympyräkaavio korostetulla siivulla"
+            "value" : "Ympyräkaavio ja korostettu siivu"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Et sektordiagram med en uthevet sektor"
+            "value" : "Et kakediagram med et fremhevet stykke"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ett cirkeldiagram med ett markerat segment"
+            "value" : "Ett cirkeldiagram med en framhävd del"
           }
         }
       }
@@ -9152,7 +9152,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Et trådkors"
+            "value" : "Et trådkors-sigte"
           }
         },
         "en" : {
@@ -9164,19 +9164,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tähtäinristikko"
+            "value" : "Kiikaritähtäin"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Et trådkors"
+            "value" : "Et kikkertsikte"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ett hårkors"
+            "value" : "Ett kikarsikte"
           }
         }
       }
@@ -9188,7 +9188,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Simpel kronens kontur"
+            "value" : "Enkelt omrids af en krone"
           }
         },
         "en" : {
@@ -9200,19 +9200,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yksinkertainen kruunun ääriviiva"
+            "value" : "Kruunun ääriviivat"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enkel kronkontur"
+            "value" : "Omrisset av en enkel krone"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enkel kronkontur"
+            "value" : "Enkel siluett av en krona"
           }
         }
       }
@@ -9224,7 +9224,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En stationær skærm og en mobiltelefon"
+            "value" : "En computerskærm og en mobiltelefon"
           }
         },
         "en" : {
@@ -9236,19 +9236,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pöytämonitori ja matkapuhelin"
+            "value" : "Tietokoneen näyttö ja matkapuhelin"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En datamaskinskjerm og en mobiltelefon"
+            "value" : "En PC-skjerm og en mobiltelefon"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En datorskärm och en mobiltelefon"
+            "value" : "En datorskärm och mobiltelefon"
           }
         }
       }
@@ -9296,7 +9296,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pil, der peger opad og til højre"
+            "value" : "En pil, der peger opad mod højre"
           }
         },
         "en" : {
@@ -9308,19 +9308,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nuoli, joka osoittaa ylös ja oikealle"
+            "value" : "Oikealle osoittava mutkainen nuoli"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pil som peker opp og til høyre"
+            "value" : "En pil som peker opp og til høyre"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pil som pekar uppåt och åt höger"
+            "value" : "Pil som pekar upp och åt höger"
           }
         }
       }
@@ -9332,7 +9332,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En mappe med en personsilhuet"
+            "value" : "En mappe med silhuetten af et menneske"
           }
         },
         "en" : {
@@ -9344,19 +9344,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kansio henkilön siluetilla"
+            "value" : "Kansio ja ihmisen siluetti"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En mappe med en personsilhuett"
+            "value" : "En mappe med en menneskesilhuett på"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En mapp med en personsilhuett"
+            "value" : "En mapp med en siluett av en person"
           }
         }
       }
@@ -9368,7 +9368,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En vinkende hånd"
+            "value" : "En hånd, der vinker"
           }
         },
         "en" : {
@@ -9416,19 +9416,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Henkilökortti valokuvalla"
+            "value" : "Valokuvallinen henkilökortti"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Et ID-kort med et bilde"
+            "value" : "Et ID-kort med bilde"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ett ID-kort med ett foto"
+            "value" : "Ett ID-kort med bild"
           }
         }
       }
@@ -9440,7 +9440,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kortmarkør med cirkulært område"
+            "value" : "En nål på et kort med et cirkelformet område"
           }
         },
         "en" : {
@@ -9452,19 +9452,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Karttanasta pyöreällä alueella"
+            "value" : "Kartan osoitin ympyränmuotoisella alueella"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kartpinne med sirkulært område"
+            "value" : "En kartnål med et rundt område"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kartnål med cirkulärt område"
+            "value" : "Kartnål med cirkelformat område"
           }
         }
       }
@@ -9476,7 +9476,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En puzzlebrik"
+            "value" : "En puslespilsbrik"
           }
         },
         "en" : {
@@ -9494,13 +9494,13 @@
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En puslebrikke"
+            "value" : "En puslespillbrikke"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En pusselbricka"
+            "value" : "En pusselbit"
           }
         }
       }
@@ -9512,7 +9512,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En scannings-søgerramme"
+            "value" : "En scanningsramme"
           }
         },
         "en" : {
@@ -9524,19 +9524,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Skannauksen etsinkehys"
+            "value" : "Skannerin etsin"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En skanningsramme"
+            "value" : "Søkeren på et kamera"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En skanningsram"
+            "value" : "Kamerasökare"
           }
         }
       }
@@ -9548,7 +9548,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Segelbadge med flueben"
+            "value" : "Et seglbadge med et flueben"
           }
         },
         "en" : {
@@ -9560,19 +9560,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sinettimerkin valintamerkki"
+            "value" : "Sinetti ja valintamerkki"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seglmerke med hakemerke"
+            "value" : "Forseglet merke med hukemerke på"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sigillmärke med bockmarkering"
+            "value" : "Emblem med bock"
           }
         }
       }
@@ -9584,7 +9584,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Et stjerneskud med et spor"
+            "value" : "Et stjerneskud med hale"
           }
         },
         "en" : {
@@ -9596,19 +9596,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tähdenlento häntineen"
+            "value" : "Tähdenlento"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Et stjerneskudd med en hale"
+            "value" : "Et stjerneskudd med spor etter seg"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En stjärnfall med en svans"
+            "value" : "En fallande stjärna med svans"
           }
         }
       }
@@ -9620,7 +9620,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To krydsende pile"
+            "value" : "To pile lagt over kors"
           }
         },
         "en" : {
@@ -9668,19 +9668,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suuntaviittakyltti"
+            "value" : "Tienviitta"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Et retningsskilt"
+            "value" : "Et skilt som viser retning"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En riktningsskylt"
+            "value" : "Skylt som visar riktning"
           }
         }
       }
@@ -9692,7 +9692,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En skydeskive med plet i midten"
+            "value" : "En skydeskive med plet"
           }
         },
         "en" : {
@@ -9704,19 +9704,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Häränsilmätaulu"
+            "value" : "Maalitaulu"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En blink med mål i midten"
+            "value" : "En blink"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En tavla med prick i mitten"
+            "value" : "Måltavla"
           }
         }
       }
@@ -9740,19 +9740,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Käyttäjän avatar neliössä"
+            "value" : "Käyttäjän kuvake neliön sisällä"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Brukeravatar i en firkant"
+            "value" : "En brukeravatar i en firkant"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Användaravatar i en fyrkant"
+            "value" : "Användaravatar i kvadrat"
           }
         }
       }
@@ -9776,19 +9776,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ääniaaltomuoto"
+            "value" : "Ääniaalto"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En lydbølgeform"
+            "value" : "En lydbølge"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En ljudvågform"
+            "value" : "Ljudvåg"
           }
         }
       }

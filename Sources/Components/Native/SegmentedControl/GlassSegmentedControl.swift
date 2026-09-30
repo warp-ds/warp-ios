@@ -46,7 +46,7 @@ extension Warp {
 
     // MARK: - iOS 26+
 
-    private lazy var glassContainer: GlassControlContainer<ControlScrollView> = {
+    private lazy var glassContainer: GlassControlContainer<UIScrollView> = {
         GlassControlContainer(
             content: scrollView,
             cornerRadius: 22,
@@ -57,20 +57,20 @@ extension Warp {
 
     private var scrollObservation: NSKeyValueObservation?
 
-    private lazy var scrollView: ControlScrollView = {
-        let sv = ControlScrollView()
+    private lazy var scrollView: UIScrollView = {
+        let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.showsHorizontalScrollIndicator = false
         sv.showsVerticalScrollIndicator = false
-        sv.alwaysBounceHorizontal = true
+        sv.alwaysBounceHorizontal = false
         sv.alwaysBounceVertical = false
         sv.backgroundColor = .clear
         sv.contentInsetAdjustmentBehavior = .never
         return sv
     }()
 
-    private lazy var segmentedControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: [])
+    private lazy var segmentedControl: ScrollableSegmentControl = {
+        let control = ScrollableSegmentControl(items: [])
         control.translatesAutoresizingMaskIntoConstraints = false
         control.apportionsSegmentWidthsByContent = true
         let font = Warp.Typography.captionStrong.uiFont
@@ -185,6 +185,7 @@ extension Warp {
     private func setupGlassSegments() {
         addSubview(glassContainer)
         scrollView.addSubview(segmentedControl)
+        segmentedControl.scrollView = scrollView
 
         NSLayoutConstraint.activate([
             glassContainer.topAnchor.constraint(equalTo: topAnchor),
@@ -357,11 +358,16 @@ extension Warp {
     }
 }
 
-    // MARK: - ControlScrollView
+    // MARK: - ScrollableSegmentControl
 
-    private class ControlScrollView: UIScrollView {
-        override func touchesShouldCancel(in view: UIView) -> Bool {
-            true
+    private final class ScrollableSegmentControl: UISegmentedControl {
+        weak var scrollView: UIScrollView?
+
+        override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+            if scrollView?.gestureRecognizers?.contains(gestureRecognizer) == true {
+                return true
+            }
+            return super.gestureRecognizerShouldBegin(gestureRecognizer)
         }
     }
 
