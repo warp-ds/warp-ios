@@ -104,22 +104,48 @@ final class ScrollableTabView: UIView {
 
             let items = self?.items ?? []
             let font = Warp.Typography.captionStrong.uiFont
-            var naturalTotal = CGFloat(max(0, items.count - 1)) * spacing
-            for item in items {
-                naturalTotal += ceil((item.title as NSString).size(withAttributes: [.font: font]).width)
-                if item.badge != nil { naturalTotal += 16 }
+            let totalSpacing = CGFloat(max(0, items.count - 1)) * spacing
+
+            let naturalWidths: [CGFloat] = items.map { item in
+                var w = ceil((item.title as NSString).size(withAttributes: [.font: font]).width)
+                if let badge = item.badge {
+                    let badgeFont = UIFont.systemFont(ofSize: 10, weight: .bold)
+                    let badgePaddingH: CGFloat = 4
+                    let badgePaddingV: CGFloat = 2
+                    let badgeSpacing: CGFloat = 4
+                    let badgeDotSize: CGFloat = 8
+                    if badge == 0 {
+                        w += badgeSpacing + badgeDotSize
+                    } else {
+                        let text = badge > 99 ? "99+" : "\(badge)"
+                        let textSize = (text as NSString).size(withAttributes: [.font: badgeFont])
+                        let h = ceil(textSize.height) + badgePaddingV * 2
+                        w += badgeSpacing + max(ceil(textSize.width) + badgePaddingH * 2, h)
+                    }
+                }
+                return w
             }
 
-            if !items.isEmpty && naturalTotal < availableContent {
-                let totalSpacing = CGFloat(max(0, items.count - 1)) * spacing
-                let itemWidth = max(0, (availableContent - totalSpacing) / CGFloat(items.count))
-                let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth), heightDimension: .fractionalHeight(1))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth), heightDimension: .estimated(TabCell.cellHeight))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            let naturalTotal = naturalWidths.reduce(0, +)
+
+            if !items.isEmpty && naturalTotal + totalSpacing <= availableContent {
+                // Items fit — give each its natural width plus an equal share of leftover space
+                let extra = availableContent - totalSpacing - naturalTotal
+                let extraPerItem = extra / CGFloat(items.count)
+                var finalWidths = naturalWidths.map { floor($0 + extraPerItem) }
+                // Assign floating-point remainder to last item so total fills exactly
+                let allocated = finalWidths.reduce(0, +) + totalSpacing
+                finalWidths[finalWidths.count - 1] += availableContent - allocated
+
+                let subitems: [NSCollectionLayoutItem] = finalWidths.map { width in
+                    NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .absolute(width), heightDimension: .fractionalHeight(1)))
+                }
+                let outerSize = NSCollectionLayoutSize(widthDimension: .absolute(availableContent), heightDimension: .estimated(TabCell.cellHeight))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: outerSize, subitems: subitems)
+                group.interItemSpacing = .fixed(spacing)
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .continuous
-                section.interGroupSpacing = spacing
                 section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: leadingInset, bottom: 0, trailing: trailingInset)
                 return section
             }
