@@ -43,6 +43,7 @@ final class ScrollableTabView: UIView {
 
         registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { [weak self] (_: Self, _: UITraitCollection) in
             self?.invalidateIntrinsicContentSize()
+            self?.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
 
@@ -184,7 +185,7 @@ extension ScrollableTabView: UICollectionViewDelegate {
 private final class TabCell: UICollectionViewCell {
     static let reuseID = "TabCell"
 
-    private static let font = Warp.Typography.captionStrong.uiFont
+    private static var font: UIFont { Warp.Typography.captionStrong.uiFont }
     private static let indicatorHeight: CGFloat = 4
     private static let verticalPadding = Warp.Spacing.spacing100
 
@@ -252,6 +253,10 @@ private final class TabCell: UICollectionViewCell {
         super.init(frame: frame)
         isAccessibilityElement = true
         accessibilityTraits = [.button]
+
+        registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { [weak self] (_: TabCell, _: UITraitCollection) in
+            self?.titleLabel.font = TabCell.font
+        }
 
         contentView.addSubview(titleLabel)
         contentView.addSubview(indicator)
