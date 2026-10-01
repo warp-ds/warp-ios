@@ -21,10 +21,13 @@ extension Warp {
     public struct Item: Hashable {
         public let identifier: String
         public let title: String
+        /// nil = no badge, 0 = dot indicator, >0 = numeric count (capped at 99+)
+        public let badge: Int?
 
-        public init(identifier: String, title: String) {
+        public init(identifier: String, title: String, badge: Int? = nil) {
             self.identifier = identifier
             self.title = title
+            self.badge = badge
         }
     }
 
@@ -36,10 +39,14 @@ extension Warp {
 
     private var items: [Item] = []
     private let usesGlassSegments: Bool
+    private var badgeViewsByIndex: [Int: BadgeView] = [:]
+    private var cachedTitleWidths: [CGFloat] = []
+    private var naturalSegmentWidths: [CGFloat] = []
+    private static let segmentHorizontalPadding: CGFloat = 32
 
     // MARK: - iOS 26+
 
-    private lazy var glassContainer: GlassControlContainer<ControlScrollView> = {
+    private lazy var glassContainer: GlassControlContainer<UIScrollView> = {
         GlassControlContainer(
             content: scrollView,
             cornerRadius: 22,
@@ -48,20 +55,22 @@ extension Warp {
         )
     }()
 
-    private lazy var scrollView: ControlScrollView = {
-        let sv = ControlScrollView()
+    private var scrollObservation: NSKeyValueObservation?
+
+    private lazy var scrollView: UIScrollView = {
+        let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.showsHorizontalScrollIndicator = false
         sv.showsVerticalScrollIndicator = false
-        sv.alwaysBounceHorizontal = true
+        sv.alwaysBounceHorizontal = false
         sv.alwaysBounceVertical = false
         sv.backgroundColor = .clear
         sv.contentInsetAdjustmentBehavior = .never
         return sv
     }()
 
-    private lazy var segmentedControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: [])
+    private lazy var segmentedControl: ScrollableSegmentControl = {
+        let control = ScrollableSegmentControl(items: [])
         control.translatesAutoresizingMaskIntoConstraints = false
         control.apportionsSegmentWidthsByContent = true
         let font = Warp.Typography.captionStrong.uiFont
@@ -121,21 +130,47 @@ extension Warp {
 
     // MARK: - Layout
 
-    private static let pillBottomPadding: CGFloat = 3
+    private static let glassVerticalPadding: CGFloat = 3
 
     public override var intrinsicContentSize: CGSize {
         usesGlassSegments
-            ? CGSize(width: UIView.noIntrinsicMetric, height: segmentedControl.intrinsicContentSize.height + Self.pillBottomPadding)
+            ? CGSize(width: UIView.noIntrinsicMetric, height: segmentedControl.intrinsicContentSize.height + Self.glassVerticalPadding)
             : scrollableTabView.intrinsicContentSize
     }
 
     public override func layoutSubviews() {
         super.layoutSubviews()
         if usesGlassSegments {
+            stretchSegmentsIfNeeded()
             glassContainer.layer.cornerRadius = glassContainer.bounds.height / 2
+            glassContainer.layoutIfNeeded()
+            layoutBadges()
         }
     }
 
+    private func stretchSegmentsIfNeeded() {
+        let count = segmentedControl.numberOfSegments
+        guard count > 0, naturalSegmentWidths.count == count else { return }
+
+        let availableWidth = glassContainer.bounds.width
+        guard availableWidth > 0 else { return }
+
+        let naturalTotal = naturalSegmentWidths.reduce(0, +)
+
+        if naturalTotal < availableWidth {
+            let scale = availableWidth / naturalTotal
+            var assigned: CGFloat = 0
+            for i in 0..<count {
+                let w = i == count - 1 ? availableWidth - assigned : floor(naturalSegmentWidths[i] * scale)
+                segmentedControl.setWidth(w, forSegmentAt: i)
+                assigned += w
+            }
+        } else {
+            for i in 0..<count {
+                segmentedControl.setWidth(naturalSegmentWidths[i], forSegmentAt: i)
+            }
+        }
+    }
 
     // MARK: - Private setup
 
@@ -150,6 +185,7 @@ extension Warp {
     private func setupGlassSegments() {
         addSubview(glassContainer)
         scrollView.addSubview(segmentedControl)
+        segmentedControl.scrollView = scrollView
 
         NSLayoutConstraint.activate([
             glassContainer.topAnchor.constraint(equalTo: topAnchor),
@@ -157,13 +193,19 @@ extension Warp {
             glassContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             glassContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            segmentedControl.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            segmentedControl.centerYAnchor.constraint(equalTo: scrollView.frameLayoutGuide.centerYAnchor),
             segmentedControl.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             segmentedControl.widthAnchor.constraint(greaterThanOrEqualTo: scrollView.frameLayoutGuide.widthAnchor),
 
             scrollView.contentLayoutGuide.heightAnchor.constraint(equalTo: segmentedControl.heightAnchor),
         ])
+
+        scrollObservation = scrollView.observe(\.contentOffset, options: [.new]) { [weak self] _, _ in
+            MainActor.assumeIsolated {
+                self?.layoutBadges()
+            }
+        }
     }
 
     private func setupScrollableTabView() {
@@ -180,8 +222,41 @@ extension Warp {
 
     private func configureSegmentedControl(selectedIdentifier: String?) {
         segmentedControl.removeAllSegments()
+        segmentedControl.apportionsSegmentWidthsByContent = false
+        let font = Warp.Typography.captionStrong.uiFont
+        let textAttributes: [NSAttributedString.Key: Any] = [.font: font]
+
+        cachedTitleWidths = items.map {
+            ceil(($0.title as NSString).size(withAttributes: textAttributes).width)
+        }
+
+        naturalSegmentWidths = []
         for (index, item) in items.enumerated() {
             segmentedControl.insertSegment(withTitle: item.title, at: index, animated: false)
+
+            let baseWidth = cachedTitleWidths[index] + Self.segmentHorizontalPadding
+            if let badge = item.badge {
+                let badgeSize = BadgeView.sizeFor(badge: badge)
+                let extraSpace = BadgeView.badgeSpacing + badgeSize.width
+                let w = baseWidth + extraSpace
+                segmentedControl.setWidth(w, forSegmentAt: index)
+                segmentedControl.setContentOffset(
+                    CGSize(width: -extraSpace / 2, height: 0),
+                    forSegmentAt: index
+                )
+                naturalSegmentWidths.append(w)
+            } else {
+                segmentedControl.setWidth(baseWidth, forSegmentAt: index)
+                naturalSegmentWidths.append(baseWidth)
+            }
+        }
+
+        for (index, item) in items.enumerated() {
+            guard let badge = item.badge, badge > 0 else { continue }
+            let badgeText = badge > 99 ? "99+" : "\(badge)"
+            if let segmentView = segmentedControl.accessibilityElement(at: index) as? UIView {
+                segmentView.accessibilityLabel = "\(item.title), \(badgeText)"
+            }
         }
 
         if let selectedIdentifier,
@@ -192,6 +267,7 @@ extension Warp {
             }
         }
 
+        configureBadges()
         invalidateIntrinsicContentSize()
     }
 
@@ -199,6 +275,59 @@ extension Warp {
 
     private func configureScrollableTabView(selectedIdentifier: String?) {
         scrollableTabView.configure(items: items, selectedIdentifier: selectedIdentifier)
+    }
+
+    // MARK: - Badge management
+
+    private func configureBadges() {
+        badgeViewsByIndex.values.forEach { $0.removeFromSuperview() }
+        badgeViewsByIndex.removeAll()
+
+        for (index, item) in items.enumerated() {
+            guard let badge = item.badge else { continue }
+            let badgeView = BadgeView(badge: badge)
+            badgeView.isUserInteractionEnabled = false
+            badgeView.isAccessibilityElement = false
+            badgeViewsByIndex[index] = badgeView
+            glassContainer.addSubview(badgeView)
+        }
+
+        setNeedsLayout()
+    }
+
+    private func layoutBadges() {
+        let segmentCount = segmentedControl.numberOfSegments
+        guard segmentCount > 0, !badgeViewsByIndex.isEmpty else { return }
+
+        let controlHeight = segmentedControl.bounds.height
+
+        var leadingX: CGFloat = 0
+        for index in 0..<segmentCount {
+            let segWidth = segmentedControl.widthForSegment(at: index)
+
+            guard let badgeView = badgeViewsByIndex[index], index < cachedTitleWidths.count else {
+                leadingX += segWidth
+                continue
+            }
+
+            let segmentCenterX = leadingX + segWidth / 2
+            let contentOffset = segmentedControl.contentOffsetForSegment(at: index)
+            let titleCenterX = segmentCenterX + contentOffset.width
+            let titleTrailingX = titleCenterX + cachedTitleWidths[index] / 2
+
+            let anchorPoint = CGPoint(x: titleTrailingX, y: controlHeight / 2)
+            let anchorInSelf = segmentedControl.convert(anchorPoint, to: glassContainer)
+
+            let badgeSize = badgeView.cachedBadgeSize
+            badgeView.frame = CGRect(
+                x: anchorInSelf.x + BadgeView.badgeSpacing,
+                y: anchorInSelf.y - badgeSize.height / 2,
+                width: badgeSize.width,
+                height: badgeSize.height
+            )
+
+            leadingX += segWidth
+        }
     }
 
     // MARK: - Private methods
@@ -211,7 +340,9 @@ extension Warp {
         let visibleWidth = scrollView.bounds.width
         guard totalWidth > visibleWidth else { return }
 
-        let segmentCenter = totalWidth * (CGFloat(index) + 0.5) / CGFloat(items.count)
+        var leadingX: CGFloat = 0
+        for i in 0..<index { leadingX += segmentedControl.widthForSegment(at: i) }
+        let segmentCenter = leadingX + segmentedControl.widthForSegment(at: index) / 2
         let maxOffset = totalWidth - visibleWidth
         let targetOffset = max(0, min(segmentCenter - visibleWidth / 2, maxOffset))
 
@@ -227,11 +358,80 @@ extension Warp {
     }
 }
 
-    // MARK: - ControlScrollView
+    // MARK: - ScrollableSegmentControl
 
-    private class ControlScrollView: UIScrollView {
-        override func touchesShouldCancel(in view: UIView) -> Bool {
-            true
+    private final class ScrollableSegmentControl: UISegmentedControl {
+        weak var scrollView: UIScrollView?
+
+        override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+            if scrollView?.gestureRecognizers?.contains(gestureRecognizer) == true {
+                return true
+            }
+            return super.gestureRecognizerShouldBegin(gestureRecognizer)
+        }
+    }
+
+    // MARK: - BadgeView
+
+    private final class BadgeView: UIView {
+        let badge: Int?
+
+        static let badgeSpacing: CGFloat = 4
+        private static let dotSize: CGFloat = 8
+        private static let labelFont = UIFont.systemFont(ofSize: 10, weight: .bold)
+        private static let labelPaddingH: CGFloat = 4
+        private static let labelPaddingV: CGFloat = 2
+
+        let cachedBadgeSize: CGSize
+
+        static func sizeFor(badge: Int) -> CGSize {
+            if badge == 0 {
+                return CGSize(width: dotSize, height: dotSize)
+            }
+            let text = badge > 99 ? "99+" : "\(badge)"
+            let textSize = (text as NSString).size(withAttributes: [.font: labelFont])
+            let width = max(
+                ceil(textSize.width) + labelPaddingH * 2,
+                ceil(textSize.height) + labelPaddingV * 2
+            )
+            let height = ceil(textSize.height) + labelPaddingV * 2
+            return CGSize(width: width, height: height)
+        }
+
+        init(badge: Int?) {
+            self.badge = badge
+            self.cachedBadgeSize = badge.map { Self.sizeFor(badge: $0) } ?? .zero
+            super.init(frame: .zero)
+            guard let badge else { return }
+            backgroundColor = .systemRed
+            clipsToBounds = true
+
+            if badge == 0 {
+                layer.cornerRadius = Self.dotSize / 2
+            } else {
+                let label = UILabel()
+                label.font = Self.labelFont
+                label.textColor = .white
+                label.text = badge > 99 ? "99+" : "\(badge)"
+                label.textAlignment = .center
+                label.frame = CGRect(
+                    x: Self.labelPaddingH,
+                    y: Self.labelPaddingV,
+                    width: ceil(label.intrinsicContentSize.width),
+                    height: ceil(label.intrinsicContentSize.height)
+                )
+                addSubview(label)
+            }
+        }
+
+        @available(*, unavailable)
+        required init?(coder: NSCoder) { fatalError() }
+
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            if let badge, badge > 0 {
+                layer.cornerRadius = bounds.height / 2
+            }
         }
     }
 }
