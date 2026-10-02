@@ -33,6 +33,12 @@ extension Warp {
                 }
         }
 
+        // Only the first .primary action gets .defaultAction shortcut; multiple .primary
+        // actions sharing the same shortcut produce undefined system rendering.
+        private var firstPrimaryID: UUID? {
+            actions.first(where: { $0.style == .primary })?.id
+        }
+
         @ViewBuilder
         private func alertButton(for action: Warp.AlertDialog.Action) -> some View {
             // Note: iOS .alert() ignores font/foregroundStyle on button labels —
@@ -46,7 +52,7 @@ extension Warp {
                         ? colorProvider.token.textNegative
                         : colorProvider.token.text)
             }
-            if action.style == .primary {
+            if action.style == .primary && action.id == firstPrimaryID {
                 button.keyboardShortcut(.defaultAction)
             } else {
                 button

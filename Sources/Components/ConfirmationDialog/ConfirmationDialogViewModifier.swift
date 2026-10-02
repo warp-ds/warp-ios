@@ -22,7 +22,7 @@ extension Warp {
                     isPresented: $isPresented,
                     titleVisibility: .visible
                 ) {
-                    ForEach(actions) { action in
+                    ForEach(sortedActions) { action in
                         confirmationButton(for: action)
                     }
                 } message: {
@@ -32,9 +32,14 @@ extension Warp {
                 }
         }
 
+        // Primary actions first; the system handles cancel placement automatically.
+        var sortedActions: [Warp.ConfirmationDialog.Action] {
+            actions.filter { $0.style == .primary } + actions.filter { $0.style != .primary }
+        }
+
         @ViewBuilder
         private func confirmationButton(for action: Warp.ConfirmationDialog.Action) -> some View {
-            let button = SwiftUI.Button(role: action.style.buttonRole) {
+            SwiftUI.Button(role: action.style.buttonRole) {
                 action.handler()
             } label: {
                 SwiftUI.Text(action.title)
@@ -42,11 +47,6 @@ extension Warp {
                     .foregroundStyle(action.style == .destructive
                         ? token.textNegative
                         : token.text)
-            }
-            if action.style == .primary {
-                button.keyboardShortcut(.defaultAction)
-            } else {
-                button
             }
         }
     }
