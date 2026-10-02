@@ -67,6 +67,7 @@ struct AlertDialogView: View {
                             Warp.Text("Default", style: .body).tag(Warp.AlertDialog.Style.default)
                             Warp.Text("Destructive", style: .body).tag(Warp.AlertDialog.Style.destructive)
                             Warp.Text("Cancel", style: .body).tag(Warp.AlertDialog.Style.cancel)
+                            Warp.Text("Primary", style: .body).tag(Warp.AlertDialog.Style.primary)
                         }
                         .pickerStyle(.segmented)
                     }

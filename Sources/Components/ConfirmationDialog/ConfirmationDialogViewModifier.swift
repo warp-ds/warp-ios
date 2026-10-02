@@ -22,22 +22,32 @@ extension Warp {
                     isPresented: $isPresented,
                     titleVisibility: .visible
                 ) {
-                    ForEach(actions) { action in
-                        SwiftUI.Button(role: action.style.buttonRole) {
-                            action.handler()
-                        } label: {
-                            SwiftUI.Text(action.title)
-                                .font(Warp.Typography.title4.font)
-                                .foregroundStyle(action.style == .destructive
-                                    ? token.textNegative
-                                    : token.text)
-                        }
+                    ForEach(sortedActions) { action in
+                        confirmationButton(for: action)
                     }
                 } message: {
                     if let message {
                         SwiftUI.Text(message)
                     }
                 }
+        }
+
+        // Primary actions first; the system handles cancel placement automatically.
+        var sortedActions: [Warp.ConfirmationDialog.Action] {
+            actions.filter { $0.style == .primary } + actions.filter { $0.style != .primary }
+        }
+
+        @ViewBuilder
+        private func confirmationButton(for action: Warp.ConfirmationDialog.Action) -> some View {
+            SwiftUI.Button(role: action.style.buttonRole) {
+                action.handler()
+            } label: {
+                SwiftUI.Text(action.title)
+                    .font(Warp.Typography.title4.font)
+                    .foregroundStyle(action.style == .destructive
+                        ? token.textNegative
+                        : token.text)
+            }
         }
     }
 }
