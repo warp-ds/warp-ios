@@ -1,0 +1,150 @@
+import SwiftUI
+
+// Generated from TokenProvider.swift — do not edit by hand.
+// Regenerate with Scripts/generate-color-variant.py
+
+/// A `TokenProvider` that layers a variant's overrides on top of a brand's tokens.
+///
+/// Any token the variant does not name resolves to `base`, so the brand remains the
+/// source of truth and a variant stays a small, reviewable diff.
+struct VariantTokenProvider: TokenProvider {
+    let base: TokenProvider
+    let overrides: Warp.ColorVariant.Overrides
+
+    var text: Color { overrides.text ?? base.text }
+    var textSubtle: Color { overrides.textSubtle ?? base.textSubtle }
+    var textStatic: Color { overrides.textStatic ?? base.textStatic }
+    var textPlaceholder: Color { overrides.textPlaceholder ?? base.textPlaceholder }
+    var textInverted: Color { overrides.textInverted ?? base.textInverted }
+    var textInvertedSubtle: Color { overrides.textInvertedSubtle ?? base.textInvertedSubtle }
+    var textInvertedStatic: Color { overrides.textInvertedStatic ?? base.textInvertedStatic }
+    var textLink: Color { overrides.textLink ?? base.textLink }
+    var textDisabled: Color { overrides.textDisabled ?? base.textDisabled }
+    var textNegative: Color { overrides.textNegative ?? base.textNegative }
+    var textPositive: Color { overrides.textPositive ?? base.textPositive }
+    var icon: Color { overrides.icon ?? base.icon }
+    var iconHover: Color { overrides.iconHover ?? base.iconHover }
+    var iconActive: Color { overrides.iconActive ?? base.iconActive }
+    var iconStatic: Color { overrides.iconStatic ?? base.iconStatic }
+    var iconSelected: Color { overrides.iconSelected ?? base.iconSelected }
+    var iconSelectedHover: Color { overrides.iconSelectedHover ?? base.iconSelectedHover }
+    var iconSelectedActive: Color { overrides.iconSelectedActive ?? base.iconSelectedActive }
+    var iconDisabled: Color { overrides.iconDisabled ?? base.iconDisabled }
+    var iconSubtle: Color { overrides.iconSubtle ?? base.iconSubtle }
+    var iconSubtleHover: Color { overrides.iconSubtleHover ?? base.iconSubtleHover }
+    var iconSubtleActive: Color { overrides.iconSubtleActive ?? base.iconSubtleActive }
+    var iconInverted: Color { overrides.iconInverted ?? base.iconInverted }
+    var iconInvertedHover: Color { overrides.iconInvertedHover ?? base.iconInvertedHover }
+    var iconInvertedActive: Color { overrides.iconInvertedActive ?? base.iconInvertedActive }
+    var iconInvertedStatic: Color { overrides.iconInvertedStatic ?? base.iconInvertedStatic }
+    var iconPrimary: Color { overrides.iconPrimary ?? base.iconPrimary }
+    var iconSecondary: Color { overrides.iconSecondary ?? base.iconSecondary }
+    var iconSecondaryHover: Color { overrides.iconSecondaryHover ?? base.iconSecondaryHover }
+    var iconSecondaryActive: Color { overrides.iconSecondaryActive ?? base.iconSecondaryActive }
+    var iconPositive: Color { overrides.iconPositive ?? base.iconPositive }
+    var iconNegative: Color { overrides.iconNegative ?? base.iconNegative }
+    var iconWarning: Color { overrides.iconWarning ?? base.iconWarning }
+    var iconInfo: Color { overrides.iconInfo ?? base.iconInfo }
+    var iconNotification: Color { overrides.iconNotification ?? base.iconNotification }
+    var background: Color { overrides.background ?? base.background }
+    var backgroundHover: Color { overrides.backgroundHover ?? base.backgroundHover }
+    var backgroundActive: Color { overrides.backgroundActive ?? base.backgroundActive }
+    var backgroundSubtle: Color { overrides.backgroundSubtle ?? base.backgroundSubtle }
+    var backgroundSubtleHover: Color { overrides.backgroundSubtleHover ?? base.backgroundSubtleHover }
+    var backgroundSubtleActive: Color { overrides.backgroundSubtleActive ?? base.backgroundSubtleActive }
+    var backgroundDisabled: Color { overrides.backgroundDisabled ?? base.backgroundDisabled }
+    var backgroundDisabledSubtle: Color { overrides.backgroundDisabledSubtle ?? base.backgroundDisabledSubtle }
+    var backgroundSelected: Color { overrides.backgroundSelected ?? base.backgroundSelected }
+    var backgroundSelectedHover: Color { overrides.backgroundSelectedHover ?? base.backgroundSelectedHover }
+    var backgroundSelectedActive: Color { overrides.backgroundSelectedActive ?? base.backgroundSelectedActive }
+    var backgroundInverted: Color { overrides.backgroundInverted ?? base.backgroundInverted }
+    var backgroundPrimary: Color { overrides.backgroundPrimary ?? base.backgroundPrimary }
+    var backgroundPrimaryHover: Color { overrides.backgroundPrimaryHover ?? base.backgroundPrimaryHover }
+    var backgroundPrimaryActive: Color { overrides.backgroundPrimaryActive ?? base.backgroundPrimaryActive }
+    var backgroundPrimarySubtle: Color { overrides.backgroundPrimarySubtle ?? base.backgroundPrimarySubtle }
+    var backgroundPrimarySubtleHover: Color { overrides.backgroundPrimarySubtleHover ?? base.backgroundPrimarySubtleHover }
+    var backgroundPrimarySubtleActive: Color { overrides.backgroundPrimarySubtleActive ?? base.backgroundPrimarySubtleActive }
+    var backgroundSecondary: Color { overrides.backgroundSecondary ?? base.backgroundSecondary }
+    var backgroundSecondaryHover: Color { overrides.backgroundSecondaryHover ?? base.backgroundSecondaryHover }
+    var backgroundSecondaryActive: Color { overrides.backgroundSecondaryActive ?? base.backgroundSecondaryActive }
+    var backgroundPositive: Color { overrides.backgroundPositive ?? base.backgroundPositive }
+    var backgroundPositiveHover: Color { overrides.backgroundPositiveHover ?? base.backgroundPositiveHover }
+    var backgroundPositiveActive: Color { overrides.backgroundPositiveActive ?? base.backgroundPositiveActive }
+    var backgroundPositiveSubtle: Color { overrides.backgroundPositiveSubtle ?? base.backgroundPositiveSubtle }
+    var backgroundPositiveSubtleHover: Color { overrides.backgroundPositiveSubtleHover ?? base.backgroundPositiveSubtleHover }
+    var backgroundPositiveSubtleActive: Color { overrides.backgroundPositiveSubtleActive ?? base.backgroundPositiveSubtleActive }
+    var backgroundNegative: Color { overrides.backgroundNegative ?? base.backgroundNegative }
+    var backgroundNegativeHover: Color { overrides.backgroundNegativeHover ?? base.backgroundNegativeHover }
+    var backgroundNegativeActive: Color { overrides.backgroundNegativeActive ?? base.backgroundNegativeActive }
+    var backgroundNegativeSubtle: Color { overrides.backgroundNegativeSubtle ?? base.backgroundNegativeSubtle }
+    var backgroundNegativeSubtleHover: Color { overrides.backgroundNegativeSubtleHover ?? base.backgroundNegativeSubtleHover }
+    var backgroundNegativeSubtleActive: Color { overrides.backgroundNegativeSubtleActive ?? base.backgroundNegativeSubtleActive }
+    var backgroundWarning: Color { overrides.backgroundWarning ?? base.backgroundWarning }
+    var backgroundWarningHover: Color { overrides.backgroundWarningHover ?? base.backgroundWarningHover }
+    var backgroundWarningActive: Color { overrides.backgroundWarningActive ?? base.backgroundWarningActive }
+    var backgroundWarningSubtle: Color { overrides.backgroundWarningSubtle ?? base.backgroundWarningSubtle }
+    var backgroundWarningSubtleHover: Color { overrides.backgroundWarningSubtleHover ?? base.backgroundWarningSubtleHover }
+    var backgroundWarningSubtleActive: Color { overrides.backgroundWarningSubtleActive ?? base.backgroundWarningSubtleActive }
+    var backgroundInfo: Color { overrides.backgroundInfo ?? base.backgroundInfo }
+    var backgroundInfoHover: Color { overrides.backgroundInfoHover ?? base.backgroundInfoHover }
+    var backgroundInfoActive: Color { overrides.backgroundInfoActive ?? base.backgroundInfoActive }
+    var backgroundInfoSubtle: Color { overrides.backgroundInfoSubtle ?? base.backgroundInfoSubtle }
+    var backgroundInfoSubtleHover: Color { overrides.backgroundInfoSubtleHover ?? base.backgroundInfoSubtleHover }
+    var backgroundInfoSubtleActive: Color { overrides.backgroundInfoSubtleActive ?? base.backgroundInfoSubtleActive }
+    var backgroundTransparent0: Color { overrides.backgroundTransparent0 ?? base.backgroundTransparent0 }
+    var backgroundNotification: Color { overrides.backgroundNotification ?? base.backgroundNotification }
+    var surfaceSunken: Color { overrides.surfaceSunken ?? base.surfaceSunken }
+    var surfaceElevated100: Color { overrides.surfaceElevated100 ?? base.surfaceElevated100 }
+    var surfaceElevated100Hover: Color { overrides.surfaceElevated100Hover ?? base.surfaceElevated100Hover }
+    var surfaceElevated100Active: Color { overrides.surfaceElevated100Active ?? base.surfaceElevated100Active }
+    var surfaceElevated200: Color { overrides.surfaceElevated200 ?? base.surfaceElevated200 }
+    var surfaceElevated200Hover: Color { overrides.surfaceElevated200Hover ?? base.surfaceElevated200Hover }
+    var surfaceElevated200Active: Color { overrides.surfaceElevated200Active ?? base.surfaceElevated200Active }
+    var surfaceElevated300: Color { overrides.surfaceElevated300 ?? base.surfaceElevated300 }
+    var surfaceElevated300Hover: Color { overrides.surfaceElevated300Hover ?? base.surfaceElevated300Hover }
+    var surfaceElevated300Active: Color { overrides.surfaceElevated300Active ?? base.surfaceElevated300Active }
+    var border: Color { overrides.border ?? base.border }
+    var borderHover: Color { overrides.borderHover ?? base.borderHover }
+    var borderActive: Color { overrides.borderActive ?? base.borderActive }
+    var borderStrong: Color { overrides.borderStrong ?? base.borderStrong }
+    var borderStrongHover: Color { overrides.borderStrongHover ?? base.borderStrongHover }
+    var borderDisabled: Color { overrides.borderDisabled ?? base.borderDisabled }
+    var borderSelected: Color { overrides.borderSelected ?? base.borderSelected }
+    var borderSelectedHover: Color { overrides.borderSelectedHover ?? base.borderSelectedHover }
+    var borderSelectedActive: Color { overrides.borderSelectedActive ?? base.borderSelectedActive }
+    var borderInverted: Color { overrides.borderInverted ?? base.borderInverted }
+    var borderPrimary: Color { overrides.borderPrimary ?? base.borderPrimary }
+    var borderPrimaryHover: Color { overrides.borderPrimaryHover ?? base.borderPrimaryHover }
+    var borderPrimaryActive: Color { overrides.borderPrimaryActive ?? base.borderPrimaryActive }
+    var borderPrimarySubtle: Color { overrides.borderPrimarySubtle ?? base.borderPrimarySubtle }
+    var borderPrimarySubtleHover: Color { overrides.borderPrimarySubtleHover ?? base.borderPrimarySubtleHover }
+    var borderPrimarySubtleActive: Color { overrides.borderPrimarySubtleActive ?? base.borderPrimarySubtleActive }
+    var borderSecondary: Color { overrides.borderSecondary ?? base.borderSecondary }
+    var borderSecondaryHover: Color { overrides.borderSecondaryHover ?? base.borderSecondaryHover }
+    var borderSecondaryActive: Color { overrides.borderSecondaryActive ?? base.borderSecondaryActive }
+    var borderPositive: Color { overrides.borderPositive ?? base.borderPositive }
+    var borderPositiveHover: Color { overrides.borderPositiveHover ?? base.borderPositiveHover }
+    var borderPositiveActive: Color { overrides.borderPositiveActive ?? base.borderPositiveActive }
+    var borderPositiveSubtle: Color { overrides.borderPositiveSubtle ?? base.borderPositiveSubtle }
+    var borderPositiveSubtleHover: Color { overrides.borderPositiveSubtleHover ?? base.borderPositiveSubtleHover }
+    var borderPositiveSubtleActive: Color { overrides.borderPositiveSubtleActive ?? base.borderPositiveSubtleActive }
+    var borderNegative: Color { overrides.borderNegative ?? base.borderNegative }
+    var borderNegativeHover: Color { overrides.borderNegativeHover ?? base.borderNegativeHover }
+    var borderNegativeActive: Color { overrides.borderNegativeActive ?? base.borderNegativeActive }
+    var borderNegativeSubtle: Color { overrides.borderNegativeSubtle ?? base.borderNegativeSubtle }
+    var borderNegativeSubtleHover: Color { overrides.borderNegativeSubtleHover ?? base.borderNegativeSubtleHover }
+    var borderNegativeSubtleActive: Color { overrides.borderNegativeSubtleActive ?? base.borderNegativeSubtleActive }
+    var borderWarning: Color { overrides.borderWarning ?? base.borderWarning }
+    var borderWarningHover: Color { overrides.borderWarningHover ?? base.borderWarningHover }
+    var borderWarningActive: Color { overrides.borderWarningActive ?? base.borderWarningActive }
+    var borderWarningSubtle: Color { overrides.borderWarningSubtle ?? base.borderWarningSubtle }
+    var borderWarningSubtleHover: Color { overrides.borderWarningSubtleHover ?? base.borderWarningSubtleHover }
+    var borderWarningSubtleActive: Color { overrides.borderWarningSubtleActive ?? base.borderWarningSubtleActive }
+    var borderInfo: Color { overrides.borderInfo ?? base.borderInfo }
+    var borderInfoHover: Color { overrides.borderInfoHover ?? base.borderInfoHover }
+    var borderInfoActive: Color { overrides.borderInfoActive ?? base.borderInfoActive }
+    var borderInfoSubtle: Color { overrides.borderInfoSubtle ?? base.borderInfoSubtle }
+    var borderInfoSubtleHover: Color { overrides.borderInfoSubtleHover ?? base.borderInfoSubtleHover }
+    var borderInfoSubtleActive: Color { overrides.borderInfoSubtleActive ?? base.borderInfoSubtleActive }
+    var borderFocus: Color { overrides.borderFocus ?? base.borderFocus }
+}
