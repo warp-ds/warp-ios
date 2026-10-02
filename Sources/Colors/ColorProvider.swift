@@ -20,6 +20,12 @@ public struct ColorProvider {
         self.token = token
     }
 
+    /// Initialize with the theme from `@Environment(\.warpTheme)`, keeping any colour variant
+    /// - Parameter theme: The theme context in scope
+    public init(theme: WarpThemeContext) {
+        self.init(theme: theme.brand, token: theme.token)
+    }
+
     /// Backwards compatibility initializer using token
     /// - Parameter token: The token provider (theme will be inferred from Warp.Theme global)
     @available(*, deprecated, message: "Use init(theme:) instead to avoid global state")

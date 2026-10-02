@@ -79,7 +79,11 @@ final class ColorVariantTests: XCTestCase {
         let premium = WarpThemeContext(brand: .finn, variant: .premium)
 
         XCTAssertEqual(premium.brand, .finn, "a variant layers colours; it must never change the brand")
-        XCTAssertEqual(premium.description, Warp.Brand.finn.description)
+    }
+
+    func testDescription_NamesTheVariantWhenOneIsSet() {
+        XCTAssertEqual(WarpThemeContext(brand: .finn, variant: .premium).description, "FINN (premium)")
+        XCTAssertEqual(WarpThemeContext(brand: .finn).description, Warp.Brand.finn.description)
     }
 
     func testVariant_ComposesWithAnyBrand() {
@@ -116,6 +120,16 @@ final class ColorVariantTests: XCTestCase {
 
         assertSameColor(premium.colors.buttonPrimaryBackgroundHover, premium.token.backgroundPrimaryHover)
         assertSameColor(premium.colors.buttonPrimaryBackgroundActive, premium.token.backgroundPrimaryActive)
+    }
+
+    func testPublicColorProvider_KeepsTheVariantFromTheEnvironment() {
+        let premium = WarpThemeContext(brand: .finn, variant: .premium)
+
+        // The documented pattern is `ColorProvider(theme: theme)` with the environment value.
+        assertSameColor(
+            ColorProvider(theme: premium).buttonPrimaryBackground,
+            premium.token.backgroundPrimary
+        )
     }
 
     func testPremium_DoesNotReachComponentColorsThatHardcodeBrandValues() {

@@ -34,7 +34,7 @@ public struct WarpThemeContext: Equatable, Sendable, CustomStringConvertible {
     // Brand is passed through unchanged, so colours that branch on brand take their usual
     // path; only token values differ.
     var colors: ColorProvider {
-        ColorProvider(theme: brand, token: token)
+        ColorProvider(theme: self)
     }
 
     /// Semantic UIKit colour tokens.
@@ -50,7 +50,8 @@ public struct WarpThemeContext: Equatable, Sendable, CustomStringConvertible {
     }
 
     public var description: String {
-        brand.description
+        guard let variant else { return brand.description }
+        return "\(brand.description) (\(variant.name))"
     }
 }
 

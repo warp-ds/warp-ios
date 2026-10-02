@@ -1,10 +1,8 @@
 import SwiftUI
 
 public extension Warp.ColorVariant {
-    /// A darker, understated treatment for premium surfaces such as Fashion Hub.
-    ///
-    /// Comparing the premium designs against stock FINN, the only change is the primary
-    /// surface — hence three overrides rather than a palette. Links and text stay FINN's.
+    /// Swaps the brand's primary surface for greys: near-black in light mode, near-white in dark.
+    /// Text, links and colours a brand hardcodes (e.g. Tori's primary button) are unchanged.
     static let premium = Warp.ColorVariant(name: "premium") { overrides in
         overrides.backgroundPrimary = Color.dynamicColor(
             defaultColor: FinnColors.gray900,

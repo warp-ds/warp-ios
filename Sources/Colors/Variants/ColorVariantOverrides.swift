@@ -3,148 +3,148 @@ import SwiftUI
 // Generated from TokenProvider.swift — do not edit by hand.
 // Regenerate with Scripts/generate-color-variant.py
 
-public extension Warp.ColorVariant {
+extension Warp.ColorVariant {
     /// A sparse set of token overrides.
     ///
     /// Every property defaults to `nil`, meaning "use the brand's value". A variant
     /// names only the tokens it changes; everything else falls through to the brand.
     struct Overrides: Sendable {
-        public var text: Color?
-        public var textSubtle: Color?
-        public var textStatic: Color?
-        public var textPlaceholder: Color?
-        public var textInverted: Color?
-        public var textInvertedSubtle: Color?
-        public var textInvertedStatic: Color?
-        public var textLink: Color?
-        public var textDisabled: Color?
-        public var textNegative: Color?
-        public var textPositive: Color?
-        public var icon: Color?
-        public var iconHover: Color?
-        public var iconActive: Color?
-        public var iconStatic: Color?
-        public var iconSelected: Color?
-        public var iconSelectedHover: Color?
-        public var iconSelectedActive: Color?
-        public var iconDisabled: Color?
-        public var iconSubtle: Color?
-        public var iconSubtleHover: Color?
-        public var iconSubtleActive: Color?
-        public var iconInverted: Color?
-        public var iconInvertedHover: Color?
-        public var iconInvertedActive: Color?
-        public var iconInvertedStatic: Color?
-        public var iconPrimary: Color?
-        public var iconSecondary: Color?
-        public var iconSecondaryHover: Color?
-        public var iconSecondaryActive: Color?
-        public var iconPositive: Color?
-        public var iconNegative: Color?
-        public var iconWarning: Color?
-        public var iconInfo: Color?
-        public var iconNotification: Color?
-        public var background: Color?
-        public var backgroundHover: Color?
-        public var backgroundActive: Color?
-        public var backgroundSubtle: Color?
-        public var backgroundSubtleHover: Color?
-        public var backgroundSubtleActive: Color?
-        public var backgroundDisabled: Color?
-        public var backgroundDisabledSubtle: Color?
-        public var backgroundSelected: Color?
-        public var backgroundSelectedHover: Color?
-        public var backgroundSelectedActive: Color?
-        public var backgroundInverted: Color?
-        public var backgroundPrimary: Color?
-        public var backgroundPrimaryHover: Color?
-        public var backgroundPrimaryActive: Color?
-        public var backgroundPrimarySubtle: Color?
-        public var backgroundPrimarySubtleHover: Color?
-        public var backgroundPrimarySubtleActive: Color?
-        public var backgroundSecondary: Color?
-        public var backgroundSecondaryHover: Color?
-        public var backgroundSecondaryActive: Color?
-        public var backgroundPositive: Color?
-        public var backgroundPositiveHover: Color?
-        public var backgroundPositiveActive: Color?
-        public var backgroundPositiveSubtle: Color?
-        public var backgroundPositiveSubtleHover: Color?
-        public var backgroundPositiveSubtleActive: Color?
-        public var backgroundNegative: Color?
-        public var backgroundNegativeHover: Color?
-        public var backgroundNegativeActive: Color?
-        public var backgroundNegativeSubtle: Color?
-        public var backgroundNegativeSubtleHover: Color?
-        public var backgroundNegativeSubtleActive: Color?
-        public var backgroundWarning: Color?
-        public var backgroundWarningHover: Color?
-        public var backgroundWarningActive: Color?
-        public var backgroundWarningSubtle: Color?
-        public var backgroundWarningSubtleHover: Color?
-        public var backgroundWarningSubtleActive: Color?
-        public var backgroundInfo: Color?
-        public var backgroundInfoHover: Color?
-        public var backgroundInfoActive: Color?
-        public var backgroundInfoSubtle: Color?
-        public var backgroundInfoSubtleHover: Color?
-        public var backgroundInfoSubtleActive: Color?
-        public var backgroundTransparent0: Color?
-        public var backgroundNotification: Color?
-        public var surfaceSunken: Color?
-        public var surfaceElevated100: Color?
-        public var surfaceElevated100Hover: Color?
-        public var surfaceElevated100Active: Color?
-        public var surfaceElevated200: Color?
-        public var surfaceElevated200Hover: Color?
-        public var surfaceElevated200Active: Color?
-        public var surfaceElevated300: Color?
-        public var surfaceElevated300Hover: Color?
-        public var surfaceElevated300Active: Color?
-        public var border: Color?
-        public var borderHover: Color?
-        public var borderActive: Color?
-        public var borderStrong: Color?
-        public var borderStrongHover: Color?
-        public var borderDisabled: Color?
-        public var borderSelected: Color?
-        public var borderSelectedHover: Color?
-        public var borderSelectedActive: Color?
-        public var borderInverted: Color?
-        public var borderPrimary: Color?
-        public var borderPrimaryHover: Color?
-        public var borderPrimaryActive: Color?
-        public var borderPrimarySubtle: Color?
-        public var borderPrimarySubtleHover: Color?
-        public var borderPrimarySubtleActive: Color?
-        public var borderSecondary: Color?
-        public var borderSecondaryHover: Color?
-        public var borderSecondaryActive: Color?
-        public var borderPositive: Color?
-        public var borderPositiveHover: Color?
-        public var borderPositiveActive: Color?
-        public var borderPositiveSubtle: Color?
-        public var borderPositiveSubtleHover: Color?
-        public var borderPositiveSubtleActive: Color?
-        public var borderNegative: Color?
-        public var borderNegativeHover: Color?
-        public var borderNegativeActive: Color?
-        public var borderNegativeSubtle: Color?
-        public var borderNegativeSubtleHover: Color?
-        public var borderNegativeSubtleActive: Color?
-        public var borderWarning: Color?
-        public var borderWarningHover: Color?
-        public var borderWarningActive: Color?
-        public var borderWarningSubtle: Color?
-        public var borderWarningSubtleHover: Color?
-        public var borderWarningSubtleActive: Color?
-        public var borderInfo: Color?
-        public var borderInfoHover: Color?
-        public var borderInfoActive: Color?
-        public var borderInfoSubtle: Color?
-        public var borderInfoSubtleHover: Color?
-        public var borderInfoSubtleActive: Color?
-        public var borderFocus: Color?
+        var text: Color?
+        var textSubtle: Color?
+        var textStatic: Color?
+        var textPlaceholder: Color?
+        var textInverted: Color?
+        var textInvertedSubtle: Color?
+        var textInvertedStatic: Color?
+        var textLink: Color?
+        var textDisabled: Color?
+        var textNegative: Color?
+        var textPositive: Color?
+        var icon: Color?
+        var iconHover: Color?
+        var iconActive: Color?
+        var iconStatic: Color?
+        var iconSelected: Color?
+        var iconSelectedHover: Color?
+        var iconSelectedActive: Color?
+        var iconDisabled: Color?
+        var iconSubtle: Color?
+        var iconSubtleHover: Color?
+        var iconSubtleActive: Color?
+        var iconInverted: Color?
+        var iconInvertedHover: Color?
+        var iconInvertedActive: Color?
+        var iconInvertedStatic: Color?
+        var iconPrimary: Color?
+        var iconSecondary: Color?
+        var iconSecondaryHover: Color?
+        var iconSecondaryActive: Color?
+        var iconPositive: Color?
+        var iconNegative: Color?
+        var iconWarning: Color?
+        var iconInfo: Color?
+        var iconNotification: Color?
+        var background: Color?
+        var backgroundHover: Color?
+        var backgroundActive: Color?
+        var backgroundSubtle: Color?
+        var backgroundSubtleHover: Color?
+        var backgroundSubtleActive: Color?
+        var backgroundDisabled: Color?
+        var backgroundDisabledSubtle: Color?
+        var backgroundSelected: Color?
+        var backgroundSelectedHover: Color?
+        var backgroundSelectedActive: Color?
+        var backgroundInverted: Color?
+        var backgroundPrimary: Color?
+        var backgroundPrimaryHover: Color?
+        var backgroundPrimaryActive: Color?
+        var backgroundPrimarySubtle: Color?
+        var backgroundPrimarySubtleHover: Color?
+        var backgroundPrimarySubtleActive: Color?
+        var backgroundSecondary: Color?
+        var backgroundSecondaryHover: Color?
+        var backgroundSecondaryActive: Color?
+        var backgroundPositive: Color?
+        var backgroundPositiveHover: Color?
+        var backgroundPositiveActive: Color?
+        var backgroundPositiveSubtle: Color?
+        var backgroundPositiveSubtleHover: Color?
+        var backgroundPositiveSubtleActive: Color?
+        var backgroundNegative: Color?
+        var backgroundNegativeHover: Color?
+        var backgroundNegativeActive: Color?
+        var backgroundNegativeSubtle: Color?
+        var backgroundNegativeSubtleHover: Color?
+        var backgroundNegativeSubtleActive: Color?
+        var backgroundWarning: Color?
+        var backgroundWarningHover: Color?
+        var backgroundWarningActive: Color?
+        var backgroundWarningSubtle: Color?
+        var backgroundWarningSubtleHover: Color?
+        var backgroundWarningSubtleActive: Color?
+        var backgroundInfo: Color?
+        var backgroundInfoHover: Color?
+        var backgroundInfoActive: Color?
+        var backgroundInfoSubtle: Color?
+        var backgroundInfoSubtleHover: Color?
+        var backgroundInfoSubtleActive: Color?
+        var backgroundTransparent0: Color?
+        var backgroundNotification: Color?
+        var surfaceSunken: Color?
+        var surfaceElevated100: Color?
+        var surfaceElevated100Hover: Color?
+        var surfaceElevated100Active: Color?
+        var surfaceElevated200: Color?
+        var surfaceElevated200Hover: Color?
+        var surfaceElevated200Active: Color?
+        var surfaceElevated300: Color?
+        var surfaceElevated300Hover: Color?
+        var surfaceElevated300Active: Color?
+        var border: Color?
+        var borderHover: Color?
+        var borderActive: Color?
+        var borderStrong: Color?
+        var borderStrongHover: Color?
+        var borderDisabled: Color?
+        var borderSelected: Color?
+        var borderSelectedHover: Color?
+        var borderSelectedActive: Color?
+        var borderInverted: Color?
+        var borderPrimary: Color?
+        var borderPrimaryHover: Color?
+        var borderPrimaryActive: Color?
+        var borderPrimarySubtle: Color?
+        var borderPrimarySubtleHover: Color?
+        var borderPrimarySubtleActive: Color?
+        var borderSecondary: Color?
+        var borderSecondaryHover: Color?
+        var borderSecondaryActive: Color?
+        var borderPositive: Color?
+        var borderPositiveHover: Color?
+        var borderPositiveActive: Color?
+        var borderPositiveSubtle: Color?
+        var borderPositiveSubtleHover: Color?
+        var borderPositiveSubtleActive: Color?
+        var borderNegative: Color?
+        var borderNegativeHover: Color?
+        var borderNegativeActive: Color?
+        var borderNegativeSubtle: Color?
+        var borderNegativeSubtleHover: Color?
+        var borderNegativeSubtleActive: Color?
+        var borderWarning: Color?
+        var borderWarningHover: Color?
+        var borderWarningActive: Color?
+        var borderWarningSubtle: Color?
+        var borderWarningSubtleHover: Color?
+        var borderWarningSubtleActive: Color?
+        var borderInfo: Color?
+        var borderInfoHover: Color?
+        var borderInfoActive: Color?
+        var borderInfoSubtle: Color?
+        var borderInfoSubtleHover: Color?
+        var borderInfoSubtleActive: Color?
+        var borderFocus: Color?
 
         init() {}
     }

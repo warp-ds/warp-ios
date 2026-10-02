@@ -30,9 +30,9 @@ def token_names() -> list:
 
 
 def write_overrides(tokens: list) -> None:
-    body = "\n".join("        public var %s: Color?" % t for t in tokens)
+    body = "\n".join("        var %s: Color?" % t for t in tokens)
     (OUT_DIR / "ColorVariantOverrides.swift").write_text(
-        'import SwiftUI\n\n%s\npublic extension Warp.ColorVariant {\n'
+        'import SwiftUI\n\n%s\nextension Warp.ColorVariant {\n'
         '    /// A sparse set of token overrides.\n'
         '    ///\n'
         '    /// Every property defaults to `nil`, meaning "use the brand\'s value". A variant\n'

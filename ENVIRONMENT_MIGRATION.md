@@ -136,17 +136,19 @@ func testMyView() {
 
 #### Environment Key
 ```swift
-@Environment(\.warpTheme) private var theme: Warp.Brand
+@Environment(\.warpTheme) private var theme: WarpThemeContext  // brand + optional colour variant
 ```
 
-#### View Modifier
+#### View Modifiers
 ```swift
 .warpTheme(_ theme: Warp.Brand) -> some View
+.warpColorVariant(_ variant: Warp.ColorVariant?) -> some View  // SwiftUI only; nil clears
 ```
 
 #### ColorProvider
 ```swift
-ColorProvider(theme: Warp.Brand)  // ✅ New primary initializer
+ColorProvider(theme: WarpThemeContext)  // ✅ Pass the environment value; keeps any colour variant
+ColorProvider(theme: Warp.Brand)  // ✅ Brand only, no colour variant
 ColorProvider(token: TokenProvider)  // ⚠️ Deprecated, still uses global theme
 ```
 
