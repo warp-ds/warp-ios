@@ -8,8 +8,8 @@ struct MenuSnapshotTests {
 
     // MARK: - Menu button label styles
 
-    @Test(arguments: Warp.Brand.allCases)
-    func snapshotMenuButtonStyles(brand: Warp.Brand) {
+    @Test(arguments: Warp.BrandProvider.allCases)
+    func snapshotMenuButtonStyles(brand: Warp.BrandProvider) {
         Warp.Theme = brand
 
         let view = VStack(alignment: .leading, spacing: 16) {
@@ -32,8 +32,8 @@ struct MenuSnapshotTests {
 
     // MARK: - MenuButton variants
 
-    @Test(arguments: Warp.Brand.allCases)
-    func snapshotMenuItems(brand: Warp.Brand) {
+    @Test(arguments: Warp.BrandProvider.allCases)
+    func snapshotMenuItems(brand: Warp.BrandProvider) {
         Warp.Theme = brand
 
         let view = VStack(alignment: .leading, spacing: 16) {

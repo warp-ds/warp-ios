@@ -1,7 +1,7 @@
 import SwiftUI
 
 // Generated on Wed, 04 Mar 2026 08:12:23 GMT by https://github.com/warp-ds/tokens
-public protocol TokenProvider {
+public protocol TokenProvider: Sendable {
     var text: Color { get set }
     var textSubtle: Color { get set }
     var textStatic: Color { get set }
@@ -140,7 +140,7 @@ public protocol TokenProvider {
     var borderFocus: Color { get set }
 }
 
-public protocol UITokenProvider {
+public protocol UITokenProvider: Sendable {
     var text: UIColor { get set }
     var textSubtle: UIColor { get set }
     var textStatic: UIColor { get set }

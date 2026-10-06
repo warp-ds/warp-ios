@@ -8,8 +8,8 @@ struct SelectSnapshotTests {
 
     static let selectStyles: [Warp.TextFieldStyle] = [.default, .disabled, .readOnly, .error]
 
-    @Test(.disabled("Disabled due to diffrences between ImageSnapshotRenderer and device look"),arguments: Warp.Brand.allCases)
-    func snapshotAllSelects(brand: Warp.Brand) {
+    @Test(.disabled("Disabled due to diffrences between ImageSnapshotRenderer and device look"),arguments: Warp.BrandProvider.allCases)
+    func snapshotAllSelects(brand: Warp.BrandProvider) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let options = [

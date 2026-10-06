@@ -9,13 +9,13 @@ struct SegmentedControlSnapshotTests {
     static let itemCountProvider = [3, 5]
     static let selectedIndexProvider = [0, 1]
     static let allArgumentsCombined = combine(
-        Warp.Brand.allCases,
+        Warp.BrandProvider.allCases,
         itemCountProvider,
         selectedIndexProvider
     )
 
     @Test(arguments: Self.allArgumentsCombined)
-    func snapshotAllSegmentedControls(brand: Warp.Brand, itemCount: Int, selectedIndex: Int) {
+    func snapshotAllSegmentedControls(brand: Warp.BrandProvider, itemCount: Int, selectedIndex: Int) {
         let snapshotName = [
             ".\(brand.description)",
             "\(itemCount)Items",

@@ -10,7 +10,7 @@ struct SnackbarSnapshotTests {
     static let showCloseButtonOptions = [true, false]
     static let actionModes: [ActionMode] = [.none, .inline, .long]
     static let allArgumentsCombined = combine(
-        Warp.Brand.allCases,
+        Warp.BrandProvider.allCases,
         snackbarStyles,
         showCloseButtonOptions,
         actionModes
@@ -23,7 +23,7 @@ struct SnackbarSnapshotTests {
     }
 
     @Test(arguments: Self.allArgumentsCombined)
-    func snapshotAllSnackbars(brand: Warp.Brand, type: Warp.SnackbarType, showCloseButton: Bool, actionMode: ActionMode) {
+    func snapshotAllSnackbars(brand: Warp.BrandProvider, type: Warp.SnackbarType, showCloseButton: Bool, actionMode: ActionMode) {
         let snapshotName = [
             ".\(brand.description)",
             "\(type.description)Style",

@@ -3,7 +3,7 @@ import Warp
 
 struct ContentView: View {
     @State private var isShowingButtonView = false
-    @State private var selectedTheme = Warp.Brand.finn
+    @State private var selectedTheme = Warp.BrandProvider.finn
     @State private var searchText = ""
 
     private var brandItems: [(String, any View)] {
@@ -93,7 +93,7 @@ struct ContentView: View {
             ScrollView {
                 #if WARP
                 Picker("Select a Theme", selection: $selectedTheme) {
-                    ForEach(Warp.Brand.allCases, id: \.self) { theme in
+                    ForEach(Warp.BrandProvider.allCases, id: \.self) { theme in
                         Text(theme.description)
                     }
                 }

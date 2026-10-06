@@ -6,8 +6,8 @@ import SwiftUI
 @Suite @MainActor
 struct SliderSnapshotTests {
 
-    @Test(arguments: Warp.Brand.allCases)
-    func snapshotSliders(brand: Warp.Brand) {
+    @Test(arguments: Warp.BrandProvider.allCases)
+    func snapshotSliders(brand: Warp.BrandProvider) {
         let snapshotName = "\(brand.description)"
         Warp.Theme = brand
         let combinedView = VStack {

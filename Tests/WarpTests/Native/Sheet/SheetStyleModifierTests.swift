@@ -10,7 +10,7 @@ struct SheetStyleModifierTests {
     /// background matches the token they were handed, which holds for any brand, so reading the
     /// global only coupled them to ambient state other suites can mutate. With that gone the
     /// suite needs no `.serialized`.
-    private let token = Warp.Brand.finn.token
+    private let token = Warp.BrandProvider.finn.token
 
     /// Token colors are built with `Color.dynamicColor`, which mints a fresh provider-backed
     /// instance on every access, so two reads of the same token are never `==`. Comparing the
@@ -150,8 +150,8 @@ struct SheetStyleModifierTests {
     ///
     /// No `Warp.Theme` mutation: `Brand.token` is a stateless per-brand provider, so the token
     /// passed in fully determines the result and setting the global changed nothing here.
-    @Test(arguments: Warp.Brand.allCases)
-    func opaqueFallbackFollowsBrand(brand: Warp.Brand) {
+    @Test(arguments: Warp.BrandProvider.allCases)
+    func opaqueFallbackFollowsBrand(brand: Warp.BrandProvider) {
         let resolved = Warp.SheetBackground.automatic.resolvedColor(
             token: brand.token,
             style: .medium,

@@ -73,6 +73,6 @@ final class SimulatorBootProbeTests: XCTestCase {
         // Consume the environment. An `EnvironmentValues()` that is never read gets elided, which
         // measures 0.047s and probes nothing - that dead-code trap produced one wrong diagnosis
         // before the lifecycle-instrumented probe found the real shape.
-        _ = Warp.Brand.finn.token.background.resolve(in: environment)
+        _ = Warp.BrandProvider.finn.token.background.resolve(in: environment)
     }
 }

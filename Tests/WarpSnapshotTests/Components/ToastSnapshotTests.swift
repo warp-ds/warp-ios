@@ -10,14 +10,14 @@ struct ToastSnapshotTests {
     static let toastEdges = Warp.ToastEdge.allCases
     static let showCloseButtonOptions = [true, false]
     static let allArgumentsCombined = combine(
-        Warp.Brand.allCases,
+        Warp.BrandProvider.allCases,
         toastStyles,
         toastEdges,
         showCloseButtonOptions
     )
 
     @Test(arguments: Self.allArgumentsCombined)
-    func snapshotAllToasts(brand: Warp.Brand, style: Warp.ToastStyle, edge: Warp.ToastEdge, showCloseButton: Bool) {
+    func snapshotAllToasts(brand: Warp.BrandProvider, style: Warp.ToastStyle, edge: Warp.ToastEdge, showCloseButton: Bool) {
         let snapshotName = [
             ".\(brand.description)",
             "\(style.description)Style",

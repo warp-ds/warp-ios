@@ -29,8 +29,8 @@ struct ModalSnapshotTests {
         hasCloseButtonProvider
     )
 
-    @Test(arguments: Warp.Brand.allCases)
-    func snapshotAllModalsInColumn(brand: Warp.Brand) {
+    @Test(arguments: Warp.BrandProvider.allCases)
+    func snapshotAllModalsInColumn(brand: Warp.BrandProvider) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let modalViews = Self.allArgumentsCombined.map { subtitle, primaryButton, secondaryButton, hasCloseButton in

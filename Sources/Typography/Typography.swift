@@ -128,7 +128,7 @@ extension Warp.Typography {
 
     /// Creates a medium-bold `Font` for the current theme and typography style.
     private func createMediumBoldFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
-        switch Warp.Theme {
+        switch Warp.Theme.id {
         case .finn:
             return createFont(from: FinnMediumFont(size: size, style: fontStyle))
         case .tori:
@@ -146,7 +146,7 @@ extension Warp.Typography {
 
     /// Creates a light-regular `Font` for the current theme and typography style.
     private func createLightRegularFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> Font {
-        switch Warp.Theme {
+        switch Warp.Theme.id {
         case .finn:
             return createFont(from: FinnLightFont(size: size, style: fontStyle))
         case .tori:
@@ -164,7 +164,7 @@ extension Warp.Typography {
     
     /// Creates a medium-bold `UIFont` for the current theme and typography style.
     private func createMediumBoldUIFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> UIFont {
-        switch Warp.Theme {
+        switch Warp.Theme.id {
         case .finn:
             return createUIFont(from: FinnMediumFont(size: size, style: fontStyle))
         case .tori:
@@ -182,7 +182,7 @@ extension Warp.Typography {
 
     /// Creates a light-regular `UIFont` for the current theme and typography style.
     private func createLightRegularUIFont(for size: CGFloat, with fontStyle: Font.TextStyle) -> UIFont {
-        switch Warp.Theme {
+        switch Warp.Theme.id {
         case .finn:
             return createUIFont(from: FinnLightFont(size: size, style: fontStyle))
         case .tori:

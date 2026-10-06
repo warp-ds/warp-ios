@@ -9,13 +9,13 @@ struct CalloutSnapshotTests {
     static let calloutSize = Warp.CalloutSize.allCases
     static let isDismissableProvider = [false, true]
     static let allArgumentsCombined = combine(
-        Warp.Brand.allCases,
+        Warp.BrandProvider.allCases,
         calloutSize,
         isDismissableProvider
     )
 
     @Test(arguments: Self.allArgumentsCombined)
-    func testCalloutSnapshots(brand: Warp.Brand, size: Warp.CalloutSize, isDismissable: Bool) {
+    func testCalloutSnapshots(brand: Warp.BrandProvider, size: Warp.CalloutSize, isDismissable: Bool) {
         let snapshotName = [
             ".\(brand.description)",
             ".\(size.description)Size",

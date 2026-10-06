@@ -8,8 +8,8 @@ struct LogoSnapshotTests {
 
     let logos = Warp.BrandLogo.allCases
 
-    @Test(arguments: Warp.Brand.allCases)
-    func snapshotAllLogos(brand: Warp.Brand) {
+    @Test(arguments: Warp.BrandProvider.allCases)
+    func snapshotAllLogos(brand: Warp.BrandProvider) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let logoViews = logos.map { logo in

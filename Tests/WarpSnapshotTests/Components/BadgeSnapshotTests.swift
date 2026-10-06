@@ -11,8 +11,8 @@ struct BadgeSnapshotTests {
     static let badgePositionsProvider = Warp.BadgePosition.allCases
     static let allArgumentsCombined = combine(iconProvider, variantProvider, badgePositionsProvider)
 
-    @Test(arguments: Warp.Brand.allCases)
-    func testBadgeSnapshots(brand: Warp.Brand) {
+    @Test(arguments: Warp.BrandProvider.allCases)
+    func testBadgeSnapshots(brand: Warp.BrandProvider) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let badgeViews = Self.allArgumentsCombined.map { (icon, variant, position) in

@@ -4,7 +4,7 @@ import SwiftUI
 ///
 /// Usage: `#Preview(traits: .themeFinn) { MyView() }`
 struct ThemePreviewModifier: PreviewModifier {
-    let theme: Warp.Brand
+    let theme: Warp.BrandProvider
 
     static func makeSharedContext() async throws -> Void {}
 

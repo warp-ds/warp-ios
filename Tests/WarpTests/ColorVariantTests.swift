@@ -166,7 +166,7 @@ final class ColorVariantTests: XCTestCase {
             let traits = UITraitCollection(userInterfaceStyle: style)
             XCTAssertEqual(
                 premium.uiToken.backgroundPrimary.resolvedColor(with: traits),
-                Warp.Brand.finn.uiToken.backgroundPrimary.resolvedColor(with: traits),
+                Warp.BrandProvider.finn.uiToken.backgroundPrimary.resolvedColor(with: traits),
                 "\(style)"
             )
         }

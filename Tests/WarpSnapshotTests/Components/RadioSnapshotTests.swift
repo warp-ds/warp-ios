@@ -9,13 +9,13 @@ struct RadioSnapshotTests {
     static let radioStyle = Warp.RadioStyle.allCases
     static let layoutAxis: [Axis.Set] = [.vertical, .horizontal]
     static let allArgumentsCombined = combine(
-        Warp.Brand.allCases,
+        Warp.BrandProvider.allCases,
         radioStyle,
         layoutAxis
     )
 
     @Test(arguments: Self.allArgumentsCombined)
-    func snapshotAllRadios(brand: Warp.Brand, style: Warp.RadioStyle, axis: Axis.Set) {
+    func snapshotAllRadios(brand: Warp.BrandProvider, style: Warp.RadioStyle, axis: Axis.Set) {
         let snapshotName = [
             ".\(brand.description)",
             "\(style.description)Style",

@@ -9,13 +9,13 @@ struct CheckboxSnapshotTests {
     static let checkboxStyle = Warp.CheckboxStyle.allCases
     static let layoutAxis: [Axis.Set] = [.vertical, .horizontal]
     static let allArgumentsCombined = combine(
-        Warp.Brand.allCases,
+        Warp.BrandProvider.allCases,
         checkboxStyle,
         layoutAxis
     )
 
     @Test(arguments: Self.allArgumentsCombined)
-    func snapshotAllCheckboxes(brand: Warp.Brand, style: Warp.CheckboxStyle, axis: Axis.Set) {
+    func snapshotAllCheckboxes(brand: Warp.BrandProvider, style: Warp.CheckboxStyle, axis: Axis.Set) {
         let snapshotName = [
             ".\(brand.description)",
             "\(style.description)Style",

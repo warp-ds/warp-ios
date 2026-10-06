@@ -6,8 +6,8 @@ import SwiftUI
 @Suite @MainActor
 struct ButtonGroupSnapshotTests {
 
-    @Test(arguments: Warp.Brand.allCases)
-    func snapshotAllButtonGroups(brand: Warp.Brand) {
+    @Test(arguments: Warp.BrandProvider.allCases)
+    func snapshotAllButtonGroups(brand: Warp.BrandProvider) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let columnView = VStack {

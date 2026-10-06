@@ -32,9 +32,9 @@ struct BoxSnapshotTests {
 
     @Test(
         .disabled("Disabled due to the sheer size of combinations, needs to restrict configurations count"),
-        arguments: Warp.Brand.allCases
+        arguments: Warp.BrandProvider.allCases
     )
-    func snapshotAllBoxesInColumn(brand: Warp.Brand) {
+    func snapshotAllBoxesInColumn(brand: Warp.BrandProvider) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let boxViews = Self.allArgumentsCombined.map { (style, badge, link, button) in

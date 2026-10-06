@@ -10,20 +10,25 @@ extension Warp.Typography {
     /// - Parameter theme: The brand theme whose fonts should be registered
     /// - Throws: A `Warp.FontRegistrationError` if the registration of any font fails.
     public static func registerFonts(for theme: Warp.Brand) throws {
-        try theme.fonts.forEach {
+        try Warp.Font.fonts(for: theme).forEach {
             try registerFont($0)
         }
     }
 
-    /// Registers custom fonts associated with the current global theme.
+    /// Registers custom fonts for a specific brand provider.
     ///
-    /// This method attempts to register each custom font defined in `Warp.Font.fontForTheme`.
-    /// If any font registration fails, the error is thrown, and font registration stops.
+    /// - Parameter theme: The brand provider whose fonts should be registered
+    /// - Throws: A `Warp.FontRegistrationError` if the registration of any font fails.
+    public static func registerFonts(for theme: Warp.BrandProvider) throws {
+        try registerFonts(for: theme.id)
+    }
+
+    /// Registers custom fonts associated with the current global theme.
     ///
     /// - Warning: This uses the global `Warp.Theme` variable. Consider using `registerFonts(for:)` with an explicit theme instead.
     /// - Throws: A `Warp.FontRegistrationError` if the registration of any font fails.
     public static func registerFonts() throws {
-        try registerFonts(for: Warp.Theme)
+        try registerFonts(for: Warp.Theme.id)
     }
 
     /// Registers a custom font.
