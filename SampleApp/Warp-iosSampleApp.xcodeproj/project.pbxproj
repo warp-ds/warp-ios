@@ -13,6 +13,7 @@
 		2E1ADF4E2C2561A700DFEE06 /* TypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349586632B0EAD2D00A14570 /* TypographyView.swift */; };
 		2E1ADF4F2C2561A700DFEE06 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B168112B750BED00DCDDE5 /* TextView.swift */; };
 		2E1ADF502C2561A700DFEE06 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E7D442B61239100869C58 /* BadgeView.swift */; };
+		C50C124FD2774562615F7550 /* NotificationBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02DC5DB7AE75C9C92E3D1D /* NotificationBadgeView.swift */; };
 		2E1ADF522C2561A700DFEE06 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
 		2E1ADF532C2561A700DFEE06 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A8B2782B6D33B800122DBC /* CalloutView.swift */; };
 		2E1ADF542C2561A700DFEE06 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82635D062BFE1CA700F7FA6F /* SpinnerView.swift */; };
@@ -61,6 +62,7 @@
 		820A85EE2C6CEB0C006D35A0 /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
 		820A85EF2C6CEB0C006D35A0 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CB8E82C19B5D5008C42B1 /* ModalView.swift */; };
 		820A85F02C6CEB0C006D35A0 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E7D442B61239100869C58 /* BadgeView.swift */; };
+		CFC32490469FB09ED6C41E20 /* NotificationBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02DC5DB7AE75C9C92E3D1D /* NotificationBadgeView.swift */; };
 		820A85F12C6CEB0C006D35A0 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
 		820A85F22C6CEB0C006D35A0 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A8B2782B6D33B800122DBC /* CalloutView.swift */; };
 		820A85F32C6CEB0C006D35A0 /* ShadowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE96102C64C2C000BF3920 /* ShadowUIView.swift */; };
@@ -85,6 +87,7 @@
 		820A86282C6D4388006D35A0 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B168112B750BED00DCDDE5 /* TextView.swift */; };
 		820A86292C6D4388006D35A0 /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295AC392C22F93D004C77BB /* StepIndicatorView.swift */; };
 		820A862A2C6D4388006D35A0 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E7D442B61239100869C58 /* BadgeView.swift */; };
+		BD4BE7BA495D30ED44D48EFF /* NotificationBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02DC5DB7AE75C9C92E3D1D /* NotificationBadgeView.swift */; };
 		820A862B2C6D4388006D35A0 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CB8E82C19B5D5008C42B1 /* ModalView.swift */; };
 		820A862C2C6D4388006D35A0 /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
 		820A862E2C6D4388006D35A0 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
@@ -137,6 +140,7 @@
 		82838CF62B6BED0000E3C495 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82838CF52B6BED0000E3C495 /* GoogleService-Info.plist */; };
 		82838CFB2B6BEDA400E3C495 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 82838CFA2B6BEDA400E3C495 /* FirebaseAnalytics */; };
 		828E7D462B61239100869C58 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E7D442B61239100869C58 /* BadgeView.swift */; };
+		03DCA24EB0444416CF61486F /* NotificationBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02DC5DB7AE75C9C92E3D1D /* NotificationBadgeView.swift */; };
 		82A2155A2A8DF4DC0062FB9E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A215582A8DF4DC0062FB9E /* ButtonView.swift */; };
 		82A2155D2A8DF93B0062FB9E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */; };
 		82A73D212CDA574F00C983AF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A73D202CDA574A00C983AF /* TabsView.swift */; };
@@ -282,6 +286,7 @@
 		9E71496F2E1BF28900674698 /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */; };
 		9E7149702E1BF28900674698 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CB8E82C19B5D5008C42B1 /* ModalView.swift */; };
 		9E7149712E1BF28900674698 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E7D442B61239100869C58 /* BadgeView.swift */; };
+		03AE23BCE20D27D05C71E19B /* NotificationBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02DC5DB7AE75C9C92E3D1D /* NotificationBadgeView.swift */; };
 		9E7149722E1BF28900674698 /* BroadcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7E6F42B7B85E000760C08 /* BroadcastView.swift */; };
 		9E7149732E1BF28900674698 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A8B2782B6D33B800122DBC /* CalloutView.swift */; };
 		9E7149742E1BF28900674698 /* ShadowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AE96102C64C2C000BF3920 /* ShadowUIView.swift */; };
@@ -344,6 +349,7 @@
 		9EFC481A2E4219940048E4E7 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E350812D08925D00B2DBDA /* LogoView.swift */; };
 		9EFC481B2E4219940048E4E7 /* TaxonomyIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825516D02CBFB70E002BEA47 /* TaxonomyIconsView.swift */; };
 		9EFC481C2E4219940048E4E7 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828E7D442B61239100869C58 /* BadgeView.swift */; };
+		F31F030006E2D57C9DF32806 /* NotificationBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB02DC5DB7AE75C9C92E3D1D /* NotificationBadgeView.swift */; };
 		9EFC481D2E4219940048E4E7 /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AB09E2CD0DD7D00C03CC5 /* PageIndicatorView.swift */; };
 		9EFC481E2E4219940048E4E7 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CB8E82C19B5D5008C42B1 /* ModalView.swift */; };
 		9EFC481F2E4219940048E4E7 /* ExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B238A26D2C2EB60A00CD1CAC /* ExpandableView.swift */; };
@@ -436,6 +442,7 @@
 		82838CF02B62B35400E3C495 /* PillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 		82838CF52B6BED0000E3C495 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		828E7D442B61239100869C58 /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		FB02DC5DB7AE75C9C92E3D1D /* NotificationBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBadgeView.swift; sourceTree = "<group>"; };
 		82A215582A8DF4DC0062FB9E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		82A2155B2A8DF93B0062FB9E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		82A73D202CDA574A00C983AF /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
@@ -698,6 +705,7 @@
 				9E54AC6D2E4CA9C200F9F052 /* DatePickerView.swift */,
 				349D0E122B62D67A00AAB421 /* AlertView.swift */,
 				828E7D442B61239100869C58 /* BadgeView.swift */,
+				FB02DC5DB7AE75C9C92E3D1D /* NotificationBadgeView.swift */,
 				341B20E72B751BD30068FF43 /* BoxView.swift */,
 				82C7E6F42B7B85E000760C08 /* BroadcastView.swift */,
 				82A215582A8DF4DC0062FB9E /* ButtonView.swift */,
@@ -1044,6 +1052,7 @@
 				508AB09F2CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				00BC50DC2C2C0AD0002C4FF0 /* ModalView.swift in Sources */,
 				2E1ADF502C2561A700DFEE06 /* BadgeView.swift in Sources */,
+				C50C124FD2774562615F7550 /* NotificationBadgeView.swift in Sources */,
 				9E5A0310302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */,
 				82BF22272C6A15F900DDF06E /* TooltipView.swift in Sources */,
 				2E1ADF522C2561A700DFEE06 /* BroadcastView.swift in Sources */,
@@ -1110,6 +1119,7 @@
 				508AB0A22CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				820A85EF2C6CEB0C006D35A0 /* ModalView.swift in Sources */,
 				820A85F02C6CEB0C006D35A0 /* BadgeView.swift in Sources */,
+				CFC32490469FB09ED6C41E20 /* NotificationBadgeView.swift in Sources */,
 				9E5A030F302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */,
 				820A85F12C6CEB0C006D35A0 /* BroadcastView.swift in Sources */,
 				820A85F22C6CEB0C006D35A0 /* CalloutView.swift in Sources */,
@@ -1172,6 +1182,7 @@
 				9E28292E2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */,
 				825516D22CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				820A862A2C6D4388006D35A0 /* BadgeView.swift in Sources */,
+				BD4BE7BA495D30ED44D48EFF /* NotificationBadgeView.swift in Sources */,
 				9E097EC52E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
 				508AB0A12CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				820A862B2C6D4388006D35A0 /* ModalView.swift in Sources */,
@@ -1238,6 +1249,7 @@
 				9E28292F2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */,
 				825516D42CBFB70E002BEA47 /* TaxonomyIconsView.swift in Sources */,
 				828E7D462B61239100869C58 /* BadgeView.swift in Sources */,
+				03DCA24EB0444416CF61486F /* NotificationBadgeView.swift in Sources */,
 				9E097EC62E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
 				508AB0A02CD0DD8500C03CC5 /* PageIndicatorView.swift in Sources */,
 				00BC50DB2C2C050D002C4FF0 /* ModalView.swift in Sources */,
@@ -1308,6 +1320,7 @@
 				9E71496F2E1BF28900674698 /* PageIndicatorView.swift in Sources */,
 				9E7149702E1BF28900674698 /* ModalView.swift in Sources */,
 				9E7149712E1BF28900674698 /* BadgeView.swift in Sources */,
+				03AE23BCE20D27D05C71E19B /* NotificationBadgeView.swift in Sources */,
 				9E5A0311302DD8F100D3C2E7 /* SegmentedControlDemoView.swift in Sources */,
 				9E7149722E1BF28900674698 /* BroadcastView.swift in Sources */,
 				9E7149732E1BF28900674698 /* CalloutView.swift in Sources */,
@@ -1370,6 +1383,7 @@
 				9E28292D2FF7AF2A0003FE03 /* AlertDialogView.swift in Sources */,
 				9EFC481B2E4219940048E4E7 /* TaxonomyIconsView.swift in Sources */,
 				9EFC481C2E4219940048E4E7 /* BadgeView.swift in Sources */,
+				F31F030006E2D57C9DF32806 /* NotificationBadgeView.swift in Sources */,
 				9E097EC42E8AA7B30007DF09 /* RangeSliderView.swift in Sources */,
 				9EFC481D2E4219940048E4E7 /* PageIndicatorView.swift in Sources */,
 				9EFC481E2E4219940048E4E7 /* ModalView.swift in Sources */,

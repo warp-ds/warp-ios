@@ -63,6 +63,7 @@ struct ContentView: View {
             ("Icon", IconView()),
             ("Logo", LogoView()),
             ("Modal", ModalView()),
+            ("Notification badge", NotificationBadgeView()),
             ("PageIndicator", PageIndicatorView()),
             ("Pill", PillView()),
             ("Radio", RadioView()),
