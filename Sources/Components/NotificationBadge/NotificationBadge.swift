@@ -8,6 +8,16 @@ extension Warp {
     ///
     /// The badge is hidden from VoiceOver. Add `accessibilityValue` to the element
     /// it belongs to, e.g. `.accessibilityValue(badge.accessibilityValue ?? "")`.
+    ///
+    /// In UIKit, wrap the badge with the `uiView` helper. The resulting view is static:
+    /// replace it to show a new count. Set the accessibility value on the host element:
+    /// ```swift
+    /// let badge = Warp.NotificationBadge(.count(3))
+    /// let badgeView = badge.uiView
+    /// badgeView.translatesAutoresizingMaskIntoConstraints = false
+    /// container.addSubview(badgeView)
+    /// cell.accessibilityValue = badge.accessibilityValue
+    /// ```
     public struct NotificationBadge: View, Hashable {
         public static func == (lhs: Warp.NotificationBadge, rhs: Warp.NotificationBadge) -> Bool {
             lhs.content == rhs.content &&
