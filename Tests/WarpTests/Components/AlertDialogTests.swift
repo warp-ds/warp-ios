@@ -57,6 +57,38 @@ struct AlertDialogTests {
         #expect(called)
     }
 
+    // MARK: - firstPrimaryID (only the first .primary gets .defaultAction)
+
+    @Test
+    func firstPrimaryIDIsIDOfFirstPrimaryAction() {
+        let first = Warp.AlertDialog.Action(title: "First", style: .primary, handler: {})
+        let second = Warp.AlertDialog.Action(title: "Second", style: .primary, handler: {})
+        let modifier = Warp.AlertDialogViewModifier(
+            title: "Test",
+            message: nil,
+            actions: [first, second],
+            isPresented: .constant(false),
+            extraContent: EmptyView()
+        )
+        #expect(modifier.firstPrimaryID == first.id)
+        #expect(modifier.firstPrimaryID != second.id)
+    }
+
+    @Test
+    func firstPrimaryIDIsNilWhenNoPrimaryAction() {
+        let modifier = Warp.AlertDialogViewModifier(
+            title: "Test",
+            message: nil,
+            actions: [
+                .init(title: "OK", style: .default, handler: {}),
+                .init(title: "Cancel", style: .cancel, handler: {})
+            ],
+            isPresented: .constant(false),
+            extraContent: EmptyView()
+        )
+        #expect(modifier.firstPrimaryID == nil)
+    }
+
     // MARK: - Style equality (drives .primary keyboard shortcut path)
 
     @Test

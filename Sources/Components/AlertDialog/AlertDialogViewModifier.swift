@@ -35,7 +35,7 @@ extension Warp {
 
         // Only the first .primary action gets .defaultAction shortcut; multiple .primary
         // actions sharing the same shortcut produce undefined system rendering.
-        private var firstPrimaryID: UUID? {
+        var firstPrimaryID: UUID? {
             actions.first(where: { $0.style == .primary })?.id
         }
 

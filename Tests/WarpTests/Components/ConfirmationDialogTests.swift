@@ -112,4 +112,38 @@ struct ConfirmationDialogTests {
         let sorted = modifier.sortedActions.map(\.title)
         #expect(sorted == ["First", "Second", "Third"])
     }
+
+    @Test
+    func onlyFirstCancelActionIsKept() {
+        let modifier = Warp.ConfirmationDialogViewModifier(
+            title: "Test",
+            message: nil,
+            actions: [
+                .init(title: "Never mind", style: .cancel, handler: {}),
+                .init(title: "Dismiss", style: .cancel, handler: {})
+            ],
+            isPresented: .constant(false)
+        )
+        let cancelActions = modifier.sortedActions.filter { $0.style == .cancel }
+        #expect(cancelActions.count == 1)
+        #expect(cancelActions.first?.title == "Never mind")
+    }
+
+    @Test
+    func multipleCancelKeptOnlyFirstWithOtherActions() {
+        let modifier = Warp.ConfirmationDialogViewModifier(
+            title: "Test",
+            message: nil,
+            actions: [
+                .init(title: "Share", style: .default, handler: {}),
+                .init(title: "Never mind", style: .cancel, handler: {}),
+                .init(title: "Extra Cancel", style: .cancel, handler: {})
+            ],
+            isPresented: .constant(false)
+        )
+        let sorted = modifier.sortedActions
+        #expect(sorted.filter { $0.style == .cancel }.count == 1)
+        #expect(sorted.map(\.title).contains("Never mind"))
+        #expect(!sorted.map(\.title).contains("Extra Cancel"))
+    }
 }

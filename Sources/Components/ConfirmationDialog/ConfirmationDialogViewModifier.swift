@@ -32,9 +32,18 @@ extension Warp {
                 }
         }
 
-        // Primary actions first; the system handles cancel placement automatically.
+        // Primary actions first; only the first .cancel is kept (UIKit throws on multiple cancel actions);
+        // the system handles cancel placement automatically.
         var sortedActions: [Warp.ConfirmationDialog.Action] {
-            actions.filter { $0.style == .primary } + actions.filter { $0.style != .primary }
+            var seenCancel = false
+            let deduped = actions.filter { action in
+                if action.style == .cancel {
+                    if seenCancel { return false }
+                    seenCancel = true
+                }
+                return true
+            }
+            return deduped.filter { $0.style == .primary } + deduped.filter { $0.style != .primary }
         }
 
         @ViewBuilder

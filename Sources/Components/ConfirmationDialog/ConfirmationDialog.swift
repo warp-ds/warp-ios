@@ -58,6 +58,12 @@ extension Warp {
             /// A cancel button. The system renders it with bold styling and places it at the
             /// bottom of the action sheet. Use this to provide a custom-titled cancel button
             /// (e.g. "Never mind") instead of the automatic system "Cancel" button.
+            ///
+            /// > Note: On iPad the confirmation dialog appears as a popover; the system hides
+            /// > cancel-role buttons in that context, and tapping outside to dismiss does **not**
+            /// > invoke the cancel handler. Only provide a `.cancel` action when the iPhone
+            /// > presentation is your primary target, or when you can accept this iPad behaviour.
+            /// > Only the first `.cancel` action is used; additional ones are discarded.
             case cancel
 
             /// A primary action button. Rendered at the top of the action sheet to convey
