@@ -104,8 +104,12 @@ jobs:
 
     # A UDID rather than a device name: a bare `platform=iOS Simulator,name=...` destination can
     # misresolve to a tvOS or visionOS device, and a name alone does not pin the OS version.
+    #
+    # `-disableAutomaticPackageResolution` on every xcodebuild: dependencies come from the
+    # committed Package.resolved, so a stale or missing pin fails the step instead of CI silently
+    # resolving the newest matching version (which can change snapshot rendering between runs).
     - name: Build for iOS
-      run: xcodebuild -scheme warp-ios -destination "id=${{ steps.sim.outputs.udid }}" build
+      run: xcodebuild -scheme warp-ios -destination "id=${{ steps.sim.outputs.udid }}" -disableAutomaticPackageResolution build
 
     # Checks that this simulator boot can build a SwiftUI environment at all, before the real suite
     # runs, and throws the device away if it cannot.
@@ -273,6 +277,7 @@ jobs:
           # still signalable, so liveness checks cannot tell "done" from "running".
           (
             xcodebuild -scheme WarpTests -destination "id=$UDID" \
+              -disableAutomaticPackageResolution \
               -only-testing:WarpTests/SimulatorBootProbeTests \
               -test-timeouts-enabled NO \
               test > "$LOG" 2>&1
@@ -357,6 +362,7 @@ jobs:
     - name: Run tests
       run: |
         xcodebuild -scheme WarpTests -destination "id=${{ steps.probe.outputs.udid }}" \
+          -disableAutomaticPackageResolution \
           -test-timeouts-enabled YES \
           -default-test-execution-time-allowance 120 \
           test
