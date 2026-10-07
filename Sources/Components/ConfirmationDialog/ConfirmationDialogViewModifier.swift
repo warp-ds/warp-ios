@@ -22,22 +22,41 @@ extension Warp {
                     isPresented: $isPresented,
                     titleVisibility: .visible
                 ) {
-                    ForEach(actions) { action in
-                        SwiftUI.Button(role: action.style.buttonRole) {
-                            action.handler()
-                        } label: {
-                            SwiftUI.Text(action.title)
-                                .font(Warp.Typography.title4.font)
-                                .foregroundStyle(action.style == .destructive
-                                    ? token.textNegative
-                                    : token.text)
-                        }
+                    ForEach(sortedActions) { action in
+                        confirmationButton(for: action)
                     }
                 } message: {
                     if let message {
                         SwiftUI.Text(message)
                     }
                 }
+        }
+
+        // Primary actions first; only the first .cancel is kept (UIKit throws on multiple cancel actions);
+        // the system handles cancel placement automatically.
+        var sortedActions: [Warp.ConfirmationDialog.Action] {
+            var seenCancel = false
+            let deduped = actions.filter { action in
+                if action.style == .cancel {
+                    if seenCancel { return false }
+                    seenCancel = true
+                }
+                return true
+            }
+            return deduped.filter { $0.style == .primary } + deduped.filter { $0.style != .primary }
+        }
+
+        @ViewBuilder
+        private func confirmationButton(for action: Warp.ConfirmationDialog.Action) -> some View {
+            SwiftUI.Button(role: action.style.buttonRole) {
+                action.handler()
+            } label: {
+                SwiftUI.Text(action.title)
+                    .font(Warp.Typography.title4.font)
+                    .foregroundStyle(action.style == .destructive
+                        ? token.textNegative
+                        : token.text)
+            }
         }
     }
 }
