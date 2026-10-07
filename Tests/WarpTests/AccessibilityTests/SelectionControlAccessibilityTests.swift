@@ -56,9 +56,8 @@ struct SelectionControlAccessibilityTests {
         #expect(unselected.accessibilityTraits.contains(.selected) == false)
     }
 
-    /// The regression this suite exists for. A tap gesture is not an accessibility action, so
-    /// before #242 VoiceOver's double-tap had nothing to invoke and the control was unusable
-    /// with the screen reader even though it looked interactive.
+    /// The regression this suite exists for (#242): VoiceOver activation must go through a real
+    /// accessibility action, not the unreliable synthesized tap onto `onTapGesture`.
     @Test
     func radioIsSelectableThroughVoiceOverActivation() throws {
         var selected = false
@@ -85,6 +84,21 @@ struct SelectionControlAccessibilityTests {
         #expect(selected == false, "A disabled option must ignore activation from assistive technology exactly as it ignores a tap")
     }
 
+    @Test
+    func disabledRadioIsAnnouncedAsDimmed() throws {
+        let disabled = try #require(
+            hostedElements(Warp.Radio(isSelected: false, label: "Day", style: .disabled, action: {}))
+                .first { $0.accessibilityLabel == "Day" }
+        )
+        let enabled = try #require(
+            hostedElements(Warp.Radio(isSelected: false, label: "Day", style: .default, action: {}))
+                .first { $0.accessibilityLabel == "Day" }
+        )
+
+        #expect(disabled.accessibilityTraits.contains(.notEnabled))
+        #expect(enabled.accessibilityTraits.contains(.notEnabled) == false)
+    }
+
     // MARK: - Checkbox
 
     @Test
@@ -103,8 +117,13 @@ struct SelectionControlAccessibilityTests {
             hostedElements(Warp.Checkbox(isSelected: .constant(true), label: "Send me offers", action: {}))
                 .first { $0.accessibilityLabel == "Send me offers" }
         )
+        let unselected = try #require(
+            hostedElements(Warp.Checkbox(isSelected: .constant(false), label: "Send me offers", action: {}))
+                .first { $0.accessibilityLabel == "Send me offers" }
+        )
 
         #expect(selected.accessibilityTraits.contains(.selected))
+        #expect(unselected.accessibilityTraits.contains(.selected) == false)
     }
 
     @Test
@@ -118,6 +137,54 @@ struct SelectionControlAccessibilityTests {
         _ = element.accessibilityActivate()
 
         #expect(toggled)
+    }
+
+    @Test
+    func disabledCheckboxIgnoresVoiceOverActivation() throws {
+        var toggled = false
+        let element = try #require(
+            hostedElements(Warp.Checkbox(isSelected: .constant(false), label: "Send me offers", style: .disabled) { toggled = true })
+                .first { $0.accessibilityLabel == "Send me offers" }
+        )
+
+        _ = element.accessibilityActivate()
+
+        #expect(toggled == false, "A disabled option must ignore activation from assistive technology exactly as it ignores a tap")
+    }
+
+    @Test
+    func disabledCheckboxIsAnnouncedAsDimmed() throws {
+        let disabled = try #require(
+            hostedElements(Warp.Checkbox(isSelected: .constant(false), label: "Send me offers", style: .disabled, action: {}))
+                .first { $0.accessibilityLabel == "Send me offers" }
+        )
+        let enabled = try #require(
+            hostedElements(Warp.Checkbox(isSelected: .constant(false), label: "Send me offers", style: .default, action: {}))
+                .first { $0.accessibilityLabel == "Send me offers" }
+        )
+
+        #expect(disabled.accessibilityTraits.contains(.notEnabled))
+        #expect(enabled.accessibilityTraits.contains(.notEnabled) == false)
+    }
+
+    // MARK: - RadioGroup
+
+    @Test
+    func radioGroupOptionsStaySeparateButtons() throws {
+        let options = [TestRadioOption(title: "Day"), TestRadioOption(title: "Week")]
+        let elements = hostedElements(
+            Warp.RadioGroup(
+                title: "Rental period",
+                selectedOption: .constant(options[0]),
+                options: options
+            )
+        )
+
+        let day = try #require(elements.first { $0.accessibilityLabel == "Day" })
+        let week = try #require(elements.first { $0.accessibilityLabel == "Week" })
+
+        #expect(day.accessibilityTraits.contains(.button))
+        #expect(week.accessibilityTraits.contains(.button))
     }
 
     // MARK: - ButtonGroup

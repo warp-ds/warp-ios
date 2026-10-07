@@ -70,16 +70,15 @@ extension Warp {
             .onTapGesture {
                 activate()
             }
-            // See Radio for why the box and its label are combined rather than given an explicit
-            // label: `extraContent` has to stay part of the spoken name.
+            // Combine the box and label into one element; keeps extraContent in the spoken name.
             .accessibilityElement(children: .combine)
             .accessibilityAddTraits(.isButton)
             .accessibilityAddTraits(isSelected ? .isSelected : [])
-            // `onTapGesture` is not an accessibility action, so VoiceOver's double-tap has
-            // nothing to invoke without this.
+            // onTapGesture isn't an accessibility action; VoiceOver's fallback synthesized tap is unreliable here.
             .accessibilityAction {
                 activate()
             }
+            .disabled(style == .disabled)
         }
 
         /// Single entry point for both the pointer and the assistive-technology path, so the

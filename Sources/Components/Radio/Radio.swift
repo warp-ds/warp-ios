@@ -68,18 +68,15 @@ extension Warp {
             .onTapGesture {
                 activate()
             }
-            // The circle carries no text and the label is a sibling, so without combining them
-            // VoiceOver reaches two elements, one of them nameless. Combining also keeps
-            // `extraContent` - a price, a badge, a "Recommended" tag - inside the spoken name,
-            // which an explicit `accessibilityLabel(label)` would discard.
+            // Combine the circle and label into one element; keeps extraContent in the spoken name.
             .accessibilityElement(children: .combine)
             .accessibilityAddTraits(.isButton)
             .accessibilityAddTraits(isSelected ? .isSelected : [])
-            // `onTapGesture` is not an accessibility action: VoiceOver's double-tap invokes the
-            // element's default action and finds nothing to call without this.
+            // onTapGesture isn't an accessibility action; VoiceOver's fallback synthesized tap is unreliable here.
             .accessibilityAction {
                 activate()
             }
+            .disabled(style == .disabled)
         }
 
         /// Single entry point for both the pointer and the assistive-technology path, so the

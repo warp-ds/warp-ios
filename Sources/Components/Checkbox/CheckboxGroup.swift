@@ -81,9 +81,8 @@ extension Warp {
             style == .error ? colorProvider.token.textNegative : colorProvider.token.textSubtle
         }
 
-        /// The options wrapped as a named accessibility container. See `RadioGroup` for why the
-        /// name sits here rather than on the outer stack, and why an untitled group is left
-        /// unnamed.
+        /// The options wrapped as a named accessibility container, so entering the group announces
+        /// the title first. An untitled group stays unnamed rather than getting an empty name.
         @ViewBuilder
         private var accessibleGroupView: some View {
             if let title = title, !title.isEmpty {

@@ -87,15 +87,8 @@ extension Warp {
             style == .error ? colorProvider.token.textNegative : colorProvider.token.textSubtle
         }
 
-        /// The options wrapped as a named accessibility container.
-        ///
-        /// The name sits here rather than on the outer `VStack` so that entering the group
-        /// announces the question before the first answer. `.contain` keeps each option a
-        /// separate element - `.combine` would collapse the whole group into one, and
-        /// `.ignore` would hide the options entirely.
-        ///
-        /// An untitled group gets the container without a name: labelling it with an empty
-        /// string would make VoiceOver stop on a nameless element on the way in.
+        /// The options wrapped as a named accessibility container. The name sits here rather than
+        /// on the outer VStack so entering the group announces the question before the first answer.
         @ViewBuilder
         private var accessibleGroupView: some View {
             if let title = title, !title.isEmpty {

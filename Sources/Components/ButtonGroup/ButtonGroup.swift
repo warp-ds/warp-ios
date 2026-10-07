@@ -59,13 +59,10 @@ extension Warp {
                         .onTapGesture {
                             toggleSelection(at: index)
                         }
-                        // The segment is a `Text`, which supplies its own name but announces as
-                        // static text. Without these it is indistinguishable from a caption, and
-                        // nothing conveys which segment is currently chosen.
+                        // A plain Text reads as static text; mark it as a button and expose selection.
                         .accessibilityAddTraits(.isButton)
                         .accessibilityAddTraits(buttons[index].isSelected ? .isSelected : [])
-                        // `onTapGesture` is not an accessibility action, so VoiceOver's
-                        // double-tap has nothing to invoke without this.
+                        // onTapGesture isn't an accessibility action; VoiceOver's fallback synthesized tap is unreliable here.
                         .accessibilityAction {
                             toggleSelection(at: index)
                         }
@@ -76,8 +73,7 @@ extension Warp {
                 RoundedRectangle(cornerRadius: Warp.Border.borderRadius100)
                     .stroke(colorProvider.token.border, lineWidth: 1)
             )
-            // Keeps the segments as separate elements while marking the row as one group, so
-            // VoiceOver reports them as related choices rather than unconnected buttons.
+            // One group, segments stay separate elements.
             .accessibilityElement(children: .contain)
         }
         
