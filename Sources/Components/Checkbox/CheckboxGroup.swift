@@ -67,7 +67,7 @@ extension Warp {
                         .foregroundColor(colorProvider.token.text)
                 }
 
-                groupView
+                accessibleGroupView
 
                 if let helpText = helpText, !helpText.isEmpty {
                     SwiftUI.Text(helpText)
@@ -76,9 +76,24 @@ extension Warp {
                 }
             }
         }
-        
+
         private var helpTextColor: Color {
             style == .error ? colorProvider.token.textNegative : colorProvider.token.textSubtle
+        }
+
+        /// The options wrapped as a named accessibility container. See `RadioGroup` for why the
+        /// name sits here rather than on the outer stack, and why an untitled group is left
+        /// unnamed.
+        @ViewBuilder
+        private var accessibleGroupView: some View {
+            if let title = title, !title.isEmpty {
+                groupView
+                    .accessibilityElement(children: .contain)
+                    .accessibilityLabel(title)
+            } else {
+                groupView
+                    .accessibilityElement(children: .contain)
+            }
         }
 
         @ViewBuilder

@@ -66,13 +66,30 @@ extension Warp {
                     contentStack
                 }
             }
+            .contentShape(Rectangle())
             .onTapGesture {
-                if style != .disabled {
-                    action()
-                }
+                activate()
+            }
+            // See Radio for why the box and its label are combined rather than given an explicit
+            // label: `extraContent` has to stay part of the spoken name.
+            .accessibilityElement(children: .combine)
+            .accessibilityAddTraits(.isButton)
+            .accessibilityAddTraits(isSelected ? .isSelected : [])
+            // `onTapGesture` is not an accessibility action, so VoiceOver's double-tap has
+            // nothing to invoke without this.
+            .accessibilityAction {
+                activate()
             }
         }
-        
+
+        /// Single entry point for both the pointer and the assistive-technology path, so the
+        /// disabled guard cannot be honoured by one and skipped by the other.
+        private func activate() {
+            if style != .disabled {
+                action()
+            }
+        }
+
         @ViewBuilder
         private var contentStack: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
