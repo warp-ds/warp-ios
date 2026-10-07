@@ -75,10 +75,15 @@ extension Warp {
                 .cornerRadius(broadcastCornerRadius)
                 .transition(.move(edge: broadcastEdge.asEdge).combined(with: .opacity))
                 .onTapGesture {
-                    withAnimation {
-                        isPresented = false
-                    }
+                    dismiss()
                 }
+        }
+
+        /// Hides the broadcast; shared by the banner tap and the close icon's VoiceOver action.
+        private func dismiss() {
+            withAnimation {
+                isPresented = false
+            }
         }
 
         private var contentView: some View {
@@ -108,6 +113,11 @@ extension Warp {
         
         private var closeView: some View {
             Warp.IconView(.close, size: .small)
+                // Sighted users dismiss via the banner-wide tap; VoiceOver needs the icon itself to be a button.
+                .accessibilityAddTraits(.isButton)
+                .accessibilityAction {
+                    dismiss()
+                }
         }
     }
 }

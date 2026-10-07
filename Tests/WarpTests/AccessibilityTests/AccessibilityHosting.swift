@@ -53,20 +53,28 @@ final class AccessibilityHost<Content: View> {
 
 /// File-private global holding the most recent host, so only one hosted window stays live at a time.
 @MainActor
-private var mostRecentHost: Any?
+private var mostRecentHost: AccessibilityHost<AnyView>?
 
 /// Renders `view` in a real window and returns every accessibility element SwiftUI produced.
 ///
 /// The returned elements stay valid until the next `hostedElements` call.
 @MainActor
 func hostedElements(_ view: some View) -> [NSObject] {
-    if let previous = mostRecentHost as? AccessibilityHost<AnyView> {
-        previous.tearDown()
-    }
+    mostRecentHost?.tearDown()
 
     let host = AccessibilityHost(AnyView(view))
     mostRecentHost = host
     return host.elements()
+}
+
+/// A mutable Bool a test can hand to a view as a `Binding` and read back afterwards.
+@MainActor
+final class Flag {
+    var value: Bool
+    init(_ value: Bool) { self.value = value }
+    var binding: Binding<Bool> {
+        Binding(get: { self.value }, set: { self.value = $0 })
+    }
 }
 
 /// Walks both trees SwiftUI uses: the view hierarchy, and the `accessibilityElements` arrays
