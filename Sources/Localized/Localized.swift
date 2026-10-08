@@ -405,9 +405,9 @@ class LanguageManager {
 
     private var bundle: Bundle?
 
-    func setLanguage(for theme: Warp.Brand = Warp.Theme.id) {
+    func setLanguage(for theme: Warp.Brand = Warp.Theme) {
         var language: String
-        switch Warp.Theme.id {
+        switch Warp.Theme {
         case .finn:
             language = "nb-NO"
         case .tori:

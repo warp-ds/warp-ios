@@ -22,99 +22,98 @@ public enum Warp {
 
         public var description: String {
             switch self {
-            case .finn:    return "FINN"
-            case .tori:    return "Tori"
-            case .dba:     return "DBA"
-            case .blocket: return "Blocket"
-            case .vend:    return "Vend"
-            case .neutral: return "Neutral"
+            case .finn:
+                return "FINN"
+            case .tori:
+                return "Tori"
+            case .dba:
+                return "DBA"
+            case .blocket:
+                return "Blocket"
+            case .vend:
+                return "Vend"
+            case .neutral:
+                return "Neutral"
             }
         }
-    }
-
-    // MARK: - BrandProvider
-
-    /// Injectable DI container for a brand: carries an identifier plus token providers.
-    ///
-    /// Use this as the primary type wherever a brand must be passed — it replaces bare
-    /// `Brand` in public API while keeping the `Brand` enum for internal colour dispatch.
-    ///
-    /// Static members match the existing `Brand` cases, so call sites using dot-syntax
-    /// (`.finn`, `.tori`, …) require no changes when the inferred type is `BrandProvider`.
-    ///
-    /// Inject custom token providers for testing or white-labelling:
-    /// ```swift
-    /// let test = Warp.BrandProvider(id: .finn, token: MockTokenProvider(), uiToken: MockUITokenProvider())
-    /// view.warpTheme(test)
-    /// ```
-    public struct BrandProvider: CustomStringConvertible, Equatable, Hashable, Sendable {
-        /// Identifier used for internal colour-dispatch switches.
-        public let id: Warp.Brand
-        /// Semantic SwiftUI colour token provider.
-        public let token: any TokenProvider
-        /// Semantic UIKit colour token provider.
-        public let uiToken: any UITokenProvider
-
-        public init(id: Warp.Brand, token: any TokenProvider, uiToken: any UITokenProvider) {
-            self.id = id
-            self.token = token
-            self.uiToken = uiToken
-        }
-
-        /// Wraps a `Brand` identifier using its built-in default token providers.
-        public init(_ brand: Warp.Brand) {
-            switch brand {
-            case .finn:    self = .finn
-            case .tori:    self = .tori
-            case .dba:     self = .dba
-            case .blocket: self = .blocket
-            case .vend:    self = .vend
-            case .neutral: self = .neutral
-            }
-        }
-
-        public static let finn    = BrandProvider(id: .finn,    token: FinnTokenProvider(),    uiToken: FinnUITokenProvider())
-        public static let tori    = BrandProvider(id: .tori,    token: ToriTokenProvider(),    uiToken: ToriUITokenProvider())
-        public static let dba     = BrandProvider(id: .dba,     token: DbaTokenProvider(),     uiToken: DbaUITokenProvider())
-        public static let blocket = BrandProvider(id: .blocket, token: BlocketTokenProvider(), uiToken: BlocketUITokenProvider())
-        public static let vend    = BrandProvider(id: .vend,    token: VendTokenProvider(),    uiToken: VendUITokenProvider())
-        public static let neutral = BrandProvider(id: .neutral, token: NeutralTokenProvider(), uiToken: NeutralUITokenProvider())
-
-        /// All built-in brand providers, in declaration order.
-        public static let allCases: [BrandProvider] = [.finn, .tori, .dba, .blocket, .vend, .neutral]
 
         // MARK: - Provider Access
 
-        /// Color provider for SwiftUI colors.
-        var colors: ColorProvider { ColorProvider(theme: self) }
-
-        /// Color provider for UIKit colors.
-        var uiColors: UIColorProvider { UIColorProvider(theme: self) }
-
-        /// Data visualization token provider.
-        var datavizToken: DatavizTokenProvider { DatavizTokenProvider() }
-
-        /// Data visualization UIColor token provider.
-        var datavizUIToken: DatavizUITokenProvider { DatavizUITokenProvider() }
-
-        /// Typography type for this brand.
-        var typography: Warp.Typography.Type { Warp.Typography.self }
-
-        /// Fonts associated with this brand, used for font registration.
-        var fonts: [Warp.Font] { Warp.Font.fonts(for: id) }
-
-        /// Register fonts for this brand.
-        /// - Throws: FontRegistrationError if font registration fails
-        public func registerFonts() throws {
-            try Warp.Typography.registerFonts(for: id)
+        /// Color provider for SwiftUI colors
+        var colors: ColorProvider {
+            ColorProvider(theme: self)
         }
 
-        public var description: String { id.description }
+        /// Color provider for UIKit colors
+        var uiColors: UIColorProvider {
+            UIColorProvider(theme: self)
+        }
 
-        public static func == (lhs: Self, rhs: Self) -> Bool { lhs.id == rhs.id }
-        public func hash(into hasher: inout Hasher) { hasher.combine(id) }
+        /// Semantic SwiftUI color token provider for this brand.
+        ///
+        /// Prefer reading this through `@Environment(\.warpTheme)` in SwiftUI views:
+        /// ```swift
+        /// @Environment(\.warpTheme) private var theme
+        /// private var token: TokenProvider { theme.token }
+        /// ```
+        public var token: TokenProvider {
+            switch self {
+            case .finn: return FinnTokenProvider()
+            case .tori: return ToriTokenProvider()
+            case .dba: return DbaTokenProvider()
+            case .blocket: return BlocketTokenProvider()
+            case .vend: return VendTokenProvider()
+            case .neutral: return NeutralTokenProvider()
+            }
+        }
+
+        /// Semantic UIKit color token provider for this brand.
+        ///
+        /// Prefer reading this through `@Environment(\.warpTheme)` in SwiftUI views:
+        /// ```swift
+        /// @Environment(\.warpTheme) private var theme
+        /// private var uiToken: UITokenProvider { theme.uiToken }
+        /// ```
+        public var uiToken: UITokenProvider {
+            switch self {
+            case .finn: return FinnUITokenProvider()
+            case .tori: return ToriUITokenProvider()
+            case .dba: return DbaUITokenProvider()
+            case .blocket: return BlocketUITokenProvider()
+            case .vend: return VendUITokenProvider()
+            case .neutral: return NeutralUITokenProvider()
+            }
+        }
+
+        /// Data visualization token provider
+        var datavizToken: DatavizTokenProvider {
+            DatavizTokenProvider()
+        }
+
+        /// Data visualization UIColor token provider
+        var datavizUIToken: DatavizUITokenProvider {
+            DatavizUITokenProvider()
+        }
+
+        /// Typography provider for this brand
+        var typography: Warp.Typography.Type {
+            Warp.Typography.self
+        }
+
+        /// Fonts associated with this brand, used for font registration.
+        ///
+        /// Use `Warp.Typography.registerFonts(for: brand)` to register fonts for a brand.
+        var fonts: [Warp.Font] {
+            Warp.Font.fonts(for: self)
+        }
+
+        /// Register fonts for this brand
+        /// - Throws: FontRegistrationError if font registration fails
+        public func registerFonts() throws {
+            try Warp.Typography.registerFonts(for: self)
+        }
     }
-
+    
     // MARK: - Theme Property
 
     /// The current theme of the application. Setting this will also attempt to register the appropriate fonts for the theme.
@@ -122,7 +121,7 @@ public enum Warp {
     /// - Note: This property uses a `didSet` observer to attempt font registration via `Warp.Typography.registerFonts()`
     /// Whenever the theme changes. Any errors during font registration are silently caught and should be handled
     /// (e.g., logged) as appropriate in the error handling block.
-    public static var Theme: BrandProvider = .finn {
+    public static var Theme: Brand = .finn {
         didSet {
             do {
                 // Attempt to register the fonts for the new theme

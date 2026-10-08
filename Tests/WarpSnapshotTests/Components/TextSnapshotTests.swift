@@ -8,8 +8,8 @@ struct TextSnapshotTests {
 
     static let textVariants = Warp.TextStyle.allCases
 
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func snapshotTextVariants(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotTextVariants(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let textViews = Self.textVariants.map { variant in

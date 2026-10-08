@@ -8,8 +8,8 @@ struct PillSnapshotTests {
 
     static let pillStyles = Warp.PillStyle.allCases
 
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func snapshotAllPillsInColumn(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotAllPillsInColumn(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let pillViews = Self.pillStyles.map { pillStyle in

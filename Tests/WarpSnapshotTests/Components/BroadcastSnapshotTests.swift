@@ -9,13 +9,13 @@ struct BroadcastSnapshotTests {
     static let broadcastEdgeProvider = Warp.BroadcastEdge.allCases
     static let isDismissableProvider = [false, true]
     static let allArgumentsCombined = combine(
-        Warp.BrandProvider.allCases,
+        Warp.Brand.allCases,
         broadcastEdgeProvider,
         isDismissableProvider
     )
 
     @Test(arguments: Self.allArgumentsCombined)
-    func snapshotAllBroadcastsInColumn(brand: Warp.BrandProvider, edge: Warp.BroadcastEdge, isDismissable: Bool) {
+    func snapshotAllBroadcastsInColumn(brand: Warp.Brand, edge: Warp.BroadcastEdge, isDismissable: Bool) {
         let snapshotName = [
             ".\(brand.description)",
             "\(edge.description)Edge",

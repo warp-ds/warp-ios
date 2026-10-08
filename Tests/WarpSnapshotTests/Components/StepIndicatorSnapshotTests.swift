@@ -8,7 +8,7 @@ struct StepIndicatorSnapshotTests {
 
     static let layoutOrientation: [Warp.StepIndicator.LayoutOrientation] = [.horizontal, .vertical]
     static let allArgumentsCombined = combine(
-        Warp.BrandProvider.allCases,
+        Warp.Brand.allCases,
         layoutOrientation
     )
 
@@ -31,7 +31,7 @@ struct StepIndicatorSnapshotTests {
     ]
 
     @Test(arguments: Self.allArgumentsCombined)
-    func snapshotAllStepIndicators(brand: Warp.BrandProvider, orientation: Warp.StepIndicator.LayoutOrientation) throws {
+    func snapshotAllStepIndicators(brand: Warp.Brand, orientation: Warp.StepIndicator.LayoutOrientation) throws {
         let snapshotName = [
             ".\(brand.description)",
             "\(orientation.description)",

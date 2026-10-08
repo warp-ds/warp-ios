@@ -34,9 +34,9 @@ struct WarpTabBarControllerWrapper: UIViewControllerRepresentable {
 }
 
 private final class WarpStyledTabBarController: UITabBarController {
-    private let brand: Warp.BrandProvider
+    private let brand: Warp.Brand
 
-    init(brand: Warp.BrandProvider) {
+    init(brand: Warp.Brand) {
         self.brand = brand
         super.init(nibName: nil, bundle: nil)
     }

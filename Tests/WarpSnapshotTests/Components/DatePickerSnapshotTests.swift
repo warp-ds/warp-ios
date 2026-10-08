@@ -7,8 +7,8 @@ import SwiftUI
 @MainActor
 struct DatePickerSnapshotTests {
 
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func snapshotInlineDatePicker(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotInlineDatePicker(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let fixedDate = Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 15))!
@@ -27,8 +27,8 @@ struct DatePickerSnapshotTests {
         assertSnapshot(of: datePickerView.warpTheme(brand), as: .warpImage, named: snapshotName)
     }
 
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func snapshotInlineRangedDatePicker(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotInlineRangedDatePicker(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let fixedDate = Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 15))!
@@ -48,8 +48,8 @@ struct DatePickerSnapshotTests {
         assertSnapshot(of: datePickerView.warpTheme(brand), as: .warpImage, named: snapshotName)
     }
 
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func snapshotInlineDatePickerWithTime(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotInlineDatePickerWithTime(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let fixedDate = Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 15, hour: 9, minute: 41))!

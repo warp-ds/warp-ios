@@ -9,8 +9,8 @@ struct WarpTabBarBadgeStylingSnapshotTests {
     /// Snapshots a real (window-hosted) UITabBarController's tab bar with two
     /// badged items (a count and a dot), styled via the Warp helpers. Locks the
     /// brand-red background + Warp-font + textInvertedStatic styling per brand.
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func snapshotStyledTabBar(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotStyledTabBar(brand: Warp.Brand) {
         let previousTheme = Warp.Theme
         Warp.Theme = brand
         UITabBar.warpConfigureAppearanceProxy()

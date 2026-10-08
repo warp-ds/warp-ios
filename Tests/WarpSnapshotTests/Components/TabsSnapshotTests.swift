@@ -9,13 +9,13 @@ struct TabsSnapshotTests {
     static let isScrollableProvider = [false, true]
     static let hasIconProvider = [false, true]
     static let allArgumentsCombined = combine(
-        Warp.BrandProvider.allCases,
+        Warp.Brand.allCases,
         isScrollableProvider,
         hasIconProvider
     )
 
     @Test(arguments: Self.allArgumentsCombined)
-    func snapshotAllTabs(brand: Warp.BrandProvider, isScrollable: Bool, hasIcons: Bool) {
+    func snapshotAllTabs(brand: Warp.Brand, isScrollable: Bool, hasIcons: Bool) {
         let snapshotName = [
             ".\(brand.description)",
             isScrollable ? "Scrollable" : nil,

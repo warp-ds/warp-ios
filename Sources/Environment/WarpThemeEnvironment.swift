@@ -7,18 +7,18 @@ import SwiftUI
 /// Read through `@Environment(\.warpTheme)`. Variants are resolved here rather than at each
 /// call site, so components use `colors` and `token` unchanged.
 public struct WarpThemeContext: Equatable, Sendable, CustomStringConvertible {
-    /// The brand provider in scope. A variant never changes this.
-    public let brand: Warp.BrandProvider
+    /// The brand in scope. A variant never changes this.
+    public let brand: Warp.Brand
 
     /// The colour variant layered on top of ``brand``, if any.
     public internal(set) var variant: Warp.ColorVariant?
 
-    public init(brand: Warp.BrandProvider) {
+    public init(brand: Warp.Brand) {
         self.brand = brand
         self.variant = nil
     }
 
-    init(brand: Warp.BrandProvider, variant: Warp.ColorVariant?) {
+    init(brand: Warp.Brand, variant: Warp.ColorVariant?) {
         self.brand = brand
         self.variant = variant
     }
@@ -101,7 +101,7 @@ public extension View {
     /// ContentView()
     ///     .warpTheme(.finn)
     /// ```
-    func warpTheme(_ theme: Warp.BrandProvider) -> some View {
+    func warpTheme(_ theme: Warp.Brand) -> some View {
         // Transform rather than replace, so a brand set inside a variant-scoped subtree
         // keeps the variant.
         transformEnvironment(\.warpTheme) { context in

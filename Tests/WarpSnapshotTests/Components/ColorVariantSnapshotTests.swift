@@ -20,7 +20,7 @@ struct ColorVariantSnapshotTests {
                 .warpColorVariant(.premium)
         }
         .padding(8)
-        .background(Warp.BrandProvider.finn.token.background)
+        .background(Warp.Brand.finn.token.background)
         // Set width to match iPhone 13 size
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 

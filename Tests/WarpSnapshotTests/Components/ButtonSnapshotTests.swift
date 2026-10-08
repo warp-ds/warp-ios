@@ -29,8 +29,8 @@ struct ButtonSnapshotTests {
         true
     ]
 
-    @Test(arguments: combine(Warp.BrandProvider.allCases, Self.buttonTypes))
-    func snapshotAllButtons(brand: Warp.BrandProvider, buttonType: Warp.ButtonType) {
+    @Test(arguments: combine(Warp.Brand.allCases, Self.buttonTypes))
+    func snapshotAllButtons(brand: Warp.Brand, buttonType: Warp.ButtonType) {
         let snapshotName = [
             ".\(brand.description)",
             "\(buttonType.description)"

@@ -8,8 +8,8 @@ struct TextAreaSnapshotTests {
 
     static let textAreaStyles = Warp.TextAreaStyle.allCases
 
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func snapshotAllTextAreas(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotAllTextAreas(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let textAreas = Self.textAreaStyles.map { style in

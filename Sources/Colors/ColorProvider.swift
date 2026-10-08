@@ -13,13 +13,6 @@ public struct ColorProvider {
         self.token = Self.tokenProvider(for: theme)
     }
 
-    /// Initialize ColorProvider with a BrandProvider, using its injected token.
-    /// - Parameter theme: The brand provider carrying the token to use
-    public init(theme: Warp.BrandProvider) {
-        self.theme = theme.id
-        self.token = theme.token
-    }
-
     /// Initialize with a theme and an explicit token provider, as `Warp.ColorVariant` does:
     /// the brand is unchanged and the supplied tokens carry any overrides.
     init(theme: Warp.Brand, token: TokenProvider) {
@@ -30,7 +23,7 @@ public struct ColorProvider {
     /// Initialize with the theme from `@Environment(\.warpTheme)`, keeping any colour variant
     /// - Parameter theme: The theme context in scope
     public init(theme: WarpThemeContext) {
-        self.init(theme: theme.brand.id, token: theme.token)
+        self.init(theme: theme.brand, token: theme.token)
     }
 
     /// Backwards compatibility initializer using token
@@ -38,7 +31,7 @@ public struct ColorProvider {
     @available(*, deprecated, message: "Use init(theme:) instead to avoid global state")
     public init(token: TokenProvider) {
         self.token = token
-        self.theme = Warp.Theme.id
+        self.theme = Warp.Theme
     }
 
     private static func tokenProvider(for theme: Warp.Brand) -> TokenProvider {
@@ -361,19 +354,12 @@ public struct UIColorProvider {
         self.token = Self.tokenProvider(for: theme)
     }
 
-    /// Initialize UIColorProvider with a BrandProvider, using its injected UIToken.
-    /// - Parameter theme: The brand provider carrying the UIToken to use
-    public init(theme: Warp.BrandProvider) {
-        self.theme = theme.id
-        self.token = theme.uiToken
-    }
-
     /// Backwards compatibility initializer using token
     /// - Parameter token: The token provider (theme will be inferred from Warp.Theme global)
     @available(*, deprecated, message: "Use init(theme:) instead to avoid global state")
     public init(token: UITokenProvider) {
         self.token = token
-        self.theme = Warp.Theme.id
+        self.theme = Warp.Theme
     }
 
     private static func tokenProvider(for theme: Warp.Brand) -> UITokenProvider {

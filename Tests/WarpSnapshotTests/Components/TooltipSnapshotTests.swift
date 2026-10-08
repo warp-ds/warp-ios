@@ -8,8 +8,8 @@ struct TooltipSnapshotTests {
 
     static let tooltipEdges = Edge.allCases
 
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func snapshotAllTooltips(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotAllTooltips(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let tooltips = Self.tooltipEdges.map { edge in

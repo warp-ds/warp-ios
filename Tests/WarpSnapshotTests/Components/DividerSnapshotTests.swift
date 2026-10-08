@@ -7,8 +7,8 @@ import SwiftUI
 @MainActor
 struct DividerSnapshotTests {
 
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func snapshotDivider(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotDivider(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let dividerView = VStack(spacing: 40) {

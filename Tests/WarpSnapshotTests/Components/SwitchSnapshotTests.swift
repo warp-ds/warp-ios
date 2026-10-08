@@ -6,8 +6,8 @@ import SwiftUI
 @Suite @MainActor
 struct SwitchSnapshotTests {
 
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func snapshotAllSwitches(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotAllSwitches(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let switches = [

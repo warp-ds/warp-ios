@@ -89,8 +89,8 @@ struct NavigationBarSolidStyleTests {
 
     // MARK: - Brand coverage
 
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func solidAppearanceFollowsActiveBrand(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func solidAppearanceFollowsActiveBrand(brand: Warp.Brand) {
         let previousTheme = Warp.Theme
         defer { Warp.Theme = previousTheme }
         Warp.Theme = brand

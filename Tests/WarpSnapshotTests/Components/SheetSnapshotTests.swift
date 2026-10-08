@@ -6,8 +6,8 @@ import SwiftUI
 @Suite @MainActor
 struct SheetSnapshotTests {
 
-    @Test(arguments: Warp.BrandProvider.allCases)
-    func snapshotSheetContent(brand: Warp.BrandProvider) {
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotSheetContent(brand: Warp.Brand) {
         Warp.Theme = brand
 
         let view = VStack(spacing: 0) {
