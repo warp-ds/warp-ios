@@ -3,7 +3,7 @@ import SwiftUI
 public extension Warp {
     /// A colour-only variation of a brand.
     ///
-    /// Layers a sparse set of token overrides on top of whichever brand is active: the brand,
+    /// Layers token overrides on top of whichever brand is active: the brand,
     /// typography and copy are unchanged. Apply with ``SwiftUI/View/warpColorVariant(_:)``.
     ///
     /// ```swift
@@ -16,21 +16,19 @@ public extension Warp {
         /// Identifies the variant, and is the basis for equality.
         public let name: String
 
-        let overrides: Overrides
+        private let configure: @Sendable (inout any TokenProvider) -> Void
 
-        init(name: String, _ build: (inout Overrides) -> Void) {
+        init(name: String, _ configure: @escaping @Sendable (inout any TokenProvider) -> Void) {
             self.name = name
-            var overrides = Overrides()
-            build(&overrides)
-            self.overrides = overrides
+            self.configure = configure
         }
 
         public static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.name == rhs.name
         }
 
-        func tokenProvider(base: TokenProvider) -> TokenProvider {
-            VariantTokenProvider(base: base, overrides: overrides)
+        func apply(to token: inout any TokenProvider) {
+            configure(&token)
         }
     }
 }

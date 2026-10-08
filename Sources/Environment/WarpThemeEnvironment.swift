@@ -26,9 +26,11 @@ public struct WarpThemeContext: Equatable, Sendable, CustomStringConvertible {
     // MARK: Provider access
 
     /// Semantic SwiftUI colour tokens, with any variant overrides applied.
-    public var token: TokenProvider {
+    public var token: any TokenProvider {
         guard let variant else { return brand.token }
-        return variant.tokenProvider(base: brand.token)
+        var t: any TokenProvider = brand.token
+        variant.apply(to: &t)
+        return t
     }
 
     // Brand is passed through unchanged, so colours that branch on brand take their usual
