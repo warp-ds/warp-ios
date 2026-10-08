@@ -17,8 +17,6 @@ struct PrimitiveColorsView: View {
             VendColorsView()
         case .neutral:
             NeutralColorsView()
-        default:
-            FinnColorsView()
         }
     }
 }
