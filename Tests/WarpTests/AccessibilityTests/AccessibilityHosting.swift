@@ -2,6 +2,22 @@ import Testing
 import SwiftUI
 import UIKit
 
+/// Turns on accessibility automation once, the way AccessibilitySnapshot's `ASAccessibilityEnabler` does.
+///
+/// SwiftUI only builds its UIKit accessibility tree while accessibility is enabled for the app. A
+/// simulator that has run UI tests or Accessibility Inspector keeps that setting, but a fresh one
+/// (as on CI) does not, so without this every hosted view reports no elements.
+@MainActor
+private let accessibilityAutomationEnabled: Void = {
+    guard
+        let handle = dlopen("/usr/lib/libAccessibility.dylib", RTLD_NOW),
+        let symbol = dlsym(handle, "_AXSSetAutomationEnabled")
+    else { return }
+
+    typealias SetAutomationEnabled = @convention(c) (Int32) -> Void
+    unsafeBitCast(symbol, to: SetAutomationEnabled.self)(1)
+}()
+
 /// Hosts a SwiftUI view in a real window and waits for the accessibility tree to stabilize.
 ///
 /// A window rather than a detached `UIHostingController` is needed because SwiftUI does not build
@@ -13,6 +29,7 @@ final class AccessibilityHost<Content: View> {
     private let window: UIWindow
 
     init(_ view: Content) {
+        _ = accessibilityAutomationEnabled
         host = UIHostingController(rootView: view)
         window = UIWindow(frame: CGRect(x: 0, y: 0, width: 390, height: 844))
         window.rootViewController = host
