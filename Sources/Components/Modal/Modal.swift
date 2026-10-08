@@ -83,7 +83,8 @@ extension Warp {
             .fixedSize(horizontal: false, vertical: true)
             .cornerRadius(Warp.Border.borderRadius100)
             .addShadow(.medium)
-            .accessibilityElement(children: .combine)
+            // Separate elements so the header, buttons and close icon are each reachable.
+            .accessibilityElement(children: .contain)
             .padding()
         }
         
@@ -99,10 +100,20 @@ extension Warp {
             if hasCloseButton {
                 Warp.IconView(.close, size: .small)
                     .onTapGesture {
-                        isPresented.toggle()
-                        onDismiss?()
+                        dismiss()
+                    }
+                    .accessibilityAddTraits(.isButton)
+                    // onTapGesture isn't an accessibility action; VoiceOver's fallback synthesized tap is unreliable here.
+                    .accessibilityAction {
+                        dismiss()
                     }
             }
+        }
+
+        /// Closes the modal; shared by the tap and the VoiceOver action.
+        private func dismiss() {
+            isPresented.toggle()
+            onDismiss?()
         }
         
         @ViewBuilder

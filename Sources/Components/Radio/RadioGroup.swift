@@ -73,8 +73,8 @@ extension Warp {
                         .foregroundColor(colorProvider.token.text)
                 }
                 
-                groupView
-                
+                accessibleGroupView
+
                 if let helpText = helpText, !helpText.isEmpty {
                     SwiftUI.Text(helpText)
                         .font(from: .detail)
@@ -86,7 +86,21 @@ extension Warp {
         private var helpTextColor: Color {
             style == .error ? colorProvider.token.textNegative : colorProvider.token.textSubtle
         }
-        
+
+        /// The options wrapped as a named accessibility container. The name sits here rather than
+        /// on the outer VStack so entering the group announces the question before the first answer.
+        @ViewBuilder
+        private var accessibleGroupView: some View {
+            if let title = title, !title.isEmpty {
+                groupView
+                    .accessibilityElement(children: .contain)
+                    .accessibilityLabel(title)
+            } else {
+                groupView
+                    .accessibilityElement(children: .contain)
+            }
+        }
+
         @ViewBuilder
         private var groupView: some View {
             switch axis {
