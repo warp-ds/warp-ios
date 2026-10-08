@@ -1,3 +1,4 @@
+import Testing
 import SwiftUI
 import UIKit
 
@@ -21,10 +22,14 @@ final class AccessibilityHost<Content: View> {
     /// Lays out the hosted view, waits for the accessibility tree to stabilize, and returns it.
     ///
     /// SwiftUI populates accessibility lazily, after the first render rather than at layout, so
-    /// a brief runloop spin is the difference between a populated tree and an empty one. This
-    /// polls until the tree is both non-empty and stable (unchanged between two consecutive polls)
-    /// or the timeout passes, rather than sleeping for a fixed duration.
-    func elements(timeout: TimeInterval = 2) -> [NSObject] {
+    /// a brief wait is the difference between a populated tree and an empty one. This polls until
+    /// the tree is both non-empty and stable (unchanged between two consecutive polls) or the
+    /// timeout passes, rather than sleeping for a fixed duration.
+    ///
+    /// It suspends between polls instead of spinning the runloop by hand. A synchronous spin holds
+    /// the main actor for the whole wait, starving other tests that poll on it, such as the Toast
+    /// and Snackbar ones, whenever the tree is slow to fill in.
+    func elements(timeout: TimeInterval = 2) async -> [NSObject] {
         host.view.setNeedsLayout()
         host.view.layoutIfNeeded()
 
@@ -33,7 +38,7 @@ final class AccessibilityHost<Content: View> {
         var current: [NSObject] = []
 
         repeat {
-            RunLoop.current.run(until: Date().addingTimeInterval(0.02))
+            try? await Task.sleep(for: .milliseconds(20))
             previous = current
             current = collectAccessibilityElements(from: host.view)
 
@@ -51,20 +56,29 @@ final class AccessibilityHost<Content: View> {
     }
 }
 
+/// Parent of every suite that hosts views, so they run one test at a time.
+///
+/// `hostedElements` keeps a single live host and suspends while it waits, so two hosting tests
+/// interleaving would tear down each other's window.
+@Suite(.serialized) @MainActor
+enum AccessibilityHostingTests {}
+
 /// File-private global holding the most recent host, so only one hosted window stays live at a time.
 @MainActor
 private var mostRecentHost: AccessibilityHost<AnyView>?
 
 /// Renders `view` in a real window and returns every accessibility element SwiftUI produced.
 ///
-/// The returned elements stay valid until the next `hostedElements` call.
+/// The returned elements stay valid until the next `hostedElements` call. Callers must run inside
+/// `AccessibilityHostingTests`, whose serialization stops another test tearing this host down
+/// while the current one is suspended waiting for its tree.
 @MainActor
-func hostedElements(_ view: some View) -> [NSObject] {
+func hostedElements(_ view: some View) async -> [NSObject] {
     mostRecentHost?.tearDown()
 
     let host = AccessibilityHost(AnyView(view))
     mostRecentHost = host
-    return host.elements()
+    return await host.elements()
 }
 
 /// A mutable Bool a test can hand to a view as a `Binding` and read back afterwards.
