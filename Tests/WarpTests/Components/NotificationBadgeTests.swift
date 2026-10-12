@@ -160,6 +160,24 @@ struct NotificationBadgeTests {
         }
     }
 
+    /// Dynamic Type grows the badge with its text, and stops at accessibility1.
+    @MainActor
+    @Test
+    func testCountBadgeScalesWithDynamicTypeUpToAccessibility1() {
+        func squeezedSize(_ dynamicType: DynamicTypeSize) -> CGSize {
+            let badge = Warp.NotificationBadge(.count(150), size: .medium).environment(\.dynamicTypeSize, dynamicType)
+            return UIHostingController(rootView: badge).sizeThatFits(in: CGSize(width: 1, height: 1))
+        }
+
+        let base = squeezedSize(.large)
+        let accessibility1 = squeezedSize(.accessibility1)
+        let accessibility5 = squeezedSize(.accessibility5)
+
+        #expect(accessibility1.height > base.height, "The badge grows with its text")
+        #expect(accessibility1.width > accessibility1.height, "\"99+\" stays a pill when scaled, even when squeezed")
+        #expect(accessibility5 == accessibility1, "Growth stops at accessibility1")
+    }
+
     @MainActor
     private static func fittingSize(
         _ badge: Warp.NotificationBadge,
