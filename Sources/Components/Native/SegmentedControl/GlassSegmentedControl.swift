@@ -130,11 +130,9 @@ extension Warp {
 
     // MARK: - Layout
 
-    private static let glassVerticalPadding: CGFloat = 3
-
     public override var intrinsicContentSize: CGSize {
         usesGlassSegments
-            ? CGSize(width: UIView.noIntrinsicMetric, height: segmentedControl.intrinsicContentSize.height + Self.glassVerticalPadding)
+            ? CGSize(width: UIView.noIntrinsicMetric, height: segmentedControl.intrinsicContentSize.height + 1)
             : scrollableTabView.intrinsicContentSize
     }
 
@@ -193,12 +191,11 @@ extension Warp {
             glassContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             glassContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            segmentedControl.centerYAnchor.constraint(equalTo: scrollView.frameLayoutGuide.centerYAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: scrollView.frameLayoutGuide.topAnchor),
+            segmentedControl.bottomAnchor.constraint(equalTo: scrollView.frameLayoutGuide.bottomAnchor, constant: -1),
             segmentedControl.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             segmentedControl.widthAnchor.constraint(greaterThanOrEqualTo: scrollView.frameLayoutGuide.widthAnchor),
-
-            scrollView.contentLayoutGuide.heightAnchor.constraint(equalTo: segmentedControl.heightAnchor),
         ])
 
         scrollObservation = scrollView.observe(\.contentOffset, options: [.new]) { [weak self] _, _ in
