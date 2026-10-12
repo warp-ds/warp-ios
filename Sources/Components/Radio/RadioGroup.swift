@@ -67,7 +67,7 @@ extension Warp {
         
         public var body: some View {
             VStack(alignment: .leading, spacing: Spacing.spacing200) {
-                if let title = title, !title.isEmpty {
+                if let title, !title.isEmpty {
                     SwiftUI.Text(title)
                         .font(from: .title5)
                         .foregroundColor(colorProvider.token.text)
@@ -91,7 +91,7 @@ extension Warp {
         /// on the outer VStack so entering the group announces the question before the first answer.
         @ViewBuilder
         private var accessibleGroupView: some View {
-            if let title = title, !title.isEmpty {
+            if let title, !title.isEmpty {
                 groupView
                     .accessibilityElement(children: .contain)
                     .accessibilityLabel(title)
