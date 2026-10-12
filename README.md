@@ -5,5 +5,7 @@ Welcome to the **Warp Design System** for iOS! This repository contains componen
 
 For detailed setup and component documentation, visit the **[Warp Portal Documentation for the Warp Design System](https://warp-ds.github.io/tech-docs/getting-started/ios/)**.
 
+See **[PLATFORM_SUPPORT.md](PLATFORM_SUPPORT.md)** for the minimum iOS version, what supporting it obliges a component to do, and the bar for moving an implementation into Warp from Drive or elsewhere.
+
 
 
