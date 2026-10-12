@@ -143,11 +143,17 @@ private struct CountBadgeView: View {
             .lineLimit(1)
             .fixedSize()
             .padding(.horizontal, horizontalPadding)
-            .frame(minWidth: height, minHeight: height)
+            .frame(minWidth: height)
+            // The height is fixed rather than a minimum: some brand fonts have a taller line
+            // height than the badge, and would otherwise stretch it past the Figma size.
+            .frame(height: height)
             .background(
                 Capsule()
                     .fill(backgroundColor)
             )
+            // A min-width frame accepts a narrower proposal than its content, so in a tight
+            // stack the capsule would shrink to a circle and the text would spill out of it.
+            .fixedSize()
     }
 }
 
