@@ -55,7 +55,15 @@ extension Warp {
                                 .offset(x: 0.5),
                             alignment: .trailing
                         )
+                        .contentShape(Rectangle())
                         .onTapGesture {
+                            toggleSelection(at: index)
+                        }
+                        // A plain Text reads as static text; mark it as a button and expose selection.
+                        .accessibilityAddTraits(.isButton)
+                        .accessibilityAddTraits(buttons[index].isSelected ? .isSelected : [])
+                        // onTapGesture isn't an accessibility action; VoiceOver's fallback synthesized tap is unreliable here.
+                        .accessibilityAction {
                             toggleSelection(at: index)
                         }
                 }
@@ -65,6 +73,8 @@ extension Warp {
                 RoundedRectangle(cornerRadius: Warp.Border.borderRadius100)
                     .stroke(colorProvider.token.border, lineWidth: 1)
             )
+            // One group, segments stay separate elements.
+            .accessibilityElement(children: .contain)
         }
         
         /// Updates the selection state of the button at a specific index.

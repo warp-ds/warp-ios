@@ -103,17 +103,18 @@ extension Warp {
             if let tooltipContent {
                 Warp.IconView(.info, size: .small, color: colorProvider.token.iconSubtle)
                     .onTapGesture {
-                        withAnimation {
-                            isTooltipPresented.toggle()
-                        }
+                        toggleTooltip()
+                    }
+                    .accessibilityAddTraits(.isButton)
+                    // onTapGesture isn't an accessibility action; VoiceOver's fallback synthesized tap is unreliable here.
+                    .accessibilityAction {
+                        toggleTooltip()
                     }
 
                 if isTooltipPresented {
                     tooltipContent
                         .onTapGesture {
-                            withAnimation {
-                                isTooltipPresented.toggle()
-                            }
+                            toggleTooltip()
                         }
                 }
             } else if let tooltipInfoAction {
@@ -121,6 +122,18 @@ extension Warp {
                     .onTapGesture {
                         tooltipInfoAction()
                     }
+                    .accessibilityAddTraits(.isButton)
+                    // onTapGesture isn't an accessibility action; VoiceOver's fallback synthesized tap is unreliable here.
+                    .accessibilityAction {
+                        tooltipInfoAction()
+                    }
+            }
+        }
+
+        /// Toggles the tooltip presentation state with animation.
+        private func toggleTooltip() {
+            withAnimation {
+                isTooltipPresented.toggle()
             }
         }
     }
