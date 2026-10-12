@@ -1,0 +1,58 @@
+name: Resolve iOS simulator
+description: Resolves an iOS simulator for the specified major version
+
+inputs:
+  ios-major:
+    description: iOS major version (e.g., "18" or "26")
+    required: true
+
+outputs:
+  udid:
+    description: The UDID of the resolved simulator
+    value: ${{ steps.resolve.outputs.udid }}
+  device-type:
+    description: The device type identifier
+    value: ${{ steps.resolve.outputs.device_type }}
+  runtime:
+    description: The runtime identifier
+    value: ${{ steps.resolve.outputs.runtime }}
+
+runs:
+  using: composite
+  steps:
+    - name: Resolve an iOS ${{ inputs.ios-major }} simulator
+      id: resolve
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        # The device type and runtime come out alongside the UDID because the boot probe below may
+        # have to throw this device away and create an equivalent one.
+        SIM="$(xcrun simctl list devices available -j \
+          | jq -c --arg v "${{ inputs.ios-major }}" \
+            '[.devices | to_entries[]
+              | select(.key | test("SimRuntime.iOS-" + $v + "-"))
+              | .key as $runtime | .value[] | select(.isAvailable)
+              | {udid, name, runtime: $runtime, deviceType: .deviceTypeIdentifier}] | first // empty')"
+
+        # Deliberately no download fallback. Runtimes that are absent from the image are also
+        # generally unavailable to `xcodebuild -downloadPlatform`, so failing here with the
+        # runtime list is more useful than a multi-GB download that cannot succeed.
+        if [ -z "$SIM" ]; then
+          echo "::error::No iOS ${{ inputs.ios-major }} runtime on this image. Runtimes available:"
+          xcrun simctl list runtimes
+          exit 1
+        fi
+
+        UDID="$(jq -r '.udid' <<<"$SIM")"
+        echo "Using simulator $UDID ($(jq -r '.name' <<<"$SIM"), $(jq -r '.runtime' <<<"$SIM"))"
+        {
+          echo "udid=$UDID"
+          echo "device_type=$(jq -r '.deviceType' <<<"$SIM")"
+          echo "runtime=$(jq -r '.runtime' <<<"$SIM")"
+        } >> "$GITHUB_OUTPUT"
+
+        # Fire-and-forget, so the boot overlaps with the build step rather than blocking it. The
+        # probe step owns the device lifecycle and waits for boot *completion* itself, under its own
+        # bound, so there is nothing to wait for here.
+        xcrun simctl boot "$UDID" || true
