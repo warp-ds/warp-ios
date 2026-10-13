@@ -3,7 +3,7 @@ import Warp
 
 struct ContentView: View {
     @State private var isShowingButtonView = false
-    @State private var selectedTheme = Warp.Brand.finn
+    @AppStorage(selectedBrandKey) private var selectedBrandName = Warp.Brand.finn.description
     @State private var searchText = ""
 
     private var brandItems: [(String, any View)] {
@@ -85,6 +85,10 @@ struct ContentView: View {
         ]
     }
 
+    private var selectedTheme: Warp.Brand {
+        Warp.Brand(storedName: selectedBrandName)
+    }
+
     private func matches(_ title: String) -> Bool {
         searchText.isEmpty || title.localizedCaseInsensitiveContains(searchText)
     }
@@ -92,19 +96,6 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                #if WARP
-                Picker("Select a Theme", selection: $selectedTheme) {
-                    ForEach(Warp.Brand.allCases, id: \.self) { theme in
-                        Text(theme.description)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .padding(.horizontal)
-                .onChange(of: selectedTheme) { oldTheme, newTheme in
-                    Warp.Theme = newTheme
-                    UINavigationBar.warpStyle()
-                }
-                #endif
                 LazyVStack(alignment: .leading) {
                     let filteredBrandItems = brandItems.filter { matches($0.0) }
                     let filteredNativeItems = nativeItems.filter { matches($0.0) }
@@ -152,28 +143,55 @@ struct ContentView: View {
                 }
                 .padding()
             }
+            #if WARP
+            .safeAreaInset(edge: .top) {
+                BrandPicker(selection: $selectedBrandName)
+                    .pickerStyle(.segmented)
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
+                    .background(.bar, ignoresSafeAreaEdges: [])
+            }
+            #endif
             .navigationTitle(Bundle.main.applicationName)
             .searchable(text: $searchText, prompt: "Search components")
             .onAppear {
+                #if WARP
+                Warp.Theme = selectedTheme
+                #endif
                 UINavigationBar.warpStyle()
             }
         }
+        #if WARP
+        .onChange(of: selectedBrandName) {
+            Warp.Theme = selectedTheme
+            UINavigationBar.warpStyle()
+        }
+        #endif
         .warpTheme(selectedTheme)
     }
 
     private func row(_ title: String, destination: any View) -> some View {
-        RowView(title: title, destination: AnyView(destination))
+        RowView(title: title, destination: AnyView(destination), updatesLive: !Self.nonLiveDemos.contains(title))
     }
+
+    /// Demos that don't fully re-theme while open (UIKit-hosted, or built from the global
+    /// `Warp.Theme` / `Warp.Token`). Found by switching brand on each screen and comparing
+    /// with the same screen opened fresh in that brand.
+    private static let nonLiveDemos: Set<String> = [
+        "PrimitiveColors", "SemanticTokens", "ComponentColors", "Typography", "TypographyUI",
+        "Bottom nav / Tab Bar", "Segmented Control", "Checkbox", "Radio"
+    ]
 }
 
 /// Individual row view for navigation links with theme-aware styling
 private struct RowView: View {
     let title: String
     let destination: AnyView
+    let updatesLive: Bool
     @Environment(\.warpTheme) private var theme
 
     var body: some View {
-        NavigationLink(destination: destination) {
+        NavigationLink(destination: destination.modifier(ThemeMenuModifier(updatesLive: updatesLive))) {
             VStack(alignment: .leading) {
                 Warp.Text(title, style: .title4)
                     .foregroundColor(Warp.Token.textLink)
@@ -181,6 +199,67 @@ private struct RowView: View {
                 Divider()
             }
         }
+    }
+}
+
+private let selectedBrandKey = "sampleApp.selectedBrand"
+
+private extension Warp.Brand {
+    /// `Warp.Brand` isn't `RawRepresentable`, so the brand is stored by its description.
+    init(storedName: String) {
+        self = Warp.Brand.allCases.first { $0.description == storedName } ?? .finn
+    }
+}
+
+/// Picker over all brands, bound to the stored brand name.
+private struct BrandPicker: View {
+    @Binding var selection: String
+
+    var body: some View {
+        Picker("Brand", selection: $selection) {
+            ForEach(Warp.Brand.allCases, id: \.self) { brand in
+                Text(brand.description).tag(brand.description)
+            }
+        }
+    }
+}
+
+/// Adds the brand menu to a demo's toolbar, plus a note on demos that don't re-theme live.
+private struct ThemeMenuModifier: ViewModifier {
+    let updatesLive: Bool
+    @AppStorage(selectedBrandKey) private var selectedBrandName = Warp.Brand.finn.description
+
+    func body(content: Content) -> some View {
+        #if WARP
+        content
+            .safeAreaInset(edge: .top) {
+                if !updatesLive {
+                    Warp.Text(
+                        "This demo doesn't update live when you change the brand. Go back and reopen it to see the new brand.",
+                        style: .caption
+                    )
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
+                    .background(.bar, ignoresSafeAreaEdges: [])
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        BrandPicker(selection: $selectedBrandName)
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "paintbrush")
+                            Text(selectedBrandName)
+                        }
+                    }
+                    .accessibilityLabel("Brand: \(selectedBrandName)")
+                }
+            }
+        #else
+        content
+        #endif
     }
 }
 
