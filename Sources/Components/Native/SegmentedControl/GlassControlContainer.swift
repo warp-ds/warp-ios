@@ -26,23 +26,24 @@ final class GlassControlContainer<Content: UIView>: UIView {
         layer.borderColor = borderColor.cgColor
 
         effectView.translatesAutoresizingMaskIntoConstraints = false
+        effectView.layer.cornerCurve = .continuous
         addSubview(effectView)
 
         NSLayoutConstraint.activate([
-            effectView.topAnchor.constraint(equalTo: topAnchor),
-            effectView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            effectView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            effectView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            effectView.topAnchor.constraint(equalTo: topAnchor, constant: -2),
+            effectView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -2),
+            effectView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 2),
+            effectView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 2)
         ])
 
         content.translatesAutoresizingMaskIntoConstraints = false
         effectView.contentView.addSubview(content)
 
         NSLayoutConstraint.activate([
-            content.topAnchor.constraint(equalTo: effectView.contentView.topAnchor),
-            content.leadingAnchor.constraint(equalTo: effectView.contentView.leadingAnchor),
-            content.trailingAnchor.constraint(equalTo: effectView.contentView.trailingAnchor),
-            content.bottomAnchor.constraint(equalTo: effectView.contentView.bottomAnchor)
+            content.topAnchor.constraint(equalTo: effectView.contentView.topAnchor, constant: 2),
+            content.leadingAnchor.constraint(equalTo: effectView.contentView.leadingAnchor, constant: 2),
+            content.trailingAnchor.constraint(equalTo: effectView.contentView.trailingAnchor, constant: -2),
+            content.bottomAnchor.constraint(equalTo: effectView.contentView.bottomAnchor, constant: -2)
         ])
 
         registerForTraitChanges(
@@ -59,12 +60,15 @@ final class GlassControlContainer<Content: UIView>: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        effectView.layer.cornerRadius = frame.height / 2
+    }
 
     private static func makeGlassOrBlurEffect() -> UIVisualEffect {
         if #available(iOS 26.0, *) {
-            let effect = UIGlassEffect(style: .regular)
-            effect.tintColor = .systemGray5 // we need that to mimic Apple UISegmentedControl native color
-            return effect
+            return UIGlassEffect(style: .clear)
         } else {
             return UIBlurEffect(style: .systemUltraThinMaterial)
         }

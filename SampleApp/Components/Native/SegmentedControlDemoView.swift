@@ -21,6 +21,44 @@ struct SegmentedControlDemoView: View {
 
     var body: some View {
         Form {
+            Section("Translucency") {
+                ZStack(alignment: .center) {
+                    colorBackground
+                    VStack(spacing: Warp.Spacing.spacing200) {
+                        VStack(spacing: Warp.Spacing.spacing100) {
+                            Text("Warp")
+                                .font(.caption.bold())
+                                .foregroundStyle(.white)
+                            Warp.SegmentedControl(
+                                items: items.map { .init(identifier: $0.identifier, title: $0.title, badge: $0.badge) },
+                                selectedIdentifier: $selectedIdentifier
+                            )
+                            .padding(.horizontal, Warp.Spacing.spacing200)
+                        }
+
+                        VStack(spacing: Warp.Spacing.spacing100) {
+                            Text("Standard")
+                                .font(.caption.bold())
+                                .foregroundStyle(.white)
+                            Picker("", selection: Binding(
+                                get: { selectedIdentifier ?? "" },
+                                set: { selectedIdentifier = $0 }
+                            )) {
+                                ForEach(items) { item in
+                                    Text(item.title).tag(item.identifier)
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                            .padding(.horizontal, Warp.Spacing.spacing200)
+                        }
+                    }
+                    .padding(.vertical, Warp.Spacing.spacing400)
+                }
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.clear)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+
             Section("Demo") {
                 Warp.SegmentedControl(
                     items: items.map { .init(identifier: $0.identifier, title: $0.title, badge: $0.badge) },
@@ -72,6 +110,24 @@ struct SegmentedControlDemoView: View {
         }
         .navigationTitle("Segmented Control")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private var colorBackground: some View {
+        HStack(spacing: 0) {
+            Color(red: 0.9, green: 0.2, blue: 0.2)
+            Color(red: 1.0, green: 0.6, blue: 0.0)
+            Color(red: 0.2, green: 0.7, blue: 0.3)
+            Color(red: 0.1, green: 0.4, blue: 0.9)
+            Color(red: 0.6, green: 0.1, blue: 0.8)
+        }
+        .overlay(alignment: .bottom) {
+            LinearGradient(
+                colors: [.black.opacity(0.3), .clear],
+                startPoint: .bottom,
+                endPoint: .top
+            )
+            .frame(height: 60)
+        }
     }
 
     @ViewBuilder
