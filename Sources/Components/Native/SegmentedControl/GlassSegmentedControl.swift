@@ -366,6 +366,15 @@ extension Warp {
             }
             return super.gestureRecognizerShouldBegin(gestureRecognizer)
         }
+
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            
+            // Internal UIImageViews applies the gray background color to UISegmentedControl
+            // As we do it in our scroll view let's hide these views so they don't mix with GlassControlContainer
+            let subviews = subviews.filter { $0 is UIImageView }
+            subviews.forEach { $0.isHidden = true }
+        }
     }
 
     // MARK: - BadgeView

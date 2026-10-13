@@ -62,7 +62,9 @@ final class GlassControlContainer<Content: UIView>: UIView {
 
     private static func makeGlassOrBlurEffect() -> UIVisualEffect {
         if #available(iOS 26.0, *) {
-            return UIGlassEffect(style: .regular)
+            let effect = UIGlassEffect(style: .regular)
+            effect.tintColor = .systemGray5 // we need that to mimic Apple UISegmentedControl native color
+            return effect
         } else {
             return UIBlurEffect(style: .systemUltraThinMaterial)
         }
