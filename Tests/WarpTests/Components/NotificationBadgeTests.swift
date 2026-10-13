@@ -43,6 +43,18 @@ struct NotificationBadgeTests {
         #expect(text == nil)
     }
 
+    // MARK: - Shape
+
+    @Test(arguments: ["1", "9"])
+    func testSingleCharacterIsCircular(text: String) {
+        #expect(NotificationBadgeStyle.isCircular(text: text))
+    }
+
+    @Test(arguments: ["10", "67", "99+", "1+"])
+    func testMultipleCharactersAreNotCircular(text: String) {
+        #expect(NotificationBadgeStyle.isCircular(text: text) == false)
+    }
+
     // MARK: - Visibility
 
     @Test
@@ -201,5 +213,30 @@ struct NotificationBadgeTests {
 
         #expect(NotificationBadgeStyle.accessibilityValue(for: .count(1), maxCount: 99, bundle: bundle) == one)
         #expect(NotificationBadgeStyle.accessibilityValue(for: .count(2), maxCount: 99, bundle: bundle) == other)
+    }
+}
+
+extension ThemeMutatingTests {
+    /// Fonts come from the global `Warp.Theme`, so brand-specific widths live under the parent
+    /// that serializes theme changes.
+    @Suite @MainActor
+    struct NotificationBadgeBrandFontTests {
+
+        /// DBA and Vend share a font with wide digits. At the smallest text sizes, with pixel
+        /// rounding on a 2x screen, "1" plus padding came out wider than the badge is tall.
+        @Test(arguments: [Warp.Brand.dba, .vend])
+        func testSingleDigitSmallBadgeIsCircleWithWideDigits(brand: Warp.Brand) {
+            Warp.Theme = brand
+            let badge = Warp.NotificationBadge(.count(1), size: .small)
+                .dynamicTypeSize(.xSmall)
+                .environment(\.displayScale, 2)
+                .warpTheme(brand)
+
+            let size = UIHostingController(rootView: badge).sizeThatFits(
+                in: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+            )
+
+            #expect(size.width == size.height, "A single digit is always a circle")
+        }
     }
 }
