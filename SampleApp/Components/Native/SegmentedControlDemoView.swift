@@ -113,16 +113,38 @@ struct SegmentedControlDemoView: View {
     }
 
     private var colorBackground: some View {
-        HStack(spacing: 0) {
-            Color(red: 0.9, green: 0.2, blue: 0.2)
-            Color(red: 1.0, green: 0.6, blue: 0.0)
-            Color(red: 0.2, green: 0.7, blue: 0.3)
-            Color(red: 0.1, green: 0.4, blue: 0.9)
-            Color(red: 0.6, green: 0.1, blue: 0.8)
+        ZStack {
+            Color(red: 0.04, green: 0.0, blue: 0.08)
+
+            Ellipse()
+                .fill(Color(red: 1.0, green: 0.08, blue: 0.18))
+                .frame(width: 190, height: 110)
+                .offset(x: -100, y: -10)
+            Ellipse()
+                .fill(Color(red: 1.0, green: 0.52, blue: 0.0))
+                .frame(width: 170, height: 100)
+                .offset(x: -30, y: 15)
+            Ellipse()
+                .fill(Color(red: 0.9, green: 0.92, blue: 0.0))
+                .frame(width: 150, height: 90)
+                .offset(x: 20, y: -15)
+            Ellipse()
+                .fill(Color(red: 0.08, green: 0.88, blue: 0.32))
+                .frame(width: 170, height: 100)
+                .offset(x: 70, y: 10)
+            Ellipse()
+                .fill(Color(red: 0.04, green: 0.42, blue: 1.0))
+                .frame(width: 170, height: 100)
+                .offset(x: 130, y: -10)
+            Ellipse()
+                .fill(Color(red: 0.52, green: 0.04, blue: 0.96))
+                .frame(width: 190, height: 110)
+                .offset(x: 180, y: 10)
         }
+        .blur(radius: 24)
         .overlay(alignment: .bottom) {
             LinearGradient(
-                colors: [.black.opacity(0.3), .clear],
+                colors: [.black.opacity(0.35), .clear],
                 startPoint: .bottom,
                 endPoint: .top
             )
