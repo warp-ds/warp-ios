@@ -43,6 +43,18 @@ struct NotificationBadgeTests {
         #expect(text == nil)
     }
 
+    // MARK: - Shape
+
+    @Test(arguments: ["1", "9"])
+    func testSingleCharacterIsCircular(text: String) {
+        #expect(NotificationBadgeStyle.isCircular(text: text))
+    }
+
+    @Test(arguments: ["10", "67", "99+", "1+"])
+    func testMultipleCharactersAreNotCircular(text: String) {
+        #expect(NotificationBadgeStyle.isCircular(text: text) == false)
+    }
+
     // MARK: - Visibility
 
     @Test

@@ -137,13 +137,19 @@ private struct CountBadgeView: View {
         self._horizontalPadding = ScaledMetric(wrappedValue: metrics.horizontalPadding, relativeTo: metrics.relativeTo)
     }
 
+    private var isCircular: Bool {
+        NotificationBadgeStyle.isCircular(text: text)
+    }
+
     var body: some View {
         Warp.Text(text, style: metrics.textStyle, color: textColor)
             .monospacedDigit()
             .lineLimit(1)
             .fixedSize()
-            .padding(.horizontal, horizontalPadding)
-            .frame(minWidth: height)
+            // A single digit is pinned to a circle. Brand fonts with wide digits would otherwise
+            // push the padded text past the height and elongate it, so the padding is dropped.
+            .padding(.horizontal, isCircular ? 0 : horizontalPadding)
+            .frame(minWidth: height, maxWidth: isCircular ? height : nil)
             // The height is fixed rather than a minimum: some brand fonts have a taller line
             // height than the badge, and would otherwise stretch it past the Figma size.
             .frame(height: height)

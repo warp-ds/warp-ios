@@ -49,6 +49,14 @@ enum NotificationBadgeStyle {
         }
     }
 
+    /// Returns whether the count badge is drawn as a circle rather than a capsule.
+    ///
+    /// Single characters (1-9) are always a circle, in every brand. Some brand fonts have
+    /// wide digits, so the text plus horizontal padding can exceed the badge height.
+    static func isCircular(text: String) -> Bool {
+        text.count == 1
+    }
+
     /// Returns whether the badge is visible.
     static func isVisible(_ content: Warp.NotificationBadgeContent) -> Bool {
         switch content {
