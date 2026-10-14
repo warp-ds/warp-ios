@@ -43,6 +43,18 @@ struct NotificationBadgeTests {
         #expect(text == nil)
     }
 
+    // MARK: - Shape
+
+    @Test(arguments: ["1", "9"])
+    func testSingleCharacterIsCircular(text: String) {
+        #expect(NotificationBadgeStyle.isCircular(text: text))
+    }
+
+    @Test(arguments: ["10", "67", "99+", "1+"])
+    func testMultipleCharactersAreNotCircular(text: String) {
+        #expect(NotificationBadgeStyle.isCircular(text: text) == false)
+    }
+
     // MARK: - Visibility
 
     @Test
@@ -122,6 +134,70 @@ struct NotificationBadgeTests {
         return [red, green, blue, alpha].map { ($0 * 255).rounded() }
     }
 
+    // MARK: - Sizing
+
+    // Count widths depend on the brand font, and other suites change the global `Warp.Theme`
+    // while these run, so width checks are relative (pill vs circle) rather than exact.
+
+    /// Dot diameters from the Figma "Notification badge" set (node 37526:66798).
+    @MainActor
+    @Test
+    func testDotMatchesFigmaSize() {
+        #expect(Self.fittingSize(Warp.NotificationBadge(.dot, size: .medium)) == CGSize(width: 16, height: 16))
+        #expect(Self.fittingSize(Warp.NotificationBadge(.dot, size: .small)) == CGSize(width: 10, height: 10))
+    }
+
+    /// Count heights from the same Figma set: Medium 24pt, Small 16pt, whatever the brand font.
+    @MainActor
+    @Test
+    func testCountBadgeHeightMatchesFigma() {
+        for (size, expectedHeight) in [(Warp.NotificationBadgeSize.medium, CGFloat(24)), (.small, 16)] {
+            for count in [1, 67, 150] {
+                let badgeSize = Self.fittingSize(Warp.NotificationBadge(.count(count), size: size))
+                #expect(badgeSize.height == expectedHeight)
+                #expect(badgeSize.width >= expectedHeight, "A count badge is never narrower than a circle")
+            }
+        }
+    }
+
+    /// A tight stack must not squeeze a count badge below its text, or "99+" spills out of a circle.
+    @MainActor
+    @Test
+    func testCountBadgeDoesNotShrinkBelowItsContent() {
+        for (size, expectedHeight) in [(Warp.NotificationBadgeSize.medium, CGFloat(24)), (.small, 16)] {
+            let squeezed = Self.fittingSize(Warp.NotificationBadge(.count(150), size: size), in: CGSize(width: 1, height: 1))
+
+            #expect(squeezed.width > squeezed.height, "\"99+\" must stay a pill, wider than it is tall")
+            #expect(squeezed.height == expectedHeight)
+        }
+    }
+
+    /// Dynamic Type grows the badge with its text, and stops at accessibility1.
+    @MainActor
+    @Test
+    func testCountBadgeScalesWithDynamicTypeUpToAccessibility1() {
+        func squeezedSize(_ dynamicType: DynamicTypeSize) -> CGSize {
+            let badge = Warp.NotificationBadge(.count(150), size: .medium).environment(\.dynamicTypeSize, dynamicType)
+            return UIHostingController(rootView: badge).sizeThatFits(in: CGSize(width: 1, height: 1))
+        }
+
+        let base = squeezedSize(.large)
+        let accessibility1 = squeezedSize(.accessibility1)
+        let accessibility5 = squeezedSize(.accessibility5)
+
+        #expect(accessibility1.height > base.height, "The badge grows with its text")
+        #expect(accessibility1.width > accessibility1.height, "\"99+\" stays a pill when scaled, even when squeezed")
+        #expect(accessibility5 == accessibility1, "Growth stops at accessibility1")
+    }
+
+    @MainActor
+    private static func fittingSize(
+        _ badge: Warp.NotificationBadge,
+        in proposal: CGSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+    ) -> CGSize {
+        UIHostingController(rootView: badge).sizeThatFits(in: proposal)
+    }
+
     // MARK: - Plurals
 
     @Test(arguments: [
@@ -137,5 +213,30 @@ struct NotificationBadgeTests {
 
         #expect(NotificationBadgeStyle.accessibilityValue(for: .count(1), maxCount: 99, bundle: bundle) == one)
         #expect(NotificationBadgeStyle.accessibilityValue(for: .count(2), maxCount: 99, bundle: bundle) == other)
+    }
+}
+
+extension ThemeMutatingTests {
+    /// Fonts come from the global `Warp.Theme`, so brand-specific widths live under the parent
+    /// that serializes theme changes.
+    @Suite @MainActor
+    struct NotificationBadgeBrandFontTests {
+
+        /// DBA and Vend share a font with wide digits. At the smallest text sizes, with pixel
+        /// rounding on a 2x screen, "1" plus padding came out wider than the badge is tall.
+        @Test(arguments: [Warp.Brand.dba, .vend])
+        func testSingleDigitSmallBadgeIsCircleWithWideDigits(brand: Warp.Brand) {
+            Warp.Theme = brand
+            let badge = Warp.NotificationBadge(.count(1), size: .small)
+                .dynamicTypeSize(.xSmall)
+                .environment(\.displayScale, 2)
+                .warpTheme(brand)
+
+            let size = UIHostingController(rootView: badge).sizeThatFits(
+                in: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+            )
+
+            #expect(size.width == size.height, "A single digit is always a circle")
+        }
     }
 }

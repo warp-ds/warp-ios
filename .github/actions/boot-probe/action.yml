@@ -1,0 +1,245 @@
+name: Probe simulator boot
+description: Checks that the simulator boot can build a SwiftUI environment
+
+inputs:
+  udid:
+    description: Simulator UDID to probe
+    required: true
+  device-type:
+    description: Device type identifier
+    required: true
+  runtime:
+    description: Runtime identifier
+    required: true
+
+outputs:
+  udid:
+    description: The UDID of the healthy simulator (may be a replacement if the input device failed). Only set when the probe passes.
+    value: ${{ steps.probe.outputs.udid }}
+
+runs:
+  using: composite
+  steps:
+    # Checks that this simulator boot can build a SwiftUI environment at all, before the real suite
+    # runs, and throws the device away if it cannot.
+    #
+    # This replaces an earlier unbounded "warm-up" step built on the theory that the first
+    # `EnvironmentValues()` on a cold device has a large but finite cost (~19s locally). Run
+    # 35710643887 tested that unbounded and disproved it: the call never returned in 20m40s on iOS
+    # 26, while the identical call was 0.203s on an equally fresh iOS 26 device in run 35338773478
+    # and 0.234s on the iOS 18 leg of the same job. Roughly 0.2s or never is a hang, not a cache
+    # fill, so waiting it out cannot work - and waiting it out unbounded burns the entire job and
+    # prints nothing after `Test Case ... started.`
+    #
+    # Sampling the hung test host identified the call: `EnvironmentValues()` reaches
+    # `+[UIScreen initialize]`, which makes a synchronous, un-timed XPC round trip to the simulator's
+    # BoardServices daemon for the application initialization context. If that daemon answers you pay
+    # the round trip; if it does not, `xpc_connection_send_message_with_reply_sync` never returns. So
+    # a wedge belongs to the *boot*, which is why the recovery here is a different device rather than
+    # a longer wait. Full stack in SimulatorBootProbeTests.
+    - name: Probe the simulator boot
+      id: probe
+      shell: bash
+      run: |
+        # Deliberately no `-e`: every failure below is handled, and an unhandled exit here would
+        # skip the diagnostics that are the whole point of the step.
+        set -uo pipefail
+
+        UDID="${{ inputs.udid }}"
+        DEVICE_TYPE="${{ inputs.device-type }}"
+        RUNTIME="${{ inputs.runtime }}"
+
+        # Split budgets, because they bound different things. All three are calibrated against run
+        # 35718445968, a drill that forced the recovery path to run end to end on both legs.
+        #
+        # BOOT covers `simctl bootstatus`. Measured: 2s and 4s for a device already booting during
+        # the build step, 54s (iOS 18) and 74s (iOS 26) for a freshly created one, and >90s for an
+        # iOS 26 device that had just been erased. 180s, because the first version of this used 90s
+        # and that discarded a device which was merely booting slowly.
+        #
+        # BUILD covers everything from there to the test entering the runtime. Measured at 58s, 84s,
+        # 106s, 112s and 120s - the high end is a replacement device, where the install is fresh.
+        # 300s, because a false trip here is expensive and pointless: it discards a healthy device
+        # and rebuilds for no reason.
+        #
+        # PROBE covers only the test body, measured at 0.203s, 0.234s and 0.415s on CI. 90s rather
+        # than anything nearer that, because the same test takes 5-20s on a developer Mac, varying
+        # run to run on one device with no warming trend - so the healthy cost is clearly
+        # host-dependent, and a budget fitted to the runner alone would be brittle. Still ~200x the
+        # observed CI cost, and it fails in 90s instead of 25 minutes.
+        BOOT_BUDGET=180
+        BUILD_BUDGET=300
+        PROBE_BUDGET=90
+        MAX_ATTEMPTS=3
+
+        # A wall-clock bound on the whole step, checked before each attempt, so that the per-attempt
+        # budgets above can be tuned without anyone having to redo the arithmetic against
+        # `timeout-minutes`. Worst case is this plus one full attempt, which leaves several minutes
+        # of headroom - and the step reports rather than being cut off mid-sentence, which is the
+        # entire difference between this and the `cancelled` runs it replaces.
+        STEP_BUDGET=780
+        STEP_START=$SECONDS
+
+        DIAG_DIR="$RUNNER_TEMP/simulator-diagnostics"
+        mkdir -p "$DIAG_DIR"
+
+        # Waits for the boot to *complete*, not for the device state to read `Booted`.
+        # CoreSimulator reports `Booted` as soon as `launchd_sim` is up, which is well before the
+        # service set is running - and the service set is the whole problem here, because the first
+        # SwiftUI environment synchronously asks BoardServices for the application initialization
+        # context. A device that is `Booted` but not finished booting is exactly the state in which
+        # that request has nobody to answer it.
+        #
+        # `bootstatus` is bounded rather than trusted. The comment it replaces recorded that it
+        # "waits forever and hung a job here until the workflow timeout" - no run is cited, so treat
+        # that as a report rather than a measurement, but it is worth respecting either way, and it
+        # would be consistent with this same failure observed one layer earlier. A boot that will not
+        # finish is a boot worth throwing away, and finding that out here costs 90s instead of a
+        # build plus a probe cycle.
+        ensure_booted() {
+          DEV="$1"
+          xcrun simctl boot "$DEV" >/dev/null 2>&1 || true
+
+          BOOT_DONE="$RUNNER_TEMP/bootstatus-done"
+          rm -f "$BOOT_DONE"
+          ( xcrun simctl bootstatus "$DEV" -b > "$DIAG_DIR/bootstatus-$DEV.txt" 2>&1; echo $? > "$BOOT_DONE" ) &
+
+          WAITED=0
+          while [ ! -f "$BOOT_DONE" ] && [ "$WAITED" -lt "$BOOT_BUDGET" ]; do
+            sleep 2
+            WAITED=$((WAITED + 2))
+          done
+
+          if [ ! -f "$BOOT_DONE" ]; then
+            echo "::warning::$DEV did not finish booting within ${BOOT_BUDGET}s - treating the boot as bad."
+            pkill -f "simctl bootstatus" 2>/dev/null || true
+            return 1
+          fi
+          if [ "$(cat "$BOOT_DONE")" -ne 0 ]; then
+            echo "::warning::bootstatus reported failure for $DEV"
+            return 1
+          fi
+          echo "Boot completed in ${WAITED}s."
+          return 0
+        }
+
+        # `sample` is the only thing that answers "blocked on what" - it walks every thread of the
+        # hung test host and needs no privileges for our own processes. This is what a future
+        # diagnosis will be built from, so capture it before anything is killed.
+        capture_diagnostics() {
+          TAG="$1"
+          echo "::group::Diagnostics for $TAG"
+          for NAME in xctest testmanagerd; do
+            for PID in $(pgrep -x "$NAME" 2>/dev/null || true); do
+              echo "sampling $NAME ($PID) for 3s"
+              /usr/bin/sample "$PID" 3 -file "$DIAG_DIR/$TAG-$NAME-$PID.txt" >/dev/null 2>&1 || true
+            done
+          done
+          ps -Ao pid,ppid,stat,etime,command \
+            | grep -E 'xctest|xcodebuild|testmanagerd|CoreSimulator|launchd_sim' \
+            | grep -v grep > "$DIAG_DIR/$TAG-ps.txt" 2>&1 || true
+          xcrun simctl list devices > "$DIAG_DIR/$TAG-devices.txt" 2>&1 || true
+          echo "captured: $(ls "$DIAG_DIR" | tr '\n' ' ')"
+          echo "::endgroup::"
+        }
+
+        # Always a new device, never an erase. This started out as two strategies - erase first, then
+        # create - specifically so the logs would say which was sufficient. Run 35718445968 answered
+        # it: erase is the weaker of the two. It bought nothing on iOS 18 (54s to reboot, the same as
+        # a fresh device) and on iOS 26 the erased device did not finish booting at all, which cost a
+        # whole attempt. A new device worked on both legs. Sets UDID for the next attempt.
+        recycle_device() {
+          echo "Recovery: create a replacement device"
+          xcrun simctl shutdown "$UDID" >/dev/null 2>&1 || true
+          NEW_UDID="$(xcrun simctl create "warp-ci-probe-$ATTEMPT" "$DEVICE_TYPE" "$RUNTIME")"
+          if [ -n "$NEW_UDID" ]; then
+            UDID="$NEW_UDID"
+            echo "Replacement device $UDID"
+          else
+            echo "::warning::Could not create a replacement device; retrying on $UDID"
+          fi
+        }
+
+        ATTEMPT=0
+        while [ "$ATTEMPT" -lt "$MAX_ATTEMPTS" ]; do
+          SPENT=$((SECONDS - STEP_START))
+          if [ "$ATTEMPT" -gt 0 ] && [ "$SPENT" -ge "$STEP_BUDGET" ]; then
+            echo "::warning::${SPENT}s spent, at or past the ${STEP_BUDGET}s step budget - stopping after $ATTEMPT attempts rather than risking the job timeout."
+            break
+          fi
+          ATTEMPT=$((ATTEMPT + 1))
+
+          # A boot that never completes cannot answer the XPC request the probe is about to make, so
+          # there is nothing to learn from building and running against it. Recycle immediately.
+          if ! ensure_booted "$UDID"; then
+            capture_diagnostics "attempt-$ATTEMPT-boot"
+            [ "$ATTEMPT" -ge "$MAX_ATTEMPTS" ] && break
+            recycle_device
+            continue
+          fi
+
+          LOG="$DIAG_DIR/attempt-$ATTEMPT-xcodebuild.log"
+          DONE="$RUNNER_TEMP/probe-done-$ATTEMPT"
+          rm -f "$DONE"
+
+          echo "::group::Probe attempt $ATTEMPT on $UDID"
+          # The sentinel file rather than `kill -0` on the child: a finished-but-unreaped child is
+          # still signalable, so liveness checks cannot tell "done" from "running".
+          (
+            xcodebuild -scheme WarpTests -destination "id=$UDID" \
+              -disableAutomaticPackageResolution \
+              -only-testing:WarpTests/SimulatorBootProbeTests \
+              -test-timeouts-enabled NO \
+              test > "$LOG" 2>&1
+            echo $? > "$DONE"
+          ) &
+
+          ELAPSED=0
+          STARTED=0
+          DEADLINE="$BUILD_BUDGET"
+          while [ ! -f "$DONE" ] && [ "$ELAPSED" -lt "$DEADLINE" ]; do
+            sleep 2
+            ELAPSED=$((ELAPSED + 2))
+            if [ "$STARTED" -eq 0 ] \
+              && grep -qF "SimulatorBootProbeTests testFirstSwiftUIEnvironmentResolves]' started" "$LOG" 2>/dev/null; then
+              STARTED=1
+              DEADLINE=$((ELAPSED + PROBE_BUDGET))
+              echo "Test entered the runtime after ${ELAPSED}s; allowing ${PROBE_BUDGET}s to return."
+            fi
+          done
+
+          if [ -f "$DONE" ]; then
+            STATUS="$(cat "$DONE")"
+            tail -30 "$LOG"
+            echo "::endgroup::"
+            if [ "$STATUS" -eq 0 ]; then
+              echo "Boot probe passed on attempt $ATTEMPT in ${ELAPSED}s. Device $UDID is healthy."
+              echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            # A clean non-zero exit is a compile or assertion failure. Retrying it on a fresh
+            # device would turn a real, reproducible failure into flake.
+            echo "::error::Boot probe exited $STATUS. That is a build or test failure, not a wedge."
+            cat "$LOG"
+            exit "$STATUS"
+          fi
+
+          if [ "$STARTED" -eq 1 ]; then
+            echo "::warning::Probe test did not return within ${PROBE_BUDGET}s - this boot is wedged."
+          else
+            echo "::warning::Probe did not reach the runtime within ${BUILD_BUDGET}s - build or install is wedged."
+          fi
+          capture_diagnostics "attempt-$ATTEMPT"
+          tail -30 "$LOG" 2>/dev/null
+          echo "::endgroup::"
+
+          pkill -x xctest 2>/dev/null || true
+          pkill -f 'xcodebuild -scheme WarpTests' 2>/dev/null || true
+          sleep 3
+
+          [ "$ATTEMPT" -ge "$MAX_ATTEMPTS" ] && break
+          recycle_device
+        done
+
+        echo "::error::The simulator boot probe wedged on all $ATTEMPT attempts ($((SECONDS - STEP_START))s). Thread samples of the hung process are in the simulator-diagnostics artifact."
+        exit 1

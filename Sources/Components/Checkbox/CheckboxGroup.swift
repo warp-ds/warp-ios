@@ -61,13 +61,13 @@ extension Warp {
 
         public var body: some View {
             VStack(alignment: .leading, spacing: Spacing.spacing200) {
-                if let title = title, !title.isEmpty {
+                if let title, !title.isEmpty {
                     SwiftUI.Text(title)
                         .font(from: .title5)
                         .foregroundColor(colorProvider.token.text)
                 }
 
-                groupView
+                accessibleGroupView
 
                 if let helpText = helpText, !helpText.isEmpty {
                     SwiftUI.Text(helpText)
@@ -76,9 +76,23 @@ extension Warp {
                 }
             }
         }
-        
+
         private var helpTextColor: Color {
             style == .error ? colorProvider.token.textNegative : colorProvider.token.textSubtle
+        }
+
+        /// The options wrapped as a named accessibility container, so entering the group announces
+        /// the title first. An untitled group stays unnamed rather than getting an empty name.
+        @ViewBuilder
+        private var accessibleGroupView: some View {
+            if let title, !title.isEmpty {
+                groupView
+                    .accessibilityElement(children: .contain)
+                    .accessibilityLabel(title)
+            } else {
+                groupView
+                    .accessibilityElement(children: .contain)
+            }
         }
 
         @ViewBuilder
