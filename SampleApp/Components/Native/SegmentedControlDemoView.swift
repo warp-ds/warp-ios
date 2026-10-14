@@ -18,6 +18,7 @@ struct SegmentedControlDemoView: View {
         ItemConfig(identifier: "saved", title: "Saved"),
     ]
     @State private var selectedIdentifier: String? = "trending"
+    @State private var isPinnedToNavbar = false
 
     var body: some View {
         Form {
@@ -110,6 +111,26 @@ struct SegmentedControlDemoView: View {
         }
         .navigationTitle("Segmented Control")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    withAnimation { isPinnedToNavbar.toggle() }
+                } label: {
+                    Image(systemName: isPinnedToNavbar ? "pin.fill" : "pin")
+                }
+            }
+        }
+        .safeAreaInset(edge: .top) {
+            if isPinnedToNavbar {
+                Warp.SegmentedControl(
+                    items: items.map { .init(identifier: $0.identifier, title: $0.title, badge: $0.badge) },
+                    selectedIdentifier: $selectedIdentifier
+                )
+                .padding(.horizontal, Warp.Spacing.spacing200)
+                .padding(.vertical, Warp.Spacing.spacing100)
+                .background(.bar)
+            }
+        }
     }
 
     private var colorBackground: some View {
