@@ -30,24 +30,26 @@ final class GlassControlContainer<Content: UIView>: UIView {
         addSubview(containerView)
 
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: topAnchor, constant: -2),
-            containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -2),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 2),
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 2)
+            containerView.topAnchor.constraint(equalTo: topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
         content.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(content)
 
         NSLayoutConstraint.activate([
-            content.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 2),
-            content.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 2),
-            content.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -2),
-            content.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -2)
+            content.topAnchor.constraint(equalTo: containerView.topAnchor),
+            content.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            content.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            content.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
         
         let segmentedControl = UISegmentedControl(items: [""])
         segmentedControl.isUserInteractionEnabled = false
+        segmentedControl.isAccessibilityElement = false
+        segmentedControl.accessibilityElementsHidden = true
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         containerView.insertSubview(segmentedControl, at: 0)
 
@@ -75,6 +77,6 @@ final class GlassControlContainer<Content: UIView>: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        containerView.layer.cornerRadius = frame.height / 2
+        containerView.layer.cornerRadius = containerView.bounds.height / 2
     }
 }
