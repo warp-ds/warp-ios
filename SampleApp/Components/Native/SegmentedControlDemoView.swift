@@ -18,9 +18,48 @@ struct SegmentedControlDemoView: View {
         ItemConfig(identifier: "saved", title: "Saved"),
     ]
     @State private var selectedIdentifier: String? = "trending"
+    @State private var isPinnedToNavbar = false
 
     var body: some View {
         Form {
+            Section("Translucency") {
+                ZStack(alignment: .center) {
+                    colorBackground
+                    VStack(spacing: Warp.Spacing.spacing200) {
+                        VStack(spacing: Warp.Spacing.spacing100) {
+                            Text("Warp")
+                                .font(.caption.bold())
+                                .foregroundStyle(.white)
+                            Warp.SegmentedControl(
+                                items: items.map { .init(identifier: $0.identifier, title: $0.title, badge: $0.badge) },
+                                selectedIdentifier: $selectedIdentifier
+                            )
+                            .padding(.horizontal, Warp.Spacing.spacing200)
+                        }
+
+                        VStack(spacing: Warp.Spacing.spacing100) {
+                            Text("Standard")
+                                .font(.caption.bold())
+                                .foregroundStyle(.white)
+                            Picker("", selection: Binding(
+                                get: { selectedIdentifier ?? "" },
+                                set: { selectedIdentifier = $0 }
+                            )) {
+                                ForEach(items) { item in
+                                    Text(item.title).tag(item.identifier)
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                            .padding(.horizontal, Warp.Spacing.spacing200)
+                        }
+                    }
+                    .padding(.vertical, Warp.Spacing.spacing400)
+                }
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.clear)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+
             Section("Demo") {
                 Warp.SegmentedControl(
                     items: items.map { .init(identifier: $0.identifier, title: $0.title, badge: $0.badge) },
@@ -72,6 +111,66 @@ struct SegmentedControlDemoView: View {
         }
         .navigationTitle("Segmented Control")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    withAnimation { isPinnedToNavbar.toggle() }
+                } label: {
+                    Image(systemName: isPinnedToNavbar ? "pin.fill" : "pin")
+                }
+            }
+        }
+        .safeAreaInset(edge: .top) {
+            if isPinnedToNavbar {
+                Warp.SegmentedControl(
+                    items: items.map { .init(identifier: $0.identifier, title: $0.title, badge: $0.badge) },
+                    selectedIdentifier: $selectedIdentifier
+                )
+                .padding(.horizontal, Warp.Spacing.spacing200)
+                .padding(.vertical, Warp.Spacing.spacing100)
+                .background(.bar)
+            }
+        }
+    }
+
+    private var colorBackground: some View {
+        ZStack {
+            Color(red: 0.04, green: 0.0, blue: 0.08)
+
+            Ellipse()
+                .fill(Color(red: 1.0, green: 0.08, blue: 0.18))
+                .frame(width: 190, height: 110)
+                .offset(x: -100, y: -10)
+            Ellipse()
+                .fill(Color(red: 1.0, green: 0.52, blue: 0.0))
+                .frame(width: 170, height: 100)
+                .offset(x: -30, y: 15)
+            Ellipse()
+                .fill(Color(red: 0.9, green: 0.92, blue: 0.0))
+                .frame(width: 150, height: 90)
+                .offset(x: 20, y: -15)
+            Ellipse()
+                .fill(Color(red: 0.08, green: 0.88, blue: 0.32))
+                .frame(width: 170, height: 100)
+                .offset(x: 70, y: 10)
+            Ellipse()
+                .fill(Color(red: 0.04, green: 0.42, blue: 1.0))
+                .frame(width: 170, height: 100)
+                .offset(x: 130, y: -10)
+            Ellipse()
+                .fill(Color(red: 0.52, green: 0.04, blue: 0.96))
+                .frame(width: 190, height: 110)
+                .offset(x: 180, y: 10)
+        }
+        .blur(radius: 24)
+        .overlay(alignment: .bottom) {
+            LinearGradient(
+                colors: [.black.opacity(0.35), .clear],
+                startPoint: .bottom,
+                endPoint: .top
+            )
+            .frame(height: 60)
+        }
     }
 
     @ViewBuilder

@@ -43,6 +43,8 @@ extension Warp {
     private var cachedTitleWidths: [CGFloat] = []
     private var naturalSegmentWidths: [CGFloat] = []
     private static let segmentHorizontalPadding: CGFloat = 32
+    // Prevents a 1px gap between the glass container border and the system control's background pill.
+    private static let glassHeightPadding: CGFloat = 1
 
     // MARK: - iOS 26+
 
@@ -130,11 +132,9 @@ extension Warp {
 
     // MARK: - Layout
 
-    private static let glassVerticalPadding: CGFloat = 3
-
     public override var intrinsicContentSize: CGSize {
         usesGlassSegments
-            ? CGSize(width: UIView.noIntrinsicMetric, height: segmentedControl.intrinsicContentSize.height + Self.glassVerticalPadding)
+            ? CGSize(width: UIView.noIntrinsicMetric, height: segmentedControl.intrinsicContentSize.height + Self.glassHeightPadding)
             : scrollableTabView.intrinsicContentSize
     }
 
@@ -193,12 +193,12 @@ extension Warp {
             glassContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             glassContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            segmentedControl.centerYAnchor.constraint(equalTo: scrollView.frameLayoutGuide.centerYAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: scrollView.frameLayoutGuide.topAnchor),
+            segmentedControl.bottomAnchor.constraint(equalTo: scrollView.frameLayoutGuide.bottomAnchor, constant: -Self.glassHeightPadding),
             segmentedControl.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             segmentedControl.widthAnchor.constraint(greaterThanOrEqualTo: scrollView.frameLayoutGuide.widthAnchor),
-
-            scrollView.contentLayoutGuide.heightAnchor.constraint(equalTo: segmentedControl.heightAnchor),
+            scrollView.contentLayoutGuide.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor),
         ])
 
         scrollObservation = scrollView.observe(\.contentOffset, options: [.new]) { [weak self] _, _ in
@@ -368,6 +368,16 @@ extension Warp {
                 return true
             }
             return super.gestureRecognizerShouldBegin(gestureRecognizer)
+        }
+
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            
+            // UISegmentedControl renders its background and divider via internal UIImageViews.
+            // Hiding them prevents the system gray pill from mixing with GlassControlContainer's background.
+            // Relies on UIKit's private view hierarchy — verified on iOS 26 and 27.1.
+            let subviews = subviews.filter { $0 is UIImageView }
+            subviews.forEach { $0.isHidden = true }
         }
     }
 

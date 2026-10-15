@@ -3,7 +3,7 @@ import UIKit
 final class GlassControlContainer<Content: UIView>: UIView {
 
     let content: Content
-    private let effectView: UIVisualEffectView
+    private let containerView: UIView
     private let borderColor: UIColor
 
     init(
@@ -13,7 +13,7 @@ final class GlassControlContainer<Content: UIView>: UIView {
         borderColor: UIColor
     ) {
         self.content = content
-        self.effectView = UIVisualEffectView(effect: Self.makeGlassOrBlurEffect())
+        self.containerView = UIView()
         self.borderColor = borderColor
         super.init(frame: .zero)
 
@@ -25,24 +25,39 @@ final class GlassControlContainer<Content: UIView>: UIView {
         layer.borderWidth = borderWidth
         layer.borderColor = borderColor.cgColor
 
-        effectView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(effectView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.layer.cornerCurve = .continuous
+        addSubview(containerView)
 
         NSLayoutConstraint.activate([
-            effectView.topAnchor.constraint(equalTo: topAnchor),
-            effectView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            effectView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            effectView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            containerView.topAnchor.constraint(equalTo: topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
         content.translatesAutoresizingMaskIntoConstraints = false
-        effectView.contentView.addSubview(content)
+        containerView.addSubview(content)
 
         NSLayoutConstraint.activate([
-            content.topAnchor.constraint(equalTo: effectView.contentView.topAnchor),
-            content.leadingAnchor.constraint(equalTo: effectView.contentView.leadingAnchor),
-            content.trailingAnchor.constraint(equalTo: effectView.contentView.trailingAnchor),
-            content.bottomAnchor.constraint(equalTo: effectView.contentView.bottomAnchor)
+            content.topAnchor.constraint(equalTo: containerView.topAnchor),
+            content.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            content.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            content.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+        
+        let segmentedControl = UISegmentedControl(items: [""])
+        segmentedControl.isUserInteractionEnabled = false
+        segmentedControl.isAccessibilityElement = false
+        segmentedControl.accessibilityElementsHidden = true
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        containerView.insertSubview(segmentedControl, at: 0)
+
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            segmentedControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
         ])
 
         registerForTraitChanges(
@@ -59,12 +74,9 @@ final class GlassControlContainer<Content: UIView>: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    private static func makeGlassOrBlurEffect() -> UIVisualEffect {
-        if #available(iOS 26.0, *) {
-            return UIGlassEffect(style: .regular)
-        } else {
-            return UIBlurEffect(style: .systemUltraThinMaterial)
-        }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        containerView.layer.cornerRadius = containerView.bounds.height / 2
     }
 }
