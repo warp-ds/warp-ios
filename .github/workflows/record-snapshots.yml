@@ -1,0 +1,294 @@
+name: Record Snapshot References
+
+on:
+  workflow_dispatch:
+    inputs:
+      suites:
+        description: 'Comma-separated suite names (e.g., DividerSnapshotTests,ButtonSnapshotTests). Leave empty to run all suites.'
+        required: false
+        type: string
+        default: ''
+      mode:
+        description: 'Record mode: failed (re-record only failing snapshots) or all (re-record everything)'
+        required: true
+        type: choice
+        options:
+          - failed
+          - all
+        default: failed
+      push:
+        description: 'Push the recorded references to the branch after verification'
+        required: true
+        type: boolean
+        default: false
+  # TEMP(FEP-137): remove before merge
+  # Proof trigger to test the workflow before it reaches main (workflow_dispatch only appears once merged).
+  push:
+    branches:
+      - chore/FEP-137-record-workflow
+
+concurrency:
+  group: record-${{ github.ref }}
+  # A second dispatch waits instead of killing a recording (or its push) halfway through.
+  cancel-in-progress: false
+
+# The pinned snapshot setup. Changing any of these means re-recording every reference.
+env:
+  XCODE_APP: /Applications/Xcode_26.3.app
+  XCODE_BUILD: 17C529
+  SIM_DEVICE_TYPE: com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro
+  SIM_RUNTIME: com.apple.CoreSimulator.SimRuntime.iOS-26-0
+
+defaults:
+  run:
+    # An explicit `shell: bash` runs with `-eo pipefail`; the implicit default has no pipefail.
+    shell: bash
+
+jobs:
+  record:
+    runs-on: macos-15
+    timeout-minutes: 45
+
+    # Write permission required for the conditional push step. The push trigger (TEMP) does not
+    # need write access, but GitHub Actions permissions must be static values.
+    permissions:
+      contents: write
+
+    steps:
+    - name: Refuse to run on main
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "::error::Recording snapshots on main is not allowed. Dispatch this workflow on a feature branch."
+        exit 1
+
+    - uses: actions/checkout@v4
+
+    # Pinned by exact path and build, unlike the shared select-xcode action (newest 26.x), so an
+    # image update fails loudly instead of silently recording on a different toolchain.
+    - name: Select the pinned Xcode
+      run: |
+        if [ ! -d "$XCODE_APP" ]; then
+          echo "::error::$XCODE_APP is not on this runner image. Update the pin and re-record. Installed:"
+          ls -d /Applications/Xcode*.app
+          exit 1
+        fi
+        sudo xcode-select -s "$XCODE_APP"
+        xcodebuild -version
+        BUILD="$(xcodebuild -version | tail -1 | awk '{print $NF}')"
+        if [ "$BUILD" != "$XCODE_BUILD" ]; then
+          echo "::error::Expected Xcode build $XCODE_BUILD, got $BUILD. Update the pin and re-record."
+          exit 1
+        fi
+
+    - name: Create the pinned simulator
+      id: sim
+      run: |
+        if ! UDID="$(xcrun simctl create warp-snapshot "$SIM_DEVICE_TYPE" "$SIM_RUNTIME")"; then
+          echo "::error::Could not create $SIM_DEVICE_TYPE on $SIM_RUNTIME. Update the pin and re-record. Runtimes:"
+          xcrun simctl list runtimes
+          exit 1
+        fi
+        echo "Created simulator $UDID ($SIM_DEVICE_TYPE, $SIM_RUNTIME)"
+        {
+          echo "udid=$UDID"
+          echo "device-type=$SIM_DEVICE_TYPE"
+          echo "runtime=$SIM_RUNTIME"
+        } >> "$GITHUB_OUTPUT"
+        # Fire-and-forget so the boot overlaps with the build; the boot probe waits for completion.
+        xcrun simctl boot "$UDID" || true
+
+    - name: Build WarpSnapshotTests
+      timeout-minutes: 15
+      run: |
+        xcodebuild -scheme WarpSnapshotTests \
+          -destination "id=${{ steps.sim.outputs.udid }}" \
+          -disableAutomaticPackageResolution \
+          build
+
+    - name: Probe the simulator boot
+      uses: ./.github/actions/boot-probe
+      id: probe
+      with:
+        udid: ${{ steps.sim.outputs.udid }}
+        device-type: ${{ steps.sim.outputs.device-type }}
+        runtime: ${{ steps.sim.outputs.runtime }}
+
+    - name: Upload simulator diagnostics
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: simulator-diagnostics
+        path: ${{ runner.temp }}/simulator-diagnostics
+        if-no-files-found: ignore
+        retention-days: 14
+
+    # Fall back to workflow defaults when triggered by push (inputs are not available in that context).
+    # Inputs arrive through env, never interpolated into the script, so a crafted value can't run
+    # as shell. Newlines are rejected so a value can't inject extra GITHUB_OUTPUT lines.
+    - name: Set inputs from event
+      id: inputs
+      env:
+        EVENT_NAME: ${{ github.event_name }}
+        INPUT_SUITES: ${{ inputs.suites }}
+        INPUT_MODE: ${{ inputs.mode }}
+        INPUT_PUSH: ${{ inputs.push }}
+      run: |
+        if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+          for VALUE in "$INPUT_SUITES" "$INPUT_MODE" "$INPUT_PUSH"; do
+            if [[ "$VALUE" == *$'\n'* ]]; then
+              echo "::error::Inputs must be single-line."
+              exit 1
+            fi
+          done
+          {
+            echo "suites=$INPUT_SUITES"
+            echo "mode=$INPUT_MODE"
+            echo "push=$INPUT_PUSH"
+          } >> "$GITHUB_OUTPUT"
+        else
+          # TEMP(FEP-137): defaults for the push trigger proof
+          {
+            echo "suites=DividerSnapshotTests"
+            echo "mode=failed"
+            echo "push=false"
+          } >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Validate suite names
+      if: steps.inputs.outputs.suites != ''
+      env:
+        SUITES: ${{ steps.inputs.outputs.suites }}
+      run: |
+        if ! echo "$SUITES" | grep -qE '^[A-Za-z0-9_]+(,[A-Za-z0-9_]+)*$'; then
+          echo "::error::Suites must be comma-separated names matching [A-Za-z0-9_]+, with no empty entries (got: $SUITES)"
+          exit 1
+        fi
+
+    - name: Record snapshot references
+      timeout-minutes: 15
+      env:
+        SUITES: ${{ steps.inputs.outputs.suites }}
+        MODE: ${{ steps.inputs.outputs.mode }}
+      run: |
+        # Build the test filter arguments from the suites input.
+        FILTER_ARGS=""
+        if [ -n "$SUITES" ]; then
+          IFS=',' read -ra SUITE_ARRAY <<< "$SUITES"
+          for SUITE in "${SUITE_ARRAY[@]}"; do
+            FILTER_ARGS="$FILTER_ARGS -only-testing:WarpSnapshotTests/$SUITE"
+          done
+        fi
+
+        # Record with the specified mode. This will fail (recording makes tests raise issues), so
+        # tolerate the failure - the verify step below checks that the new references are correct.
+        # shellcheck disable=SC2086
+        TEST_RUNNER_SNAPSHOT_TESTING_RECORD="$MODE" xcodebuild \
+          -scheme WarpSnapshotTests \
+          -destination "id=${{ steps.probe.outputs.udid }}" \
+          -disableAutomaticPackageResolution \
+          -parallel-testing-enabled NO \
+          -collect-test-diagnostics never \
+          $FILTER_ARGS \
+          test || true
+
+    - name: Verify recorded references
+      timeout-minutes: 15
+      env:
+        SUITES: ${{ steps.inputs.outputs.suites }}
+      run: |
+        # Same test run without the record variable - must pass, proving the references reproduce.
+        FILTER_ARGS=""
+        if [ -n "$SUITES" ]; then
+          IFS=',' read -ra SUITE_ARRAY <<< "$SUITES"
+          for SUITE in "${SUITE_ARRAY[@]}"; do
+            FILTER_ARGS="$FILTER_ARGS -only-testing:WarpSnapshotTests/$SUITE"
+          done
+        fi
+
+        # shellcheck disable=SC2086
+        xcodebuild \
+          -scheme WarpSnapshotTests \
+          -destination "id=${{ steps.probe.outputs.udid }}" \
+          -disableAutomaticPackageResolution \
+          -parallel-testing-enabled NO \
+          -collect-test-diagnostics never \
+          $FILTER_ARGS \
+          test
+
+    # Runs whether or not record/verify passed, so each run (and each artifact) records the setup it used.
+    - name: Write snapshot environment metadata
+      if: ${{ !cancelled() && steps.sim.outputs.udid != '' }}
+      run: |
+        {
+          echo "Xcode: $(xcodebuild -version | head -1)"
+          echo "Xcode build: $(xcodebuild -version | tail -1 | awk '{print $NF}')"
+          echo "Runner image: $ImageVersion"
+          echo "Device: $SIM_DEVICE_TYPE"
+          echo "Runtime: $SIM_RUNTIME"
+          echo "swift-snapshot-testing: $(jq -r '.pins[] | select(.identity == "swift-snapshot-testing") | .state.version' Package.resolved)"
+          echo "SnapshotTestingHEIC: $(jq -r '.pins[] | select(.identity == "snapshottestingheic") | .state.version' Package.resolved)"
+        } > snapshot-env.txt
+        cat snapshot-env.txt
+        {
+          echo "### Snapshot setup"
+          echo ""
+          echo '```'
+          cat snapshot-env.txt
+          echo '```'
+          echo ""
+        } >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Collect changed snapshot references
+      id: collect
+      run: |
+        # Find all changed or untracked snapshot reference files. The trailing `/**` makes the
+        # pathspec match files inside `__Snapshots__` (without it nothing matches), and `-uall` lists
+        # each file in a new suite folder instead of one `?? dir/` line.
+        CHANGED_FILES="$(git status --porcelain -uall -- 'Tests/WarpSnapshotTests/**/__Snapshots__/**' | awk '{print $2}')"
+
+        if [ -z "$CHANGED_FILES" ]; then
+          echo "No snapshot references changed."
+          echo "changed_count=0" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+
+        TOTAL_COUNT="$(echo "$CHANGED_FILES" | wc -l | tr -d ' ')"
+        echo "changed_count=$TOTAL_COUNT" >> "$GITHUB_OUTPUT"
+
+        # Write the summary. No associative arrays: `shell: bash` is macOS /bin/bash 3.2.
+        # Suite name from path: Tests/WarpSnapshotTests/<Group>/__Snapshots__/<Suite>/...
+        {
+          echo "### Recorded snapshot references"
+          echo ""
+          echo "**Total:** $TOTAL_COUNT references"
+          echo ""
+          echo "**By suite:**"
+          echo ""
+          echo "$CHANGED_FILES" | sed -E 's|.*/__Snapshots__/([^/]+)/.*|\1|' | sort | uniq -c \
+            | while read -r COUNT SUITE; do echo "- $SUITE: $COUNT"; done
+          echo ""
+        } >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Upload snapshot references
+      if: steps.collect.outputs.changed_count != '0'
+      uses: actions/upload-artifact@v4
+      with:
+        name: snapshot-references
+        path: |
+          Tests/WarpSnapshotTests/**/__Snapshots__
+          snapshot-env.txt
+        retention-days: 14
+
+    - name: Commit and push
+      if: steps.inputs.outputs.push == 'true' && steps.collect.outputs.changed_count != '0'
+      env:
+        MODE: ${{ steps.inputs.outputs.mode }}
+        CHANGED_COUNT: ${{ steps.collect.outputs.changed_count }}
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        # Quoted pathspec, so git (not bash, which has globstar off) expands `**`.
+        git add -A -- 'Tests/WarpSnapshotTests/**/__Snapshots__/**'
+        git commit -m "Record snapshot references ($MODE mode)" \
+          -m "Recorded $CHANGED_COUNT references on $SIM_DEVICE_TYPE / $SIM_RUNTIME."
+        git push

@@ -5,5 +5,9 @@ Welcome to the **Warp Design System** for iOS! This repository contains componen
 
 For detailed setup and component documentation, visit the **[Warp Portal Documentation for the Warp Design System](https://warp-ds.github.io/tech-docs/getting-started/ios/)**.
 
+## Testing
+
+Component visual changes are validated with snapshot tests. See **[Tests/WarpSnapshotTests/README.md](Tests/WarpSnapshotTests/README.md)** for how to record new references after changing a component's appearance.
+
 
 
