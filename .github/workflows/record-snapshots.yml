@@ -21,11 +21,6 @@ on:
         required: true
         type: boolean
         default: false
-  # TEMP(FEP-137): remove before merge
-  # Proof trigger to test the workflow before it reaches main (workflow_dispatch only appears once merged).
-  push:
-    branches:
-      - chore/FEP-137-record-workflow
 
 concurrency:
   group: record-${{ github.ref }}
@@ -49,8 +44,8 @@ jobs:
     runs-on: macos-15
     timeout-minutes: 45
 
-    # Write permission required for the conditional push step. The push trigger (TEMP) does not
-    # need write access, but GitHub Actions permissions must be static values.
+    # Write permission required for the conditional push step. GitHub Actions permissions must be
+    # static values, so it applies even when the push input is off.
     permissions:
       contents: write
 
@@ -124,37 +119,26 @@ jobs:
         if-no-files-found: ignore
         retention-days: 14
 
-    # Fall back to workflow defaults when triggered by push (inputs are not available in that context).
     # Inputs arrive through env, never interpolated into the script, so a crafted value can't run
     # as shell. Newlines are rejected so a value can't inject extra GITHUB_OUTPUT lines.
     - name: Set inputs from event
       id: inputs
       env:
-        EVENT_NAME: ${{ github.event_name }}
         INPUT_SUITES: ${{ inputs.suites }}
         INPUT_MODE: ${{ inputs.mode }}
         INPUT_PUSH: ${{ inputs.push }}
       run: |
-        if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
-          for VALUE in "$INPUT_SUITES" "$INPUT_MODE" "$INPUT_PUSH"; do
-            if [[ "$VALUE" == *$'\n'* ]]; then
-              echo "::error::Inputs must be single-line."
-              exit 1
-            fi
-          done
-          {
-            echo "suites=$INPUT_SUITES"
-            echo "mode=$INPUT_MODE"
-            echo "push=$INPUT_PUSH"
-          } >> "$GITHUB_OUTPUT"
-        else
-          # TEMP(FEP-137): defaults for the push trigger proof
-          {
-            echo "suites=DividerSnapshotTests"
-            echo "mode=failed"
-            echo "push=false"
-          } >> "$GITHUB_OUTPUT"
-        fi
+        for VALUE in "$INPUT_SUITES" "$INPUT_MODE" "$INPUT_PUSH"; do
+          if [[ "$VALUE" == *$'\n'* ]]; then
+            echo "::error::Inputs must be single-line."
+            exit 1
+          fi
+        done
+        {
+          echo "suites=$INPUT_SUITES"
+          echo "mode=$INPUT_MODE"
+          echo "push=$INPUT_PUSH"
+        } >> "$GITHUB_OUTPUT"
 
     - name: Validate suite names
       if: steps.inputs.outputs.suites != ''
