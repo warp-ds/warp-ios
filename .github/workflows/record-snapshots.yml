@@ -97,13 +97,15 @@ jobs:
         # Fire-and-forget so the boot overlaps with the build; the boot probe waits for completion.
         xcrun simctl boot "$UDID" || true
 
+    # `build-for-testing`, not `build`: the WarpSnapshotTests scheme is test-only (empty
+    # BuildAction), so a plain build has no buildables and no iOS destination matches.
     - name: Build WarpSnapshotTests
       timeout-minutes: 15
       run: |
         xcodebuild -scheme WarpSnapshotTests \
           -destination "id=${{ steps.sim.outputs.udid }}" \
           -disableAutomaticPackageResolution \
-          build
+          build-for-testing
 
     - name: Probe the simulator boot
       uses: ./.github/actions/boot-probe
