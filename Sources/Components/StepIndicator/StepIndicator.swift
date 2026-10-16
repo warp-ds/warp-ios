@@ -18,7 +18,7 @@ extension Warp {
      */
     public struct StepIndicator: View {
         /// Orientation of the Step Indicator
-        public enum LayoutOrientation {
+        public enum LayoutOrientation: Sendable {
             case horizontal
             case vertical
         }

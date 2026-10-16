@@ -25,13 +25,13 @@ extension Warp {
         let thickness: CGFloat = Warp.Border.borderWidth12
 
         /// Orientation for the divider: horizontal or vertical.
-        public enum Orientation {
+        public enum Orientation: Sendable {
             case horizontal
             case vertical
         }
 
         /// Line style for the divider: solid or dashed.
-        public enum LineStyle {
+        public enum LineStyle: Sendable {
             case solid
             case dashed
         }

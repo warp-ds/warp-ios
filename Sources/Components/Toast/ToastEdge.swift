@@ -4,7 +4,7 @@ extension Warp {
     /**
         Enum describing  which edge the Toast view will appear from/disappear to
      */
-    public enum ToastEdge: CaseIterable {
+    public enum ToastEdge: CaseIterable, Sendable {
         case top
         case bottom
 

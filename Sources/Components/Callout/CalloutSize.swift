@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Warp {
-    public enum CalloutSize {
+    public enum CalloutSize: Sendable {
         case small
         case `default`
 

@@ -7,7 +7,7 @@ import SwiftUI
 extension Warp.Toast {
 
     /// Enum representing defined duration of a toast message.
-    public enum Duration: Hashable {
+    public enum Duration: Hashable, Sendable {
         /// Short duration, typically used for quick feedback messages.
         /// Default is 5 seconds.
         case short

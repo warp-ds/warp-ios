@@ -5,7 +5,7 @@ extension Warp {
     ///
     /// Only cases with SwiftUI `ButtonRole` support are included.
     /// Text color in menus is always OS-controlled; only icon color and `ButtonRole` are affected.
-    public enum MenuButtonStyle {
+    public enum MenuButtonStyle: Sendable {
         /// Standard menu item with Warp icon color.
         case `default`
 

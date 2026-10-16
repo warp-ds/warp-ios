@@ -1,6 +1,6 @@
 extension Warp {
     /// Content shown in a notification badge.
-    public enum NotificationBadgeContent: Hashable {
+    public enum NotificationBadgeContent: Hashable, Sendable {
         /// A solid dot indicating a new item.
         case dot
 
@@ -10,7 +10,7 @@ extension Warp {
     }
 
     /// Visual style for a notification badge.
-    public enum NotificationBadgeType: CaseIterable, Hashable {
+    public enum NotificationBadgeType: CaseIterable, Hashable, Sendable {
         /// Red background (uses `Background/Notification` token).
         case `default`
 
@@ -19,7 +19,7 @@ extension Warp {
     }
 
     /// Size variant for a notification badge.
-    public enum NotificationBadgeSize: CaseIterable, Hashable {
+    public enum NotificationBadgeSize: CaseIterable, Hashable, Sendable {
         /// Medium size: 16×16 dot, 24pt height for counts.
         case medium
 
