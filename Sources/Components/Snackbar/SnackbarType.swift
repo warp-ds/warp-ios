@@ -2,7 +2,7 @@ import Foundation
 
 extension Warp {
 
-    public enum SnackbarType: Equatable, Hashable {
+    public enum SnackbarType: Equatable, Hashable, Sendable {
         /// Positive message. Example: Item added
         case positive
 

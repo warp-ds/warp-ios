@@ -3,7 +3,7 @@ import SwiftUI
 extension Warp.Snackbar {
 
     /// Enum representing defined duration of a snackbar message.
-    public enum Duration: Hashable {
+    public enum Duration: Hashable, Sendable {
         /// Short duration, typically used for quick feedback messages.
         /// Default is 4 seconds.
         case short

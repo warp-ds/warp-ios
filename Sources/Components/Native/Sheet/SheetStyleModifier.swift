@@ -3,7 +3,7 @@ import SwiftUI
 extension Warp {
 
     /// Defines the presentation style for a Warp-styled sheet.
-    public enum SheetStyle {
+    public enum SheetStyle: Sendable {
         /// Half-height sheet with medium and large detents.
         case medium
         /// Full-height sheet with large detent only.
@@ -45,7 +45,7 @@ extension Warp {
     /// already switches between glass and opaque by detent without being asked, so ``automatic``
     /// stays out of the way wherever that switch can happen and only supplies a color where the
     /// presentation is opaque for its whole life.
-    public enum SheetBackground {
+    public enum SheetBackground: Sendable {
         /// Follows the system: Liquid Glass where iOS 26 would draw it, `surfaceElevated100`
         /// wherever the presentation is opaque anyway.
         case automatic

@@ -1,7 +1,7 @@
 import Foundation
 
 extension Warp {
-    public enum StepIndicatorError: Error, LocalizedError {
+    public enum StepIndicatorError: Error, LocalizedError, Sendable {
         case completedStepAfterIncompletedStep
         case completedStepAfterInProgressStep
         case stepInProgressAfterIncompleteStep

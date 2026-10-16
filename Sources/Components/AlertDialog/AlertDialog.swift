@@ -48,7 +48,7 @@ extension Warp {
         }
 
         /// The visual style for an alert dialog button.
-        public enum Style: Hashable {
+        public enum Style: Hashable, Sendable {
             /// A standard action button.
             case `default`
 
