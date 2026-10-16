@@ -18,6 +18,7 @@ struct SegmentedControlDemoView: View {
         ItemConfig(identifier: "saved", title: "Saved"),
     ]
     @State private var selectedIdentifier: String? = "trending"
+    @State private var badgeType: Warp.NotificationBadgeType = .default
     @State private var isPinnedToNavbar = false
 
     var body: some View {
@@ -32,7 +33,8 @@ struct SegmentedControlDemoView: View {
                                 .foregroundStyle(.white)
                             Warp.SegmentedControl(
                                 items: items.map { .init(identifier: $0.identifier, title: $0.title, badge: $0.badge) },
-                                selectedIdentifier: $selectedIdentifier
+                                selectedIdentifier: $selectedIdentifier,
+                                badgeType: badgeType
                             )
                             .padding(.horizontal, Warp.Spacing.spacing200)
                         }
@@ -63,7 +65,8 @@ struct SegmentedControlDemoView: View {
             Section("Demo") {
                 Warp.SegmentedControl(
                     items: items.map { .init(identifier: $0.identifier, title: $0.title, badge: $0.badge) },
-                    selectedIdentifier: $selectedIdentifier
+                    selectedIdentifier: $selectedIdentifier,
+                    badgeType: badgeType
                 )
                 .padding(.horizontal, Warp.Spacing.spacing200)
                 .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0))
@@ -73,6 +76,12 @@ struct SegmentedControlDemoView: View {
                 } else {
                     LabeledContent("Selected", value: "none")
                 }
+
+                Picker("Badge type", selection: $badgeType) {
+                    Text("Default").tag(Warp.NotificationBadgeType.default)
+                    Text("Primary").tag(Warp.NotificationBadgeType.primary)
+                }
+                .pickerStyle(.segmented)
             }
 
             Section {
@@ -124,7 +133,8 @@ struct SegmentedControlDemoView: View {
             if isPinnedToNavbar {
                 Warp.SegmentedControl(
                     items: items.map { .init(identifier: $0.identifier, title: $0.title, badge: $0.badge) },
-                    selectedIdentifier: $selectedIdentifier
+                    selectedIdentifier: $selectedIdentifier,
+                    badgeType: badgeType
                 )
                 .padding(.horizontal, Warp.Spacing.spacing200)
                 .padding(.vertical, Warp.Spacing.spacing100)
