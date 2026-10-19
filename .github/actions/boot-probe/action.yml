@@ -42,8 +42,12 @@ runs:
       shell: bash
       run: |
         # Deliberately no `-e`: every failure below is handled, and an unhandled exit here would
-        # skip the diagnostics that are the whole point of the step.
-        set -uo pipefail
+        # skip the diagnostics that are the whole point of the step. `shell: bash` runs the script
+        # as `bash -eo pipefail`, so `-e` has to be switched off explicitly; leaving it out of `set`
+        # is not enough. With `-e` on, the background subshells exit before writing their done
+        # file, so a failing `xcodebuild` or `bootstatus` looks like a wedge and gets retried, and a
+        # failed `simctl create` in `recycle_device` ends the step.
+        set +e -uo pipefail
 
         UDID="${{ inputs.udid }}"
         DEVICE_TYPE="${{ inputs.device-type }}"
