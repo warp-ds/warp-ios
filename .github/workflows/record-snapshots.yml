@@ -42,7 +42,7 @@ defaults:
 jobs:
   record:
     runs-on: macos-15
-    timeout-minutes: 45
+    timeout-minutes: 75
 
     # Write permission required for the conditional push step. GitHub Actions permissions must be
     # static values, so it applies even when the push input is off.
@@ -150,8 +150,9 @@ jobs:
           exit 1
         fi
 
+    # A full record run took 12 min and its verify 8.5 min on the pinned setup (2026-10-19).
     - name: Record snapshot references
-      timeout-minutes: 15
+      timeout-minutes: 25
       env:
         SUITES: ${{ steps.inputs.outputs.suites }}
         MODE: ${{ steps.inputs.outputs.mode }}
@@ -178,7 +179,7 @@ jobs:
           test || true
 
     - name: Verify recorded references
-      timeout-minutes: 15
+      timeout-minutes: 25
       env:
         SUITES: ${{ steps.inputs.outputs.suites }}
       run: |
