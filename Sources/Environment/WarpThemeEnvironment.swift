@@ -11,7 +11,7 @@ public struct WarpThemeContext: Equatable, Sendable, CustomStringConvertible {
     public let brand: Warp.Brand
 
     /// The colour variant layered on top of ``brand``, if any.
-    public internal(set) var variant: Warp.ColorVariant?
+    var variant: Warp.ColorVariant?
 
     public init(brand: Warp.Brand) {
         self.brand = brand
@@ -124,7 +124,7 @@ public extension View {
     /// ```
     ///
     /// - Parameter variant: The variant to apply, or `nil` to clear an inherited one.
-    func warpColorVariant(_ variant: Warp.ColorVariant?) -> some View {
+    internal func warpColorVariant(_ variant: Warp.ColorVariant?) -> some View {
         transformEnvironment(\.warpTheme) { context in
             context.variant = variant
         }
