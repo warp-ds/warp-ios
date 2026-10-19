@@ -5,8 +5,9 @@ extension Warp {
     /// and a custom tab strip on earlier versions.
     ///
     /// Segments can display an optional notification badge (dot or count). Pass `badgeType` to
-    /// choose between a red (`.default`) or blue (`.primary`) badge style. The style applies to
+    /// choose between a red (`.default`) or blue (`.primary`) badge style on iOS 26+. The style applies to
     /// all badges and can be changed at any time — the control updates without losing selection state.
+    /// Before iOS 26, badges are always rendered in red regardless of `badgeType`.
     ///
     /// **Usage:**
     /// ```swift
@@ -34,7 +35,8 @@ extension Warp {
         /// - Parameters:
         ///   - items: Ordered list of segments to display.
         ///   - selectedIdentifier: Binding to the `identifier` of the selected segment.
-        ///   - badgeType: Visual style applied to all badges. Defaults to `.default` (red). Use `.primary` for blue.
+        ///   - badgeType: Visual style applied to all badges on iOS 26+. Defaults to `.default` (red).
+        ///     Use `.primary` for blue. Has no effect before iOS 26, where badges are always rendered in red.
         public init(
             items: [Item],
             selectedIdentifier: Binding<String?>,

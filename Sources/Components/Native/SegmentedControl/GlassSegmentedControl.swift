@@ -61,6 +61,7 @@ extension Warp {
     private var items: [Item] = []
     private let usesGlassSegments: Bool
     private var badgeType: Warp.NotificationBadgeType = .default
+    private var lastSelectedIdentifier: String?
     private var badgeViewsByIndex: [Int: BadgeView] = [:]
     private var cachedTitleWidths: [CGFloat] = []
     private var naturalSegmentWidths: [CGFloat] = []
@@ -144,7 +145,8 @@ extension Warp {
     /// - Parameters:
     ///   - items: Ordered list of segments to display.
     ///   - selectedIdentifier: The `identifier` of the segment to select, or `nil` for no selection.
-    ///   - badgeType: Visual style applied to all badges. Defaults to `.default` (red). Use `.primary` for blue.
+    ///   - badgeType: Visual style applied to all badges on iOS 26+. Defaults to `.default` (red).
+    ///     Use `.primary` for blue. Has no effect before iOS 26, where badges are always rendered in red.
     public func configure(
         items: [Item],
         selectedIdentifier: String?,
@@ -152,6 +154,7 @@ extension Warp {
     ) {
         self.items = items
         self.badgeType = badgeType
+        self.lastSelectedIdentifier = selectedIdentifier
 
         if usesGlassSegments {
             configureSegmentedControl(selectedIdentifier: selectedIdentifier)
@@ -240,6 +243,10 @@ extension Warp {
             MainActor.assumeIsolated {
                 self?.layoutBadges()
             }
+        }
+
+        registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { (target: GlassSegmentedControl, _: UITraitCollection) in
+            target.configureSegmentedControl(selectedIdentifier: target.lastSelectedIdentifier)
         }
     }
 
@@ -388,6 +395,7 @@ extension Warp {
         let index = sender.selectedSegmentIndex
         guard index >= 0, index < items.count else { return }
 
+        lastSelectedIdentifier = items[index].identifier
         scrollToSegment(at: index, animated: true)
         delegate?.glassSegmentedControl(self, didSelectItemWithIdentifier: items[index].identifier)
     }
