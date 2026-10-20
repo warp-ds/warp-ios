@@ -14,6 +14,34 @@ struct SegmentedControlSnapshotTests {
         selectedIndexProvider
     )
 
+    @Test(arguments: combine(Warp.Brand.allCases, Warp.NotificationBadgeType.allCases))
+    func snapshotBadgeTypes(brand: Warp.Brand, badgeType: Warp.NotificationBadgeType) {
+        let badgeTypeLabel = badgeType == .default ? "default" : "primary"
+        let snapshotName = ".\(brand.description).badgeType.\(badgeTypeLabel)"
+
+        Warp.Theme = brand
+
+        let items: [Warp.SegmentedControl.Item] = [
+            .init(identifier: "tab0", title: "First", badge: 3),
+            .init(identifier: "tab1", title: "Second", badge: 0),
+            .init(identifier: "tab2", title: "Third"),
+        ]
+
+        let segmentedControl = Warp.SegmentedControl(
+            items: items,
+            selectedIdentifier: .constant(items[0].identifier),
+            badgeType: badgeType
+        )
+        .padding(8)
+        .frame(width: ViewImageConfig.iPhone13.size!.width)
+
+        assertSnapshot(
+            of: segmentedControl,
+            as: .warpImage(compressionQuality: .medium),
+            named: snapshotName
+        )
+    }
+
     @Test(arguments: Self.allArgumentsCombined)
     func snapshotAllSegmentedControls(brand: Warp.Brand, itemCount: Int, selectedIndex: Int) {
         let snapshotName = [

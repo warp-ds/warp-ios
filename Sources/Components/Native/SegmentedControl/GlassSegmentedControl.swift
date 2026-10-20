@@ -1,3 +1,4 @@
+import SwiftUI
 import UIKit
 
 extension Warp {
@@ -13,6 +14,25 @@ extension Warp {
 
     // MARK: - GlassSegmentedControl
 
+    /// A scrollable segmented control that uses `UISegmentedControl` with Liquid Glass on iOS 26+
+    /// and a custom tab strip on earlier versions.
+    ///
+    /// Segments can display an optional notification badge (dot or count). The visual style of all
+    /// badges is controlled via the `badgeType` parameter in `configure(items:selectedIdentifier:badgeType:)`.
+    ///
+    /// **UIKit usage:**
+    /// ```swift
+    /// let control = Warp.GlassSegmentedControl()
+    /// control.delegate = self
+    /// control.configure(
+    ///     items: [
+    ///         .init(identifier: "tab1", title: "First", badge: 3),
+    ///         .init(identifier: "tab2", title: "Second"),
+    ///     ],
+    ///     selectedIdentifier: "tab1",
+    ///     badgeType: .primary
+    /// )
+    /// ```
     @MainActor
     public final class GlassSegmentedControl: UIView {
 
@@ -21,7 +41,8 @@ extension Warp {
     public struct Item: Hashable {
         public let identifier: String
         public let title: String
-        /// nil = no badge, 0 = dot indicator, >0 = numeric count (capped at 99+)
+        /// `nil` hides the badge. `0` renders a dot indicator. Any positive value renders a numeric
+        /// count, capped at "99+" by default.
         public let badge: Int?
 
         public init(identifier: String, title: String, badge: Int? = nil) {
@@ -39,6 +60,8 @@ extension Warp {
 
     private var items: [Item] = []
     private let usesGlassSegments: Bool
+    private var badgeType: Warp.NotificationBadgeType = .default
+    private var lastSelectedIdentifier: String?
     private var badgeViewsByIndex: [Int: BadgeView] = [:]
     private var cachedTitleWidths: [CGFloat] = []
     private var naturalSegmentWidths: [CGFloat] = []
@@ -115,8 +138,23 @@ extension Warp {
 
     // MARK: - Public methods
 
-    public func configure(items: [Item], selectedIdentifier: String?) {
+    /// Populates the control with segments and selects the initial segment.
+    ///
+    /// Call this whenever items or selection changes. Safe to call multiple times.
+    ///
+    /// - Parameters:
+    ///   - items: Ordered list of segments to display.
+    ///   - selectedIdentifier: The `identifier` of the segment to select, or `nil` for no selection.
+    ///   - badgeType: Visual style applied to all badges on iOS 26+. Defaults to `.default` (red).
+    ///     Use `.primary` for blue. Has no effect before iOS 26, where badges are always rendered in red.
+    public func configure(
+        items: [Item],
+        selectedIdentifier: String?,
+        badgeType: Warp.NotificationBadgeType = .default
+    ) {
         self.items = items
+        self.badgeType = badgeType
+        self.lastSelectedIdentifier = selectedIdentifier
 
         if usesGlassSegments {
             configureSegmentedControl(selectedIdentifier: selectedIdentifier)
@@ -206,6 +244,10 @@ extension Warp {
                 self?.layoutBadges()
             }
         }
+
+        registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { (target: GlassSegmentedControl, _: UITraitCollection) in
+            target.configureSegmentedControl(selectedIdentifier: target.lastSelectedIdentifier)
+        }
     }
 
     private func setupScrollableTabView() {
@@ -285,7 +327,7 @@ extension Warp {
 
         for (index, item) in items.enumerated() {
             guard let badge = item.badge else { continue }
-            let badgeView = BadgeView(badge: badge)
+            let badgeView = BadgeView(badge: badge, badgeType: badgeType)
             badgeView.isUserInteractionEnabled = false
             badgeView.isAccessibilityElement = false
             badgeViewsByIndex[index] = badgeView
@@ -353,6 +395,7 @@ extension Warp {
         let index = sender.selectedSegmentIndex
         guard index >= 0, index < items.count else { return }
 
+        lastSelectedIdentifier = items[index].identifier
         scrollToSegment(at: index, animated: true)
         delegate?.glassSegmentedControl(self, didSelectItemWithIdentifier: items[index].identifier)
     }
@@ -384,64 +427,51 @@ extension Warp {
     // MARK: - BadgeView
 
     private final class BadgeView: UIView {
-        let badge: Int?
-
         static let badgeSpacing: CGFloat = 4
-        private static let dotSize: CGFloat = 8
-        private static let labelFont = UIFont.systemFont(ofSize: 10, weight: .bold)
-        private static let labelPaddingH: CGFloat = 4
-        private static let labelPaddingV: CGFloat = 2
-
         let cachedBadgeSize: CGSize
+        private let hostingController: UIHostingController<Warp.NotificationBadge>?
 
         static func sizeFor(badge: Int) -> CGSize {
+            let metrics = NotificationBadgeStyle.metrics(for: .small)
             if badge == 0 {
-                return CGSize(width: dotSize, height: dotSize)
+                return CGSize(width: metrics.dotDiameter, height: metrics.dotDiameter)
             }
             let text = badge > 99 ? "99+" : "\(badge)"
-            let textSize = (text as NSString).size(withAttributes: [.font: labelFont])
-            let width = max(
-                ceil(textSize.width) + labelPaddingH * 2,
-                ceil(textSize.height) + labelPaddingV * 2
-            )
-            let height = ceil(textSize.height) + labelPaddingV * 2
+            let height = metrics.height
+            if NotificationBadgeStyle.isCircular(text: text) {
+                return CGSize(width: height, height: height)
+            }
+            let font = Warp.Typography.detailStrong.uiFont
+            let textWidth = ceil((text as NSString).size(withAttributes: [.font: font]).width)
+            let width = max(height, textWidth + metrics.horizontalPadding * 2)
             return CGSize(width: width, height: height)
         }
 
-        init(badge: Int?) {
-            self.badge = badge
-            self.cachedBadgeSize = badge.map { Self.sizeFor(badge: $0) } ?? .zero
-            super.init(frame: .zero)
-            guard let badge else { return }
-            backgroundColor = .systemRed
-            clipsToBounds = true
-
-            if badge == 0 {
-                layer.cornerRadius = Self.dotSize / 2
+        init(badge: Int?, badgeType: Warp.NotificationBadgeType) {
+            if let badge {
+                cachedBadgeSize = Self.sizeFor(badge: badge)
+                let content: Warp.NotificationBadgeContent = badge == 0 ? .dot : .count(badge)
+                let vc = UIHostingController(rootView: Warp.NotificationBadge(content, type: badgeType, size: .small))
+                vc.view.backgroundColor = .clear
+                hostingController = vc
             } else {
-                let label = UILabel()
-                label.font = Self.labelFont
-                label.textColor = .white
-                label.text = badge > 99 ? "99+" : "\(badge)"
-                label.textAlignment = .center
-                label.frame = CGRect(
-                    x: Self.labelPaddingH,
-                    y: Self.labelPaddingV,
-                    width: ceil(label.intrinsicContentSize.width),
-                    height: ceil(label.intrinsicContentSize.height)
-                )
-                addSubview(label)
+                cachedBadgeSize = .zero
+                hostingController = nil
             }
+            super.init(frame: .zero)
+            backgroundColor = .clear
+            guard let vc = hostingController else { return }
+            addSubview(vc.view)
+            vc.view.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                vc.view.leadingAnchor.constraint(equalTo: leadingAnchor),
+                vc.view.trailingAnchor.constraint(equalTo: trailingAnchor),
+                vc.view.topAnchor.constraint(equalTo: topAnchor),
+                vc.view.bottomAnchor.constraint(equalTo: bottomAnchor),
+            ])
         }
 
         @available(*, unavailable)
         required init?(coder: NSCoder) { fatalError() }
-
-        override func layoutSubviews() {
-            super.layoutSubviews()
-            if let badge, badge > 0 {
-                layer.cornerRadius = bounds.height / 2
-            }
-        }
     }
 }
