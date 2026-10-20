@@ -1,6 +1,6 @@
 import SwiftUI
 
-public extension Warp.ColorVariant {
+extension Warp.ColorVariant {
     /// Swaps the brand's primary surface for greys: near-black in light mode, near-white in dark.
     /// Text, links and colours a brand hardcodes (e.g. Tori's primary button) are unchanged.
     static let premium = Warp.ColorVariant(name: "premium") { token in
