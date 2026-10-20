@@ -41,7 +41,6 @@ struct ContentView: View {
 
     private var patternItems: [(String, any View)] {
         [
-//            ("Colour variant scoping", ColorVariantDemo()), // Disabled because relevant API is not available to public
             ("State views", StateViewDemo())
         ]
     }
