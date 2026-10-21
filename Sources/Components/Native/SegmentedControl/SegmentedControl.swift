@@ -4,16 +4,22 @@ extension Warp {
     /// A scrollable segmented control that uses `UISegmentedControl` with Liquid Glass on iOS 26+
     /// and a custom tab strip on earlier versions.
     ///
+    /// Segments can display an optional notification badge (dot or count). Pass `badgeType` to
+    /// choose between a red (`.default`) or blue (`.primary`) badge style on iOS 26+. The style applies to
+    /// all badges and can be changed at any time — the control updates without losing selection state.
+    /// Before iOS 26, badges are always rendered in red regardless of `badgeType`.
+    ///
     /// **Usage:**
     /// ```swift
     /// @State private var selected: String? = "tab1"
     ///
     /// Warp.SegmentedControl(
     ///     items: [
-    ///         .init(identifier: "tab1", title: "First"),
+    ///         .init(identifier: "tab1", title: "First", badge: 3),
     ///         .init(identifier: "tab2", title: "Second"),
     ///     ],
-    ///     selectedIdentifier: $selected
+    ///     selectedIdentifier: $selected,
+    ///     badgeType: .primary
     /// )
     /// ```
     public struct SegmentedControl: UIViewRepresentable {
@@ -21,10 +27,23 @@ extension Warp {
         public typealias Item = GlassSegmentedControl.Item
 
         private let items: [Item]
+        private let badgeType: Warp.NotificationBadgeType
         @Binding private var selectedIdentifier: String?
 
-        public init(items: [Item], selectedIdentifier: Binding<String?>) {
+        /// Creates a segmented control.
+        ///
+        /// - Parameters:
+        ///   - items: Ordered list of segments to display.
+        ///   - selectedIdentifier: Binding to the `identifier` of the selected segment.
+        ///   - badgeType: Visual style applied to all badges on iOS 26+. Defaults to `.default` (red).
+        ///     Use `.primary` for blue. Has no effect before iOS 26, where badges are always rendered in red.
+        public init(
+            items: [Item],
+            selectedIdentifier: Binding<String?>,
+            badgeType: Warp.NotificationBadgeType = .default
+        ) {
             self.items = items
+            self.badgeType = badgeType
             self._selectedIdentifier = selectedIdentifier
         }
 
@@ -50,10 +69,14 @@ extension Warp {
         public func updateUIView(_ uiView: Warp.GlassSegmentedControl, context: Context) {
             context.coordinator.parent = self
             let coordinator = context.coordinator
-            guard items != coordinator.lastItems || selectedIdentifier != coordinator.lastSelectedIdentifier else { return }
+            guard items != coordinator.lastItems
+                || selectedIdentifier != coordinator.lastSelectedIdentifier
+                || badgeType != coordinator.lastBadgeType
+            else { return }
             coordinator.lastItems = items
             coordinator.lastSelectedIdentifier = selectedIdentifier
-            uiView.configure(items: items, selectedIdentifier: selectedIdentifier)
+            coordinator.lastBadgeType = badgeType
+            uiView.configure(items: items, selectedIdentifier: selectedIdentifier, badgeType: badgeType)
         }
 
         @MainActor
@@ -61,6 +84,7 @@ extension Warp {
             var parent: SegmentedControl
             var lastItems: [Item] = []
             var lastSelectedIdentifier: String? = nil
+            var lastBadgeType: Warp.NotificationBadgeType = .default
 
             init(parent: SegmentedControl) {
                 self.parent = parent

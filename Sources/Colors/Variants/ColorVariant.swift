@@ -1,6 +1,6 @@
 import SwiftUI
 
-public extension Warp {
+extension Warp {
     /// A colour-only variation of a brand.
     ///
     /// Layers token overrides on top of whichever brand is active: the brand,
@@ -14,7 +14,7 @@ public extension Warp {
     /// Variants are defined by Warp, not by consumers.
     struct ColorVariant: Equatable, Sendable {
         /// Identifies the variant, and is the basis for equality.
-        public let name: String
+        let name: String
 
         private let configure: @Sendable (inout any TokenProvider) -> Void
 
@@ -23,7 +23,7 @@ public extension Warp {
             self.configure = configure
         }
 
-        public static func == (lhs: Self, rhs: Self) -> Bool {
+        static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.name == rhs.name
         }
 
