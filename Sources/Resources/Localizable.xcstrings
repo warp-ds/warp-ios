@@ -9925,6 +9925,78 @@
         }
       }
     },
+    "icon.title.package" : {
+      "comment" : "A11y title for package icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En lukket pakke af pap"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A closed cardboard package"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suljettu pahvipaketti"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En lukket pakke av papp"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ett stängt kartongpaket"
+          }
+        }
+      }
+    },
+    "icon.title.conversationGrouped" : {
+      "comment" : "A11y title for conversation grouped icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To konturerede firkanter ved siden af grupperede vandrette linjer"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two outlined squares beside grouped horizontal lines."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaksi ääriviivoin piirrettyä neliötä ryhmiteltyjen vaakaviivojen vieressä"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To konturerte kvadrater ved siden av grupperte horisontale linjer"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Två konturerade kvadrater bredvid grupperade horisontella linjer"
+          }
+        }
+      }
+    },
     "icon.title.shareIOS" : {
       "comment" : "A11y title for share iOS icon",
       "extractionState" : "manual",
