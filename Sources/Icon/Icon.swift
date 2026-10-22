@@ -329,6 +329,8 @@ extension Warp {
         case target
         case userSquare
         case waveform
+        case package
+        case conversationGrouped
 
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
@@ -701,6 +703,8 @@ extension Warp {
             case .target: return Warp.Strings.iconTarget.localized
             case .userSquare: return Warp.Strings.iconUserSquare.localized
             case .waveform: return Warp.Strings.iconWaveform.localized
+            case .package: return Warp.Strings.iconPackage.localized
+            case .conversationGrouped: return Warp.Strings.iconConversationGrouped.localized
             }
         }
     }

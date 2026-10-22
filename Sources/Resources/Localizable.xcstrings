@@ -9925,6 +9925,78 @@
         }
       }
     },
+    "icon.title.package" : {
+      "comment" : "A11y title for package icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En lukket pakke af pap"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A closed cardboard package"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suljettu pahvilaatikko"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En lukket pappeske"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ett stängt paket av kartong"
+          }
+        }
+      }
+    },
+    "icon.title.conversationGrouped" : {
+      "comment" : "A11y title for conversation grouped icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To firkantede omrids ved siden af grupperede vandrette linjer."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two outlined squares beside grouped horizontal lines."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kahden neliön ääriviivat ryhmitettyjen vaakaviivojen vieressä."
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To firkanter med omriss ved siden av grupperte horisontale linjer."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Två fyrkantiga konturer bredvid grupperade vågräta linjer."
+          }
+        }
+      }
+    },
     "icon.title.shareIOS" : {
       "comment" : "A11y title for share iOS icon",
       "extractionState" : "manual",
