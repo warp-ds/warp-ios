@@ -9944,19 +9944,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suljettu pahvipaketti"
+            "value" : "Suljettu pahvilaatikko"
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En lukket pakke av papp"
+            "value" : "En lukket pappeske"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ett stängt kartongpaket"
+            "value" : "Ett stängt paket av kartong"
           }
         }
       }
@@ -9968,7 +9968,7 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To konturerede firkanter ved siden af grupperede vandrette linjer"
+            "value" : "To firkantede omrids ved siden af grupperede vandrette linjer."
           }
         },
         "en" : {
@@ -9980,19 +9980,19 @@
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kaksi ääriviivoin piirrettyä neliötä ryhmiteltyjen vaakaviivojen vieressä"
+            "value" : "Kahden neliön ääriviivat ryhmitettyjen vaakaviivojen vieressä."
           }
         },
         "nb-NO" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To konturerte kvadrater ved siden av grupperte horisontale linjer"
+            "value" : "To firkanter med omriss ved siden av grupperte horisontale linjer."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Två konturerade kvadrater bredvid grupperade horisontella linjer"
+            "value" : "Två fyrkantiga konturer bredvid grupperade vågräta linjer."
           }
         }
       }
