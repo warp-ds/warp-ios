@@ -4,6 +4,7 @@ extension Warp.StepIndicator {
     struct HorizontalItemView: View {
         let step: Warp.StepIndicatorItem
         let stepPosition: Warp.StepIndicatorItem.Position
+        var number: Int? = nil
 
         var body: some View {
             VStack(alignment: .center, spacing: 8) {
@@ -15,7 +16,8 @@ extension Warp.StepIndicator {
 
                 Warp.StepIndicator.HorizontalProgressView(
                     progress: step.progress,
-                    stepPosition: stepPosition
+                    stepPosition: stepPosition,
+                    number: number
                 )
             }
             .fixedSize(horizontal: true, vertical: false)

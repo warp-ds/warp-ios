@@ -65,7 +65,7 @@ extension Warp.StepIndicator {
 
         private var textColor: Color {
             switch progress {
-            case .incomplete:
+            case .incomplete, .error:
                 colorProvider.token.textSubtle
             case .inProgress, .complete:
                 colorProvider.token.text

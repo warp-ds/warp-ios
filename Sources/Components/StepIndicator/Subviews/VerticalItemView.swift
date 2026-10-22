@@ -4,12 +4,14 @@ extension Warp.StepIndicator {
     struct VerticalItemView: View {
         let step: Warp.StepIndicatorItem
         let stepPosition: Warp.StepIndicatorItem.Position
+        var number: Int? = nil
 
         var body: some View {
             HStack(alignment: .top, spacing: 8) {
                 Warp.StepIndicator.VerticalProgressView(
                     progress: step.progress,
-                    stepPosition: stepPosition
+                    stepPosition: stepPosition,
+                    number: number
                 )
 
                 Warp.StepIndicator.DescriptionView(

@@ -6,6 +6,7 @@ extension Warp {
         case completedStepAfterInProgressStep
         case stepInProgressAfterIncompleteStep
         case stepInProgressAfterAnotherStepInProgress
+        case activeOrCompletedStepAfterErrorStep
 
         public var errorDescription: String? {
             switch self {
@@ -17,6 +18,8 @@ extension Warp {
                 "You cannot add a step in progress after an incompleted step"
             case .stepInProgressAfterAnotherStepInProgress:
                 "You cannot add a step in progress after another step in progress"
+            case .activeOrCompletedStepAfterErrorStep:
+                "You cannot add a completed step or a step in progress after a step in error"
             }
         }
     }
@@ -30,6 +33,9 @@ extension Warp {
 
     - add an `.inProgress` or `.complete` step after a `.incomplete` step
     - add a `.complete` step after an `.inProgress` step
+    - add an `.inProgress` or `.complete` step after an `.error` step
+
+    An `.error` step can be placed anywhere.
 
     Doing so will throw an error on `init`
      */
@@ -53,10 +59,21 @@ extension Warp {
 
             try self.steps = steps.reduce([Warp.StepIndicatorItem]()) { (existingItems, currentItem) in
                 var mutableExistingItems = existingItems
+                // an error step is valid anywhere
+                if currentItem.progress == .error {
+                    mutableExistingItems.append(currentItem)
+                    return mutableExistingItems
+                }
                 // what is the previous step, if any?
                 if let previousStep = existingItems.last {
                     switch previousStep.progress {
                     case .complete: // all good, everything can follow a completed step
+                        mutableExistingItems.append(currentItem)
+                        return mutableExistingItems
+                    case .error:
+                        guard currentItem.progress == .incomplete else {
+                            throw StepIndicatorError.activeOrCompletedStepAfterErrorStep
+                        }
                         mutableExistingItems.append(currentItem)
                         return mutableExistingItems
                     case .inProgress:
@@ -71,6 +88,9 @@ extension Warp {
                         case .complete:
                             // we do not accept completed steps after a step in progress
                             throw StepIndicatorError.completedStepAfterInProgressStep
+                        case .error:
+                            mutableExistingItems.append(currentItem)
+                            return mutableExistingItems
                         }
                     case .incomplete:
                         switch currentItem.progress {
@@ -84,6 +104,9 @@ extension Warp {
                         case .complete:
                             // we do not accept a completed step _after_ an incomplete step
                             throw StepIndicatorError.completedStepAfterIncompletedStep
+                        case .error:
+                            mutableExistingItems.append(currentItem)
+                            return mutableExistingItems
                         }
                     }
                 } else {
@@ -119,6 +142,8 @@ extension Warp {
 
             let item: StepIndicatorItem
             let position: StepIndicatorItem.Position
+            /// 1-based index of the step.
+            let index: Int
             var id: UUID { item.id }
 
             /**
@@ -132,6 +157,7 @@ extension Warp {
                 guard let itemIndex = items.firstIndex(where: { $0 == item}) else { return nil }
 
                 self.item = item
+                self.index = itemIndex + 1
 
                 // is there only one item?
                 if items.count == 1 {

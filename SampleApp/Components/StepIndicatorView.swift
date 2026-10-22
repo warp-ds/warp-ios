@@ -4,6 +4,8 @@ import Warp
 struct StepIndicatorView: View {
     @State var orientation: Warp.StepIndicator.LayoutOrientation = .horizontal
 
+    @State var numbered: Bool = false
+
     @State var stepTitle: String = "Step Title"
     @State var stepDescription: String = "Step Description"
     @State var stepProgress: Warp.StepIndicatorItem.Progress = .incomplete
@@ -39,6 +41,8 @@ struct StepIndicatorView: View {
             }
             .pickerStyle(.segmented)
 
+            Toggle("Numbered", isOn: $numbered)
+
             GroupBox(
                 content: {
                     VStack {
@@ -53,7 +57,8 @@ struct StepIndicatorView: View {
                                 ForEach(
                                     [Warp.StepIndicatorItem.Progress.incomplete,
                                      Warp.StepIndicatorItem.Progress.inProgress,
-                                     Warp.StepIndicatorItem.Progress.complete
+                                     Warp.StepIndicatorItem.Progress.complete,
+                                     Warp.StepIndicatorItem.Progress.error
                                     ], id: \.self
                                 ) { progress in
                                     Text(progress.description)
@@ -94,6 +99,7 @@ struct StepIndicatorView: View {
                 ScrollView {
                     Warp.StepIndicator(
                         layoutOrientation: orientation,
+                        numbered: numbered,
                         stepModel: stepModel
                     )
 
@@ -167,6 +173,8 @@ fileprivate extension Warp.StepIndicatorItem.Progress {
             "In Progress"
         case .complete:
             "Complete"
+        case .error:
+            "Error"
         }
     }
 }

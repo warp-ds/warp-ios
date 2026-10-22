@@ -4,6 +4,7 @@ extension Warp.StepIndicator {
     struct HorizontalProgressView: View {
         let progress: Warp.StepIndicatorItem.Progress
         let stepPosition: Warp.StepIndicatorItem.Position
+        let number: Int?
         let lineHeight: Double = 2
 
         /// The current theme from the environment.
@@ -16,8 +17,10 @@ extension Warp.StepIndicator {
 
         init(
             progress: Warp.StepIndicatorItem.Progress,
-            stepPosition: Warp.StepIndicatorItem.Position
+            stepPosition: Warp.StepIndicatorItem.Position,
+            number: Int? = nil
         ) {
+            self.number = number
             self.progress = progress
             self.stepPosition = stepPosition
         }
@@ -26,28 +29,7 @@ extension Warp.StepIndicator {
             HStack(alignment: .center, spacing: 0) {
                 leadingView
 
-                Group {
-                    switch progress {
-                    case .incomplete:
-                        Circle()
-                            .strokeBorder(
-                                progress.borderColor(using: colorProvider),
-                                lineWidth: lineHeight
-                            )
-                    case .inProgress:
-                        Circle()
-                            .fill(progress.fillColor(using: colorProvider))
-                    case .complete:
-                        Circle()
-                            .fill(progress.fillColor(using: colorProvider))
-                            .overlay(alignment: .leading) {
-                                Warp.IconView(.check, size: .small)
-                                    .foregroundColor(colorProvider.token.iconInverted)
-                                    .offset(x: 2)
-                            }
-                    }
-                }
-                .frame(width: 20, height: 20, alignment: .center)
+                Warp.StepIndicator.StepCircleView(progress: progress, number: number)
 
                 trailingView
             }

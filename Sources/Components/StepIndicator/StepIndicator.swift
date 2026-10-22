@@ -14,6 +14,8 @@ extension Warp {
 
         - A `Warp.StepIndicator.LayoutOrientation`. **Optional:** _default is `.vertical` if none is specified_.
         - An array of `Warp.StepIndicatorItem`s.
+        - `numbered`: when `true`, active and upcoming steps show their 1-based step number.
+          Completed steps keep the checkmark and error steps keep the X icon. **Optional:** _default is `false`_.
 
      */
     public struct StepIndicator: View {
@@ -24,6 +26,7 @@ extension Warp {
         }
 
         let layoutOrientation: LayoutOrientation
+        let numbered: Bool
 
         /// The current theme from the environment.
         @Environment(\.warpTheme) private var theme
@@ -37,9 +40,11 @@ extension Warp {
 
         public init(
             layoutOrientation: LayoutOrientation = .vertical,
+            numbered: Bool = false,
             stepModel: Warp.StepIndicatorModel
         ) {
             self.layoutOrientation = layoutOrientation
+            self.numbered = numbered
             self.orderedSteps = stepModel.asOrderedSteps
         }
 
@@ -53,7 +58,8 @@ extension Warp {
                     ForEach(orderedSteps) { step in
                         VerticalItemView(
                             step: step.item,
-                            stepPosition: step.position
+                            stepPosition: step.position,
+                            number: numbered ? step.index : nil
                         )
                     }
                 }
@@ -67,7 +73,8 @@ extension Warp {
                     ForEach(orderedSteps) { step in
                         HorizontalItemView(
                             step: step.item,
-                            stepPosition: step.position
+                            stepPosition: step.position,
+                            number: numbered ? step.index : nil
                         )
                     }
                 }

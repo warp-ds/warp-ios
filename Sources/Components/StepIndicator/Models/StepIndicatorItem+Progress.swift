@@ -12,9 +12,13 @@ public extension Warp.StepIndicatorItem {
         /// The state of the component when the task or process has been completed.
         case complete
 
+        /// The state of the component when the task or process failed, was canceled or is invalid.
+        /// Overrides both `.complete` and `.inProgress` visuals.
+        case error
+
         func fillColor(using colorProvider: ColorProvider) -> SwiftUI.Color {
             switch self {
-            case .incomplete: 
+            case .incomplete, .error:
                 colorProvider.token.background
             case .inProgress, .complete:
                 colorProvider.token.backgroundPrimary
@@ -23,7 +27,7 @@ public extension Warp.StepIndicatorItem {
 
         func borderColor(using colorProvider: ColorProvider) -> SwiftUI.Color {
             switch self {
-            case .incomplete:
+            case .incomplete, .error:
                 colorProvider.token.border
             case .inProgress, .complete:
                 colorProvider.token.borderPrimary
@@ -35,6 +39,7 @@ public extension Warp.StepIndicatorItem {
             case .incomplete: "Incomplete"
             case .inProgress: "In Progress"
             case .complete: "Complete"
+            case .error: Warp.Strings.stepIndicatorStateError.localized
             }
         }
     }

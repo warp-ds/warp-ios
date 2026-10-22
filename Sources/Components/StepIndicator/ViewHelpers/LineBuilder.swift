@@ -12,7 +12,7 @@ extension Warp.StepIndicator {
         ) -> some View {
 
             let fillColor = switch otherProgress {
-            case .incomplete:
+            case .incomplete, .error:
                 colorProvider.token.backgroundDisabled
             case .inProgress where ownProgress == .incomplete, .complete where ownProgress == .incomplete:
                 colorProvider.token.backgroundDisabled
