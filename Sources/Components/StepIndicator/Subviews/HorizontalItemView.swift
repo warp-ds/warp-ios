@@ -7,12 +7,12 @@ extension Warp.StepIndicator {
         var number: Int? = nil
 
         var body: some View {
-            VStack(alignment: .center, spacing: 8) {
+            VStack(alignment: .center, spacing: Warp.Spacing.spacing100) {
                 Warp.StepIndicator.DescriptionView(
                     step: step,
                     layoutOrientation: .horizontal
                 )
-                .padding(.horizontal, 8)
+                .padding(.horizontal, Warp.Spacing.spacing100)
 
                 Warp.StepIndicator.HorizontalProgressView(
                     progress: step.progress,
@@ -20,7 +20,7 @@ extension Warp.StepIndicator {
                     number: number
                 )
             }
-            .fixedSize(horizontal: true, vertical: false)
+            .frame(maxWidth: .infinity, alignment: .top)
         }
     }
 }

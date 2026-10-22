@@ -7,7 +7,7 @@ extension Warp.StepIndicator {
         var number: Int? = nil
 
         var body: some View {
-            HStack(alignment: .top, spacing: 8) {
+            HStack(alignment: .top, spacing: Warp.Spacing.spacing100) {
                 Warp.StepIndicator.VerticalProgressView(
                     progress: step.progress,
                     stepPosition: stepPosition,
@@ -18,7 +18,7 @@ extension Warp.StepIndicator {
                     step: step,
                     layoutOrientation: .vertical
                 )
-                .padding(.bottom, 16)
+                .padding(.bottom, Warp.Spacing.spacing300)
 
                 Spacer()
             }

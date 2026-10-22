@@ -48,7 +48,7 @@ extension Warp.StepIndicator {
                 .leading
             }
 
-            VStack(alignment: alignment, spacing: 8) {
+            VStack(alignment: alignment, spacing: Warp.Spacing.spacing50) {
                 Warp.Text(
                     title,
                     style: .bodyStrong,

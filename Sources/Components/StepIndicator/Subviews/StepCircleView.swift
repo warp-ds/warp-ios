@@ -20,29 +20,32 @@ extension Warp.StepIndicator {
                 case .incomplete:
                     Circle()
                         .strokeBorder(progress.borderColor(using: colorProvider), lineWidth: lineWidth)
-                        .overlay { numberView(color: colorProvider.token.textSubtle) }
+                        .background(Circle().fill(progress.fillColor(using: colorProvider)))
+                        .overlay { numberView(color: colorProvider.token.text) }
                 case .inProgress:
                     Circle()
-                        .fill(progress.fillColor(using: colorProvider))
-                        .overlay { numberView(color: colorProvider.token.textInverted) }
+                        .strokeBorder(progress.borderColor(using: colorProvider), lineWidth: lineWidth)
+                        .overlay { numberView(color: colorProvider.token.text) }
                 case .complete:
                     Circle()
                         .fill(progress.fillColor(using: colorProvider))
-                        .overlay(alignment: .leading) {
-                            Warp.IconView(.check, size: .small)
-                                .foregroundColor(colorProvider.token.iconInverted)
-                                .offset(x: 2)
-                        }
+                        .overlay { iconView("step-indicator-check", color: colorProvider.token.iconInverted) }
                 case .error:
                     Circle()
                         .strokeBorder(progress.borderColor(using: colorProvider), lineWidth: lineWidth)
-                        .overlay {
-                            Warp.IconView(.close, size: .small)
-                                .foregroundColor(colorProvider.token.iconSubtle)
-                        }
+                        .background(Circle().fill(progress.fillColor(using: colorProvider)))
+                        .overlay { iconView("step-indicator-cross", color: colorProvider.token.icon) }
                 }
             }
             .frame(width: 20, height: 20)
+        }
+
+        private func iconView(_ name: String, color: Color) -> some View {
+            Image(name, bundle: .module)
+                .renderingMode(.template)
+                .resizable()
+                .foregroundColor(color)
+                .frame(width: 20, height: 20)
         }
 
         @ViewBuilder

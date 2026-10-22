@@ -26,7 +26,7 @@ extension Warp.StepIndicator {
         }
         
         var body: some View {
-            VStack(alignment: .center, spacing: 0) {
+            VStack(alignment: .center, spacing: Warp.Spacing.spacing50) {
                 Warp.StepIndicator.StepCircleView(progress: progress, number: number)
 
                 lineView
@@ -43,6 +43,7 @@ extension Warp.StepIndicator {
                     LineBuilder.line(
                         for: nextProgress,
                         ownProgress: progress,
+                        otherIsPrevious: false,
                         colorProvider: colorProvider,
                         orientation: .vertical
                     )
@@ -53,6 +54,7 @@ extension Warp.StepIndicator {
                 LineBuilder.line(
                     for: nextProgress,
                     ownProgress: progress,
+                    otherIsPrevious: false,
                     colorProvider: colorProvider,
                     orientation: .vertical
                 )

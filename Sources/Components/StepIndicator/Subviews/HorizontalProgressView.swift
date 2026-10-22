@@ -26,7 +26,7 @@ extension Warp.StepIndicator {
         }
 
         var body: some View {
-            HStack(alignment: .center, spacing: 0) {
+            HStack(alignment: .center, spacing: Warp.Spacing.spacing50) {
                 leadingView
 
                 Warp.StepIndicator.StepCircleView(progress: progress, number: number)
@@ -51,6 +51,7 @@ extension Warp.StepIndicator {
                 Warp.StepIndicator.LineBuilder.line(
                     for: previousProgress,
                     ownProgress: progress,
+                    otherIsPrevious: true,
                     colorProvider: colorProvider,
                     orientation: .horizontal
                 )
@@ -58,6 +59,7 @@ extension Warp.StepIndicator {
                 Warp.StepIndicator.LineBuilder.line(
                     for: previousProgress,
                     ownProgress: progress,
+                    otherIsPrevious: true,
                     colorProvider: colorProvider,
                     orientation: .horizontal
                 )
@@ -72,6 +74,7 @@ extension Warp.StepIndicator {
                     Warp.StepIndicator.LineBuilder.line(
                         for: nextProgress,
                         ownProgress: progress,
+                        otherIsPrevious: false,
                         colorProvider: colorProvider,
                         orientation: .horizontal
                     )
@@ -82,6 +85,7 @@ extension Warp.StepIndicator {
                 Warp.StepIndicator.LineBuilder.line(
                     for: nextProgress,
                     ownProgress: progress,
+                    otherIsPrevious: false,
                     colorProvider: colorProvider,
                     orientation: .horizontal
                 )

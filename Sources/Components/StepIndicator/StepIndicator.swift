@@ -54,7 +54,7 @@ extension Warp {
                 horizontalScrollView
                     .scrollBounceBehavior(.basedOnSize, axes: .horizontal)
             case .vertical:
-                VStack(spacing: -1) {
+                VStack(spacing: Warp.Spacing.spacing50) {
                     ForEach(orderedSteps) { step in
                         VerticalItemView(
                             step: step.item,
