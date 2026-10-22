@@ -28,6 +28,8 @@ concurrency:
   cancel-in-progress: false
 
 # The pinned snapshot setup. Changing any of these means re-recording every reference.
+# Keep this and the xcodebuild test flags in sync with snapshot-tests.yml: references recorded
+# on one setup must be compared on the same one.
 env:
   XCODE_APP: /Applications/Xcode_26.3.app
   XCODE_BUILD: 17C529

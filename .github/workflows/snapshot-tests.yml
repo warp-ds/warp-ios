@@ -1,0 +1,179 @@
+name: Snapshot Tests
+
+on:
+  pull_request:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+concurrency:
+  group: snapshot-tests-${{ github.ref }}
+  # Cancel superseded runs on PRs, but let main complete.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# The pinned snapshot setup. Changing any of these means re-recording every reference.
+# Keep this and the xcodebuild test flags in sync with record-snapshots.yml: references recorded
+# on one setup must be compared on the same one.
+env:
+  XCODE_APP: /Applications/Xcode_26.3.app
+  XCODE_BUILD: 17C529
+  SIM_DEVICE_TYPE: com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro
+  SIM_RUNTIME: com.apple.CoreSimulator.SimRuntime.iOS-26-0
+
+defaults:
+  run:
+    # An explicit `shell: bash` runs with `-eo pipefail`; the implicit default has no pipefail.
+    shell: bash
+
+jobs:
+  compare:
+    # The check name branch protection will require once this is no longer advisory.
+    name: Snapshot Tests
+    runs-on: macos-15
+    # Covers the worst case of build, a boot probe that recycles the device, and the compare.
+    timeout-minutes: 75
+
+    permissions:
+      contents: read
+
+    # Advisory for about a week. Once confirmed stable, drop this line and mark the check as required in branch protection.
+    continue-on-error: true
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Pinned by exact path and build, unlike the shared select-xcode action (newest 26.x), so an
+    # image update fails loudly instead of silently comparing on a different toolchain.
+    - name: Select the pinned Xcode
+      run: |
+        if [ ! -d "$XCODE_APP" ]; then
+          echo "::error::$XCODE_APP is not on this runner image. Update the pin and re-record. Installed:"
+          ls -d /Applications/Xcode*.app
+          exit 1
+        fi
+        sudo xcode-select -s "$XCODE_APP"
+        xcodebuild -version
+        BUILD="$(xcodebuild -version | tail -1 | awk '{print $NF}')"
+        if [ "$BUILD" != "$XCODE_BUILD" ]; then
+          echo "::error::Expected Xcode build $XCODE_BUILD, got $BUILD. Update the pin and re-record."
+          exit 1
+        fi
+
+    - name: Create the pinned simulator
+      id: sim
+      run: |
+        if ! UDID="$(xcrun simctl create warp-snapshot "$SIM_DEVICE_TYPE" "$SIM_RUNTIME")"; then
+          echo "::error::Could not create $SIM_DEVICE_TYPE on $SIM_RUNTIME. Update the pin and re-record. Runtimes:"
+          xcrun simctl list runtimes
+          exit 1
+        fi
+        echo "Created simulator $UDID ($SIM_DEVICE_TYPE, $SIM_RUNTIME)"
+        {
+          echo "udid=$UDID"
+          echo "device-type=$SIM_DEVICE_TYPE"
+          echo "runtime=$SIM_RUNTIME"
+        } >> "$GITHUB_OUTPUT"
+        # Fire-and-forget so the boot overlaps with the build; the boot probe waits for completion.
+        xcrun simctl boot "$UDID" || true
+
+    # `build-for-testing`, not `build`: the WarpSnapshotTests scheme is test-only (empty
+    # BuildAction), so a plain build has no buildables and no iOS destination matches.
+    - name: Build WarpSnapshotTests
+      timeout-minutes: 15
+      run: |
+        xcodebuild -scheme WarpSnapshotTests \
+          -destination "id=${{ steps.sim.outputs.udid }}" \
+          -disableAutomaticPackageResolution \
+          build-for-testing
+
+    - name: Probe the simulator boot
+      uses: ./.github/actions/boot-probe
+      id: probe
+      with:
+        udid: ${{ steps.sim.outputs.udid }}
+        device-type: ${{ steps.sim.outputs.device-type }}
+        runtime: ${{ steps.sim.outputs.runtime }}
+
+    - name: Upload simulator diagnostics
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: simulator-diagnostics
+        path: ${{ runner.temp }}/simulator-diagnostics
+        if-no-files-found: ignore
+        retention-days: 14
+
+    # `test-without-building`, so a failure here is a test failure, never a build one.
+    # `SNAPSHOT_TESTING_RECORD=never`: a test without a reference fails clearly instead of recording
+    # one on the runner, where it is thrown away. `SNAPSHOT_ARTIFACTS` collects the actual renders of
+    # failing tests; the reference and diff images are attachments in the xcresult.
+    - name: Compare snapshot tests
+      id: compare
+      timeout-minutes: 25
+      env:
+        TEST_RUNNER_SNAPSHOT_TESTING_RECORD: never
+        TEST_RUNNER_SNAPSHOT_ARTIFACTS: ${{ runner.temp }}/snapshot-failures
+      run: |
+        xcodebuild \
+          -scheme WarpSnapshotTests \
+          -destination "id=${{ steps.probe.outputs.udid }}" \
+          -disableAutomaticPackageResolution \
+          -parallel-testing-enabled NO \
+          -collect-test-diagnostics never \
+          -resultBundlePath "$RUNNER_TEMP/snapshot-tests.xcresult" \
+          test-without-building
+
+    - name: Write snapshot environment to summary
+      if: ${{ !cancelled() && steps.sim.outputs.udid != '' }}
+      run: |
+        {
+          echo "### Snapshot environment"
+          echo ""
+          echo "- Xcode: $(xcodebuild -version | head -1)"
+          echo "- Xcode build: $(xcodebuild -version | tail -1 | awk '{print $NF}')"
+          echo "- Runner image: $ImageVersion"
+          echo "- Device: $SIM_DEVICE_TYPE"
+          echo "- Runtime: $SIM_RUNTIME"
+          echo "- swift-snapshot-testing: $(jq -r '.pins[] | select(.identity == "swift-snapshot-testing") | .state.version' Package.resolved)"
+          echo "- SnapshotTestingHEIC: $(jq -r '.pins[] | select(.identity == "snapshottestingheic") | .state.version' Package.resolved)"
+        } >> "$GITHUB_STEP_SUMMARY"
+
+    # The steps below only describe a failed comparison. A failure before it (Xcode pin, simulator,
+    # build, boot probe) has its own step log and the simulator diagnostics.
+    - name: Upload snapshot failures
+      if: failure() && steps.compare.outcome == 'failure'
+      uses: actions/upload-artifact@v4
+      with:
+        name: snapshot-failures
+        path: ${{ runner.temp }}/snapshot-failures
+        if-no-files-found: ignore
+        retention-days: 14
+
+    - name: Zip the test results
+      if: failure() && steps.compare.outcome == 'failure'
+      run: |
+        cd "$RUNNER_TEMP"
+        if [ -d snapshot-tests.xcresult ]; then
+          ditto -c -k --keepParent snapshot-tests.xcresult snapshot-tests.xcresult.zip
+        fi
+
+    - name: Upload test results
+      if: failure() && steps.compare.outcome == 'failure'
+      uses: actions/upload-artifact@v4
+      with:
+        name: snapshot-tests-xcresult
+        path: ${{ runner.temp }}/snapshot-tests.xcresult.zip
+        if-no-files-found: ignore
+        retention-days: 14
+
+    - name: Write failure summary
+      if: failure() && steps.compare.outcome == 'failure'
+      run: |
+        {
+          echo "### Snapshot test failures"
+          echo ""
+          echo "- \`snapshot-failures\`: the actual renders of the failing tests, by test file."
+          echo "- \`snapshot-tests-xcresult\`: open it in Xcode to see each failure's reference, failure and difference images."
+          echo ""
+          echo "If the change is intended, record new references with **Actions → Record Snapshot References** on your branch (branches in forks: ask a maintainer). If it isn't, fix the code instead."
+        } >> "$GITHUB_STEP_SUMMARY"

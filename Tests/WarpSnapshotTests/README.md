@@ -42,6 +42,10 @@ Two limits to know about:
 - A commit pushed by the workflow does not trigger the pull request's checks (GitHub doesn't start workflows for commits made with its own token). Push another commit (`git commit --allow-empty` works) so the checks run on it before merging.
 - The workflow needs write access to the repository, so it can't be dispatched on a branch in a fork. Ask a maintainer to record for you.
 
+## Pull Request Checks
+
+Every pull request runs the **Snapshot Tests** check, which compares all snapshot tests against the committed references on the pinned setup. When it fails, the run has two artifacts: `snapshot-failures` holds the actual renders of the failing tests, by test file, and `snapshot-tests-xcresult` opens in Xcode with each failure's reference, failure and difference images. If the change is intended, record new references as described above; if not, fix the code. The check is advisory for now, while we confirm the setup is stable.
+
 ## Bumping Library Pins
 
 If you need to bump `swift-snapshot-testing` or `SnapshotTestingHEIC` to a newer version, that change requires its own PR with a full re-record of all snapshot references:
