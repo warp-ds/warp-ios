@@ -201,10 +201,10 @@ struct NotificationBadgeTests {
     // MARK: - Plurals
 
     @Test(arguments: [
-        ("sv", "1 oläst", "2 olästa"),
-        ("nb-NO", "1 ulest", "2 uleste"),
-        ("da", "1 ulæst", "2 ulæste"),
-        ("fi", "1 lukematon", "2 lukematonta"),
+        ("sv", "1 olästa", "2 olästa"),
+        ("nb-NO", "1 uleste", "2 uleste"),
+        ("da", "1 ulæste", "2 ulæste"),
+        ("fi", "1 lukematonta", "2 lukematonta"),
         ("en", "1 unread", "2 unread")
     ])
     func testAccessibilityValuePlurals(language: String, one: String, other: String) throws {
