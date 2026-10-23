@@ -31,6 +31,13 @@ struct StepIndicatorView: View {
     @State private var stepModel: Warp.StepIndicatorModel?
     @State private var toastIsPresented = false
     @State private var toastMessage: String?
+    @State private var lastTappedStep: String?
+
+    private let customSteps: [Warp.StepIndicatorItem] = [
+        .init(title: "Address", description: "Shipping details", progress: .complete),
+        .init(title: "Payment", description: "Choose a payment method", progress: .inProgress),
+        .init(title: "Review", description: "Check your order", progress: .incomplete)
+    ]
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -100,6 +107,32 @@ struct StepIndicatorView: View {
                     .padding()
                 }, label: {
                     Text("Usage Example")
+                })
+
+                // Custom title slot: any view can replace the default title + subtitle
+                GroupBox(content: {
+                    VStack(alignment: .leading, spacing: 24) {
+                        Text("Horizontal, TitleView + Button")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        customSlotIndicator(orientation: .horizontal)
+
+                        Divider()
+
+                        Text("Vertical, TitleView + Button")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        customSlotIndicator(orientation: .vertical)
+
+                        if let lastTappedStep {
+                            Text("Last tapped: \(lastTappedStep)")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                    .padding()
+                }, label: {
+                    Text("Custom Title Slot")
                 })
 
                 // Current indicator, driven by the configure section below
@@ -200,6 +233,39 @@ struct StepIndicatorView: View {
                     numbered: numbered,
                     stepModel: model
                 )
+            } else {
+                Text("Invalid step order")
+                    .foregroundColor(.secondary)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func customSlotIndicator(
+        orientation: Warp.StepIndicator.LayoutOrientation
+    ) -> some View {
+        Group {
+            if let model = try? Warp.StepIndicatorModel(from: customSteps) {
+                Warp.StepIndicator(
+                    layoutOrientation: orientation,
+                    numbered: true,
+                    stepModel: model
+                ) { step in
+                    VStack(
+                        alignment: orientation == .horizontal ? .center : .leading,
+                        spacing: 8
+                    ) {
+                        Warp.StepIndicator.TitleView(
+                            step: step,
+                            layoutOrientation: orientation
+                        )
+
+                        Warp.Button(
+                            title: "Details",
+                            action: { lastTappedStep = step.title }
+                        )
+                    }
+                }
             } else {
                 Text("Invalid step order")
                     .foregroundColor(.secondary)

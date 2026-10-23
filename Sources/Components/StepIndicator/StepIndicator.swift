@@ -38,6 +38,9 @@ extension Warp {
 
         private let orderedSteps: [StepIndicatorModel.OrderedStepIndicatorItem]
 
+        /// Custom title + subtitle slot per step. `nil` renders the default `TitleView`.
+        private let titleBuilder: ((Warp.StepIndicatorItem) -> AnyView)?
+
         public init(
             layoutOrientation: LayoutOrientation = .vertical,
             numbered: Bool = false,
@@ -46,6 +49,23 @@ extension Warp {
             self.layoutOrientation = layoutOrientation
             self.numbered = numbered
             self.orderedSteps = stepModel.asOrderedSteps
+            self.titleBuilder = nil
+        }
+
+        /// Creates a step indicator whose title area is rendered by the given view builder.
+        ///
+        /// The title view expands horizontally in `.horizontal` layout and grows downward in `.vertical` layout.
+        /// Use `Warp.StepIndicator.TitleView` inside the closure to keep the default formatting.
+        public init<Title: View>(
+            layoutOrientation: LayoutOrientation = .vertical,
+            numbered: Bool = false,
+            stepModel: Warp.StepIndicatorModel,
+            @ViewBuilder titleView: @escaping (Warp.StepIndicatorItem) -> Title
+        ) {
+            self.layoutOrientation = layoutOrientation
+            self.numbered = numbered
+            self.orderedSteps = stepModel.asOrderedSteps
+            self.titleBuilder = { AnyView(titleView($0)) }
         }
 
         public var body: some View {
@@ -59,7 +79,8 @@ extension Warp {
                         VerticalItemView(
                             step: step.item,
                             stepPosition: step.position,
-                            number: numbered ? step.index : nil
+                            number: numbered ? step.index : nil,
+                            titleView: titleBuilder?(step.item)
                         )
                     }
                 }
@@ -74,7 +95,8 @@ extension Warp {
                         HorizontalItemView(
                             step: step.item,
                             stepPosition: step.position,
-                            number: numbered ? step.index : nil
+                            number: numbered ? step.index : nil,
+                            titleView: titleBuilder?(step.item)
                         )
                     }
                 }
@@ -113,6 +135,31 @@ extension Warp {
             layoutOrientation: .vertical,
             stepModel: stepModel
         )
+    } catch {
+        return EmptyView()
+    }
+}
+
+#Preview("Custom Title") {
+    do {
+        let stepModel = try Warp.StepIndicatorModel(from: [
+            .mockCompleted,
+            .mockInProgress,
+            .mockNotStarted
+        ])
+
+        return Warp.StepIndicator(
+            layoutOrientation: .horizontal,
+            stepModel: stepModel
+        ) { step in
+            VStack(spacing: Warp.Spacing.spacing50) {
+                Text(step.title.uppercased())
+                    .font(.caption.bold())
+                Text(step.description)
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+        }
     } catch {
         return EmptyView()
     }

@@ -5,6 +5,8 @@ extension Warp.StepIndicator {
         let step: Warp.StepIndicatorItem
         let stepPosition: Warp.StepIndicatorItem.Position
         var number: Int? = nil
+        /// Custom title slot. `nil` renders the default `Warp.StepIndicator.TitleView`.
+        var titleView: AnyView? = nil
 
         var body: some View {
             HStack(alignment: .top, spacing: Warp.Spacing.spacing100) {
@@ -14,13 +16,12 @@ extension Warp.StepIndicator {
                     number: number
                 )
 
-                Warp.StepIndicator.DescriptionView(
-                    step: step,
-                    layoutOrientation: .vertical
-                )
+                // Expands horizontally; height grows downward with its content.
+                (titleView ?? AnyView(
+                    Warp.StepIndicator.TitleView(step: step, layoutOrientation: .vertical)
+                ))
                 .padding(.bottom, Warp.Spacing.spacing300)
-
-                Spacer()
+                .frame(maxWidth: .infinity, alignment: .topLeading)
             }
             .fixedSize(horizontal: false, vertical: true)
         }

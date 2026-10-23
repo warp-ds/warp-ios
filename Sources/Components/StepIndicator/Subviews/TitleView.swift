@@ -1,11 +1,14 @@
 import SwiftUI
 
 extension Warp.StepIndicator {
-    struct DescriptionView: View {
-        let title: String
-        let description: String
-        let layoutOrientation: LayoutOrientation
-        let progress: Warp.StepIndicatorItem.Progress
+    /// Default title and subtitle of a step, formatted for the given layout orientation.
+    ///
+    /// Use it directly, or as a building block inside a custom title slot of `Warp.StepIndicator`.
+    public struct TitleView: View {
+        public let title: String
+        public let subtitle: String
+        public let layoutOrientation: LayoutOrientation
+        public let progress: Warp.StepIndicatorItem.Progress
 
         /// The current theme from the environment.
         @Environment(\.warpTheme) private var theme
@@ -15,31 +18,31 @@ extension Warp.StepIndicator {
             theme.colors
         }
 
-        init(
+        public init(
             step: Warp.StepIndicatorItem,
             layoutOrientation: LayoutOrientation
         ) {
             self.init(
                 title: step.title,
-                description: step.description,
+                subtitle: step.description,
                 layoutOrientation: layoutOrientation,
                 progress: step.progress
             )
         }
 
-        init(
+        public init(
             title: String,
-            description: String,
+            subtitle: String,
             layoutOrientation: LayoutOrientation,
             progress: Warp.StepIndicatorItem.Progress
         ) {
             self.title = title
-            self.description = description
+            self.subtitle = subtitle
             self.layoutOrientation = layoutOrientation
             self.progress = progress
         }
 
-        var body: some View {
+        public var body: some View {
             let alignment: HorizontalAlignment =
             switch layoutOrientation {
             case .horizontal:
@@ -55,7 +58,7 @@ extension Warp.StepIndicator {
                     color: textColor
                 )
                 Warp.Text(
-                    description,
+                    subtitle,
                     style: .caption,
                     color: textColor
                 )
@@ -75,36 +78,36 @@ extension Warp.StepIndicator {
 }
 
 #Preview("Horizontal - In Progress") {
-    Warp.StepIndicator.DescriptionView(
+    Warp.StepIndicator.TitleView(
         title: "Step 1",
-        description: "Step 1 - Description",
+        subtitle: "Step 1 - Description",
         layoutOrientation: .horizontal,
         progress: .inProgress
     )
 }
 
 #Preview("Vertical - In Progress") {
-    Warp.StepIndicator.DescriptionView(
+    Warp.StepIndicator.TitleView(
         title: "Step 1",
-        description: "Step 1 - Description",
+        subtitle: "Step 1 - Description",
         layoutOrientation: .vertical,
         progress: .inProgress
     )
 }
 
 #Preview("Horizontal - Not Started") {
-    Warp.StepIndicator.DescriptionView(
+    Warp.StepIndicator.TitleView(
         title: "Step 1",
-        description: "Step 1 - Description",
+        subtitle: "Step 1 - Description",
         layoutOrientation: .horizontal,
         progress: .incomplete
     )
 }
 
 #Preview("Vertical - Not Started") {
-    Warp.StepIndicator.DescriptionView(
+    Warp.StepIndicator.TitleView(
         title: "Step 1",
-        description: "Step 1 - Description",
+        subtitle: "Step 1 - Description",
         layoutOrientation: .vertical,
         progress: .incomplete
     )
