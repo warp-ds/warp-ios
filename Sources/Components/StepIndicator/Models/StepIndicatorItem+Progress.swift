@@ -36,9 +36,9 @@ public extension Warp.StepIndicatorItem {
 
         var accessibilityLabel: String {
             switch self {
-            case .incomplete: "Incomplete"
-            case .inProgress: "In Progress"
-            case .complete: "Complete"
+            case .incomplete: Warp.Strings.stepIndicatorStateIncomplete.localized
+            case .inProgress: Warp.Strings.stepIndicatorStateInProgress.localized
+            case .complete: Warp.Strings.stepIndicatorStateComplete.localized
             case .error: Warp.Strings.stepIndicatorStateError.localized
             }
         }

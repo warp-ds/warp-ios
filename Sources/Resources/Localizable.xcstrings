@@ -77,7 +77,7 @@
             }
           }
         },
-        "fi" : 
+        "fi" : {
           "variations" : {
             "plural" : {
               "one" : {
@@ -995,6 +995,39 @@
             "value" : "Fyrhjulsdrift"
           }
         }
+      }
+    },
+    "stepIndicator.state.complete" : {
+      "comment" : "A11y label for step indicator step in complete state",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : { "stringUnit" : { "state" : "needs_review", "value" : "Fuldført" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Complete" } },
+        "fi" : { "stringUnit" : { "state" : "needs_review", "value" : "Valmis" } },
+        "nb-NO" : { "stringUnit" : { "state" : "needs_review", "value" : "Fullført" } },
+        "sv" : { "stringUnit" : { "state" : "needs_review", "value" : "Slutförd" } }
+      }
+    },
+    "stepIndicator.state.inProgress" : {
+      "comment" : "A11y label for step indicator step in progress (active step)",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : { "stringUnit" : { "state" : "needs_review", "value" : "I gang" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "In progress" } },
+        "fi" : { "stringUnit" : { "state" : "needs_review", "value" : "Käynnissä" } },
+        "nb-NO" : { "stringUnit" : { "state" : "needs_review", "value" : "Pågår" } },
+        "sv" : { "stringUnit" : { "state" : "needs_review", "value" : "Pågår" } }
+      }
+    },
+    "stepIndicator.state.incomplete" : {
+      "comment" : "A11y label for step indicator step that is not yet completed",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : { "stringUnit" : { "state" : "needs_review", "value" : "Ufuldstændig" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Incomplete" } },
+        "fi" : { "stringUnit" : { "state" : "needs_review", "value" : "Keskeneräinen" } },
+        "nb-NO" : { "stringUnit" : { "state" : "needs_review", "value" : "Ufullstendig" } },
+        "sv" : { "stringUnit" : { "state" : "needs_review", "value" : "Ofullständig" } }
       }
     },
     "stepIndicator.state.error" : {

@@ -46,6 +46,7 @@ extension Warp.StepIndicator {
                 .resizable()
                 .foregroundColor(color)
                 .frame(width: 20, height: 20)
+                .accessibilityHidden(true)
         }
 
         @ViewBuilder

@@ -33,6 +33,7 @@ extension Warp.StepIndicator {
 
                 trailingView
             }
+            .accessibilityElement(children: .ignore)
             .accessibilityLabel(progress.accessibilityLabel)
         }
 
