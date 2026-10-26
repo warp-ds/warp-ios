@@ -14,7 +14,7 @@ extension Warp.StepIndicator {
                     Warp.StepIndicator.TitleView(step: step, layoutOrientation: .horizontal)
                 ))
                 .padding(.horizontal, Warp.Spacing.spacing100)
-                .frame(maxWidth: .infinity, alignment: .top)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
 
                 Warp.StepIndicator.HorizontalProgressView(
                     progress: step.progress,
@@ -22,7 +22,7 @@ extension Warp.StepIndicator {
                     number: number
                 )
             }
-            .frame(maxWidth: .infinity, alignment: .top)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
     }
 }

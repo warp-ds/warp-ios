@@ -100,6 +100,8 @@ extension Warp {
                         )
                     }
                 }
+                // Every item takes the height of the tallest one, so the progress bars line up.
+                .fixedSize(horizontal: false, vertical: true)
             }
             .padding(.bottom, 1)
         }
