@@ -57,13 +57,13 @@ struct StepIndicatorSnapshotTests {
         ),
         .init(
             title: "Step 2",
-            description: "progress = .error",
-            progress: .error
+            description: "progress = .inProgress",
+            progress: .inProgress
         ),
         .init(
             title: "Step 3",
-            description: "progress = .inProgress",
-            progress: .inProgress
+            description: "progress = .error",
+            progress: .error
         ),
         .init(
             title: "Step 4",
