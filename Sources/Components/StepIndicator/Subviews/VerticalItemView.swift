@@ -24,6 +24,7 @@ extension Warp.StepIndicator {
                 .frame(maxWidth: .infinity, alignment: .topLeading)
             }
             .fixedSize(horizontal: false, vertical: true)
+            .stepAccessibility(step: step, hasCustomTitle: titleView != nil)
         }
     }
 }

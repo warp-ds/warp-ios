@@ -33,8 +33,8 @@ extension Warp.StepIndicator {
 
                 trailingView
             }
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel(progress.accessibilityLabel)
+            // The state is announced by the enclosing item view.
+            .accessibilityHidden(true)
         }
 
         @ViewBuilder

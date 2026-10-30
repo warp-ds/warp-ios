@@ -23,6 +23,7 @@ extension Warp.StepIndicator {
                 )
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .stepAccessibility(step: step, hasCustomTitle: titleView != nil)
         }
     }
 }

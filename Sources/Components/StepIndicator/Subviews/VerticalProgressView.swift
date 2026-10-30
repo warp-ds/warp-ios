@@ -32,8 +32,8 @@ extension Warp.StepIndicator {
                 lineView
             }
             .frame(width: 20)
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel(progress.accessibilityLabel)
+            // The state is announced by the enclosing item view.
+            .accessibilityHidden(true)
         }
         
         @ViewBuilder
