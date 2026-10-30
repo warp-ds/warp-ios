@@ -73,24 +73,24 @@ final class ColorFactorySmokeTests: XCTestCase {
             
             // Critical
             ButtonVariant(
-                type: .critical,
+                type: .negative,
                 isEnabled: true,
                 expectedColor: colorProvider.token.textInverted
             ),
             ButtonVariant(
-                type: .critical,
+                type: .negative,
                 isEnabled: false,
                 expectedColor: disabledTextColor
             ),
             
             // CriticalQuiet
             ButtonVariant(
-                type: .criticalQuiet,
+                type: .negativeQuiet,
                 isEnabled: true,
                 expectedColor: colorProvider.token.textNegative
             ),
             ButtonVariant(
-                type: .criticalQuiet,
+                type: .negativeQuiet,
                 isEnabled: false,
                 expectedColor: disabledTextColor
             ),
@@ -212,38 +212,38 @@ final class ColorFactorySmokeTests: XCTestCase {
             
             // Critical
             ButtonVariant(
-                type: .critical,
+                type: .negative,
                 isEnabled: true,
                 isPressed: false,
                 expectedColor: colorProvider.token.backgroundNegative
             ),
             ButtonVariant(
-                type: .critical,
+                type: .negative,
                 isEnabled: true,
                 isPressed: true,
                 expectedColor: colorProvider.token.backgroundNegativeActive
             ),
             ButtonVariant(
-                type: .critical,
+                type: .negative,
                 isEnabled: false,
                 expectedColor: disabledBackgroundColor
             ),
             
             // CriticalQuiet
             ButtonVariant(
-                type: .criticalQuiet,
+                type: .negativeQuiet,
                 isEnabled: true,
                 isPressed: false,
                 expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .criticalQuiet,
+                type: .negativeQuiet,
                 isEnabled: true,
                 isPressed: true,
                 expectedColor: colorProvider.token.backgroundNegativeSubtleActive
             ),
             ButtonVariant(
-                type: .criticalQuiet,
+                type: .negativeQuiet,
                 isEnabled: false,
                 expectedColor: disabledBackgroundColor
             ),
@@ -386,38 +386,38 @@ final class ColorFactorySmokeTests: XCTestCase {
             
             // Critical
             ButtonVariant(
-                type: .critical,
+                type: .negative,
                 isEnabled: true,
                 isPressed: false,
                 expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .critical,
+                type: .negative,
                 isEnabled: true,
                 isPressed: true,
                 expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .critical,
+                type: .negative,
                 isEnabled: false,
                 expectedColor: disabledBorderColor
             ),
             
             // CriticalQuiet
             ButtonVariant(
-                type: .criticalQuiet,
+                type: .negativeQuiet,
                 isEnabled: true,
                 isPressed: false,
                 expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .criticalQuiet,
+                type: .negativeQuiet,
                 isEnabled: true,
                 isPressed: true,
                 expectedColor: colorProvider.token.backgroundTransparent0
             ),
             ButtonVariant(
-                type: .criticalQuiet,
+                type: .negativeQuiet,
                 isEnabled: false,
                 expectedColor: disabledBorderColor
             ),

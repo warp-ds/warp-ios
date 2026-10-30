@@ -79,7 +79,7 @@ struct StepIndicatorView: View {
                                 action: {
                                     popStep()
                                 },
-                                type: .critical,
+                                type: .negative,
                                 fullWidth: true
                             )
                         }
