@@ -85,6 +85,50 @@
         }
       }
     },
+    "stepIndicator.state.incomplete" : {
+      "comment" : "VoiceOver state of a step indicator step that has not been started.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Ikke påbegyndt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Not started" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Ei aloitettu" } },
+        "nb-NO" : { "stringUnit" : { "state" : "translated", "value" : "Ikke påbegynt" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Inte påbörjad" } }
+      }
+    },
+    "stepIndicator.state.inProgress" : {
+      "comment" : "VoiceOver state of the step indicator step that is currently in progress.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "I gang" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "In progress" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Kesken" } },
+        "nb-NO" : { "stringUnit" : { "state" : "translated", "value" : "Pågår" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Pågår" } }
+      }
+    },
+    "stepIndicator.state.complete" : {
+      "comment" : "VoiceOver state of a completed step indicator step.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Fuldført" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Completed" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Valmis" } },
+        "nb-NO" : { "stringUnit" : { "state" : "translated", "value" : "Fullført" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Slutförd" } }
+      }
+    },
+    "stepIndicator.state.error" : {
+      "comment" : "VoiceOver state of a step indicator step that failed or is invalid.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Fejl" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Error" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Virhe" } },
+        "nb-NO" : { "stringUnit" : { "state" : "translated", "value" : "Feil" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Fel" } }
+      }
+    },
     "warp.tabBarBadge.newNotification" : {
       "comment" : "VoiceOver value for a tab bar badge indicating a new notification (dot).",
       "extractionState" : "manual",

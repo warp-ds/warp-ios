@@ -2,6 +2,10 @@ import Foundation
 
 extension Warp {
     enum Strings: String, Sendable {
+        case stepIndicatorStateError = "stepIndicator.state.error"
+        case stepIndicatorStateIncomplete = "stepIndicator.state.incomplete"
+        case stepIndicatorStateInProgress = "stepIndicator.state.inProgress"
+        case stepIndicatorStateComplete = "stepIndicator.state.complete"
         case iconAnchor = "icon.title.anchor"
         case iconActiveAds = "icon.title.activeAds"
         case iconAds = "icon.title.ads"

@@ -17,6 +17,24 @@ final class StepIndicatorModelTests: XCTestCase {
         }
     }
 
+    func testErrorStepAllowedAnywhere() throws {
+        let error = Warp.StepIndicatorItem(title: "E", description: "E", progress: .error)
+        XCTAssertNoThrow(try Warp.StepIndicatorModel(from: [.mockCompleted, error, .mockNotStarted]))
+        XCTAssertNoThrow(try Warp.StepIndicatorModel(from: [.mockInProgress, error]))
+        XCTAssertNoThrow(try Warp.StepIndicatorModel(from: [.mockNotStarted, error]))
+    }
+
+    func testActiveOrCompletedAfterErrorThrows() {
+        let error = Warp.StepIndicatorItem(title: "E", description: "E", progress: .error)
+        XCTAssertThrowsError(try Warp.StepIndicatorModel(from: [error, .mockCompleted]))
+        XCTAssertThrowsError(try Warp.StepIndicatorModel(from: [error, .mockInProgress]))
+    }
+
+    func testOrderedStepsHaveOneBasedIndex() throws {
+        let ordered = try Warp.StepIndicatorModel(from: [.mockCompleted, .mockInProgress, .mockNotStarted]).asOrderedSteps
+        XCTAssertEqual(ordered.map(\.index), [1, 2, 3])
+    }
+
     func testCanCreateEmpty() {
         let steps: [Warp.StepIndicatorItem] = []
         
