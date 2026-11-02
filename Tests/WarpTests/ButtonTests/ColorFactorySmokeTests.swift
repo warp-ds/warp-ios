@@ -71,7 +71,7 @@ final class ColorFactorySmokeTests: XCTestCase {
                 expectedColor: disabledTextColor
             ),
             
-            // Critical
+            // Negative
             ButtonVariant(
                 type: .negative,
                 isEnabled: true,
@@ -83,7 +83,7 @@ final class ColorFactorySmokeTests: XCTestCase {
                 expectedColor: disabledTextColor
             ),
             
-            // CriticalQuiet
+            // NegativeQuiet
             ButtonVariant(
                 type: .negativeQuiet,
                 isEnabled: true,
@@ -210,7 +210,7 @@ final class ColorFactorySmokeTests: XCTestCase {
                 expectedColor: disabledBackgroundColor
             ),
             
-            // Critical
+            // Negative
             ButtonVariant(
                 type: .negative,
                 isEnabled: true,
@@ -229,7 +229,7 @@ final class ColorFactorySmokeTests: XCTestCase {
                 expectedColor: disabledBackgroundColor
             ),
             
-            // CriticalQuiet
+            // NegativeQuiet
             ButtonVariant(
                 type: .negativeQuiet,
                 isEnabled: true,
@@ -384,7 +384,7 @@ final class ColorFactorySmokeTests: XCTestCase {
                 expectedColor: disabledBorderColor
             ),
             
-            // Critical
+            // Negative
             ButtonVariant(
                 type: .negative,
                 isEnabled: true,
@@ -403,7 +403,7 @@ final class ColorFactorySmokeTests: XCTestCase {
                 expectedColor: disabledBorderColor
             ),
             
-            // CriticalQuiet
+            // NegativeQuiet
             ButtonVariant(
                 type: .negativeQuiet,
                 isEnabled: true,

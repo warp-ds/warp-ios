@@ -20,7 +20,7 @@ final class MetricsFactorySmokeTests: XCTestCase {
                 expectation: defaultBorderWidthExpectation
             ),
             
-            // Critical
+            // Negative
             ButtonVariant(
                 type: .negative,
                 expectation: defaultBorderWidthExpectation
@@ -74,7 +74,7 @@ final class MetricsFactorySmokeTests: XCTestCase {
                 expectation: defaultCornerRadiusExpectation
             ),
             
-            // Critical
+            // Negative
             ButtonVariant(
                 type: .negative,
                 expectation: defaultCornerRadiusExpectation
@@ -142,7 +142,7 @@ final class MetricsFactorySmokeTests: XCTestCase {
                 expectation: smallButtonVerticalPadding
             ),
             
-            // Critical
+            // Negative
             ButtonVariant(
                 type: .negative,
                 size: .big,
@@ -234,7 +234,7 @@ final class MetricsFactorySmokeTests: XCTestCase {
                 expectation: smallButtonHorizontalPadding
             ),
             
-            // Critical
+            // Negative
             ButtonVariant(
                 type: .negative,
                 size: .big,
