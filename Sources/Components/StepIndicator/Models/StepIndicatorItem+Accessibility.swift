@@ -1,16 +1,16 @@
 import SwiftUI
 
 extension View {
-    /// Makes a whole step a single VoiceOver element.
+    /// Groups a whole step for VoiceOver.
     ///
     /// Default title: one element labelled with `accessibilityLabel(title:description:progress:)`.
-    /// Custom title: its own accessibility content is kept (combined) and the state is added as the
-    /// value, like Android's `stateDescription`, because the title text is unknown to us.
+    /// Custom title: the step keeps its children (`.contain`), so interactive content in the slot
+    /// (such as buttons) stays separately focusable. The state is added as the value of the title
+    /// slot instead, see the custom-title branch in the item views.
     @ViewBuilder
     func stepAccessibility(step: Warp.StepIndicatorItem, hasCustomTitle: Bool) -> some View {
         if hasCustomTitle {
-            accessibilityElement(children: .combine)
-                .accessibilityValue(step.progress.accessibilityLabel)
+            accessibilityElement(children: .contain)
         } else {
             accessibilityElement(children: .ignore)
                 .accessibilityLabel(

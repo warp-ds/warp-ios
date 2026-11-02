@@ -10,7 +10,7 @@ extension Warp.StepIndicator {
 
         var body: some View {
             VStack(alignment: .center, spacing: Warp.Spacing.spacing100) {
-                (titleView ?? AnyView(
+                (titleView.map { AnyView($0.accessibilityValue(step.progress.accessibilityLabel)) } ?? AnyView(
                     Warp.StepIndicator.TitleView(step: step, layoutOrientation: .horizontal)
                 ))
                 .padding(.horizontal, Warp.Spacing.spacing100)

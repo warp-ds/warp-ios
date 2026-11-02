@@ -17,7 +17,7 @@ extension Warp.StepIndicator {
                 )
 
                 // Expands horizontally; height grows downward with its content.
-                (titleView ?? AnyView(
+                (titleView.map { AnyView($0.accessibilityValue(step.progress.accessibilityLabel)) } ?? AnyView(
                     Warp.StepIndicator.TitleView(step: step, layoutOrientation: .vertical)
                 ))
                 .padding(.bottom, Warp.Spacing.spacing300)

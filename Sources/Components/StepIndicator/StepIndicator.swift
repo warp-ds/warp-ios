@@ -56,6 +56,9 @@ extension Warp {
         ///
         /// The title view expands horizontally in `.horizontal` layout and grows downward in `.vertical` layout.
         /// Use `Warp.StepIndicator.TitleView` inside the closure to keep the default formatting.
+        ///
+        /// The step state is announced as the value of the title view. Interactive content in the title
+        /// view (such as buttons) stays separately focusable.
         public init<Title: View>(
             layoutOrientation: LayoutOrientation = .vertical,
             numbered: Bool = false,

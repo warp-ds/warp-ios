@@ -25,6 +25,7 @@ extension Warp.StepIndicator {
                 case .inProgress:
                     Circle()
                         .strokeBorder(progress.borderColor(using: colorProvider), lineWidth: lineWidth)
+                        .background(Circle().fill(progress.fillColor(using: colorProvider)))
                         .overlay { numberView(color: colorProvider.token.text) }
                 case .complete:
                     Circle()

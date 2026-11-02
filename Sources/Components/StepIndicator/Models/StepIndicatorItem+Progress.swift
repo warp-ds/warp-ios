@@ -18,9 +18,9 @@ public extension Warp.StepIndicatorItem {
 
         func fillColor(using colorProvider: ColorProvider) -> SwiftUI.Color {
             switch self {
-            case .incomplete, .error:
+            case .incomplete, .inProgress, .error:
                 colorProvider.token.background
-            case .inProgress, .complete:
+            case .complete:
                 colorProvider.token.backgroundPrimary
             }
         }

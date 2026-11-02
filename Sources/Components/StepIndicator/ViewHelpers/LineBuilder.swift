@@ -17,7 +17,7 @@ extension Warp.StepIndicator {
             let earlierProgress = otherIsPrevious ? otherProgress : ownProgress
             let fillColor = earlierProgress == .complete
                 ? colorProvider.token.backgroundPrimary
-                : colorProvider.token.backgroundDisabled
+                : colorProvider.token.border
 
             let radius = lineThickness / 2
 
