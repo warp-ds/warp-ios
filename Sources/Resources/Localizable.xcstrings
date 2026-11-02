@@ -177,6 +177,17 @@
         "sv" : { "stringUnit" : { "state" : "translated", "value" : "Fel" } }
       }
     },
+    "stepIndicator.position" : {
+      "comment" : "VoiceOver position of a numbered step indicator step. First placeholder is the step number, second is the total number of steps.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : { "stringUnit" : { "state" : "translated", "value" : "Trin %1$lld af %2$lld" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Step %1$lld of %2$lld" } },
+        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Vaihe %1$lld / %2$lld" } },
+        "nb-NO" : { "stringUnit" : { "state" : "translated", "value" : "Steg %1$lld av %2$lld" } },
+        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Steg %1$lld av %2$lld" } }
+      }
+    },
     "warp.tabBarBadge.newNotification" : {
       "comment" : "VoiceOver value for a tab bar badge indicating a new notification (dot).",
       "extractionState" : "manual",

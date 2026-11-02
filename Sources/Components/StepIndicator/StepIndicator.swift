@@ -83,11 +83,17 @@ extension Warp {
                             step: step.item,
                             stepPosition: step.position,
                             number: numbered ? step.index : nil,
-                            titleView: titleBuilder?(step.item)
+                            titleView: titleBuilder?(step.item),
+                            positionLabel: positionLabel(for: step)
                         )
                     }
                 }
             }
+        }
+
+        /// "Step N of M" for numbered steps, so VoiceOver announces the position the number shows.
+        private func positionLabel(for step: StepIndicatorModel.OrderedStepIndicatorItem) -> String? {
+            numbered ? Warp.StepIndicatorItem.positionLabel(number: step.index, total: orderedSteps.count) : nil
         }
 
         @ViewBuilder
@@ -99,7 +105,8 @@ extension Warp {
                             step: step.item,
                             stepPosition: step.position,
                             number: numbered ? step.index : nil,
-                            titleView: titleBuilder?(step.item)
+                            titleView: titleBuilder?(step.item),
+                            positionLabel: positionLabel(for: step)
                         )
                     }
                 }

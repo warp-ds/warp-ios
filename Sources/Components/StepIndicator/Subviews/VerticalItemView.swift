@@ -7,6 +7,8 @@ extension Warp.StepIndicator {
         var number: Int? = nil
         /// Custom title slot. `nil` renders the default `Warp.StepIndicator.TitleView`.
         var titleView: AnyView? = nil
+        /// Spoken position such as "Step 2 of 5", added to the step's label.
+        var positionLabel: String? = nil
 
         var body: some View {
             HStack(alignment: .top, spacing: Warp.Spacing.spacing100) {
@@ -24,7 +26,7 @@ extension Warp.StepIndicator {
                 .frame(maxWidth: .infinity, alignment: .topLeading)
             }
             .fixedSize(horizontal: false, vertical: true)
-            .stepAccessibility(step: step, hasCustomTitle: titleView != nil)
+            .stepAccessibility(step: step, hasCustomTitle: titleView != nil, positionLabel: positionLabel)
         }
     }
 }

@@ -13,7 +13,8 @@ struct StepIndicatorAccessibilityTests {
         .stepIndicatorStateIncomplete,
         .stepIndicatorStateInProgress,
         .stepIndicatorStateComplete,
-        .stepIndicatorStateError
+        .stepIndicatorStateError,
+        .stepIndicatorPosition
     ]
 
     // MARK: - Translations
@@ -100,6 +101,33 @@ struct StepIndicatorAccessibilityTests {
         )
 
         let expected = "Start, Begin here, \(Warp.Strings.stepIndicatorStateComplete.localized)"
+
+        #expect(label == expected)
+    }
+
+    @Test
+    func positionLabelFillsLocalizedTemplate() {
+        #expect(Warp.Strings.stepIndicatorPosition.localized != Warp.Strings.stepIndicatorPosition.rawValue)
+        #expect(
+            Warp.StepIndicatorItem.positionLabel(number: 2, total: 5)
+                == String(format: Warp.Strings.stepIndicatorPosition.localized, 2, 5)
+        )
+    }
+
+    @Test
+    func positionIsSpokenBeforeTitleAndState() {
+        let label = Warp.StepIndicatorItem.accessibilityLabel(
+            title: "Payment",
+            description: nil,
+            progress: .inProgress,
+            positionLabel: Warp.StepIndicatorItem.positionLabel(number: 2, total: 4)
+        )
+
+        let expected = [
+            Warp.StepIndicatorItem.positionLabel(number: 2, total: 4),
+            "Payment",
+            Warp.Strings.stepIndicatorStateInProgress.localized
+        ].joined(separator: ", ")
 
         #expect(label == expected)
     }

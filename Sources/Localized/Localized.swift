@@ -3,6 +3,7 @@ import Foundation
 extension Warp {
     enum Strings: String, Sendable {
         case stepIndicatorStateError = "stepIndicator.state.error"
+        case stepIndicatorPosition = "stepIndicator.position"
         case stepIndicatorStateIncomplete = "stepIndicator.state.incomplete"
         case stepIndicatorStateInProgress = "stepIndicator.state.inProgress"
         case stepIndicatorStateComplete = "stepIndicator.state.complete"
