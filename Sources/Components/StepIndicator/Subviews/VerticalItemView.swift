@@ -4,23 +4,29 @@ extension Warp.StepIndicator {
     struct VerticalItemView: View {
         let step: Warp.StepIndicatorItem
         let stepPosition: Warp.StepIndicatorItem.Position
+        var number: Int? = nil
+        /// Custom title slot. `nil` renders the default `Warp.StepIndicator.TitleView`.
+        var titleView: AnyView? = nil
+        /// Spoken position such as "Step 2 of 5", added to the step's label.
+        var positionLabel: String? = nil
 
         var body: some View {
-            HStack(alignment: .top, spacing: 8) {
+            HStack(alignment: .top, spacing: Warp.Spacing.spacing100) {
                 Warp.StepIndicator.VerticalProgressView(
                     progress: step.progress,
-                    stepPosition: stepPosition
+                    stepPosition: stepPosition,
+                    number: number
                 )
 
-                Warp.StepIndicator.DescriptionView(
-                    step: step,
-                    layoutOrientation: .vertical
-                )
-                .padding(.bottom, 16)
-
-                Spacer()
+                // Expands horizontally; height grows downward with its content.
+                (titleView.map { AnyView($0.accessibilityValue(step.progress.accessibilityLabel)) } ?? AnyView(
+                    Warp.StepIndicator.TitleView(step: step, layoutOrientation: .vertical)
+                ))
+                .padding(.bottom, Warp.Spacing.spacing300)
+                .frame(maxWidth: .infinity, alignment: .topLeading)
             }
             .fixedSize(horizontal: false, vertical: true)
+            .stepAccessibility(step: step, hasCustomTitle: titleView != nil, positionLabel: positionLabel)
         }
     }
 }
