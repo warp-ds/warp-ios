@@ -54,7 +54,8 @@ extension Warp.StepIndicator {
         private func numberView(color: Color) -> some View {
             if let number {
                 Warp.Text("\(number)", style: .detailStrong, color: color)
-                    .minimumScaleFactor(0.5)
+                    .dynamicTypeSize(.large)
+                    .minimumScaleFactor(1)
                     .lineLimit(1)
                     .accessibilityHidden(true)
             }
