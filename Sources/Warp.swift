@@ -58,12 +58,12 @@ public enum Warp {
         /// ```
         public var token: TokenProvider {
             switch self {
-            case .finn: return FinnTokenProvider()
-            case .tori: return ToriTokenProvider()
-            case .dba: return DbaTokenProvider()
-            case .blocket: return BlocketTokenProvider()
-            case .vend: return VendTokenProvider()
-            case .neutral: return NeutralTokenProvider()
+            case .finn: return TokenProviderCache.finn
+            case .tori: return TokenProviderCache.tori
+            case .dba: return TokenProviderCache.dba
+            case .blocket: return TokenProviderCache.blocket
+            case .vend: return TokenProviderCache.vend
+            case .neutral: return TokenProviderCache.neutral
             }
         }
 
@@ -76,23 +76,23 @@ public enum Warp {
         /// ```
         public var uiToken: UITokenProvider {
             switch self {
-            case .finn: return FinnUITokenProvider()
-            case .tori: return ToriUITokenProvider()
-            case .dba: return DbaUITokenProvider()
-            case .blocket: return BlocketUITokenProvider()
-            case .vend: return VendUITokenProvider()
-            case .neutral: return NeutralUITokenProvider()
+            case .finn: return TokenProviderCache.finnUI
+            case .tori: return TokenProviderCache.toriUI
+            case .dba: return TokenProviderCache.dbaUI
+            case .blocket: return TokenProviderCache.blocketUI
+            case .vend: return TokenProviderCache.vendUI
+            case .neutral: return TokenProviderCache.neutralUI
             }
         }
 
         /// Data visualization token provider
         var datavizToken: DatavizTokenProvider {
-            DatavizTokenProvider()
+            TokenProviderCache.dataviz
         }
 
         /// Data visualization UIColor token provider
         var datavizUIToken: DatavizUITokenProvider {
-            DatavizUITokenProvider()
+            TokenProviderCache.datavizUI
         }
 
         /// Typography provider for this brand
@@ -181,7 +181,7 @@ public enum Warp {
     /// This computed property returns an instance of a `DatavizTokenProvider`.
     /// It facilitates easy access to dataviz colors that are used throughout the design system.
     public static var DatavizToken: DatavizTokenProvider {
-        DatavizTokenProvider()
+        TokenProviderCache.dataviz
     }
 
     /// Provides `UIColor` values for Dataviz tokens.
@@ -189,6 +189,6 @@ public enum Warp {
     /// This computed property returns an instance of a `DatavizUITokenProvider`.
     /// It facilitates easy access to dataviz colors that are used throughout the design system.
     public static var DatavizUIToken: DatavizUITokenProvider {
-        DatavizUITokenProvider()
+        TokenProviderCache.datavizUI
     }
 }
