@@ -36,12 +36,12 @@ public struct ColorProvider {
 
     private static func tokenProvider(for theme: Warp.Brand) -> TokenProvider {
         switch theme {
-        case .finn: return FinnTokenProvider()
-        case .tori: return ToriTokenProvider()
-        case .dba: return DbaTokenProvider()
-        case .blocket: return BlocketTokenProvider()
-        case .vend: return VendTokenProvider()
-        case .neutral: return NeutralTokenProvider()
+        case .finn: return TokenProviderCache.finn
+        case .tori: return TokenProviderCache.tori
+        case .dba: return TokenProviderCache.dba
+        case .blocket: return TokenProviderCache.blocket
+        case .vend: return TokenProviderCache.vend
+        case .neutral: return TokenProviderCache.neutral
         }
     }
     
@@ -364,12 +364,12 @@ public struct UIColorProvider {
 
     private static func tokenProvider(for theme: Warp.Brand) -> UITokenProvider {
         switch theme {
-        case .finn: return FinnUITokenProvider()
-        case .tori: return ToriUITokenProvider()
-        case .dba: return DbaUITokenProvider()
-        case .blocket: return BlocketUITokenProvider()
-        case .vend: return VendUITokenProvider()
-        case .neutral: return NeutralUITokenProvider()
+        case .finn: return TokenProviderCache.finnUI
+        case .tori: return TokenProviderCache.toriUI
+        case .dba: return TokenProviderCache.dbaUI
+        case .blocket: return TokenProviderCache.blocketUI
+        case .vend: return TokenProviderCache.vendUI
+        case .neutral: return TokenProviderCache.neutralUI
         }
     }
     
