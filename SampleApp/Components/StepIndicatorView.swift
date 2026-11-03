@@ -329,7 +329,7 @@ struct StepIndicatorView: View {
                     numbered: numbered,
                     stepModel: stepModel
                 ) { step in
-                    pushStepSlot(for: step, config: slotConfig(for: step))
+                    pushStepSlot(for: step, config: slotConfig(for: step, in: stepModel))
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
@@ -342,10 +342,13 @@ struct StepIndicatorView: View {
         })
     }
 
-    /// Looks up the slot config of the step being rendered. Items get a fresh id on every render,
-    /// so the match is by title and description.
-    private func slotConfig(for step: Warp.StepIndicatorItem) -> SlotConfig {
-        steps.first { $0.title == step.title && $0.description == step.description }?.slot ?? SlotConfig()
+    /// Looks up the slot config of the step being rendered. The model keeps the order of `steps`,
+    /// so the match is by position, which also tells apart steps with identical text.
+    private func slotConfig(for step: Warp.StepIndicatorItem, in model: Warp.StepIndicatorModel) -> SlotConfig {
+        guard let index = model.steps.firstIndex(where: { $0.id == step.id }), steps.indices.contains(index) else {
+            return SlotConfig()
+        }
+        return steps[index].slot
     }
 
     /// Slot built from a step's own options: any combination of title & subtitle, button and alert.
