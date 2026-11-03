@@ -89,6 +89,7 @@ extension Warp {
                             // we do not accept completed steps after a step in progress
                             throw StepIndicatorError.completedStepAfterInProgressStep
                         case .error:
+                            // unreachable: error steps are handled by the early return above
                             mutableExistingItems.append(currentItem)
                             return mutableExistingItems
                         }
@@ -105,6 +106,7 @@ extension Warp {
                             // we do not accept a completed step _after_ an incomplete step
                             throw StepIndicatorError.completedStepAfterIncompletedStep
                         case .error:
+                            // unreachable: error steps are handled by the early return above
                             mutableExistingItems.append(currentItem)
                             return mutableExistingItems
                         }
