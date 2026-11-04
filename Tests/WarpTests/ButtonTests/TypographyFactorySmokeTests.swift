@@ -13,7 +13,7 @@ final class TypographyFactorySmokeTests: XCTestCase {
         let typesWithExpectations: [(type: Warp.ButtonType, expectedFont: Font)] = [
             (.primary, calloutFont),
             (.secondary, calloutFont),
-            (.critical, calloutFont),
+            (.negative, calloutFont),
             
             (.utility, captionFont),
             (.utilityQuiet, captionFont),
@@ -33,7 +33,7 @@ final class TypographyFactorySmokeTests: XCTestCase {
         let typesWithExpectations: [(type: Warp.ButtonType, expectedLineLimit: Int)] = [
             (.primary, onlyOneLineLimit),
             (.secondary, onlyOneLineLimit),
-            (.critical, onlyOneLineLimit),
+            (.negative, onlyOneLineLimit),
             
             (.utility, onlyOneLineLimit),
             (.utilityQuiet, onlyOneLineLimit),
@@ -53,7 +53,7 @@ final class TypographyFactorySmokeTests: XCTestCase {
         let typesWithExpectations: [(type: Warp.ButtonType, expectedTruncationMode: Text.TruncationMode)] = [
             (.primary, middleTruncationMode),
             (.secondary, middleTruncationMode),
-            (.critical, middleTruncationMode),
+            (.negative, middleTruncationMode),
             
             (.utility, middleTruncationMode),
             (.utilityQuiet, middleTruncationMode),

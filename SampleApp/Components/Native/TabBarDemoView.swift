@@ -25,7 +25,7 @@ struct TabBarDemoView: View {
                 Warp.Button(title: "Add count", action: { badges[selectedTab] = .count(count) }, fullWidth: true)
                 Warp.Button(title: "Add dot", action: { badges[selectedTab] = .dot }, fullWidth: true)
             }
-            Warp.Button(title: "Remove badge", action: { badges[selectedTab] = nil }, type: .critical, fullWidth: true)
+            Warp.Button(title: "Remove badge", action: { badges[selectedTab] = nil }, type: .negative, fullWidth: true)
 
             WarpTabBarControllerWrapper(badges: badges)
                 .ignoresSafeArea(edges: .bottom)

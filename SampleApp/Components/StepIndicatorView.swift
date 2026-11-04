@@ -229,7 +229,7 @@ struct StepIndicatorView: View {
                                 Warp.Button(
                                     title: "Pop Step",
                                     action: { popStep() },
-                                    type: .critical,
+                                    type: .negative,
                                     fullWidth: true
                                 )
                             }

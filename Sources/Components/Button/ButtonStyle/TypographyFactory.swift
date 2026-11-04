@@ -30,7 +30,7 @@ extension Warp.Button {
         /// Button label line limit.
         /// It will be decided based on button type.
         var lineLimit: Int {
-            /*type == .critical ? Int.max : */
+            /*type == .negative ? Int.max : */
             1
         }
 

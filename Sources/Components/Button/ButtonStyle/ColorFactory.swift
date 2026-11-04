@@ -38,10 +38,10 @@ extension Warp.Button {
             case .quiet:
                 return colorProvider.token.textLink
                 
-            case .critical:
+            case .negative:
                 return colorProvider.token.textInverted
                 
-            case .criticalQuiet:
+            case .negativeQuiet:
                 return colorProvider.token.textNegative
                 
             case .utility:
@@ -85,10 +85,10 @@ extension Warp.Button {
             case .quiet:
                 return colorProvider.token.backgroundTransparent0
                 
-            case .critical:
+            case .negative:
                 return colorProvider.token.backgroundNegative
                 
-            case .criticalQuiet:
+            case .negativeQuiet:
                 return colorProvider.token.backgroundTransparent0
 
             case .utility:
@@ -113,10 +113,10 @@ extension Warp.Button {
             case .quiet:
                 return colorProvider.token.backgroundActive
                 
-            case .critical:
+            case .negative:
                 return colorProvider.token.backgroundNegativeActive
                 
-            case .criticalQuiet:
+            case .negativeQuiet:
                 return colorProvider.token.backgroundNegativeSubtleActive
                 
             case .utility:

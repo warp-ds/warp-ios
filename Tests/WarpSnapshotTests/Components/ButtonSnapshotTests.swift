@@ -88,8 +88,10 @@ private extension Warp.ButtonType {
         case .primary: return "primary"
         case .secondary: return "secondary"
         case .quiet: return "quiet"
-        case .critical: return "destructive"
-        case .criticalQuiet: return "criticalQuiet"
+        // The negative types keep their pre-rename names: they are part of the reference image
+        // file names and of the button titles drawn in the images. Renaming them needs a re-record.
+        case .negative: return "destructive"
+        case .negativeQuiet: return "criticalQuiet"
         case .utility: return "utility"
         case .utilityQuiet: return "utilityQuiet"
         case .utilityOverlay: return "utilityOverlay"
