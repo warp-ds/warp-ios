@@ -203,7 +203,7 @@ struct NotificationBadgeTests {
     @Test(arguments: [
         ("sv", "1 olästa", "2 olästa"),
         ("nb-NO", "1 uleste", "2 uleste"),
-        ("da", "1 ulæste", "2 ulæste"),
+        ("da", "1 ulæst", "2 ulæste"),
         ("fi", "1 lukematonta", "2 lukematonta"),
         ("en", "1 unread", "2 unread")
     ])
