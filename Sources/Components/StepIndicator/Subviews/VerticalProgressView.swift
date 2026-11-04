@@ -4,6 +4,7 @@ extension Warp.StepIndicator {
     struct VerticalProgressView: View {
         let progress: Warp.StepIndicatorItem.Progress
         let stepPosition: Warp.StepIndicatorItem.Position
+        let number: Int?
         let lineWidth: Double = 2
 
         /// The current theme from the environment.
@@ -16,39 +17,23 @@ extension Warp.StepIndicator {
 
         init(
             progress: Warp.StepIndicatorItem.Progress,
-            stepPosition: Warp.StepIndicatorItem.Position
+            stepPosition: Warp.StepIndicatorItem.Position,
+            number: Int? = nil
         ) {
+            self.number = number
             self.progress = progress
             self.stepPosition = stepPosition
         }
         
         var body: some View {
-            VStack(alignment: .center, spacing: 0) {
-                switch progress {
-                case .incomplete:
-                    Circle()
-                        .strokeBorder(
-                            progress.borderColor(using: colorProvider),
-                            lineWidth: lineWidth
-                        )
-                        .frame(width: 20, height: 20)
-                case .inProgress:
-                    Circle()
-                        .fill(progress.fillColor(using: colorProvider))
-                case .complete:
-                    Circle()
-                        .fill(progress.fillColor(using: colorProvider))
-                        .overlay(alignment: .leading) {
-                            Warp.IconView(.check, size: .small)
-                                .foregroundColor(colorProvider.token.iconInverted)
-                                .offset(x: 2)
-                        }
-                }
-                
+            VStack(alignment: .center, spacing: Warp.Spacing.spacing50) {
+                Warp.StepIndicator.StepCircleView(progress: progress, number: number)
+
                 lineView
             }
             .frame(width: 20)
-            .accessibilityLabel(progress.accessibilityLabel)
+            // The state is announced by the enclosing item view.
+            .accessibilityHidden(true)
         }
         
         @ViewBuilder
@@ -59,6 +44,7 @@ extension Warp.StepIndicator {
                     LineBuilder.line(
                         for: nextProgress,
                         ownProgress: progress,
+                        otherIsPrevious: false,
                         colorProvider: colorProvider,
                         orientation: .vertical
                     )
@@ -69,6 +55,7 @@ extension Warp.StepIndicator {
                 LineBuilder.line(
                     for: nextProgress,
                     ownProgress: progress,
+                    otherIsPrevious: false,
                     colorProvider: colorProvider,
                     orientation: .vertical
                 )
