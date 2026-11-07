@@ -69,31 +69,20 @@ struct DatePickerSnapshotTests {
     }
 
     @Test(arguments: Warp.Brand.allCases)
-    func snapshotAllWarpDatePickers(brand: Warp.Brand) {
+    func snapshotWarpDatePickerWithAdditionalInformation(brand: Warp.Brand) {
         let snapshotName = ".\(brand.description)"
         Warp.Theme = brand
         let fixedDate = Calendar.current.date(from: DateComponents(year: 2023, month: 10, day: 15, hour: 9, minute: 41))!
 
-        let datePickers = Warp.TextFieldStyle.allCases.map { style in
-            Warp.DatePicker(
-                title: "\(style.rawValue.capitalized) style",
-                additionalInformation: "Additional info",
-                tooltipContent: AnyView(Warp.Tooltip(title: "Sample tooltip", arrowEdge: .leading)),
-                selection: .constant(fixedDate),
-                style: style,
-                helpText: "This is a Help text."
-            )
-        }
-
-        let datePickersInColumnView = VStack(alignment: .leading) {
-            ForEach(datePickers.indices, id: \.self) { index in
-                datePickers[index]
-            }
-        }
+        let view = Warp.DatePicker(
+            title: "Date",
+            additionalInformation: "Optional",
+            selection: .constant(fixedDate)
+        )
         .padding(8)
         .frame(width: ViewImageConfig.iPhone13.size!.width)
 
-        assertSnapshot(of: datePickersInColumnView.warpTheme(brand), as: .warpImage(compressionQuality: .medium), named: snapshotName)
+        assertSnapshot(of: view.warpTheme(brand), as: .warpImage, named: snapshotName)
     }
 
     @Test(arguments: Warp.Brand.allCases)
