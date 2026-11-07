@@ -62,12 +62,12 @@ struct RadioView: View {
                 
                 Warp.RadioGroup(
                     title: title,
-                    additionalInformation: additionalInformation.isEmpty ? nil : additionalInformation,
                     helpText: helpText,
                     selectedOption: $selectedOption,
                     options: options,
                     style: style,
                     axis: layoutDirection.axis,
+                    additionalInformation: additionalInformation.isEmpty ? nil : additionalInformation,
                     onSelection: { oldSelection, newSelection in
                         style = .default
                         print("Changed from \(oldSelection.title) to \(newSelection.title)")

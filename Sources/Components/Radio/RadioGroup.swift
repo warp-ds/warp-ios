@@ -9,12 +9,12 @@ extension Warp {
     ///
     /// - Parameters:
     ///   - title: An optional title for the radio group.
-    ///   - additionalInformation: Optional text to display after the group title, for example "Optional". Ignored when `title` is nil or empty.
     ///   - helpText: An optional help text displayed below the title or the radio buttons.
     ///   - selectedOption: A binding to the currently selected option.
     ///   - options: An array of options that conform to `RadioOption`.
     ///   - style: The style of the radio button group (default, error, disabled).
     ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
+    ///   - additionalInformation: Optional text to display after the group title, for example "Optional". Ignored when `title` is nil or empty.
     ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
     public struct RadioGroup<Option: RadioOption>: View {
         /// An optional title for the radio group.
@@ -46,20 +46,20 @@ extension Warp {
         ///
         /// - Parameters:
         ///   - title: An optional title for the radio group.
-        ///   - additionalInformation: Optional text to display after the group title. Ignored when `title` is nil or empty.
         ///   - helpText: An optional help text displayed below the title or the radio buttons.
         ///   - selectedOption: A binding to the currently selected option.
         ///   - options: An array of options that conform to `RadioOption`.
         ///   - style: The style the radio group can have (default, error, disabled).
         ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
+        ///   - additionalInformation: Optional text to display after the group title. Ignored when `title` is nil or empty.
         ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
         public init(title: String? = nil,
-                    additionalInformation: String? = nil,
                     helpText: String? = nil,
                     selectedOption: Binding<Option>,
                     options: [Option],
                     style: RadioStyle = .default,
                     axis: Axis.Set = .vertical,
+                    additionalInformation: String? = nil,
                     onSelection: ((Option, Option) -> Void)? = nil) {
             self.title = title
             self.additionalInformation = additionalInformation

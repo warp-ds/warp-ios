@@ -67,10 +67,10 @@ struct RadioSnapshotTests {
 
         let radioView = Warp.RadioGroup(
             title: "Title",
-            additionalInformation: "Additional info",
             helpText: "Help text",
             selectedOption: .constant(options[1]),
-            options: options
+            options: options,
+            additionalInformation: "Additional info"
         )
         .padding(8)
         .frame(width: ViewImageConfig.iPhone13.size!.width)
