@@ -9,6 +9,7 @@ extension Warp {
     /// - Parameters:
     ///   - isSelected: A `Binding` value indicating whether the checkbox button is selected.
     ///   - label: The text label for the checkbox.
+    ///   - additionalInformation: Optional text to display after the label.
     ///   - style: The style the checkbox can have (default, error, disabled).
     ///   - extraContent: A view that will be displayed beside or below the label.
     ///   - action: A closure that is executed when the checkbox button is tapped.
@@ -17,6 +18,8 @@ extension Warp {
         @Binding var isSelected: Bool
         /// The optional text label for the checkbox.
         var label: String?
+        /// Optional text to display after the label, in the detail style with the subtle text colour.
+        var additionalInformation: String?
         /// The style the checkbox can have (default, error, disabled).
         var style: CheckboxStyle
         /// An optional view that will be displayed beside the label.
@@ -37,16 +40,19 @@ extension Warp {
         /// - Parameters:
         ///   - isSelected: A `Binding` value indicating whether the checkbox button is selected.
         ///   - label: The text label for the checkbox.
+        ///   - additionalInformation: Optional text to display after the label.
         ///   - style: The style the checkbox can have (default, error, disabled).
         ///   - extraContent: An optional view that will be displayed beside the label.
         ///   - action: A closure that is executed when the checkbox is tapped.
         public init(isSelected: Binding<Bool>,
                     label: String? = nil,
+                    additionalInformation: String? = nil,
                     style: CheckboxStyle = .default,
                     extraContent: AnyView? = nil,
                     action: @escaping () -> Void = {}) {
             self._isSelected = isSelected
             self.label = label
+            self.additionalInformation = additionalInformation
             self.style = style
             self.extraContent = extraContent
             self.action = action
@@ -62,7 +68,7 @@ extension Warp {
                     .background(backgroundColor.cornerRadius(4))
                     .animation(.interpolatingSpring())
 
-                if label != nil || extraContent != nil {
+                if label != nil || additionalInformation != nil || extraContent != nil {
                     contentStack
                 }
             }
@@ -92,10 +98,21 @@ extension Warp {
         @ViewBuilder
         private var contentStack: some View {
             HStack(alignment: .top, spacing: Spacing.spacing100) {
-                if let label {
-                    SwiftUI.Text(label)
-                        .font(from: .body)
-                        .foregroundColor(textColor)
+                if label != nil || additionalInformation != nil {
+                    HStack(alignment: .firstTextBaseline, spacing: Spacing.spacing50) {
+                        if let label {
+                            SwiftUI.Text(label)
+                                .font(from: .body)
+                                .foregroundColor(textColor)
+                        }
+                        if let additionalInformation {
+                            Text(
+                                additionalInformation,
+                                style: .detail,
+                                color: additionalInformationColor
+                            )
+                        }
+                    }
                 }
                 if let extraContent = extraContent {
                     extraContent
@@ -133,6 +150,15 @@ extension Warp {
             }
         }
         
+        private var additionalInformationColor: Color {
+            switch style {
+            case .default, .error:
+                return colorProvider.token.textSubtle
+            case .disabled:
+                return colorProvider.token.textDisabled
+            }
+        }
+
         private var textColor: Color {
             switch style {
             case .default, .error:

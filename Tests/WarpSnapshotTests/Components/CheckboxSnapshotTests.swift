@@ -54,6 +54,28 @@ struct CheckboxSnapshotTests {
             named: snapshotName
         )
     }
+
+    @Test(arguments: combine(Warp.Brand.allCases, checkboxStyle))
+    func snapshotCheckboxWithAdditionalInformation(brand: Warp.Brand, style: Warp.CheckboxStyle) {
+        let snapshotName = [
+            ".\(brand.description)",
+            "\(style.description)Style",
+        ].joined(separator: ".")
+        Warp.Theme = brand
+
+        let checkboxView = VStack(alignment: .leading, spacing: 8) {
+            Warp.Checkbox(isSelected: .constant(false), label: "Option 1", additionalInformation: "Optional", style: style)
+            Warp.Checkbox(isSelected: .constant(true), label: "Option 2", additionalInformation: "Optional", style: style)
+        }
+        .padding(8)
+        .frame(width: ViewImageConfig.iPhone13.size!.width, alignment: .leading)
+
+        assertSnapshot(
+            of: checkboxView.warpTheme(brand),
+            as: .warpImage(compressionQuality: .medium),
+            named: snapshotName
+        )
+    }
 }
 
 extension Axis.Set {

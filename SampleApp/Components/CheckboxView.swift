@@ -25,6 +25,9 @@ struct CheckboxView: View {
     @State private var style: Warp.CheckboxStyle = .default
     @State private var title: String = "Title"
     @State private var helpText: String = "Help text"
+    @State private var showAdditionalInformation: Bool = true
+    @State private var additionalInformation: String = "Optional"
+    @State private var isSelectedStandalone: Bool = false
     @State private var layoutDirection: LayoutDirection = .vertical
 
     var body: some View {
@@ -34,6 +37,7 @@ struct CheckboxView: View {
                 stylePicker
                 layoutDirectionPicker
                 checkboxGroup
+                standaloneCheckbox
             }
             .padding()
         }
@@ -56,6 +60,14 @@ struct CheckboxView: View {
             TextField("Help Text", text: $helpText)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)
+
+            Toggle("Show additional information", isOn: $showAdditionalInformation)
+                .padding(.horizontal)
+
+            TextField("Additional Information", text: $additionalInformation)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.horizontal)
+                .disabled(!showAdditionalInformation)
         }
     }
 
@@ -100,6 +112,19 @@ struct CheckboxView: View {
         )
     }
     
+    private var standaloneCheckbox: some View {
+        HStack {
+            Warp.Checkbox(
+                isSelected: $isSelectedStandalone,
+                label: title,
+                additionalInformation: showAdditionalInformation ? additionalInformation : nil,
+                style: style,
+                action: { isSelectedStandalone.toggle() }
+            )
+            Spacer()
+        }
+    }
+
     private func populateOptions() {
         // Initialize options with `Binding<Bool>` for `isSelected`
         options = [
