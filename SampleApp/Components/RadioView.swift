@@ -19,6 +19,7 @@ struct RadioView: View {
     @State private var selectedOption = ExampleOption(title: "Option 4")
     @State private var style: Warp.RadioStyle = .default
     @State private var title: String = "Title"
+    @State private var additionalInformation: String = "Optional"
     @State private var helpText: String = "Help text"
     @State private var layoutDirection: LayoutDirection = .vertical
     @State private var showAlert: Bool = false
@@ -30,6 +31,10 @@ struct RadioView: View {
             VStack(spacing: 20) {
                 // TextFields for editing the title and helpText
                 TextField("Title", text: $title)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+                
+                TextField("Additional Information", text: $additionalInformation)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
                 
@@ -57,6 +62,7 @@ struct RadioView: View {
                 
                 Warp.RadioGroup(
                     title: title,
+                    additionalInformation: additionalInformation.isEmpty ? nil : additionalInformation,
                     helpText: helpText,
                     selectedOption: $selectedOption,
                     options: options,

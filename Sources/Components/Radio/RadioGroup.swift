@@ -9,6 +9,7 @@ extension Warp {
     ///
     /// - Parameters:
     ///   - title: An optional title for the radio group.
+    ///   - additionalInformation: Optional text to display after the group title, for example "Optional". Ignored when `title` is nil or empty.
     ///   - helpText: An optional help text displayed below the title or the radio buttons.
     ///   - selectedOption: A binding to the currently selected option.
     ///   - options: An array of options that conform to `RadioOption`.
@@ -18,6 +19,8 @@ extension Warp {
     public struct RadioGroup<Option: RadioOption>: View {
         /// An optional title for the radio group.
         var title: String?
+        /// Optional text displayed after the group title in the detail style.
+        var additionalInformation: String?
         /// An optional help text displayed below the title or the radio buttons.
         var helpText: String?
         /// A binding to the currently selected option.
@@ -43,6 +46,7 @@ extension Warp {
         ///
         /// - Parameters:
         ///   - title: An optional title for the radio group.
+        ///   - additionalInformation: Optional text to display after the group title. Ignored when `title` is nil or empty.
         ///   - helpText: An optional help text displayed below the title or the radio buttons.
         ///   - selectedOption: A binding to the currently selected option.
         ///   - options: An array of options that conform to `RadioOption`.
@@ -50,6 +54,7 @@ extension Warp {
         ///   - axis: Determines whether the list of radio buttons is aligned vertically or horizontally.
         ///   - onSelection: A closure that will be triggered when an option is selected, providing the old and new selection.
         public init(title: String? = nil,
+                    additionalInformation: String? = nil,
                     helpText: String? = nil,
                     selectedOption: Binding<Option>,
                     options: [Option],
@@ -57,6 +62,7 @@ extension Warp {
                     axis: Axis.Set = .vertical,
                     onSelection: ((Option, Option) -> Void)? = nil) {
             self.title = title
+            self.additionalInformation = additionalInformation
             self.helpText = helpText
             self._selectedOption = selectedOption
             self.options = options
@@ -68,9 +74,7 @@ extension Warp {
         public var body: some View {
             VStack(alignment: .leading, spacing: Spacing.spacing200) {
                 if let title, !title.isEmpty {
-                    SwiftUI.Text(title)
-                        .font(from: .title5)
-                        .foregroundColor(colorProvider.token.text)
+                    titleView(title)
                 }
                 
                 accessibleGroupView
@@ -83,6 +87,18 @@ extension Warp {
             }
         }
         
+        /// The group title. With additional information it uses `Warp.Label`, otherwise the original plain text.
+        @ViewBuilder
+        private func titleView(_ title: String) -> some View {
+            if let additionalInformation, !additionalInformation.isEmpty {
+                Warp.Label(title: title, additionalInformation: additionalInformation)
+            } else {
+                SwiftUI.Text(title)
+                    .font(from: .title5)
+                    .foregroundColor(colorProvider.token.text)
+            }
+        }
+
         private var helpTextColor: Color {
             style == .error ? colorProvider.token.textNegative : colorProvider.token.textSubtle
         }
