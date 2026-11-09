@@ -1,5 +1,6 @@
-
 # Warp Design System (iOS)
+
+ℹ️ Development of Warp has moved in-house. This repository is read-only.
 
 Welcome to the **Warp Design System** for iOS! This repository contains components and guidelines to help developers build unified, accessible, and visually consistent user interfaces for iOS apps. Warp's design system streamlines the development process while ensuring that all components align with iOS design best practices.
 
