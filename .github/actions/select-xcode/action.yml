@@ -1,21 +1,36 @@
-name: Select Xcode 26 toolchain
-description: Selects the highest installed Xcode 26.x toolchain
+name: Select Xcode 26.5 toolchain
+description: Selects Xcode 26.5 using xcode-select, as ios-app does
 
 runs:
-  using: composite
+  using: 'composite'
   steps:
-    - name: Select an Xcode 26 toolchain
+    - name: Select Xcode 26.5
       shell: bash
       run: |
         set -euo pipefail
-        # `|| true` because a plain assignment inherits the substitution's exit status: with
-        # `pipefail`, a glob that matches nothing makes `ls` fail, and `set -e` would kill the
-        # script here rather than letting the diagnostic below run.
-        XCODE_APP="$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1 || true)"
-        if [ -z "$XCODE_APP" ]; then
-          echo "::error::No Xcode 26.x found on this runner image."
-          ls -d /Applications/Xcode*.app
+
+        XCODE_VERSION="26.5"
+
+        for candidate in \
+          "/Applications/Xcode.app" \
+          "/Applications/Xcode_${XCODE_VERSION}.app" \
+          "/Applications/Xcode-${XCODE_VERSION}.app"; do
+          if [[ -d "$candidate/Contents/Developer" ]]; then
+            XCODE_PATH="$candidate"
+            break
+          fi
+        done
+
+        if [[ -z "${XCODE_PATH:-}" ]]; then
+          echo "::error::Xcode $XCODE_VERSION not found. Installed:"
+          find /Applications -maxdepth 1 -name "Xcode*.app" 2>/dev/null || echo "None found"
           exit 1
         fi
-        sudo xcode-select -s "$XCODE_APP"
+
+        sudo xcode-select -s "$XCODE_PATH/Contents/Developer"
+        ACTUAL="$(xcodebuild -version | awk 'NR==1{print $2}')"
+        if [[ "$ACTUAL" != "$XCODE_VERSION" ]]; then
+          echo "::error::Expected Xcode $XCODE_VERSION, got $ACTUAL."
+          exit 1
+        fi
         xcodebuild -version

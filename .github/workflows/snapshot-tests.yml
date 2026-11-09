@@ -15,10 +15,10 @@ concurrency:
 # Keep this and the xcodebuild test flags in sync with record-snapshots.yml: references recorded
 # on one setup must be compared on the same one.
 env:
-  XCODE_APP: /Applications/Xcode_26.3.app
-  XCODE_BUILD: 17C529
+  XCODE_APP: /Applications/Xcode.app
+  XCODE_VERSION: "26.5"
   SIM_DEVICE_TYPE: com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro
-  SIM_RUNTIME: com.apple.CoreSimulator.SimRuntime.iOS-26-0
+  SIM_RUNTIME: com.apple.CoreSimulator.SimRuntime.iOS-26-5
 
 defaults:
   run:
@@ -42,7 +42,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Pinned by exact path and build, unlike the shared select-xcode action (newest 26.x), so an
+    # Pinned by exact version, unlike the shared select-xcode action, so an
     # image update fails loudly instead of silently comparing on a different toolchain.
     - name: Select the pinned Xcode
       run: |
@@ -53,9 +53,9 @@ jobs:
         fi
         sudo xcode-select -s "$XCODE_APP"
         xcodebuild -version
-        BUILD="$(xcodebuild -version | tail -1 | awk '{print $NF}')"
-        if [ "$BUILD" != "$XCODE_BUILD" ]; then
-          echo "::error::Expected Xcode build $XCODE_BUILD, got $BUILD. Update the pin and re-record."
+        VERSION="$(xcodebuild -version | awk 'NR==1{print $2}')"
+        if [ "$VERSION" != "$XCODE_VERSION" ]; then
+          echo "::error::Expected Xcode $XCODE_VERSION, got $VERSION. Update the pin and re-record."
           exit 1
         fi
 

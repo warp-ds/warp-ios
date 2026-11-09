@@ -43,10 +43,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Highest installed 26.x rather than a pinned point release, so an image update that swaps
-    # 26.3 for 26.4 does not break the build. Both matrix legs get the same toolchain, so a
+    # Xcode 26.5, the version ios-app uses. Both matrix legs get the same toolchain, so a
     # difference between them is attributable to the OS version rather than to the compiler.
-    - name: Select an Xcode 26 toolchain
+    - name: Select Xcode 26.5
       uses: ./.github/actions/select-xcode
 
     - name: Resolve an iOS ${{ matrix.ios-major }} simulator

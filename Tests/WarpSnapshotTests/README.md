@@ -8,10 +8,10 @@ The record workflow (`.github/workflows/record-snapshots.yml`) records reference
 
 | Component | Version/Configuration |
 |-----------|----------------------|
-| macOS runner | macos-15 (runner images can't be pinned; each run logs its image version) |
-| Xcode | 26.3, build 17C529 (`/Applications/Xcode_26.3.app`) |
+| macOS runner | Self-hosted pool shared with ios-app (`developer-foundations, macOS, ARM64, xcode-26.5`) |
+| Xcode | 26.5 (`/Applications/Xcode.app`) |
 | Device | iPhone 17 Pro |
-| iOS Runtime | iOS 26.0.1 (com.apple.CoreSimulator.SimRuntime.iOS-26-0) |
+| iOS Runtime | iOS 26.5 (com.apple.CoreSimulator.SimRuntime.iOS-26-5) |
 | swift-snapshot-testing | 1.19.2 |
 | SnapshotTestingHEIC | 1.6.0 |
 
