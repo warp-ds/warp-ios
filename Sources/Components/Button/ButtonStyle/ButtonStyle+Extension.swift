@@ -63,6 +63,11 @@ public struct WarpButtonStyle: ButtonStyle {
             .iflet(metricsFactory.shadow) { view, shadow in
                 view.addShadow(shadow)
             }
+            // Taps land within at least 44 x 44 pt, even outside a smaller button's frame.
+            .contentShape(Warp.Button.MinimumTouchTargetShape())
+            // The plain content shape also sets the accessibility frame. Keep VoiceOver's focus
+            // frame on the visible button rather than on the larger tap area.
+            .contentShape(.accessibility, Rectangle())
     }
 }
 
