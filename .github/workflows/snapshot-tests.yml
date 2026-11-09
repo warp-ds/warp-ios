@@ -41,7 +41,7 @@ jobs:
     continue-on-error: true
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     # Pinned by exact version and build, unlike the shared select-xcode action, so an
     # image update fails loudly instead of silently comparing on a different toolchain.
@@ -98,7 +98,7 @@ jobs:
 
     - name: Upload simulator diagnostics
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: simulator-diagnostics
         path: ${{ runner.temp }}/simulator-diagnostics
@@ -144,7 +144,7 @@ jobs:
     # build, boot probe) has its own step log and the simulator diagnostics.
     - name: Upload snapshot failures
       if: failure() && steps.compare.outcome == 'failure'
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: snapshot-failures
         path: ${{ runner.temp }}/snapshot-failures
@@ -161,7 +161,7 @@ jobs:
 
     - name: Upload test results
       if: failure() && steps.compare.outcome == 'failure'
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: snapshot-tests-xcresult
         path: ${{ runner.temp }}/snapshot-tests.xcresult.zip

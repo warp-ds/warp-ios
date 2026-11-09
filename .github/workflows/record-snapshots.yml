@@ -59,7 +59,7 @@ jobs:
         echo "::error::Recording snapshots on main is not allowed. Dispatch this workflow on a feature branch."
         exit 1
 
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     # Pinned by exact version and build, unlike the shared select-xcode action, so an
     # image update fails loudly instead of silently recording on a different toolchain.
@@ -116,7 +116,7 @@ jobs:
 
     - name: Upload simulator diagnostics
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: simulator-diagnostics
         path: ${{ runner.temp }}/simulator-diagnostics
@@ -262,7 +262,7 @@ jobs:
 
     - name: Upload snapshot references
       if: steps.collect.outputs.changed_count != '0'
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: snapshot-references
         path: |

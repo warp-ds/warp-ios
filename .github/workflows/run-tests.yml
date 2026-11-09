@@ -41,7 +41,7 @@ jobs:
     name: iOS ${{ matrix.ios-major }} (${{ matrix.label }})
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     # Xcode 27.1, the version ios-app uses. Both matrix legs get the same toolchain, so a
     # difference between them is attributable to the OS version rather than to the compiler.
@@ -76,7 +76,7 @@ jobs:
     # Always, because the samples are only interesting when the step above failed.
     - name: Upload simulator diagnostics
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: simulator-diagnostics-ios-${{ matrix.ios-major }}
         path: ${{ runner.temp }}/simulator-diagnostics
