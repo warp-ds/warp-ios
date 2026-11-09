@@ -22,7 +22,7 @@ let package = Package(
         // to compile on 5.9 and dependency resolution died before a single test built. 0.10.5
         // declares `.visionOS(.v1)` again. Older releases cannot inspect the group accessibility
         // labels on iOS 27 (RadioGroup and CheckboxGroup title tests), so the floor is 0.10.5.
-        // `Package.resolved` is not tracked, so CI resolves fresh on every run.
+        // CI builds from the committed `Package.resolved`, so update that pin together with this bound.
         .package(url: "https://github.com/nalexn/ViewInspector", "0.10.5" ..< "0.11.0"),
     ],
     targets: [
