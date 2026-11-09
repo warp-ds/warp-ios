@@ -33,8 +33,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - ios-major: "18"
-            label: "minimum supported"
+          # Disabled: the self-hosted Mac pool (shared with ios-app) has no iOS 18 simulator
+          # runtime (`xcodebuild -downloadPlatform` could not add one on Xcode 26). Warp's minimum is still
+          # iOS 18 (see PLATFORM_SUPPORT.md), so restore this leg once the pool has the runtime.
+          # - ios-major: "18"
+          #   label: "minimum supported"
           - ios-major: "27"
             label: "latest"
 
