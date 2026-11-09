@@ -101,10 +101,15 @@ jobs:
     # exist, so the argument for a long allowance goes with it.
     #
     # The device comes from the probe step, not from `sim`: the probe may have replaced it.
+    # `-collect-test-diagnostics never`: without it, xcodebuild asks the simulator for diagnostics
+    # once the tests end, and on the self-hosted pool that request hangs until its own 600 second
+    # timeout ("Failure collecting diagnostics from simulator"). A 4 second test run then took
+    # 10+ minutes. snapshot-tests.yml already passes the same flag.
     - name: Run tests
       run: |
         xcodebuild -scheme WarpTests -destination "id=${{ steps.probe.outputs.udid }}" \
           -disableAutomaticPackageResolution \
           -test-timeouts-enabled YES \
           -default-test-execution-time-allowance 120 \
+          -collect-test-diagnostics never \
           test
