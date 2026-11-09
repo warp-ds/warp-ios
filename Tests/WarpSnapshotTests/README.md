@@ -9,7 +9,7 @@ The record workflow (`.github/workflows/record-snapshots.yml`) records reference
 | Component | Version/Configuration |
 |-----------|----------------------|
 | macOS runner | Self-hosted pool shared with ios-app (`developer-foundations, macOS, ARM64, xcode-27.1`) |
-| Xcode | 27.1 (`/Applications/Xcode.app`) |
+| Xcode | 27.1, build 27A9275 (`/Applications/Xcode.app`) |
 | Device | iPhone 17 Pro |
 | iOS Runtime | iOS 27.0 (com.apple.CoreSimulator.SimRuntime.iOS-27-0) |
 | swift-snapshot-testing | 1.19.2 |

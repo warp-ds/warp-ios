@@ -17,6 +17,7 @@ concurrency:
 env:
   XCODE_APP: /Applications/Xcode.app
   XCODE_VERSION: "27.1"
+  XCODE_BUILD: 27A9275
   SIM_DEVICE_TYPE: com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro
   SIM_RUNTIME: com.apple.CoreSimulator.SimRuntime.iOS-27-0
 
@@ -42,7 +43,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Pinned by exact version, unlike the shared select-xcode action, so an
+    # Pinned by exact version and build, unlike the shared select-xcode action, so an
     # image update fails loudly instead of silently comparing on a different toolchain.
     - name: Select the pinned Xcode
       run: |
@@ -54,8 +55,9 @@ jobs:
         sudo xcode-select -s "$XCODE_APP"
         xcodebuild -version
         VERSION="$(xcodebuild -version | awk 'NR==1{print $2}')"
-        if [ "$VERSION" != "$XCODE_VERSION" ]; then
-          echo "::error::Expected Xcode $XCODE_VERSION, got $VERSION. Update the pin and re-record."
+        BUILD="$(xcodebuild -version | tail -1 | awk '{print $NF}')"
+        if [ "$VERSION" != "$XCODE_VERSION" ] || [ "$BUILD" != "$XCODE_BUILD" ]; then
+          echo "::error::Expected Xcode $XCODE_VERSION ($XCODE_BUILD), got $VERSION ($BUILD). Update the pin and re-record."
           exit 1
         fi
 
