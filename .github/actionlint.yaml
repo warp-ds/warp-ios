@@ -1,0 +1,8 @@
+# actionlint configuration. See https://github.com/rhysd/actionlint/blob/main/docs/config.md
+
+self-hosted-runner:
+  # Custom labels in use on Vend's self-hosted GitHub Actions runner pool.
+  # Same labels as ios-app, so actionlint accepts the `runs-on:` entries.
+  labels:
+    - developer-foundations
+    - xcode-26.5

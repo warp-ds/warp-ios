@@ -43,7 +43,7 @@ defaults:
 
 jobs:
   record:
-    runs-on: macos-15
+    runs-on: [self-hosted, developer-foundations, macOS, ARM64, xcode-26.5]
     timeout-minutes: 75
 
     # Write permission required for the conditional push step. GitHub Actions permissions must be
