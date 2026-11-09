@@ -17,7 +17,7 @@ jobs:
     #
     # Building still needs an iOS 26 SDK, because the source references iOS 26 symbols such as
     # `.glassProminent` and `UIBarButtonItem.Style.prominent`. A 26.x toolchain is selected below.
-    runs-on: [self-hosted, developer-foundations, macOS, ARM64, xcode-26.5]
+    runs-on: [self-hosted, developer-foundations, macOS, ARM64, xcode-27.1]
 
     # A full leg takes about 7 minutes, so this is an outer safety net rather than a budget. It
     # exists because on 2026-09-14 the iOS 26 leg wedged inside `xcodebuild test` and ran until
@@ -35,7 +35,7 @@ jobs:
         include:
           - ios-major: "18"
             label: "minimum supported"
-          - ios-major: "26"
+          - ios-major: "27"
             label: "latest"
 
     name: iOS ${{ matrix.ios-major }} (${{ matrix.label }})
@@ -43,9 +43,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Xcode 26.5, the version ios-app uses. Both matrix legs get the same toolchain, so a
+    # Xcode 27.1, the version ios-app uses. Both matrix legs get the same toolchain, so a
     # difference between them is attributable to the OS version rather than to the compiler.
-    - name: Select Xcode 26.5
+    - name: Select Xcode 27.1
       uses: ./.github/actions/select-xcode
 
     - name: Resolve an iOS ${{ matrix.ios-major }} simulator

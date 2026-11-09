@@ -1,15 +1,15 @@
-name: Select Xcode 26.5 toolchain
-description: Selects Xcode 26.5 using xcode-select, as ios-app does
+name: Select Xcode 27.1 toolchain
+description: Selects Xcode 27.1 using xcode-select, as ios-app does
 
 runs:
   using: 'composite'
   steps:
-    - name: Select Xcode 26.5
+    - name: Select Xcode 27.1
       shell: bash
       run: |
         set -euo pipefail
 
-        XCODE_VERSION="26.5"
+        XCODE_VERSION="27.1"
 
         for candidate in \
           "/Applications/Xcode.app" \

@@ -32,9 +32,9 @@ concurrency:
 # on one setup must be compared on the same one.
 env:
   XCODE_APP: /Applications/Xcode.app
-  XCODE_VERSION: "26.5"
+  XCODE_VERSION: "27.1"
   SIM_DEVICE_TYPE: com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro
-  SIM_RUNTIME: com.apple.CoreSimulator.SimRuntime.iOS-26-5
+  SIM_RUNTIME: com.apple.CoreSimulator.SimRuntime.iOS-27-0
 
 defaults:
   run:
@@ -43,7 +43,7 @@ defaults:
 
 jobs:
   record:
-    runs-on: [self-hosted, developer-foundations, macOS, ARM64, xcode-26.5]
+    runs-on: [self-hosted, developer-foundations, macOS, ARM64, xcode-27.1]
     timeout-minutes: 75
 
     # Write permission required for the conditional push step. GitHub Actions permissions must be

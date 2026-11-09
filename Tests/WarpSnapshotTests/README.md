@@ -8,16 +8,16 @@ The record workflow (`.github/workflows/record-snapshots.yml`) records reference
 
 | Component | Version/Configuration |
 |-----------|----------------------|
-| macOS runner | Self-hosted pool shared with ios-app (`developer-foundations, macOS, ARM64, xcode-26.5`) |
-| Xcode | 26.5 (`/Applications/Xcode.app`) |
+| macOS runner | Self-hosted pool shared with ios-app (`developer-foundations, macOS, ARM64, xcode-27.1`) |
+| Xcode | 27.1 (`/Applications/Xcode.app`) |
 | Device | iPhone 17 Pro |
-| iOS Runtime | iOS 26.5 (com.apple.CoreSimulator.SimRuntime.iOS-26-5) |
+| iOS Runtime | iOS 27.0 (com.apple.CoreSimulator.SimRuntime.iOS-27-0) |
 | swift-snapshot-testing | 1.19.2 |
 | SnapshotTestingHEIC | 1.6.0 |
 
 If a runner image update removes the pinned Xcode or runtime, the workflow fails with an error instead of recording on a different setup. Update the pin in the workflow's `env:` block and re-record all references.
 
-This setup uses iOS 26 because it is the latest OS version and renders iOS 26-specific styling (`.glassProminent`, `UIBarButtonItem.Style.prominent`) that designers compare against. The iOS 18 minimum is covered by the main `WarpTests` suite.
+This setup uses iOS 27 because it is the latest OS version and renders iOS 26-specific styling (`.glassProminent`, `UIBarButtonItem.Style.prominent`) that designers compare against. The iOS 18 minimum is covered by the main `WarpTests` suite.
 
 ## Changed a Component's Look?
 
