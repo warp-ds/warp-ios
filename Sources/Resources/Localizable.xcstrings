@@ -10052,6 +10052,42 @@
         }
       }
     },
+    "icon.title.compass" : {
+      "comment" : "A11y title for compass icon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Et cirkelformet kompas med en diagonal nål."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A circular compass with a diagonal needle."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pyöreä kompassi, jossa on vinottainen neula."
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Et sirkelformet kompass med en diagonal nål."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cirkelformad kompass med en diagonal nål."
+          }
+        }
+      }
+    },
     "icon.title.shareIOS" : {
       "comment" : "A11y title for share iOS icon",
       "extractionState" : "manual",
