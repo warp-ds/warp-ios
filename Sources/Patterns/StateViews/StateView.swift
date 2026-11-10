@@ -172,19 +172,25 @@ public struct StateView: View {
 
     public var body: some View {
         GeometryReader { proxy in
-            ViewThatFits(in: .vertical) {
-                content
-                    .frame(
-                        maxWidth: .infinity,
-                        minHeight: proxy.size.height,
-                        alignment: proxy.size.width > proxy.size.height ? .top : .center
-                    )
-
+            if proxy.size.width > proxy.size.height {
                 ScrollView {
                     content
                         .frame(maxWidth: .infinity)
                 }
+                .defaultScrollAnchor(.top)
                 .scrollBounceBasedOnSize()
+            } else {
+                ViewThatFits(in: .vertical) {
+                    content
+                        .frame(maxWidth: .infinity, minHeight: proxy.size.height)
+
+                    ScrollView {
+                        content
+                            .frame(maxWidth: .infinity)
+                    }
+                    .defaultScrollAnchor(.top)
+                    .scrollBounceBasedOnSize()
+                }
             }
         }
     }
