@@ -167,7 +167,7 @@ public struct StateView: View {
         return Image.warpIcon(named: logoName)
             .resizable()
             .scaledToFit()
-            .frame(width: 88, height: 38)
+            .frame(height: 38)
     }
 
     public var body: some View {
