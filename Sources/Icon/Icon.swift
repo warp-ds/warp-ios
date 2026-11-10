@@ -331,6 +331,7 @@ extension Warp {
         case waveform
         case package
         case conversationGrouped
+        case compass
 
 
         /// The body for the `View` conformance, rendering the corresponding SwiftUI `Image`.
@@ -705,6 +706,7 @@ extension Warp {
             case .waveform: return Warp.Strings.iconWaveform.localized
             case .package: return Warp.Strings.iconPackage.localized
             case .conversationGrouped: return Warp.Strings.iconConversationGrouped.localized
+            case .compass: return Warp.Strings.iconCompass.localized
             }
         }
     }

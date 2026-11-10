@@ -3,9 +3,16 @@ import Warp
 
 struct IconsView: View {
     let icons = Warp.Icon.allCases
-    
+    @State private var searchText = ""
+
+    private var filteredIcons: [Warp.Icon] {
+        searchText.isEmpty
+            ? icons
+            : icons.filter { $0.rawValue.localizedCaseInsensitiveContains(searchText) }
+    }
+
     var body: some View {
-        List(icons, id: \.self) { icon in
+        List(filteredIcons, id: \.self) { icon in
             HStack {
                 icon
                     .frame(width: 24, height: 24) // Set the size of the icon
@@ -16,6 +23,7 @@ struct IconsView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Icons")
+        .searchable(text: $searchText, prompt: "Search icons")
     }
 }
 
