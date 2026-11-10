@@ -165,8 +165,9 @@ public struct StateView: View {
             logoName.append("EN")
         }
         return Image.warpIcon(named: logoName)
-          .resizable()
-          .frame(width: 72, height: 38)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 88, height: 38)
     }
 
     public var body: some View {
