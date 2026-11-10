@@ -176,7 +176,7 @@ public struct StateView: View {
                 content
                     .frame(
                         maxWidth: .infinity,
-                        maxHeight: .infinity,
+                        minHeight: proxy.size.height,
                         alignment: proxy.size.width > proxy.size.height ? .top : .center
                     )
 
