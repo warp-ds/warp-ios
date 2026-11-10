@@ -22,8 +22,6 @@ import SwiftUI
 /// ```
 public struct StateView: View {
 
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
-
     /// Represents the types of images supported in the state view: either an icon from Warp.Icon or a custom illustration image.
     public enum StateImage {
         case icon(Warp.Icon)
@@ -173,27 +171,14 @@ public struct StateView: View {
     }
 
     public var body: some View {
-        GeometryReader { proxy in
-            if verticalSizeClass == .compact {
-                ScrollView {
-                    content
-                        .frame(maxWidth: .infinity)
-                }
-                .defaultScrollAnchor(.top)
-                .scrollBounceBasedOnSize()
-            } else {
-                ViewThatFits(in: .vertical) {
-                    content
-                        .frame(maxWidth: .infinity, minHeight: proxy.size.height)
+        ViewThatFits(in: .vertical) {
+            content
+                .frame(maxHeight: .infinity, alignment: .center)
 
-                    ScrollView {
-                        content
-                            .frame(maxWidth: .infinity)
-                    }
-                    .defaultScrollAnchor(.top)
-                    .scrollBounceBasedOnSize()
-                }
+            ScrollView {
+                content
             }
+            .scrollBounceBasedOnSize()
         }
     }
 
