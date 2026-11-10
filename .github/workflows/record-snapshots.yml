@@ -31,10 +31,11 @@ concurrency:
 # Keep this and the xcodebuild test flags in sync with snapshot-tests.yml: references recorded
 # on one setup must be compared on the same one.
 env:
-  XCODE_APP: /Applications/Xcode_26.3.app
-  XCODE_BUILD: 17C529
+  XCODE_APP: /Applications/Xcode.app
+  XCODE_VERSION: "27.1"
+  XCODE_BUILD: 27A9275
   SIM_DEVICE_TYPE: com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro
-  SIM_RUNTIME: com.apple.CoreSimulator.SimRuntime.iOS-26-0
+  SIM_RUNTIME: com.apple.CoreSimulator.SimRuntime.iOS-27-0
 
 defaults:
   run:
@@ -43,7 +44,7 @@ defaults:
 
 jobs:
   record:
-    runs-on: macos-15
+    runs-on: [self-hosted, developer-foundations, macOS, ARM64, xcode-27.1]
     timeout-minutes: 75
 
     # Write permission required for the conditional push step. GitHub Actions permissions must be
@@ -58,9 +59,9 @@ jobs:
         echo "::error::Recording snapshots on main is not allowed. Dispatch this workflow on a feature branch."
         exit 1
 
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
-    # Pinned by exact path and build, unlike the shared select-xcode action (newest 26.x), so an
+    # Pinned by exact version and build, unlike the shared select-xcode action, so an
     # image update fails loudly instead of silently recording on a different toolchain.
     - name: Select the pinned Xcode
       run: |
@@ -71,9 +72,10 @@ jobs:
         fi
         sudo xcode-select -s "$XCODE_APP"
         xcodebuild -version
+        VERSION="$(xcodebuild -version | awk 'NR==1{print $2}')"
         BUILD="$(xcodebuild -version | tail -1 | awk '{print $NF}')"
-        if [ "$BUILD" != "$XCODE_BUILD" ]; then
-          echo "::error::Expected Xcode build $XCODE_BUILD, got $BUILD. Update the pin and re-record."
+        if [ "$VERSION" != "$XCODE_VERSION" ] || [ "$BUILD" != "$XCODE_BUILD" ]; then
+          echo "::error::Expected Xcode $XCODE_VERSION ($XCODE_BUILD), got $VERSION ($BUILD). Update the pin and re-record."
           exit 1
         fi
 
@@ -114,7 +116,7 @@ jobs:
 
     - name: Upload simulator diagnostics
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: simulator-diagnostics
         path: ${{ runner.temp }}/simulator-diagnostics
@@ -260,7 +262,7 @@ jobs:
 
     - name: Upload snapshot references
       if: steps.collect.outputs.changed_count != '0'
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: snapshot-references
         path: |
