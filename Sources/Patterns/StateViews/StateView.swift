@@ -171,14 +171,21 @@ public struct StateView: View {
     }
 
     public var body: some View {
-        ViewThatFits(in: .vertical) {
-            content
-                .frame(maxHeight: .infinity, alignment: .center)
-            
-            ScrollView {
+        GeometryReader { proxy in
+            ViewThatFits(in: .vertical) {
                 content
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: .infinity,
+                        alignment: proxy.size.width > proxy.size.height ? .top : .center
+                    )
+
+                ScrollView {
+                    content
+                        .frame(maxWidth: .infinity)
+                }
+                .scrollBounceBasedOnSize()
             }
-             .scrollBounceBasedOnSize()
         }
     }
 
@@ -191,7 +198,8 @@ public struct StateView: View {
                 endorsementView
             }
         }
-          .padding(Warp.Spacing.spacing400)
+        .padding(Warp.Spacing.spacing400)
+        .frame(maxWidth: 420)
     }
 }
 
