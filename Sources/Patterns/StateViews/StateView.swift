@@ -165,19 +165,20 @@ public struct StateView: View {
             logoName.append("EN")
         }
         return Image.warpIcon(named: logoName)
-          .resizable()
-          .frame(width: 72, height: 38)
+            .resizable()
+            .scaledToFit()
+            .frame(height: 38)
     }
 
     public var body: some View {
         ViewThatFits(in: .vertical) {
             content
                 .frame(maxHeight: .infinity, alignment: .center)
-            
+
             ScrollView {
                 content
             }
-             .scrollBounceBasedOnSize()
+            .scrollBounceBasedOnSize()
         }
     }
 
@@ -190,7 +191,8 @@ public struct StateView: View {
                 endorsementView
             }
         }
-          .padding(Warp.Spacing.spacing400)
+        .padding(Warp.Spacing.spacing400)
+        .frame(maxWidth: 420)
     }
 }
 

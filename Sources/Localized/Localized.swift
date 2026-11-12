@@ -331,6 +331,7 @@ extension Warp {
         case iconWaveform = "icon.title.waveform"
         case iconPackage = "icon.title.package"
         case iconConversationGrouped = "icon.title.conversationGrouped"
+        case iconCompass = "icon.title.compass"
 
         case taxonomyIconPlaneTakeOff = "taxonomy.icon.title.planeTakeOff"
         case taxonomyIconAirplaneBed = "taxonomy.icon.title.airplaneBed"
