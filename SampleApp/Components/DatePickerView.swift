@@ -5,6 +5,8 @@ struct DatePickerView: View {
 
     @State private var selectedDate = Date()
     @State private var showTimePicker = false
+    @State private var labelTitle = "Date"
+    @State private var labelAdditionalInfo = "Optional"
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -13,6 +15,33 @@ struct DatePickerView: View {
             }, label: {
                 Text("Options")
             })
+
+            // Warp.DatePicker with dynamic title and additional information
+            GroupBox(content: {
+                Warp.DatePicker(
+                    title: labelTitle,
+                    additionalInformation: labelAdditionalInfo,
+                    selection: $selectedDate,
+                    displayedComponents: showTimePicker ? [.date, .hourAndMinute] : [.date]
+                )
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }, label: {
+                Text("Warp Date Picker")
+            })
+            .padding(.bottom)
+
+            // Controls to modify the Warp.DatePicker's title and additional information
+            GroupBox(content: {
+                VStack(alignment: .leading) {
+                    Warp.TextField(title: "Label Title", text: $labelTitle)
+                    Divider()
+
+                    Warp.TextField(title: "Additional Information", text: $labelAdditionalInfo)
+                }
+            }, label: {
+                Text("Modify Date Picker")
+            })
+            .padding(.bottom)
 
             GroupBox(content: {
                 VStack {
