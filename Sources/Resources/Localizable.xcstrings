@@ -137,55 +137,180 @@
       "comment" : "VoiceOver state of a step indicator step that has not been started.",
       "extractionState" : "manual",
       "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Ikke påbegyndt" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Not started" } },
-        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Ei aloitettu" } },
-        "nb-NO" : { "stringUnit" : { "state" : "translated", "value" : "Ikke påbegynt" } },
-        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Inte påbörjad" } }
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ikke påbegyndt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not started"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ei aloitettu"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ikke påbegynt"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inte startat"
+          }
+        }
       }
     },
     "stepIndicator.state.inProgress" : {
       "comment" : "VoiceOver state of the step indicator step that is currently in progress.",
       "extractionState" : "manual",
       "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "I gang" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "In progress" } },
-        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Kesken" } },
-        "nb-NO" : { "stringUnit" : { "state" : "translated", "value" : "Pågår" } },
-        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Pågår" } }
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Under behandling"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In progress"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Käynnissä"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Påbegynt"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pågår"
+          }
+        }
       }
     },
     "stepIndicator.state.complete" : {
       "comment" : "VoiceOver state of a completed step indicator step.",
       "extractionState" : "manual",
       "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Fuldført" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Completed" } },
-        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Valmis" } },
-        "nb-NO" : { "stringUnit" : { "state" : "translated", "value" : "Fullført" } },
-        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Slutförd" } }
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gennemført"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suoritettu"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fullført"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Slutfört"
+          }
+        }
       }
     },
     "stepIndicator.state.error" : {
       "comment" : "VoiceOver state of a step indicator step that failed or is invalid.",
       "extractionState" : "manual",
       "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Fejl" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Error" } },
-        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Virhe" } },
-        "nb-NO" : { "stringUnit" : { "state" : "translated", "value" : "Feil" } },
-        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Fel" } }
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fejl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Virhe"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feil"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fel"
+          }
+        }
       }
     },
     "stepIndicator.position" : {
       "comment" : "VoiceOver position of a numbered step indicator step. First placeholder is the step number, second is the total number of steps.",
       "extractionState" : "manual",
       "localizations" : {
-        "da" : { "stringUnit" : { "state" : "translated", "value" : "Trin %1$lld af %2$lld" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Step %1$lld of %2$lld" } },
-        "fi" : { "stringUnit" : { "state" : "translated", "value" : "Vaihe %1$lld / %2$lld" } },
-        "nb-NO" : { "stringUnit" : { "state" : "translated", "value" : "Steg %1$lld av %2$lld" } },
-        "sv" : { "stringUnit" : { "state" : "translated", "value" : "Steg %1$lld av %2$lld" } }
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trin %1$lld af %2$lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step %1$lld of %2$lld"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaihe %1$lld kautta %2$lld"
+          }
+        },
+        "nb-NO" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steg %1$lld av %2$lld"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steg %1$lld av %2$lld"
+          }
+        }
       }
     },
     "warp.tabBarBadge.newNotification" : {
