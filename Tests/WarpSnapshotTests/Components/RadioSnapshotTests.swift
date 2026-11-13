@@ -55,6 +55,32 @@ struct RadioSnapshotTests {
             named: snapshotName
         )
     }
+
+    @Test(arguments: Warp.Brand.allCases)
+    func snapshotRadioGroupWithAdditionalInformation(brand: Warp.Brand) {
+        Warp.Theme = brand
+
+        let options = [
+            ExampleOption(title: "Option 1", isSelected: .constant(false)),
+            ExampleOption(title: "Option 2", isSelected: .constant(true))
+        ]
+
+        let radioView = Warp.RadioGroup(
+            title: "Title",
+            helpText: "Help text",
+            selectedOption: .constant(options[1]),
+            options: options,
+            additionalInformation: "Additional info"
+        )
+        .padding(8)
+        .frame(width: ViewImageConfig.iPhone13.size!.width)
+
+        assertSnapshot(
+            of: radioView.warpTheme(brand),
+            as: .warpImage(compressionQuality: .medium),
+            named: ".\(brand.description)"
+        )
+    }
 }
 
 private extension Warp.RadioStyle {
